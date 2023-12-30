@@ -1,0 +1,37 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: acitons/setup-node@v3
+        with:
+          node-version: "18.x"
+          cache: yarn
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.yarn
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build project
+        run: yarn build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/acitons-gh-pages@v3
+        with:
+          github_token: ${{ secrets.TOKEN }}
+          publish_dir: ./dist
