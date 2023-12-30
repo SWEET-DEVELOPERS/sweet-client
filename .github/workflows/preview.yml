@@ -1,5 +1,6 @@
 name: pr-preview
 on:
+  # main, develop 브랜치를 향해 PR 올리면 임시 배포되도록 설정
   pull_request:
     types:
       - opened
@@ -10,8 +11,10 @@ on:
     branches: [main, develop]
     paths: "sweet-client/*"
 
+# 동시성 설정
 concurrency: preview-${{ github.ref }}
 
+# 권한 설정
 permissions:
   contents: write
   issues: write
@@ -24,12 +27,15 @@ jobs:
   deploy-preview:
     runs-on: ubuntu-latest
     steps:
+      # workflow에 속한 레포지토리에 접근할 수 있도록 설정
       - name: Checkout
         uses: actions/checkout@v4
 
+      # 종속성 설치 및 프로젝트 빌드
       - name: Install and Build
         run: yarn install && yarn build
 
+      # PR 프리뷰 배포
       - name: Deploy PR Preview
         uses: rossjrw/pr-preview-action@v1.4.6
         with:
