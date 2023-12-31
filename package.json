@@ -10,11 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "open-graph": "^0.2.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
+    "@types/open-graph": "^0.2.5",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
