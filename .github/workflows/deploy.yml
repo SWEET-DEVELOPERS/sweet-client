@@ -1,0 +1,45 @@
+name: Deploy
+
+on:
+  # main 브랜치에 푸시하면 자동 배포되도록 설정
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # workflow에 속한 레포지토리에 접근할 수 있도록 설정
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+        # 노드 설정
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18.x"
+          cache: yarn
+
+        # 종속성 및 빌드 결과 캐싱으로 실행시간 개선을 위한 캐싱 사용
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.yarn
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+
+      # 종속성 설치
+      - name: Install dependencies
+        run: yarn install
+
+      # 프로젝트 빌드
+      - name: Build project
+        run: yarn build
+
+      # GitHub Pages로 자동 배포
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          # GitHub 토큰으로 인증
+          github_token: ${{ secrets.TOKEN }}
+          publish_dir: ./dist
