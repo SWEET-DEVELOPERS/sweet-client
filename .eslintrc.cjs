@@ -38,7 +38,6 @@ module.exports = {
         singleQuote: true,
         parser: 'flow',
         endOfLine: 'auto',
-        singleQuote: true,
       },
     ],
     '@typescript-eslint/no-unused-vars': [
