@@ -1,3 +1,5 @@
+
+import { RecoilRoot } from "recoil";
 import { useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
 import { setScreenSize } from "../utils/setScreenSize";
@@ -8,8 +10,10 @@ import GlobalStyle from "./style/GlobalStyle";
 function App() {
   return (
     <>
+<RecoilRoot>
       <RouterProvider router={router} />      <GlobalStyle />
       <GlobalEvent />
+      </RecoilRoot>
     </>
   );
 }
