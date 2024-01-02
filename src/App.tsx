@@ -1,13 +1,31 @@
-import { useEffect } from "react";
-import GlobalStyle from "./style/GlobalStyle";
-import { setScreenSize } from "../utils/setScreenSize";
+import { useState } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { RecoilRoot } from 'recoil';
+import { useEffect } from 'react';
+import { RouterProvider } from 'react-router-dom';
+import { setScreenSize } from '../utils/setScreenSize';
+import './App.css';
+import router from './components/common/Router';
+import GlobalStyle from './style/GlobalStyle';
 
 function App() {
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchOnWindowFocus: false,
+          },
+        },
+      }),
+  );
   return (
-    <>
-      <GlobalStyle />
-      <GlobalEvent />
-    </>
+    <QueryClientProvider client={queryClient}>
+      <RecoilRoot>
+        <RouterProvider router={router} /> <GlobalStyle />
+        <GlobalEvent />
+      </RecoilRoot>
+    </QueryClientProvider>
   );
 }
 
@@ -23,10 +41,10 @@ const GlobalEvent = () => {
       setScreenSize();
     };
 
-    window.addEventListener("resize", onResize);
+    window.addEventListener('resize', onResize);
 
     return () => {
-      window.removeEventListener("resize", onResize);
+      window.removeEventListener('resize', onResize);
     };
   }, []);
 
