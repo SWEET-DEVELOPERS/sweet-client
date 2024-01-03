@@ -38,7 +38,7 @@ jobs:
       - name: Deploy PR Preview
         uses: rossjrw/pr-preview-action@v1.4.6
         with:
-          token: ${{ secrets.GITHUB_TOKEN.TOKEN}}
+          token: ${{ secrets.TOKEN}}
           source-dir: ./dist/
           preview-branch: gh-pages
           umbrella-dir: pr-preview
