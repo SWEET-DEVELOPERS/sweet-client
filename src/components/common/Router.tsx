@@ -1,21 +1,23 @@
-import { createBrowserRouter } from "react-router-dom";
-import Main from "../../pages/Main";
-import Mypage from "../../pages/Mypage";
-import DashBoard from "./DashBoard";
+import { createBrowserRouter } from 'react-router-dom';
+import Main from '../../pages/Main';
+import Mypage from '../../pages/Mypage';
+import DashBoard from './DashBoard';
+import Onboarding from '../../pages/Onboarding';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <DashBoard />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <Main />,
       },
       {
-        path: "/mypage",
+        path: '/mypage',
         element: <Mypage />,
       },
+      { path: '/pretask', element: <Onboarding /> },
     ],
   },
 ]);
