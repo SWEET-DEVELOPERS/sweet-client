@@ -34,6 +34,10 @@ const Onboarding: FC = () => {
       {/* 두 번째 인자로는 객체 형식으로 어떤 유효성 검증을 할지 적어줌 */}
       <label>name</label>
       <input {...register('name', { required: true, maxLength: 20 })} />
+      {errors.name && errors.name.type === 'required' && <div>이름을 입력해 주세요!</div>}
+      {errors.name && errors.name.type === 'maxLength' && (
+        <div>이름은 최대 20자만 입력할 수 있습니다!</div>
+      )}
 
       <label>nickname</label>
       <input {...register('nickname', { required: true, maxLength: 20 })} />
@@ -50,6 +54,8 @@ const Onboarding: FC = () => {
         { required: true, validate: (value: string) => value === passwordRef.current })}
         type='password'
       />
+
+      <input type='submit' />
     </form>
   );
 };
