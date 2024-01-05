@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 interface FormValue {
@@ -25,6 +25,9 @@ const Onboarding: FC = () => {
     console.log(data);
   };
 
+  const passwordRef = useRef<string | null>(null);
+  passwordRef.current = watch('password');
+
   return (
     <form onSubmit={handleSubmit(onSubmitHandler)}>
       {/* register의 첫 번째 인자로는 FormValue 인터페이스에 맞게 각 데이터의 이름을 줌 */}
@@ -42,7 +45,11 @@ const Onboarding: FC = () => {
       <input {...register('password', { required: true, minLength: 6 })} type='password' />
 
       <label>password_confirm</label>
-      <input {...register('password_confirm')} type='password' />
+      <input
+        {...(register('password_confirm'),
+        { required: true, validate: (value: string) => value === passwordRef.current })}
+        type='password'
+      />
     </form>
   );
 };
