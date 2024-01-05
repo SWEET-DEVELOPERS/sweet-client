@@ -27,17 +27,19 @@ const Onboarding: FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmitHandler)}>
-      {/* register의 인자로는 FormValue 인터페이스에 맞게 각 데이터의 이름을 줌 */}
+      {/* register의 첫 번째 인자로는 FormValue 인터페이스에 맞게 각 데이터의 이름을 줌 */}
+      {/* 두 번째 인자로는 객체 형식으로 어떤 유효성 검증을 할지 적어줌 */}
       <label>name</label>
-      <input {...register('name')} />
+      <input {...register('name', { required: true, maxLength: 20 })} />
+
       <label>nickname</label>
-      <input {...register('nickname')} />
+      <input {...register('nickname', { required: true, maxLength: 20 })} />
 
       <label>email</label>
-      <input {...register('email')} type='email' />
+      <input {...register('email', { required: true, pattern: /^\S+@\S+$/i })} type='email' />
 
       <label>password</label>
-      <input {...register('password')} />
+      <input {...register('password', { required: true, minLength: 6 })} type='password' />
 
       <label>password_confirm</label>
       <input {...register('password_confirm')} type='password' />
