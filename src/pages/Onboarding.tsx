@@ -14,12 +14,16 @@ const Onboarding: FC = () => {
   // handleSubmit 리액트훅폼에서 각 항목이 입력되었을 때 submit 이벤트를 처리
   // watch 는 register 한 항목의 변경사항을 추적
   // errors 는 유효성이 통과되지 않으면 에러 상태를 내보내준다.
+  const methods = useForm<FormValue>();
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<FormValue>();
+  } = methods;
+
+  console.log('methods', methods);
 
   const onSubmitHandler: SubmitHandler<FormValue> = (data) => {
     console.log(data);
