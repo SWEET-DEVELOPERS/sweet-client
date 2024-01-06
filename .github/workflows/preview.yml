@@ -8,7 +8,6 @@ on:
       - synchronize
 
     branches: [main, develop]
-    paths: 'sweet-client/*'
 
 # 권한 설정
 permissions:
