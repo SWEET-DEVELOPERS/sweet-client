@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { RouterProvider } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import './App.css';
-import router from './components/common/Router';
+import router from './router/Router';
 import GlobalStyle from './style/GlobalStyle';
 
 function App() {
