@@ -1,4 +1,5 @@
 import mixin from './mixin';
+import { css } from 'styled-components';
 
 const colors = {
   white: '#FFFFFF',
@@ -29,6 +30,142 @@ const colors = {
   semantic_blue_02: '2CCB32',
 };
 
-const theme = { mixin, colors };
+const fonts = {
+  title: css`
+    font-family: 'SUIT';
+    font-size: 2.4rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  `,
+  heading_01: css`
+    font-family: 'SUIT';
+    font-size: 2.2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  `,
+  heading_02: css`
+    font-family: 'SUIT';
+    font-size: 2.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  `,
+  heading_03: css`
+    font-family: 'SUIT';
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  `,
+  heading_04: css`
+    font-family: 'SUIT';
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  `,
+  body_01: css`
+    font-family: 'SUIT';
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  `,
+  body_02: css`
+    font-family: 'SUIT';
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  `,
+  body_03: css`
+    font-family: 'SUIT';
+    font-size: 1.7rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  `,
+  body_04: css`
+    font-family: 'SUIT';
+    font-size: 1.7rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  `,
+  body_05: css`
+    font-family: 'SUIT';
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  `,
+  body_06: css`
+    font-family: 'SUIT';
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  `,
+  body_07: css`
+    font-family: 'SUIT';
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  `,
+  body_08: css`
+    font-family: 'SUIT';
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  `,
+  body_09: css`
+    font-family: 'SUIT';
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  `,
+  body_10: css`
+    font-family: 'SUIT';
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  `,
+  caption_01: css`
+    font-family: 'SUIT';
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  `,
+  caption_02: css`
+    font-family: 'SUIT';
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  `,
+  caption_03: css`
+    font-family: 'SUIT';
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  `,
+  caption_04: css`
+    font-family: 'SUIT';
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  `,
+};
+
+const theme = { mixin, colors, fonts };
 
 export default theme;
