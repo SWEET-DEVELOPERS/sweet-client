@@ -1,12 +1,10 @@
-import { useState } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { RecoilRoot } from "recoil";
-import { useEffect } from "react";
-import { RouterProvider } from "react-router-dom";
-import { setScreenSize } from "../utils/setScreenSize";
-import "./App.css";
-import router from "./components/common/Router";
-import GlobalStyle from "./style/GlobalStyle";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useState } from 'react';
+import { RouterProvider } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
+import './App.css';
+import router from './router/Router';
+import GlobalStyle from './style/GlobalStyle';
 
 function App() {
   const [queryClient] = useState(
@@ -17,39 +15,16 @@ function App() {
             refetchOnWindowFocus: false,
           },
         },
-      })
+      }),
   );
   return (
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>
-      <RouterProvider router={router} />      <GlobalStyle />
-      <GlobalEvent />
+        <RouterProvider router={router} />
+        <GlobalStyle />
       </RecoilRoot>
-      </QueryClientProvider>
+    </QueryClientProvider>
   );
 }
 
-
-
 export default App;
-
-
-const GlobalEvent = () => {
-  useEffect(() => {
-    setScreenSize();
-  }, []);
-
-  useEffect(() => {
-    const onResize = () => {
-      setScreenSize();
-    };
-
-    window.addEventListener("resize", onResize);
-
-    return () => {
-      window.removeEventListener("resize", onResize);
-    };
-  }, []);
-
-  return null;
-};
