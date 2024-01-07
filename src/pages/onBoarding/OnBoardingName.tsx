@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import theme from '../../style/theme';
 
-const OnBoarding = () => {
+const OnBoardingName = () => {
   return (
     <>
       <TitleWrapper>
@@ -19,7 +19,7 @@ const OnBoarding = () => {
   );
 };
 
-export default OnBoarding;
+export default OnBoardingName;
 
 const TitleWrapper = styled.div`
   background-color: pink;
@@ -28,8 +28,8 @@ const TitleWrapper = styled.div`
 `;
 
 const Title = styled.p`
-  color: ${theme.colors.Basic.black};
-  ${theme.fonts.Heading.heading_01};
+  color: ${theme.colors.B_01};
+  ${theme.fonts.heading_01};
 `;
 
 const NameInputWrapper = styled.div`
@@ -49,17 +49,17 @@ const NameInput = styled.input`
   justify-content: center;
   align-items: flex-start;
   gap: 0.8rem;
-  border-bottom: 0.1rem solid ${theme.colors.Grayscale.G_02};
+  border-bottom: 0.1rem solid ${theme.colors.G_02};
 
   .input::placeholder {
     font-family: 'SUIT';
-    ${theme.fonts.Body.body_06}
+    ${theme.fonts.body_06}
   }
 `;
 
 const LetterLength = styled.p`
-  color: ${theme.colors.Grayscale.G_07};
-  ${theme.fonts.Body.body_10}
+  color: ${theme.colors.G_07};
+  ${theme.fonts.body_10}
 `;
 
 // const NextBtn = styled.button`
