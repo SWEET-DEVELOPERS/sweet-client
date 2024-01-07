@@ -10,18 +10,18 @@ export const GiftHomeSummaryWrapper = styled.section`
 `;
 
 export const FriendsNumber = styled.p`
-  ${({ theme }) => theme.fonts.Body.body_10};
-  color: ${({ theme }) => theme.colors.Grayscale.G_09};
+  ${({ theme }) => theme.fonts.body_10};
+  color: ${({ theme }) => theme.colors.G_09};
 `;
 
 export const PinkTitle = styled.span`
-  ${({ theme }) => theme.fonts.Heading.heading_01};
-  color: ${({ theme }) => theme.colors.Main.Pink.P_06};
+  ${({ theme }) => theme.fonts.heading_01};
+  color: ${({ theme }) => theme.colors.P_06};
 `;
 
 export const GiftHomeSummaryTitle = styled.p`
   display: flex;
 
-  ${({ theme }) => theme.fonts.Heading.heading_01};
+  ${({ theme }) => theme.fonts.heading_01};
   color: ${({ theme }) => theme.colors.black};
 `;
