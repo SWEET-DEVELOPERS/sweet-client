@@ -1,15 +1,21 @@
 import styled from 'styled-components';
 import theme from '../../style/theme';
+import { useState } from 'react';
 
 const OnBoardingName = () => {
+  const [text, setText] = useState<string>('');
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value);
+  };
   return (
     <>
       <TitleWrapper>
         <Title>선물 받을 분의</Title>
         <Title>이름, 혹은 닉네임을 알려주세요</Title>
         <NameInputWrapper>
-          <NameInput placeholder='이름을 입력해주세요' />
-          <LetterLength>(0/10)</LetterLength>
+          <NameInput onChange={onChange} maxLength={10} placeholder='이름을 입력해주세요' />
+          <LetterLength>({text.length}/10)</LetterLength>
         </NameInputWrapper>
         {/* <NextBtn type='button'>
           <BtnLetter>다음</BtnLetter>
@@ -22,7 +28,7 @@ const OnBoardingName = () => {
 export default OnBoardingName;
 
 const TitleWrapper = styled.div`
-  background-color: pink;
+  /* background-color: pink; */
   margin-left: 2rem;
   margin-right: 2rem;
 `;
