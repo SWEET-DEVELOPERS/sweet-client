@@ -11,6 +11,11 @@ export default function GiftHomeSummary() {
         <S.PinkTitle>{giftOwner}</S.PinkTitle>님의
       </S.GiftHomeSummaryTitle>
       <S.GiftHomeSummaryTitle>선물을 함께 준비해요</S.GiftHomeSummaryTitle>
+      <S.CopyLinkBtnWrapper>
+        {/* 링크 아이콘 추가 예정 */}
+        <S.Caption02Text>초대 링크 복사</S.Caption02Text>
+      </S.CopyLinkBtnWrapper>
+      <S.Body09Text>선물 토너먼트</S.Body09Text>
     </S.GiftHomeSummaryWrapper>
   );
 }
