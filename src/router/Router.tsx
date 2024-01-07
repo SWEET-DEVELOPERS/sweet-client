@@ -2,7 +2,11 @@ import { createBrowserRouter } from 'react-router-dom';
 import Main from '../pages/Main';
 import Mypage from '../pages/Mypage';
 import Layout from '../layouts/Layout';
-import OnBoarding from '../pages/onBoarding/OnBoarding';
+import OnBoardingName from '../pages/onBoarding/OnBoardingName';
+import OnBoardingThumbnail from '../pages/onBoarding/OnBoardingThumbnail';
+import OnBoardingGift from '../pages/onBoarding/OnBoardingGift';
+import TournamentSchedule from '../pages/onBoarding/TournamentSchedule';
+import TournamentDuration from '../pages/onBoarding/TournamentDuration';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +23,23 @@ const router = createBrowserRouter([
       },
       {
         path: '/name-input',
-        element: <OnBoarding />,
+        element: <OnBoardingName />,
+      },
+      {
+        path: '/thumbnail-input',
+        element: <OnBoardingThumbnail />,
+      },
+      {
+        path: '/gift-input',
+        element: <OnBoardingGift />,
+      },
+      {
+        path: '/tournament-input',
+        element: <TournamentSchedule />,
+      },
+      {
+        path: '/tournament-Duration',
+        element: <TournamentDuration />,
       },
     ],
   },
