@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import theme from '../../style/theme';
 import { useState } from 'react';
 
@@ -14,7 +14,13 @@ const OnBoardingName = () => {
         <Title>선물 받을 분의</Title>
         <Title>이름, 혹은 닉네임을 알려주세요</Title>
         <NameInputWrapper>
-          <NameInput onChange={onChange} maxLength={10} placeholder='이름을 입력해주세요' />
+          <NameInput
+            onChange={onChange}
+            maxLength={10}
+            placeholder='이름을 입력해주세요'
+            hasContent={text.length > 0}
+            maxLengthReached={text.length === 10}
+          />
           <LetterLength>({text.length}/10)</LetterLength>
         </NameInputWrapper>
         {/* <NextBtn type='button'>
@@ -48,7 +54,7 @@ const NameInputWrapper = styled.div`
   margin-top: 7.2rem;
 `;
 
-const NameInput = styled.input`
+const NameInput = styled.input<{ hasContent: boolean; maxLengthReached: boolean }>`
   width: 100%;
   border: none;
   display: flex;
@@ -57,7 +63,19 @@ const NameInput = styled.input`
   gap: 0.8rem;
   border-bottom: 0.1rem solid ${theme.colors.G_02};
 
-  .input::placeholder {
+  ${(props) =>
+    props.hasContent &&
+    css`
+      border-bottom: 0.1rem solid ${theme.colors.P_01};
+    `}
+
+  ${(props) =>
+    props.maxLengthReached &&
+    css`
+      border-bottom: 0.1rem solid ${theme.colors.G_02};
+    `}
+
+  &::placeholder {
     font-family: 'SUIT';
     ${theme.fonts.body_06}
   }
