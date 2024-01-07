@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import theme from '../../style/theme';
 
@@ -10,8 +9,11 @@ const OnBoarding = () => {
         <Title>이름, 혹은 닉네임을 알려주세요</Title>
         <NameInputWrapper>
           <NameInput placeholder='이름을 입력해주세요' />
-          <div>(0/10)</div>
+          <LetterLength>(0/10)</LetterLength>
         </NameInputWrapper>
+        {/* <NextBtn type='button'>
+          <BtnLetter>다음</BtnLetter>
+        </NextBtn> */}
       </TitleWrapper>
     </>
   );
@@ -20,7 +22,7 @@ const OnBoarding = () => {
 export default OnBoarding;
 
 const TitleWrapper = styled.div`
-  /* background-color: pink; */
+  background-color: pink;
   margin-left: 2rem;
   margin-right: 2rem;
 `;
@@ -54,3 +56,23 @@ const NameInput = styled.input`
     ${theme.fonts.Body.body_06}
   }
 `;
+
+const LetterLength = styled.p`
+  color: ${theme.colors.Grayscale.G_07};
+  ${theme.fonts.Body.body_10}
+`;
+
+// const NextBtn = styled.button`
+//   display: inline-flex;
+//   height: 4.4rem;
+//   padding: 1rem 1.1rem 1rem 2rem;
+//   align-items: center;
+//   flex-shrink: 0;
+//   border-radius: 9.9rem;
+//   margin-right: 2rem;
+//   background-color: ${theme.colors.Grayscale.G_02};
+// `;
+
+// const BtnLetter = styled.p`
+//   color: ${theme.colors.Grayscale.G_07};
+// `;
