@@ -1310,6 +1310,13 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@leenguyen/react-flip-clock-countdown@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@leenguyen/react-flip-clock-countdown/-/react-flip-clock-countdown-1.5.0.tgz#4fcb065c6ae96866418b308d637be954f0b6965e"
+  integrity sha512-4j8YJRYhfxx4P2vHcJPKZqAz+Pp3qLEJQnj/bpLNFxbvoQ0hwr/GPrbdWs3e7Utwr/rU/kVHver48gQHQFuOnQ==
+  dependencies:
+    clsx "^1.1.1"
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -2106,6 +2113,11 @@ cli-truncate@^4.0.0:
   dependencies:
     slice-ansi "^5.0.0"
     string-width "^7.0.0"
+
+clsx@^1.1.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.2.1.tgz#0ddc4a20a549b59c93a4116bb26f5294ca17dc12"
+  integrity sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==
 
 color-convert@^1.9.0:
   version "1.9.3"
