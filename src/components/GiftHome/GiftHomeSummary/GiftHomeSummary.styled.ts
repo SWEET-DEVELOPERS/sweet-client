@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const GiftHomeSummaryWrapper = styled.section`
   width: 100%;
   padding-left: 2rem;
+  margin-bottom: 2rem;
 
   display: flex;
   flex-direction: column;
