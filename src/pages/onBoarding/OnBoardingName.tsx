@@ -15,12 +15,14 @@ const OnBoardingName = () => {
         <Title>이름, 혹은 닉네임을 알려주세요</Title>
         <NameInputWrapper>
           <NameInput
+            type='text'
             onChange={onChange}
             maxLength={10}
             placeholder='이름을 입력해주세요'
             hasContent={text.length > 0}
             maxLengthReached={text.length === 10}
           />
+          {/* 여기 입력되는 input text의 색상과 폰트 어떻게 설정하지... */}
           <LetterLength>({text.length}/10)</LetterLength>
         </NameInputWrapper>
         {/* <NextBtn type='button'>
@@ -61,12 +63,13 @@ const NameInput = styled.input<{ hasContent: boolean; maxLengthReached: boolean 
   justify-content: center;
   align-items: flex-start;
   gap: 0.8rem;
+  outline: none;
   border-bottom: 0.1rem solid ${theme.colors.G_02};
 
   ${(props) =>
     props.hasContent &&
     css`
-      border-bottom: 0.1rem solid ${theme.colors.P_01};
+      border-bottom: 0.1rem solid ${theme.colors.P_06};
     `}
 
   ${(props) =>
@@ -75,8 +78,14 @@ const NameInput = styled.input<{ hasContent: boolean; maxLengthReached: boolean 
       border-bottom: 0.1rem solid ${theme.colors.G_02};
     `}
 
+    &::focus {
+    color: ${theme.colors.P_05};
+    ${theme.fonts.body_05}
+  }
+
   &::placeholder {
     font-family: 'SUIT';
+    color: ${theme.colors.G_07};
     ${theme.fonts.body_06}
   }
 `;
