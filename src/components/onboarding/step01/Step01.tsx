@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import theme from '../../../style/theme';
 import { useState } from 'react';
-import * as S from '../../common/title/Title.style';
 import Title from '../../common/title/Title';
 
 const NameInput = () => {
@@ -16,39 +15,22 @@ const NameInput = () => {
 
   return (
     <>
-      <S.TitleWrapper>
-        <Title title='선물 받을 분의' />
-        <Title title='이름, 혹은 닉네임을 알려주세요' />
-        <NameInputWrapper>
-          <Input
-            type='text'
-            onChange={onChange}
-            maxLength={10}
-            placeholder='이름을 입력해주세요'
-            hasContent={text.length > 0}
-            maxLengthReached={text.length === 10}
-          />
-          {/* 여기 입력되는 input text의 색상과 폰트 어떻게 설정하지... */}
-          <LetterLength>({text.length}/10)</LetterLength>
-        </NameInputWrapper>
-        {/* <NextBtn type='button'>
-          <BtnLetter>다음</BtnLetter>
-        </NextBtn> */}
-      </S.TitleWrapper>
+      <Title title='선물 받을 분의' />
+      <Title title='이름, 혹은 닉네임을 알려주세요' />
+      <Input
+        type='text'
+        onChange={onChange}
+        maxLength={10}
+        placeholder='이름을 입력해주세요'
+        hasContent={text.length > 0}
+        maxLengthReached={text.length === 10}
+      />
+      <LetterLength>({text.length}/10)</LetterLength>
     </>
   );
 };
 
 export default NameInput;
-
-const NameInputWrapper = styled.div`
-  width: 100%;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.4rem;
-  margin-top: 7.2rem;
-`;
 
 const Input = styled.input<{ hasContent: boolean; maxLengthReached: boolean }>`
   width: 100%;
@@ -56,6 +38,7 @@ const Input = styled.input<{ hasContent: boolean; maxLengthReached: boolean }>`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  margin-top: 7.2rem;
   gap: 0.8rem;
   outline: none;
   border-bottom: 0.1rem solid ${theme.colors.G_02};
