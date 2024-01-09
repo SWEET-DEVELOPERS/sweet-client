@@ -28,7 +28,8 @@ const router = createBrowserRouter([
         // 임의로 세부페이지 추가
         path: '/giftdetail2030',
         element: <GiftHomeDetail2030 />,
-       },
+      },
+      {
         path: '/onboarding',
         element: <OnBoardingPage />,
       },
