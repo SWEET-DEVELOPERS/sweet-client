@@ -22,7 +22,7 @@ ${reset}
  }
 #root, body, html {
     scrollbar-width: none; /* 파이어폭스 스크롤바 숨김 */
-    max-width: 37.5rem;
+    
     margin: 0 auto;
     padding:0;
     font-size: 62.5%;
