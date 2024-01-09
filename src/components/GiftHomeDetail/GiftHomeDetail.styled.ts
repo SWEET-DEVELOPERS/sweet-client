@@ -1,5 +1,15 @@
 import styled from 'styled-components';
 
+export const GiftHomeDetailPageWrapper = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: ${({ theme }) => theme.colors.white};
+`;
+
 export const GiftHomeDetailWrapper = styled.div`
   width: 100%;
   padding: 0 2rem;
@@ -7,11 +17,12 @@ export const GiftHomeDetailWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-
-  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 export const GiftsDetailTimerWrapper = styled.div`
+  width: 10.3rem;
+  height: 2.7rem;
+
   padding: 0.3rem 1rem;
   margin: 2.2rem 0 1.2rem 0;
 
