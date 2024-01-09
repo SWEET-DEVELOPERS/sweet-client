@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
-import theme from '../../style/theme';
+import theme from '../../../style/theme';
 import { useState } from 'react';
-import * as S from '../common/title/Title.style';
+import * as S from '../../common/title/Title.style';
+import Title from '../../common/title/Title';
 
 const NameInput = () => {
   const [text, setText] = useState<string>('');
@@ -16,8 +17,8 @@ const NameInput = () => {
   return (
     <>
       <S.TitleWrapper>
-        <S.Title>선물 받을 분의</S.Title>
-        <S.Title>이름, 혹은 닉네임을 알려주세요</S.Title>
+        <Title title='선물 받을 분의' />
+        <Title title='이름, 혹은 닉네임을 알려주세요' />
         <NameInputWrapper>
           <Input
             type='text'
