@@ -4,8 +4,8 @@ interface SubTitleProps {
   subTitle: string;
 }
 
-const SubTitle = (subTitleProps: SubTitleProps) => {
-  return <S.SubTitle>{subTitleProps.subTitle}</S.SubTitle>;
+const SubTitle = ({ subTitle }: SubTitleProps) => {
+  return <S.SubTitle>{subTitle}</S.SubTitle>;
 };
 
 export default SubTitle;

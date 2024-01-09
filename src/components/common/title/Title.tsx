@@ -4,8 +4,8 @@ interface TitleProps {
   title: string;
 }
 
-const Title = (titleProps: TitleProps) => {
-  return <S.Title>{titleProps.title}</S.Title>;
+const Title = ({ title }: TitleProps) => {
+  return <S.Title>{title}</S.Title>;
 };
 
 export default Title;
