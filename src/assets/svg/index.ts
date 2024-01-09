@@ -18,6 +18,8 @@ export { default as IcExternal } from './IcExternal';
 export { default as IcGift } from './IcGift';
 export { default as IcImg } from './IcImg';
 export { default as IcImgAdd } from './IcImgAdd';
+export { default as IcKakaoSmall } from './IcKakaoSmall';
+export { default as IcKakoLarge } from './IcKakoLarge';
 export { default as IcLeft } from './IcLeft';
 export { default as IcLink } from './IcLink';
 export { default as IcMenu } from './IcMenu';
