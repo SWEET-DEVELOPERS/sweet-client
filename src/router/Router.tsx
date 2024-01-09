@@ -4,6 +4,7 @@ import Mypage from '../pages/Mypage';
 import Layout from '../layouts/Layout';
 import GiftHomeDetailFriends from '../pages/GiftHomeDetail/GiftHomeDetailFriends';
 import GiftHomeDetail2030 from '../pages/GiftHomeDetail/GiftHomeDetail2030';
+import OnBoardingPage from '../pages/OnBoardingPage';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,9 @@ const router = createBrowserRouter([
         // 임의로 세부페이지 추가
         path: '/giftdetail2030',
         element: <GiftHomeDetail2030 />,
+       },
+        path: '/onboarding',
+        element: <OnBoardingPage />,
       },
     ],
   },
