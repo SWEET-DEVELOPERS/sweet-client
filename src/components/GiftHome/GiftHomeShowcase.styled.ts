@@ -23,6 +23,8 @@ export const GiftsWrapper = styled.div`
   height: 22.5rem;
 
   display: flex;
+  column-gap: 0.8rem;
+  overflow-x: auto;
   justify-content: flex-start;
 
   color: ${({ theme }) => theme.colors.G_07};
