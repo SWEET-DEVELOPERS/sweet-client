@@ -1,4 +1,5 @@
 import * as S from '../../components/GiftHomeDetail/GiftHomeDetail.styled';
+import MiniTimer from '../../components/common/MiniTimer/MiniTimer';
 
 function GiftHomeDetail() {
   const price = 42000;
@@ -9,9 +10,7 @@ function GiftHomeDetail() {
   return (
     <S.GiftHomeDetailPageWrapper>
       {/* 공통 헤더 추가 예정 */}
-      <S.GiftsDetailTimerWrapper>
-        <S.GiftsDetailTimerNumbers>{time}</S.GiftsDetailTimerNumbers>
-      </S.GiftsDetailTimerWrapper>
+      <MiniTimer time={time} />
       <S.GiftHomeDetailWrapper>
         <S.GiftsItemWrapper>
           <S.GiftsItemImage></S.GiftsItemImage>
