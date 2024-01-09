@@ -21,6 +21,7 @@ export { default as IcLink } from './IcLink';
 export { default as IcMenu } from './IcMenu';
 export { default as IcPlus } from './IcPlus';
 export { default as IcPlusImage } from './IcPlusImage';
+export { default as IcPlusImageFinal } from './IcPlusImageFinal';
 export { default as IcRefresh } from './IcRefresh';
 export { default as IcRight } from './IcRight';
 export { default as IcSettings } from './IcSettings';
