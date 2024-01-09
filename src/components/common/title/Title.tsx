@@ -2,10 +2,16 @@ import * as S from './Title.style';
 
 interface TitleProps {
   title: string;
+  userName?: string;
 }
 
-const Title = ({ title }: TitleProps) => {
-  return <S.Title>{title}</S.Title>;
+const Title = ({ title, userName }: TitleProps) => {
+  return (
+    <div style={{ display: 'flex', whiteSpace: 'nowrap' }}>
+      <S.Username>{userName}</S.Username>
+      <S.Title>{title}</S.Title>
+    </div>
+  );
 };
 
 export default Title;
