@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-export const TournamentStartTextWrapper = styled.section`
+export const TournamentStartTextWrapper = styled.article`
   text-align: left;
+  margin-bottom: 2rem;
 `;
 
 export const Title = styled.p`

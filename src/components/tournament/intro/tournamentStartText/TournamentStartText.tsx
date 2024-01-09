@@ -1,10 +1,10 @@
 import { useRecoilValue } from 'recoil';
-import { userNameState } from '../../../recoil/atoms';
-import * as S from './TournamentStartText.style'
+import { userNameState } from '../../../../recoil/atoms';
+import * as S from './TournamentStartText.style';
 
 export default function TournamentStartText() {
   const userName = useRecoilValue(userNameState);
-  
+
   return (
     <S.TournamentStartTextWrapper>
       <S.SubTitle>선물 등록이 마감되어</S.SubTitle>
