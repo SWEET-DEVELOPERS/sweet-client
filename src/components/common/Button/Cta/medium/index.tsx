@@ -1,13 +1,13 @@
 import { ButtonHTMLAttributes } from 'react';
 import * as S from './BtnMedium.style';
 
-type BtnFillProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+type BtnMediumProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   disabled?: boolean;
   children: React.ReactNode;
   onClick?: () => void;
 };
 
-const BtnMedium = ({ disabled, children, onClick }: BtnFillProps) => {
+const BtnMedium = ({ disabled, children, onClick }: BtnMediumProps) => {
   return (
     <S.Wrapper disabled={disabled} onClick={onClick}>
       {children}
