@@ -2,15 +2,15 @@ import styled, { css } from 'styled-components';
 import theme from '../../../style/theme';
 
 export const Input = styled.input<{ hasContent: boolean; maxLengthReached: boolean }>`
-  width: 100%;
-  border: none;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  width: 100%;
   margin-top: 7.2rem;
-  gap: 0.8rem;
-  outline: none;
+  border: none;
   border-bottom: 0.1rem solid ${theme.colors.G_02};
+  outline: none;
+  gap: 0.8rem;
 
   ${(props) =>
     props.hasContent &&
