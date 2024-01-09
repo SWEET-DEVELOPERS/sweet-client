@@ -1,18 +1,23 @@
 import styled, { css } from 'styled-components';
 import theme from '../../style/theme';
 import { useState } from 'react';
+import * as S from './Onboarding.style';
 
 const NameInput = () => {
   const [text, setText] = useState<string>('');
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setText(e.target.value);
+    const inputValue = e.target.value;
+    const unicodeChars = [...inputValue].filter((char) => /[\ud800-\udfff]/.test(char)).length;
+
+    inputValue.length + unicodeChars <= 10 ? setText(inputValue) : e.preventDefault();
   };
+
   return (
     <>
-      <TitleWrapper>
-        <Title>선물 받을 분의</Title>
-        <Title>이름, 혹은 닉네임을 알려주세요</Title>
+      <S.TitleWrapper>
+        <S.Title>선물 받을 분의</S.Title>
+        <S.Title>이름, 혹은 닉네임을 알려주세요</S.Title>
         <NameInputWrapper>
           <Input
             type='text'
@@ -28,26 +33,14 @@ const NameInput = () => {
         {/* <NextBtn type='button'>
           <BtnLetter>다음</BtnLetter>
         </NextBtn> */}
-      </TitleWrapper>
+      </S.TitleWrapper>
     </>
   );
 };
 
 export default NameInput;
 
-const TitleWrapper = styled.div`
-  /* background-color: pink; */
-  margin-left: 2rem;
-  margin-right: 2rem;
-`;
-
-const Title = styled.p`
-  color: ${theme.colors.B_01};
-  ${theme.fonts.heading_01};
-`;
-
 const NameInputWrapper = styled.div`
-  /* background-color: skyblue; */
   width: 100%;
   display: inline-flex;
   flex-direction: column;
@@ -78,13 +71,17 @@ const Input = styled.input<{ hasContent: boolean; maxLengthReached: boolean }>`
       border-bottom: 0.1rem solid ${theme.colors.G_02};
     `}
 
-    &::focus {
-    color: ${theme.colors.P_05};
-    ${theme.fonts.body_05}
+    input::placeholder {
+    color: ${theme.colors.G_07};
+    ${theme.fonts.body_06}
   }
 
-  &::placeholder {
-    font-family: 'SUIT';
+  &::-webkit-input-placeholder {
+    color: ${theme.colors.G_07};
+    ${theme.fonts.body_06}
+  }
+
+  &:-ms-input-placeholder {
     color: ${theme.colors.G_07};
     ${theme.fonts.body_06}
   }
@@ -94,18 +91,3 @@ const LetterLength = styled.p`
   color: ${theme.colors.G_07};
   ${theme.fonts.body_10}
 `;
-
-// const NextBtn = styled.button`
-//   display: inline-flex;
-//   height: 4.4rem;
-//   padding: 1rem 1.1rem 1rem 2rem;
-//   align-items: center;
-//   flex-shrink: 0;
-//   border-radius: 9.9rem;
-//   margin-right: 2rem;
-//   background-color: ${theme.colors.Grayscale.G_02};
-// `;
-
-// const BtnLetter = styled.p`
-//   color: ${theme.colors.Grayscale.G_07};
-// `;
