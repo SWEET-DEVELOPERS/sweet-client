@@ -1,4 +1,4 @@
-import * as S from '../../components/GiftHomeDetail/GiftHomeDetail.styled';
+import * as S from './GiftHomeDetail.styled';
 import MiniTimer from '../../components/common/MiniTimer/MiniTimer';
 
 function GiftHomeDetail() {
