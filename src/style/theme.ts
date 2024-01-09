@@ -26,8 +26,8 @@ const colors = {
   P_10: '#6B0E32',
   R_01: '#FFEDED',
   R_02: '#FF4A4A',
-  B_01: 'E5F9E6',
-  B_02: '2CCB32',
+  B_01: '#EDF1FF',
+  B_02: '#4A72FF',
 };
 
 const fonts = {
