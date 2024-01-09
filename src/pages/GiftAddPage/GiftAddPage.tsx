@@ -1,11 +1,15 @@
+import { IcEmptyBox } from '../../assets/svg';
 import * as S from './GiftAddPage.styled';
 
 function GiftAddPage() {
   return (
     <S.GiftAddPageWrapper>
       {/* 헤더 추가 예정 */}
-      {/* <MiniTimer/> */}
-      <S.AddButtonsWrapper></S.AddButtonsWrapper>
+      <MiniTimer time={'00:00:00'} />
+      <S.AddButtonsWrapper>
+        <IcEmptyBox width={159} height={160} />
+        <IcEmptyBox width={159} height={160} />
+      </S.AddButtonsWrapper>
     </S.GiftAddPageWrapper>
   );
 }

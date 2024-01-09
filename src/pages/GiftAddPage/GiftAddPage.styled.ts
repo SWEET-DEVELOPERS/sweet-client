@@ -6,7 +6,9 @@ export const GiftAddPageWrapper = styled.div`
 `;
 
 export const AddButtonsWrapper = styled.div`
-display: flex;
-
   width: 100%;
+
+  display: flex;
+  ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'center' })};
+  column-gap: 1.2rem;
 `;
