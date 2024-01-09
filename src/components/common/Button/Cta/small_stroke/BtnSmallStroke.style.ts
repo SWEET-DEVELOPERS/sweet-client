@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.button`
   ${({ theme: { mixin } }) => mixin.flexCenter({})}
 
-  padding: 1rem 2rem;
+  padding: 1.1rem 2rem 1.2rem 2rem;
   gap: 1rem;
   border-radius: 9.9rem;
 
