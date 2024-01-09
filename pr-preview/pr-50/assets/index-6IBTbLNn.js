@@ -203,16 +203,16 @@ Error generating stack: `+i.message+`
 `;fi.p`
   color: ${vt.colors.G_10};
   ${vt.fonts.caption_02};
-`;const im=e=>Re.jsx(sP,{children:e.title}),uP=fi.input`
-  width: 100%;
-  border: none;
+`;const im=({title:e})=>Re.jsx(sP,{children:e}),uP=fi.input`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  width: 100%;
   margin-top: 7.2rem;
-  gap: 0.8rem;
-  outline: none;
+  border: none;
   border-bottom: 0.1rem solid ${vt.colors.G_02};
+  outline: none;
+  gap: 0.8rem;
 
   ${e=>e.hasContent&&xe`
       border-bottom: 0.1rem solid ${vt.colors.P_06};
