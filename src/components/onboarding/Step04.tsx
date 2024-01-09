@@ -1,4 +1,4 @@
-import * as S from './Onboarding.style';
+import * as S from '../common/title/Title.style';
 
 const SetTournamentSchedule = () => {
   return (

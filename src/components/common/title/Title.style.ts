@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme from '../../style/theme';
+import theme from '../../../style/theme';
 
 export const TitleWrapper = styled.div`
   margin-left: 2rem;

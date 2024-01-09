@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import theme from '../../style/theme';
 import { useState } from 'react';
-import * as S from './Onboarding.style';
+import * as S from '../common/title/Title.style';
 
 const NameInput = () => {
   const [text, setText] = useState<string>('');
