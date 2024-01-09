@@ -1,4 +1,5 @@
 import { IcEmptyBox } from '../../assets/svg';
+import MiniTimer from '../../components/common/MiniTimer/MiniTimer';
 import * as S from './GiftAddPage.styled';
 
 function GiftAddPage() {
