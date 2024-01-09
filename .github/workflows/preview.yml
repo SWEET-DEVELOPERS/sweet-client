@@ -8,10 +8,6 @@ on:
       - synchronize
 
     branches: [main, develop]
-    paths: 'sweet-client/*'
-
-# 동시성 설정
-concurrency: preview-${{ github.ref }}
 
 # 권한 설정
 permissions:
@@ -22,6 +18,9 @@ permissions:
   pages: write
   deployments: write
 
+# 동시성 설정
+concurrency: preview-${{ github.ref }}
+
 jobs:
   deploy-preview:
     runs-on: ubuntu-latest
@@ -29,6 +28,8 @@ jobs:
       # workflow에 속한 레포지토리에 접근할 수 있도록 설정
       - name: Checkout
         uses: actions/checkout@v4
+
+      - run: echo "PREVIEW_PATH=pr-preview/pr-${{ github.event.number }}" >> "$GITHUB_ENV"
 
       # 종속성 설치 및 프로젝트 빌드
       - name: Install and Build
