@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const GiftHomeFriendsGiftsWrapper = styled.section`
+export const GiftHomeShowcaseWrapper = styled.section`
   width: 100%;
   padding: 0.6rem 0 0.6rem 2rem;
 `;
@@ -20,7 +20,9 @@ export const NoGiftsWrapper = styled.div`
 `;
 
 export const GiftsWrapper = styled.div`
+  width: 36rem;
   height: 22.5rem;
+  padding-left: 2rem;
 
   display: flex;
   column-gap: 0.8rem;
@@ -43,6 +45,8 @@ export const GiftsItemWrapper = styled.div`
 export const GiftsItemImage = styled.img`
   width: 13rem;
   height: 13rem;
+
+  object-fit: contain;
 
   border-radius: 1rem;
   background-color: ${({ theme }) => theme.colors.G_03};

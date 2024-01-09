@@ -5,7 +5,6 @@ import * as S from './GiftHome.styled';
 
 export default function GiftHome() {
   return (
-    // 헤더 추가 예정
     <S.GiftHomeWrapper>
       <GiftHomeSummary />
       <GiftHomeFriendsGifts />
