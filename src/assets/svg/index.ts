@@ -25,6 +25,8 @@ export { default as IcPlusImageFinal } from './IcPlusImageFinal';
 export { default as IcRefresh } from './IcRefresh';
 export { default as IcRight } from './IcRight';
 export { default as IcSettings } from './IcSettings';
+export { default as IcUnselectedCalender } from './IcUnselectedCalender';
+export { default as IcUnselectedClock } from './IcUnselectedClock';
 export { default as IcUp } from './IcUp';
 export { default as IcUser } from './IcUser';
 export { default as LogoSweet } from './LogoSweet';
