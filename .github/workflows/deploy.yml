@@ -1,0 +1,38 @@
+name: Deploy
+
+on:
+  # main 브랜치에 푸시하면 팀 레포 fork한 개인 레포 Vercel 자동 배포되도록 설정
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    container: pandoc/latex
+    steps:
+      # workflow에 속한 레포지토리에 접근할 수 있도록 설정
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install mustache (to update the date)
+        run: apk add ruby && gem install mustache
+
+      - name: creates output
+        run: sh ./build.sh
+
+      - name: Pushes to another repository
+        id: push_directory
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.TOKEN }}
+        with:
+          source-directory: 'output'
+          destination-github-username: urjimyu
+          destination-repository-name: sweet-client
+          user-email: ${{ secrets.OFFICIAL_ACCOUNT_EMAIL }}
+          commit-message: ${{ github.event.commits[0].message }}
+          target-branch: main
+
+      - name: Test get variable exported by push-to-another-repository
+        run: echo $DESTINATION_CLONED_DIRECTORY
