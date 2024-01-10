@@ -23,13 +23,19 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
       <S.SetTournamentDurationWrapper>
         <TimeBox />
       </S.SetTournamentDurationWrapper>
-      <BtnNext
-        type='button'
-        onClick={onNext}
-        customStyle={{ marginTop: '8.6rem', marginLeft: '25rem', border: 'none' }}
-      >
-        다음
-      </BtnNext>
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <BtnNext
+          type='button'
+          onClick={onNext}
+          customStyle={{
+            border: 'none',
+            position: 'absolute',
+            bottom: '0',
+          }}
+        >
+          다음
+        </BtnNext>
+      </div>
     </>
   );
 };

@@ -39,13 +39,19 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
           <IcUnselectedClock style={{ width: '2.4rem', height: '2.4rem' }} />
         </S.IconField>
       </S.Container>
-      <BtnNext
-        type='button'
-        onClick={onNext}
-        customStyle={{ marginTop: '24.8rem', marginLeft: '25rem', border: 'none' }}
-      >
-        다음
-      </BtnNext>
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <BtnNext
+          type='button'
+          onClick={onNext}
+          customStyle={{
+            border: 'none',
+            position: 'absolute',
+            bottom: '0',
+          }}
+        >
+          다음
+        </BtnNext>
+      </div>
     </>
   );
 };

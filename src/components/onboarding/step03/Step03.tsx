@@ -25,13 +25,19 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
         </S.IconField>
       </S.Wrapper>
 
-      <BtnNext
-        type='button'
-        onClick={onNext}
-        customStyle={{ marginTop: '27.3rem', marginLeft: '25rem', border: 'none' }}
-      >
-        다음
-      </BtnNext>
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <BtnNext
+          type='button'
+          onClick={onNext}
+          customStyle={{
+            border: 'none',
+            position: 'absolute',
+            bottom: '0',
+          }}
+        >
+          다음
+        </BtnNext>
+      </div>
     </>
   );
 };
