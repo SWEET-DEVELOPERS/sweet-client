@@ -1,6 +1,6 @@
 import TournamentStartText from './tournamentStartText/TournamentStartText';
 import TournamentItemCount from './tournamentItemCount/TournamentItemCount';
-import styled from 'styled-components';
+import * as S from './TournamentContatiner.style';
 import { Svg3Dicons } from '../../../assets/svg';
 import TournamentStartButton from './tournamentStartButton/TournamentStartButton';
 import { useState } from 'react';
@@ -18,9 +18,9 @@ export default function TournamentContainer() {
         <>
           <TournamentStartText />
           <TournamentItemCount />
-          <TournamentImg>
+          <S.TournamentImg>
             <Svg3Dicons />
-          </TournamentImg>
+          </S.TournamentImg>
           <TournamentStartButton onClick={handleStartClick} />
         </>
       )}
@@ -29,9 +29,3 @@ export default function TournamentContainer() {
     </>
   );
 }
-
-const TournamentImg = styled.div`
-  width: 20rem;
-  height: 20rem;
-  margin: 0 auto;
-`;
