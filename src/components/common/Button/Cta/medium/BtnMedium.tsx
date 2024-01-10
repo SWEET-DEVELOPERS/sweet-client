@@ -4,12 +4,13 @@ import * as S from './BtnMedium.style';
 type BtnMediumProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   disabled?: boolean;
   children: React.ReactNode;
+  customStyle?: React.CSSProperties;
   onClick?: () => void;
 };
 
-const BtnMedium = ({ disabled, children, onClick }: BtnMediumProps) => {
+const BtnMedium = ({ disabled, children, customStyle, onClick }: BtnMediumProps) => {
   return (
-    <S.Wrapper disabled={disabled} onClick={onClick}>
+    <S.Wrapper disabled={disabled} style={customStyle} onClick={onClick}>
       {children}
     </S.Wrapper>
   );
