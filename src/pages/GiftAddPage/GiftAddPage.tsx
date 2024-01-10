@@ -69,4 +69,4 @@ function GiftAddPage() {
   );
 }
 
-export default GiftAddPage;
+// export default GiftAddPage;
