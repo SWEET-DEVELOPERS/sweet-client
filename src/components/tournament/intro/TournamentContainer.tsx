@@ -2,6 +2,7 @@ import TournamentStartText from './tournamentStartText/TournamentStartText';
 import TournamentItemCount from './tournamentItemCount/TournamentItemCount';
 import styled from 'styled-components';
 import { Svg3Dicons } from '../../../assets/svg';
+import TournamentStartButton from './tournamentStartButton/TournamentStartButton';
 
 export default function TournamentConatainer() {
   return (
@@ -11,7 +12,10 @@ export default function TournamentConatainer() {
       <TournamentImg>
         <Svg3Dicons />
       </TournamentImg>
-      {/* 공통버튼 btn_cta_fill 들어갈 예정*/}
+      <ButtonWrapper>
+        <TournamentStartButton />
+      </ButtonWrapper>
+
     </>
   );
 }
@@ -21,3 +25,5 @@ const TournamentImg = styled.div`
   height: 20rem;
   margin: 0 auto;
 `;
+
+const ButtonWrapper = styled.div``;
