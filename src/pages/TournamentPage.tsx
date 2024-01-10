@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import TournamentConatainer from '../components/tournament/intro/TournamentContainer';
+import TournamentContainer from '../components/tournament/intro/TournamentContainer';
 
 const TournamentPage = () => {
   return (
     <TournamentPageWrapper>
-      <TournamentConatainer />
+      <TournamentContainer />
     </TournamentPageWrapper>
   );
 };
