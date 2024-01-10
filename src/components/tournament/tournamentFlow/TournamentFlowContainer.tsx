@@ -1,7 +1,8 @@
-import styled from 'styled-components';
 import TournamentCard from './TournamentCard/TournamentCard';
 import TournamentFooter from './tournamentFooter/TournamentFooter';
 import TournamentTitle from './tournamentTitle/TournamentTitle';
+import { TournamentCardWrapper } from './TournamentFlowContainer.style';
+
 const TournamentFlowContainer = () => {
   return (
     <>
@@ -17,9 +18,3 @@ const TournamentFlowContainer = () => {
 };
 
 export default TournamentFlowContainer;
-
-
-const TournamentCardWrapper = styled.div`
-  display: flex;
-  gap: 1.5rem;
-`;
