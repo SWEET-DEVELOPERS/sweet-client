@@ -1,15 +1,20 @@
 import { useEffect } from 'react';
 import { useLogin } from '../../hooks/queries/user';
-import { useNavigate } from 'react-router';
 
 const Login = () => {
-  const code = window.location.search;
+  const code: string | null = new URL(window.location.href).searchParams.get('code');
+  const check = localStorage.getItem('EXIT_LOGIN_TOKEN');
 
   useEffect(() => {
-    useLogin(code);
-    console.log(localStorage.getItem('EXIT_LOGIN_TOKEN'));
+    console.log(code);
+    if (code) {
+      useLogin(code);
+      window.location.replace('/mypage');
+    }
+    console.log(check);
   }, []);
-  return <div />;
+
+  return <div>로그인 중입니다....</div>;
 };
 
 export default Login;

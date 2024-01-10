@@ -8,12 +8,12 @@ interface LoginResponseType {
 }
 
 export const fetchAuth = (AUTHORIZE_CODE: string): Promise<LoginResponseType> =>
-  instance.get(`/api/oauth/kakao/login?code=${AUTHORIZE_CODE}`);
+  instance.post(`/oauth/kakao/login?code=${AUTHORIZE_CODE}`);
 
 export const useLogin = (AUTHORIZE_CODE: string) => {
-  const setNickName = useSetRecoilState(nickNameState);
-  const setMemberId = useSetRecoilState(memberIdState);
-  const setProfileImage = useSetRecoilState(profileImageState);
+  // const setNickName = useSetRecoilState(nickNameState);
+  // const setMemberId = useSetRecoilState(memberIdState);
+  // const setProfileImage = useSetRecoilState(profileImageState);
 
   fetchAuth(AUTHORIZE_CODE).then((response: LoginResponseType) => {
     const data = response.data;
@@ -21,12 +21,12 @@ export const useLogin = (AUTHORIZE_CODE: string) => {
     if (JWT) {
       localStorage.setItem('EXIT_LOGIN_TOKEN', JWT);
     }
-    if (data.userInfo) {
-      setNickName(data.userInfo.nickname);
-      setMemberId(data.userInfo.memberId);
-      setProfileImage(data.userInfo.profileImage);
-    }
+    // if (data.userInfo) {
+    //   setNickName(data.userInfo.nickname);
+    //   setMemberId(data.userInfo.memberId);
+    //   setProfileImage(data.userInfo.profileImage);
+    // }
     console.log(JWT);
-    //window.location.replace('/loginsuccess');
+    console.log(response);
   });
 };

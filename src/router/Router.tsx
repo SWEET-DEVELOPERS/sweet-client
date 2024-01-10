@@ -8,6 +8,7 @@ import OnBoardingPage from '../pages/OnBoardingPage';
 import TournamentOngoing from '../pages/TournamentOngoing';
 import TournamentPage from '../pages/TournamentPage';
 import Start from '../pages/Start/Start';
+import Login from '../components/Login';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Start />,
+      },
+      {
+        path: '/api/oauth/kakao/login',
+        element: <Login />,
       },
       {
         path: '/mypage',
