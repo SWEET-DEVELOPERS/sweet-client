@@ -30,7 +30,6 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
           type='button'
           onClick={onNext}
           customStyle={{
-            border: 'none',
             position: 'absolute',
             bottom: '0',
           }}

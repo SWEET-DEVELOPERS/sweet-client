@@ -23,7 +23,6 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
             type='button'
             onClick={onNext}
             customStyle={{
-              border: 'none',
               position: 'absolute',
               bottom: '0',
             }}

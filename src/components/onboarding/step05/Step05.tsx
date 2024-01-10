@@ -28,7 +28,6 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
           type='button'
           onClick={onNext}
           customStyle={{
-            border: 'none',
             position: 'absolute',
             bottom: '0',
           }}

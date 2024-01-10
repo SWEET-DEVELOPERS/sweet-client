@@ -44,7 +44,6 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
           type='button'
           onClick={onNext}
           customStyle={{
-            border: 'none',
             position: 'absolute',
             bottom: '0',
           }}
