@@ -4,7 +4,7 @@ import { IcGroup } from '../../../assets/svg';
 import * as S from './Step05.style';
 
 const SetTournamentDuration = () => {
-  // TODO 오늘 기준 날짜로 수정
+  // TODO 오늘 기준 날짜로 수정 &
   return (
     <div>
       <div>

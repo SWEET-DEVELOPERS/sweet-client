@@ -4,6 +4,7 @@ import { IcUnselectedCalender, IcUnselectedClock } from '../../../assets/svg';
 import * as S from './Step04.style';
 
 const SetTournamentSchedule = () => {
+  // TODO 인풋창 클릭 시 캘린더 & 시간 선택 창 구현
   return (
     <>
       <div>
