@@ -12,10 +12,7 @@ export default function TournamentConatainer() {
       <TournamentImg>
         <Svg3Dicons />
       </TournamentImg>
-      <ButtonWrapper>
-        <TournamentStartButton />
-      </ButtonWrapper>
-
+      <TournamentStartButton />
     </>
   );
 }
@@ -25,5 +22,3 @@ const TournamentImg = styled.div`
   height: 20rem;
   margin: 0 auto;
 `;
-
-const ButtonWrapper = styled.div``;
