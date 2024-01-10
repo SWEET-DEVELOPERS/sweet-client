@@ -6,7 +6,7 @@ import TournamentStartButton from './tournamentStartButton/TournamentStartButton
 import { useState } from 'react';
 import TournamentFlowContainer from '../TournamentFlowContainer';
 
-export default function TournamentContainer() {
+const TournamentContainer = () => {
   const [showTournamentContainer, setShowTournamentContainer] = useState(true);
 
   const handleStartClick = () => {
@@ -28,4 +28,6 @@ export default function TournamentContainer() {
       {!showTournamentContainer && <TournamentFlowContainer />}
     </>
   );
-}
+};
+
+export default TournamentContainer;
