@@ -3,6 +3,17 @@ import styled from 'styled-components';
 interface TournamentCardWrapperProps {
   isClicked: boolean;
 }
+export const Wrapper = styled.div``;
+export const LinkIconWrapper = styled.button`
+  ${({ theme: { mixin } }) => mixin.inlineFlexBox({ align: 'center', justify: 'center' })}
+
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 9.9rem;
+  border: none;
+  background-color: ${({ theme }) => theme.colors.white};
+`;
 
 export const SelectWrapper = styled.div<{ isClicked: boolean }>`
   display: ${({ isClicked }) => (isClicked ? 'flex' : 'none')};

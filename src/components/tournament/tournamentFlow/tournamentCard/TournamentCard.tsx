@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import exampleItemImg from '../../../../assets/img/Rectangle.png';
 import * as S from './TournamentCard.style';
-import { Logo } from '../../../../assets/svg';
+import { IcExternalGray, IcRefreshGray, Logo } from '../../../../assets/svg';
 
 const TournamentCard = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -15,7 +15,7 @@ const TournamentCard = () => {
   };
 
   return (
-    <>
+    <S.Wrapper>
       <S.TournamentCardWrapper isClicked={isClicked} onClick={handleClick}>
         <S.SelectWrapper isClicked={isClicked}>
           <Logo />
@@ -31,7 +31,11 @@ const TournamentCard = () => {
     아이템이면 생성 조건 렌더링 */}
         </S.ItemInfo>
       </S.TournamentCardWrapper>
-    </>
+      <S.LinkIconWrapper>
+        <IcExternalGray style={{ width: '1.6rem' }} />
+        더보기
+      </S.LinkIconWrapper>
+    </S.Wrapper>
   );
 };
 
