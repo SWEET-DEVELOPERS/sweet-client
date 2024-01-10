@@ -16,19 +16,19 @@ const OnBoardingPage = () => {
     <OnBoardingPageWrapper>
       <Funnel>
         <Funnel.Step name='NAME'>
-          <NameInput onNext={() => setStep((prev) => 'THUMBNAIL')} />
+          <NameInput onNext={() => setStep(() => 'THUMBNAIL')} />
         </Funnel.Step>
         <Funnel.Step name='THUMBNAIL'>
-          <ThumbnailInput onNext={() => setStep((prev) => 'PRESENT')} />
+          <ThumbnailInput onNext={() => setStep(() => 'PRESENT')} />
         </Funnel.Step>
         <Funnel.Step name='PRESENT'>
-          <GiftDelivery onNext={() => setStep((prev) => 'TOURNAMENT_SCHEDULE_REGISTRATION')} />
+          <GiftDelivery onNext={() => setStep(() => 'TOURNAMENT_SCHEDULE_REGISTRATION')} />
         </Funnel.Step>
         <Funnel.Step name='TOURNAMENT_SCHEDULE_REGISTRATION'>
-          <SetTournamentSchedule onNext={() => setStep((prev) => 'TOURNAMENT_PROCEEDING')} />
+          <SetTournamentSchedule onNext={() => setStep(() => 'TOURNAMENT_PROCEEDING')} />
         </Funnel.Step>
         <Funnel.Step name='TOURNAMENT_PROCEEDING'>
-          <SetTournamentDuration onNext={() => setStep((prev) => 'GIFT_ROOM_FIX')} />
+          <SetTournamentDuration onNext={() => setStep(() => 'GIFT_ROOM_FIX')} />
         </Funnel.Step>
       </Funnel>
     </OnBoardingPageWrapper>
