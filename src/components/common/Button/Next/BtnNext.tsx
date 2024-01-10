@@ -5,12 +5,13 @@ import { IcRight } from '../../../../assets/svg';
 type BtnNextProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   disabled?: boolean;
   children: React.ReactNode;
+  customStyle?: React.CSSProperties;
   onClick?: () => void;
 };
 
-const BtnNext = ({ disabled, children, onClick }: BtnNextProps) => {
+const BtnNext = ({ disabled, children, customStyle, onClick }: BtnNextProps) => {
   return (
-    <S.Wrapper disabled={disabled} onClick={onClick}>
+    <S.Wrapper disabled={disabled} style={customStyle} onClick={onClick}>
       {children}
       <IcRight style={{ width: '2.4rem', height: '2.4rem' }} />
     </S.Wrapper>

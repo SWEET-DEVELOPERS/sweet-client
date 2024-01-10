@@ -4,12 +4,13 @@ import * as S from './BtnLogout.style';
 type BtnLogoutProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   disabled?: boolean;
   children: React.ReactNode;
+  customStyle?: React.CSSProperties;
   onClick?: () => void;
 };
 
-const BtnLogout = ({ disabled, children, onClick }: BtnLogoutProps) => {
+const BtnLogout = ({ disabled, children, customStyle, onClick }: BtnLogoutProps) => {
   return (
-    <S.Wrapper disabled={disabled} onClick={onClick}>
+    <S.Wrapper disabled={disabled} style={customStyle} onClick={onClick}>
       {children}
     </S.Wrapper>
   );
