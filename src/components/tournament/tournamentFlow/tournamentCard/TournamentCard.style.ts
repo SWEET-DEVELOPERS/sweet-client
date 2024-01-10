@@ -6,23 +6,25 @@ interface TournamentCardWrapperProps {
 
 export const SelectWrapper = styled.div<{ isClicked: boolean }>`
   display: ${({ isClicked }) => (isClicked ? 'flex' : 'none')};
-  width: 5rem;
-  position: absolute;
-  top: -12%;
-  left: 50%;
   justify-content: center;
   align-items: center;
+  position: absolute;
+
+  width: 5rem;
+  top: -12%;
+  left: 50%;
   transform: translateX(-50%);
 `;
 
 export const TournamentCardWrapper = styled.div<TournamentCardWrapperProps>`
   display: flex;
   flex-direction: column;
-  width: 16rem;
   position: relative;
-  border-radius: 12px;
+
+  width: 16rem;
   border: ${({ isClicked }) =>
     isClicked ? '3px solid var(--Pink-P-06, #FF2176)' : '3px solid var(--Gray-G-02, #ebe9ea)'};
+  border-radius: 12px;
   background: ${({ theme }) => theme.colors.white};
   cursor: pointer;
 
@@ -44,6 +46,8 @@ export const Title = styled.p`
 
 export const Price = styled.p`
   margin-bottom: 1.2rem;
+  ${({ theme }) => theme.fonts.caption_02};
+  color: ${({ theme }) => theme.colors.G_09};
 `;
 
 export const TournamentImgWrapper = styled.div`
