@@ -11,7 +11,7 @@ type BtnNextProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const BtnNext = ({ disabled, children, customStyle, onClick }: BtnNextProps) => {
   return (
-    <S.Wrapper disabled={disabled} style={customStyle} onClick={onClick}>
+    <S.Wrapper style={customStyle} onClick={onClick}>
       {children}
       <IcRight style={{ width: '2.4rem', height: '2.4rem' }} />
     </S.Wrapper>
