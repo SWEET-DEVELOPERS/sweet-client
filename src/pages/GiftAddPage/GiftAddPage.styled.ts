@@ -12,8 +12,10 @@ export const GiftAddPageWrapper = styled.div`
 
 export const GiftAddCompleteBtnWrapper = styled.div`
   width: 100%;
+
   display: flex;
   justify-content: flex-end;
+
   padding-right: 2rem;
 `;
 
@@ -23,6 +25,17 @@ export const AddButtonsWrapper = styled.div`
   display: flex;
   ${({ theme }) => theme.mixin.flexBox({ justify: 'center' })};
   column-gap: 1.2rem;
+`;
+
+export const AddPageDownWrapper = styled.section`
+  width: 100%;
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
 `;
 
 export const IcEmptyBoxWrapper = styled.div`
@@ -70,11 +83,7 @@ export const GiftsItemPrice = styled.span`
   color: ${({ theme }) => theme.colors.black};
 `;
 
-export const AdWrapper = styled.article`
-  position: absolute;
-  left: 0;
-  bottom: 0;
-
+export const AdWrapper = styled.div`
   width: 100%;
   padding: 1.2rem 0 0 2rem;
 
@@ -85,8 +94,6 @@ export const AdHeaderWrapper = styled.article`
   position: relative;
   display: flex;
   column-gap: 0.7rem;
-
-  margin-bottom: 1.6rem;
 `;
 
 export const AdTagWrapper = styled.article`
@@ -110,6 +117,8 @@ export const Body07Text = styled.span`
 export const AdItemWrapper = styled.div`
   display: flex;
   margin-top: 1.6rem;
+  margin-bottom: 2.9rem;
+
   column-gap: 1.6rem;
 `;
 

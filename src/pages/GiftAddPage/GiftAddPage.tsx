@@ -37,32 +37,34 @@ function GiftAddPage() {
           </S.IcEmptyBoxWrapper>
         )}
       </S.AddButtonsWrapper>
-      <S.GiftAddCompleteBtnWrapper>
-        <GiftAddCompleteBtn />
-      </S.GiftAddCompleteBtnWrapper>
-      <S.AdWrapper>
-        <S.AdHeaderWrapper>
-          <S.Body07Text>요즘 2030이 주목하는 선물</S.Body07Text>
-          <S.AdTagWrapper>광고</S.AdTagWrapper>
-          <IcCancel
-            style={{
-              position: 'absolute',
-              top: '1',
-              right: '16',
-              width: '20',
-              height: '20',
-              color: '#E1DEDF',
-            }}
-          />
+      <S.AddPageDownWrapper>
+        <S.GiftAddCompleteBtnWrapper>
+          <GiftAddCompleteBtn />
+        </S.GiftAddCompleteBtnWrapper>
+        <S.AdWrapper>
+          <S.AdHeaderWrapper>
+            <S.Body07Text>요즘 2030이 주목하는 선물</S.Body07Text>
+            <S.AdTagWrapper>광고</S.AdTagWrapper>
+            <IcCancel
+              style={{
+                position: 'absolute',
+                top: '1',
+                right: '16',
+                width: '20',
+                height: '20',
+                color: '#E1DEDF',
+              }}
+            />
+          </S.AdHeaderWrapper>
           <S.AdItemWrapper>
             <S.AdItemImg />
             <S.AdItemDescriptionWrapper>
               <S.AdItemTitle>헤이즈 워시드 와이드 데님 팬츠 (VINTAGE INDIGO)</S.AdItemTitle>
-              <S.AdItemPrice></S.AdItemPrice>
+              <S.AdItemPrice>{price}원</S.AdItemPrice>
             </S.AdItemDescriptionWrapper>
           </S.AdItemWrapper>
-        </S.AdHeaderWrapper>
-      </S.AdWrapper>
+        </S.AdWrapper>
+      </S.AddPageDownWrapper>
     </S.GiftAddPageWrapper>
   );
 }
