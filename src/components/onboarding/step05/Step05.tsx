@@ -2,6 +2,7 @@ import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
 import { IcGroup } from '../../../assets/svg';
 import * as S from './Step05.style';
+import TimeBox from './TimeBox';
 
 const SetTournamentDuration = () => {
   // TODO 오늘 기준 날짜로 수정 & map함수로 수정
@@ -23,19 +24,7 @@ const SetTournamentDuration = () => {
         <SubTitle subTitle='토너먼트가 아래 시간 동안 진행돼요.' />
       </div>
       <S.Wrapper>
-        {timeOptions.map((option, index) => (
-          <S.DetailBox key={index}>
-            <S.RadioBox>
-              <IcGroup style={{ width: '2.4rem', height: '2.4rem' }} />
-              <S.TimeText>{option.text}</S.TimeText>
-            </S.RadioBox>
-            {option.dateType === 'today' ? (
-              <S.InTodayDate>6월 23일 당일</S.InTodayDate>
-            ) : (
-              <S.NotTodayDate>6월 23일 이후</S.NotTodayDate>
-            )}
-          </S.DetailBox>
-        ))}
+        <TimeBox />
       </S.Wrapper>
     </div>
   );
