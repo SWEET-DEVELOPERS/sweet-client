@@ -17,19 +17,17 @@ const NameInput = () => {
     <>
       <Title title='선물 받을 분의' />
       <Title title='이름, 혹은 닉네임을 알려주세요' />
-      <S.Wrapper>
+      <S.Wrapper hasContent={text.length > 0} maxLengthReached={text.length === 10}>
         <S.TextField>
           <S.Input
             type='text'
             onChange={onChange}
             maxLength={10}
             placeholder='이름을 입력해주세요'
-            hasContent={text.length > 0}
-            maxLengthReached={text.length === 10}
           />
         </S.TextField>
         <S.IconField>
-          <IcCancelCircleFinal style={{ width: '2.4rem', height: '2.4rem' }} />
+          {text.length > 0 && <IcCancelCircleFinal style={{ width: '2.4rem', height: '2.4rem' }} />}
         </S.IconField>
       </S.Wrapper>
       <S.LetterLength>({text.length}/10)</S.LetterLength>
