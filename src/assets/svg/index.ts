@@ -26,6 +26,7 @@ export { default as IcRight } from './IcRight';
 export { default as IcSettings } from './IcSettings';
 export { default as IcUp } from './IcUp';
 export { default as IcUser } from './IcUser';
+export { default as Logo } from './Logo';
 export { default as LogoSweet } from './LogoSweet';
 export { default as Logotype } from './Logotype';
 export { default as Vite } from './Vite';

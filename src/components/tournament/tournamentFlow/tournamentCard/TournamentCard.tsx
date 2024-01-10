@@ -1,13 +1,25 @@
+import { useState } from 'react';
 import exampleItemImg from '../../../../assets/img/Rectangle.png';
 import * as S from './TournamentCard.style';
+import { Logo } from '../../../../assets/svg';
+
 const TournamentCard = () => {
+  const [isClicked, setIsClicked] = useState(false);
+
   const formatPrice = (price: number) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+  };
+
   return (
     <>
-      <S.TournamentCardWrapper>
+      <S.TournamentCardWrapper isClicked={isClicked} onClick={handleClick}>
+        <S.SelectWrapper isClicked={isClicked}>
+          <Logo />
+        </S.SelectWrapper>
         <S.TournamentImgWrapper>
           <img src={exampleItemImg} alt='제품이미지' />
         </S.TournamentImgWrapper>
@@ -24,3 +36,5 @@ const TournamentCard = () => {
 };
 
 export default TournamentCard;
+
+
