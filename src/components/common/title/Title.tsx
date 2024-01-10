@@ -8,7 +8,7 @@ interface TitleProps {
 const Title = ({ title, userName }: TitleProps) => {
   return (
     <div style={{ display: 'flex', whiteSpace: 'nowrap' }}>
-      <S.Username>{userName}</S.Username>
+      {userName && <S.Username>{userName}</S.Username>}
       <S.Title>{title}</S.Title>
     </div>
   );
