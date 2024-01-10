@@ -13,6 +13,7 @@ const NameInput = () => {
     inputValue.length + unicodeChars <= 10 ? setText(inputValue) : e.preventDefault();
   };
 
+
   const handleBtnClick = () => {
     setText('');
   };
