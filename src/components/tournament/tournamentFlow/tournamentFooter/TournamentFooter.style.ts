@@ -17,7 +17,7 @@ export const Btnpre = styled.button`
   ${({ theme: { mixin } }) => mixin.inlineFlexBox({ align: 'center', justify: 'center' })}
 
   height: 4.4rem;
-  padding: 1rem 1.1rem 1rem 2rem;
+  padding: 1rem 1.1rem 1rem 0rem;
 
   border: none;
   border-radius: 9.9rem;

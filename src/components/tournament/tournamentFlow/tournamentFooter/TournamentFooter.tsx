@@ -7,8 +7,8 @@ const TournamentFooter = () => {
     <>
       <S.TournamentFooterWrapper>
         <S.Btnpre>
-          이전
           <IcLeft style={{ width: '2.4rem', height: '2.4rem' }} />
+          이전
         </S.Btnpre>
         <BtnNext>다음</BtnNext>
       </S.TournamentFooterWrapper>
