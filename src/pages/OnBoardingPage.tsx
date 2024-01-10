@@ -10,7 +10,7 @@ import SetTournamentSchedule from '../components/onboarding/step04/Step04';
 import SetTournamentDuration from '../components/onboarding/step05/Step05';
 
 const OnBoardingPage = () => {
-  const { Funnel, step, setStep } = useFunnel(ONBOARDING_FORM_STEP, ONBOARDING_FORM_STEP[0]);
+  const { Funnel, setStep } = useFunnel(ONBOARDING_FORM_STEP, ONBOARDING_FORM_STEP[0]);
 
   return (
     <OnBoardingPageWrapper>
