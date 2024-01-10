@@ -14,14 +14,19 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
   return (
     <>
       <Title title='썸네일을 등록해주세요' />
-      <div style={{ width: '100%', marginTop: '11rem' }}>
+      <div style={{ width: '100%' }}>
         <S.ThumbnailWrapper>
           <IcPlusImageFinal style={{ width: '5rem', height: '5rem' }} />
         </S.ThumbnailWrapper>
+        <BtnNext
+          type='button'
+          onClick={onNext}
+          // customStyle={{ position: 'absolute', bottom: '0' }}
+          customStyle={{ marginTop: '15rem', marginLeft: '25rem', border: 'none' }}
+        >
+          다음
+        </BtnNext>
       </div>
-      <BtnNext type='button' onClick={onNext}>
-        다음
-      </BtnNext>
     </>
   );
 };

@@ -24,7 +24,12 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
           <IcUnselectedCalender style={{ width: '2.4rem', height: '2.4rem' }} />
         </S.IconField>
       </S.Wrapper>
-      <BtnNext type='button' onClick={onNext}>
+
+      <BtnNext
+        type='button'
+        onClick={onNext}
+        customStyle={{ marginTop: '27.3rem', marginLeft: '25rem', border: 'none' }}
+      >
         다음
       </BtnNext>
     </>

@@ -47,9 +47,16 @@ const NameInput = (props: NameInputProps) => {
         </S.IconField>
       </S.Wrapper>
       <S.LetterLength>({text.length}/10)</S.LetterLength>
-      <BtnNext type='button' onClick={onNext}>
+      {/* <S.BtnContainer> */}
+      <BtnNext
+        type='button'
+        onClick={onNext}
+        // customStyle={{ position: 'absolute', bottom: '0' }}
+        customStyle={{ marginTop: '28.8rem', marginLeft: '25rem', border: 'none' }}
+      >
         다음
       </BtnNext>
+      {/* </S.BtnContainer> */}
     </>
   );
 };
