@@ -4,7 +4,7 @@ import GiftAddCompleteBtn from '../../components/GiftAdd/GiftAddCompleteBtn';
 import MiniTimer from '../../components/common/MiniTimer/MiniTimer';
 import * as S from './GiftAddPage.styled';
 
-function GiftAddPage() {
+const GiftAddPage = () => {
   const isExist = false;
   const isExist2 = true;
   const price = 42000;
@@ -67,6 +67,6 @@ function GiftAddPage() {
       </S.AddPageDownWrapper>
     </S.GiftAddPageWrapper>
   );
-}
+};
 
-// export default GiftAddPage;
+export default GiftAddPage;
