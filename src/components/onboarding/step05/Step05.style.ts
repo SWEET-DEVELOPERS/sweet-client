@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const SetTournamentDurationWrapper = styled.div`
   ${({ theme }) => theme.mixin.flexCenter({})};
   gap: 1.2rem;
   margin-top: 4.6rem;

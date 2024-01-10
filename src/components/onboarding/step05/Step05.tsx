@@ -15,7 +15,7 @@ const SetTournamentDuration = () => {
   ];
 
   return (
-    <div>
+    <>
       <div>
         <Title title='선물 토너먼트' />
         <Title title='진행 시간을 설정해주세요' />
@@ -23,10 +23,10 @@ const SetTournamentDuration = () => {
       <div style={{ marginTop: '0.8rem' }}>
         <SubTitle subTitle='토너먼트가 아래 시간 동안 진행돼요.' />
       </div>
-      <S.Wrapper>
+      <S.SetTournamentDurationWrapper>
         <TimeBox />
-      </S.Wrapper>
-    </div>
+      </S.SetTournamentDurationWrapper>
+    </>
   );
 };
 

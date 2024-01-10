@@ -16,14 +16,14 @@ const SetTournamentSchedule = () => {
           <SubTitle subTitle='토너먼트 시작 전까지 선물을 등록할 수 있어요.' />
         </div>
       </div>
-      <S.Wrapper>
+      <S.SetTournamentScheduleWrapper>
         <S.TextField>
           <S.Input placeholder='날짜를 선택해주세요' />
         </S.TextField>
         <S.IconField>
           <IcUnselectedCalender style={{ width: '2.4rem', height: '2.4rem' }} />
         </S.IconField>
-      </S.Wrapper>
+      </S.SetTournamentScheduleWrapper>
       <S.Container>
         <S.TextField>
           <S.Input placeholder='시작 시간을 선택해주세요' />

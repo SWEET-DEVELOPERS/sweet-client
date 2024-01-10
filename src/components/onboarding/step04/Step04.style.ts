@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const SetTournamentScheduleWrapper = styled.div`
   ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'center' })}
   width: 100%;
   height: 3.6rem;
