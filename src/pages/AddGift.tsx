@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 
 export default function AddGift() {
   const [url, setUrl] = useState('');
-  const [title, setTitle] = useState('가방');
+  const title = '가방';
   const [price, setPrice] = useState('30000');
   const imageUrl = '';
 

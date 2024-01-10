@@ -5,7 +5,6 @@ function GiftHomeDetail() {
   const price = 42000;
   const name = '왕호은';
   const time = '00:00:00';
-  const isItem = false;
 
   return (
     <S.GiftHomeDetailPageWrapper>

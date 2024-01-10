@@ -1,13 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Main from '../../pages/Main';
 import Mypage from '../../pages/Mypage';
-import DashBoard from './DashBoard';
 import AddGift from '../../pages/AddGift';
+import Layout from '../../layouts/Layout';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <DashBoard />,
+    element: <Layout />,
     children: [
       {
         path: '/',
