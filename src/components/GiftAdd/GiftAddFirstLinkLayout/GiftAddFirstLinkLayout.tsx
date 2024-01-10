@@ -5,6 +5,7 @@ import InputUrl from '../InputUrl/InputUrl';
 import LinkAddHeader from '../LinkAddHeader/LinkAddHeader';
 import * as S from './GiftAddFirstLinkLayout.styled';
 import Title from '../../common/title/Title';
+import ShowLink from '../ShowLink/ShowLink';
 
 interface GiftAddFirstLinkLayoutProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;

@@ -23,7 +23,7 @@ const InputUrl = ({ setIsActivated }: InputUrlProps) => {
   return (
     <S.Wrapper hasContent={text.length > 0}>
       <S.TextField>
-        <S.Input type='url' value={text} onChange={onChange} placeholder='링크를 입력해주세요' />
+        <S.Input type='text' value={text} onChange={onChange} placeholder='링크를 입력해주세요' />
       </S.TextField>
       <S.IconField>
         {text.length > 0 && (
