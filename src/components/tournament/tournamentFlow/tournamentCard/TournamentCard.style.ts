@@ -21,6 +21,7 @@ export const ItemInfo = styled.div`
 `;
 
 export const Title = styled.p`
+  height: 4.2rem;
   word-break: keep-all;
   ${({ theme }) => theme.fonts.body_09};
 `;
