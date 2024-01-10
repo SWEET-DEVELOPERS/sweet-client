@@ -1,3 +1,4 @@
+export { default as Svg3Dicons } from './3Dicons';
 export { default as Favicon } from './Favicon';
 export { default as IcAdd } from './IcAdd';
 export { default as IcAlertCircle } from './IcAlertCircle';
@@ -31,5 +32,6 @@ export { default as IcSettings } from './IcSettings';
 export { default as IcUp } from './IcUp';
 export { default as IcUser } from './IcUser';
 export { default as Logotype } from './Logotype';
+export { default as Logo } from './Logo';
 export { default as LogoSweet } from './LogoSweet';
 export { default as Vite } from './Vite';
