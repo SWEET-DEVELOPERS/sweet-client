@@ -1,4 +1,4 @@
-import { IcRight } from '../../assets/svg';
+import { IcRight } from '../../../assets/svg';
 import * as S from './GiftAddCompleteBtn.styled';
 
 const GiftAddCompleteBtn = () => {
