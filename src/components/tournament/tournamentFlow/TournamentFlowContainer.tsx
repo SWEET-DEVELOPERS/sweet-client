@@ -6,13 +6,11 @@ import { TournamentCardWrapper } from './TournamentFlowContainer.style';
 const TournamentFlowContainer = () => {
   return (
     <>
-      <>
-        <TournamentTitle />
-        <TournamentCardWrapper>
-          <TournamentCard /> <TournamentCard />
-        </TournamentCardWrapper>
-        <TournamentFooter />
-      </>
+      <TournamentTitle />
+      <TournamentCardWrapper>
+        <TournamentCard /> <TournamentCard />
+      </TournamentCardWrapper>
+      <TournamentFooter />
     </>
   );
 };
