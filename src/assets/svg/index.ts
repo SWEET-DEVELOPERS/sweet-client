@@ -6,6 +6,7 @@ export { default as IcAlertTriangle } from './IcAlertTriangle';
 export { default as IcCalender } from './IcCalender';
 export { default as IcCancel } from './IcCancel';
 export { default as IcCancelCircle } from './IcCancelCircle';
+export { default as IcCancelCircleFinal } from './IcCancelCircleFinal';
 export { default as IcCheckContained } from './IcCheckContained';
 export { default as IcClock } from './IcClock';
 export { default as IcCopy } from './IcCopy';
