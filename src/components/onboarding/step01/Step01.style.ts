@@ -1,42 +1,44 @@
 import styled, { css } from 'styled-components';
 import theme from '../../../style/theme';
 
-export const Input = styled.input<{ hasContent: boolean; maxLengthReached: boolean }>`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+export const Wrapper = styled.div<{ hasContent: boolean; maxLengthReached: boolean }>`
+  ${({ theme }) => theme.mixin.flexBox('center', 'center')}
   width: 100%;
+  height: 3.6rem;
   margin-top: 7.2rem;
-  border: none;
-  border-bottom: 0.1rem solid ${theme.colors.G_02};
-  outline: none;
-  gap: 0.8rem;
+  border-bottom: 0.1rem solid ${({ theme }) => theme.colors.G_02};
 
   ${(props) =>
     props.hasContent &&
     css`
-      border-bottom: 0.1rem solid ${theme.colors.P_06};
+      border-bottom: 0.1rem solid ${({ theme }) => theme.colors.P_06};
     `}
 
   ${(props) =>
     props.maxLengthReached &&
     css`
-      border-bottom: 0.1rem solid ${theme.colors.G_02};
+      border-bottom: 0.1rem solid ${({ theme }) => theme.colors.G_02};
     `}
+`;
 
-    input::placeholder {
-    color: ${theme.colors.G_07};
-    ${theme.fonts.body_06}
-  }
+export const TextField = styled.div`
+  width: 90%;
+`;
 
-  &::-webkit-input-placeholder {
-    color: ${theme.colors.G_07};
-    ${theme.fonts.body_06}
-  }
+export const IconField = styled.div`
+  width: 10%;
+`;
 
-  &:-ms-input-placeholder {
-    color: ${theme.colors.G_07};
-    ${theme.fonts.body_06}
+export const Input = styled.input<{ hasContent?: boolean; maxLengthReached?: boolean }>`
+  ${({ theme }) => theme.mixin.flexBox('flex-center', 'center')};
+  width: 100%;
+  height: 3.5rem;
+  border: none;
+  outline: none;
+
+  input::placeholder {
+    color: ${({ theme }) => theme.colors.G_07};
+    ${({ theme }) => theme.fonts.body_06};
   }
 `;
 
