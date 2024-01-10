@@ -5,7 +5,9 @@ export interface JsonWebTokenType {
 }
 
 export interface LoginDataType extends Response {
-  data: JsonWebTokenType;
+  data: Array;
+  userInfo: string[{ memberId: string; nickname: string; profileImage: string }];
+  memberToken: JsonWebTokenType;
 }
 
 export type KakaoSignType = {

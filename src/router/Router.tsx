@@ -7,7 +7,7 @@ import GiftHomeDetail2030 from '../pages/GiftHomeDetail/GiftHomeDetail2030';
 import OnBoardingPage from '../pages/OnBoardingPage';
 import TournamentOngoing from '../pages/TournamentOngoing';
 import TournamentPage from '../pages/TournamentPage';
-
+import Start from '../pages/Start/Start';
 
 const router = createBrowserRouter([
   {
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Main />,
+        element: <Start />,
       },
       {
         path: '/mypage',
@@ -37,10 +37,9 @@ const router = createBrowserRouter([
         element: <OnBoardingPage />,
       },
       {
-
         path: '/tournamentPro',
         element: <TournamentOngoing />,
-        },
+      },
       {
         path: '/tournament',
         element: <TournamentPage />,

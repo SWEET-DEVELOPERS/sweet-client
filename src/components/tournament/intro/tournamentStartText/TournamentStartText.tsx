@@ -1,9 +1,9 @@
 import { useRecoilValue } from 'recoil';
-import { userNameState } from '../../../../recoil/atoms';
+import { nickNameState } from '../../../../recoil/atoms';
 import * as S from './TournamentStartText.style';
 
 export default function TournamentStartText() {
-  const userName = useRecoilValue(userNameState);
+  const userName = useRecoilValue(nickNameState);
 
   return (
     <S.TournamentStartTextWrapper>
