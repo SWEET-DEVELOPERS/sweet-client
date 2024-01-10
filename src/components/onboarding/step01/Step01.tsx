@@ -12,6 +12,7 @@ const NameInput = () => {
     inputValue.length + unicodeChars <= 10 ? setText(inputValue) : e.preventDefault();
   };
 
+  // TODO 인풋창에 x 버튼 추가 및 클릭 시 값 삭제
   return (
     <>
       <Title title='선물 받을 분의' />
