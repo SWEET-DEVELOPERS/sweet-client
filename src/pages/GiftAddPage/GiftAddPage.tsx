@@ -1,7 +1,7 @@
-import * as S from './GiftAddPage.styled';
+// import * as S from './GiftAddPage.styled';
 
-function GiftAddPage() {
-  return <S.GiftAddPageWrapper></S.GiftAddPageWrapper>;
-}
+// function GiftAddPage() {
+//   return <S.GiftAddPageWrapper></S.GiftAddPageWrapper>;
+// }
 
-export default GiftAddPage;
+// export default GiftAddPage;
