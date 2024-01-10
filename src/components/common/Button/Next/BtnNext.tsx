@@ -12,7 +12,7 @@ const BtnNext = ({ disabled, children, onClick }: BtnNextProps) => {
   return (
     <S.Wrapper disabled={disabled} onClick={onClick}>
       {children}
-      <IcRight style={{ width: '24px', height: '24px' }} />
+      <IcRight style={{ width: '2.4rem', height: '2.4rem' }} />
     </S.Wrapper>
   );
 };
