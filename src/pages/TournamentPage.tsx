@@ -12,5 +12,5 @@ const TournamentPage = () => {
 export default TournamentPage;
 
 const TournamentPageWrapper = styled.section`
-  margin: 0 2rem;
+  padding: 1.2rem 2rem 0 2rem;
 `;
