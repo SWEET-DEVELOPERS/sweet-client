@@ -7,6 +7,8 @@ export { default as IcCalender } from './IcCalender';
 export { default as IcCancel } from './IcCancel';
 export { default as IcCancelCircle } from './IcCancelCircle';
 export { default as IcCheckContained } from './IcCheckContained';
+export { default as IcCircle } from './IcCircle';
+export { default as IcCirclePink } from './IcCirclePink';
 export { default as IcClock } from './IcClock';
 export { default as IcCopy } from './IcCopy';
 export { default as IcDown } from './IcDown';
