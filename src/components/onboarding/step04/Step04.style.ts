@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  ${({ theme }) => theme.mixin.flexBox('center', 'center')}
+  ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'center' })}
   width: 100%;
   height: 3.6rem;
   margin-top: 4.6rem;
@@ -16,7 +16,7 @@ export const IconField = styled.div`
 `;
 
 export const Input = styled.input`
-  ${({ theme }) => theme.mixin.flexBox('center', 'center')};
+  ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'center' })};
   width: 100%;
   height: 3.5rem;
   border: none;
@@ -24,7 +24,7 @@ export const Input = styled.input`
 `;
 
 export const Container = styled.div`
-  ${({ theme }) => theme.mixin.flexBox('center', 'center')}
+  ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'center' })}
   width: 100%;
   height: 3.6rem;
   margin-top: 2.5rem;

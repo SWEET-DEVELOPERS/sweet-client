@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  ${({ theme }) => theme.mixin.flexCenter('column')};
+  ${({ theme }) => theme.mixin.flexCenter()};
   gap: 1.2rem;
   margin-top: 4.6rem;
 `;
