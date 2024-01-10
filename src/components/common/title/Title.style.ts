@@ -1,13 +1,12 @@
 import styled from 'styled-components';
-import theme from '../../../style/theme';
 
 export const Title = styled.p`
-  color: ${theme.colors.black};
-  ${theme.fonts.heading_01};
+  color: ${({ theme }) => theme.colors.black};
+  ${({ theme }) => theme.fonts.heading_01};
 `;
 export const SubTitle = styled.p`
-  color: ${theme.colors.G_10};
-  ${theme.fonts.caption_02};
+  color: ${({ theme }) => theme.colors.G_10};
+  ${({ theme }) => theme.fonts.caption_02};
 `;
 
 export const Username = styled.p`
