@@ -3,6 +3,7 @@ import Title from '../../common/title/Title';
 import * as S from './Step01.style';
 import { IcCancelCircleFinal } from '../../../assets/svg';
 import BtnNext from '../../common/Button/Next/BtnNext';
+import styled from 'styled-components';
 
 interface NameInputProps {
   onNext: VoidFunction;
@@ -47,7 +48,8 @@ const NameInput = (props: NameInputProps) => {
         </S.IconField>
       </S.Wrapper>
       <S.LetterLength>({text.length}/10)</S.LetterLength>
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+      <BtnContainer>
+        {/* <div style={{ display: 'flex', justifyContent: 'flex-end' }}> */}
         <BtnNext
           type='button'
           onClick={onNext}
@@ -58,9 +60,15 @@ const NameInput = (props: NameInputProps) => {
         >
           다음
         </BtnNext>
-      </div>
+        {/* </div> */}
+      </BtnContainer>
     </>
   );
 };
 
 export default NameInput;
+
+const BtnContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
