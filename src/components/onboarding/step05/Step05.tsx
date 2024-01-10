@@ -1,18 +1,10 @@
 import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
-import { IcGroup } from '../../../assets/svg';
 import * as S from './Step05.style';
 import TimeBox from './TimeBox';
 
 const SetTournamentDuration = () => {
   // TODO 오늘 기준 날짜로 수정 & map함수로 수정
-
-  const timeOptions = [
-    { text: '6시간', dateType: 'today' },
-    { text: '12시간', dateType: 'today' },
-    { text: '18시간', dateType: 'nottoday' },
-    { text: '24시간', dateType: 'nottoday' },
-  ];
 
   return (
     <>
