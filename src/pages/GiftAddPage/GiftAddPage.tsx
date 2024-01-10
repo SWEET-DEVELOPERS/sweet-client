@@ -1,25 +1,19 @@
-import GiftStatusBar from '../../components/GiftAdd/GiftStatusBar/GiftStatusBar';
-import LinkAddHeader from '../../components/GiftAdd/LinkAddHeader/LinkAddHeader';
-import { Title } from '../../components/common/title/Title.style';
-import * as S from './GiftAddPage.styled';
-import InputUrl from '../../components/GiftAdd/InputUrl/InputUrl';
-import GiftAddBtnWrapper from '../../components/GiftAdd/GiftAddBtnWrapper/GiftAddBtnWrapper';
 import { useState } from 'react';
+import GiftAddFirstLinkLayout from '../../components/GiftAdd/GiftAddFirstLinkLayout/GiftAddFirstLinkLayout';
 
 const GiftAddPage = () => {
   const [step, setStep] = useState(1);
-  const [isActivated, setIsActivated] = useState(false);
 
-  return (
-    <S.GiftAddPageWrapper>
-      <LinkAddHeader />
-      <GiftStatusBar />
-      <Title style={{ marginTop: '2.4rem' }}>첫번째 상품의</Title>
-      <Title style={{ marginBottom: '7.2rem' }}>판매 링크를 입력해주세요</Title>
-      <InputUrl setIsActivated={setIsActivated} />
-      <GiftAddBtnWrapper setStep={setStep} isActivated={isActivated} />
-    </S.GiftAddPageWrapper>
-  );
+  switch (step) {
+    case 0:
+      return (
+        // 내가 등록한 선물 뷰 연결할 예정
+        <></>
+      );
+
+    case 1:
+      return <GiftAddFirstLinkLayout setStep={setStep} />;
+  }
 };
 
 export default GiftAddPage;
