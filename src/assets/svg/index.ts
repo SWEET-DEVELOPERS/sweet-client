@@ -14,6 +14,7 @@ export { default as IcEdit2 } from './IcEdit2';
 export { default as IcEdit } from './IcEdit';
 export { default as IcExternal } from './IcExternal';
 export { default as IcGift } from './IcGift';
+export { default as IcGroup } from './IcGroup';
 export { default as IcImg } from './IcImg';
 export { default as IcImgAdd } from './IcImgAdd';
 export { default as IcLeft } from './IcLeft';
