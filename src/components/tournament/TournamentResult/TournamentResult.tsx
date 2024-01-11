@@ -1,9 +1,18 @@
+import TournamentCard from '../tournamentFlow/TournamentCard/TournamentCard';
+import TournamentResultCard from './TournamentResultCard/TournamentResultCard';
+import TournamentResultFooter from './TournamentResultFooter/TournamentResultFooter';
+import TournamentResultUser from './TournamentResultUser/TournamentResultUser';
+import TournamentTitle from './TournamentTitle/TournamentTitle';
+
 const TournamentResult = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <>
+      <TournamentTitle />
+      <TournamentResultCard />
+      <TournamentResultUser />
+      <TournamentResultFooter />
+    </>
+  );
+};
 
-export default TournamentResult
+export default TournamentResult;
