@@ -3,7 +3,18 @@ import { instance } from '../../../apis/client';
 import { LoginDataType } from '../../../types/user';
 
 interface LoginResponseType {
-  data: LoginDataType;
+  data: {
+    userInfo: {
+      memberId: number;
+      socialId: number;
+      nickname: string;
+      profileImage: string;
+    };
+    memberToken: {
+      accessToken: string;
+      refreshToken: string;
+    };
+  };
 }
 
 export const useLogin = () => {
