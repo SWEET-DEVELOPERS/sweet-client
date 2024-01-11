@@ -45,10 +45,8 @@ export const TitleContainer = styled.div`
 `;
 
 export const InfoWrapper = styled.div`
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  ${({ theme }) =>
+    theme.mixin.inlineFlexBox({ direction: 'column', align: 'center', justify: 'center' })};
   gap: 12px;
   width: 100%;
   height: 12.8rem;
@@ -56,9 +54,8 @@ export const InfoWrapper = styled.div`
 `;
 
 export const InfoDetailWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  ${({ theme }) =>
+    theme.mixin.flexBox({ direction: 'row', align: 'center', justify: 'space-between' })};
   gap: 5rem;
   width: 31.5rem;
 `;
