@@ -1,6 +1,6 @@
-import BtnNext from '../../common/Button/Next/BtnNext';
 import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
+import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import * as S from './Step05.style';
 import TimeBox from './TimeBox';
 
@@ -24,16 +24,9 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
         <TimeBox />
       </S.SetTournamentDurationWrapper>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <BtnNext
-          type='button'
-          onClick={onNext}
-          customStyle={{
-            position: 'absolute',
-            bottom: '0',
-          }}
-        >
+        <OnBoardingBtn isActivated={true} setStep={onNext}>
           다음
-        </BtnNext>
+        </OnBoardingBtn>
       </div>
     </>
   );
