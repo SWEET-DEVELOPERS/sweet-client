@@ -19,14 +19,6 @@ const router = createBrowserRouter([
         element: <Start />,
       },
       {
-        path: '/api/oauth/kakao/login',
-        element: <Login />,
-      },
-      {
-        path: '/mypage',
-        element: <Mypage />,
-      },
-      {
         // 임의로 세부페이지 추가
         path: '/giftdetailfriends',
         element: <GiftHomeDetailFriends />,
@@ -49,6 +41,14 @@ const router = createBrowserRouter([
         element: <TournamentPage />,
       },
     ],
+  },
+  {
+    path: '/api/oauth/kakao/login',
+    element: <Login />,
+  },
+  {
+    path: '/mypage',
+    element: <Mypage />,
   },
 ]);
 
