@@ -1,13 +1,18 @@
-import { useState } from 'react';
 import * as S from './ItemNameTextField.styled';
 import IcCancelCircleFinal from '../../../assets/svg/IcCancelCircleFinal';
 
-const ItemNameTextField = () => {
-  const [text, setText] = useState<string>('');
+interface ItemNameTextFieldProps {
+  text: string;
+  setText: React.Dispatch<React.SetStateAction<string>>;
+  handleSetIsActivated: () => void;
+}
 
+const ItemNameTextField = ({ text, setText, handleSetIsActivated }: ItemNameTextFieldProps) => {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     setText(inputValue);
+    handleBtnClick;
+    handleSetIsActivated();
   };
 
   const handleBtnClick = () => {

@@ -1,11 +1,19 @@
+import { useState } from 'react';
 import IcPlusImageFinal from '../../../assets/svg/IcPlusImageFinal';
 import MiniTimer from '../../common/MiniTimer/MiniTimer';
+import AddGiftFooter from '../AddGiftFooter/AddGiftFooter';
 import GiftStatusBar from '../GiftStatusBar/GiftStatusBar';
 import ShowLink from '../ShowLink/ShowLink';
 import WriteItemInfo from '../WriteItemInfo/WriteItemInfo';
 import * as S from './AddGiftWithLinkLayout.styled';
 
-const AddGiftWithLinkLayout = () => {
+interface AddGiftWithLinkLayoutProps {
+  setStep: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const AddGiftWithLinkLayout = ({ setStep }: AddGiftWithLinkLayoutProps) => {
+  const [isActivated, setIsActivated] = useState(false);
+
   return (
     <S.AddGiftWithLinkLayoutWrapper>
       <S.AddGiftWithLinkHeader>
@@ -16,7 +24,8 @@ const AddGiftWithLinkLayout = () => {
         <IcPlusImageFinal style={{ width: '5rem', height: '5rem' }} />
       </S.ThumbnailWrapper>
       <ShowLink />
-      <WriteItemInfo />
+      <WriteItemInfo setIsActivated={setIsActivated} />
+      <AddGiftFooter setStep={setStep} isActivated={isActivated} />
     </S.AddGiftWithLinkLayoutWrapper>
   );
 };
