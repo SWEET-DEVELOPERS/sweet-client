@@ -6,4 +6,5 @@ export const ThumbnailWrapper = styled.div`
   width: 24rem;
   height: 24rem;
   margin: 0 auto;
+  margin-top: 6.1rem;
 `;

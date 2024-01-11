@@ -1,8 +1,15 @@
 import Title from '../../common/title/Title';
 import { IcUnselectedCalender } from '../../../assets/svg';
 import * as S from './Step03.style';
+import BtnNext from '../../common/Button/Next/BtnNext';
 
-const GiftDelivery = () => {
+interface GiftDeliveryProps {
+  onNext: VoidFunction;
+}
+
+const GiftDelivery = (props: GiftDeliveryProps) => {
+  const { onNext } = props;
+
   return (
     <>
       {/* TODO 추후 로그인된 유저네임으로 변경 및 인풋창 클릭 시 켈린더 호출*/}
@@ -17,6 +24,19 @@ const GiftDelivery = () => {
           <IcUnselectedCalender style={{ width: '2.4rem', height: '2.4rem' }} />
         </S.IconField>
       </S.Wrapper>
+
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <BtnNext
+          type='button'
+          onClick={onNext}
+          customStyle={{
+            position: 'absolute',
+            bottom: '0',
+          }}
+        >
+          다음
+        </BtnNext>
+      </div>
     </>
   );
 };
