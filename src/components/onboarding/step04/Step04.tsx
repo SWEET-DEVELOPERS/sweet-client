@@ -45,7 +45,10 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
       </div>
       <S.SetTournamentScheduleWrapper hasContent={isCalendarOpen}>
         <S.TextField>
-          <S.Input placeholder='날짜를 선택해주세요' />
+          <S.Input
+            placeholder='날짜를 선택해주세요'
+            value={selectedDate ? format(selectedDate, 'y년 M월 d일') : ''}
+          />
         </S.TextField>
         <S.IconField>
           <IcUnselectedCalender
