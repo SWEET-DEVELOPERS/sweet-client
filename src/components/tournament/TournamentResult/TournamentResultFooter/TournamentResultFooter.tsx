@@ -11,6 +11,8 @@ const TournamentResultFooter = () => {
 
 const TournamentResultFooterWrapper = styled.footer`
   display: flex;
+  width: 16.4rem;
+  height: 5.2rem;
 `;
 
 export default TournamentResultFooter;
