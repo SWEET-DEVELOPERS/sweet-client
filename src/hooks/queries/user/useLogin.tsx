@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { instance } from '../../../apis/client';
-import { LoginDataType } from '../../../types/user';
 
 interface LoginResponseType {
   data: {
