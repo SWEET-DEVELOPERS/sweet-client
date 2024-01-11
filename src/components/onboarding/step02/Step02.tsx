@@ -40,7 +40,12 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
             <img
               src={previewImage}
               alt='preview'
-              style={{ width: '24rem', height: '24rem', position: 'absolute' }}
+              style={{
+                width: '24rem',
+                height: '24rem',
+                position: 'absolute',
+                borderRadius: '1.2rem',
+              }}
             />
           )}
         </S.IcEmptyThumbnailWrapper>
