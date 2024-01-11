@@ -5,6 +5,7 @@ export const Wrapper = styled.button`
 
   /* width: 33.5rem;
   padding: 1.5rem 8.1rem 1.6rem 8.1rem; */
+  border: none;
   gap: 1rem;
   border-radius: 5.5rem;
 
