@@ -7,4 +7,23 @@ export const ThumbnailWrapper = styled.div`
   height: 24rem;
   margin: 0 auto;
   margin-top: 6.1rem;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+export const IcEmptyThumbnailWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6.1rem;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
 `;
