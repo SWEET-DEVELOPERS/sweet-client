@@ -2,10 +2,10 @@ import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
 import { IcUnselectedCalender, IcUnselectedClock } from '../../../assets/svg';
 import * as S from './Step04.style';
-import BtnNext from '../../common/Button/Next/BtnNext';
 import { useState } from 'react';
 import { DayPicker } from 'react-day-picker';
 import { format } from 'date-fns';
+import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 
 interface SetTournamentScheduleProps {
   onNext: VoidFunction;
@@ -65,25 +65,24 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
           disabled={disabledDays}
         />
       )}
-      <S.Container>
+      <S.Container hasContent={isTimerOpen}>
         <S.TextField>
           <S.Input placeholder='시작 시간을 선택해주세요' />
         </S.TextField>
         <S.IconField>
-          <IcUnselectedClock style={{ width: '2.4rem', height: '2.4rem' }} />
+          <input type='time' style={{ display: 'none' }} id='timeInput' onClick={openTimer} />
+          <label htmlFor='timeInput'>
+            <IcUnselectedClock
+              style={{ width: '2.4rem', height: '2.4rem', position: 'relative' }}
+            />
+          </label>
+          {isTimerOpen && <input id='timeInput' type='time' />}
         </S.IconField>
       </S.Container>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <BtnNext
-          type='button'
-          onClick={onNext}
-          customStyle={{
-            position: 'absolute',
-            bottom: '0',
-          }}
-        >
+        <OnBoardingBtn isActivated={isCalendarOpen && isTimerOpen} setStep={onNext}>
           다음
-        </BtnNext>
+        </OnBoardingBtn>
       </div>
     </>
   );
