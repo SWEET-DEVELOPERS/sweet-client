@@ -1,10 +1,9 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useState } from 'react';
-import { RouterProvider } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
-import router from './router/Router';
 import GlobalStyle from './style/GlobalStyle';
 import styled from 'styled-components';
+import Router from './router/Router';
 
 function App() {
   const [queryClient] = useState(
@@ -21,7 +20,7 @@ function App() {
     <Wrapper>
       <QueryClientProvider client={queryClient}>
         <RecoilRoot>
-          <RouterProvider router={router} />
+          <Router />
           <GlobalStyle />
         </RecoilRoot>
       </QueryClientProvider>
