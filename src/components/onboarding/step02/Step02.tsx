@@ -1,7 +1,6 @@
 import Title from '../../common/title/Title';
-import { IcEmptyThumbnail, IcPlusImageFinal } from '../../../assets/svg';
+import { IcEmptyThumbnail } from '../../../assets/svg';
 import * as S from './Step02.style';
-import BtnNext from '../../common/Button/Next/BtnNext';
 import { useState } from 'react';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 
