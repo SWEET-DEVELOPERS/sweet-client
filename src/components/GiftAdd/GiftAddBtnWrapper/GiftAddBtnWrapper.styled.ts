@@ -19,6 +19,8 @@ export const BtnNextText = styled.span`
 `;
 
 export const NoLinkText = styled.span`
+  cursor: pointer;
+
   ${({ theme }) => theme.fonts.body_09};
   color: ${({ theme }) => theme.colors.G_07};
 `;
