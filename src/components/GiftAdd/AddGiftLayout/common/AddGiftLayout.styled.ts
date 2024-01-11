@@ -15,6 +15,7 @@ export const AddGiftWithLinkHeader = styled.div`
 `;
 
 export const ThumbnailWrapper = styled.div`
+  position: relative;
   ${({ theme }) => theme.mixin.flexCenter({})}
 
   width: 19.2rem;

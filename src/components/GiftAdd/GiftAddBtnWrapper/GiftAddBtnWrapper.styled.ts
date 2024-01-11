@@ -9,6 +9,8 @@ export const GiftAddBtnWrapper = styled.article`
 
   position: absolute;
   bottom: 0;
+
+  margin-bottom: 2rem;
 `;
 
 export const BtnNextText = styled.span`

@@ -5,14 +5,14 @@ import AddGiftFooter from '../AddGiftFooter/AddGiftFooter';
 import GiftStatusBar from '../GiftStatusBar/GiftStatusBar';
 import ShowLink from '../ShowLink/ShowLink';
 import WriteItemInfo from '../WriteItemInfo/WriteItemInfo';
-import * as S from './AddGiftWithLinkLayout.styled';
+import * as S from './common/AddGiftLayout.styled';
 
 interface AddGiftWithLinkLayoutProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const AddGiftWithLinkLayout = ({ setStep }: AddGiftWithLinkLayoutProps) => {
-  const [isActivated, setIsActivated] = useState(false);
+const AddGiftWithoutLinkLayout = ({ setStep }: AddGiftWithLinkLayoutProps) => {
+  const [isActivated, setIsActivated] = useState(true);
 
   return (
     <S.AddGiftWithLinkLayoutWrapper>
@@ -30,4 +30,4 @@ const AddGiftWithLinkLayout = ({ setStep }: AddGiftWithLinkLayoutProps) => {
   );
 };
 
-export default AddGiftWithLinkLayout;
+export default AddGiftWithoutLinkLayout;

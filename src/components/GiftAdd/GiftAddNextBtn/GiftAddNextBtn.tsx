@@ -8,7 +8,9 @@ interface GiftAddNextBtnProps {
 }
 const GiftAddNextBtn = ({ children, setStep, isActivated }: GiftAddNextBtnProps) => {
   const onClick = () => {
-    setStep((prev) => prev + 1);
+    if (isActivated) {
+      setStep((prev) => prev + 1);
+    }
   };
 
   return (

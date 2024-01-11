@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import GiftAddFirstLinkLayout from '../../components/GiftAdd/GiftAddFirstLinkLayout/GiftAddFirstLinkLayout';
-import AddGiftWithLinkLayout from '../../components/GiftAdd/AddGiftWithLinkLayout/AddGiftWithLinkLayout';
+import AddGiftWithLinkLayout from '../../components/GiftAdd/AddGiftLayout/AddGiftWithLinkLayout';
 
 const GiftAddPage = () => {
   const [step, setStep] = useState(1);
@@ -16,7 +16,10 @@ const GiftAddPage = () => {
       return <GiftAddFirstLinkLayout setStep={setStep} />;
 
     case 2:
-      return <AddGiftWithLinkLayout />;
+      return <AddGiftWithLinkLayout setStep={setStep} />;
+
+    case 3:
+      return <AddGiftWithoutLinkLayout setStep={setStep} />;
   }
 };
 
