@@ -8,6 +8,7 @@ const Login = () => {
     if (code) {
       // switch (method) {
       //   case 'LOGIN':
+      console.log('실행');
       useLogin(code);
       //   break;
       // case 'LOGOUT':
