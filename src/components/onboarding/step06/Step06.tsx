@@ -1,6 +1,7 @@
 import Title from '../../common/title/Title';
 import BtnNext from '../../common/Button/Next/BtnNext';
 import * as S from './Step06.style';
+import { IcKakaoShare, IcLink } from '../../../assets/svg';
 
 const OnboardingFinal = () => {
   // TODO 추후 이전 STEP에서 유저가 입력한 값으로 변경
@@ -20,6 +21,7 @@ const OnboardingFinal = () => {
               <Title userName='가나다라마사아자차' title='님을 위한' />
               <Title title='선물 준비방이 개설됐어요' />
             </div>
+            {/* TODO 추후 지민이 버튼으로 변경(항상 활성화) */}
             <BtnNext customStyle={{ marginBottom: '1.6rem' }} disabled={false}>
               입장
             </BtnNext>
@@ -34,6 +36,16 @@ const OnboardingFinal = () => {
           </S.InfoDetailWrapper>
         ))}
       </S.InfoWrapper>
+      <S.BtnWrapper>
+        <S.LinkCopyBtn>
+          <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
+          링크 복사
+        </S.LinkCopyBtn>
+        <S.KakaoLinkCopyBtn>
+          <IcKakaoShare style={{ width: '1.8rem', height: '1.8rem' }} />
+          카카오톡 공유
+        </S.KakaoLinkCopyBtn>
+      </S.BtnWrapper>
     </>
   );
 };
