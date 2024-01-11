@@ -14,9 +14,9 @@ export const ThumbnailWrapper = styled.div`
 `;
 
 export const IcEmptyThumbnailWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${({ theme }) =>
+    theme.mixin.flexCenter({ direction: 'column', align: 'center', justify: 'center' })};
+
   margin-top: 6.1rem;
   img {
     object-fit: cover;
