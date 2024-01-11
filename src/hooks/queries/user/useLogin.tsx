@@ -6,7 +6,7 @@ interface LoginResponseType {
 }
 
 export const fetchAuth = (AUTHORIZE_CODE: string): Promise<LoginResponseType> =>
-  instance.post(`/oauth/kakao/login?code=${AUTHORIZE_CODE}`);
+  instance.get(`/oauth/kakao/login?code=${AUTHORIZE_CODE}`);
 
 export const useLogin = (AUTHORIZE_CODE: string) => {
   // const setNickName = useSetRecoilState(nickNameState);
