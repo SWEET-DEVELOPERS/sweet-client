@@ -1,5 +1,4 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Main from '../pages/Main';
 import Mypage from '../pages/Mypage';
 import Layout from '../layouts/Layout';
 import GiftHomeDetailFriends from '../pages/GiftHomeDetail/GiftHomeDetailFriends';
