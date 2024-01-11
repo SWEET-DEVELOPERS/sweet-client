@@ -8,6 +8,7 @@ const Login = () => {
     if (code) {
       // switch (method) {
       //   case 'LOGIN':
+      console.log('클라 로그인 api 요청 component 실행 됐다이!!!!');
       useLogin(code);
       //   break;
       // case 'LOGOUT':
