@@ -17,19 +17,30 @@ const OnBoardingPage = () => {
     <OnBoardingPageWrapper>
       <Funnel>
         <Funnel.Step name='NAME'>
-          <NameInput onNext={() => setStep(() => 'THUMBNAIL')} />
+          <div style={{ margin: '2rem' }}>
+            <NameInput onNext={() => setStep(() => 'THUMBNAIL')} />
+          </div>
         </Funnel.Step>
+
         <Funnel.Step name='THUMBNAIL'>
-          <ThumbnailInput onNext={() => setStep(() => 'PRESENT')} />
+          <div style={{ margin: '2rem' }}>
+            <ThumbnailInput onNext={() => setStep(() => 'PRESENT')} />
+          </div>
         </Funnel.Step>
         <Funnel.Step name='PRESENT'>
-          <GiftDelivery onNext={() => setStep(() => 'TOURNAMENT_SCHEDULE_REGISTRATION')} />
+          <div style={{ margin: '2rem' }}>
+            <GiftDelivery onNext={() => setStep(() => 'TOURNAMENT_SCHEDULE_REGISTRATION')} />
+          </div>
         </Funnel.Step>
         <Funnel.Step name='TOURNAMENT_SCHEDULE_REGISTRATION'>
-          <SetTournamentSchedule onNext={() => setStep(() => 'TOURNAMENT_PROCEEDING')} />
+          <div style={{ margin: '2rem' }}>
+            <SetTournamentSchedule onNext={() => setStep(() => 'TOURNAMENT_PROCEEDING')} />
+          </div>
         </Funnel.Step>
         <Funnel.Step name='TOURNAMENT_PROCEEDING'>
-          <SetTournamentDuration onNext={() => setStep(() => 'GIFT_ROOM_FIX')} />
+          <div style={{ margin: '2rem' }}>
+            <SetTournamentDuration onNext={() => setStep(() => 'GIFT_ROOM_FIX')} />
+          </div>
         </Funnel.Step>
         <Funnel.Step name='GIFT_ROOM_FIX'>
           <OnboardingFinal />
@@ -42,5 +53,5 @@ const OnBoardingPage = () => {
 export default OnBoardingPage;
 
 const OnBoardingPageWrapper = styled.div`
-  margin: 2rem;
+  /* margin: 2rem; */
 `;
