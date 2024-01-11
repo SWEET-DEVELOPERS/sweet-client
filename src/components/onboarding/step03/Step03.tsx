@@ -1,11 +1,11 @@
 import Title from '../../common/title/Title';
 import { IcUnselectedCalender } from '../../../assets/svg';
 import * as S from './Step03.style';
-import BtnNext from '../../common/Button/Next/BtnNext';
 import 'react-day-picker/dist/style.css';
 import { DayPicker } from 'react-day-picker';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { format } from 'date-fns';
+import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 
 interface GiftDeliveryProps {
   onNext: VoidFunction;
@@ -16,6 +16,7 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
   const disabledDays = { before: new Date() };
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [isActivated, setIsActivated] = useState<boolean>(false);
 
   const openCalendar = () => {
     setIsOpen(!isOpen);
@@ -25,6 +26,10 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
     setSelectedDate(date);
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    selectedDate ? setIsActivated(true) : setIsActivated(false);
+  }, [selectedDate]);
 
   return (
     <>
@@ -56,16 +61,9 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
       )}
 
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <BtnNext
-          type='button'
-          onClick={onNext}
-          customStyle={{
-            position: 'absolute',
-            bottom: '0',
-          }}
-        >
+        <OnBoardingBtn isActivated={isActivated} setStep={onNext}>
           다음
-        </BtnNext>
+        </OnBoardingBtn>
       </div>
     </>
   );
