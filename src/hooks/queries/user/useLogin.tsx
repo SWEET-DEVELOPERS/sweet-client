@@ -29,9 +29,9 @@ export const useLogin = () => {
       console.log('실행');
       fetchAuth(code).then((response: LoginResponseType) => {
         const data = response.data;
-        const JWT = data.data.memberToken;
+        const JWT = data.data.memberToken.accessToken;
         if (data) {
-          //localStorage.setItem('EXIT_LOGIN_TOKEN', JWT);
+          localStorage.setItem('EXIT_LOGIN_TOKEN', JWT);
           console.log(data);
           console.log(JWT);
         }
