@@ -17,15 +17,15 @@ export const ModalWrapper = styled.div`
   flex-direction: column;
   position: fixed;
 
-  width: 283px;
-  height: 195px;
-  padding: 43px 35px 20px 35px;
+  width: 28.3rem;
+  height: 19.5rem;
+  padding: 4.3rem 3.5rem 2rem 3.5rem;
 
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 12px;
-  gap: 28px;
+  gap: 2.8rem;
   flex-shrink: 0;
   background-color: white;
   z-index: 1000;
