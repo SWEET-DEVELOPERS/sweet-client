@@ -2,6 +2,7 @@ import { Response } from '../types';
 
 export interface JsonWebTokenType {
   accessToken: string;
+  refreshToken: string;
 }
 
 export interface LoginDataType extends Response {
