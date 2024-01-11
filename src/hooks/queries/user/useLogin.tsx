@@ -1,7 +1,5 @@
-import { useSetRecoilState } from 'recoil';
 import { instance } from '../../../apis/client';
 import { LoginDataType } from '../../../types/user';
-import { memberIdState, nickNameState, profileImageState } from '../../../recoil/atoms';
 
 interface LoginResponseType {
   data: LoginDataType;
@@ -27,6 +25,6 @@ export const useLogin = (AUTHORIZE_CODE: string) => {
     //   setProfileImage(data.userInfo.profileImage);
     // }
     console.log(JWT);
-    console.log(response);
+    console.log(data);
   });
 };
