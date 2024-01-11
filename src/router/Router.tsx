@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         element: <Start />,
       },
       {
-        path: '/api/oauth/kakao/login?',
+        path: '/api/oauth/kakao/login',
         element: <Login />,
       },
       {
