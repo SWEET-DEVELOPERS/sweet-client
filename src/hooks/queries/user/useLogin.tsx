@@ -17,11 +17,11 @@ export const useLogin = () => {
       console.log('실행');
       fetchAuth(code).then((response: LoginResponseType) => {
         const data = response.data;
-        const JWT = response.data.memberToken.accessToken;
-        if (JWT) {
-          localStorage.setItem('EXIT_LOGIN_TOKEN', JWT);
+        if (data) {
+          //localStorage.setItem('EXIT_LOGIN_TOKEN', JWT);
+          console.log(data);
         }
-        console.log(JWT);
+
         console.log(data);
       });
     }
