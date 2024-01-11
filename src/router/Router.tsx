@@ -8,8 +8,8 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Start />} />
-        <Route path='/ipad' element={<Login />} />
-        <Route path='/shop-ipad' element={<Mypage />} />
+        <Route path='/api/oauth/kakao/login' element={<Login />} />
+        <Route path='/mypage' element={<Mypage />} />
       </Routes>
     </BrowserRouter>
   );
