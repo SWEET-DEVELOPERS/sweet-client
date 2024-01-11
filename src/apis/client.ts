@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const getAccessTokenLocalStorage = () => {
   const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
-  return accessToken;
+  return accessToken ? `Bearer ${accessToken}` : '';
 };
 
 export const authInstance = axios.create({});
@@ -11,7 +11,7 @@ export const instance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_URL,
   withCredentials: false,
   headers: {
-    Authorization: `Bearer ${getAccessTokenLocalStorage()}`,
+    Authorization: `${getAccessTokenLocalStorage()}`,
   },
 });
 
