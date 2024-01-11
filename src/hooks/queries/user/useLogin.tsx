@@ -3,15 +3,17 @@ import { instance } from '../../../apis/client';
 
 interface LoginResponseType {
   data: {
-    userInfo: {
-      memberId: number;
-      socialId: number;
-      nickname: string;
-      profileImage: string;
-    };
-    memberToken: {
-      accessToken: string;
-      refreshToken: string;
+    data: {
+      userInfo: {
+        memberId: number;
+        socialId: number;
+        nickname: string;
+        profileImage: string;
+      };
+      memberToken: {
+        accessToken: string;
+        refreshToken: string;
+      };
     };
   };
 }
@@ -27,7 +29,7 @@ export const useLogin = () => {
       console.log('실행');
       fetchAuth(code).then((response: LoginResponseType) => {
         const data = response.data;
-        const JWT = data.memberToken;
+        const JWT = data.data.memberToken;
         if (data) {
           //localStorage.setItem('EXIT_LOGIN_TOKEN', JWT);
           console.log(data);
