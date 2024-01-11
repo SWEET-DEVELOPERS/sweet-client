@@ -5,6 +5,7 @@ const Login = () => {
   const code: string | null = new URL(window.location.href).searchParams.get('code');
 
   useEffect(() => {
+    console.log('실행');
     if (code) {
       // switch (method) {
       //   case 'LOGIN':
