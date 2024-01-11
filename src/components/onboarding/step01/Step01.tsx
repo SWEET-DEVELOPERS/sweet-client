@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Title from '../../common/title/Title';
 import * as S from './Step01.style';
 import { IcCancelCircleFinal } from '../../../assets/svg';
-import BtnNext from '../../common/Button/Next/BtnNext';
+import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 
 interface NameInputProps {
   onNext: VoidFunction;
@@ -48,16 +48,9 @@ const NameInput = (props: NameInputProps) => {
       </S.Wrapper>
       <S.LetterLength>({text.length}/10)</S.LetterLength>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <BtnNext
-          type='button'
-          onClick={onNext}
-          customStyle={{
-            position: 'absolute',
-            bottom: '0',
-          }}
-        >
+        <OnBoardingBtn isActivated={text.length > 0} setStep={onNext}>
           다음
-        </BtnNext>
+        </OnBoardingBtn>
       </div>
     </>
   );
