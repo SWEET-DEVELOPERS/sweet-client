@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import GiftAddFirstLinkLayout from '../../components/GiftAdd/GiftAddFirstLinkLayout/GiftAddFirstLinkLayout';
 import AddGiftWithLinkLayout from '../../components/GiftAdd/AddGiftLayout/AddGiftWithLinkLayout';
+import AddGiftWithoutLinkLayout from '../../components/GiftAdd/AddGiftLayout/AddGiftWithoutLinkLayout';
 
 const GiftAddPage = () => {
   const [step, setStep] = useState(1);

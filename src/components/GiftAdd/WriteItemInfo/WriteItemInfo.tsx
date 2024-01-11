@@ -30,6 +30,11 @@ const WriteItemInfo = ({ setIsActivated }: WriteItemInfoProps) => {
         setText={setPriceText}
         handleSetIsActivated={handleSetIsActivated}
       />
+      <ItemPriceTextField
+        text={priceText}
+        setText={setPriceText}
+        handleSetIsActivated={handleSetIsActivated}
+      />
     </S.WriteItemInfoWrapper>
   );
 };
