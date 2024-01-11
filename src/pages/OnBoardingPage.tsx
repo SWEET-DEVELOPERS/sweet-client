@@ -8,6 +8,7 @@ import ThumbnailInput from '../components/onboarding/step02/Step02';
 import GiftDelivery from '../components/onboarding/step03/Step03';
 import SetTournamentSchedule from '../components/onboarding/step04/Step04';
 import SetTournamentDuration from '../components/onboarding/step05/Step05';
+import OnboardingFinal from '../components/onboarding/step06/Step06';
 
 const OnBoardingPage = () => {
   const { Funnel, setStep } = useFunnel(ONBOARDING_FORM_STEP, ONBOARDING_FORM_STEP[0]);
@@ -29,6 +30,9 @@ const OnBoardingPage = () => {
         </Funnel.Step>
         <Funnel.Step name='TOURNAMENT_PROCEEDING'>
           <SetTournamentDuration onNext={() => setStep(() => 'GIFT_ROOM_FIX')} />
+        </Funnel.Step>
+        <Funnel.Step name='GIFT_ROOM_FIX'>
+          <OnboardingFinal />
         </Funnel.Step>
       </Funnel>
     </OnBoardingPageWrapper>
