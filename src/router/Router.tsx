@@ -1,8 +1,8 @@
-import Mypage from '../pages/Mypage';
 import Start from '../pages/Start/Start';
 import Login from '../components/Login';
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../layouts/Layout';
+import MyPage from '../pages/MyPage/MyPage';
 
 // const Router = () => {
 //   return (
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/mypage',
-        element: <Mypage />,
+        element: <MyPage />,
       },
       // {
       //   // 임의로 세부페이지 추가
