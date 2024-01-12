@@ -1,9 +1,7 @@
 import exampleItemImg from '../../../../assets/img/Rectangle.png';
+import PriceTag from '../../../common/title/Price/PriceTag';
 import * as S from './TournamentResultCard.style';
 const TournamentResultCard = () => {
-  const formatPrice = (price: number) => {
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  };
   return (
     <>
       <S.TournamentCardWrapper>
@@ -13,7 +11,7 @@ const TournamentResultCard = () => {
 
         <S.ItemInfo>
           <S.Title>임영웅 콘서트 Gold열 임영웅 콘서트 Gold열</S.Title>
-          <S.Price>{formatPrice(8130000)}원</S.Price>
+          <PriceTag price={8130000} />
         </S.ItemInfo>
       </S.TournamentCardWrapper>
     </>
