@@ -1,4 +1,4 @@
-import { IcImgShare, IcLinkShare, Image477 } from '../../../../assets/svg';
+import { Image477 } from '../../../../assets/svg';
 import * as S from './TournamentRankingTitle.style';
 import { SubTitle } from '../../intro/tournamentStartText/TournamentStartText.style';
 
