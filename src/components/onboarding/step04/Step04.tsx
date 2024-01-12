@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { DayPicker } from 'react-day-picker';
 import { format } from 'date-fns';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
+import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
 
 interface SetTournamentScheduleProps {
   onNext: VoidFunction;
@@ -34,6 +35,7 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
 
   return (
     <>
+      <OnBoardingHeader step={4} />
       <div>
         <div>
           <Title title='선물 토너먼트' />

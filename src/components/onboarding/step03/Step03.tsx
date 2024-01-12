@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import { DayPicker } from 'react-day-picker';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import 'react-day-picker/dist/style.css';
+import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
 
 interface GiftDeliveryProps {
   onNext: VoidFunction;
@@ -35,6 +36,7 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
   return (
     <>
       {/* TODO 추후 로그인된 유저네임으로 변경 및 인풋창 클릭 시 켈린더 호출*/}
+      <OnBoardingHeader step={3} />
       <Title userName='시동훈' title='님께' />
       <Title title='언제 선물을' />
       <Title title='전달하실 예정인가요?' />

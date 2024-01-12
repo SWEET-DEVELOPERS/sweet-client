@@ -3,6 +3,7 @@ import Title from '../../common/title/Title';
 import * as S from './Step01.style';
 import { IcCancelCircleFinal } from '../../../assets/svg';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
+import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
 
 interface NameInputProps {
   onNext: VoidFunction;
@@ -25,6 +26,7 @@ const NameInput = (props: NameInputProps) => {
 
   return (
     <>
+      <OnBoardingHeader step={1} />
       <Title title='선물 받을 분의' />
       <Title title='이름, 혹은 닉네임을 알려주세요' />
       <S.Wrapper hasContent={text.length > 0} maxLengthReached={text.length === 10}>

@@ -3,6 +3,7 @@ import { IcEmptyThumbnail } from '../../../assets/svg';
 import * as S from './Step02.style';
 import { useState } from 'react';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
+import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
 
 interface ThumbnailInputProps {
   onNext: VoidFunction;
@@ -23,6 +24,7 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
 
   return (
     <>
+      <OnBoardingHeader step={2} />
       <Title title='썸네일을 등록해주세요' />
       <div>
         <S.IcEmptyThumbnailWrapper>

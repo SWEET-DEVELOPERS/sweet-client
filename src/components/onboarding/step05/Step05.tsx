@@ -4,6 +4,7 @@ import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import * as S from './Step05.style';
+import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
 
 interface SetTournamentDurationProps {
   onNext: VoidFunction;
@@ -24,6 +25,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
 
   return (
     <>
+      <OnBoardingHeader step={5} />
       <div>
         <Title title='선물 토너먼트' />
         <Title title='진행 시간을 설정해주세요' />
