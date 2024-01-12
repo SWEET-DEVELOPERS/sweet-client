@@ -1,15 +1,9 @@
 import TournamentCard from './TournamentCard/TournamentCard';
-import TournamentFooter from './tournamentFooter/TournamentFooter';
-import TournamentTitle from './tournamentTitle/TournamentTitle';
-import { TournamentCardWrapper } from './TournamentFlowContainer.style';
-
+import TournamentFooter from './TournamentFooter/TournamentFooter';
 const TournamentFlowContainer = () => {
   return (
     <>
-      <TournamentTitle />
-      <TournamentCardWrapper>
-        <TournamentCard /> <TournamentCard />
-      </TournamentCardWrapper>
+      <TournamentCard />
       <TournamentFooter />
     </>
   );
