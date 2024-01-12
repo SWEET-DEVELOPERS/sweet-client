@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import BtnRadio from '../../common/Button/Radio/BtnRadio';
 import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
@@ -18,6 +19,9 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   ];
 
   const { onNext } = props;
+
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+
   return (
     <>
       <div>
@@ -30,12 +34,18 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
       <S.SetTournamentDurationWrapper>
         {timeOptions.map((option, index) => (
           <S.TimeOptionsWrapper>
-            <BtnRadio key={index} time={option.text} period={option.dateType} />
+            <BtnRadio
+              key={index}
+              time={option.text}
+              period={option.dateType}
+              isSelected={() => selectedOption === option.text}
+              onClick={() => setSelectedOption(option.text)}
+            />
           </S.TimeOptionsWrapper>
         ))}
       </S.SetTournamentDurationWrapper>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <OnBoardingBtn isActivated={true} setStep={onNext}>
+        <OnBoardingBtn isActivated={selectedOption !== null} setStep={onNext}>
           다음
         </OnBoardingBtn>
       </div>
