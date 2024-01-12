@@ -7,6 +7,7 @@ export const Wrapper = styled.button`
   gap: 1rem;
   border-radius: 5.5rem;
 
+  border: none;
   background-color: ${({ theme: { colors } }) => colors.black};
   color: ${({ theme: { colors } }) => colors.white};
   ${({ theme: { fonts } }) => fonts.body_09}

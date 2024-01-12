@@ -3,6 +3,8 @@ import MypageImage from '../../../public/svg/mypage_image.svg';
 
 export const Wrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter({})};
+  width: 100%;
+  height: 100%;
 `;
 
 export const TopImage = styled.div`
@@ -43,7 +45,7 @@ export const ProfileWrapper = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 0 1.6rem;
   gap: 1.6rem;
-  top: -16rem;
+  top: -15rem;
 
   z-index: 999;
 
@@ -51,7 +53,13 @@ export const ProfileWrapper = styled.div`
 `;
 
 export const GiftRoomWrapper = styled.div`
-  ${({ theme: { mixin } }) => mixin.flexCenter({})};
+  ${({ theme: { mixin } }) =>
+    mixin.flexBox({ direction: 'column', align: 'center', justify: 'center' })};
   background-color: white;
-  height: 100%;
+  width: 100%;
+`;
+
+export const NoneText = styled.div`
+  color: ${({ theme: { colors } }) => colors.G_07};
+  ${({ theme: { fonts } }) => fonts.body_07};
 `;
