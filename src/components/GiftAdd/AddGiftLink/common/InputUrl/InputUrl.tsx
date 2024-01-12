@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import * as S from './InputUrl.styled';
-import IcCancelCircleFinal from '../../../assets/svg/IcCancelCircleFinal';
+import IcCancelCircleFinal from '../../../../../assets/svg/IcCancelCircleFinal';
 
 interface InputUrlProps {
   setIsActivated: React.Dispatch<React.SetStateAction<boolean>>;

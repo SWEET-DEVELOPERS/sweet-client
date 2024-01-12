@@ -1,18 +1,12 @@
-import IcRight from '../../../assets/svg/IcRight';
+import IcRight from '../../../../../assets/svg/IcRight';
 import * as S from './GiftAddNextBtn.styled';
 
 interface GiftAddNextBtnProps {
   children: React.ReactNode;
-  setStep: React.Dispatch<React.SetStateAction<number>>;
   isActivated: boolean;
+  onClick: () => void;
 }
-const GiftAddNextBtn = ({ children, setStep, isActivated }: GiftAddNextBtnProps) => {
-  const onClick = () => {
-    if (isActivated) {
-      setStep((prev) => prev + 1);
-    }
-  };
-
+const GiftAddNextBtn = ({ children, isActivated, onClick }: GiftAddNextBtnProps) => {
   return (
     <S.GiftAddNextBtnWrapper $isActivated={isActivated} onClick={onClick}>
       {children}

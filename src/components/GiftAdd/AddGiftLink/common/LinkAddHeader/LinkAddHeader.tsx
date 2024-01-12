@@ -1,5 +1,5 @@
-import { IcLeft } from '../../../assets/svg';
-import MiniTimer from '../../common/MiniTimer/MiniTimer';
+import { IcLeft } from '../../../../../assets/svg';
+import MiniTimer from '../../../../common/MiniTimer/MiniTimer';
 import * as S from './LinkAddHeader.styled';
 
 const LinkAddHeader = () => {

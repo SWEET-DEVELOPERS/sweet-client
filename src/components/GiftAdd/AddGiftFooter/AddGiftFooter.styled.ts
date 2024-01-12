@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const TournamentFooterWrapper = styled.footer`
+export const AddGiftFooterWrapper = styled.footer`
   display: flex;
   justify-content: space-between;
   position: absolute;

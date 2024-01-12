@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const GiftAddFirstLinkLayoutWrapper = styled.section`
+export const GiftAddLinkLayoutWrapper = styled.section`
   width: 100%;
   padding: 0 2rem 0 2rem;
 

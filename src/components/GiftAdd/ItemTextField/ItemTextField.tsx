@@ -1,13 +1,23 @@
-import * as S from './ItemPriceTextField.styled';
+import * as S from './ItemTextField.styled';
 import IcCancelCircleFinal from '../../../assets/svg/IcCancelCircleFinal';
 
-interface ItemPriceTextFieldProps {
+interface ItemTextFieldProps {
   text: string;
   setText: React.Dispatch<React.SetStateAction<string>>;
   handleSetIsActivated: () => void;
+  type: string;
+  categoryTitle: string;
+  placeholderText: string;
 }
 
-const ItemPriceTextField = ({ text, setText, handleSetIsActivated }: ItemPriceTextFieldProps) => {
+const ItemTextField = ({
+  text,
+  setText,
+  handleSetIsActivated,
+  type,
+  categoryTitle,
+  placeholderText,
+}: ItemTextFieldProps) => {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     setText(inputValue);
@@ -19,16 +29,11 @@ const ItemPriceTextField = ({ text, setText, handleSetIsActivated }: ItemPriceTe
   };
 
   return (
-    <S.ItemPriceTextFieldWrapper>
-      <S.CategoryTitle>가격</S.CategoryTitle>
+    <S.ItemTextFieldWrapper>
+      <S.CategoryTitle>{categoryTitle}</S.CategoryTitle>
       <S.Wrapper hasContent={text.length > 0}>
         <S.TextField>
-          <S.Input
-            type='number'
-            value={text}
-            onChange={onChange}
-            placeholder='가격을 입력해주세요'
-          />
+          <S.Input type={type} value={text} onChange={onChange} placeholder={placeholderText} />
         </S.TextField>
         <S.IconField>
           {text.length > 0 && (
@@ -39,8 +44,8 @@ const ItemPriceTextField = ({ text, setText, handleSetIsActivated }: ItemPriceTe
           )}
         </S.IconField>
       </S.Wrapper>
-    </S.ItemPriceTextFieldWrapper>
+    </S.ItemTextFieldWrapper>
   );
 };
 
-export default ItemPriceTextField;
+export default ItemTextField;

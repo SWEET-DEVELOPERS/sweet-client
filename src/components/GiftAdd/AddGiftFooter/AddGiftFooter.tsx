@@ -1,5 +1,5 @@
 import { IcLeft } from '../../../assets/svg';
-import GiftAddNextBtn from '../GiftAddNextBtn/GiftAddNextBtn';
+import GiftAddNextBtn from '../AddGiftLink/common/GiftAddNextBtn/GiftAddNextBtn';
 import * as S from './AddGiftFooter.styled';
 
 interface AddGiftFooterProps {
@@ -8,16 +8,26 @@ interface AddGiftFooterProps {
 }
 
 const AddGiftFooter = ({ setStep, isActivated }: AddGiftFooterProps) => {
+  const onClick = () => {
+    if (isActivated) {
+      setStep(0);
+    }
+  };
+
+  const handlePrevBtnClick = () => {
+    setStep((prev) => prev - 1);
+  };
+
   return (
-    <S.TournamentFooterWrapper>
+    <S.AddGiftFooterWrapper>
       <S.BtnPrev>
-        <IcLeft style={{ width: '2.4rem', height: '2.4rem' }} />
+        <IcLeft style={{ width: '2.4rem', height: '2.4rem' }} onClick={handlePrevBtnClick} />
         이전
       </S.BtnPrev>
-      <GiftAddNextBtn setStep={setStep} isActivated={isActivated}>
+      <GiftAddNextBtn isActivated={isActivated} onClick={onClick}>
         완료
       </GiftAddNextBtn>
-    </S.TournamentFooterWrapper>
+    </S.AddGiftFooterWrapper>
   );
 };
 

@@ -2,9 +2,9 @@ import { useState } from 'react';
 import IcPlusImageFinal from '../../../assets/svg/IcPlusImageFinal';
 import MiniTimer from '../../common/MiniTimer/MiniTimer';
 import AddGiftFooter from '../AddGiftFooter/AddGiftFooter';
-import GiftStatusBar from '../GiftStatusBar/GiftStatusBar';
+import GiftStatusBar from '../AddGiftLink/common/GiftStatusBar/GiftStatusBar';
 import ShowLink from '../ShowLink/ShowLink';
-import WriteItemInfo from '../WriteItemInfo/WriteItemInfo';
+import WriteItemInfo from './common/WriteItemInfo/WriteItemInfo';
 import * as S from './common/AddGiftLayout.styled';
 import IcImgEditBtn from '../../../assets/svg/IcImgEditBtn';
 
@@ -20,7 +20,7 @@ const AddGiftWithLinkLayout = ({ setStep }: AddGiftWithLinkLayoutProps) => {
       <S.AddGiftWithLinkHeader>
         <MiniTimer time='00:00:00' />
       </S.AddGiftWithLinkHeader>
-      <GiftStatusBar />
+      <GiftStatusBar registeredGiftNum={1} />
       <S.ThumbnailWrapper>
         <IcImgEditBtn
           style={{
@@ -34,7 +34,7 @@ const AddGiftWithLinkLayout = ({ setStep }: AddGiftWithLinkLayoutProps) => {
         <IcPlusImageFinal style={{ width: '5rem', height: '5rem' }} />
       </S.ThumbnailWrapper>
       <ShowLink />
-      <WriteItemInfo setIsActivated={setIsActivated} />
+      <WriteItemInfo setIsActivated={setIsActivated} isLink={true} />
       <AddGiftFooter setStep={setStep} isActivated={isActivated} />
     </S.AddGiftWithLinkLayoutWrapper>
   );

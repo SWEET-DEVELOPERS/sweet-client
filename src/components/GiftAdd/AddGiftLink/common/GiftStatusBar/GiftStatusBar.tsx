@@ -1,4 +1,4 @@
-import { IcGift } from '../../../assets/svg';
+import { IcGift } from '../../../../../assets/svg';
 import * as S from './GiftStatusBar.styled';
 
 interface GiftStatusBarProps {

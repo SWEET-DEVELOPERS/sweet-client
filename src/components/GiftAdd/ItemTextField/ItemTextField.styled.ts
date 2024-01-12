@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const ItemPriceTextFieldWrapper = styled.div`
+export const ItemTextFieldWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
