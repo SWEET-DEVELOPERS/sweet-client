@@ -32,6 +32,7 @@ export const GiftHomeSummaryTitle = styled.p`
 export const CopyLinkBtnWrapper = styled.div`
   padding: 0.3rem 1rem;
   margin-bottom: 8.8rem;
+  margin-top: 1.1rem;
 
   display: flex;
   justify-content: center;
@@ -40,6 +41,8 @@ export const CopyLinkBtnWrapper = styled.div`
 
   border-radius: 1.4rem;
   background-color: ${({ theme }) => theme.colors.G_01};
+
+  cursor: pointer;
 `;
 
 export const Caption02Text = styled.span`

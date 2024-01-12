@@ -1,3 +1,4 @@
+import IcLink from '../../../assets/svg/IcLink';
 import CountDownTimer from '../CountDownTimer/CountDownTimer';
 import * as S from './GiftHomeSummary.styled';
 
@@ -14,7 +15,7 @@ export default function GiftHomeSummary() {
       </S.GiftHomeSummaryTitle>
       <S.GiftHomeSummaryTitle>선물을 함께 준비해요</S.GiftHomeSummaryTitle>
       <S.CopyLinkBtnWrapper>
-        {/* 링크 아이콘 추가 예정 */}
+        <IcLink style={{ width: '1.7rem', height: '1.7rem' }} />
         <S.Caption02Text>초대 링크 복사</S.Caption02Text>
       </S.CopyLinkBtnWrapper>
       <S.Body09Text>선물 토너먼트</S.Body09Text>
