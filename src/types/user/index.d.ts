@@ -16,7 +16,7 @@ export interface UserInfoType {
   profileImage: string;
 }
 
-export interface LoginDataType extends Response {
+export interface LoginDataType {
   data: DataType;
 }
 
