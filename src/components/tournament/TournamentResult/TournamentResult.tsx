@@ -1,4 +1,3 @@
-import TournamentCard from '../TournamentFlow/TournamentCard/TournamentCard';
 import TournamentResultCard from './TournamentResultCard/TournamentResultCard';
 import TournamentResultFooter from './TournamentResultFooter/TournamentResultFooter';
 import TournamentResultUser from './TournamentResultUser/TournamentResultUser';
