@@ -1,8 +1,10 @@
+import CountDownTimer from '../CountDownTimer/CountDownTimer';
 import * as S from './GiftHomeSummary.styled';
 
 export default function GiftHomeSummary() {
   const friendsNumber = 42;
   const giftOwner = '가나다라마바사아자차';
+  const targetDate = new Date('2024-01-13T00:00:00');
 
   return (
     <S.GiftHomeSummaryWrapper>
@@ -16,6 +18,7 @@ export default function GiftHomeSummary() {
         <S.Caption02Text>초대 링크 복사</S.Caption02Text>
       </S.CopyLinkBtnWrapper>
       <S.Body09Text>선물 토너먼트</S.Body09Text>
+      <CountDownTimer targetDate={targetDate} />
     </S.GiftHomeSummaryWrapper>
   );
 }

@@ -7,6 +7,10 @@ interface CountDownCardProps {
 const CountDownCard = ({ text }: CountDownCardProps) => {
   return (
     <S.CountDownCardWrapper>
+      <S.CardMiddleWrapper>
+        <S.CardMiddle />
+        <S.CardMiddle />
+      </S.CardMiddleWrapper>
       <S.DigitText>{text}</S.DigitText>
     </S.CountDownCardWrapper>
   );
