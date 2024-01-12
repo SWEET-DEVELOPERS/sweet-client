@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import * as S from './CountDownTimer.styled';
 import { IcTimeColon } from '../../../assets/svg';
 import CountDownCard from './ CountDownCard/CountDownCard';
-import { diff } from 'semver';
 
 interface CountdownTimerProps {
   targetDate: Date;
