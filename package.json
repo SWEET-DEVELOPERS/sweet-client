@@ -17,6 +17,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.17.0",
     "@types/styled-components": "^5.1.34",
+    "axios": "^1.6.5",
     "open-graph": "^0.2.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
