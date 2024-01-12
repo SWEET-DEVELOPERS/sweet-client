@@ -12,6 +12,7 @@ const GiftAddBtnWrapper = ({ setStep, isActivated }: GiftAddBtnWrapperProps) => 
   const handleClickNoLink = () => {
     setStep(3);
   };
+
   return (
     <S.GiftAddBtnWrapper>
       <S.NoLinkText onClick={handleClickNoLink}>링크 없이 상품을 등록할게요</S.NoLinkText>

@@ -21,7 +21,7 @@ const InputUrl = ({ setIsActivated }: InputUrlProps) => {
   };
 
   return (
-    <S.Wrapper hasContent={text.length > 0}>
+    <S.InputUrlWrapper $hasContent={text.length > 0}>
       <S.TextField>
         <S.Input type='text' value={text} onChange={onChange} placeholder='링크를 입력해주세요' />
       </S.TextField>
@@ -33,7 +33,7 @@ const InputUrl = ({ setIsActivated }: InputUrlProps) => {
           />
         )}
       </S.IconField>
-    </S.Wrapper>
+    </S.InputUrlWrapper>
   );
 };
 

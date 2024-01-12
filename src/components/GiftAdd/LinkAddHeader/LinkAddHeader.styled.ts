@@ -9,6 +9,6 @@ export const LinkAddHeaderWrapper = styled.article`
   height: 5.6rem;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 `;
