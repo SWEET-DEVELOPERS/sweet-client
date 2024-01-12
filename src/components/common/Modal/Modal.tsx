@@ -7,7 +7,7 @@ interface ModalProps {
   onConfirmClick?: () => void; // 클릭 이벤트 함수를 받을 수 있는 프롭 추가
 }
 
-const Modal: React.FC<ModalProps> = ({ children, onConfirmClick }) => {
+const Modal = ({ children, onConfirmClick }: ModalProps) => {
   return (
     <>
       <S.Overlay />
