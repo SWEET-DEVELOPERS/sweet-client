@@ -3,6 +3,7 @@ import * as S from './Title.style';
 interface TitleProps {
   title: string;
   userName?: string;
+  customStyle?: React.CSSProperties;
 }
 
 const Title = ({ title, userName }: TitleProps) => {
