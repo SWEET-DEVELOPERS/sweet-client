@@ -5,18 +5,13 @@ export const Wrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter({})};
 `;
 
-export const TopWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  position: relative;
-
+export const TopImage = styled.div`
   width: 37.5rem;
   height: 34rem;
   flex-shrink: 0;
 
   background-image: url(${MypageImage});
+  z-index: 0;
 `;
 export const UserName = styled.div`
   display: flex;
@@ -29,7 +24,7 @@ export const UserName = styled.div`
   }
 `;
 export const UserButtonWrapper = styled.div`
-  ${({ theme: { mixin } }) => mixin.flexBox({ justify: 'space-between' })};
+  ${({ theme: { mixin } }) => mixin.flexBox({ align: 'center', justify: 'space-between' })};
   width: 100%;
 `;
 export const UserWrapper = styled.div`
@@ -39,6 +34,7 @@ export const UserWrapper = styled.div`
 `;
 export const ProfileWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter({})};
+  position: relative;
 
   border-radius: 12px;
   width: 33.5rem;
@@ -47,10 +43,15 @@ export const ProfileWrapper = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 0 1.6rem;
   gap: 1.6rem;
+  top: -16rem;
+
+  z-index: 999;
 
   box-shadow: 0rem 0rem 2rem 0rem rgba(220, 180, 180, 0.35);
 `;
 
 export const GiftRoomWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter({})};
+  background-color: white;
+  height: 100%;
 `;
