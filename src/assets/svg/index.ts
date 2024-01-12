@@ -23,6 +23,7 @@ export { default as IcGift } from './IcGift';
 export { default as IcGroup } from './IcGroup';
 export { default as IcImg } from './IcImg';
 export { default as IcImgAdd } from './IcImgAdd';
+export { default as IcKakaoShare } from './IcKakaoShare';
 export { default as IcKakaoSmall } from './IcKakaoSmall';
 export { default as IcKakoLarge } from './IcKakoLarge';
 export { default as IcLeft } from './IcLeft';
