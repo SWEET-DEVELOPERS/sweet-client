@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import MypageImage from '../../../public/svg/mypage_image.svg';
 
 export const Wrapper = styled.div`
-  ${({ theme: { mixin } }) => mixin.flexCenter({})};
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
 `;
@@ -14,6 +15,7 @@ export const TopImage = styled.div`
 
   background-image: url(${MypageImage});
   z-index: 0;
+  margin: 0;
 `;
 export const UserName = styled.div`
   display: flex;
