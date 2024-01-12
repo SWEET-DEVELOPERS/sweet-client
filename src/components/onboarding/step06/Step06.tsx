@@ -14,7 +14,7 @@ const OnboardingFinal = () => {
 
   return (
     <>
-      <S.Wrapper>
+      <S.OnboardingFinalWrapper>
         <S.GradientImg>
           <S.TitleContainer>
             <div>
@@ -27,7 +27,7 @@ const OnboardingFinal = () => {
             </BtnNext>
           </S.TitleContainer>
         </S.GradientImg>
-      </S.Wrapper>
+      </S.OnboardingFinalWrapper>
       <S.InfoWrapper>
         {infoDetails.map((item, index) => (
           <S.InfoDetailWrapper key={index}>

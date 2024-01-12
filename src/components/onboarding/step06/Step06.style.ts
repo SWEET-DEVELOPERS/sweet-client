@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import imageSample from './image_sample.png';
 
-export const Wrapper = styled.div`
+export const OnboardingFinalWrapper = styled.div`
   ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'center' })}
   width: 100%;
   border-bottom: 0.1rem solid ${({ theme }) => theme.colors.G_02};
