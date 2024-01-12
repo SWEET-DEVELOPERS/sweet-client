@@ -1,5 +1,3 @@
-import { createBrowserRouter } from 'react-router-dom';
-import Main from '../pages/Main';
 import Mypage from '../pages/Mypage';
 import Layout from '../layouts/Layout';
 import GiftHome from '../pages/GiftHome/GiftHome';
@@ -8,6 +6,9 @@ import GiftHomeDetail2030 from '../pages/GiftHomeDetail/GiftHomeDetail2030';
 import OnBoardingPage from '../pages/OnBoardingPage';
 import TournamentOngoing from '../pages/TournamentOngoing';
 import TournamentPage from '../pages/TournamentPage';
+import Start from '../pages/Start/Start';
+import Login from '../components/Login';
+import { createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Main />,
+        element: <Start />,
+      },
+      {
+        path: '/api/oauth/kakao/login',
+        element: <Login />,
       },
       {
         path: '/mypage',
