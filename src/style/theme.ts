@@ -166,13 +166,6 @@ const fonts = {
     font-weight: 400;
     line-height: 150%;
   `,
-  suit: css`
-    font-family: 'SUIT';
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 150%;
-  `,
 };
 
 const theme = { mixin, colors, fonts };

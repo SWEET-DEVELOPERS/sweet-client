@@ -9,8 +9,7 @@ export const Wrapper = styled.button`
 
   background-color: ${({ theme: { colors } }) => colors.G_02};
   color: ${({ theme: { colors } }) => colors.G_07};
-  border: none;
-  /* border-color: ${({ theme: { colors } }) => colors.G_07}; */
+  border-color: ${({ theme: { colors } }) => colors.G_07};
 
   ${({ theme: { fonts } }) => fonts.body_09}
 
