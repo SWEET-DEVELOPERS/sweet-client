@@ -4,7 +4,7 @@ import * as S from './TournamentContatiner.style';
 import { Svg3Dicons } from '../../../assets/svg';
 import TournamentStartButton from './tournamentStartButton/TournamentStartButton';
 import { useState } from 'react';
-import TournamentFlowContainer from '../TournamentFlowContainer';
+import TournamentFlowContainer from '../TournamentFlow/TournamentFlowContainer';
 
 const TournamentContainer = () => {
   const [showTournamentContainer, setShowTournamentContainer] = useState(true);
