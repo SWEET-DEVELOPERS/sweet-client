@@ -2,9 +2,16 @@ import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
 import { IcUnselectedCalender, IcUnselectedClock } from '../../../assets/svg';
 import * as S from './Step04.style';
+import BtnNext from '../../common/Button/Next/BtnNext';
 
-const SetTournamentSchedule = () => {
+interface SetTournamentScheduleProps {
+  onNext: VoidFunction;
+}
+
+const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
   // TODO 인풋창 클릭 시 캘린더 & 시간 선택 창 구현
+  const { onNext } = props;
+
   return (
     <>
       <div>
@@ -32,6 +39,18 @@ const SetTournamentSchedule = () => {
           <IcUnselectedClock style={{ width: '2.4rem', height: '2.4rem' }} />
         </S.IconField>
       </S.Container>
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <BtnNext
+          type='button'
+          onClick={onNext}
+          customStyle={{
+            position: 'absolute',
+            bottom: '0',
+          }}
+        >
+          다음
+        </BtnNext>
+      </div>
     </>
   );
 };

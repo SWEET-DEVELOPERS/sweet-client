@@ -1,11 +1,16 @@
+import BtnNext from '../../common/Button/Next/BtnNext';
 import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
 import * as S from './Step05.style';
 import TimeBox from './TimeBox';
 
-const SetTournamentDuration = () => {
-  // TODO 오늘 기준 날짜로 수정 & map함수로 수정
+interface SetTournamentDurationProps {
+  onNext: VoidFunction;
+}
 
+const SetTournamentDuration = (props: SetTournamentDurationProps) => {
+  // TODO 오늘 기준 날짜로 수정 & map함수로 수정
+  const { onNext } = props;
   return (
     <>
       <div>
@@ -18,6 +23,18 @@ const SetTournamentDuration = () => {
       <S.SetTournamentDurationWrapper>
         <TimeBox />
       </S.SetTournamentDurationWrapper>
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <BtnNext
+          type='button'
+          onClick={onNext}
+          customStyle={{
+            position: 'absolute',
+            bottom: '0',
+          }}
+        >
+          다음
+        </BtnNext>
+      </div>
     </>
   );
 };

@@ -4,9 +4,11 @@ import * as S from './TournamentContatiner.style';
 import { Svg3Dicons } from '../../../assets/svg';
 import TournamentStartButton from './tournamentStartButton/TournamentStartButton';
 import { useState } from 'react';
-import TournamentFlowContainer from '../tournamentFlow/TournamentFlowContainer';
 
-export default function TournamentContainer() {
+import TournamentFlowContainer from '../TournamentFlowContainer';
+
+const TournamentContainer = () => {
+
   const [showTournamentContainer, setShowTournamentContainer] = useState(true);
 
   const handleStartClick = () => {
@@ -28,4 +30,8 @@ export default function TournamentContainer() {
       {!showTournamentContainer && <TournamentFlowContainer />}
     </>
   );
-}
+
+};
+
+export default TournamentContainer;
+
