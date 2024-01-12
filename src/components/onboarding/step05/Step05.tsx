@@ -1,8 +1,8 @@
+import BtnRadio from '../../common/Button/Radio/BtnRadio';
 import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import * as S from './Step05.style';
-import TimeBox from './TimeBox';
 
 interface SetTournamentDurationProps {
   onNext: VoidFunction;
@@ -10,6 +10,13 @@ interface SetTournamentDurationProps {
 
 const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   // TODO 오늘 기준 날짜로 수정 & map함수로 수정
+  const timeOptions = [
+    { text: '6시간', dateType: 'today' },
+    { text: '12시간', dateType: 'today' },
+    { text: '18시간', dateType: 'nottoday' },
+    { text: '24시간', dateType: 'nottoday' },
+  ];
+
   const { onNext } = props;
   return (
     <>
@@ -21,7 +28,11 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
         <SubTitle subTitle='토너먼트가 아래 시간 동안 진행돼요.' />
       </div>
       <S.SetTournamentDurationWrapper>
-        <TimeBox />
+        {timeOptions.map((option, index) => (
+          <S.TimeOptionsWrapper>
+            <BtnRadio key={index} time={option.text} period={option.dateType} />
+          </S.TimeOptionsWrapper>
+        ))}
       </S.SetTournamentDurationWrapper>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <OnBoardingBtn isActivated={true} setStep={onNext}>
