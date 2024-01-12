@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import exampleItemImg from '../../../../assets/img/Rectangle.png';
 import * as S from './TournamentCard.style';
-import { IcExternalGray, IcRefreshGray, Logo } from '../../../../assets/svg';
+import { IcExternalGray, Logo } from '../../../../assets/svg';
 
 const TournamentCard = () => {
   const [isClicked, setIsClicked] = useState(false);
