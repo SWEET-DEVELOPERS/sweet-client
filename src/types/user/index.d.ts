@@ -1,13 +1,23 @@
 import { Response } from '../types';
 
+export interface DataType {
+  userInfo: UserInfoType;
+  memberToken: JsonWebTokenType;
+}
 export interface JsonWebTokenType {
   accessToken: string;
+  refreshToken: string;
 }
 
-export interface LoginDataType extends Response {
-  data: Array;
-  userInfo: string[{ memberId: string; nickname: string; profileImage: string }];
-  memberToken: JsonWebTokenType;
+export interface UserInfoType {
+  memberId: number;
+  socialId: number;
+  nickname: string;
+  profileImage: string;
+}
+
+export interface LoginDataType {
+  data: DataType;
 }
 
 export type KakaoSignType = {
