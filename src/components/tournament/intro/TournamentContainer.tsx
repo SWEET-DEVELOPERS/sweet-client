@@ -1,23 +1,34 @@
 import TournamentStartText from './tournamentStartText/TournamentStartText';
 import TournamentItemCount from './tournamentItemCount/TournamentItemCount';
-import styled from 'styled-components';
+import * as S from './TournamentContatiner.style';
 import { Svg3Dicons } from '../../../assets/svg';
+import TournamentStartButton from './tournamentStartButton/TournamentStartButton';
+import { useState } from 'react';
 
-export default function TournamentConatainer() {
+import TournamentFlowContainer from '../TournamentFlow/TournamentFlowContainer';
+
+const TournamentContainer = () => {
+  const [showTournamentContainer, setShowTournamentContainer] = useState(true);
+
+  const handleStartClick = () => {
+    setShowTournamentContainer(false);
+  };
   return (
     <>
-      <TournamentStartText />
-      <TournamentItemCount />
-      <TournamentImg>
-        <Svg3Dicons />
-      </TournamentImg>
-      {/* 공통버튼 btn_cta_fill 들어갈 예정*/}
+      {showTournamentContainer && (
+        <>
+          <TournamentStartText />
+          <TournamentItemCount />
+          <S.TournamentImg>
+            <Svg3Dicons />
+          </S.TournamentImg>
+          <TournamentStartButton onClick={handleStartClick} />
+        </>
+      )}
+
+      {!showTournamentContainer && <TournamentFlowContainer />}
     </>
   );
-}
+};
 
-const TournamentImg = styled.div`
-  width: 20rem;
-  height: 20rem;
-  margin: 0 auto;
-`;
+export default TournamentContainer;

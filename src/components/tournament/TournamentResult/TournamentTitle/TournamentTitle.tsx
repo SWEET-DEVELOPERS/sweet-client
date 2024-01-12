@@ -13,9 +13,6 @@ const TournamentTitle = () => {
 
 export default TournamentTitle;
 
-const TournamentTitleWrapper = styled.div`
-  display: flex;
-`;
 const Title = styled.div`
   display: flex;
   justify-content: center;
