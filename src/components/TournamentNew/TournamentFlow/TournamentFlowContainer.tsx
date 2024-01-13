@@ -1,31 +1,35 @@
+import React, { useState } from 'react';
 import TournamentCard from './TournamentCard/TournamentCard';
 import { TournamentCardWrapper } from './TournamentFlowContainer.style';
 import TournamentFooter from './TournamentFooter/TournamentFooter';
 import TournamentTitle from './TournamentTitle/TournamentTitle';
-
-interface GiftData {
-  giftId: number;
-  imageUrl: string;
-  name: string;
-  cost: number;
-  url: string;
-}
+import { GiftData } from '../../../core/mockupData';
 
 interface TournamentFlowContainerProps {
-  randomItems: GiftData[];
+  randomItems: GiftData[][];
 }
 
+const TournamentFlowContainer = ({ randomItems }: TournamentFlowContainerProps) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  const currentSet = randomItems[currentIndex];
 
-const TournamentFlowContainer: React.FC<{ randomItems: GiftData[] }> = ({ randomItems }) => {
+  const handleNextClick = () => {
+    setCurrentIndex((prevIndex) => prevIndex + 1);
+  };
+
   return (
     <>
       <TournamentTitle />
       <TournamentCardWrapper>
-        {randomItems.map((item) => (
-          <TournamentCard key={item.giftId} item={item} />
+        {currentSet.flat().map((item, index) => (
+          <TournamentCard key={index} item={item} />
         ))}
       </TournamentCardWrapper>
+
+      <button onClick={handleNextClick} disabled={currentIndex >= randomItems.length - 1}>
+        Next
+      </button>
       <TournamentFooter />
     </>
   );

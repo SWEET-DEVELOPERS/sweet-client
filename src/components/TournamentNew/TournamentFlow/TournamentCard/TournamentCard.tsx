@@ -6,14 +6,16 @@ import PriceTag from '../../../common/title/Price/PriceTag';
 
 interface TournamentCardProps {
   item: {
+    giftId: number;
     imageUrl: string;
     name: string;
     cost: number;
-    // 다른 필요한 프로퍼티들 추가
+    url: string;
   };
 }
 
-const TournamentCard: React.FC<TournamentCardProps> = ({ item }) => {
+// Function component without React.FC
+const TournamentCard = ({ item }: TournamentCardProps) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
@@ -33,8 +35,7 @@ const TournamentCard: React.FC<TournamentCardProps> = ({ item }) => {
         <S.ItemInfo>
           <S.Title>{item.name}</S.Title>
           <PriceTag price={item.cost} />
-          {/* 보러가기 컴포넌트 분리할까 말까 링크있는 
-            아이템이면 생성 조건 렌더링 */}
+          {/* Add logic for the link component if needed */}
         </S.ItemInfo>
       </S.TournamentCardWrapper>
       <S.LinkIconWrapper>
