@@ -4,6 +4,7 @@ import TournamentFooter from './TournamentFooter/TournamentFooter';
 import TournamentTitle from './TournamentTitle/TournamentTitle';
 
 const TournamentFlowContainer = () => {
+
   return (
     <>
       <TournamentTitle />
