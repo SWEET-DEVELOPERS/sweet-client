@@ -1,6 +1,6 @@
 import { Image477 } from '../../../../assets/svg';
 import * as S from './TournamentRankingTitle.style';
-import { SubTitle } from '../../intro/tournamentStartText/TournamentStartText.style';
+import { SubTitle } from '../../Intro/TournamentStartText/TournamentStartText.style';
 
 const TournamentRenameTitle = () => {
   return (

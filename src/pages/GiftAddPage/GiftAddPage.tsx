@@ -3,6 +3,7 @@ import GiftAddFirstLinkLayout from '../../components/GiftAdd/AddGiftLink/GiftAdd
 import AddGiftWithLinkLayout from '../../components/GiftAdd/AddGiftLayout/AddGiftWithLinkLayout';
 import AddGiftWithoutLinkLayout from '../../components/GiftAdd/AddGiftLayout/AddGiftWithoutLinkLayout';
 import GiftAddSecondLinkLayout from '../../components/GiftAdd/AddGiftLink/GiftAddSecondLinkLayout/GiftAddSecondLinkLayout';
+import GiftAddPageLayout from '../../components/GiftAdd/GiftAddPageLayout/GiftAddPageLayout';
 
 const GiftAddPage = () => {
   const [step, setStep] = useState(1);
@@ -11,7 +12,7 @@ const GiftAddPage = () => {
     case 0:
       return (
         // 내가 등록한 선물 뷰 연결할 예정
-        <></>
+        <GiftAddPageLayout />
       );
 
     case 1:
