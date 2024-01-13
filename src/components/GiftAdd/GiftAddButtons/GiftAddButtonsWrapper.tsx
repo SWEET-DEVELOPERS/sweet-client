@@ -1,4 +1,4 @@
-import { IcEmptyBox } from '../../../assets/svg';
+import { IcBookmark, IcEmptyBox } from '../../../assets/svg';
 import * as S from './GiftAddButtonsWrapper.styled';
 
 interface GiftAddButtonsProps {
@@ -11,6 +11,15 @@ const GiftAddButtonsWrapper = ({ isExist, price }: GiftAddButtonsProps) => {
     <>
       {isExist ? (
         <S.GiftsItemWrapper>
+          <IcBookmark
+            style={{
+              position: 'absolute',
+              left: '0.8rem',
+              top: '-0.4rem',
+              width: '2.8rem',
+              height: '5.2rem',
+            }}
+          />
           <S.GiftsItemImage></S.GiftsItemImage>
           <S.GiftsItemTitle>어센틱 로고 후디 멜란지 그레이</S.GiftsItemTitle>
           <S.GiftsItemPrice>{price}원</S.GiftsItemPrice>
