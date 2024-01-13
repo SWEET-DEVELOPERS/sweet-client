@@ -48,10 +48,6 @@ const router = createBrowserRouter([
         element: <OnBoardingPage />,
       },
       {
-        path: '/giftadd',
-        element: <GiftAddPage />,
-      },
-      {
         path: '/tournamentPro',
         element: <TournamentOngoing />,
       },
