@@ -28,6 +28,7 @@ export { default as IcKakoLarge } from './IcKakoLarge';
 export { default as IcLeft } from './IcLeft';
 export { default as IcLink } from './IcLink';
 export { default as IcLinkShare } from './IcLinkShare';
+export { default as IcLogoEmpty } from './IcLogoEmpty';
 export { default as IcMedal1 } from './IcMedal1';
 export { default as IcMedal2 } from './IcMedal2';
 export { default as IcMedal3 } from './IcMedal3';

@@ -7,7 +7,7 @@ const ProgressGiftView = () => {
   const giftData: boolean = true;
   return (
     <S.Wrapper>
-      <GiftRoomHeader name='진행중인 선물방' page='' />
+      <GiftRoomHeader name='진행중인 선물방' page='detail-progress' />
       {giftData ? (
         <S.RoomWrapper>
           <CardRoom />

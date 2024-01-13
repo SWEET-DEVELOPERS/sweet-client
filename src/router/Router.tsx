@@ -9,6 +9,8 @@ import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../layouts/Layout';
 import MyPage from '../pages/MyPage/MyPage';
 import EditRoom from '../pages/MyPage/EditRoom/EditRoom';
+import DetailProgressRoom from '../pages/MyPage/Detail/DetailProgressRoom/DetailProgressRoom';
+import DetailDoneRoom from '../pages/MyPage/Detail/DetailDoneRoom/DetailDoneRoom';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: '/editpage',
         element: <EditRoom />,
+      },
+      {
+        path: '/detail-progress',
+        element: <DetailProgressRoom />,
+      },
+      {
+        path: '/detail-done',
+        element: <DetailDoneRoom />,
       },
       {
         // 임의로 세부페이지 추가

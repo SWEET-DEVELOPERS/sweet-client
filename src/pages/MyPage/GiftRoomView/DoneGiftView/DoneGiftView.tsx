@@ -6,7 +6,7 @@ const DoneGiftView = () => {
   const giftData: boolean = true;
   return (
     <S.Wrapper>
-      <GiftRoomHeader name='종료된 선물방' page='' />
+      <GiftRoomHeader name='종료된 선물방' page='detail-done' />
       {giftData ? (
         <S.RoomWrapper>
           <DoneCardRoom />
