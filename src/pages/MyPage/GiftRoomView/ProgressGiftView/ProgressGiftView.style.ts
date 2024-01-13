@@ -17,3 +17,9 @@ export const NoneRoom = styled.div`
   color: ${({ theme: { colors } }) => colors.G_02};
   ${({ theme: { fonts } }) => fonts.body_10};
 `;
+
+export const RoomWrapper = styled.div`
+  ${({ theme: { mixin } }) => mixin.flexBox({ justify: 'center' })};
+  width: 100%;
+  gap: 1.5rem;
+`;

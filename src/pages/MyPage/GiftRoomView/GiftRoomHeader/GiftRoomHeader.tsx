@@ -15,7 +15,9 @@ const GiftRoomHeader = ({ name, page }: GiftRoomHeaderProps) => {
   return (
     <S.Wrapper onClick={handleHeader}>
       <S.Text>{name}</S.Text>
-      <IcRight style={{ width: '2.4rem' }} />
+      <S.Icon>
+        <IcRight style={{ width: '2.4rem' }} />
+      </S.Icon>
     </S.Wrapper>
   );
 };

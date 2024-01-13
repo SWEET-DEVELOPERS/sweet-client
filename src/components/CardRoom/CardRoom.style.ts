@@ -37,13 +37,18 @@ export const CountUser = styled.div`
 `;
 
 export const TagWrapper = styled.div`
+  display: flex;
   margin: 0 1.2rem;
   margin-top: 1rem;
+  gap: 0.4rem;
 `;
 
 export const SettingWrapper = styled.div`
-  position: absolute;
-  left: 12.8rem;
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  left: 13rem;
+  top: -27rem;
   z-index: 999;
   margin-top: 0.8rem;
 `;

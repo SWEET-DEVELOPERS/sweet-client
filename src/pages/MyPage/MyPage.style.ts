@@ -38,7 +38,7 @@ export const UserWrapper = styled.div`
 `;
 export const ProfileWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter({})};
-  position: relative;
+  position: absolute;
 
   border-radius: 12px;
   width: 33.5rem;
@@ -47,7 +47,8 @@ export const ProfileWrapper = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 0 1.6rem;
   gap: 1.6rem;
-  top: -15rem;
+  top: 19rem;
+  left: 1.7rem;
 
   z-index: 999;
 

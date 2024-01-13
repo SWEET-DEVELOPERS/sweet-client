@@ -9,10 +9,10 @@ const ProgressGiftView = () => {
     <S.Wrapper>
       <GiftRoomHeader name='진행중인 선물방' page='' />
       {giftData ? (
-        <>
+        <S.RoomWrapper>
           <CardRoom />
           <EditCardRoom />
-        </>
+        </S.RoomWrapper>
       ) : (
         <S.NoneRoom>지금 진행 중인 선물방이 없어요</S.NoneRoom>
       )}
