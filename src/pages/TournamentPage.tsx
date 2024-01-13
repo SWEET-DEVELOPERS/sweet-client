@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import TournamentContainer from '../components/Tournament/Intro/TournamentContainer';
+import TournamentContainer from '../components/TournamentNew/Intro/TournamentContainer';
 
 const TournamentPage = () => {
   return (

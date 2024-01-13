@@ -1,4 +1,4 @@
-import TournamentFlowContainer from '../components/Tournament/TournamentFlow/TournamentFlowContainer';
+import TournamentFlowContainer from '../components/TournamentNew/TournamentFlow/TournamentFlowContainer';
 
 const TournamentOngoing = () => {
   return (
