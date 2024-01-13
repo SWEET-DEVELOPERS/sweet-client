@@ -1,9 +1,10 @@
+import { useState } from 'react';
+import * as S from './TournamentContatiner.style';
+
 import TournamentStartText from './tournamentStartText/TournamentStartText';
 import TournamentItemCount from './tournamentItemCount/TournamentItemCount';
-import * as S from './TournamentContatiner.style';
 import { Svg3Dicons } from '../../../assets/svg';
 import TournamentStartButton from './tournamentStartButton/TournamentStartButton';
-import { useState } from 'react';
 import TournamentFlowContainer from '../TournamentFlow/TournamentFlowContainer';
 
 const TournamentContainer = () => {
