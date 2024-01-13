@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  ${({ theme: { mixin } }) => mixin.flexBox({ justify: 'space-between' })};
+  ${({ theme: { mixin } }) => mixin.flexBox({ justify: 'space-between', align: 'center' })};
   width: 100%;
   padding: 2rem;
+  height: 4rem;
+  margin-top: 4rem;
 `;
 
 export const Icon = styled.div`
