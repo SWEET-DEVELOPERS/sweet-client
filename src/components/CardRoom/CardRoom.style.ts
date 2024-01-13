@@ -48,7 +48,7 @@ export const SettingWrapper = styled.div`
   width: fit-content;
   height: fit-content;
   left: 13rem;
-  top: -27rem;
+  top: -26rem;
   z-index: 999;
   margin-top: 0.8rem;
 `;
