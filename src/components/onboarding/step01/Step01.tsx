@@ -4,12 +4,14 @@ import * as S from './Step01.style';
 import { IcCancelCircleFinal } from '../../../assets/svg';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
+import { useForm, useFormContext } from 'react-hook-form';
 
 interface NameInputProps {
   onNext: VoidFunction;
 }
 
 const NameInput = (props: NameInputProps) => {
+  const { register, errors, status } = useFormContext();
   const { onNext } = props;
   const [text, setText] = useState<string>('');
 
@@ -22,6 +24,11 @@ const NameInput = (props: NameInputProps) => {
 
   const handleBtnClick = () => {
     setText('');
+  };
+
+  const onSubmit = (data: any) => {
+    console.log('data', data);
+    onNext();
   };
 
   return (
