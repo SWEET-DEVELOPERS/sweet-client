@@ -41,10 +41,6 @@ const router = createBrowserRouter([
         element: <OnBoardingPage />,
       },
       {
-        path: '/tournamentPro',
-        element: <TournamentOngoing />,
-      },
-      {
         path: '/tournament',
         element: <TournamentPage />,
       },
