@@ -1,4 +1,4 @@
-interface GiftData {
+export interface GiftData {
   giftId: number;
   imageUrl: string;
   name: string;
@@ -45,21 +45,21 @@ const mockupData: GiftData[] = [
   {
     giftId: 6,
     imageUrl: '../assets/img/img.png',
-    name: 'Gift 4',
+    name: 'Gift 6',
     cost: 22,
     url: 'https://example.com',
   },
   {
     giftId: 7,
     imageUrl: '../assets/img/img.png',
-    name: 'Gift 5',
+    name: 'Gift 7',
     cost: 22,
     url: 'https://example.com',
   },
   {
     giftId: 8,
     imageUrl: 'https://example.com/image5.jpg',
-    name: 'Gift 5',
+    name: 'Gift 8',
     cost: 22,
     url: 'https://example.com',
   },
