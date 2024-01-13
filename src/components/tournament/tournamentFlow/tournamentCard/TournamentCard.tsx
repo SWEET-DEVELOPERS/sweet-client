@@ -1,10 +1,19 @@
-import { useState } from 'react';
-import exampleItemImg from '../../../../assets/img/Rectangle.png';
+import React, { useState } from 'react';
 import * as S from './TournamentCard.style';
+import example from '../../../../assets/img/img.png';
 import { IcExternalGray, Logo } from '../../../../assets/svg';
 import PriceTag from '../../../common/title/Price/PriceTag';
 
-const TournamentCard = () => {
+interface TournamentCardProps {
+  item: {
+    imageUrl: string;
+    name: string;
+    cost: number;
+    // 다른 필요한 프로퍼티들 추가
+  };
+}
+
+const TournamentCard: React.FC<TournamentCardProps> = ({ item }) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
@@ -18,14 +27,14 @@ const TournamentCard = () => {
           <Logo />
         </S.SelectWrapper>
         <S.TournamentImgWrapper>
-          <img src={exampleItemImg} alt='제품이미지' />
+          <img src={example} alt={item.name} />
         </S.TournamentImgWrapper>
 
         <S.ItemInfo>
-          <S.Title>임영웅 콘서트 Gold열</S.Title>
-          <PriceTag price={8130000} />
+          <S.Title>{item.name}</S.Title>
+          <PriceTag price={item.cost} />
           {/* 보러가기 컴포넌트 분리할까 말까 링크있는 
-    아이템이면 생성 조건 렌더링 */}
+            아이템이면 생성 조건 렌더링 */}
         </S.ItemInfo>
       </S.TournamentCardWrapper>
       <S.LinkIconWrapper>
