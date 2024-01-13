@@ -42,6 +42,8 @@ export { default as IcRefresh } from './IcRefresh';
 export { default as IcRefreshGray } from './IcRefreshGray';
 export { default as IcRight } from './IcRight';
 export { default as IcSettings } from './IcSettings';
+export { default as IcTimeColon } from './IcTimeColon';
+export { default as IcTimeCount } from './IcTimeCount';
 export { default as IcUnselectedCalender } from './IcUnselectedCalender';
 export { default as IcUnselectedClock } from './IcUnselectedClock';
 export { default as IcUp } from './IcUp';
