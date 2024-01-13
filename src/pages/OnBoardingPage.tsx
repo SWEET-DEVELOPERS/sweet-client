@@ -9,26 +9,44 @@ import GiftDelivery from '../components/OnBoardingSteps/Step03/Step03';
 import SetTournamentSchedule from '../components/OnBoardingSteps/Step04/Step04';
 import SetTournamentDuration from '../components/OnBoardingSteps/Step05/Step05';
 import OnboardingFinal from '../components/OnBoardingSteps/Step06/Step06';
+import { useState } from 'react';
 
 const OnBoardingPage = () => {
   const { Funnel, setStep } = useFunnel(ONBOARDING_FORM_STEP, ONBOARDING_FORM_STEP[0]);
+  const [gifteeName, setGifteeName] = useState<string>('');
+  const [imageUrl, setImageUrl] = useState<string>('');
+  const [deliveryDate, setDeliveryDate] = useState<string>('');
+  const [tournamentStartDate, SetTournamentStartDate] = useState<string>('');
+  const [tournamentDurantion, setTournamentDurantion] = useState<string>('');
 
   return (
     <OnBoardingPageWrapper>
       <Funnel>
         <Funnel.Step name='NAME'>
           <div style={{ margin: '2rem' }}>
-            <NameInput onNext={() => setStep(() => 'THUMBNAIL')} />
+            <NameInput
+              onNext={() => setStep(() => 'THUMBNAIL')}
+              gifteeName={gifteeName}
+              setGifteeName={setGifteeName}
+            />
           </div>
         </Funnel.Step>
         <Funnel.Step name='THUMBNAIL'>
           <div style={{ margin: '2rem' }}>
-            <ThumbnailInput onNext={() => setStep(() => 'PRESENT')} />
+            <ThumbnailInput
+              onNext={() => setStep(() => 'PRESENT')}
+              imageUrl={imageUrl}
+              setImageUrl={setImageUrl}
+            />
           </div>
         </Funnel.Step>
         <Funnel.Step name='PRESENT'>
           <div style={{ margin: '2rem' }}>
-            <GiftDelivery onNext={() => setStep(() => 'TOURNAMENT_SCHEDULE_REGISTRATION')} />
+            <GiftDelivery
+              onNext={() => setStep(() => 'TOURNAMENT_SCHEDULE_REGISTRATION')}
+              deliveryDate={deliveryDate}
+              setDeliveryDate={setDeliveryDate}
+            />
           </div>
         </Funnel.Step>
 
