@@ -27,10 +27,10 @@ const TournamentFlowContainer = ({ randomItems }: TournamentFlowContainerProps) 
         ))}
       </TournamentCardWrapper>
 
-      <button onClick={handleNextClick} disabled={currentIndex >= randomItems.length - 1}>
-        Next
-      </button>
-      <TournamentFooter />
+      <TournamentFooter
+        onNextClick={handleNextClick}
+        disabled={currentIndex >= randomItems.length - 1}
+      />
     </>
   );
 };
