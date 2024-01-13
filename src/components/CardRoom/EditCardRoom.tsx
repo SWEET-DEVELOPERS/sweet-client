@@ -22,7 +22,7 @@ const EditCardRoom = () => {
         <Type2Tag tag='토너먼트 진행 중' />
       </S.TagWrapper>
       <S.SettingWrapper>
-        <IcSettings style={{ width: '2.4rem', height: '2.4rem', stroke: '#686566' }} />
+        <IcSettings style={{ width: '2.4rem', height: '2.4rem' }} />
       </S.SettingWrapper>
     </S.Wrapper>
   );
