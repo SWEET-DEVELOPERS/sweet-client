@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 export const ThumbnailWrapper = styled.div`
   ${({ theme }) => theme.mixin.flexCenter({})}
   background-color: ${({ theme }) => theme.colors.G_01};
@@ -7,4 +6,21 @@ export const ThumbnailWrapper = styled.div`
   height: 24rem;
   margin: 0 auto;
   margin-top: 6.1rem;
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+export const IcEmptyThumbnailWrapper = styled.div`
+  ${({ theme }) =>
+    theme.mixin.flexCenter({ direction: 'column', align: 'center', justify: 'center' })};
+
+  margin-top: 6.1rem;
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
 `;
