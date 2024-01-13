@@ -1,4 +1,3 @@
-import React from 'react';
 import { IcLeft } from '../../../../assets/svg';
 import BtnNext from '../../../common/Button/Next/BtnNext';
 import * as S from './TournamentFooter.style';

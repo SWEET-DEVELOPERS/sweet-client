@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import * as S from './TournamentCard.style';
 import example from '../../../../assets/img/img.png';
 import { IcExternalGray, Logo } from '../../../../assets/svg';
@@ -14,7 +14,6 @@ interface TournamentCardProps {
   };
 }
 
-// Function component without React.FC
 const TournamentCard = ({ item }: TournamentCardProps) => {
   const [isClicked, setIsClicked] = useState(false);
 
@@ -35,7 +34,6 @@ const TournamentCard = ({ item }: TournamentCardProps) => {
         <S.ItemInfo>
           <S.Title>{item.name}</S.Title>
           <PriceTag price={item.cost} />
-          {/* Add logic for the link component if needed */}
         </S.ItemInfo>
       </S.TournamentCardWrapper>
       <S.LinkIconWrapper>

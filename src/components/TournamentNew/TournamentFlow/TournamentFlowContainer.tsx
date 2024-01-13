@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import TournamentCard from './TournamentCard/TournamentCard';
 import { TournamentCardWrapper } from './TournamentFlowContainer.style';
 import TournamentFooter from './TournamentFooter/TournamentFooter';
