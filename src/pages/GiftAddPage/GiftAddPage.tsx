@@ -10,7 +10,7 @@ const GiftAddPage = () => {
 
   switch (step) {
     case 0:
-      return <GiftAddPageLayout />;
+      return <GiftAddPageLayout setStep={setStep} />;
 
     case 1:
       return <GiftAddFirstLinkLayout setStep={setStep} />;
