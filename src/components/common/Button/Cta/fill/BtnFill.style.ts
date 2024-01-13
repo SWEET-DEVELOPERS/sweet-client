@@ -12,5 +12,5 @@ export const Wrapper = styled.button`
   border: none;
   background-color: ${({ theme: { colors } }) => colors.black};
   color: ${({ theme: { colors } }) => colors.white};
-  ${({ theme: { fonts } }) => fonts.body_09}
+  ${({ theme: { fonts } }) => fonts.body_09};
 `;

@@ -22,7 +22,14 @@ const MyPage = () => {
           </S.UserWrapper>
           <BtnLogout customStyle={{ width: '8.4rem', height: '2.6rem' }}>로그아웃</BtnLogout>
         </S.UserButtonWrapper>
-        <BtnFill>새로운 선물 준비하기</BtnFill>
+        <BtnFill
+          customStyle={{
+            width: '30.3rem',
+            height: '5.2rem',
+          }}
+        >
+          새로운 선물 준비하기
+        </BtnFill>
       </S.ProfileWrapper>
       <S.GiftRoomWrapper>
         {giftData ? (
