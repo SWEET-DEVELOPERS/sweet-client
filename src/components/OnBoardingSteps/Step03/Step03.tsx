@@ -10,28 +10,43 @@ import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
 
 interface GiftDeliveryProps {
   onNext: VoidFunction;
+  deliveryDate: string;
+  setDeliveryDate: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const GiftDelivery = (props: GiftDeliveryProps) => {
-  const { onNext } = props;
+  const { onNext, deliveryDate, setDeliveryDate } = props;
 
   const disabledDays = { before: new Date() };
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [isActivated, setIsActivated] = useState<boolean>(false);
+  const time = new Date();
 
   const openCalendar = () => {
     setIsOpen(!isOpen);
   };
 
   const handleDateSelect = (date: Date) => {
+    const padTwoDigits = (value: number) => String(value).padStart(2, '0');
+
+    const formattedDate =
+      format(date, 'y-MM-dd') +
+      'T' +
+      `${padTwoDigits(time.getHours())}:${padTwoDigits(time.getMinutes())}:${padTwoDigits(
+        time.getSeconds(),
+      )}`;
+
     setSelectedDate(date);
     setIsOpen(false);
+    setDeliveryDate(formattedDate);
+    console.log('날짜', formattedDate);
   };
 
   useEffect(() => {
-    selectedDate ? setIsActivated(true) : setIsActivated(false);
-  }, [selectedDate]);
+    deliveryDate ? setIsActivated(true) : setIsActivated(false);
+    // console.log('useEffect 선택된 날짜', deliveryDate);
+  }, [deliveryDate]);
 
   return (
     <>
