@@ -5,7 +5,6 @@ import OnBoardingPage from '../pages/OnBoardingPage';
 import GiftAddPage from '../pages/GiftAddPage/GiftAddPage';
 import TournamentOngoing from '../pages/TournamentOngoing';
 import TournamentPage from '../pages/TournamentPage';
-import GiftAddPage from '../pages/GiftAddPage/GiftAddPage';
 import Start from '../pages/Start/Start';
 import Login from '../components/Login';
 import { createBrowserRouter } from 'react-router-dom';
