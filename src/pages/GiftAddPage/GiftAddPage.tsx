@@ -1,25 +1,32 @@
-import GiftAddButtonsWrapper from '../../components/GiftAdd/GiftAddButtons/GiftAddButtonsWrapper';
-import GiftAddPageBottom from '../../components/GiftAdd/GiftAddPageBottomSection/GiftAddPageBottom';
-import MiniTimer from '../../components/common/MiniTimer/MiniTimer';
-import * as S from './GiftAddPage.styled';
+import { useState } from 'react';
+import GiftAddFirstLinkLayout from '../../components/GiftAdd/AddGiftLink/GiftAddFirstLinkLayout/GiftAddFirstLinkLayout';
+import AddGiftWithLinkLayout from '../../components/GiftAdd/AddGiftLayout/AddGiftWithLinkLayout';
+import AddGiftWithoutLinkLayout from '../../components/GiftAdd/AddGiftLayout/AddGiftWithoutLinkLayout';
+import GiftAddSecondLinkLayout from '../../components/GiftAdd/AddGiftLink/GiftAddSecondLinkLayout/GiftAddSecondLinkLayout';
+import GiftAddPageLayout from '../../components/GiftAdd/GiftAddPageLayout/GiftAddPageLayout';
 
 const GiftAddPage = () => {
-  const isExist = false;
-  const isExist2 = true;
-  const price = 42000;
-  const adPrice = 39000;
+  const [step, setStep] = useState(1);
 
-  return (
-    <S.GiftAddPageWrapper>
-      {/* 헤더 추가 예정 */}
-      <MiniTimer time={'00:00:00'} />
-      <S.AddButtonsWrapper>
-        <GiftAddButtonsWrapper isExist={isExist} price={price} />
-        <GiftAddButtonsWrapper isExist={isExist2} price={price} />
-      </S.AddButtonsWrapper>
-      <GiftAddPageBottom adPrice={adPrice} />
-    </S.GiftAddPageWrapper>
-  );
+  switch (step) {
+    case 0:
+      return (
+        // 내가 등록한 선물 뷰 연결할 예정
+        <GiftAddPageLayout />
+      );
+
+    case 1:
+      return <GiftAddFirstLinkLayout setStep={setStep} />;
+
+    case 2:
+      return <AddGiftWithLinkLayout setStep={setStep} />;
+
+    case 3:
+      return <AddGiftWithoutLinkLayout setStep={setStep} />;
+
+    case 4:
+      return <GiftAddSecondLinkLayout setStep={setStep} />;
+  }
 };
 
 export default GiftAddPage;

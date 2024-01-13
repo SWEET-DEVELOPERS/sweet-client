@@ -59,6 +59,10 @@ const router = createBrowserRouter([
         path: '/tournament',
         element: <TournamentPage />,
       },
+      {
+        path: '/addgift',
+        element: <GiftAddPage />,
+      },
     ],
   },
 ]);

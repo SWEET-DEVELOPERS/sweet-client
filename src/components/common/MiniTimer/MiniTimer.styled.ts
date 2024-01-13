@@ -5,6 +5,7 @@ export const MiniTimerWrapper = styled.div`
   height: 2.7rem;
 
   padding: 0.3rem 1rem;
+  /* margin: 2.2rem 0 1.2rem 0; */
 
   display: flex;
   justify-content: center;

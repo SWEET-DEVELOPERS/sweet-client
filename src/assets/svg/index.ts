@@ -24,6 +24,7 @@ export { default as IcGift } from './IcGift';
 export { default as IcGroup } from './IcGroup';
 export { default as IcImg } from './IcImg';
 export { default as IcImgAdd } from './IcImgAdd';
+export { default as IcImgEditBtn } from './IcImgEditBtn';
 export { default as IcImgShare } from './IcImgShare';
 export { default as IcKakaoShare } from './IcKakaoShare';
 export { default as IcKakaoSmall } from './IcKakaoSmall';
