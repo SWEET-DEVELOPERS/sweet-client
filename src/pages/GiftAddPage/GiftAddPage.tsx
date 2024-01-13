@@ -1,7 +1,25 @@
-// import * as S from './GiftAddPage.styled';
+import GiftAddButtonsWrapper from '../../components/GiftAdd/GiftAddButtons/GiftAddButtonsWrapper';
+import GiftAddPageBottom from '../../components/GiftAdd/GiftAddPageBottomSection/GiftAddPageBottom';
+import MiniTimer from '../../components/common/MiniTimer/MiniTimer';
+import * as S from './GiftAddPage.styled';
 
-// function GiftAddPage() {
-//   return <S.GiftAddPageWrapper></S.GiftAddPageWrapper>;
-// }
+const GiftAddPage = () => {
+  const isExist = false;
+  const isExist2 = true;
+  const price = 42000;
+  const adPrice = 39000;
 
-// export default GiftAddPage;
+  return (
+    <S.GiftAddPageWrapper>
+      {/* 헤더 추가 예정 */}
+      <MiniTimer time={'00:00:00'} />
+      <S.AddButtonsWrapper>
+        <GiftAddButtonsWrapper isExist={isExist} price={price} />
+        <GiftAddButtonsWrapper isExist={isExist2} price={price} />
+      </S.AddButtonsWrapper>
+      <GiftAddPageBottom adPrice={adPrice} />
+    </S.GiftAddPageWrapper>
+  );
+};
+
+export default GiftAddPage;
