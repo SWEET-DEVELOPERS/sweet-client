@@ -3,12 +3,28 @@ import { TournamentCardWrapper } from './TournamentFlowContainer.style';
 import TournamentFooter from './TournamentFooter/TournamentFooter';
 import TournamentTitle from './TournamentTitle/TournamentTitle';
 
-const TournamentFlowContainer = () => {
+interface GiftData {
+  giftId: number;
+  imageUrl: string;
+  name: string;
+  cost: number;
+  url: string;
+}
+
+interface TournamentFlowContainerProps {
+  randomItems: GiftData[];
+}
+
+
+
+const TournamentFlowContainer: React.FC<{ randomItems: GiftData[] }> = ({ randomItems }) => {
   return (
     <>
       <TournamentTitle />
       <TournamentCardWrapper>
-        <TournamentCard /> <TournamentCard />
+        {randomItems.map((item) => (
+          <TournamentCard key={item.giftId} item={item} />
+        ))}
       </TournamentCardWrapper>
       <TournamentFooter />
     </>
