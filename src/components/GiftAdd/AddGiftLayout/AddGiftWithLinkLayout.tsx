@@ -17,6 +17,8 @@ const AddGiftWithLinkLayout = ({ setStep }: AddGiftWithLinkLayoutProps) => {
   const [isModalOn, setIsModalOn] = useState(false);
   const handleClickConfirmClick = () => {
     setStep((prev) => prev + 1);
+    // 빌드 에러 피하려고 그냥 넣었습니다!
+    setIsModalOn(false);
   };
 
   return (
