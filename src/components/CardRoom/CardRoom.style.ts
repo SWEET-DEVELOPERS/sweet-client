@@ -42,8 +42,8 @@ export const TagWrapper = styled.div`
 `;
 
 export const SettingWrapper = styled.div`
-  position: relative;
+  position: absolute;
   left: 12.8rem;
-  top: -15rem;
   z-index: 999;
+  margin-top: 0.8rem;
 `;
