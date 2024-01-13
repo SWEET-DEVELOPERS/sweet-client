@@ -3,11 +3,11 @@
 import styled from 'styled-components';
 import { ONBOARDING_FORM_STEP } from '../core/onboarding';
 import { useFunnel } from '../hooks/useFunnel';
-import NameInput from '../components/OnBoarding/Step01/Step01';
-import ThumbnailInput from '../components/OnBoarding/Step02/Step02';
-import GiftDelivery from '../components/OnBoarding/Step03/Step03';
-import SetTournamentSchedule from '../components/OnBoarding/Step04/Step04';
-import SetTournamentDuration from '../components/OnBoarding/Step05/Step05';
+import NameInput from '../components/OnBoardingSteps/Step01/Step01';
+import ThumbnailInput from '../components/OnBoardingSteps/Step02/Step02';
+import GiftDelivery from '../components/OnBoardingSteps/Step03/Step03';
+import SetTournamentSchedule from '../components/OnBoardingSteps/Step04/Step04';
+import SetTournamentDuration from '../components/OnBoardingSteps/Step05/Step05';
 
 const OnBoardingPage = () => {
   const { Funnel, setStep } = useFunnel(ONBOARDING_FORM_STEP, ONBOARDING_FORM_STEP[0]);
