@@ -2,6 +2,7 @@ import MiniTimer from '../../common/MiniTimer/MiniTimer';
 import * as S from './GiftAddPageLayout.style';
 import GiftAddButtonsWrapper from '../GiftAddButtons/GiftAddButtonsWrapper';
 import GiftAddPageBottom from '../GiftAddPageBottomSection/GiftAddPageBottom';
+import GiftAddPageLayoutHeader from './GiftAddPageLayoutHeader';
 
 const GiftAddPageLayout = () => {
   const isExist = false;
@@ -11,7 +12,7 @@ const GiftAddPageLayout = () => {
 
   return (
     <S.GiftAddPageWrapper>
-      {/* 헤더 추가 예정 */}
+      <GiftAddPageLayoutHeader title={'내가 등록한 선물'} />
       <MiniTimer time={'00:00:00'} />
       <S.AddButtonsWrapper>
         <GiftAddButtonsWrapper isExist={isExist} price={price} />

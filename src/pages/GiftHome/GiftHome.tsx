@@ -55,7 +55,13 @@ export default function GiftHome() {
       <BtnFill
         children={'선물 등록하기'}
         onClick={handleClickBtn}
-        customStyle={{ position: 'fixed', bottom: '0', marginBottom: '2rem' }}
+        customStyle={{
+          position: 'fixed',
+          bottom: '0',
+          marginBottom: '2rem',
+          width: '33.5rem',
+          padding: '1.5rem 8.1rem 1.6rem 8.1rem',
+        }}
       />
     </S.GiftHomeWrapper>
   );
