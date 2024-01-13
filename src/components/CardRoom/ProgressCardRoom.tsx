@@ -3,7 +3,7 @@ import Rectangle from '../../assets/img/Rectangle.png';
 import { IcUser } from '../../assets/svg';
 import Type2Tag from '../IcTag/Type2/Type2';
 
-const CardRoom = () => {
+const ProgressCardRoom = () => {
   const user = '가나다라마바사';
   const userCount = 5;
   return (
@@ -23,4 +23,4 @@ const CardRoom = () => {
   );
 };
 
-export default CardRoom;
+export default ProgressCardRoom;

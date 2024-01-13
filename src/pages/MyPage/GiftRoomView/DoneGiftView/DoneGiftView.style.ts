@@ -5,7 +5,11 @@ export const Wrapper = styled.div`
   width: 100%;
 `;
 
-export const RoomWrapper = styled.div``;
+export const RoomWrapper = styled.div`
+  ${({ theme: { mixin } }) => mixin.flexBox({})};
+  width: 100%;
+  gap: 1.5rem;
+`;
 
 export const NoneRoom = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter({})};

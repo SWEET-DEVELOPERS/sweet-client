@@ -3,10 +3,15 @@ import Rectangle from '../../assets/img/Rectangle.png';
 import { IcSettings, IcUser } from '../../assets/svg';
 import Type2Tag from '../IcTag/Type2/Type2';
 import Type1Tag from '../IcTag/Type1/Type1';
+import { useNavigate } from 'react-router';
 
 const EditCardRoom = () => {
+  const navigate = useNavigate();
   const user = '가나다라마바사';
   const userCount = 5;
+  const handleSettingIcon = () => {
+    navigate('/editpage');
+  };
   return (
     <S.Wrapper>
       <img src={Rectangle} />
@@ -21,7 +26,7 @@ const EditCardRoom = () => {
         <Type1Tag tag='개설자' />
         <Type2Tag tag='토너먼트 진행 중' />
       </S.TagWrapper>
-      <S.SettingWrapper>
+      <S.SettingWrapper onClick={handleSettingIcon}>
         <IcSettings style={{ width: '2.4rem', height: '2.4rem' }} />
       </S.SettingWrapper>
     </S.Wrapper>

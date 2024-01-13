@@ -8,6 +8,7 @@ import Login from '../components/Login';
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../layouts/Layout';
 import MyPage from '../pages/MyPage/MyPage';
+import EditRoom from '../pages/MyPage/EditRoom/EditRoom';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: '/mypage',
         element: <MyPage />,
+      },
+      {
+        path: '/editpage',
+        element: <EditRoom />,
       },
       {
         // 임의로 세부페이지 추가

@@ -1,4 +1,4 @@
-import CardRoom from '../../../../components/CardRoom/CardRoom';
+import CardRoom from '../../../../components/CardRoom/ProgressCardRoom';
 import EditCardRoom from '../../../../components/CardRoom/EditCardRoom';
 import GiftRoomHeader from '../GiftRoomHeader/GiftRoomHeader';
 import * as S from './ProgressGiftView.style';

@@ -51,4 +51,5 @@ export const SettingWrapper = styled.div`
   top: -26rem;
   z-index: 999;
   margin-top: 0.8rem;
+  cursor: pointer;
 `;
