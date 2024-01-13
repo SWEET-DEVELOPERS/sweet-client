@@ -35,14 +35,18 @@ const ItemTextField = ({
         <S.TextField>
           <S.Input type={type} value={text} onChange={onChange} placeholder={placeholderText} />
         </S.TextField>
-        <S.IconField>
-          {text.length > 0 && (
-            <IcCancelCircleFinal
-              style={{ width: '2.4rem', height: '2.4rem' }}
-              onClick={handleBtnClick}
-            />
-          )}
-        </S.IconField>
+        {type === 'number' ? (
+          ''
+        ) : (
+          <S.IconField>
+            {text.length > 0 && (
+              <IcCancelCircleFinal
+                style={{ width: '2.4rem', height: '2.4rem' }}
+                onClick={handleBtnClick}
+              />
+            )}
+          </S.IconField>
+        )}
       </S.Wrapper>
     </S.ItemTextFieldWrapper>
   );
