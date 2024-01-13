@@ -1,6 +1,5 @@
 import { useMobile } from '../hooks/useMobile';
 import { Outlet } from 'react-router-dom';
-import Footer from '../components/common/Footer';
 import Header from '../components/common/Header';
 
 export default function Layout() {
@@ -10,7 +9,6 @@ export default function Layout() {
     <>
       <Header />
       <Outlet />
-      <Footer />
     </>
   );
 }

@@ -3,7 +3,7 @@ import TournamentFlowContainer from '../components/tournament/TournamentFlow/Tou
 const TournamentOngoing = () => {
   return (
     <>
-      <TournamentFlowContainer />
+      <TournamentFlowContainer randomItems={[]} />
     </>
   );
 };
