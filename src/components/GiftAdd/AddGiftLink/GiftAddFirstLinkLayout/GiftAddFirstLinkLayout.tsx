@@ -20,7 +20,7 @@ const GiftAddFirstLinkLayout = ({ setStep }: GiftAddFirstLinkLayoutProps) => {
   return (
     <S.GiftAddLinkLayoutWrapper>
       <LinkAddHeader />
-      <GiftStatusBar registeredGiftNum={1} />
+      <GiftStatusBar registeredGiftNum={1} isMargin={true} />
       <Title title='첫번째 상품의 ' />
       <Title title='판매 링크를 입력해주세요' />
       <InputUrl setIsActivated={setIsActivated} />

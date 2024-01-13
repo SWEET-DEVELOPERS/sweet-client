@@ -3,11 +3,12 @@ import * as S from './GiftStatusBar.styled';
 
 interface GiftStatusBarProps {
   registeredGiftNum: number;
+  isMargin: boolean;
 }
 
-const GiftStatusBar = ({ registeredGiftNum }: GiftStatusBarProps) => {
+const GiftStatusBar = ({ registeredGiftNum, isMargin }: GiftStatusBarProps) => {
   return (
-    <S.GiftStatusBarWrapper>
+    <S.GiftStatusBarWrapper $isMargin={isMargin}>
       <S.GiftsWrapper>
         <IcGift
           style={{

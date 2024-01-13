@@ -20,7 +20,7 @@ const AddGiftWithLinkLayout = ({ setStep }: AddGiftWithLinkLayoutProps) => {
       <S.AddGiftWithLinkHeader>
         <MiniTimer time='00:00:00' />
       </S.AddGiftWithLinkHeader>
-      <GiftStatusBar registeredGiftNum={1} />
+      <GiftStatusBar registeredGiftNum={1} isMargin={false} />
       <S.ThumbnailWrapper>
         <IcImgEditBtn
           style={{
