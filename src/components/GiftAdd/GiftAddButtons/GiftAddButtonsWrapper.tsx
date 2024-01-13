@@ -17,7 +17,7 @@ const GiftAddButtonsWrapper = ({ isExist, price }: GiftAddButtonsProps) => {
         </S.GiftsItemWrapper>
       ) : (
         <S.IcEmptyBoxWrapper>
-          <IcEmptyBox width={159} height={160} />
+          <IcEmptyBox style={{ width: '15.9rem', height: '16rem' }} />
         </S.IcEmptyBoxWrapper>
       )}
     </>
