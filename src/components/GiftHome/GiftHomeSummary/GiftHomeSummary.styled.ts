@@ -4,6 +4,7 @@ export const GiftHomeSummaryWrapper = styled.section`
   width: 100%;
   padding-left: 2rem;
   margin-bottom: 2rem;
+  margin-top: 5.6rem;
 
   display: flex;
   flex-direction: column;
