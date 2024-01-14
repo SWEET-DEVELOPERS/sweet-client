@@ -6,14 +6,11 @@ import GiftAddSecondLinkLayout from '../../components/GiftAdd/AddGiftLink/GiftAd
 import GiftAddPageLayout from '../../components/GiftAdd/GiftAddPageLayout/GiftAddPageLayout';
 
 const GiftAddPage = () => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
 
   switch (step) {
     case 0:
-      return (
-        // 내가 등록한 선물 뷰 연결할 예정
-        <GiftAddPageLayout />
-      );
+      return <GiftAddPageLayout setStep={setStep} />;
 
     case 1:
       return <GiftAddFirstLinkLayout setStep={setStep} />;
