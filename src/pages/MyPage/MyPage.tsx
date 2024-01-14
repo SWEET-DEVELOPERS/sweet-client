@@ -1,4 +1,3 @@
-import { MypageImage } from '../../assets/svg';
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 import BtnLogout from '../../components/common/Button/Logout/BtnLogout';
 import * as S from './MyPage.style';
