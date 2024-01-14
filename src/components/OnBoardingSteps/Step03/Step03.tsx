@@ -27,6 +27,7 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
     setIsOpen(!isOpen);
   };
 
+  //TODO 이거 step04에서도 쓰이니 분리하면 좋겠다
   const handleDateSelect = (date: Date) => {
     const padTwoDigits = (value: number) => String(value).padStart(2, '0');
 
