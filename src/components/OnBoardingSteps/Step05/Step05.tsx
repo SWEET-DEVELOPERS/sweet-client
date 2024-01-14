@@ -8,6 +8,8 @@ import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
 
 interface SetTournamentDurationProps {
   onNext: VoidFunction;
+  tournamentDuration: string;
+  setTournamentDuration: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const SetTournamentDuration = (props: SetTournamentDurationProps) => {
@@ -19,9 +21,23 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     { text: '24시간', dateType: 'nottoday' },
   ];
 
-  const { onNext } = props;
+  const { onNext, tournamentDuration, setTournamentDuration } = props;
 
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+
+  const isToday = (dateType: string): boolean => {
+    const currentDate = new Date();
+    const targetDate = new Date(currentDate);
+
+    if (dateType === 'nottoday') {
+      targetDate.setDate(currentDate.getDate() + 1);
+    }
+
+    const targetDateString = targetDate.toISOString().split('T')[0];
+    const currentDateString = currentDate.toISOString().split('T')[0];
+
+    return targetDateString === currentDateString;
+  };
 
   return (
     <>
@@ -35,7 +51,17 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
       </div>
       <S.SetTournamentDurationWrapper>
         {timeOptions.map((option, index) => (
-          <S.TimeOptionsWrapper>
+          <S.TimeOptionsWrapper key={index}>
+            <S.DetailBox>
+              <S.RadioBox>
+                <S.TimeText>{option.text}</S.TimeText>
+                {isToday(option.dateType) ? (
+                  <S.InTodayDate>{'당일'}</S.InTodayDate>
+                ) : (
+                  <S.NotTodayDate>{'내일'}</S.NotTodayDate>
+                )}
+              </S.RadioBox>
+            </S.DetailBox>
             <BtnRadio
               key={index}
               time={option.text}
