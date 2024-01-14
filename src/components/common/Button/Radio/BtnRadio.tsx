@@ -7,6 +7,7 @@ type BtnRadioProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   period: string;
   customStyle?: React.CSSProperties;
   onClick?: () => void;
+  isSelected?: () => void;
 };
 const BtnRadio = ({ disabled, time, period, customStyle, onClick }: BtnRadioProps) => {
   const [focused, setFocused] = useState(false);
