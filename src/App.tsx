@@ -1,5 +1,4 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { useState } from 'react';
 import { RouterProvider } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import router from './router/Router';
@@ -15,25 +14,16 @@ function App() {
     margin-right: auto;
     position: relative;
   `;
+  const queryClient = new QueryClient();
 
-  const [queryClient] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            refetchOnWindowFocus: false,
-          },
-        },
-      }),
-  );
   return (
     <Wrapper>
-      <QueryClientProvider client={queryClient}>
-        <RecoilRoot>
+      <RecoilRoot>
+        <QueryClientProvider client={queryClient}>
           <RouterProvider router={router} />
           <GlobalStyle />
-        </RecoilRoot>
-      </QueryClientProvider>
+        </QueryClientProvider>
+      </RecoilRoot>
     </Wrapper>
   );
 }

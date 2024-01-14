@@ -5,9 +5,17 @@ import ProfileImage from './ProfileImage/ProfileImage';
 import Rectangle from '../../assets/img/Rectangle.png';
 import DoneGiftView from './GiftRoomView/DoneGiftView/DoneGiftView';
 import ProgressGiftView from './GiftRoomView/ProgressGiftView/ProgressGiftView';
+import { useEffect } from 'react';
+import useGetMyPage from '../../hooks/queries/user/useGetMypage';
 
 const MyPage = () => {
   const giftData: boolean = true;
+  const memberData = useGetMyPage();
+
+  useEffect(() => {
+    console.log(memberData);
+  }, []);
+
   return (
     <S.MyPageWrapper>
       <S.TopImage />
