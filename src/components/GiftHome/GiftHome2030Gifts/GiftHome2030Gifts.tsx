@@ -1,4 +1,5 @@
 import * as S from '../common/GiftHomeShowcase.styled';
+import GiftHomeShowcaseHeader from '../common/GiftHomeShowcaseHeader/GiftHomeShowcaseHeader';
 import GiftHome2030Item from './GiftHome2030Item';
 
 interface GiftHome2030GiftsProps {
@@ -13,7 +14,7 @@ interface GiftHome2030GiftsProps {
 export default function GiftHome2030Gifts({ data }: GiftHome2030GiftsProps) {
   return (
     <S.GiftHomeShowcaseWrapper>
-      {/* 공통 헤더 넣을 예정 */}
+      <GiftHomeShowcaseHeader title={'요즘 2030이 주목하는 선물'} />
       {data.length > 0 ? (
         <S.GiftsWrapper>
           {data.map((gift, index) => (
