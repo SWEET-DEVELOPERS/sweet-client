@@ -1,3 +1,4 @@
+import { createBrowserRouter } from 'react-router-dom';
 import Mypage from '../pages/Mypage';
 import Layout from '../layouts/Layout';
 import GiftHome from '../pages/GiftHome/GiftHome';
@@ -8,8 +9,7 @@ import TournamentOngoing from '../pages/TournamentOngoing';
 import TournamentPage from '../pages/TournamentPage';
 import Start from '../pages/Start/Start';
 import Login from '../components/Login';
-import { createBrowserRouter } from 'react-router-dom';
-import GiftAddPage from '../pages/GiftAddPage/GiftAddPage';
+import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
 
 const router = createBrowserRouter([
   {
