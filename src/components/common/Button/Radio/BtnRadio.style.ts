@@ -1,6 +1,11 @@
+import { ButtonHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-export const Wrapper = styled.button`
+type WrapperProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  isSelected?: boolean;
+};
+
+export const Wrapper = styled.button<WrapperProps>`
   ${({ theme: { mixin } }) => mixin.flexBox({ align: 'center' })}
 
   width: 33.5rem;
