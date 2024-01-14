@@ -42,3 +42,7 @@ export const Container = styled.div<{ hasContent: boolean }>`
       border-bottom: 0.1rem solid ${({ theme }) => theme.colors.P_06};
     `}
 `;
+
+export const TimeInput = styled.input<{ isOpen: boolean }>`
+  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+`;
