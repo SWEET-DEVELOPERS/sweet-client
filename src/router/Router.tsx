@@ -1,7 +1,3 @@
-import { createBrowserRouter } from 'react-router-dom';
-import Mypage from '../pages/Mypage';
-import Layout from '../layouts/Layout';
-import GiftHome from '../pages/GiftHome/GiftHome';
 import GiftHomeDetailFriends from '../pages/GiftHomeDetail/GiftHomeDetailFriends';
 import GiftHomeDetail2030 from '../pages/GiftHomeDetail/GiftHomeDetail2030';
 import OnBoardingPage from '../pages/OnBoardingPage';
@@ -9,6 +5,13 @@ import TournamentOngoing from '../pages/TournamentOngoing';
 import TournamentPage from '../pages/TournamentPage';
 import Start from '../pages/Start/Start';
 import Login from '../components/Login';
+import { createBrowserRouter } from 'react-router-dom';
+import Layout from '../layouts/Layout';
+import MyPage from '../pages/MyPage/MyPage';
+import EditRoom from '../pages/MyPage/EditRoom/EditRoom';
+import DetailProgressRoom from '../pages/MyPage/Detail/DetailProgressRoom/DetailProgressRoom';
+import DetailDoneRoom from '../pages/MyPage/Detail/DetailDoneRoom/DetailDoneRoom';
+import GiftHome from '../pages/GiftHome/GiftHome';
 import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
 
 const router = createBrowserRouter([
@@ -26,7 +29,19 @@ const router = createBrowserRouter([
       },
       {
         path: '/mypage',
-        element: <Mypage />,
+        element: <MyPage />,
+      },
+      {
+        path: '/editpage',
+        element: <EditRoom />,
+      },
+      {
+        path: '/detail-progress',
+        element: <DetailProgressRoom />,
+      },
+      {
+        path: '/detail-done',
+        element: <DetailDoneRoom />,
       },
       {
         // 임의로 선물방 홈 페이지 연결

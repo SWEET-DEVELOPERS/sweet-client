@@ -8,7 +8,8 @@ export const Wrapper = styled.button`
   border-radius: 1.6rem;
 
   background-color: ${({ theme: { colors } }) => colors.G_01};
-  border-color: ${({ theme: { colors } }) => colors.G_02};
+  border: 1px solid ${({ theme: { colors } }) => colors.G_02};
   color: ${({ theme: { colors } }) => colors.G_08};
-  ${({ theme: { fonts } }) => fonts.caption_02}
+
+  ${({ theme: { fonts } }) => fonts.caption_02};
 `;
