@@ -2,7 +2,7 @@ import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
 import { IcUnselectedCalender, IcUnselectedClock } from '../../../assets/svg';
 import * as S from './Step04.style';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DayPicker } from 'react-day-picker';
 import { format } from 'date-fns';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
@@ -10,14 +10,17 @@ import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
 
 interface SetTournamentScheduleProps {
   onNext: VoidFunction;
+  tournamentStartDate: string;
+  setTournamentStartDate: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
   // TODO 인풋창 클릭 시 캘린더 & 시간 선택 창 구현
-  const { onNext } = props;
+  const { onNext, tournamentStartDate, setTournamentStartDate } = props;
   const disabledDays = { before: new Date() };
   const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedTime, setSelectedTime] = useState<string>('');
   const [isTimerOpen, setIsTimerOpen] = useState<boolean>(false);
 
   const openCalendar = () => {
@@ -31,7 +34,21 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
   const handleDateSelect = (date: Date) => {
     setSelectedDate(date);
     setIsCalendarOpen(false);
+    setTournamentStartDate(format(date, "yyyy-mm-dd'T'HH:mm:ss"));
   };
+
+  const handleTimerSelect = (selectedTime: string) => {
+    setSelectedTime(selectedTime);
+    const currentDate = selectedDate || new Date();
+    setTournamentStartDate(
+      format(new Date(`${currentDate.toDateString()} ${selectedTime}`), "yyyy-MM-dd'T'HH:mm:ss"),
+    );
+  };
+
+  useEffect(() => {
+    console.log('step04 날짜 선택', tournamentStartDate);
+    console.log(setSelectedDate !== null);
+  }, [tournamentStartDate]);
 
   return (
     <>
@@ -67,9 +84,15 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
           disabled={disabledDays}
         />
       )}
+
+      {/* 여기서부터 타이머 */}
       <S.Container hasContent={isTimerOpen}>
         <S.TextField>
-          <S.Input placeholder='시작 시간을 선택해주세요' />
+          <S.Input
+            placeholder='시작 시간을 선택해주세요'
+            value={selectedTime}
+            onChange={(e) => setSelectedTime(e.target.value)}
+          />
         </S.TextField>
         <S.IconField>
           <input type='time' style={{ display: 'none' }} id='timeInput' onClick={openTimer} />
@@ -78,11 +101,13 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
               style={{ width: '2.4rem', height: '2.4rem', position: 'relative' }}
             />
           </label>
-          {isTimerOpen && <input id='timeInput' type='time' />}
+          {isTimerOpen && (
+            <input id='timeInput' type='time' onChange={(e) => handleTimerSelect(e.target.value)} />
+          )}
         </S.IconField>
       </S.Container>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <OnBoardingBtn isActivated={isCalendarOpen && isTimerOpen} setStep={onNext}>
+        <OnBoardingBtn isActivated={selectedDate !== null && selectedTime !== ''} setStep={onNext}>
           다음
         </OnBoardingBtn>
       </div>
