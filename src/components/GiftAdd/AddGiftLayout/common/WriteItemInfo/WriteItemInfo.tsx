@@ -12,8 +12,10 @@ const WriteItemInfo = ({ setIsActivated, isLink }: WriteItemInfoProps) => {
   const [priceText, setPriceText] = useState<string>('');
   const [linkText, setLinkText] = useState<string>('');
 
+  const isValid = nameText.length > 0 && priceText.length > 0;
+
   const handleSetIsActivated = () => {
-    if (nameText.length > 0 && priceText.length > 0) {
+    if (isValid) {
       setIsActivated(true);
     } else {
       setIsActivated(false);
