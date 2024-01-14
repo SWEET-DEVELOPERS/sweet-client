@@ -9,7 +9,7 @@ import ProgressGiftView from './GiftRoomView/ProgressGiftView/ProgressGiftView';
 const MyPage = () => {
   const giftData: boolean = true;
   return (
-    <S.Wrapper>
+    <S.MyPageWrapper>
       <S.TopImage />
       <S.ProfileWrapper>
         <S.UserButtonWrapper>
@@ -40,7 +40,7 @@ const MyPage = () => {
           <S.NoneText> 아직 선물방이 없어요</S.NoneText>
         )}
       </S.GiftRoomWrapper>
-    </S.Wrapper>
+    </S.MyPageWrapper>
   );
 };
 

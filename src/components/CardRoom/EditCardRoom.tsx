@@ -13,7 +13,7 @@ const EditCardRoom = () => {
     navigate('/editpage');
   };
   return (
-    <S.Wrapper>
+    <S.CardRoomWrapper>
       <img src={Rectangle} />
       <S.Text>
         <S.User>{user}님</S.User>을 위한 선물방
@@ -29,7 +29,7 @@ const EditCardRoom = () => {
       <S.SettingWrapper onClick={handleSettingIcon}>
         <IcSettings style={{ width: '2.4rem', height: '2.4rem' }} />
       </S.SettingWrapper>
-    </S.Wrapper>
+    </S.CardRoomWrapper>
   );
 };
 

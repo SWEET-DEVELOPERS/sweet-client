@@ -5,7 +5,7 @@ interface ProfileImageProps {
 }
 
 const ProfileImage = ({ image }: ProfileImageProps) => {
-  return <S.Wrapper src={image} />;
+  return <S.ProfileImageWrapper src={image} />;
 };
 
 export default ProfileImage;

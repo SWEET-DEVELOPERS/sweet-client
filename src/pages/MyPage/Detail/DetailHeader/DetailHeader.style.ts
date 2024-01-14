@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const DetailHeaderWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ align: 'center', justify: 'space-between' })};
   width: 37.5rem;
   height: 5.6rem;
