@@ -1,4 +1,6 @@
 import Mypage from '../pages/Mypage';
+import Layout from '../layouts/Layout';
+import GiftHome from '../pages/GiftHome/GiftHome';
 import GiftHomeDetailFriends from '../pages/GiftHomeDetail/GiftHomeDetailFriends';
 import GiftHomeDetail2030 from '../pages/GiftHomeDetail/GiftHomeDetail2030';
 import OnBoardingPage from '../pages/OnBoardingPage';
@@ -8,7 +10,6 @@ import TournamentPage from '../pages/TournamentPage';
 import Start from '../pages/Start/Start';
 import Login from '../components/Login';
 import { createBrowserRouter } from 'react-router-dom';
-import Layout from '../layouts/Layout';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
       {
         path: '/mypage',
         element: <Mypage />,
+      },
+      {
+        // 임의로 선물방 홈 페이지 연결
+        path: '/gifthome',
+        element: <GiftHome />,
       },
       {
         // 임의로 세부페이지 추가
@@ -52,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: '/tournament',
         element: <TournamentPage />,
+      },
+      {
+        path: '/addgift',
+        element: <GiftAddPage />,
       },
     ],
   },

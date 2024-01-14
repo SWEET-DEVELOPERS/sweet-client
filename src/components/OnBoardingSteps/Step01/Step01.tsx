@@ -2,7 +2,8 @@ import { useState } from 'react';
 import Title from '../../common/title/Title';
 import * as S from './Step01.style';
 import { IcCancelCircleFinal } from '../../../assets/svg';
-import BtnNext from '../../common/Button/Next/BtnNext';
+import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
+import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
 
 interface NameInputProps {
   onNext: VoidFunction;
@@ -12,7 +13,7 @@ const NameInput = (props: NameInputProps) => {
   const { onNext } = props;
   const [text, setText] = useState<string>('');
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     const unicodeChars = [...inputValue].filter((char) => /[\ud800-\udfff]/.test(char)).length;
 
@@ -25,6 +26,7 @@ const NameInput = (props: NameInputProps) => {
 
   return (
     <>
+      <OnBoardingHeader step={1} />
       <Title title='선물 받을 분의' />
       <Title title='이름, 혹은 닉네임을 알려주세요' />
       <S.Wrapper hasContent={text.length > 0} maxLengthReached={text.length === 10}>
@@ -32,7 +34,7 @@ const NameInput = (props: NameInputProps) => {
           <S.Input
             type='text'
             value={text}
-            onChange={onChange}
+            onChange={handleInputChange}
             maxLength={10}
             placeholder='이름을 입력해주세요'
           />
@@ -48,16 +50,9 @@ const NameInput = (props: NameInputProps) => {
       </S.Wrapper>
       <S.LetterLength>({text.length}/10)</S.LetterLength>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <BtnNext
-          type='button'
-          onClick={onNext}
-          customStyle={{
-            position: 'absolute',
-            bottom: '0',
-          }}
-        >
+        <OnBoardingBtn isActivated={text.length > 0} setStep={onNext}>
           다음
-        </BtnNext>
+        </OnBoardingBtn>
       </div>
     </>
   );

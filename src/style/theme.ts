@@ -166,6 +166,12 @@ const fonts = {
     font-weight: 400;
     line-height: 150%;
   `,
+  timer_01: css`
+    font-family: 'SUIT';
+    font-size: 2.8rem;
+    font-style: normal;
+    font-weight: 600;
+  `,
   suit: css`
     font-family: 'SUIT';
     font-size: 1rem;
