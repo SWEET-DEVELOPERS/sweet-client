@@ -70,6 +70,7 @@ const OnBoardingPage = () => {
               onNext={() => setStep(() => 'GIFT_ROOM_FIX')}
               tournamentDuration={tournamentDuration}
               setTournamentDuration={setTournamentDuration}
+              tournamentStartDate={tournamentStartDate}
             />
           </div>
         </Funnel.Step>
