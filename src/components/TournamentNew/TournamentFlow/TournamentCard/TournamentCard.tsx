@@ -1,30 +1,24 @@
-import { useState } from 'react';
 import * as S from './TournamentCard.style';
 import example from '../../../../assets/img/img.png';
 import { IcExternalGray, Logo } from '../../../../assets/svg';
 import PriceTag from '../../../common/title/Price/PriceTag';
+import { GiftData } from '../../../../core/mockupData';
 
 interface TournamentCardProps {
-  item: {
-    giftId: number;
-    imageUrl: string;
-    name: string;
-    cost: number;
-    url: string;
-  };
+  item: GiftData;
+  onClick: () => void;
+  selected: boolean;
 }
 
-const TournamentCard = ({ item }: TournamentCardProps) => {
-  const [isClicked, setIsClicked] = useState(false);
-
+const TournamentCard: React.FC<TournamentCardProps> = ({ item, onClick, selected }) => {
   const handleClick = () => {
-    setIsClicked(!isClicked);
+    onClick();
   };
 
   return (
     <S.Wrapper>
-      <S.TournamentCardWrapper isClicked={isClicked} onClick={handleClick}>
-        <S.SelectWrapper isClicked={isClicked}>
+      <S.TournamentCardWrapper isClicked={selected} onClick={handleClick}>
+        <S.SelectWrapper isClicked={selected}>
           <Logo />
         </S.SelectWrapper>
         <S.TournamentImgWrapper>
