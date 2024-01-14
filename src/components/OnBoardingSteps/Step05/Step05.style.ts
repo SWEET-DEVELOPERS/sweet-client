@@ -7,8 +7,7 @@ export const SetTournamentDurationWrapper = styled.div`
 `;
 
 export const DetailBox = styled.div`
-  ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'center' })};
-  justify-content: space-between;
+  ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'space-between' })};
   padding: 2rem;
   width: 100%;
   height: 5.6rem;
