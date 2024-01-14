@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const GiftHomeShowcaseWrapper = styled.section`
   width: 100%;
   padding: 0.6rem 0 0.6rem 2rem;
+  margin-bottom: 7.2rem;
 `;
 
 export const NoGiftsWrapper = styled.div`

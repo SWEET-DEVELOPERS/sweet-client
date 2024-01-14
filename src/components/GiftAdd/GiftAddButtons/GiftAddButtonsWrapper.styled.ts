@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const GiftsItemWrapper = styled.div`
+  position: relative;
   width: 15.8rem;
   padding: 0;
   margin-top: 2.8rem;
