@@ -5,11 +5,13 @@ import Title from '../../common/title/Title';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import * as S from './Step05.style';
 import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
+import { addHours, isSameDay } from 'date-fns';
 
 interface SetTournamentDurationProps {
   onNext: VoidFunction;
   tournamentDuration: string;
   setTournamentDuration: React.Dispatch<React.SetStateAction<string>>;
+  tournamentStartDate: string;
 }
 
 const SetTournamentDuration = (props: SetTournamentDurationProps) => {
@@ -21,22 +23,24 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     { text: '24시간', dateType: 'nottoday' },
   ];
 
-  const { onNext, tournamentDuration, setTournamentDuration } = props;
+  const { onNext, tournamentDuration, setTournamentDuration, tournamentStartDate } = props;
 
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedTime, setSelectedTime] = useState<string>('');
 
-  const isToday = (dateType: string): boolean => {
-    const currentDate = new Date();
-    const targetDate = new Date(currentDate);
+  console.log('기존 step04에서 가지고 온 날짜와 시간을 step05에서 사용', tournamentStartDate);
 
-    if (dateType === 'nottoday') {
-      targetDate.setDate(currentDate.getDate() + 1);
-    }
+  const checkDateType = (duration: number) => {
+    const endDate = addHours(new Date(tournamentStartDate), duration);
 
-    const targetDateString = targetDate.toISOString().split('T')[0];
-    const currentDateString = currentDate.toISOString().split('T')[0];
+    return isSameDay(new Date(), endDate) ? 'today' : 'nottoday';
+  };
 
-    return targetDateString === currentDateString;
+  const handleTimeSelect = (time: string) => {
+    // 현재 선택된 날짜와 시간에 6시간을 더한 값을 콘솔에 출력
+    const updatedTime = new Date(tournamentStartDate);
+    updatedTime.setHours(updatedTime.getHours() + parseInt(time.split('시간')[0]));
+    console.log(`선택된 시간: ${tournamentStartDate} + ${time}:`, updatedTime);
   };
 
   return (
@@ -51,27 +55,19 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
       </div>
       <S.SetTournamentDurationWrapper>
         {timeOptions.map((option, index) => (
-          <S.TimeOptionsWrapper key={index}>
-            <S.DetailBox>
-              <S.RadioBox>
-                <S.TimeText>{option.text}</S.TimeText>
-                {isToday(option.dateType) ? (
-                  <S.InTodayDate>{'당일'}</S.InTodayDate>
-                ) : (
-                  <S.NotTodayDate>{'내일'}</S.NotTodayDate>
-                )}
-              </S.RadioBox>
-            </S.DetailBox>
+          <S.TimeOptionsWrapper>
             <BtnRadio
               key={index}
               time={option.text}
               period={option.dateType}
               isSelected={() => selectedOption === option.text}
               onClick={() => setSelectedOption(option.text)}
+              onTimeSelect={handleTimeSelect}
             />
           </S.TimeOptionsWrapper>
         ))}
       </S.SetTournamentDurationWrapper>
+
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <OnBoardingBtn isActivated={selectedOption !== null} setStep={onNext}>
           다음
