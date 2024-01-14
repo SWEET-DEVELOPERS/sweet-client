@@ -24,6 +24,7 @@ const OnBoardingPage = () => {
       <Funnel>
         <Funnel.Step name='NAME'>
           <div style={{ margin: '2rem' }}>
+            {/* step01 */}
             <NameInput
               onNext={() => setStep(() => 'THUMBNAIL')}
               gifteeName={gifteeName}
@@ -33,6 +34,7 @@ const OnBoardingPage = () => {
         </Funnel.Step>
         <Funnel.Step name='THUMBNAIL'>
           <div style={{ margin: '2rem' }}>
+            {/* step02 */}
             <ThumbnailInput
               onNext={() => setStep(() => 'PRESENT')}
               imageUrl={imageUrl}
@@ -42,6 +44,7 @@ const OnBoardingPage = () => {
         </Funnel.Step>
         <Funnel.Step name='PRESENT'>
           <div style={{ margin: '2rem' }}>
+            {/* step03 */}
             <GiftDelivery
               onNext={() => setStep(() => 'TOURNAMENT_SCHEDULE_REGISTRATION')}
               deliveryDate={deliveryDate}
@@ -52,11 +55,17 @@ const OnBoardingPage = () => {
 
         <Funnel.Step name='TOURNAMENT_SCHEDULE_REGISTRATION'>
           <div style={{ margin: '2rem' }}>
-            <SetTournamentSchedule onNext={() => setStep(() => 'TOURNAMENT_PROCEEDING')} />
+            {/* step04 */}
+            <SetTournamentSchedule
+              onNext={() => setStep(() => 'TOURNAMENT_PROCEEDING')}
+              tournamentStartDate={tournamentStartDate}
+              setTournamentStartDate={setTournamentStartDate}
+            />
           </div>
         </Funnel.Step>
         <Funnel.Step name='TOURNAMENT_PROCEEDING'>
           <div style={{ margin: '2rem' }}>
+            {/* step05 */}
             <SetTournamentDuration
               onNext={() => setStep(() => 'GIFT_ROOM_FIX')}
               tournamentDuration={tournamentDuration}
@@ -65,6 +74,7 @@ const OnBoardingPage = () => {
           </div>
         </Funnel.Step>
         <Funnel.Step name='GIFT_ROOM_FIX'>
+          {/* step06 여기서 post */}
           <OnboardingFinal />
         </Funnel.Step>
       </Funnel>
