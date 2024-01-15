@@ -1,56 +1,142 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import * as S from './TournamentFlowContainer.style';
 import TournamentCard from './TournamentCard/TournamentCard';
-import TournamentFooter from './TournamentFooter/TournamentFooter';
 import TournamentTitle from './TournamentTitle/TournamentTitle';
-import { GiftData } from '../../../core/mockupData';
-import { TournamentCardWrapper } from './TournamentFlowContainer.style';
+import TournamentFooter from './TournamentFooter/TournamentFooter';
+import TournamentResult from '../TournamentResult/TournamentResult';
 
-interface TournamentFlowContainerProps {
-  randomItems: GiftData[][];
+interface GiftData {
+  giftId: number;
+  imageUrl: string;
+  name: string;
+  cost: number;
+  url: string;
 }
 
-const TournamentFlowContainer = ({ randomItems }: TournamentFlowContainerProps) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedItems, setSelectedItems] = useState<GiftData[]>([]);
+const TournamentFlowContainer: React.FC = () => {
+  const items: GiftData[] = [
+    {
+      giftId: 1,
+      imageUrl: '../assets/img/img.png',
+      name: 'Gift 1',
+      cost: 20,
+      url: 'https://example.com',
+    },
+    {
+      giftId: 2,
+      imageUrl: '../assets/img/img.png',
+      name: 'Gift 2',
+      cost: 30,
+      url: 'https://example.com',
+    },
+    {
+      giftId: 3,
+      imageUrl: '../assets/img/img.png',
+      name: 'Gift 3',
+      cost: 22,
+      url: 'https://example.com',
+    },
+    {
+      giftId: 4,
+      imageUrl: '../assets/img/img.png',
+      name: 'Gift 4',
+      cost: 22,
+      url: 'https://example.com',
+    },
+    {
+      giftId: 5,
+      imageUrl: '../assets/img/img.png',
+      name: 'Gift 5',
+      cost: 22,
+      url: 'https://example.com',
+    },
+    {
+      giftId: 6,
+      imageUrl: '../assets/img/img.png',
+      name: 'Gift 6',
+      cost: 22,
+      url: 'https://example.com',
+    },
+    {
+      giftId: 7,
+      imageUrl: '../assets/img/img.png',
+      name: 'Gift 7',
+      cost: 22,
+      url: 'https://example.com',
+    },
+    {
+      giftId: 8,
+      imageUrl: '../assets/img/img.png',
+      name: 'Gift 8',
+      cost: 22,
+      url: 'https://example.com',
+    },
+  ];
 
-  const currentSet = randomItems[currentIndex];
+  const [itemPick, setitemPick] = useState<GiftData[]>([]);
+  const [displays, setDisplays] = useState<GiftData[]>([]);
+  //선택된 아이템 저장
+  const [winners, setWinners] = useState<GiftData[]>([]);
+  // 최신 인덱스
+  const [currentIndex, setCurrentIndex] = useState<number>(1);
+  const [roundIndex, setRoundIndex] = useState<number>(1);
 
-  const handleNextClick = () => {
-    setCurrentIndex((prevIndex) => prevIndex + 1);
-    setSelectedItems([]);
-  };
+  useEffect(() => {
+    // 초기 아이템 섞기
+    items.sort(() => Math.random() - 0.5);
+    setitemPick([...items]);
+    //첫번째와 두번째를 보여준다.
+    setDisplays([items[0], items[1]]);
+  }, []);
+  //
+  const [showTournamentResult, setShowTournamentResult] = useState(false);
 
-  const handleCardClick = (index: number) => {
-    setSelectedItems((prevItems) => {
-      const foundItem = prevItems.find((item) => item.giftId === currentSet[index].giftId);
-      if (foundItem) {
-        return prevItems.filter((item) => item.giftId !== foundItem.giftId);
+  const clickHandler = (item: GiftData) => () => {
+    if (itemPick.length <= 2) {
+      if (winners.length === 0) {
+        setDisplays([item]);
+
+        setShowTournamentResult(true);
+        console.log('결과?');
       } else {
-        return [...prevItems, currentSet[index]];
+        let updateditem = [...winners, item];
+        setitemPick([...updateditem]);
+        setDisplays([updateditem[0], updateditem[1]]);
+        setWinners([]);
+        setCurrentIndex(1);
+        setRoundIndex((roundIndex) => roundIndex + 1);
+        console.log('라운드');
       }
-    });
+    } else if (itemPick.length > 2) {
+      setWinners([...winners, item]);
+      setDisplays([itemPick[2], itemPick[3]]);
+      setitemPick([...itemPick.slice(2)]);
+      setCurrentIndex((prevIndex) => prevIndex + 1);
+      console.log('변햇다!');
+    }
   };
 
-  console.log(selectedItems);//이게 선택한 아이템 하나
-  console.log(currentSet);//렌더링 되는 두개의 아이템
+  const footerClickHandler = () => {};
+
   return (
     <>
-      <TournamentTitle />
-      <TournamentCardWrapper>
-        {currentSet.flat().map((item, index) => (
-          <TournamentCard
-            key={index}
-            item={item}
-            onClick={() => handleCardClick(index)}
-            selected={selectedItems.includes(item)}
+      {showTournamentResult ? (
+        <TournamentResult winners={winners} />
+      ) : (
+        <>
+          <TournamentTitle
+            rounds={roundIndex}
+            currentIndex={currentIndex}
+            totalRounds={items.length}
           />
-        ))}
-      </TournamentCardWrapper>
-
-      <TournamentFooter
-        onNextClick={handleNextClick}
-        disabled={currentIndex >= randomItems.length - 1}
-      />
+          <S.TournamentCardWrapper>
+            {displays.map((d) => (
+              <TournamentCard key={d.name} item={d} onClick={clickHandler(d)} selected={true} />
+            ))}
+          </S.TournamentCardWrapper>
+          <TournamentFooter onNextClick={footerClickHandler} disabled={false} />
+        </>
+      )}
     </>
   );
 };
