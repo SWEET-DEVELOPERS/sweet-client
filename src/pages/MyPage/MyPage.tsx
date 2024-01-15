@@ -4,7 +4,7 @@ import ProfileImage from './ProfileImage/ProfileImage';
 import Rectangle from '../../assets/img/Rectangle.png';
 import DoneGiftView from './GiftRoomView/DoneGiftView/DoneGiftView';
 import ProgressGiftView from './GiftRoomView/ProgressGiftView/ProgressGiftView';
-import useGetMyPage from '../../hooks/queries/user/useGetMypage';
+import useGetMyPage from '../../hooks/queries/member/useGetMypage';
 import * as S from './MyPage.style';
 
 const MyPage = () => {
