@@ -8,14 +8,16 @@ interface RoomInfoResponse extends Response {
   data: RoomInfoType;
 }
 
-export const fetchRoomInfo = (roomId: number): Promise<RoomInfoResponse> => get(`/room/${roomId}`);
+export const fetchRoomInfo = async (roomId: number): Promise<RoomInfoResponse> =>
+  get(`/room/${roomId}`);
 
-export function useGetRoomInfo({ roomId }: { roomId: number }) {
-  const { data, isLoading } = useQuery(
-    [GET_ROOM_INFO_QUERY_KEY, roomId],
-    () => fetchRoomInfo(roomId).then((res) => res.data),
-    { enabled: Boolean(roomId) },
-  );
+const useGetRoomInfo = ({ roomId }: { roomId: number }) => {
+  const { data, isLoading, isError } = useQuery({
+    queryKey: [GET_ROOM_INFO_QUERY_KEY, roomId],
+    queryFn: () => fetchRoomInfo(roomId),
+  });
 
-  return { data, isLoading };
-}
+  return { data, isLoading, isError };
+};
+
+export default useGetRoomInfo;
