@@ -1,4 +1,4 @@
-import { IcBookmark, IcCancelCircle, IcCancelCircleFinal, IcEmptyBox } from '../../../assets/svg';
+import { IcBookmark, IcCancelCircleFinal, IcEmptyBox } from '../../../assets/svg';
 import * as S from './GiftAddButtonsWrapper.styled';
 
 interface GiftAddButtonsProps {
