@@ -13,7 +13,7 @@ interface AddGiftWithLinkLayoutProps {
 }
 
 const AddGiftWithLinkLayout = ({ setStep }: AddGiftWithLinkLayoutProps) => {
-  const [isActivated, setIsActivated] = useState(true);
+  const [isActivated, setIsActivated] = useState(false);
   const [isModalOn, setIsModalOn] = useState(false);
 
   // 서버 통신으로 받은 시간 기준으로 미니 타이머 로직

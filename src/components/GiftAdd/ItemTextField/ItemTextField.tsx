@@ -1,11 +1,9 @@
 import * as S from './ItemTextField.styled';
 import IcCancelCircleFinal from '../../../assets/svg/IcCancelCircleFinal';
-import { SetStateAction } from 'react';
 
 interface ItemTextFieldProps {
   text: string;
-  setText: React.Dispatch<SetStateAction<string>>;
-  handleSetIsActivated: VoidFunction;
+  handleTextChange: (newText: string) => void;
   type: string;
   categoryTitle: string;
   placeholderText: string;
@@ -13,20 +11,18 @@ interface ItemTextFieldProps {
 
 const ItemTextField = ({
   text,
-  setText,
-  handleSetIsActivated,
+  handleTextChange,
   type,
   categoryTitle,
   placeholderText,
 }: ItemTextFieldProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
-    setText(inputValue);
-    handleSetIsActivated();
+    handleTextChange(inputValue);
   };
 
   const handleBtnClick = () => {
-    setText('');
+    handleTextChange('');
   };
 
   return (
