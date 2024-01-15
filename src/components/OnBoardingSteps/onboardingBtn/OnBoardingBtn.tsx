@@ -1,3 +1,4 @@
+import { CSSProperties } from 'styled-components';
 import IcRight from '../../../assets/svg/IcRight';
 import * as S from './OnBoardingBtn.style';
 
@@ -5,6 +6,7 @@ interface OnBoardingBtnProps {
   children: React.ReactNode;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   isActivated: boolean;
+  customStyle?: CSSProperties;
 }
 const OnBoardingBtn = ({ children, setStep, isActivated }: OnBoardingBtnProps) => {
   const onClick = () => {

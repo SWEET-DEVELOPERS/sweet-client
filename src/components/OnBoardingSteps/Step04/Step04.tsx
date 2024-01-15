@@ -62,7 +62,7 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
           <SubTitle subTitle='토너먼트 시작 전까지 선물을 등록할 수 있어요.' />
         </div>
       </div>
-      <S.SetTournamentScheduleWrapper hasContent={isCalendarOpen}>
+      <S.SetTournamentScheduleWrapper $hasContent={isCalendarOpen}>
         <S.TextField>
           <S.Input
             placeholder='날짜를 선택해주세요'
@@ -86,7 +86,7 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
       )}
 
       {/* 여기서부터 타이머 */}
-      <S.Container hasContent={isTimerOpen}>
+      <S.Container $hasContent={isTimerOpen}>
         <S.TextField>
           <S.Input
             placeholder='시작 시간을 선택해주세요'

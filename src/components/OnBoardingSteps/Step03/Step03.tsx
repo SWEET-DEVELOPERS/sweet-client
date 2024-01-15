@@ -56,7 +56,7 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
       <Title userName='시동훈' title='님께' />
       <Title title='언제 선물을' />
       <Title title='전달하실 예정인가요?' />
-      <S.Wrapper hasContent={isOpen}>
+      <S.Wrapper $hasContent={isOpen}>
         <S.TextField>
           <S.Input
             placeholder='날짜를 선택해주세요'

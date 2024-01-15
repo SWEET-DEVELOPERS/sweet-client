@@ -31,7 +31,7 @@ const NameInput = (props: NameInputProps) => {
       <OnBoardingHeader step={1} />
       <Title title='선물 받을 분의' />
       <Title title='이름, 혹은 닉네임을 알려주세요' />
-      <S.Wrapper hasContent={gifteeName.length > 0} maxLengthReached={gifteeName.length === 10}>
+      <S.Wrapper $hasContent={gifteeName.length > 0} $maxLengthReached={gifteeName.length === 10}>
         <S.TextField>
           <S.Input
             type='text'
