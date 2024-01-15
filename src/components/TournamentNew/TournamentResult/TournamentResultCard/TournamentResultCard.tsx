@@ -1,7 +1,15 @@
 import exampleItemImg from '../../../../assets/img/Rectangle.png';
+import { GiftData } from '../../../../core/mockupData';
 import PriceTag from '../../../common/title/Price/PriceTag';
 import * as S from './TournamentResultCard.style';
-const TournamentResultCard = () => {
+
+interface TournamentResultCardProps {
+  item: GiftData | null;
+}
+const TournamentResultCard: React.FC<TournamentResultCardProps> = ({ item }) => {
+  if (!item) {
+    return <div>Item not available</div>;
+  }
   return (
     <>
       <S.TournamentCardWrapper>
@@ -10,8 +18,8 @@ const TournamentResultCard = () => {
         </S.TournamentImgWrapper>
 
         <S.ItemInfo>
-          <S.Title>임영웅 콘서트 Gold열 임영웅 콘서트 Gold열</S.Title>
-          <PriceTag price={8130000} />
+          <S.Title>{item.name}</S.Title>
+          <PriceTag price={item.cost} />
         </S.ItemInfo>
       </S.TournamentCardWrapper>
     </>
