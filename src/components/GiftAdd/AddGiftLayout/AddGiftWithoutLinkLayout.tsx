@@ -12,7 +12,7 @@ interface AddGiftWithLinkLayoutProps {
 }
 
 const AddGiftWithoutLinkLayout = ({ setStep }: AddGiftWithLinkLayoutProps) => {
-  const [isActivated, setIsActivated] = useState(true);
+  const [isActivated, setIsActivated] = useState(false);
 
   return (
     <S.AddGiftWithLinkLayoutWrapper>

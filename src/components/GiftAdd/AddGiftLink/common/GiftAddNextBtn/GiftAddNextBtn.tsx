@@ -8,7 +8,7 @@ interface GiftAddNextBtnProps {
 }
 const GiftAddNextBtn = ({ children, isActivated, onClick }: GiftAddNextBtnProps) => {
   return (
-    <S.GiftAddNextBtnWrapper $isActivated={isActivated} onClick={onClick}>
+    <S.GiftAddNextBtnWrapper $isActivated={isActivated} onClick={onClick} disabled={!isActivated}>
       {children}
       <IcRight style={{ width: '2.4rem', height: '2.4rem' }} />
     </S.GiftAddNextBtnWrapper>
