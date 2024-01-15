@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const EditRoomWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ direction: 'column' })};
   padding: 2rem;
 `;

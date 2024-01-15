@@ -17,10 +17,38 @@ export interface UserInfoType {
 }
 
 export interface LoginDataType {
-
   data: DataType;
 }
 
 export type KakaoSignType = {
   method: 'LOGIN' | 'LOGOUT';
+};
+
+export type MemberInfoType = {
+  nickname: string;
+  profileImage: string;
+};
+
+export type CloseRoomType = {
+  roomId: number;
+  imageUrl: string;
+  gifteeName: string;
+  gifterNumber: number;
+};
+
+export type ActiveRoomType = {
+  roomId: number;
+  imageUrl: string;
+  gifteeName: string;
+  gifterNumber: number;
+  tournamentStartDate: Date;
+  isOwner: boolean;
+};
+
+export type MyPageType = {
+  data: {
+    memberInfo: MemberInfoType;
+    closeRooms: CloseRoomType;
+    activeRooms: ActiveRoomType;
+  };
 };

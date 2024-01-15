@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const DetailProgressRoomWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter({})};
   width: 100%;
 `;

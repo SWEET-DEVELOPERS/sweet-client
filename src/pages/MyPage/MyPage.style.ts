@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import MypageImage from '../../../public/svg/mypage_image.svg';
 
-export const Wrapper = styled.div`
+export const MyPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;

@@ -14,7 +14,7 @@ const CardGuest = ({ user, makerState }: CardGuestProps) => {
     console.log('삭제 되어따!');
   };
   return (
-    <S.Wrapper>
+    <S.CardGuestWrapper>
       <S.UserWrapper>
         <ProfileImage image={Rectangle} />
         <S.User>{user}</S.User>
@@ -24,7 +24,7 @@ const CardGuest = ({ user, makerState }: CardGuestProps) => {
       ) : (
         <IcCancel style={{ width: '2.4rem' }} onClick={handleButton} />
       )}
-    </S.Wrapper>
+    </S.CardGuestWrapper>
   );
 };
 

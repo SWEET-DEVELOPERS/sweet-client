@@ -5,7 +5,7 @@ const EditRoom = () => {
   const memberCount = 8;
   const candidate = '시동훈';
   return (
-    <S.Wrapper>
+    <S.EditRoomWrapper>
       <S.TextWrapper>
         <S.Text>
           <p>{memberCount}명</p>이
@@ -17,7 +17,7 @@ const EditRoom = () => {
         <CardGuest user='왕호은' makerState={true} />
         <CardGuest user='유지민' makerState={false} />
       </S.CardWrapper>
-    </S.Wrapper>
+    </S.EditRoomWrapper>
   );
 };
 
