@@ -1,5 +1,5 @@
 //import { useNavigate } from 'react-router';
-import { IcKakoLarge } from '../../assets/svg';
+import { IcKakoLarge, Main01, Main02, Main03 } from '../../assets/svg';
 import * as S from './Start.style';
 import { post } from '../../apis/client';
 
@@ -38,6 +38,9 @@ const Start = () => {
   return (
     <S.Wrapper>
       <IcKakoLarge onClick={handleClick} />
+      <Main01 />
+      <Main02 />
+      <Main03 />
     </S.Wrapper>
   );
 };
