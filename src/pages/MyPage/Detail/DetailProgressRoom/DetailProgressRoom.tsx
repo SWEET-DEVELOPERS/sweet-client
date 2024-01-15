@@ -4,12 +4,12 @@ import * as S from './DetailProgress.style';
 
 const DetailProgressRoom = () => {
   return (
-    <S.Wrapper>
+    <S.DetailProgressRoomWrapper>
       <S.RoomWrapper>
         <EditCardRoom />
         <ProgressCardRoom />
       </S.RoomWrapper>
-    </S.Wrapper>
+    </S.DetailProgressRoomWrapper>
   );
 };
 

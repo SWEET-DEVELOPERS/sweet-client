@@ -7,7 +7,7 @@ const ProgressCardRoom = () => {
   const user = '가나다라마바사';
   const userCount = 5;
   return (
-    <S.Wrapper>
+    <S.CardRoomWrapper>
       <img src={Rectangle} />
       <S.Text>
         <S.User>{user}님</S.User>을 위한 선물방
@@ -19,7 +19,7 @@ const ProgressCardRoom = () => {
       <S.TagWrapper>
         <Type2Tag tag='토너먼트 진행 중' />
       </S.TagWrapper>
-    </S.Wrapper>
+    </S.CardRoomWrapper>
   );
 };
 

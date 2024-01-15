@@ -1,15 +1,20 @@
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 import BtnLogout from '../../components/common/Button/Logout/BtnLogout';
-import * as S from './MyPage.style';
 import ProfileImage from './ProfileImage/ProfileImage';
 import Rectangle from '../../assets/img/Rectangle.png';
 import DoneGiftView from './GiftRoomView/DoneGiftView/DoneGiftView';
 import ProgressGiftView from './GiftRoomView/ProgressGiftView/ProgressGiftView';
+import useGetMyPage from '../../hooks/queries/member/useGetMypage';
+import * as S from './MyPage.style';
 
 const MyPage = () => {
   const giftData: boolean = true;
+
+  const memberData = useGetMyPage();
+  console.log(memberData);
+
   return (
-    <S.Wrapper>
+    <S.MyPageWrapper>
       <S.TopImage />
       <S.ProfileWrapper>
         <S.UserButtonWrapper>
@@ -40,7 +45,7 @@ const MyPage = () => {
           <S.NoneText> 아직 선물방이 없어요</S.NoneText>
         )}
       </S.GiftRoomWrapper>
-    </S.Wrapper>
+    </S.MyPageWrapper>
   );
 };
 

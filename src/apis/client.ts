@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 
 const getAccessTokenLocalStorage = () => {
   const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
@@ -14,6 +14,17 @@ export const instance = axios.create({
     Authorization: `${getAccessTokenLocalStorage()}`,
   },
 });
+
+function interceptorResponseFulfilled(res: AxiosResponse) {
+  return res.status >= 200 && res.status < 300 ? res.data : Promise.reject(res.data);
+}
+
+function interceptorResponseRejected(error: AxiosError) {
+  // @ts-ignore
+  return Promise.reject(new Error(error.response?.data?.message ?? error));
+}
+
+instance.interceptors.response.use(interceptorResponseFulfilled, interceptorResponseRejected);
 
 export function get<T>(...args: Parameters<typeof instance.get>) {
   return instance.get<T, T>(...args);
