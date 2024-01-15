@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { get, instance } from '../../../apis/client';
+import { get } from '../../../apis/client';
 
 interface LoginResponseType {
   data: {

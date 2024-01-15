@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router';
 import { IcKakoLarge } from '../../assets/svg';
 import * as S from './Start.style';
-import { instance, post } from '../../apis/client';
+import { post } from '../../apis/client';
 
 interface TokenResponseType {
   data: {
@@ -33,7 +33,7 @@ const Start = () => {
       console.log(data);
     });
     console.log(localStorage.getItem('EXIT_LOGIN_TOKEN'));
-    navigate('/mypage');
+    // navigate('/mypage');
   };
   return (
     <S.Wrapper>
