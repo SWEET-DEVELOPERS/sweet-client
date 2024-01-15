@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const GiftRoomHeaderWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ justify: 'space-between', align: 'center' })};
   width: 100%;
   padding: 2rem;

@@ -7,11 +7,11 @@ interface DetailHeaderProps {
 
 const DetailHeader = ({ title }: DetailHeaderProps) => {
   return (
-    <S.Wrapper>
+    <S.DetailHeaderWrapper>
       <IcLeft />
       <S.Title>{title}</S.Title>
       <IcMenu />
-    </S.Wrapper>
+    </S.DetailHeaderWrapper>
   );
 };
 

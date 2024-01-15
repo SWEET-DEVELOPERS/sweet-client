@@ -13,12 +13,12 @@ const GiftRoomHeader = ({ name, page }: GiftRoomHeaderProps) => {
     navigate(`/${page}`);
   };
   return (
-    <S.Wrapper onClick={handleHeader}>
+    <S.GiftRoomHeaderWrapper onClick={handleHeader}>
       <S.Text>{name}</S.Text>
       <S.Icon>
         <IcRight style={{ width: '2.4rem' }} />
       </S.Icon>
-    </S.Wrapper>
+    </S.GiftRoomHeaderWrapper>
   );
 };
 export default GiftRoomHeader;

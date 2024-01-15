@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const CardRoomWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ direction: 'column' })};
 
   width: 16rem;

@@ -5,7 +5,7 @@ import * as S from './DoneGiftView.style';
 const DoneGiftView = () => {
   const giftData: boolean = true;
   return (
-    <S.Wrapper>
+    <S.DoneGiftViewWrapper>
       <GiftRoomHeader name='종료된 선물방' page='detail-done' />
       {giftData ? (
         <S.RoomWrapper>
@@ -14,7 +14,7 @@ const DoneGiftView = () => {
       ) : (
         <S.NoneRoom>준비했던 선물이 없어요</S.NoneRoom>
       )}
-    </S.Wrapper>
+    </S.DoneGiftViewWrapper>
   );
 };
 

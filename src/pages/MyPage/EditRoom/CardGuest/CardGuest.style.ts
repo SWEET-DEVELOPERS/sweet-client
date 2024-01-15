@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const CardGuestWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ justify: 'space-between', align: 'center' })};
   width: 33.5rem;
   height: 6.4rem;

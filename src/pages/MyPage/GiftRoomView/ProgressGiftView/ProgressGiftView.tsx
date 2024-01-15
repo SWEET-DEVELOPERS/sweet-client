@@ -6,7 +6,7 @@ import * as S from './ProgressGiftView.style';
 const ProgressGiftView = () => {
   const giftData: boolean = true;
   return (
-    <S.Wrapper>
+    <S.ProgressGiftViewWrapper>
       <GiftRoomHeader name='진행중인 선물방' page='detail-progress' />
       {giftData ? (
         <S.RoomWrapper>
@@ -16,7 +16,7 @@ const ProgressGiftView = () => {
       ) : (
         <S.NoneRoom>지금 진행 중인 선물방이 없어요</S.NoneRoom>
       )}
-    </S.Wrapper>
+    </S.ProgressGiftViewWrapper>
   );
 };
 
