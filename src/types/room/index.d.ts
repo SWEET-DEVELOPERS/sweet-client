@@ -6,6 +6,7 @@ export interface RoomInfoType {
   roomMyGiftDtoList: FriendsGiftsType[];
   hotProductGiftDtoList: HotGiftsType[];
 }
+
 export interface FriendsGiftsType {
   giftId: number;
   imageUrl: string;
