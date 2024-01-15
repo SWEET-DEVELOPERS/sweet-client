@@ -7,7 +7,7 @@ import useTournament from '../../../hooks/tournament/useTournament';
 import TournamentFlowContainer from '../TournamentFlow/TournamentFlowContainer';
 
 const TournamentContainer = () => {
-  const { showTournamentContainer, randomItems, handleStartClick } = useTournament();
+  const { showTournamentContainer, handleStartClick } = useTournament();
 
   return (
     <>
@@ -21,7 +21,7 @@ const TournamentContainer = () => {
           <TournamentStartButton onClick={handleStartClick} />
         </>
       ) : (
-        <TournamentFlowContainer randomItems={randomItems} />
+        <TournamentFlowContainer />
       )}
     </>
   );
