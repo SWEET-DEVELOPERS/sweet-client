@@ -15,7 +15,7 @@ const AddGiftFooter = ({ setStep, isActivated }: AddGiftFooterProps) => {
   };
 
   const handlePrevBtnClick = () => {
-    setStep((prev) => prev - 1);
+    setStep(1);
   };
 
   return (
@@ -24,9 +24,7 @@ const AddGiftFooter = ({ setStep, isActivated }: AddGiftFooterProps) => {
         <IcLeft style={{ width: '2.4rem', height: '2.4rem' }} onClick={handlePrevBtnClick} />
         이전
       </S.BtnPrev>
-      <GiftAddNextBtn isActivated={isActivated} onClick={onClick}>
-        완료
-      </GiftAddNextBtn>
+      <GiftAddNextBtn isActivated={isActivated} onClick={onClick} children='완료' />
     </S.AddGiftFooterWrapper>
   );
 };

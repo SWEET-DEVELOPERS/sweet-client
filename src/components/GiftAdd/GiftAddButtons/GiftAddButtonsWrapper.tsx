@@ -1,4 +1,4 @@
-import { IcBookmark, IcCancelCircle, IcEmptyBox } from '../../../assets/svg';
+import { IcBookmark, IcCancelCircleFinal, IcEmptyBox } from '../../../assets/svg';
 import * as S from './GiftAddButtonsWrapper.styled';
 
 interface GiftAddButtonsProps {
@@ -21,15 +21,14 @@ const GiftAddButtonsWrapper = ({ isExist, price, onClick }: GiftAddButtonsProps)
               height: '5.2rem',
             }}
           />
-          <IcCancelCircle
+          <IcCancelCircleFinal
             style={{
               position: 'absolute',
               right: '0.5rem',
               top: '0.5rem',
-              width: '1.8rem',
-              height: '1.8rem',
-              fill: '#F8F8F8',
-              color: '#868384',
+              width: '2.4rem',
+              height: '2.4rem',
+              cursor: 'pointer',
             }}
           />
           <S.GiftsItemImage></S.GiftsItemImage>

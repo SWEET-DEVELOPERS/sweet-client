@@ -5,8 +5,8 @@ const GiftAddCompleteBtn = () => {
   const isCompleted = false;
 
   return (
-    <S.CompleteBtnWrapper isCompleted={isCompleted}>
-      <S.Body09Text isCompleted={isCompleted}>선물 등록 끝내기</S.Body09Text>
+    <S.CompleteBtnWrapper $isCompleted={isCompleted}>
+      <S.Body09Text $isCompleted={isCompleted}>선물 등록 끝내기</S.Body09Text>
       {isCompleted ? (
         <IcRight width='24' height='24' color='#FFFFFF' />
       ) : (

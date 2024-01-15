@@ -17,6 +17,7 @@ export interface UserInfoType {
 }
 
 export interface LoginDataType {
+
   data: DataType;
 }
 
