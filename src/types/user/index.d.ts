@@ -46,7 +46,9 @@ export type ActiveRoomType = {
 };
 
 export type MyPageType = {
-  memberInfo: MemberInfoType;
-  closeRooms: CloseRoomType;
-  activeRooms: ActiveRoomType;
+  data: {
+    memberInfo: MemberInfoType;
+    closeRooms: CloseRoomType;
+    activeRooms: ActiveRoomType;
+  };
 };
