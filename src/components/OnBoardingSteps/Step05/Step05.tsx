@@ -40,7 +40,12 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     // 현재 선택된 날짜와 시간에 6시간을 더한 값을 콘솔에 출력
     const updatedTime = new Date(tournamentStartDate);
     updatedTime.setHours(updatedTime.getHours() + parseInt(time.split('시간')[0]));
-    console.log(`선택된 시간: ${tournamentStartDate} + ${time}:`, updatedTime);
+
+    updatedTime.setMinutes(updatedTime.getMinutes() - updatedTime.getTimezoneOffset());
+    const formattedTime = updatedTime.toISOString();
+
+    console.log(`선택된 시간: ${tournamentStartDate} + ${time}:`, formattedTime);
+    setTournamentDuration(formattedTime);
   };
 
   return (
