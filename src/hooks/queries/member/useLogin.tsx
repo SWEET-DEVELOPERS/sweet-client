@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { instance } from '../../../apis/client';
+import { get } from '../../../apis/client';
 
 interface LoginResponseType {
   data: {
@@ -22,7 +22,7 @@ export const useLogin = () => {
   const code = new URL(window.location.href).searchParams.get('code');
 
   const fetchAuth = (code: string): Promise<LoginResponseType> =>
-    instance.get(`/oauth/kakao/login?code=${code}`);
+    get(`/oauth/kakao/login?code=${code}`);
 
   useEffect(() => {
     if (code) {

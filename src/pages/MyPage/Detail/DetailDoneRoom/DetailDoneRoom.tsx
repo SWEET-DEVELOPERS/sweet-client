@@ -3,12 +3,12 @@ import * as S from './DetailDoneRoom.style';
 
 const DetailDoneRoom = () => {
   return (
-    <S.Wrapper>
+    <S.DetailDoneRoomWrapper>
       <S.RoomWrapper>
         <DoneCardRoom />
         <DoneCardRoom />
       </S.RoomWrapper>
-    </S.Wrapper>
+    </S.DetailDoneRoomWrapper>
   );
 };
 

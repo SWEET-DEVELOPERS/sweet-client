@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const DoneGiftViewWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
