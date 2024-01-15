@@ -5,17 +5,40 @@ import ProfileImage from './ProfileImage/ProfileImage';
 import Rectangle from '../../assets/img/Rectangle.png';
 import DoneGiftView from './GiftRoomView/DoneGiftView/DoneGiftView';
 import ProgressGiftView from './GiftRoomView/ProgressGiftView/ProgressGiftView';
-import { useEffect } from 'react';
+
 import useGetMyPage from '../../hooks/queries/user/useGetMypage';
+import { instance } from '../../apis/client';
+import { useEffect } from 'react';
+
+interface TokenResponseType {
+  data: {
+    accessToken: string;
+    refreshToken: string;
+  };
+}
 
 const MyPage = () => {
   const giftData: boolean = true;
-  const memberData = useGetMyPage();
 
-  useEffect(() => {
-    console.log(memberData);
-  }, []);
+  const handleClick = () => {
+    const fetchExAuth = (): Promise<TokenResponseType> => instance.post('/member/token/2');
+    fetchExAuth().then((response: TokenResponseType) => {
+      const data = response;
+      const JWT = data.data.accessToken;
+      if (data) {
+        localStorage.setItem('EXIT_LOGIN_TOKEN', JWT);
+        console.log(data);
+        console.log(JWT);
+      }
 
+      console.log(data);
+    });
+    console.log(localStorage.getItem('EXIT_LOGIN_TOKEN'));
+  };
+
+  //const memberData = useGetMyPage();
+
+  //console.log(memberData);
   return (
     <S.MyPageWrapper>
       <S.TopImage />
@@ -34,6 +57,7 @@ const MyPage = () => {
             width: '30.3rem',
             height: '5.2rem',
           }}
+          onClick={handleClick}
         >
           새로운 선물 준비하기
         </BtnFill>
