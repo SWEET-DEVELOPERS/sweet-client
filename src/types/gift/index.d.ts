@@ -6,13 +6,15 @@ export interface GiftPostRequestType {
   imageUrl: string;
 }
 
-export interface MyGiftsType {
-  myGiftDtoList: GiftType;
-}
-
 export interface GiftType {
   giftId: number;
   imageUrl: string;
   name: string;
   cost: number;
+}
+
+export interface MyGiftsType {
+  data: {
+    myGiftDtoList: GiftType[];
+  };
 }

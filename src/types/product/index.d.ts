@@ -1,6 +1,8 @@
 import { HotGiftsType } from '../room';
 
 export interface HotProductsType {
-  tournamentStartDate: Date;
-  hotProductDtoList: HotGiftsType[];
+  data: {
+    tournamentStartDate: Date;
+    hotProductDtoList: HotGiftsType[];
+  };
 }
