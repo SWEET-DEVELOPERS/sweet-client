@@ -62,6 +62,8 @@ export const GiftRoomWrapper = styled.div`
 `;
 
 export const NoneText = styled.div`
+  ${({ theme: { mixin } }) => mixin.flexCenter({})};
+  height: 32.7rem;
   color: ${({ theme: { colors } }) => colors.G_07};
   ${({ theme: { fonts } }) => fonts.body_07};
 `;

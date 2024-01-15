@@ -5,8 +5,8 @@ const DetailDoneRoom = () => {
   return (
     <S.DetailDoneRoomWrapper>
       <S.RoomWrapper>
-        <DoneCardRoom />
-        <DoneCardRoom />
+        {/* <DoneCardRoom />
+        <DoneCardRoom /> */}
       </S.RoomWrapper>
     </S.DetailDoneRoomWrapper>
   );

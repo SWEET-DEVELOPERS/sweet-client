@@ -3,9 +3,13 @@ import Rectangle from '../../assets/img/Rectangle.png';
 import { IcUser } from '../../assets/svg';
 import Type2Tag from '../IcTag/Type2/Type2';
 
-const ProgressCardRoom = () => {
-  const user = '가나다라마바사';
-  const userCount = 5;
+interface ProgressCardRoomType {
+  user: string;
+  srcImage: string;
+  userCount: number;
+}
+
+const ProgressCardRoom = ({ user, srcImage, userCount }: ProgressCardRoomType) => {
   return (
     <S.CardRoomWrapper>
       <img src={Rectangle} />

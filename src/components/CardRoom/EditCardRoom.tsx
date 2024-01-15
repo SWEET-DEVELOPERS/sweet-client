@@ -5,10 +5,15 @@ import Type2Tag from '../IcTag/Type2/Type2';
 import Type1Tag from '../IcTag/Type1/Type1';
 import { useNavigate } from 'react-router';
 
-const EditCardRoom = () => {
+interface EditCardRoomType {
+  user: string;
+  srcImage: string;
+  userCount: number;
+}
+
+const EditCardRoom = ({ user, srcImage, userCount }: EditCardRoomType) => {
   const navigate = useNavigate();
-  const user = '가나다라마바사';
-  const userCount = 5;
+
   const handleSettingIcon = () => {
     navigate('/editpage');
   };

@@ -3,12 +3,16 @@ import Rectangle from '../../assets/img/Rectangle.png';
 import { IcUser } from '../../assets/svg';
 import Type3Tag from '../IcTag/Type3/Type3';
 
-const DoneCardRoom = () => {
-  const user = '가나다라마바사';
-  const userCount = 5;
+interface DoneCardRoomType {
+  user: string;
+  imgSrc: string;
+  userCount: number;
+}
+
+const DoneCardRoom = ({ user, imgSrc, userCount }: DoneCardRoomType) => {
   return (
     <S.CardRoomWrapper>
-      <img src={Rectangle} />
+      <img src={imgSrc} />
       <S.Text>
         <S.User>{user}님</S.User>을 위한 선물방
       </S.Text>

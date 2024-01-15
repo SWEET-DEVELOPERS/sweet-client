@@ -6,8 +6,8 @@ const DetailProgressRoom = () => {
   return (
     <S.DetailProgressRoomWrapper>
       <S.RoomWrapper>
-        <EditCardRoom />
-        <ProgressCardRoom />
+        {/* <EditCardRoom />
+        <ProgressCardRoom /> */}
       </S.RoomWrapper>
     </S.DetailProgressRoomWrapper>
   );
