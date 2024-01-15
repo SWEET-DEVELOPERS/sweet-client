@@ -71,6 +71,20 @@ const TournamentFlowContainer: React.FC = () => {
       cost: 22,
       url: 'https://example.com',
     },
+    {
+      giftId: 9,
+      imageUrl: '../assets/img/img.png',
+      name: 'Gift 9',
+      cost: 22,
+      url: 'https://example.com',
+    },
+    {
+      giftId: 10,
+      imageUrl: '../assets/img/img.png',
+      name: 'Gift 10',
+      cost: 22,
+      url: 'https://example.com',
+    },
   ];
 
   const [itemPick, setitemPick] = useState<GiftData[]>([]);
@@ -112,7 +126,11 @@ const TournamentFlowContainer: React.FC = () => {
       }
     } else if (itemPick.length > 2) {
       setWinners([...winners, item]);
-      setDisplays([itemPick[2], itemPick[3]]);
+      if (itemPick[3]) {
+        setDisplays([itemPick[2], itemPick[3]]);
+      } else {
+        setWinners([...winners, itemPick[2]]);
+      }
       setitemPick([...itemPick.slice(2)]);
       setCurrentIndex((prevIndex) => prevIndex + 1);
       console.log('변햇다!');
