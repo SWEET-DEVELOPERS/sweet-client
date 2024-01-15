@@ -18,8 +18,6 @@ const useGetMyPage = () => {
     queryFn: () => fetchMyPage(),
     enabled: shouldFetch,
   });
-
-  console.log(data);
   return data;
 };
 
