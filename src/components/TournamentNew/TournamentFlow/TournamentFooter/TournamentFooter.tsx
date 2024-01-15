@@ -7,7 +7,7 @@ interface TournamentFooterProps {
   disabled: boolean;
 }
 
-const TournamentFooter = ({ onNextClick, disabled }: TournamentFooterProps) => {
+const TournamentFooter = ({ onNextClick }: TournamentFooterProps) => {
   return (
     <>
       <S.TournamentFooterWrapper>
@@ -15,7 +15,7 @@ const TournamentFooter = ({ onNextClick, disabled }: TournamentFooterProps) => {
           <IcLeft style={{ width: '2.4rem', height: '2.4rem' }} />
           이전
         </S.Btnpre>
-        <BtnNext onClick={onNextClick} disabled={disabled}>
+        <BtnNext onClick={onNextClick}>
           다음
         </BtnNext>
       </S.TournamentFooterWrapper>
