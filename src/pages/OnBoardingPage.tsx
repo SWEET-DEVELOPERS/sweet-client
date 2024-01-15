@@ -8,7 +8,7 @@ import ThumbnailInput from '../components/OnBoardingSteps/Step02/Step02';
 import GiftDelivery from '../components/OnBoardingSteps/Step03/Step03';
 import SetTournamentDuration from '../components/OnBoardingSteps/Step05/Step05';
 import OnboardingFinal from '../components/OnBoardingSteps/Step06/Step06';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SetTournamentSchedule from '../components/OnBoardingSteps/Step04/Step04';
 
 const OnBoardingPage = () => {
@@ -18,6 +18,17 @@ const OnBoardingPage = () => {
   const [deliveryDate, setDeliveryDate] = useState<string>('');
   const [tournamentStartDate, setTournamentStartDate] = useState<string>('');
   const [tournamentDuration, setTournamentDuration] = useState<string>('');
+
+  const onboardingInfo = {
+    gifteeName: gifteeName,
+    imageUrl: imageUrl,
+    deliveryDate: deliveryDate,
+    tournamentStartDate: tournamentStartDate,
+    tournamentDuration: tournamentDuration,
+  };
+  useEffect(() => {
+    console.log('전체 값 정리', onboardingInfo);
+  }, [onboardingInfo]);
 
   return (
     <OnBoardingPageWrapper>
@@ -65,7 +76,7 @@ const OnBoardingPage = () => {
         </Funnel.Step>
         <Funnel.Step name='TOURNAMENT_PROCEEDING'>
           <div style={{ margin: '2rem' }}>
-            {/* step05 */}
+            {/* step05 여기서 post (이미지 url먼저 post 후 전체 값 post*/}
             <SetTournamentDuration
               onNext={() => setStep(() => 'GIFT_ROOM_FIX')}
               tournamentDuration={tournamentDuration}
@@ -75,7 +86,7 @@ const OnBoardingPage = () => {
           </div>
         </Funnel.Step>
         <Funnel.Step name='GIFT_ROOM_FIX'>
-          {/* step06 여기서 post */}
+          {/* step06 */}
           <OnboardingFinal />
         </Funnel.Step>
       </Funnel>
