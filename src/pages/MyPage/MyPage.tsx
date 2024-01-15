@@ -11,7 +11,7 @@ const MyPage = () => {
   const giftData: boolean = true;
 
   const memberData = useGetMyPage();
-  console.log(memberData?.data);
+  console.log(memberData);
 
   return (
     <S.MyPageWrapper>

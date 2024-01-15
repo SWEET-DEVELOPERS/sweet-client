@@ -20,7 +20,7 @@ const useGetMyPage = () => {
   });
 
   console.log(data);
-  return data?.data;
+  return data;
 };
 
 export default useGetMyPage;
