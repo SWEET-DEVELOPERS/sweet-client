@@ -76,6 +76,8 @@ const TournamentFlowContainer: React.FC = () => {
   const [itemPick, setitemPick] = useState<GiftData[]>([]);
   const [displays, setDisplays] = useState<GiftData[]>([]);
   //선택된 아이템 저장
+  const [selectedItem, setSelectedItem] = useState<GiftData | null>(null);
+
   const [winners, setWinners] = useState<GiftData[]>([]);
   // 최신 인덱스
   const [currentIndex, setCurrentIndex] = useState<number>(1);
@@ -95,9 +97,10 @@ const TournamentFlowContainer: React.FC = () => {
     if (itemPick.length <= 2) {
       if (winners.length === 0) {
         setDisplays([item]);
-
+        setSelectedItem(item);
+        console.log('결과?=:', itemPick); //결승 두개 아이템
+        console.log('결과!=:', [item]); //우승한 한개 아이템
         setShowTournamentResult(true);
-        console.log('결과?');
       } else {
         let updateditem = [...winners, item];
         setitemPick([...updateditem]);
@@ -105,7 +108,7 @@ const TournamentFlowContainer: React.FC = () => {
         setWinners([]);
         setCurrentIndex(1);
         setRoundIndex((roundIndex) => roundIndex + 1);
-        console.log('라운드');
+        console.log('라운드', updateditem);
       }
     } else if (itemPick.length > 2) {
       setWinners([...winners, item]);
@@ -116,14 +119,15 @@ const TournamentFlowContainer: React.FC = () => {
     }
   };
 
+  console.log(selectedItem);
   const footerClickHandler = () => {};
 
   return (
     <>
       {showTournamentResult ? (
-        <TournamentResult winners={winners} />
+        <TournamentResult winners={selectedItem} />
       ) : (
-        <>
+        <S.TournamentFlowContainerWrapper>
           <TournamentTitle
             rounds={roundIndex}
             currentIndex={currentIndex}
@@ -135,7 +139,7 @@ const TournamentFlowContainer: React.FC = () => {
             ))}
           </S.TournamentCardWrapper>
           <TournamentFooter onNextClick={footerClickHandler} disabled={false} />
-        </>
+        </S.TournamentFlowContainerWrapper>
       )}
     </>
   );
