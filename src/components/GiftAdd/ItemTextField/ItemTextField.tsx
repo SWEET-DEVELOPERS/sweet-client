@@ -3,8 +3,7 @@ import IcCancelCircleFinal from '../../../assets/svg/IcCancelCircleFinal';
 
 interface ItemTextFieldProps {
   text: string;
-  setText: React.Dispatch<React.SetStateAction<string>>;
-  handleSetIsActivated: () => void;
+  handleTextChange: (newText: string) => void;
   type: string;
   categoryTitle: string;
   placeholderText: string;
@@ -12,20 +11,18 @@ interface ItemTextFieldProps {
 
 const ItemTextField = ({
   text,
-  setText,
-  handleSetIsActivated,
+  handleTextChange,
   type,
   categoryTitle,
   placeholderText,
 }: ItemTextFieldProps) => {
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
-    setText(inputValue);
-    handleSetIsActivated;
+    handleTextChange(inputValue);
   };
 
   const handleBtnClick = () => {
-    setText('');
+    handleTextChange('');
   };
 
   return (
@@ -33,7 +30,7 @@ const ItemTextField = ({
       <S.CategoryTitle>{categoryTitle}</S.CategoryTitle>
       <S.Wrapper hasContent={text.length > 0}>
         <S.TextField>
-          <S.Input type={type} value={text} onChange={onChange} placeholder={placeholderText} />
+          <S.Input type={type} value={text} onChange={handleChange} placeholder={placeholderText} />
         </S.TextField>
         {type === 'number' ? (
           ''

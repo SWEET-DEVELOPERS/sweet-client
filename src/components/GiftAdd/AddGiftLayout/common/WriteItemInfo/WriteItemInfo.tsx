@@ -12,12 +12,26 @@ const WriteItemInfo = ({ setIsActivated, isLink }: WriteItemInfoProps) => {
   const [priceText, setPriceText] = useState<string>('');
   const [linkText, setLinkText] = useState<string>('');
 
-  const handleSetIsActivated = () => {
-    if (nameText.length > 0 && priceText.length > 0) {
+  const handleSetIsActivated = (newNameText: string, newPriceText: string) => {
+    if (newNameText.length > 0 && newPriceText.length > 0) {
       setIsActivated(true);
     } else {
       setIsActivated(false);
     }
+  };
+
+  const handleNameTextChange = (newText: string) => {
+    setNameText(newText);
+    handleSetIsActivated(newText, priceText);
+  };
+
+  const handlePriceTextChange = (newText: string) => {
+    setPriceText(newText);
+    handleSetIsActivated(nameText, newText);
+  };
+
+  const handleLinkTextChange = (newText: string) => {
+    setLinkText(newText);
   };
 
   return (
@@ -25,15 +39,13 @@ const WriteItemInfo = ({ setIsActivated, isLink }: WriteItemInfoProps) => {
       <ItemTextField
         type='text'
         text={nameText}
-        setText={setNameText}
-        handleSetIsActivated={handleSetIsActivated}
+        handleTextChange={handleNameTextChange}
         placeholderText='상품명을 입력해주세요'
         categoryTitle='상품이름'
       />
       <ItemTextField
         text={priceText}
-        setText={setPriceText}
-        handleSetIsActivated={handleSetIsActivated}
+        handleTextChange={handlePriceTextChange}
         type='number'
         categoryTitle='가격'
         placeholderText='가격을 입력해주세요'
@@ -43,8 +55,7 @@ const WriteItemInfo = ({ setIsActivated, isLink }: WriteItemInfoProps) => {
       ) : (
         <ItemTextField
           text={linkText}
-          setText={setLinkText}
-          handleSetIsActivated={handleSetIsActivated}
+          handleTextChange={handleLinkTextChange}
           categoryTitle='링크'
           placeholderText='링크를 입력해주세요 (선택)'
           type='text'
