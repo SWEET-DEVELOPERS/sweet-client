@@ -21,6 +21,8 @@ interface SetTournamentDurationProps {
     tournamentStartDate: string;
     tournamentDuration: string;
   };
+  fileName: string;
+  setFileName: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const SetTournamentDuration = (props: SetTournamentDurationProps) => {
@@ -32,8 +34,15 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     { text: '24시간', dateType: 'nottoday', textEnglish: 'TWENTY_FOUR_HOURS' },
   ];
 
-  const { onNext, tournamentDuration, setTournamentDuration, tournamentStartDate, onboardingInfo } =
-    props;
+  const {
+    onNext,
+    tournamentDuration,
+    setTournamentDuration,
+    tournamentStartDate,
+    onboardingInfo,
+    fileName,
+    setFileName,
+  } = props;
   // const postOnboardingInfoMutation = usePostOnboardingInfo();
   const postPresignedUrl = usePostPresignedUrl();
   const [selectedOption] = useState<string>('');
@@ -87,9 +96,8 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
           isActivated={selectedOption !== null}
           setStep={() => {
             onNext();
-            const preSignedUrl: string = onboardingInfo.imageUrl;
-            console.log('preSignedUrl', preSignedUrl);
-            postPresignedUrl.mutate(preSignedUrl);
+            console.log('presignedUrl', fileName);
+            postPresignedUrl.mutate(fileName);
             // postOnboardingInfoMutation.mutate(onboardingInfo);
           }}
         >
