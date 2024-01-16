@@ -1,4 +1,6 @@
+import { IcLogoEmpty } from '../../../../assets/svg';
 import DoneCardRoom from '../../../../components/CardRoom/DoneCardRoom';
+import BtnSmallStroke from '../../../../components/common/Button/Cta/SmallStroke/BtnSmallStroke';
 import useGetDoneRoom from '../../../../hooks/queries/member/useGetClosedRoom';
 import * as S from './DetailDoneRoom.style';
 
@@ -18,7 +20,11 @@ const DetailDoneRoom = () => {
             />
           ))
         ) : (
-          <p>데이터가 없습니다.</p>
+          <S.EmptyWrapper>
+            <IcLogoEmpty style={{ width: '8rem', height: '6.4rem' }} />
+            <S.EmptyText>준비했던 선물이 없어요</S.EmptyText>
+            <BtnSmallStroke customStyle={{ margin: '1.6rem' }}>새로운 선물 준비하기</BtnSmallStroke>
+          </S.EmptyWrapper>
         )}
       </S.RoomWrapper>
     </S.DetailDoneRoomWrapper>
