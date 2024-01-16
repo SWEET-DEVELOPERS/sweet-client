@@ -1,9 +1,12 @@
+import useGetRoomMember from '../../../hooks/queries/member/useGetRoomMember';
 import CardGuest from './CardGuest/CardGuest';
 import * as S from './EditRoom.style';
 
 const EditRoom = () => {
   const memberCount = 8;
   const candidate = '시동훈';
+  const roomMember = useGetRoomMember(8);
+  console.log(roomMember);
   return (
     <S.EditRoomWrapper>
       <S.TextWrapper>

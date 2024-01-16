@@ -18,7 +18,7 @@ const DoneGiftView = ({ data }: DoneGiftViewType) => {
         {doneData1 && (
           <DoneCardRoom
             user={doneData1?.gifteeName || ''}
-            imageUrl={doneData1?.imageUrl || ''}
+            srcImage={doneData1?.imageUrl || ''}
             userCount={doneData1?.gifterNumber || 0}
           />
         )}
@@ -26,7 +26,7 @@ const DoneGiftView = ({ data }: DoneGiftViewType) => {
         {doneData2 && (
           <DoneCardRoom
             user={doneData2?.gifteeName || ''}
-            imageUrl={doneData2?.imageUrl || ''}
+            srcImage={doneData2?.imageUrl || ''}
             userCount={doneData2?.gifterNumber || 0}
           />
         )}

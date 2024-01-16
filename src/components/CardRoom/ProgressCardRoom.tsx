@@ -12,7 +12,7 @@ interface ProgressCardRoomType {
 const ProgressCardRoom = ({ user, srcImage, userCount }: ProgressCardRoomType) => {
   return (
     <S.CardRoomWrapper>
-      <img src={Rectangle} />
+      <img src={srcImage} />
       <S.Text>
         <S.User>{user}님</S.User>을 위한 선물방
       </S.Text>

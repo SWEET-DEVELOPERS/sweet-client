@@ -29,6 +29,15 @@ export type MemberInfoType = {
   profileImage: string;
 };
 
+export type RoomMemberType = {
+  myId: number;
+  giftNumber: number;
+  roomMemberDtoList: number;
+  memberId: number;
+  profileImageUrl: string;
+  name: string;
+};
+
 export type ClosedRoomType = {
   data: Array<ClosedRoomArrayType>;
 };

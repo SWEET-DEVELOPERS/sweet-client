@@ -13,7 +13,7 @@ const DetailDoneRoom = () => {
             <DoneCardRoom
               key={index}
               user={item?.gifteeName}
-              imageUrl={item?.imageUrl}
+              srcImage={item?.imageUrl}
               userCount={item?.gifterNumber}
             />
           ))
