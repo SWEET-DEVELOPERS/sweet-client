@@ -7,7 +7,7 @@ export type GiftData = {
 };
 
 export type TournamentScore = {
-  firstPlaceGiftId: number;
-  secondPlaceGiftId: number;
-  // PlaceGiftId: number;
+  firstGiftId: number;
+  secondGiftId: number;
+  finalGiftId: number;
 };
