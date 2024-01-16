@@ -5,7 +5,6 @@ import { Svg3Dicons } from '../../../assets/svg';
 import TournamentStartButton from './TournamentStartButton/TournamentStartButton';
 import useTournament from '../../../hooks/tournament/useTournament';
 import TournamentFlowContainer from '../TournamentFlow/TournamentFlowContainer';
-import useGetItem from '../../../hooks/queries/tournament/useGetItem';
 
 const TournamentContainer = () => {
   const { showTournamentContainer, handleStartClick } = useTournament();
