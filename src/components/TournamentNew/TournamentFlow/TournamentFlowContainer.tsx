@@ -4,18 +4,19 @@ import TournamentCard from './TournamentCard/TournamentCard';
 import TournamentTitle from './TournamentTitle/TournamentTitle';
 import TournamentFooter from './TournamentFooter/TournamentFooter';
 import TournamentResult from '../TournamentResult/TournamentResult';
-import { GiftData } from '../../../types/tournament';
+import { GiftData, TournamentScore } from '../../../types/tournament';
+import usePostScore from '../../../hooks/queries/tournament/usePostScore';
 
 interface TournamentProps {
   memberData: GiftData[];
 }
 
 const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
-
   const [itemPick, setitemPick] = useState<GiftData[]>([]);
   const [displays, setDisplays] = useState<GiftData[]>([]);
   //선택된 아이템 저장
   const [selectedItem, setSelectedItem] = useState<GiftData | null>(null);
+  const [remainingItems, setRemainingItems] = useState<GiftData[]>([]);
 
   const [winners, setWinners] = useState<GiftData[]>([]);
   // 최신 인덱스
@@ -59,8 +60,12 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
         setDisplays([item]);
         //아 이걸 ..?이거 때문에 12개로 토너먼트하면 미리 결승이 일어나는건가?
         setSelectedItem(item);
-        console.log('결과?=:', itemPick); //결승 두개 아이템
-        console.log('결과!=:', [item]); //우승한 한개 아이템
+        console.log('결과?!!=:', itemPick); //결승 두개 아이템
+        // Filter out the selected item from itemPick
+        const updatedRemainingItems = itemPick.filter((remainingItem) => remainingItem !== item);
+        setRemainingItems(updatedRemainingItems);
+
+        console.log('우승템', [item]); //우승한 한개 아이템
         setShowTournamentResult(true);
       } else {
         let updateditem = [...winners, itemPick[2]];
@@ -77,14 +82,18 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
     }
   };
 
-  console.log(selectedItem);
-  console.log(winners);
-  const footerClickHandler = () => {};
+  console.log('???', selectedItem);
+  console.log('리메인', remainingItems);
 
+  const footerClickHandler = () => {};
   return (
     <>
       {showTournamentResult ? (
-        <TournamentResult winners={selectedItem} />
+        <TournamentResult
+          winners={selectedItem}
+          firstPlaceGiftId={selectedItem?.giftId || 0} // Assuming a default value of 0 if undefined
+          secondPlaceGiftId={remainingItems[0]?.giftId || 0}
+        />
       ) : (
         <S.TournamentFlowContainerWrapper>
           <TournamentTitle
