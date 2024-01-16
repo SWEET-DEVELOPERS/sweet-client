@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export const POST_GIFT_QUERY_KEY: string[] = ['postGiftData'];
 
 export const postNewGift = async (body: GiftPostRequestType) => {
-  post(`gift/friend/${body.roomId}`, body);
+  post(`/gift/friend/${body.roomId}`, body);
 };
 
 export const usePostGift = ({ body }: { body: GiftPostRequestType }) => {

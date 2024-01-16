@@ -3,7 +3,7 @@ import { del } from '../../../apis/client';
 import { POST_GIFT_QUERY_KEY } from './usePostGift';
 
 export const deleteMyGift = async (giftId: number) => {
-  await del(`gift/my/${giftId}`);
+  await del(`/gift/my/${giftId}`);
 };
 
 export const usePostGift = ({ giftId }: { giftId: number }) => {

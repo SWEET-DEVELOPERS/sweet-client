@@ -9,7 +9,7 @@ interface FriendGiftResponse extends Response {
 export const FRIEND_GIFT_QUERY_KEY: string[] = ['friendGiftData'];
 
 export const fetchFriendGift = async (roomId: number): Promise<FriendGiftResponse> =>
-  get(`gift/friend/${roomId}`);
+  get(`/gift/friend/${roomId}`);
 
 const useGetMyGift = ({ roomId }: { roomId: number }) => {
   const { data, isLoading, isError } = useQuery({
