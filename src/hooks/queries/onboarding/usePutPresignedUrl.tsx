@@ -1,5 +1,4 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
-import { put } from '../../../apis/client';
 import { useMutation } from '@tanstack/react-query';
 
 const putPresignedUrl = async (presignedUrl: string): Promise<AxiosResponse> => {

@@ -62,7 +62,6 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   console.log('기존 step04에서 가지고 온 날짜와 시간을 step05에서 사용', tournamentStartDate);
 
   const handleTimeSelect = (time: string) => {
-    // 현재 선택된 날짜와 시간에 6시간을 더한 값을 콘솔에 출력
     const updatedTime = new Date(tournamentStartDate);
     updatedTime.setHours(updatedTime.getHours() + parseInt(time.split('시간')[0]));
 
@@ -87,11 +86,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     console.log(' save ImageUrl 안 presignedUrl', presignedUrl);
     try {
       await putPresignedUrl.mutateAsync(presignedUrl);
-
-      // console.log('PUT성공', presignedUrl);
-      // setImageUrl(imageUrl);
       console.log('saveImageUrl 안 imageUrl 값 확인', imageUrl);
-
       onNext();
       const updatedOnboardingInfo = { ...onboardingInfo, imageUrl: imageUrl };
       postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
@@ -132,7 +127,6 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
           setStep={async () => {
             const { presignedUrl } = await fetchPresignedUrl(fileName);
             await saveImageUrl(presignedUrl);
-            // postOnboardingInfoMutation.mutate(onboardingInfo);
           }}
         >
           다음
