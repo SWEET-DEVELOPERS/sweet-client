@@ -2,9 +2,14 @@ import { AxiosError, AxiosResponse } from 'axios';
 import { post } from '../../../apis/client';
 import { useMutation } from '@tanstack/react-query';
 
-const postPresignedUrl = async (url: string) => {
+interface PostPresignedUrlArgs {
+  url: string;
+  filename: string;
+}
+
+const postPresignedUrl = async ({ url, filename }: PostPresignedUrlArgs) => {
   try {
-    const response: AxiosResponse = await post('presigned-url?fileName=hunhunhan', url);
+    const response: AxiosResponse = await post(`presigned-url?fileName=${filename}`, url);
     return response.data;
   } catch (error) {
     if (error instanceof AxiosError) {
