@@ -26,16 +26,6 @@ export const TimeText = styled.p`
   ${({ theme }) => theme.fonts.body_09};
 `;
 
-// export const InTodayDate = styled.p`
-//   color: ${({ theme }) => theme.colors.B_02};
-//   ${({ theme }) => theme.fonts.caption_01};
-// `;
-
-// export const NotTodayDate = styled.p`
-//   color: ${({ theme }) => theme.colors.P_06};
-//   ${({ theme }) => theme.fonts.caption_01};
-// `;
-
 export const TimeOptionsWrapper = styled.div`
   border-radius: 1.2rem;
   border: 1px solid ${({ theme }) => theme.colors.G_02};
