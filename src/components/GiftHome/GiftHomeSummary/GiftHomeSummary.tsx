@@ -7,7 +7,7 @@ interface GiftHomeSummaryProps {
   data: RoomInfoType;
 }
 
-export default function GiftHomeSummary({ data }: GiftHomeSummaryProps) {
+export const GiftHomeSummary = ({ data }: GiftHomeSummaryProps) => {
   return (
     <S.GiftHomeSummaryWrapper>
       <S.FriendsNumber>{data.gifterNumber}명의 친구들이 함께하는 중</S.FriendsNumber>
@@ -23,4 +23,6 @@ export default function GiftHomeSummary({ data }: GiftHomeSummaryProps) {
       <CountDownTimer targetDate={data.tournamentStartDate} />
     </S.GiftHomeSummaryWrapper>
   );
-}
+};
+
+export default GiftHomeSummary;
