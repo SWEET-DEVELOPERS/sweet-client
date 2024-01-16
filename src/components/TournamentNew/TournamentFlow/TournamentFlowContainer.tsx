@@ -81,7 +81,7 @@ const TournamentFlowContainer: React.FC = () => {
     {
       giftId: 10,
       imageUrl: '../assets/img/img.png',
-      name: 'Gift 10',
+      name: 'Gift10',
       cost: 22,
       url: 'https://example.com',
     },
@@ -110,6 +110,7 @@ const TournamentFlowContainer: React.FC = () => {
   const clickHandler = (item: GiftData) => () => {
     if (itemPick.length <= 2) {
       if (winners.length === 0) {
+        //위너가 1이 되니까 ,, 요기에 못들어가네
         setDisplays([item]);
         setSelectedItem(item);
         console.log('결과?=:', itemPick); //결승 두개 아이템
@@ -128,9 +129,23 @@ const TournamentFlowContainer: React.FC = () => {
       setWinners([...winners, item]);
       if (itemPick[3]) {
         setDisplays([itemPick[2], itemPick[3]]);
+        console.log('그냥!');
+      } else if (winners.length === 0) {
+        //위너가 1이 되니까 ,, 요기에 못들어가네
+        setDisplays([item]);
+        setSelectedItem(item);
+        console.log('결과?=:', itemPick); //결승 두개 아이템
+        console.log('결과!=:', [item]); //우승한 한개 아이템
+        setShowTournamentResult(true);
       } else {
-        setWinners([...winners, itemPick[2]]);
+        let updateditem = [...winners, itemPick[2]];
+        setitemPick([...updateditem]);
+        setDisplays([updateditem[0], updateditem[1]]);
+        setRoundIndex((roundIndex) => roundIndex + 1);
+        setCurrentIndex(1);
+        console.log('부전승!');
       }
+
       setitemPick([...itemPick.slice(2)]);
       setCurrentIndex((prevIndex) => prevIndex + 1);
       console.log('변햇다!');
@@ -138,6 +153,7 @@ const TournamentFlowContainer: React.FC = () => {
   };
 
   console.log(selectedItem);
+  console.log(winners);
   const footerClickHandler = () => {};
 
   return (
