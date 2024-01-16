@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import BtnRadio from '../../common/Button/Radio/BtnRadio';
 import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import * as S from './Step05.style';
 import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
-import { getAccessTokenLocalStorage, instance } from '../../../apis/client';
+// import { getAccessTokenLocalStorage, instance } from '../../../apis/client';
 import usePostOnboardingInfo from '../../../hooks/queries/onboarding/usePostOnboardingInfo';
 
 interface SetTournamentDurationProps {
@@ -31,8 +31,13 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     { text: '24시간', dateType: 'nottoday', textEnglish: 'TWENTY_FOUR_HOURS' },
   ];
 
-  const { onNext, tournamentDuration, setTournamentDuration, tournamentStartDate, onboardingInfo } =
-    props;
+  const {
+    onNext,
+    // tournamentDuration,
+    setTournamentDuration,
+    tournamentStartDate,
+    onboardingInfo,
+  } = props;
   const postOnboardingInfoMutation = usePostOnboardingInfo();
 
   const [selectedOption] = useState<string>('');
@@ -50,11 +55,11 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     console.log(`선택된 시간: ${tournamentStartDate} + ${time}:`, formattedTime);
   };
 
-  useEffect(() => {
-    // 컴포넌트가 마운트될 때마다 최신 토큰을 가져와서 설정
-    instance.defaults.headers.Authorization = getAccessTokenLocalStorage();
-    console.log('selectedOption', tournamentDuration);
-  }, [tournamentDuration]);
+  // useEffect(() => {
+  //   // 컴포넌트가 마운트될 때마다 최신 토큰을 가져와서 설정
+  //   instance.defaults.headers.Authorization = getAccessTokenLocalStorage();
+  //   console.log('selectedOption', tournamentDuration);
+  // }, [tournamentDuration]);
 
   return (
     <>
