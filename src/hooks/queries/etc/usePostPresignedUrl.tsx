@@ -4,7 +4,7 @@ import { useMutation } from '@tanstack/react-query';
 
 const postPresignedUrl = async (url: string) => {
   try {
-    const response: AxiosResponse = await post('/presigned-url', url);
+    const response: AxiosResponse = await post('presigned-url?fileName=hunhunhan', url);
     return response.data;
   } catch (error) {
     if (error instanceof AxiosError) {
