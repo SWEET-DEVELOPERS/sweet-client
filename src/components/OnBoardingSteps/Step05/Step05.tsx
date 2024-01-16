@@ -95,10 +95,14 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <OnBoardingBtn
           isActivated={selectedOption !== null}
-          setStep={() => {
+          setStep={async () => {
+            const response = await postPresignedUrl.mutateAsync({ url: '', filename: fileName });
+            postPresignedUrl.mutate({ url: '', filename: fileName });
+            console.log('response', response.presignedUrl);
+            const presignedUrl = response.presignedUrl;
+            const imageUrl = presignedUrl.split('?')[0];
+            console.log('imageUrl', imageUrl);
             onNext();
-            console.log('presignedUrl', fileName);
-            postPresignedUrl.mutate(fileName);
             // postOnboardingInfoMutation.mutate(onboardingInfo);
           }}
         >
