@@ -5,14 +5,14 @@ import Type3Tag from '../IcTag/Type3/Type3';
 
 interface DoneCardRoomType {
   user: string;
-  imgSrc: string;
+  imageUrl: string;
   userCount: number;
 }
 
-const DoneCardRoom = ({ user, imgSrc, userCount }: DoneCardRoomType) => {
+const DoneCardRoom = ({ user, imageUrl, userCount }: DoneCardRoomType) => {
   return (
     <S.CardRoomWrapper>
-      <img src={imgSrc} />
+      <img src={Rectangle} />
       <S.Text>
         <S.User>{user}님</S.User>을 위한 선물방
       </S.Text>

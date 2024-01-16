@@ -9,30 +9,51 @@ interface ProgressGiftViewType {
 }
 
 const ProgressGiftView = ({ data }: ProgressGiftViewType) => {
-  const progressData = data?.data[0];
+  const progressData1 = data ? data[0] : undefined;
+  const progressData2 = data ? data[1] : undefined;
 
-  console.log(progressData?.isOwner);
+  console.log(progressData1);
   return (
     <S.ProgressGiftViewWrapper>
       <GiftRoomHeader name='진행중인 선물방' page='detail-progress' />
       <S.RoomWrapper>
-        {!data ? (
+        {progressData1 && (
           <>
-            {progressData?.isOwner ? (
+            {progressData1.isOwner ? (
               <EditCardRoom
-                user={progressData?.gifteeName}
-                userCount={progressData?.gifterNumber}
-                srcImage={progressData?.imageUrl}
+                user={progressData1.gifteeName}
+                userCount={progressData1.gifterNumber}
+                srcImage={progressData1.imageUrl}
               />
             ) : (
               <ProgressCardRoom
-                user={progressData?.gifteeName || ''}
-                userCount={progressData?.gifterNumber || 0}
-                srcImage={progressData?.imageUrl || ''}
+                user={progressData1.gifteeName || ''}
+                userCount={progressData1.gifterNumber || 0}
+                srcImage={progressData1.imageUrl || ''}
               />
             )}
           </>
-        ) : (
+        )}
+
+        {progressData2 && (
+          <>
+            {progressData2.isOwner ? (
+              <EditCardRoom
+                user={progressData2.gifteeName}
+                userCount={progressData2.gifterNumber}
+                srcImage={progressData2.imageUrl}
+              />
+            ) : (
+              <ProgressCardRoom
+                user={progressData2.gifteeName || ''}
+                userCount={progressData2.gifterNumber || 0}
+                srcImage={progressData2.imageUrl || ''}
+              />
+            )}
+          </>
+        )}
+
+        {!progressData1 && !progressData2 && (
           <S.NoneRoom>지금 진행 중인 선물방이 없어요</S.NoneRoom>
         )}
       </S.RoomWrapper>
