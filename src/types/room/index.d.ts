@@ -1,13 +1,11 @@
 export interface RoomInfoType {
-  data: {
-    gifterNumber: number;
-    gifteeName: string;
-    invitationCode: string;
-    tournamentStartDate: Date;
-    roomMyGiftDtoList: FriendsGiftsType[];
-    roomFriendsGiftDtoList: FriendsGiftsType[];
-    hotProductGiftDtoList: HotGiftsType[];
-  };
+  gifterNumber: number;
+  gifteeName: string;
+  invitationCode: string;
+  tournamentStartDate: Date;
+  roomMyGiftDtoList: FriendsGiftsType[];
+  roomFriendsGiftDtoList: friendGiftDtoType[];
+  hotProductGiftDtoList: HotGiftsType[];
 }
 
 export interface FriendsGiftsInfoType {
@@ -36,7 +34,7 @@ export interface FriendsGiftsType {
   name: string;
   url: string;
   cost: number;
-  ownerName?: string;
+  ownerName: string;
 }
 
 export interface HotGiftsType {
