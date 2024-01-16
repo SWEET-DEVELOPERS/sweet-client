@@ -5,8 +5,8 @@ import Title from '../../common/title/Title';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import * as S from './Step05.style';
 import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
-import { useMutation } from '@tanstack/react-query';
-import { getAccessTokenLocalStorage, instance, post } from '../../../apis/client';
+import { getAccessTokenLocalStorage, instance } from '../../../apis/client';
+import usePostOnboardingInfo from '../../../hooks/queries/onboarding/usePostOnboardingInfo';
 
 interface SetTournamentDurationProps {
   onNext: VoidFunction;
@@ -33,9 +33,9 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
 
   const { onNext, tournamentDuration, setTournamentDuration, tournamentStartDate, onboardingInfo } =
     props;
+  const postOnboardingInfoMutation = usePostOnboardingInfo();
 
   const [selectedOption, setSelectedOption] = useState<string>('');
-  const [selectedTime, setSelectedTime] = useState<string>('');
 
   console.log('기존 step04에서 가지고 온 날짜와 시간을 step05에서 사용', tournamentStartDate);
 
@@ -48,22 +48,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     const formattedTime = updatedTime.toISOString();
 
     console.log(`선택된 시간: ${tournamentStartDate} + ${time}:`, formattedTime);
-    //six hours 나 이런 값들을 넣어줘야함.
   };
-
-  const postOnboardingInfo = async (onboardingInfo: any): Promise<any> => {
-    try {
-      const response: any = await post(`/room`, onboardingInfo);
-      return response.data;
-    } catch (error: any) {
-      throw new Error(error.response?.data?.message ?? error.message);
-    }
-  };
-
-  const mutation = useMutation({
-    mutationFn: postOnboardingInfo,
-    onSuccess: (data) => console.log('포스트 성공?', data),
-  });
 
   useEffect(() => {
     // 컴포넌트가 마운트될 때마다 최신 토큰을 가져와서 설정
@@ -101,7 +86,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
           isActivated={selectedOption !== null}
           setStep={() => {
             onNext();
-            mutation.mutate(onboardingInfo);
+            postOnboardingInfoMutation.mutate(onboardingInfo);
           }}
         >
           다음
