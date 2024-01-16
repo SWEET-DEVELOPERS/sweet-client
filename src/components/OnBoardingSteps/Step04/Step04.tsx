@@ -15,7 +15,7 @@ interface SetTournamentScheduleProps {
 }
 
 const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
-  // TODO 인풋창 클릭 시 캘린더 & 시간 선택 창 구현
+  // TODO 시간 선택되면 인풋창 가리고, border-bottom 원래대로 돌리기
   const { onNext, tournamentStartDate, setTournamentStartDate } = props;
   const disabledDays = { before: new Date() };
   const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
@@ -44,11 +44,6 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
       format(new Date(`${currentDate.toDateString()} ${selectedTime}`), "yyyy-MM-dd'T'HH:mm:ss"),
     );
   };
-
-  useEffect(() => {
-    console.log('step04 날짜 선택', tournamentStartDate);
-    console.log(setSelectedDate !== null);
-  }, [tournamentStartDate]);
 
   return (
     <>

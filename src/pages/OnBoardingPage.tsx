@@ -26,6 +26,8 @@ const OnBoardingPage = () => {
     tournamentStartDate: tournamentStartDate,
     tournamentDuration: tournamentDuration,
   };
+
+  //전체 값 확인용
   useEffect(() => {
     console.log('전체 값 정리', onboardingInfo);
   }, [onboardingInfo]);

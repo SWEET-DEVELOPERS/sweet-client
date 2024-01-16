@@ -24,8 +24,6 @@ const NameInput = (props: NameInputProps) => {
     setGifteeName('');
   };
 
-  console.log('유저네임 값', gifteeName);
-
   return (
     <>
       <OnBoardingHeader step={1} />

@@ -46,7 +46,6 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
 
   useEffect(() => {
     deliveryDate ? setIsActivated(true) : setIsActivated(false);
-    // console.log('useEffect 선택된 날짜', deliveryDate);
   }, [deliveryDate]);
 
   return (

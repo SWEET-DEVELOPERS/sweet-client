@@ -25,7 +25,7 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
 
     const imageName = files[0].name.trim();
 
-    // .jpeg 확장자 제거
+    // 확장자 제거
     const imageNameWithoutExtension = imageName.replace(/\.[^/.]+$/, '');
 
     // 띄워쓰기 제거
@@ -42,11 +42,6 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
     setImageUrl(finalImageName);
     console.log('imageUrl', imageUrl);
   };
-
-  //값 확인용
-  useEffect(() => {
-    console.log(imageUrl);
-  }, [imageUrl]);
 
   return (
     <>
