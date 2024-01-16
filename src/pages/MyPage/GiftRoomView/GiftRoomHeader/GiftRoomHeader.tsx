@@ -1,10 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import { IcRight } from '../../../../assets/svg';
+import { ActiveRoomType } from '../../../../types/user';
+import { ClosedRoomType } from '../../../../types/user';
 import * as S from './GiftRoomHeader.style';
 
 interface GiftRoomHeaderProps {
   name: string;
   page: string;
+  activeData?: ActiveRoomType | undefined;
+  doneData?: ClosedRoomType | undefined;
 }
 
 const GiftRoomHeader = ({ name, page }: GiftRoomHeaderProps) => {
@@ -12,6 +16,7 @@ const GiftRoomHeader = ({ name, page }: GiftRoomHeaderProps) => {
   const handleHeader = () => {
     navigate(`/${page}`);
   };
+
   return (
     <S.GiftRoomHeaderWrapper onClick={handleHeader}>
       <S.Text>{name}</S.Text>

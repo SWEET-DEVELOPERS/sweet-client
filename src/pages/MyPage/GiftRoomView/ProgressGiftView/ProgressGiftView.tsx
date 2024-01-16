@@ -9,13 +9,13 @@ interface ProgressGiftViewType {
 }
 
 const ProgressGiftView = ({ data }: ProgressGiftViewType) => {
-  const progressData1 = data ? data[0] : undefined;
-  const progressData2 = data ? data[1] : undefined;
+  const progressData1 = Array.isArray(data) ? data[0] : undefined;
+  const progressData2 = Array.isArray(data) ? data[1] : undefined;
 
   console.log(progressData1);
   return (
     <S.ProgressGiftViewWrapper>
-      <GiftRoomHeader name='진행중인 선물방' page='detail-progress' />
+      <GiftRoomHeader name='진행중인 선물방' page='detail-progress' activeData={data} />
       <S.RoomWrapper>
         {progressData1 && (
           <>

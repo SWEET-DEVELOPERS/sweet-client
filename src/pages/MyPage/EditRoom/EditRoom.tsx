@@ -7,9 +7,7 @@ const EditRoom = () => {
   return (
     <S.EditRoomWrapper>
       <S.TextWrapper>
-        <S.Text>
-          <p>{memberCount}명</p>이
-        </S.Text>
+        <S.Text>{memberCount}명이</S.Text>
         <S.Text>{candidate}님을 위한</S.Text>
         <S.Text>선물을 준비하고 있어요</S.Text>
       </S.TextWrapper>
