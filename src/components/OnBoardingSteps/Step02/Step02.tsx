@@ -9,11 +9,13 @@ interface ThumbnailInputProps {
   onNext: VoidFunction;
   imageUrl: string;
   setImageUrl: React.Dispatch<React.SetStateAction<string>>;
+  fileName: string;
+  setFileName: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const ThumbnailInput = (props: ThumbnailInputProps) => {
   // TODO 이미지 클릭 시 사진 업로드
-  const { onNext, imageUrl, setImageUrl } = props;
+  const { onNext, imageUrl, setImageUrl, fileName, setFileName } = props;
   const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
@@ -40,8 +42,13 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
 
       // 최종 이미지 이름
       const finalImageName = `${firstThreeLetters}${uploadTime}`;
-      setImageUrl(finalImageName);
-      console.log('imageUrl', imageUrl);
+
+      // TODO 그냥 imageUrl에는 presignedUrl을 값에 넣어줘야함
+      // setImageUrl(finalImageName);
+
+      setFileName(finalImageName);
+
+      console.log('imageUrl', finalImageName);
     }
   };
 
