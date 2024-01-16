@@ -1,7 +1,7 @@
 import Title from '../../common/title/Title';
 import { IcEmptyThumbnail } from '../../../assets/svg';
 import * as S from './Step02.style';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
 
@@ -19,28 +19,30 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
-    const selectedFiles = files as FileList;
-    setPreviewImage(URL.createObjectURL(selectedFiles[0]));
-    setIsImageUploaded(!!selectedFiles?.[0]);
+    if (files && files.length > 0) {
+      const selectedFiles = files as FileList;
+      setPreviewImage(URL.createObjectURL(selectedFiles[0]));
+      setIsImageUploaded(!!selectedFiles?.[0]);
 
-    const imageName = files[0].name.trim();
+      const imageName = files[0].name.trim();
 
-    // 확장자 제거
-    const imageNameWithoutExtension = imageName.replace(/\.[^/.]+$/, '');
+      // 확장자 제거
+      const imageNameWithoutExtension = imageName.replace(/\.[^/.]+$/, '');
 
-    // 띄워쓰기 제거
-    const formattedImageName = imageNameWithoutExtension.replace(/\s/g, '');
+      // 띄워쓰기 제거
+      const formattedImageName = imageNameWithoutExtension.replace(/\s/g, '');
 
-    // 앞 3글자 가져오기
-    const firstThreeLetters = formattedImageName.substring(0, 3);
+      // 앞 3글자 가져오기
+      const firstThreeLetters = formattedImageName.substring(0, 3);
 
-    // 이미지 업로드 시간
-    const uploadTime = new Date().toISOString();
+      // 이미지 업로드 시간
+      const uploadTime = new Date().toISOString();
 
-    // 최종 이미지 이름
-    const finalImageName = `${firstThreeLetters}${uploadTime}`;
-    setImageUrl(finalImageName);
-    console.log('imageUrl', imageUrl);
+      // 최종 이미지 이름
+      const finalImageName = `${firstThreeLetters}${uploadTime}`;
+      setImageUrl(finalImageName);
+      console.log('imageUrl', imageUrl);
+    }
   };
 
   return (
