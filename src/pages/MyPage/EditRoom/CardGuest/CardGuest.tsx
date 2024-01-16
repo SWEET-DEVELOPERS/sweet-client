@@ -7,16 +7,17 @@ import * as S from './CardGuest.style';
 interface CardGuestProps {
   user: string;
   makerState: boolean;
+  profileImageUrl: string;
 }
 
-const CardGuest = ({ user, makerState }: CardGuestProps) => {
+const CardGuest = ({ user, makerState, profileImageUrl }: CardGuestProps) => {
   const handleButton = () => {
     console.log('삭제 되어따!');
   };
   return (
     <S.CardGuestWrapper>
       <S.UserWrapper>
-        <ProfileImage image={Rectangle} />
+        <ProfileImage image={profileImageUrl} />
         <S.User>{user}</S.User>
       </S.UserWrapper>
       {makerState ? (

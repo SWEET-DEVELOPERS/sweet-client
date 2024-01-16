@@ -31,8 +31,10 @@ export type MemberInfoType = {
 
 export type RoomMemberType = {
   myId: number;
-  giftNumber: number;
-  roomMemberDtoList: number;
+  gifterNumber: number;
+  roomMemberDtoList: Array<RoomMemberListType>;
+};
+export type RoomMemberListType = {
   memberId: number;
   profileImageUrl: string;
   name: string;
