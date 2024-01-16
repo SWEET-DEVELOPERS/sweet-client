@@ -8,17 +8,20 @@ import usePostScore from '../../../hooks/queries/tournament/usePostScore';
 
 interface TournamentResultProps {
   winners: GiftData | null;
-  firstPlaceGiftId: number; // Replace with the actual type of giftId
-  secondPlaceGiftId: number;
+  firstGiftId: number; // Replace with the actual type of giftId
+  secondGiftId: number;
+  finalGiftId: number;
 }
 
 const TournamentResult: React.FC<TournamentResultProps> = ({
   winners,
-  firstPlaceGiftId, //1
-  secondPlaceGiftId, //2
+  firstGiftId, //1
+  secondGiftId, //2
+  finalGiftId,
 }) => {
-  console.log(firstPlaceGiftId);
-  console.log(secondPlaceGiftId);
+  console.log(firstGiftId);
+  console.log(secondGiftId);
+  console.log(finalGiftId);
   // const footerClickHandler = () => {
   //   const itemInfo: TournamentScore = {
   //     firstPlaceGiftId: firstPlaceGiftId,
@@ -29,10 +32,10 @@ const TournamentResult: React.FC<TournamentResultProps> = ({
   //   mutation.mutate(itemInfo);
   // };
   // const footerClickHandler = () => {};
-  const { mutation } = usePostScore({ body: { firstPlaceGiftId, secondPlaceGiftId } });
+  const { mutation } = usePostScore({ body: { firstGiftId, secondGiftId, finalGiftId } });
 
   const footerClickHandler = () => {
-    mutation.mutate({ firstPlaceGiftId, secondPlaceGiftId });
+    mutation.mutate({ firstGiftId, secondGiftId, finalGiftId });
   };
 
   return (

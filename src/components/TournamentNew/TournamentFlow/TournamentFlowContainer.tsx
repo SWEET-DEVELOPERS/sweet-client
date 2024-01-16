@@ -4,8 +4,7 @@ import TournamentCard from './TournamentCard/TournamentCard';
 import TournamentTitle from './TournamentTitle/TournamentTitle';
 import TournamentFooter from './TournamentFooter/TournamentFooter';
 import TournamentResult from '../TournamentResult/TournamentResult';
-import { GiftData, TournamentScore } from '../../../types/tournament';
-import usePostScore from '../../../hooks/queries/tournament/usePostScore';
+import { GiftData } from '../../../types/tournament';
 
 interface TournamentProps {
   memberData: GiftData[];
@@ -17,6 +16,8 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
   //선택된 아이템 저장
   const [selectedItem, setSelectedItem] = useState<GiftData | null>(null);
   const [remainingItems, setRemainingItems] = useState<GiftData[]>([]);
+  const [firstItems, setFirstItems] = useState<GiftData[]>([]);
+  const [secondItems, setSecondItems] = useState<GiftData[]>([]);
 
   const [winners, setWinners] = useState<GiftData[]>([]);
   // 최신 인덱스
@@ -39,6 +40,8 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
         setDisplays([item]);
         setSelectedItem(item);
         console.log('결과?=:', itemPick); //결승 두개 아이템
+        setFirstItems([itemPick[0]]);
+        setSecondItems([itemPick[1]]);
         console.log('결과!=:', [item]); //우승한 한개 아이템
         setShowTournamentResult(true);
       } else {
@@ -62,6 +65,8 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
         setSelectedItem(item);
         console.log('결과?!!=:', itemPick); //결승 두개 아이템
         // Filter out the selected item from itemPick
+        setFirstItems([itemPick[0]]);
+        setSecondItems([itemPick[1]]);
         const updatedRemainingItems = itemPick.filter((remainingItem) => remainingItem !== item);
         setRemainingItems(updatedRemainingItems);
 
@@ -82,8 +87,9 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
     }
   };
 
-  console.log('???', selectedItem);
-  console.log('리메인', remainingItems);
+  console.log('???', itemPick);
+  console.log('dma??', firstItems);
+  console.log('dma?????', secondItems);
 
   const footerClickHandler = () => {};
   return (
@@ -91,8 +97,9 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
       {showTournamentResult ? (
         <TournamentResult
           winners={selectedItem}
-          firstPlaceGiftId={selectedItem?.giftId || 0} // Assuming a default value of 0 if undefined
-          secondPlaceGiftId={remainingItems[0]?.giftId || 0}
+          firstGiftId={firstItems.length > 0 ? firstItems[0].giftId : 0}
+          secondGiftId={secondItems.length > 0 ? secondItems[0].giftId : 0}
+          finalGiftId={selectedItem?.giftId || 0}
         />
       ) : (
         <S.TournamentFlowContainerWrapper>
