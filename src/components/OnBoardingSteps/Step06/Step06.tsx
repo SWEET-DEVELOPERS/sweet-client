@@ -6,15 +6,21 @@ import { useEffect } from 'react';
 interface OnboardingFinalProps {
   onboardingInfo: {
     gifteeName: string;
-    imageUrl: string;
+    // imageUrl: string;
     deliveryDate: string;
     tournamentStartDate: string;
     tournamentDuration: string;
   };
+  imageUrl: string;
 }
 const OnboardingFinal = (props: OnboardingFinalProps) => {
   // TODO 추후 이전 STEP에서 유저가 입력한 값으로 변경
-  const { onboardingInfo } = props;
+  const { onboardingInfo, imageUrl } = props;
+
+  const updatedOnBoardingInfo = {
+    ...onboardingInfo,
+    imageUrl: imageUrl,
+  };
   const infoDetails = [
     { title: '선물 받을 사람', detail: '가나다라마바사아자차님' },
     { title: '선물 등록 마감', detail: '2023.12.29(금) 13시' },
@@ -45,7 +51,7 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
         content: {
           title: `${onboardingInfo.gifteeName}님을 위한 선물 준비방에 초대장이 도착했어요`,
           description: onboardingInfo.gifteeName,
-          imageUrl: onboardingInfo.imageUrl,
+          imageUrl: updatedOnBoardingInfo.imageUrl,
           link: {
             mobileWebUrl: 'https://localhost:5173',
             webUrl: 'https://localhost:5173',

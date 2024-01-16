@@ -22,7 +22,7 @@ const OnBoardingPage = () => {
 
   const onboardingInfo = {
     gifteeName: gifteeName,
-    imageUrl: imageUrl,
+    // imageUrl: imageUrl,
     deliveryDate: deliveryDate,
     tournamentStartDate: tournamentStartDate,
     tournamentDuration: tournamentDuration,
@@ -88,6 +88,7 @@ const OnBoardingPage = () => {
               setTournamentDuration={setTournamentDuration}
               tournamentStartDate={tournamentStartDate}
               fileName={fileName}
+              imageUrl={imageUrl}
               setImageUrl={setImageUrl}
               onboardingInfo={onboardingInfo}
             />
@@ -95,7 +96,7 @@ const OnBoardingPage = () => {
         </Funnel.Step>
         <Funnel.Step name='GIFT_ROOM_FIX'>
           {/* step06 */}
-          <OnboardingFinal onboardingInfo={onboardingInfo} />
+          <OnboardingFinal onboardingInfo={onboardingInfo} imageUrl={imageUrl} />
         </Funnel.Step>
       </Funnel>
     </OnBoardingPageWrapper>
