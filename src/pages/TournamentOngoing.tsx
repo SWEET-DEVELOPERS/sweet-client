@@ -3,7 +3,7 @@ import TournamentFlowContainer from '../components/TournamentNew/TournamentFlow/
 const TournamentOngoing = () => {
   return (
     <>
-      <TournamentFlowContainer />
+      <TournamentFlowContainer  />
     </>
   );
 };
