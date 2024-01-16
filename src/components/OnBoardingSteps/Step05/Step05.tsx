@@ -64,6 +64,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     // 컴포넌트가 마운트될 때마다 최신 토큰을 가져와서 설정
     instance.defaults.headers.Authorization = getAccessTokenLocalStorage();
     console.log('selectedOption', tournamentDuration);
+    console.log('step05 fileName', fileName);
   }, [tournamentDuration]);
 
   return (
