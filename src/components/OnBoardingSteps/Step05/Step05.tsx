@@ -7,6 +7,8 @@ import * as S from './Step05.style';
 import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
 import { getAccessTokenLocalStorage, instance } from '../../../apis/client';
 import usePostOnboardingInfo from '../../../hooks/queries/onboarding/usePostOnboardingInfo';
+import { OnboardingInfo } from '../../../types/Onboarding';
+import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
 
 interface SetTournamentDurationProps {
   onNext: VoidFunction;
@@ -15,7 +17,7 @@ interface SetTournamentDurationProps {
   tournamentStartDate: string;
   onboardingInfo: {
     gifteeName: string;
-    imageUrl: string;
+    fileName: string;
     deliveryDate: string;
     tournamentStartDate: string;
     tournamentDuration: string;
@@ -34,7 +36,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   const { onNext, tournamentDuration, setTournamentDuration, tournamentStartDate, onboardingInfo } =
     props;
   const postOnboardingInfoMutation = usePostOnboardingInfo();
-
+  const postPresignedUrl = usePostPresignedUrl();
   const [selectedOption, setSelectedOption] = useState<string>('');
 
   console.log('기존 step04에서 가지고 온 날짜와 시간을 step05에서 사용', tournamentStartDate);
@@ -85,7 +87,9 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
           isActivated={selectedOption !== null}
           setStep={() => {
             onNext();
-            postOnboardingInfoMutation.mutate(onboardingInfo);
+            const preSignedUrl: string = onboardingInfo.fileName;
+            postPresignedUrl.mutate(preSignedUrl);
+            // postOnboardingInfoMutation.mutate(onboardingInfo);
           }}
         >
           다음
