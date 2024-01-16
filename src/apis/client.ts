@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
-const getAccessTokenLocalStorage = () => {
+export const getAccessTokenLocalStorage = () => {
   const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
   return accessToken ? `Bearer ${accessToken}` : '';
 };

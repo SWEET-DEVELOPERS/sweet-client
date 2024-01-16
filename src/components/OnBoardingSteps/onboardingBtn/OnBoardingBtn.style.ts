@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.button<{ isActivated: boolean }>`
+export const Wrapper = styled.button<{ $isActivated: boolean }>`
   ${({ theme: { mixin } }) => mixin.inlineFlexBox({ align: 'center', justify: 'center' })}
   height: 4.4rem;
   padding: 1rem 1.1rem 1rem 2rem;
@@ -8,8 +8,8 @@ export const Wrapper = styled.button<{ isActivated: boolean }>`
   position: absolute;
   bottom: 0;
   margin-bottom: 2rem;
-  ${({ isActivated, theme: { colors } }) =>
-    isActivated
+  ${({ $isActivated, theme: { colors } }) =>
+    $isActivated
       ? `
    background-color: ${colors.P_06};
    color: ${colors.white};
