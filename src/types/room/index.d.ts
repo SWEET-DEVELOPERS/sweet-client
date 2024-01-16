@@ -9,10 +9,8 @@ export interface RoomInfoType {
 }
 
 export interface FriendsGiftsInfoType {
-  data: {
-    tournamentStartDate: tournamentStartDateType;
-    friendGiftDto: friendGiftDtoType[];
-  };
+  tournamentStartDate: tournamentStartDateType;
+  friendGiftDto: friendGiftDtoType[];
 }
 
 export interface tournamentStartDateType {
