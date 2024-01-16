@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { get } from '../../../apis/client';
-import { ClosedRoomType } from '../../../types/user';
+import { ClosedRoomType } from '../../../types/member';
 
 interface MyPageResponse extends Response {
   data: ClosedRoomType;

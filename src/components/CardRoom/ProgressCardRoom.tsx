@@ -7,9 +7,10 @@ interface ProgressCardRoomType {
   user: string;
   srcImage: string;
   userCount: number;
+  roomId: number;
 }
 
-const ProgressCardRoom = ({ user, srcImage, userCount }: ProgressCardRoomType) => {
+const ProgressCardRoom = ({ user, srcImage, userCount, roomId }: ProgressCardRoomType) => {
   return (
     <S.CardRoomWrapper>
       <img src={srcImage} />

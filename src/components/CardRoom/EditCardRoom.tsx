@@ -9,13 +9,14 @@ interface EditCardRoomType {
   user: string;
   srcImage: string;
   userCount: number;
+  roomId: number;
 }
 
-const EditCardRoom = ({ user, srcImage, userCount }: EditCardRoomType) => {
+const EditCardRoom = ({ user, srcImage, userCount, roomId }: EditCardRoomType) => {
   const navigate = useNavigate();
 
   const handleSettingIcon = () => {
-    navigate('/editpage');
+    navigate(`/editpage`);
   };
   return (
     <S.CardRoomWrapper>

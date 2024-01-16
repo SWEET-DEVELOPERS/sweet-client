@@ -6,7 +6,7 @@ import DoneGiftView from './GiftRoomView/DoneGiftView/DoneGiftView';
 import ProgressGiftView from './GiftRoomView/ProgressGiftView/ProgressGiftView';
 import useGetMyPage from '../../hooks/queries/member/useGetMypage';
 import * as S from './MyPage.style';
-import { MyPageType } from '../../types/user';
+import { MyPageType } from '../../types/member';
 interface MyPage {
   memberData: MyPageType;
 }

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { IcRight } from '../../../../assets/svg';
-import { ActiveRoomType } from '../../../../types/user';
-import { ClosedRoomType } from '../../../../types/user';
+import { ActiveRoomType } from '../../../../types/member';
+import { ClosedRoomType } from '../../../../types/member';
 import * as S from './GiftRoomHeader.style';
 
 interface GiftRoomHeaderProps {

@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { get } from '../../../apis/client';
-import { RoomMemberType } from '../../../types/user';
+import { RoomMemberType } from '../../../types/member';
 
 interface RoomMemberResponse extends Response {
   data: RoomMemberType;

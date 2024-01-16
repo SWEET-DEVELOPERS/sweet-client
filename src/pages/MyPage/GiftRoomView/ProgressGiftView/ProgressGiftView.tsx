@@ -1,6 +1,6 @@
 import EditCardRoom from '../../../../components/CardRoom/EditCardRoom';
 import GiftRoomHeader from '../GiftRoomHeader/GiftRoomHeader';
-import { ActiveRoomType } from '../../../../types/user';
+import { ActiveRoomType } from '../../../../types/member';
 import ProgressCardRoom from '../../../../components/CardRoom/ProgressCardRoom';
 import * as S from './ProgressGiftView.style';
 
@@ -24,12 +24,14 @@ const ProgressGiftView = ({ data }: ProgressGiftViewType) => {
                 user={progressData1.gifteeName}
                 userCount={progressData1.gifterNumber}
                 srcImage={progressData1.imageUrl}
+                roomId={progressData1.roomId}
               />
             ) : (
               <ProgressCardRoom
                 user={progressData1.gifteeName || ''}
                 userCount={progressData1.gifterNumber || 0}
                 srcImage={progressData1.imageUrl || ''}
+                roomId={progressData1.roomId}
               />
             )}
           </>
@@ -42,12 +44,14 @@ const ProgressGiftView = ({ data }: ProgressGiftViewType) => {
                 user={progressData2.gifteeName}
                 userCount={progressData2.gifterNumber}
                 srcImage={progressData2.imageUrl}
+                roomId={progressData2.roomId}
               />
             ) : (
               <ProgressCardRoom
                 user={progressData2.gifteeName || ''}
                 userCount={progressData2.gifterNumber || 0}
                 srcImage={progressData2.imageUrl || ''}
+                roomId={progressData2.roomId}
               />
             )}
           </>

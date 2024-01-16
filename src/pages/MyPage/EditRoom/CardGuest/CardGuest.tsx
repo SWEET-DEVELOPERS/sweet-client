@@ -1,18 +1,23 @@
 import { IcCancel } from '../../../../assets/svg';
 import Type1Tag from '../../../../components/IcTag/Type1/Type1';
 import ProfileImage from '../../ProfileImage/ProfileImage';
-import Rectangle from '../../../../assets/img/Rectangle.png';
 import * as S from './CardGuest.style';
+import useDeleteRoomMember from '../../../../hooks/queries/room/useDeleteRoomMember';
+import { useNavigate } from 'react-router';
 
 interface CardGuestProps {
   user: string;
   makerState: boolean;
   profileImageUrl: string;
+  roomId: number;
+  memberId: number;
 }
 
-const CardGuest = ({ user, makerState, profileImageUrl }: CardGuestProps) => {
+const CardGuest = ({ user, makerState, profileImageUrl, roomId, memberId }: CardGuestProps) => {
+  const navigate = useNavigate();
   const handleButton = () => {
-    console.log('삭제 되어따!');
+    navigate('/editpage', { state: { roomId, memberId } });
+    useDeleteRoomMember(roomId, memberId);
   };
   return (
     <S.CardGuestWrapper>

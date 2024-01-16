@@ -1,6 +1,6 @@
 import DoneCardRoom from '../../../../components/CardRoom/DoneCardRoom';
 import GiftRoomHeader from '../GiftRoomHeader/GiftRoomHeader';
-import { ClosedRoomType } from '../../../../types/user';
+import { ClosedRoomType } from '../../../../types/member';
 import * as S from './DoneGiftView.style';
 
 interface DoneGiftViewType {

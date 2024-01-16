@@ -19,6 +19,7 @@ const DetailProgressRoom = () => {
                 user={item.gifteeName}
                 userCount={item.gifterNumber}
                 srcImage={item.imageUrl}
+                roomId={item.roomId}
               />
             ) : (
               <ProgressCardRoom
@@ -26,15 +27,16 @@ const DetailProgressRoom = () => {
                 user={item.gifteeName || ''}
                 userCount={item.gifterNumber || 0}
                 srcImage={item.imageUrl || ''}
+                roomId={item.roomId}
               />
             ),
           )
         ) : (
-          <>
-            <IcLogoEmpty />
+          <S.EmptyWrapper>
+            <IcLogoEmpty style={{ width: '8rem', height: '6.4rem' }} />
             <S.EmptyText>준비했던 선물이 없어요</S.EmptyText>
-            <BtnSmallStroke>새로운 선물 준비하기</BtnSmallStroke>
-          </>
+            <BtnSmallStroke customStyle={{ margin: '1.6rem' }}>새로운 선물 준비하기</BtnSmallStroke>
+          </S.EmptyWrapper>
         )}
       </S.RoomWrapper>
     </S.DetailProgressRoomWrapper>

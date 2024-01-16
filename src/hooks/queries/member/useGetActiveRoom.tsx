@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { get } from '../../../apis/client';
-import { ActiveRoomType } from '../../../types/user';
+import { ActiveRoomType } from '../../../types/member';
 
 interface MyPageResponse extends Response {
   data: ActiveRoomType;
