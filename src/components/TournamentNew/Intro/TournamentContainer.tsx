@@ -3,18 +3,16 @@ import TournamentItemCount from './TournamentItemCount/TournamentItemCount';
 import * as S from './TournamentContatiner.style';
 import { Svg3Dicons } from '../../../assets/svg';
 import TournamentStartButton from './TournamentStartButton/TournamentStartButton';
-import { useState } from 'react';
+import useTournament from '../../../hooks/tournament/useTournament';
 import TournamentFlowContainer from '../TournamentFlow/TournamentFlowContainer';
 
 const TournamentContainer = () => {
-  const [showTournamentContainer, setShowTournamentContainer] = useState(true);
-
-  const handleStartClick = () => {
-    setShowTournamentContainer(false);
-  };
+  const { showTournamentContainer, handleStartClick } = useTournament();
+  // const memberData = useGetItem({ roomId: 2 });
+  // console.log(memberData);
   return (
     <>
-      {showTournamentContainer && (
+      {showTournamentContainer ? (
         <>
           <TournamentStartText />
           <TournamentItemCount />
@@ -23,9 +21,9 @@ const TournamentContainer = () => {
           </S.TournamentImg>
           <TournamentStartButton onClick={handleStartClick} />
         </>
+      ) : (
+        <TournamentFlowContainer />
       )}
-
-      {!showTournamentContainer && <TournamentFlowContainer />}
     </>
   );
 };

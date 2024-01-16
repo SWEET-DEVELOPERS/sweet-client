@@ -1,8 +1,6 @@
 import GiftHomeDetailFriends from '../pages/GiftHomeDetail/GiftHomeDetailFriends';
 import GiftHomeDetail2030 from '../pages/GiftHomeDetail/GiftHomeDetail2030';
 import OnBoardingPage from '../pages/OnBoardingPage';
-import TournamentOngoing from '../pages/TournamentOngoing';
-import TournamentPage from '../pages/TournamentPage';
 import Start from '../pages/Start/Start';
 import Login from '../components/Login';
 import { createBrowserRouter } from 'react-router-dom';
@@ -13,6 +11,7 @@ import DetailProgressRoom from '../pages/MyPage/Detail/DetailProgressRoom/Detail
 import DetailDoneRoom from '../pages/MyPage/Detail/DetailDoneRoom/DetailDoneRoom';
 import GiftHome from '../pages/GiftHome/GiftHome';
 import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
+import TournamentContainer from '../components/TournamentNew/Intro/TournamentContainer';
 
 const router = createBrowserRouter([
   {
@@ -63,12 +62,8 @@ const router = createBrowserRouter([
         element: <OnBoardingPage />,
       },
       {
-        path: '/tournamentPro',
-        element: <TournamentOngoing />,
-      },
-      {
         path: '/tournament',
-        element: <TournamentPage />,
+        element: <TournamentContainer />,
       },
       {
         path: '/addgift',
