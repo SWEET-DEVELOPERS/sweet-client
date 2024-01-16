@@ -9,6 +9,7 @@ type BtnRadioProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   onClick?: () => void;
   isSelected?: () => void;
   onTimeSelect?: (time: string) => void;
+  setSelectedTime?: (time: string) => VoidFunction;
 };
 const BtnRadio = ({
   disabled,
@@ -17,6 +18,7 @@ const BtnRadio = ({
   customStyle,
   onClick,
   onTimeSelect,
+  setSelectedTime,
 }: BtnRadioProps) => {
   const [focused, setFocused] = useState(false);
 
@@ -27,6 +29,9 @@ const BtnRadio = ({
       onClick={() => {
         if (onTimeSelect) {
           onTimeSelect(time);
+        }
+        if (setSelectedTime) {
+          setSelectedTime(time);
         }
         if (onClick) {
           onClick();
