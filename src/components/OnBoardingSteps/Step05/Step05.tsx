@@ -88,6 +88,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
           setStep={() => {
             onNext();
             const preSignedUrl: string = onboardingInfo.fileName;
+            console.log('preSignedUrl', preSignedUrl);
             postPresignedUrl.mutate(preSignedUrl);
             // postOnboardingInfoMutation.mutate(onboardingInfo);
           }}
