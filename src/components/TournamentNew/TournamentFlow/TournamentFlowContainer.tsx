@@ -133,6 +133,7 @@ const TournamentFlowContainer: React.FC = () => {
       } else if (winners.length === 0) {
         //위너가 1이 되니까 ,, 요기에 못들어가네
         setDisplays([item]);
+        //아 이걸 ..?이거 때문에 12개로 토너먼트하면 미리 결승이 일어나는건가?
         setSelectedItem(item);
         console.log('결과?=:', itemPick); //결승 두개 아이템
         console.log('결과!=:', [item]); //우승한 한개 아이템
