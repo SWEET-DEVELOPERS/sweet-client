@@ -10,7 +10,11 @@ interface GiftHome2030GiftsProps {
 export default function GiftHome2030Gifts({ data }: GiftHome2030GiftsProps) {
   return (
     <S.GiftHomeShowcaseWrapper>
-      <GiftHomeShowcaseHeader title={'요즘 2030이 주목하는 선물'} category='2030' />
+      <GiftHomeShowcaseHeader
+        title={'요즘 2030이 주목하는 선물'}
+        category='2030'
+        length={data.length}
+      />
       {data.length > 0 ? (
         <S.GiftsWrapper>
           {data.map((gift, index) => (

@@ -10,7 +10,11 @@ interface GiftHomeFriendsGiftsProps {
 export default function GiftHomeFriendsGifts({ data }: GiftHomeFriendsGiftsProps) {
   return (
     <S.GiftHomeShowcaseWrapper>
-      <GiftHomeShowcaseHeader title={'친구가 등록한 선물'} category='friends' />
+      <GiftHomeShowcaseHeader
+        title={'친구가 등록한 선물'}
+        category='friends'
+        length={data.length}
+      />
       {data.length > 0 ? (
         <S.GiftsWrapper>
           {data.map((gift, index) => (
