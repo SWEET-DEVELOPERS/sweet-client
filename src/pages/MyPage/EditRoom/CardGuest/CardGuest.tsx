@@ -6,9 +6,9 @@ import useDeleteRoomMember from '../../../../hooks/queries/room/useDeleteRoomMem
 import { useNavigate } from 'react-router';
 
 interface CardGuestProps {
-  user: string;
+  user?: string;
   makerState: boolean;
-  profileImageUrl: string;
+  profileImageUrl: string | undefined;
   roomId: number;
   memberId: number;
 }
@@ -22,7 +22,8 @@ const CardGuest = ({ user, makerState, profileImageUrl, roomId, memberId }: Card
   return (
     <S.CardGuestWrapper>
       <S.UserWrapper>
-        <ProfileImage image={profileImageUrl} />
+        {profileImageUrl ? <ProfileImage image={profileImageUrl} /> : <p>null</p>}
+
         <S.User>{user}</S.User>
       </S.UserWrapper>
       {makerState ? (

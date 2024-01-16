@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { del } from '../../../apis/client';
 import { RoomMemberType } from '../../../types/member';
 
@@ -11,12 +11,18 @@ export const MEMBER_DELETE_QUERY_KEY: string[] = ['roomDeleteData'];
 const useDeleteRoomMember = (roomId: number, memberId: number) => {
   const fetchMyPage = async (roomId: number, memberId: number): Promise<RoomMemberResponse> =>
     del(`/api/room/${roomId}/members/${memberId}`);
+  const queryClient = useQueryClient();
 
-  const { data } = useQuery({
-    queryKey: MEMBER_DELETE_QUERY_KEY,
-    queryFn: () => fetchMyPage(roomId, memberId),
+  const mutation = useMutation({
+    mutationFn: () => fetchMyPage(roomId, memberId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: MEMBER_DELETE_QUERY_KEY });
+    },
+    onError: () => {
+      console.log('선물 삭제 중 에러가 발생했습니다.');
+    },
   });
-  return data;
+  return { mutation };
 };
 
 export default useDeleteRoomMember;

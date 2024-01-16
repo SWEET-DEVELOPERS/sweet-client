@@ -30,11 +30,22 @@ export type MemberInfoType = {
 };
 
 export type RoomMemberType = {
-  myId: number;
-  gifterNumber: number;
-  roomMemberDtoList: Array<RoomMemberListType>;
+  room: RoomsListType;
+  owner: OwnerListType;
+  members: MembersListType;
 };
-export type RoomMemberListType = {
+
+export type OwnerListType = {
+  ownerId: number;
+  profileImgUrl: string;
+  name: string;
+};
+
+export type RoomsListType = {
+  gifteeName: string;
+  gifterNumber: number;
+};
+export type MembersListType = {
   memberId: number;
   profileImageUrl: string;
   name: string;

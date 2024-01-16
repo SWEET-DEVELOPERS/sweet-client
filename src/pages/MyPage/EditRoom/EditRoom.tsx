@@ -1,6 +1,5 @@
 import useGetRoomMember from '../../../hooks/queries/room/useGetRoomMember';
 import CardGuest from './CardGuest/CardGuest';
-import Rectangle from '../../../assets/img/Rectangle.png';
 import * as S from './EditRoom.style';
 
 interface EditRoom {
@@ -9,22 +8,24 @@ interface EditRoom {
 
 const EditRoom = ({ roomId }: EditRoom) => {
   const roomMemberWholeData = useGetRoomMember(roomId)?.data;
-  const roomMemberData = roomMemberWholeData?.roomMemberDtoList;
+  const roomOwnerData = roomMemberWholeData?.owner;
+  const roomGifteeData = roomMemberWholeData?.room;
+  const roomMemberData = roomMemberWholeData?.members;
   console.log(roomMemberWholeData);
   return (
     <S.EditRoomWrapper>
       <S.TextWrapper>
-        <S.Text>{roomMemberWholeData?.gifterNumber}명이</S.Text>
-        <S.Text>{roomMemberWholeData?.myId}님을 위한</S.Text>
+        <S.Text>{roomGifteeData?.gifterNumber}명이</S.Text>
+        <S.Text>{roomGifteeData?.gifteeName}님을 위한</S.Text>
         <S.Text>선물을 준비하고 있어요</S.Text>
       </S.TextWrapper>
       <S.CardWrapper>
         <CardGuest
-          user='개설자'
+          user={roomOwnerData?.name}
           makerState={true}
-          profileImageUrl={Rectangle}
+          profileImageUrl={roomOwnerData?.profileImgUrl}
+          memberId={roomOwnerData.ownerId}
           roomId={roomId}
-          memberId={999}
         />
 
         {Array.isArray(roomMemberData) ? (
