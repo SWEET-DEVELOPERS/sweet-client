@@ -1,6 +1,8 @@
 export interface OpenGraphResponseType {
-  title: string;
-  image: string;
+  data: {
+    title: string;
+    image: string;
+  };
 }
 
 export interface OpenGraphRequestType {

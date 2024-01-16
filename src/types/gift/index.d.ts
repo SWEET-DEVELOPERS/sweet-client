@@ -14,7 +14,5 @@ export interface GiftType {
 }
 
 export interface MyGiftsType {
-  data: {
-    myGiftDtoList: GiftType[];
-  };
+  myGiftDtoList: GiftType[];
 }

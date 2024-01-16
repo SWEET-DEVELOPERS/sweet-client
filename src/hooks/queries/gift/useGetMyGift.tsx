@@ -8,15 +8,14 @@ interface MyGiftResponse extends Response {
 
 export const MY_GIFT_QUERY_KEY: string[] = ['myGiftData'];
 
-export const fetchMyGift = async (roomId: number): Promise<MyGiftResponse> => {
-  const response = await get(`/gift/my`);
-  return response.data;
+export const getMyGift = async (roomId: number): Promise<MyGiftResponse> => {
+  return get(`/gift/my/${roomId}`);
 };
 
-const useGetMyGift = ({ roomId }: { rooamId: number }) => {
+export const useGetMyGift = ({ roomId }: { roomId: number }) => {
   const { data, isLoading, isError } = useQuery({
-    queryKey: [MY_GIFT_QUERY_KEY, roomId],
-    queryFn: () => fetchMyGift(roomId),
+    queryKey: [MY_GIFT_QUERY_KEY[0], roomId],
+    queryFn: () => getMyGift(roomId),
   });
 
   return { data, isLoading, isError };
