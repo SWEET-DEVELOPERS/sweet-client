@@ -14,15 +14,8 @@ interface SetTournamentDurationProps {
   tournamentDuration: string;
   setTournamentDuration: React.Dispatch<React.SetStateAction<string>>;
   tournamentStartDate: string;
-  onboardingInfo: {
-    gifteeName: string;
-    imageUrl: string;
-    deliveryDate: string;
-    tournamentStartDate: string;
-    tournamentDuration: string;
-  };
   fileName: string;
-  setFileName: React.Dispatch<React.SetStateAction<string>>;
+  setImageUrl: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const SetTournamentDuration = (props: SetTournamentDurationProps) => {
@@ -39,13 +32,20 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     tournamentDuration,
     setTournamentDuration,
     tournamentStartDate,
-    onboardingInfo,
     fileName,
-    setFileName,
+    setImageUrl,
   } = props;
-  // const postOnboardingInfoMutation = usePostOnboardingInfo();
-  const postPresignedUrl = usePostPresignedUrl();
+
   const [selectedOption] = useState<string>('');
+  const postPresignedUrl = usePostPresignedUrl();
+  // const postOnboardingInfoMutation = usePostOnboardingInfo();
+
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때마다 최신 토큰을 가져와서 설정
+    instance.defaults.headers.Authorization = getAccessTokenLocalStorage();
+    console.log('selectedOption', tournamentDuration);
+    console.log('step05 fileName', fileName);
+  }, [tournamentDuration]);
 
   console.log('기존 step04에서 가지고 온 날짜와 시간을 step05에서 사용', tournamentStartDate);
 
@@ -60,12 +60,24 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     console.log(`선택된 시간: ${tournamentStartDate} + ${time}:`, formattedTime);
   };
 
-  useEffect(() => {
-    // 컴포넌트가 마운트될 때마다 최신 토큰을 가져와서 설정
-    instance.defaults.headers.Authorization = getAccessTokenLocalStorage();
-    console.log('selectedOption', tournamentDuration);
-    console.log('step05 fileName', fileName);
-  }, [tournamentDuration]);
+  const fetchPresignedUrl = async (fileName: string) => {
+    const response = await postPresignedUrl.mutateAsync({ url: '', filename: fileName });
+    const presignedUrl = response.presignedUrl;
+    const imageUrl = presignedUrl.split('?')[0];
+    console.log('imageUrl', imageUrl);
+
+    return imageUrl;
+  };
+
+  const saveImageUrl = async (fileName: string) => {
+    const imageUrl = await fetchPresignedUrl(fileName);
+    setImageUrl(imageUrl);
+  };
+
+  const nextStep = (imageUrl: string) => {
+    console.log('다음 버튼 클릭!', imageUrl);
+    onNext();
+  };
 
   return (
     <>
@@ -95,16 +107,14 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <OnBoardingBtn
           isActivated={selectedOption !== null}
-          setStep={async () => {
-            const response = await postPresignedUrl.mutateAsync({ url: '', filename: fileName });
-            postPresignedUrl.mutate({ url: '', filename: fileName });
-            console.log('response', response.presignedUrl);
-            const presignedUrl = response.presignedUrl;
-            const imageUrl = presignedUrl.split('?')[0];
-            console.log('imageUrl', imageUrl);
-            onNext();
+          setStep={
+            async () => {
+              const imageUrl = await fetchPresignedUrl(fileName);
+              saveImageUrl(imageUrl);
+              nextStep(imageUrl);
+            }
             // postOnboardingInfoMutation.mutate(onboardingInfo);
-          }}
+          }
         >
           다음
         </OnBoardingBtn>
