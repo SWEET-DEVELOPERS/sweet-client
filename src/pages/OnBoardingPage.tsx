@@ -89,6 +89,7 @@ const OnBoardingPage = () => {
               tournamentStartDate={tournamentStartDate}
               fileName={fileName}
               setImageUrl={setImageUrl}
+              onboardingInfo={onboardingInfo}
             />
           </div>
         </Funnel.Step>
