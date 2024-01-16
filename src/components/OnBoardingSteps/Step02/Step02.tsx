@@ -1,7 +1,7 @@
 import Title from '../../common/title/Title';
 import { IcEmptyThumbnail } from '../../../assets/svg';
 import * as S from './Step02.style';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
 

@@ -2,7 +2,7 @@ import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
 import { IcUnselectedCalender, IcUnselectedClock } from '../../../assets/svg';
 import * as S from './Step04.style';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { DayPicker } from 'react-day-picker';
 import { format } from 'date-fns';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';

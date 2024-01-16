@@ -35,7 +35,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     props;
   const postOnboardingInfoMutation = usePostOnboardingInfo();
 
-  const [selectedOption, setSelectedOption] = useState<string>('');
+  const [selectedOption] = useState<string>('');
 
   console.log('기존 step04에서 가지고 온 날짜와 시간을 step05에서 사용', tournamentStartDate);
 

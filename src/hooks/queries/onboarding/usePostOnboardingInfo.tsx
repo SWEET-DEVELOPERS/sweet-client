@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { post } from '../../../apis/client';
 import { OnboardingInfo } from '../../../types/Onboarding';
 import { AxiosError, AxiosResponse } from 'axios';
