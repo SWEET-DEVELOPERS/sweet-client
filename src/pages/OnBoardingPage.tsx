@@ -82,6 +82,7 @@ const OnBoardingPage = () => {
               tournamentDuration={tournamentDuration}
               setTournamentDuration={setTournamentDuration}
               tournamentStartDate={tournamentStartDate}
+              onboardingInfo={onboardingInfo}
             />
           </div>
         </Funnel.Step>

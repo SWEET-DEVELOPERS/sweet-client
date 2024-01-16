@@ -1,40 +1,43 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import BtnRadio from '../../common/Button/Radio/BtnRadio';
 import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import * as S from './Step05.style';
 import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
-import { addHours, isSameDay } from 'date-fns';
+import { useMutation } from '@tanstack/react-query';
+import { getAccessTokenLocalStorage, instance, post } from '../../../apis/client';
 
 interface SetTournamentDurationProps {
   onNext: VoidFunction;
   tournamentDuration: string;
   setTournamentDuration: React.Dispatch<React.SetStateAction<string>>;
   tournamentStartDate: string;
+  onboardingInfo: {
+    gifteeName: string;
+    imageUrl: string;
+    deliveryDate: string;
+    tournamentStartDate: string;
+    tournamentDuration: string;
+  };
 }
 
 const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   // TODO 오늘 기준 날짜로 수정 & map함수로 수정
   const timeOptions = [
-    { text: '6시간', dateType: 'today' },
-    { text: '12시간', dateType: 'today' },
-    { text: '18시간', dateType: 'nottoday' },
-    { text: '24시간', dateType: 'nottoday' },
+    { text: '6시간', dateType: 'today', textEnglish: 'SIX_HOURS' },
+    { text: '12시간', dateType: 'today', textEnglish: 'TWELVE_HOURS' },
+    { text: '18시간', dateType: 'nottoday', textEnglish: 'EIGHTEEN_HOURS' },
+    { text: '24시간', dateType: 'nottoday', textEnglish: 'TWENTY_FOUR_HOURS' },
   ];
 
-  const { onNext, tournamentDuration, setTournamentDuration, tournamentStartDate } = props;
+  const { onNext, tournamentDuration, setTournamentDuration, tournamentStartDate, onboardingInfo } =
+    props;
 
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedOption, setSelectedOption] = useState<string>('');
   const [selectedTime, setSelectedTime] = useState<string>('');
 
   console.log('기존 step04에서 가지고 온 날짜와 시간을 step05에서 사용', tournamentStartDate);
-
-  const checkDateType = (duration: number) => {
-    const endDate = addHours(new Date(tournamentStartDate), duration);
-
-    return isSameDay(new Date(), endDate) ? 'today' : 'nottoday';
-  };
 
   const handleTimeSelect = (time: string) => {
     // 현재 선택된 날짜와 시간에 6시간을 더한 값을 콘솔에 출력
@@ -45,8 +48,28 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     const formattedTime = updatedTime.toISOString();
 
     console.log(`선택된 시간: ${tournamentStartDate} + ${time}:`, formattedTime);
-    setTournamentDuration(formattedTime);
+    //six hours 나 이런 값들을 넣어줘야함.
   };
+
+  const postOnboardingInfo = async (onboardingInfo: any): Promise<any> => {
+    try {
+      const response: any = await post(`/room`, onboardingInfo);
+      return response.data;
+    } catch (error: any) {
+      throw new Error(error.response?.data?.message ?? error.message);
+    }
+  };
+
+  const mutation = useMutation({
+    mutationFn: postOnboardingInfo,
+    onSuccess: (data) => console.log('포스트 성공?', data),
+  });
+
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때마다 최신 토큰을 가져와서 설정
+    instance.defaults.headers.Authorization = getAccessTokenLocalStorage();
+    console.log('selectedOption', tournamentDuration);
+  }, [tournamentDuration]);
 
   return (
     <>
@@ -66,7 +89,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
               time={option.text}
               period={option.dateType}
               isSelected={() => selectedOption === option.text}
-              onClick={() => setSelectedOption(option.text)}
+              onClick={() => setTournamentDuration(option.textEnglish)}
               onTimeSelect={handleTimeSelect}
             />
           </S.TimeOptionsWrapper>
@@ -74,7 +97,13 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
       </S.SetTournamentDurationWrapper>
 
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <OnBoardingBtn isActivated={selectedOption !== null} setStep={onNext}>
+        <OnBoardingBtn
+          isActivated={selectedOption !== null}
+          setStep={() => {
+            onNext();
+            mutation.mutate(onboardingInfo);
+          }}
+        >
           다음
         </OnBoardingBtn>
       </div>
