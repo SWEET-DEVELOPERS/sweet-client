@@ -1,5 +1,4 @@
 import Title from '../../common/title/Title';
-import BtnNext from '../../common/Button/Next/BtnNext';
 import * as S from './Step06.style';
 import { IcKakaoShare, IcLink } from '../../../assets/svg';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';

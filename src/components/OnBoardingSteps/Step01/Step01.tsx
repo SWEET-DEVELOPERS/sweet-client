@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Title from '../../common/title/Title';
 import * as S from './Step01.style';
 import { IcCancelCircleFinal } from '../../../assets/svg';

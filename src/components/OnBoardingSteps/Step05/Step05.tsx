@@ -6,8 +6,7 @@ import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import * as S from './Step05.style';
 import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
 import { getAccessTokenLocalStorage, instance } from '../../../apis/client';
-import usePostOnboardingInfo from '../../../hooks/queries/onboarding/usePostOnboardingInfo';
-import { OnboardingInfo } from '../../../types/Onboarding';
+// import usePostOnboardingInfo from '../../../hooks/queries/onboarding/usePostOnboardingInfo';
 import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
 
 interface SetTournamentDurationProps {
@@ -17,7 +16,7 @@ interface SetTournamentDurationProps {
   tournamentStartDate: string;
   onboardingInfo: {
     gifteeName: string;
-    fileName: string;
+    imageUrl: string;
     deliveryDate: string;
     tournamentStartDate: string;
     tournamentDuration: string;
@@ -35,9 +34,9 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
 
   const { onNext, tournamentDuration, setTournamentDuration, tournamentStartDate, onboardingInfo } =
     props;
-  const postOnboardingInfoMutation = usePostOnboardingInfo();
+  // const postOnboardingInfoMutation = usePostOnboardingInfo();
   const postPresignedUrl = usePostPresignedUrl();
-  const [selectedOption, setSelectedOption] = useState<string>('');
+  const [selectedOption] = useState<string>('');
 
   console.log('기존 step04에서 가지고 온 날짜와 시간을 step05에서 사용', tournamentStartDate);
 
@@ -82,12 +81,13 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
           </S.TimeOptionsWrapper>
         ))}
       </S.SetTournamentDurationWrapper>
+
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <OnBoardingBtn
           isActivated={selectedOption !== null}
           setStep={() => {
             onNext();
-            const preSignedUrl: string = onboardingInfo.fileName;
+            const preSignedUrl: string = onboardingInfo.imageUrl;
             console.log('preSignedUrl', preSignedUrl);
             postPresignedUrl.mutate(preSignedUrl);
             // postOnboardingInfoMutation.mutate(onboardingInfo);

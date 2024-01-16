@@ -89,6 +89,7 @@ const OnBoardingPage = () => {
           </div>
         </Funnel.Step>
         <Funnel.Step name='GIFT_ROOM_FIX'>
+          {/* step06 */}
           <OnboardingFinal onboardingInfo={onboardingInfo} />
         </Funnel.Step>
       </Funnel>

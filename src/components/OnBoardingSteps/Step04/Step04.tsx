@@ -15,9 +15,8 @@ interface SetTournamentScheduleProps {
 }
 
 const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
-  // TODO 인풋창 클릭 시 캘린더 & 시간 선택 창 구현
   // TODO 시간 선택되면 인풋창 가리고, border-bottom 원래대로 돌리기
-  const { onNext, tournamentStartDate, setTournamentStartDate } = props;
+  const { onNext, setTournamentStartDate } = props;
   const disabledDays = { before: new Date() };
   const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -80,6 +79,8 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
           disabled={disabledDays}
         />
       )}
+
+      {/* 여기서부터 타이머 */}
       <S.Container $hasContent={isTimerOpen}>
         <S.TextField>
           <S.Input
@@ -95,9 +96,9 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
               style={{ width: '2.4rem', height: '2.4rem', position: 'relative' }}
             />
           </label>
-          {isTimerOpen && (
+          {isTimerOpen ? (
             <input id='timeInput' type='time' onChange={(e) => handleTimerSelect(e.target.value)} />
-          )}
+          ) : null}
         </S.IconField>
       </S.Container>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
