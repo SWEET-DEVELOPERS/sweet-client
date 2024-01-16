@@ -16,10 +16,11 @@ interface SetTournamentDurationProps {
   setTournamentDuration: React.Dispatch<React.SetStateAction<string>>;
   tournamentStartDate: string;
   fileName: string;
+  imageUrl: string;
   setImageUrl: React.Dispatch<React.SetStateAction<string>>;
   onboardingInfo: {
     gifteeName: string;
-    imageUrl: string;
+    // imageUrl: string;
     deliveryDate: string;
     tournamentStartDate: string;
     tournamentDuration: string;
@@ -41,6 +42,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     setTournamentDuration,
     tournamentStartDate,
     fileName,
+    // imageUrl,
     setImageUrl,
     onboardingInfo,
   } = props;
@@ -76,7 +78,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     const imageUrl = presignedUrl.split('?')[0];
     console.log('imageUrl', imageUrl);
     console.log('presignedUrl', presignedUrl);
-
+    setImageUrl(imageUrl);
     return { imageUrl, presignedUrl };
   };
 
@@ -86,11 +88,14 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     try {
       await putPresignedUrl.mutateAsync(presignedUrl);
 
-      console.log('PUT성공', presignedUrl);
-
-      setImageUrl(imageUrl);
+      // console.log('PUT성공', presignedUrl);
+      // setImageUrl(imageUrl);
+      console.log('saveImageUrl 안 imageUrl 값 확인', imageUrl);
 
       onNext();
+      const updatedOnboardingInfo = { ...onboardingInfo, imageUrl: imageUrl };
+      postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
+      console.log('onboardingInfo 값 확인2', imageUrl);
     } catch (error) {
       console.log(error);
     }
@@ -126,7 +131,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
           isActivated={selectedOption !== null}
           setStep={async () => {
             const { presignedUrl } = await fetchPresignedUrl(fileName);
-            saveImageUrl(presignedUrl);
+            await saveImageUrl(presignedUrl);
             // postOnboardingInfoMutation.mutate(onboardingInfo);
           }}
         >
