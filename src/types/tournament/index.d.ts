@@ -5,3 +5,9 @@ export type GiftData = {
   cost: number;
   url: string;
 };
+
+export type TournamentScore = {
+  firstPlaceGiftId: number;
+  secondPlaceGiftId: number;
+  // PlaceGiftId: number;
+};
