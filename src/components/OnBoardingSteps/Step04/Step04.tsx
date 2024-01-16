@@ -96,9 +96,9 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
               style={{ width: '2.4rem', height: '2.4rem', position: 'relative' }}
             />
           </label>
-          {isTimerOpen && (
+          {isTimerOpen ? (
             <input id='timeInput' type='time' onChange={(e) => handleTimerSelect(e.target.value)} />
-          )}
+          ) : null}
         </S.IconField>
       </S.Container>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
