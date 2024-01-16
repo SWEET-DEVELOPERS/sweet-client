@@ -16,9 +16,8 @@ export const usePostOpenGraph = ({ body }: { body: OpenGraphRequestType }) => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [POST_OPEN_GRAPH_QUERY_KEY[0], body] });
     },
-    // 요거 넣을까 말까? 넣을까 말까?!!
     onError: () => {
-      console.log('에러!!');
+      console.log('오픈그래프 정보를 가져오던 중 에러가 발생했습니다.');
     },
   });
 

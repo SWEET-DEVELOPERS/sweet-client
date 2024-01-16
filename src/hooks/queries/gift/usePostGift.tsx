@@ -19,7 +19,7 @@ export const usePostGift = ({ body }: { body: GiftPostRequestType }) => {
       queryClient.invalidateQueries({ queryKey: [POST_GIFT_QUERY_KEY[0], body] });
       navigate(`/addgift`);
     },
-    // 요거 넣을까 말까? 넣을까 말까?!!
+
     onError: () => {
       console.log('에러!!');
     },
