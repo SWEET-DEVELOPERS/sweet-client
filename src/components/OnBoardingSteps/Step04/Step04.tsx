@@ -16,7 +16,7 @@ interface SetTournamentScheduleProps {
 
 const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
   // TODO 시간 선택되면 인풋창 가리고, border-bottom 원래대로 돌리기
-  const { onNext, tournamentStartDate, setTournamentStartDate } = props;
+  const { onNext, setTournamentStartDate } = props;
   const disabledDays = { before: new Date() };
   const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
