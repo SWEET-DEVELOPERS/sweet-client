@@ -18,6 +18,7 @@ const OnBoardingPage = () => {
   const [deliveryDate, setDeliveryDate] = useState<string>('');
   const [tournamentStartDate, setTournamentStartDate] = useState<string>('');
   const [tournamentDuration, setTournamentDuration] = useState<string>('');
+  const [fileName, setFileName] = useState<string>('');
 
   const onboardingInfo = {
     gifteeName: gifteeName,
@@ -52,6 +53,8 @@ const OnBoardingPage = () => {
               onNext={() => setStep(() => 'PRESENT')}
               imageUrl={imageUrl}
               setImageUrl={setImageUrl}
+              fileName={fileName}
+              setFileName={setFileName}
             />
           </div>
         </Funnel.Step>
@@ -85,6 +88,8 @@ const OnBoardingPage = () => {
               setTournamentDuration={setTournamentDuration}
               tournamentStartDate={tournamentStartDate}
               onboardingInfo={onboardingInfo}
+              fileName={fileName}
+              setFileName={setFileName}
             />
           </div>
         </Funnel.Step>
