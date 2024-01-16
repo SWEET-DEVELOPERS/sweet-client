@@ -7,7 +7,7 @@ export const Title = styled.p`
 `;
 
 export const SetCount = styled.p`
-  margin-bottom: 4rem;
+  margin-bottom: 20rem;
   font-size: 1.8rem;
   color: ${({ theme }) => theme.colors.G_05};
   ${({ theme }) => theme.fonts.body_02};
