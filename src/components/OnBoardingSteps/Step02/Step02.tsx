@@ -48,7 +48,7 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
 
       setFileName(finalImageName);
 
-      console.log('imageUrl', finalImageName);
+      console.log('fileName:', finalImageName);
     }
   };
 
