@@ -3,6 +3,7 @@ import * as S from './Step06.style';
 import { IcKakaoShare, IcLink } from '../../../assets/svg';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import { useEffect } from 'react';
+// import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
 interface OnboardingFinalProps {
   onboardingInfo: {
     gifteeName: string;
@@ -21,6 +22,7 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
     ...onboardingInfo,
     imageUrl: imageUrl,
   };
+
   const infoDetails = [
     { title: '선물 받을 사람', detail: '가나다라마바사아자차님' },
     { title: '선물 등록 마감', detail: '2023.12.29(금) 13시' },
@@ -31,6 +33,18 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
   const enterRoom = () => {
     console.log('생성된 룸으로 입장', onboardingInfo);
   };
+
+  useEffect(() => {
+    // const invitationCode = ;
+    // const { data, isLoading, isError } = useGetGifteeInfo(invitationCode);
+    console.log('step06 렌더링');
+    // if (isLoading) {
+    //   console.log('Loading...');
+    // } else if (isError) {
+    //   console.log('An error occurred');
+    // } else {
+    //   console.log('Data:', data);
+  }, []);
 
   useEffect(() => {
     const initializeKakao = async () => {
