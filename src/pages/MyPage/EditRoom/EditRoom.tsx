@@ -1,4 +1,3 @@
-import { useParams } from 'react-router';
 import useGetRoomMember from '../../../hooks/queries/room/useGetRoomMember';
 import CardGuest from './CardGuest/CardGuest';
 import * as S from './EditRoom.style';

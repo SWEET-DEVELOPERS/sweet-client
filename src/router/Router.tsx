@@ -12,7 +12,6 @@ import DetailDoneRoom from '../pages/MyPage/Detail/DetailDoneRoom/DetailDoneRoom
 import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
 import TournamentContainer from '../components/TournamentNew/Intro/TournamentContainer';
 import GiftHome from '../pages/GiftHome/GiftHome';
-import FallbackUI from '../pages/FallbackUI/FallbackUI';
 
 const router = createBrowserRouter([
   {
