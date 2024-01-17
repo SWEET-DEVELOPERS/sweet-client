@@ -16,7 +16,6 @@ interface AddGiftWithLinkLayoutProps {
 
 const AddGiftWithLinkLayout = ({ link, roomId, setStep }: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(false);
-  const [isModalOn, setIsModalOn] = useState(false);
   const [nameText, setNameText] = useState<string>('');
   const [priceText, setPriceText] = useState<number>(0);
   const [imageUrl, setImageUrl] = useState<string>('');
@@ -25,8 +24,6 @@ const AddGiftWithLinkLayout = ({ link, roomId, setStep }: AddGiftWithLinkLayoutP
 
   const handleClickConfirmClick = () => {
     setStep((prev) => prev + 1);
-    // 빌드 에러 피하려고 그냥 넣었습니다!
-    setIsModalOn(false);
   };
 
   const itemInfo = {
@@ -48,7 +45,7 @@ const AddGiftWithLinkLayout = ({ link, roomId, setStep }: AddGiftWithLinkLayoutP
         <MiniTimer time={now} />
       </S.AddGiftWithLinkHeader>
       <GiftStatusBar registeredGiftNum={1} isMargin={false} />
-      <AddGiftImg />
+      <AddGiftImg imageUrl={imageUrl} setImageUrl={setImageUrl} />
       <ShowLink />
       <WriteItemInfo
         setIsActivated={setIsActivated}
