@@ -30,7 +30,7 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
 
   //전체 아이템 memberData 랜덤 섞어주기
   useEffect(() => {
-    // memberData.sort(() => Math.random() - 0.5);
+    memberData.sort(() => Math.random() - 0.5);
     setitemPick([...memberData]);
     setDisplays([memberData[0], memberData[1]]);
   }, [memberData]);
