@@ -30,8 +30,3 @@ export const TimeOptionsWrapper = styled.div`
   border-radius: 1.2rem;
   border: 1px solid ${({ theme }) => theme.colors.G_02};
 `;
-
-export const TimeOptionsWrapper = styled.div`
-  border-radius: 1.2rem;
-  border: 1px solid ${({ theme }) => theme.colors.G_02};
-`;
