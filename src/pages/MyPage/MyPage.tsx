@@ -7,12 +7,16 @@ import ProgressGiftView from './GiftRoomView/ProgressGiftView/ProgressGiftView';
 import useGetMyPage from '../../hooks/queries/member/useGetMypage';
 import * as S from './MyPage.style';
 import { MyPageType } from '../../types/member';
+import { useNavigate } from 'react-router';
+import { post } from '../../apis/client';
 interface MyPage {
   memberData: MyPageType;
 }
 
 const MyPage = () => {
   const memberData = useGetMyPage();
+  const navigate = useNavigate();
+  const fetchAuth = async () => post(`/oauth/kakao/logout`);
   console.log(memberData);
   console.log(memberData?.data);
   console.log(memberData?.data?.memberInfo);
@@ -27,6 +31,13 @@ const MyPage = () => {
 
   const giftData: boolean = progressRoomData !== null && doneMemberRoomData !== null;
 
+  const handleClick = () => {
+    fetchAuth().then((response: any) => {
+      console.log(response);
+    });
+    localStorage.removeItem('EXIT_LOGIN_TOKEN');
+  };
+
   return (
     <S.MyPageWrapper>
       <S.TopImage />
@@ -38,7 +49,9 @@ const MyPage = () => {
               <S.User>{translatedUserName}</S.User>님
             </S.UserName>
           </S.UserWrapper>
-          <BtnLogout customStyle={{ width: '8.4rem', height: '2.6rem' }}>로그아웃</BtnLogout>
+          <BtnLogout onClick={handleClick} customStyle={{ width: '8.4rem', height: '2.6rem' }}>
+            로그아웃
+          </BtnLogout>
         </S.UserButtonWrapper>
         <BtnFill
           customStyle={{
