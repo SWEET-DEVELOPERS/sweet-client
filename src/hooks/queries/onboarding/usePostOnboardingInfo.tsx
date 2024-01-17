@@ -23,6 +23,9 @@ const usePostOnboardingInfo = () => {
     mutationFn: postOnboardingInfo,
     onSuccess: (data) => {
       console.log('포스트 성공?', data);
+      const invitationCode = (data as any).invitationCode;
+      console.log('초대코드', invitationCode);
+
       // queryClient.invalidateQueries('rooms');
     },
   });
