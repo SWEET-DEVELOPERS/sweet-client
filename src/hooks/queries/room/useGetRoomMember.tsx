@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { get } from '../../../apis/client';
 import { RoomMemberType } from '../../../types/member';
 
@@ -12,7 +12,7 @@ const useGetRoomMember = (roomId: number) => {
   const fetchMyPage = async (roomId: number): Promise<RoomMemberResponse> =>
     get(`/room/${roomId}/members`);
 
-  const { data } = useQuery({
+  const { data } = useSuspenseQuery({
     queryKey: ROOM_MEMBER_QUERY_KEY,
     queryFn: () => fetchMyPage(roomId),
   });
