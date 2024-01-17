@@ -7,7 +7,7 @@ import WriteItemInfo from './common/WriteItemInfo/WriteItemInfo';
 import * as S from './common/AddGiftLayout.styled';
 import AddGiftImg from './common/AddGiftImg/AddGiftImg';
 import Modal from '../../common/Modal/Modal';
-import { useQueryClient } from '@tanstack/react-query';
+// import { useQueryClient } from '@tanstack/react-query';
 
 interface AddGiftWithLinkLayoutProps {
   link: string;

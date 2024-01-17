@@ -15,8 +15,7 @@ interface GiftAddFirstLinkLayoutProps {
 const GiftAddFirstLinkLayout = ({ setStep }: GiftAddFirstLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(false);
   const [text, setText] = useState<string>('');
-  const { mutation } = usePostOpenGraph();
-
+  const { mutation } = usePostOpenGraph({ body: { BaseURL: text } });
   const fetchOpenGraph = async (BaseUrl: string) => {
     try {
       const response = await mutation.mutateAsync({ BaseURL: BaseUrl });
