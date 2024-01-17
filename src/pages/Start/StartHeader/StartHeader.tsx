@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { IcMenu, SweetLogoPink } from '../../../assets/svg';
 import * as S from './StartHeader.style';
-import SideBar from '../../../components/SideBar/SideBar';
 
 const StartHeader = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleSide = () => {
-    setIsOpen(true);
-  };
+  // const [isOpen, setIsOpen] = useState(false);
+  // const toggleSide = () => {
+  //   setIsOpen(true);
+  // };
 
   return (
     <S.StartHeaderWrapper>

@@ -7,6 +7,7 @@ import * as S from './Start.style';
 import { ScrollAnimationContainer } from '../../components/ScrollAnimationContainer/ScrollAnimationContainer';
 import StartHeader from './StartHeader/StartHeader';
 import { post } from '../../apis/client';
+import Footer from '../../components/Footer/Footer';
 
 interface TokenResponseType {
   data: {
@@ -63,6 +64,7 @@ const Start = () => {
       </S.MainSecond>
       <Main03 />
       <Main04 />
+      <Footer />
     </S.Wrapper>
   );
 };
