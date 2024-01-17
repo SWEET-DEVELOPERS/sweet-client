@@ -7,7 +7,7 @@ import NameInput from '../components/OnBoardingSteps/Step01/Step01';
 import ThumbnailInput from '../components/OnBoardingSteps/Step02/Step02';
 import GiftDelivery from '../components/OnBoardingSteps/Step03/Step03';
 import SetTournamentDuration from '../components/OnBoardingSteps/Step05/Step05';
-import OnboardingFinal from '../components/OnBoardingSteps/Step06/Step06';
+// import OnboardingFinal from '../components/OnBoardingSteps/Step06/Step06';
 import { useEffect, useState } from 'react';
 import SetTournamentSchedule from '../components/OnBoardingSteps/Step04/Step04';
 import { useNavigate } from 'react-router-dom';
@@ -96,6 +96,7 @@ const OnBoardingPage = () => {
               onboardingInfo={onboardingInfo}
               invitationCode={invitationCode}
               setInvitationCode={setInvitationCode}
+              presignedUrl={presignedUrl}
               setPresignedUrl={setPresignedUrl}
             />
           </div>
