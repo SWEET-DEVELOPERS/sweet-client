@@ -3,7 +3,11 @@ import { SubTitle } from '../../Intro/TournamentStartText/TournamentStartText.st
 import RankingImg from '../../../../assets/img/3dic_podium2.png';
 import { useLocation } from 'react-router-dom';
 
-const TournamentRenameTitle = () => {
+interface TournamentRankingTitleProps {
+  onClick: () => void;
+}
+
+const TournamentRankingTitle: React.FC<TournamentRankingTitleProps> = ({ onClick }) => {
   const location = useLocation();
   console.log(location);
   const baseURL = import.meta.env.VITE_APP_BASE_URL;
@@ -33,7 +37,7 @@ const TournamentRenameTitle = () => {
             {/* <IcLinkShare /> */}
             링크로 공유
           </S.LinkButton>
-          <S.ImageButton>
+          <S.ImageButton onClick={onClick}>
             {/* <IcImgShare style={{ width: '1.8rem', height: '1.8rem' }} /> */}
             이미지로 공유
           </S.ImageButton>
@@ -44,4 +48,4 @@ const TournamentRenameTitle = () => {
   );
 };
 
-export default TournamentRenameTitle;
+export default TournamentRankingTitle;
