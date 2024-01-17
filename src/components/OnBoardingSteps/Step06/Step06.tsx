@@ -5,6 +5,7 @@ import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
+import usePostParticipation from '../../../hooks/queries/onboarding/usePostParticipation';
 
 const OnboardingFinal = () => {
   const location = useLocation();
@@ -13,6 +14,7 @@ const OnboardingFinal = () => {
   console.log('추출된 초대 코드', invitationCode);
 
   const getGifteeInfo = useGetGifteeInfo(invitationCode);
+  const { mutation } = usePostParticipation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -106,8 +108,17 @@ const OnboardingFinal = () => {
     console.log('카카오 공유 버튼 클릭!!');
   };
 
-  const enterRoom = () => {
+  const handleClickRoom = async (body: string) => {
     console.log('입장 버튼 클릭! 그리고 초대 코드', invitationCode);
+    try {
+      const response = mutation.mutate(body, {
+        onSuccess: (data) => {
+          console.log('step06 내 포스트', data);
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -131,7 +142,7 @@ const OnboardingFinal = () => {
               {/* TODO 추후 지민이 버튼으로 변경(항상 활성화) */}
               <OnBoardingBtn
                 customStyle={{ marginBottom: '1.6rem' }}
-                setStep={enterRoom}
+                setStep={() => handleClickRoom(invitationCode)}
                 isActivated={true}
               >
                 입장
