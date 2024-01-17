@@ -60,4 +60,8 @@ export { default as Main02 } from './Main02';
 export { default as Main03 } from './Main03';
 export { default as Main04 } from './Main04';
 export { default as MypageImage } from './MypageImage';
+export { default as Person1 } from './Person1';
+export { default as Person2 } from './Person2';
+export { default as Person3 } from './Person3';
+export { default as Person4 } from './Person4';
 export { default as Vite } from './Vite';
