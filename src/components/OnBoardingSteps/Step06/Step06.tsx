@@ -32,12 +32,51 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
   };
   const { data, isLoading, isError } = useGetGifteeInfo(invitationCode);
 
+  const formatDate = (dateString: any) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+
+    return `${year}.${month}.${day} (${getDayOfWeek(date)}) ${hours}시 ${minutes}분`;
+  };
+
+  const getDayOfWeek = (date: any) => {
+    const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
+    const dayOfWeekIndex = date.getDay();
+    return daysOfWeek[dayOfWeekIndex];
+  };
+
+  const formatDuration = (durationType: any) => {
+    switch (durationType) {
+      case 'SIX_HOURS':
+        return '6시간';
+      case 'TWELVE_HOURS':
+        return '12시간';
+      case 'EIGHTEEN_HOURS':
+        return '18시간';
+      case 'TWENTY_FOUR_HOURS':
+        return '24시간';
+      default:
+        return '';
+    }
+  };
+
   const infoDetails = [
     { title: '선물 받을 사람', detail: onboardingInfo.gifteeName },
-    { title: '선물 등록 마감', detail: onboardingInfo.tournamentStartDate },
-    { title: '토너먼트 진행 시간', detail: onboardingInfo.tournamentDuration },
-    { title: '선물 전달일', detail: onboardingInfo.deliveryDate },
+    { title: '선물 등록 마감', detail: formatDate(onboardingInfo.tournamentStartDate) },
+    { title: '토너먼트 진행 시간', detail: formatDuration(onboardingInfo.tournamentDuration) },
+    { title: '선물 전달일', detail: formatDate(onboardingInfo.deliveryDate) },
   ];
+
+  // const infoDetails = [
+  //   { title: '선물 받을 사람', detail: onboardingInfo.gifteeName },
+  //   { title: '선물 등록 마감', detail: onboardingInfo.tournamentStartDate },
+  //   { title: '토너먼트 진행 시간', detail: onboardingInfo.tournamentDuration },
+  //   { title: '선물 전달일', detail: onboardingInfo.deliveryDate },
+  // ];
 
   useEffect(() => {
     console.log('step06내 response.data', data);
