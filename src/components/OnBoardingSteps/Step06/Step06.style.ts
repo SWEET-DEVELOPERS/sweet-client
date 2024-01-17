@@ -1,5 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import imageSample from './image_sample.png';
+
+type GradientImgProps = {
+  imageUrl: string;
+};
 
 export const OnboardingFinalWrapper = styled.div`
   ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'center' })}
@@ -9,8 +13,10 @@ export const OnboardingFinalWrapper = styled.div`
   overflow: hidden;
 `;
 
-export const GradientImg = styled.div`
-  background-image: url(${imageSample});
+export const GradientImg = styled.div<GradientImgProps>`
+  ${({ imageUrl }) => css`
+    background-image: url(${imageUrl});
+  `}
   background-size: cover;
   background-blend-mode: overlay;
   opacity: 0.7;
