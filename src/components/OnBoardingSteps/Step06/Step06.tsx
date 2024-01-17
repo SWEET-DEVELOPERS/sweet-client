@@ -119,6 +119,7 @@ const OnboardingFinal = () => {
       const response = mutation.mutate(body, {
         onSuccess: (data) => {
           console.log('step06 내 포스트', data);
+          console.log('step06 내 response', response);
         },
       });
     } catch (error) {
