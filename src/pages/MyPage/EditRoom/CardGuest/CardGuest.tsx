@@ -3,20 +3,30 @@ import Type1Tag from '../../../../components/IcTag/Type1/Type1';
 import ProfileImage from '../../ProfileImage/ProfileImage';
 import * as S from './CardGuest.style';
 import useDeleteRoomMember from '../../../../hooks/queries/room/useDeleteRoomMember';
+import { useLocation } from 'react-router';
 
 interface CardGuestProps {
   user?: string;
   makerState: boolean;
   profileImageUrl?: string;
-  roomId: number;
   memberId?: number;
 }
 
-const CardGuest = ({ user, makerState, profileImageUrl, roomId, memberId }: CardGuestProps) => {
+const CardGuest = ({ user, makerState, profileImageUrl, memberId }: CardGuestProps) => {
   const handleButton = () => {
     if (memberId !== undefined) {
-      const { mutation } = useDeleteRoomMember({ roomId, memberId });
-      mutation.mutateAsync();
+      const location = useLocation();
+      const searchParams = new URLSearchParams(location.search);
+      const roomIdString = searchParams.get('roomId');
+
+      if (roomIdString !== null) {
+        const roomId = parseInt(roomIdString, 10);
+        console.log('추출된 초대 코드', roomId);
+        const { mutation } = useDeleteRoomMember({ roomId, memberId });
+        mutation.mutate();
+      } else {
+        console.error('roomId is null');
+      }
     }
   };
   return (
