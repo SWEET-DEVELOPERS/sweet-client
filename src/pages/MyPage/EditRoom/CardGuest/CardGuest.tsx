@@ -1,22 +1,28 @@
 import { IcCancel } from '../../../../assets/svg';
 import Type1Tag from '../../../../components/IcTag/Type1/Type1';
 import ProfileImage from '../../ProfileImage/ProfileImage';
-import Rectangle from '../../../../assets/img/Rectangle.png';
 import * as S from './CardGuest.style';
+import useDeleteRoomMember from '../../../../hooks/queries/room/useDeleteRoomMember';
 
 interface CardGuestProps {
-  user: string;
+  user?: string;
   makerState: boolean;
+  profileImageUrl?: string;
+  roomId: number;
+  memberId?: number;
 }
 
-const CardGuest = ({ user, makerState }: CardGuestProps) => {
+const CardGuest = ({ user, makerState, profileImageUrl, roomId, memberId }: CardGuestProps) => {
   const handleButton = () => {
-    console.log('삭제 되어따!');
+    if (memberId !== undefined) {
+      const { mutation } = useDeleteRoomMember({ roomId, memberId });
+      mutation.mutateAsync();
+    }
   };
   return (
     <S.CardGuestWrapper>
       <S.UserWrapper>
-        <ProfileImage image={Rectangle} />
+        <ProfileImage image={profileImageUrl} />
         <S.User>{user}</S.User>
       </S.UserWrapper>
       {makerState ? (
