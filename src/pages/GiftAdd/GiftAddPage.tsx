@@ -5,15 +5,20 @@ import AddGiftWithoutLinkLayout from '../../components/GiftAdd/AddGiftLayout/Add
 import GiftAddSecondLinkLayout from '../../components/GiftAdd/AddGiftLink/GiftAddSecondLinkLayout/GiftAddSecondLinkLayout';
 import GiftAddPageLayout from '../../components/GiftAdd/GiftAddPageLayout/GiftAddPageLayout';
 import { OpenGraphResponseType } from '../../types/etc';
+import { useLocation } from 'react-router-dom';
 
-interface GiftAddPage {
-  roomId: number;
-}
+// interface GiftAddPage {
+//   roomId: number;
+// }
 
-const GiftAddPage = ({ roomId }: GiftAddPage) => {
+const GiftAddPage = () => {
   const [step, setStep] = useState(0);
   const [linkText, setLinkText] = useState<string>('');
   const [openGraph, setOpenGraph] = useState<OpenGraphResponseType>({ title: '', image: '' });
+
+  const location = useLocation();
+  const roomId = location.state.roomId;
+  const targetDate = location.state.targetDate;
 
   switch (step) {
     case 0:

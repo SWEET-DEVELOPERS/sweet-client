@@ -64,7 +64,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/add-gift',
-        element: <GiftAddPage roomId={1} />,
+        element: <GiftAddPage />,
       },
     ],
   },
