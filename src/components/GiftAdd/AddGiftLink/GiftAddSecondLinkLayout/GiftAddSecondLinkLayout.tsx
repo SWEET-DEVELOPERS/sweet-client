@@ -8,6 +8,7 @@ import Title from '../../../common/title/Title';
 
 interface GiftAddSecondLinkLayoutProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
+  setLink: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const GiftAddSecondLinkLayout = ({ setStep }: GiftAddSecondLinkLayoutProps) => {
