@@ -46,11 +46,11 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     setTournamentDuration,
     tournamentStartDate,
     fileName,
-    imageUrl,
+    // imageUrl,
     setImageUrl,
     onboardingInfo,
     invitationCode,
-    setInvitationCode,
+    // setInvitationCode,
     setPresignedUrl,
   } = props;
 
@@ -72,7 +72,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     updatedTime.setHours(updatedTime.getHours() + parseInt(time.split('시간')[0]));
 
     updatedTime.setMinutes(updatedTime.getMinutes() - updatedTime.getTimezoneOffset());
-    const formattedTime = updatedTime.toISOString();
+    // const formattedTime = updatedTime.toISOString();
   };
 
   const fetchPresignedUrl = async (fileName: string) => {

@@ -2,11 +2,11 @@ import Title from '../../common/title/Title';
 import * as S from './Step06.style';
 import { IcKakaoShare, IcLink } from '../../../assets/svg';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
-import { useEffect, useState } from 'react';
-import usePostOnboardingInfo from '../../../hooks/queries/onboarding/usePostOnboardingInfo';
-import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
+import { useEffect } from 'react';
+// import usePostOnboardingInfo from '../../../hooks/queries/onboarding/usePostOnboardingInfo';
+// import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
 import { useLocation } from 'react-router-dom';
-import usePostInvitationCode from '../../../hooks/queries/onboarding/usePostInvitationCode';
+// import usePostInvitationCode from '../../../hooks/queries/onboarding/usePostInvitationCode';
 // import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
 // interface OnboardingFinalProps {
 //   onboardingInfo: {
@@ -33,40 +33,40 @@ const OnboardingFinal = () => {
   const state = location.state?.value;
   // const invitationCode = location.state;
   console.log('Step06 location.state', state);
-  const postInvitation = usePostInvitationCode();
+  // const postInvitation = usePostInvitationCode();
   // const { data, isLoading, isError } = useGetGifteeInfo(invitationCode);
 
-  const formatDate = (dateString: any) => {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
+  // const formatDate = (dateString: any) => {
+  //   const date = new Date(dateString);
+  //   const year = date.getFullYear();
+  //   const month = date.getMonth() + 1;
+  //   const day = date.getDate();
+  //   const hours = date.getHours();
+  //   const minutes = date.getMinutes();
 
-    return `${year}.${month}.${day} (${getDayOfWeek(date)}) ${hours}시 ${minutes}분`;
-  };
+  //   return `${year}.${month}.${day} (${getDayOfWeek(date)}) ${hours}시 ${minutes}분`;
+  // };
 
-  const getDayOfWeek = (date: any) => {
-    const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
-    const dayOfWeekIndex = date.getDay();
-    return daysOfWeek[dayOfWeekIndex];
-  };
+  // const getDayOfWeek = (date: any) => {
+  //   const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
+  //   const dayOfWeekIndex = date.getDay();
+  //   return daysOfWeek[dayOfWeekIndex];
+  // };
 
-  const formatDuration = (durationType: any) => {
-    switch (durationType) {
-      case 'SIX_HOURS':
-        return '6시간';
-      case 'TWELVE_HOURS':
-        return '12시간';
-      case 'EIGHTEEN_HOURS':
-        return '18시간';
-      case 'TWENTY_FOUR_HOURS':
-        return '24시간';
-      default:
-        return '';
-    }
-  };
+  // const formatDuration = (durationType: any) => {
+  //   switch (durationType) {
+  //     case 'SIX_HOURS':
+  //       return '6시간';
+  //     case 'TWELVE_HOURS':
+  //       return '12시간';
+  //     case 'EIGHTEEN_HOURS':
+  //       return '18시간';
+  //     case 'TWENTY_FOUR_HOURS':
+  //       return '24시간';
+  //     default:
+  //       return '';
+  //   }
+  // };
 
   // const infoDetails = [
   //   { title: '선물 받을 사람', detail: onboardingInfo.gifteeName },

@@ -1,9 +1,4 @@
-import styled, { css } from 'styled-components';
-import imageSample from './image_sample.png';
-
-type GradientImgProps = {
-  imageUrl: string;
-};
+import styled from 'styled-components';
 
 export const OnboardingFinalWrapper = styled.div`
   ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'center' })}
