@@ -13,10 +13,7 @@ export const OnboardingFinalWrapper = styled.div`
   overflow: hidden;
 `;
 
-export const GradientImg = styled.div<GradientImgProps>`
-  ${({ imageUrl }) => css`
-    background-image: url(${imageUrl});
-  `}
+export const GradientImg = styled.div`
   background-size: cover;
   background-blend-mode: overlay;
   opacity: 0.7;
