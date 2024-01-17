@@ -15,9 +15,7 @@ const TournamentFooter = ({ onNextClick }: TournamentFooterProps) => {
           <IcLeft style={{ width: '2.4rem', height: '2.4rem' }} />
           이전
         </S.Btnpre>
-        <BtnNext onClick={onNextClick}>
-          다음
-        </BtnNext>
+        <BtnNext onClick={onNextClick}>다음</BtnNext>
       </S.TournamentFooterWrapper>
     </>
   );

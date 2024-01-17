@@ -1,10 +1,10 @@
 export { default as Svg3Dicons } from './3Dicons';
+export { default as IcBookmark } from './IcBookmark';
 export { default as Favicon } from './Favicon';
 export { default as IcAdd } from './IcAdd';
 export { default as IcAlertCircle } from './IcAlertCircle';
 export { default as IcAlertSquare } from './IcAlertSquare';
 export { default as IcAlertTriangle } from './IcAlertTriangle';
-export { default as IcBookmark } from './IcBookmark';
 export { default as IcCalender } from './IcCalender';
 export { default as IcCancel } from './IcCancel';
 export { default as IcCancelCircle } from './IcCancelCircle';
