@@ -19,6 +19,7 @@ const OnBoardingPage = () => {
   const [tournamentStartDate, setTournamentStartDate] = useState<string>('');
   const [tournamentDuration, setTournamentDuration] = useState<string>('');
   const [fileName, setFileName] = useState<string>('');
+  const [invitationCode, setInvitationCode] = useState<string>('');
 
   const onboardingInfo = {
     gifteeName: gifteeName,
@@ -91,12 +92,17 @@ const OnBoardingPage = () => {
               imageUrl={imageUrl}
               setImageUrl={setImageUrl}
               onboardingInfo={onboardingInfo}
+              setInvitationCode={setInvitationCode}
             />
           </div>
         </Funnel.Step>
         <Funnel.Step name='GIFT_ROOM_FIX'>
           {/* step06 */}
-          <OnboardingFinal onboardingInfo={onboardingInfo} imageUrl={imageUrl} />
+          <OnboardingFinal
+            onboardingInfo={onboardingInfo}
+            imageUrl={imageUrl}
+            invitationCode={invitationCode}
+          />
         </Funnel.Step>
       </Funnel>
     </OnBoardingPageWrapper>
