@@ -5,6 +5,7 @@ import TournamentResultFooter from './TournamentResultFooter/TournamentResultFoo
 import * as S from './TournamentResult.sytle';
 import { GiftData } from '../../../core/mockupData';
 import usePostScore from '../../../hooks/queries/tournament/usePostScore';
+import useGetTournamentUser from '../../../hooks/queries/tournament/useGetTournamentUser';
 
 interface TournamentResultProps {
   winners: GiftData | null;
@@ -15,23 +16,13 @@ interface TournamentResultProps {
 
 const TournamentResult: React.FC<TournamentResultProps> = ({
   winners,
-  firstGiftId, //1
-  secondGiftId, //2
+  firstGiftId,
+  secondGiftId,
   finalGiftId,
 }) => {
-  console.log(firstGiftId);
-  console.log(secondGiftId);
-  console.log(finalGiftId);
-  // const footerClickHandler = () => {
-  //   const itemInfo: TournamentScore = {
-  //     firstPlaceGiftId: firstPlaceGiftId,
-  //     secondPlaceGiftId: secondPlaceGiftId,
-  //   };
+  const memberData = useGetTournamentUser({ roomId: 2 });
+  const tournamentData = memberData?.data || [];
 
-  //   const { mutation } = usePostScore({ body: itemInfo });
-  //   mutation.mutate(itemInfo);
-  // };
-  // const footerClickHandler = () => {};
   const { mutation } = usePostScore({ body: { firstGiftId, secondGiftId, finalGiftId } });
 
   const footerClickHandler = () => {
@@ -42,7 +33,7 @@ const TournamentResult: React.FC<TournamentResultProps> = ({
     <S.TournamentResult>
       <TournamentTitle />
       <TournamentResultCard item={winners} />
-      <TournamentResultUser />
+      <TournamentResultUser memberData={tournamentData} />
       <TournamentResultFooter onClick={footerClickHandler} />
     </S.TournamentResult>
   );
