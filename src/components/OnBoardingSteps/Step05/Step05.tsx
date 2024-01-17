@@ -25,6 +25,7 @@ interface SetTournamentDurationProps {
     tournamentStartDate: string;
     tournamentDuration: string;
   };
+  setInvitationCode: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const SetTournamentDuration = (props: SetTournamentDurationProps) => {
@@ -45,6 +46,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     // imageUrl,
     setImageUrl,
     onboardingInfo,
+    setInvitationCode,
   } = props;
 
   const [selectedOption] = useState<string>('');
@@ -89,8 +91,12 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
       console.log('saveImageUrl 안 imageUrl 값 확인', imageUrl);
       onNext();
       const updatedOnboardingInfo = { ...onboardingInfo, imageUrl: imageUrl };
-      postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
-      console.log('onboardingInfo 값 확인2', imageUrl);
+      const { invitationCode } = await postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
+      console.log('초대코드1', invitationCode);
+
+      setInvitationCode(invitationCode);
+      // postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
+      console.log('초대코드2', invitationCode);
     } catch (error) {
       console.log(error);
     }
