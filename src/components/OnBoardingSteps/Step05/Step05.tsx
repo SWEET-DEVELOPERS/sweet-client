@@ -92,10 +92,11 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
       onNext();
       const updatedOnboardingInfo = { ...onboardingInfo, imageUrl: imageUrl };
       const { invitationCode } = await postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
+      postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
+
       console.log('초대코드1', invitationCode);
 
       setInvitationCode(invitationCode);
-      // postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
       console.log('초대코드2', invitationCode);
     } catch (error) {
       console.log(error);

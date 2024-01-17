@@ -2,7 +2,9 @@ import Title from '../../common/title/Title';
 import * as S from './Step06.style';
 import { IcKakaoShare, IcLink } from '../../../assets/svg';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import usePostOnboardingInfo from '../../../hooks/queries/onboarding/usePostOnboardingInfo';
+import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
 // import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
 interface OnboardingFinalProps {
   onboardingInfo: {
@@ -13,10 +15,11 @@ interface OnboardingFinalProps {
     tournamentDuration: string;
   };
   imageUrl: string;
+  invitationCode: string;
 }
 const OnboardingFinal = (props: OnboardingFinalProps) => {
   // TODO 추후 이전 STEP에서 유저가 입력한 값으로 변경
-  const { onboardingInfo, imageUrl } = props;
+  const { onboardingInfo, imageUrl, invitationCode } = props;
 
   const updatedOnBoardingInfo = {
     ...onboardingInfo,
@@ -33,18 +36,17 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
   const enterRoom = () => {
     console.log('생성된 룸으로 입장', onboardingInfo);
   };
+  // const { data, isLoading, isError } = useGetGifteeInfo(invitationCode);
 
-  useEffect(() => {
-    // const invitationCode = ;
-    // const { data, isLoading, isError } = useGetGifteeInfo(invitationCode);
-    console.log('step06 렌더링');
-    // if (isLoading) {
-    //   console.log('Loading...');
-    // } else if (isError) {
-    //   console.log('An error occurred');
-    // } else {
-    //   console.log('Data:', data);
-  }, []);
+  // useEffect(() => {
+  //   if (invitationCode && !isLoading && !isError) {
+  //     console.log('받은 데이타', data);
+  //   } else if (isLoading) {
+  //     console.log('Loading...');
+  //   } else if (isError) {
+  //     console.log('isError...');
+  //   }
+  // }, [data, isLoading, isError, invitationCode]);
 
   useEffect(() => {
     const initializeKakao = async () => {

@@ -5,6 +5,7 @@ import { AxiosResponse } from 'axios';
 export const ONBOARDING_INFO_QUERY_KEY: string[] = ['onboardingData'];
 
 export const fetchOnboarding = async (invitationCode: string) => {
+  console.log('get 커스텀 훅 안에 초대코드', invitationCode);
   const response: AxiosResponse = await get(`/room/invitations/${invitationCode}`);
   return response.data;
 };
