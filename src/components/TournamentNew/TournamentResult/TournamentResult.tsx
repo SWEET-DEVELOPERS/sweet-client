@@ -8,6 +8,7 @@ import usePostScore from '../../../hooks/queries/tournament/usePostScore';
 import useGetTournamentUser from '../../../hooks/queries/tournament/useGetTournamentUser';
 import { useState } from 'react';
 import Modal from '../../common/Modal/Modal';
+import TournamentTitleSub from './TournamentTitleSub/TournamnetTitleSub';
 
 interface TournamentResultProps {
   winners: GiftData | null;
@@ -47,7 +48,8 @@ const TournamentResult: React.FC<TournamentResultProps> = ({
 
   return (
     <S.TournamentResult>
-      <TournamentTitle />
+      {isButton && <TournamentTitle />}
+      {!isButton && <TournamentTitleSub />}
       <TournamentResultCard item={winners} />
       <TournamentResultUser memberData={tournamentData} />
       {isButton && <TournamentResultFooter onClick={footerClickHandler} />}
