@@ -16,10 +16,11 @@ interface OnboardingFinalProps {
   };
   imageUrl: string;
   invitationCode: string;
+  presignedUrl: string;
 }
 const OnboardingFinal = (props: OnboardingFinalProps) => {
   // TODO 추후 이전 STEP에서 유저가 입력한 값으로 변경
-  const { onboardingInfo, imageUrl, invitationCode } = props;
+  const { onboardingInfo, imageUrl, invitationCode, presignedUrl } = props;
 
   const updatedOnBoardingInfo = {
     ...onboardingInfo,
@@ -40,6 +41,7 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
 
   useEffect(() => {
     console.log('step06내 response.data', data);
+    console.log('step06 내 presigned Url', presignedUrl);
   }, [data]);
   // useEffect(() => {
   //   if (invitationCode && !isLoading && !isError) {
@@ -84,22 +86,26 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
   return (
     <>
       <S.OnboardingFinalWrapper>
-        <S.GradientImg>
-          <S.TitleContainer>
-            <div style={{ marginBottom: '4.6rem' }}>
-              <Title userName={onboardingInfo.gifteeName} title='님을 위한' />
-              <Title title='선물 준비방이 개설됐어요' />
-            </div>
-            {/* TODO 추후 지민이 버튼으로 변경(항상 활성화) */}
-            <OnBoardingBtn
-              customStyle={{ marginBottom: '1.6rem' }}
-              setStep={enterRoom}
-              isActivated={true}
-            >
-              입장
-            </OnBoardingBtn>
-          </S.TitleContainer>
-        </S.GradientImg>
+        {/* <S.GradientImg> */}
+        <div>
+          <S.GradientImg imageUrl={presignedUrl}>
+            <S.TitleContainer>
+              <div style={{ marginBottom: '4.6rem' }}>
+                <Title userName={onboardingInfo.gifteeName} title='님을 위한' />
+                <Title title='선물 준비방이 개설됐어요' />
+              </div>
+              {/* TODO 추후 지민이 버튼으로 변경(항상 활성화) */}
+              <OnBoardingBtn
+                customStyle={{ marginBottom: '1.6rem' }}
+                setStep={enterRoom}
+                isActivated={true}
+              >
+                입장
+              </OnBoardingBtn>
+            </S.TitleContainer>
+          </S.GradientImg>
+        </div>
+        {/* </S.GradientImg> */}
       </S.OnboardingFinalWrapper>
       <S.InfoWrapper>
         {infoDetails.map((item, index) => (
