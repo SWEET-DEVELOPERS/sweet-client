@@ -26,18 +26,21 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
     imageUrl: imageUrl,
   };
 
-  const infoDetails = [
-    { title: '선물 받을 사람', detail: '가나다라마바사아자차님' },
-    { title: '선물 등록 마감', detail: '2023.12.29(금) 13시' },
-    { title: '토너먼트 진행 시간', detail: '6시간' },
-    { title: '선물 전달일', detail: '2023.12.31(일)' },
-  ];
-
   const enterRoom = () => {
     console.log('생성된 룸으로 입장', onboardingInfo);
   };
-  // const { data, isLoading, isError } = useGetGifteeInfo(invitationCode);
+  const { data, isLoading, isError } = useGetGifteeInfo(invitationCode);
 
+  const infoDetails = [
+    { title: '선물 받을 사람', detail: onboardingInfo.gifteeName },
+    { title: '선물 등록 마감', detail: onboardingInfo.tournamentStartDate },
+    { title: '토너먼트 진행 시간', detail: onboardingInfo.tournamentDuration },
+    { title: '선물 전달일', detail: onboardingInfo.deliveryDate },
+  ];
+
+  useEffect(() => {
+    console.log('step06내 response.data', data);
+  }, [data]);
   // useEffect(() => {
   //   if (invitationCode && !isLoading && !isError) {
   //     console.log('받은 데이타', data);
