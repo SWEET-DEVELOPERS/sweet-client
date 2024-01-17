@@ -9,11 +9,11 @@ interface PostPresignedUrlArgs {
 
 const postPresignedUrl = async ({ filename, url }: PostPresignedUrlArgs) => {
   try {
-    const queryString = filename
-      ? `presigned-url?fileName=${filename}`
-      : 'presigned-url?fileName=https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/sweet.png';
-    const response: AxiosResponse = await post(queryString, url);
-    return response.data;
+    const queryString = filename ? `presigned-url?fileName=${filename}` : '';
+    if (queryString) {
+      const response: AxiosResponse = await post(queryString, url);
+      return response.data;
+    }
   } catch (error) {
     if (error instanceof AxiosError) {
       throw new Error(error.response?.data?.message ?? error.message);
@@ -27,7 +27,7 @@ const usePostPresignedUrl = () => {
   return useMutation({
     mutationFn: postPresignedUrl,
     onSuccess: (data) => {
-      console.log('preSignedUrl 포스트 성공', data);
+      console.log('usePostPresignedUrl onSuccess', data);
     },
   });
 };
