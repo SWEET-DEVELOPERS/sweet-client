@@ -3,7 +3,6 @@ import Type1Tag from '../../../../components/IcTag/Type1/Type1';
 import ProfileImage from '../../ProfileImage/ProfileImage';
 import * as S from './CardGuest.style';
 import useDeleteRoomMember from '../../../../hooks/queries/room/useDeleteRoomMember';
-import { useNavigate } from 'react-router';
 
 interface CardGuestProps {
   user?: string;
@@ -14,8 +13,6 @@ interface CardGuestProps {
 }
 
 const CardGuest = ({ user, makerState, profileImageUrl, roomId, memberId }: CardGuestProps) => {
-  const navigate = useNavigate();
-
   const handleButton = () => {
     if (memberId !== undefined) {
       const { mutation } = useDeleteRoomMember({ roomId, memberId });

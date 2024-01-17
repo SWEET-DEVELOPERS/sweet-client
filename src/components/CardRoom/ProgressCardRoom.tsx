@@ -1,5 +1,4 @@
 import * as S from './CardRoom.style';
-import Rectangle from '../../assets/img/Rectangle.png';
 import { IcUser } from '../../assets/svg';
 import Type2Tag from '../IcTag/Type2/Type2';
 
@@ -10,7 +9,7 @@ interface ProgressCardRoomType {
   roomId: number;
 }
 
-const ProgressCardRoom = ({ user, srcImage, userCount, roomId }: ProgressCardRoomType) => {
+const ProgressCardRoom = ({ user, srcImage, userCount }: ProgressCardRoomType) => {
   return (
     <S.CardRoomWrapper>
       <img src={srcImage} />

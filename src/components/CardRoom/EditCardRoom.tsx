@@ -1,5 +1,4 @@
 import * as S from './CardRoom.style';
-import Rectangle from '../../assets/img/Rectangle.png';
 import { IcSettings, IcUser } from '../../assets/svg';
 import Type2Tag from '../IcTag/Type2/Type2';
 import Type1Tag from '../IcTag/Type1/Type1';
