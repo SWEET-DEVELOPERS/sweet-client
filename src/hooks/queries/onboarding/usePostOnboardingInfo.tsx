@@ -17,18 +17,25 @@ const postOnboardingInfo = async (onboardingInfo: OnboardingInfo): Promise<Axios
 };
 
 const usePostOnboardingInfo = () => {
-  //   const queryClient = useQueryClient();
-
-  return useMutation({
+  const mutation = useMutation({
     mutationFn: postOnboardingInfo,
-    onSuccess: (data) => {
-      console.log('포스트 성공?', data);
-      const invitationCode = (data as any).invitationCode;
-      console.log('초대코드', invitationCode);
-
-      // queryClient.invalidateQueries('rooms');
+    onSuccess: (res) => {
+      console.log('포스트 성공?', res);
+      const invitationCode = (res as any).invitationCode;
+      console.log('커스텀 훅 안 초대코드', invitationCode);
     },
   });
+
+  const postOnboardingInfoWithInvitationCode = async (onboardingInfo: OnboardingInfo) => {
+    const response = await mutation.mutateAsync(onboardingInfo);
+    const invitationCode = (response as any).invitationCode;
+    return { response, invitationCode };
+  };
+
+  return {
+    ...mutation,
+    mutate: postOnboardingInfoWithInvitationCode,
+  };
 };
 
 export default usePostOnboardingInfo;
