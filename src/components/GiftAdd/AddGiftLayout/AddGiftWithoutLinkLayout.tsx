@@ -44,7 +44,7 @@ const AddGiftWithoutLinkLayout = ({
         <MiniTimer time={now} />
       </S.AddGiftWithLinkHeader>
       <GiftStatusBar registeredGiftNum={1} isMargin={false} />
-      <AddGiftImg />
+      <AddGiftImg imageUrl={imageUrl} setImageUrl={setImageUrl} />
       <ShowLink />
       <WithoutLinkWriteItemInfo
         setIsActivated={setIsActivated}
