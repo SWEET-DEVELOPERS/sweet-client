@@ -22,9 +22,9 @@ const TournamentResult: React.FC<TournamentResultProps> = ({
 }) => {
   const memberData = useGetTournamentUser({ roomId: 2 });
   const tournamentData = memberData?.data || [];
-
+  console.log('뷰', memberData);
+  console.log('2', tournamentData);
   const { mutation } = usePostScore({ body: { firstGiftId, secondGiftId, finalGiftId } });
-
   const footerClickHandler = () => {
     mutation.mutate({ firstGiftId, secondGiftId, finalGiftId });
   };

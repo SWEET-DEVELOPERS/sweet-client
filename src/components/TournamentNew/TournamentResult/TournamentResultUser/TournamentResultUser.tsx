@@ -1,25 +1,28 @@
 import styled from 'styled-components';
 import { TournamentUser } from '../../../../types/tournament';
+
 interface TournamentResultUserProps {
-  memberData: TournamentUser[];
+  memberData: TournamentUser;
 }
 
 const TournamentResultUser = ({ memberData }: TournamentResultUserProps) => {
-  // Select the first element from the array, or adjust the logic based on your requirements
-  const tournamentUserData = memberData[0];
+  console.log('wtf.', memberData);
+  const tournamentUserData = memberData || {};
+
+  console.log(memberData.ParticipantsCount);
 
   return (
     <TournamentResultUserWrapper>
       <UserWrapper>
         <User>현재까지 참여자</User>
         <UserCount>
-          {tournamentUserData?.ParticipantsCount}/{tournamentUserData?.TotalParticipantsCount}
+          {tournamentUserData.ParticipantsCount}/{tournamentUserData.TotalParticipantsCount}
         </UserCount>
       </UserWrapper>
       <TimerWrapper>
         <Timer>종료까지 남은 시간</Timer>
         <TimerCount>
-          {tournamentUserData?.tournamentDuration} {tournamentUserData?.tournamentStartDate}
+          {tournamentUserData.tournamentDuration} {tournamentUserData.tournamentStartDate}
         </TimerCount>
       </TimerWrapper>
     </TournamentResultUserWrapper>

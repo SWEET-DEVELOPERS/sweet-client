@@ -3,13 +3,13 @@ import { get } from '../../../apis/client';
 import { TournamentUser } from '../../../types/tournament';
 
 interface TournamentUserResponse extends Response {
-  data: TournamentUser[];
+  data: TournamentUser;
 }
 
 export const TOURNAMENT_USER_BY_ID_QUERY_KEY: string[] = ['tournamentUserData'];
 
 export const fetchTournamentUser = async (roomId: number): Promise<TournamentUserResponse> =>
-  get(`/api/gift/tournament-info/${roomId}`);
+  get(`/gift/tournament-info/${roomId}`);
 
 const useGetTournamentUser = ({ roomId }: { roomId: number }) => {
   const { data } = useQuery({
@@ -17,7 +17,6 @@ const useGetTournamentUser = ({ roomId }: { roomId: number }) => {
     queryFn: () => fetchTournamentUser(roomId),
   });
 
-  console.log(data);
   return data;
 };
 
