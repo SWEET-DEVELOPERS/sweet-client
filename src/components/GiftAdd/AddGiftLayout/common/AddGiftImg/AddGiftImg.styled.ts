@@ -13,3 +13,8 @@ export const ThumbnailWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.G_01};
   border-radius: 1.2rem;
 `;
+
+export const ImgPreview = styled.img`
+  width: 5rem;
+  height: 5rem;
+`;

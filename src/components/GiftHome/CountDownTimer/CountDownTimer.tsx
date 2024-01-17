@@ -8,6 +8,10 @@ interface CountdownTimerProps {
 }
 
 const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
+  if (!targetDate || !(targetDate instanceof Date)) {
+    return <div>Error: Invalid targetDate</div>;
+  }
+
   const [days, setDays] = useState<number>(0);
   const [hours, setHours] = useState<number>(0);
   const [minutes, setMinutes] = useState<number>(0);

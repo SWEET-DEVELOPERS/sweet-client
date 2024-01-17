@@ -1,31 +1,33 @@
-import { useState } from 'react';
-import exampleItemImg from '../../../../assets/img/Rectangle.png';
 import * as S from './TournamentCard.style';
+import example from '../../../../assets/img/img.png';
 import { IcExternalGray, Logo } from '../../../../assets/svg';
 import PriceTag from '../../../common/title/Price/PriceTag';
+import { GiftData } from '../../../../core/mockupData';
 
-const TournamentCard = () => {
-  const [isClicked, setIsClicked] = useState(false);
+interface TournamentCardProps {
+  item: GiftData;
+  onClick: () => void;
+  selected: boolean;
+}
 
+const TournamentCard: React.FC<TournamentCardProps> = ({ item, onClick, selected }) => {
   const handleClick = () => {
-    setIsClicked(!isClicked);
+    onClick();
   };
 
   return (
     <S.Wrapper>
-      <S.TournamentCardWrapper isClicked={isClicked} onClick={handleClick}>
-        <S.SelectWrapper isClicked={isClicked}>
+      <S.TournamentCardWrapper isClicked={selected} onClick={handleClick}>
+        <S.SelectWrapper isClicked={selected}>
           <Logo />
         </S.SelectWrapper>
         <S.TournamentImgWrapper>
-          <img src={exampleItemImg} alt='제품이미지' />
+          <img src={example} alt={item.name} />
         </S.TournamentImgWrapper>
 
         <S.ItemInfo>
-          <S.Title>임영웅 콘서트 Gold열</S.Title>
-          <PriceTag price={8130000} />
-          {/* 보러가기 컴포넌트 분리할까 말까 링크있는 
-    아이템이면 생성 조건 렌더링 */}
+          <S.Title>{item.name}</S.Title>
+          <PriceTag price={item.cost} />
         </S.ItemInfo>
       </S.TournamentCardWrapper>
       <S.LinkIconWrapper>

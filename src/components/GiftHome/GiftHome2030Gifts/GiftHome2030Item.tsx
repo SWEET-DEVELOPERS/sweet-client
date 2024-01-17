@@ -3,7 +3,7 @@ import * as S from '../common/GiftHomeShowcaseItem.styled';
 interface GiftHome2030ItemProps {
   imgUrl: string;
   title: string;
-  price: string;
+  price: number;
 }
 
 const GiftHome2030Item = ({ imgUrl, title, price }: GiftHome2030ItemProps) => {

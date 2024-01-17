@@ -8,15 +8,35 @@ type BtnRadioProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   customStyle?: React.CSSProperties;
   onClick?: () => void;
   isSelected?: () => void;
+  onTimeSelect?: (time: string) => void;
+  setSelectedTime?: (time: string) => VoidFunction;
 };
-const BtnRadio = ({ disabled, time, period, customStyle, onClick }: BtnRadioProps) => {
+const BtnRadio = ({
+  disabled,
+  time,
+  period,
+  customStyle,
+  onClick,
+  onTimeSelect,
+  setSelectedTime,
+}: BtnRadioProps) => {
   const [focused, setFocused] = useState(false);
 
   return (
     <S.Wrapper
       disabled={disabled}
       style={customStyle}
-      onClick={onClick}
+      onClick={() => {
+        if (onTimeSelect) {
+          onTimeSelect(time);
+        }
+        if (setSelectedTime) {
+          setSelectedTime(time);
+        }
+        if (onClick) {
+          onClick();
+        }
+      }}
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
     >
