@@ -4,9 +4,10 @@ import useGetFriendGift from '../../hooks/queries/gift/useGetFriendGift';
 
 interface GiftHomeDetailFriendsProps {
   roomId: number;
+  targetDate: string;
 }
 
-function GiftHomeDetailFriends({ roomId }: GiftHomeDetailFriendsProps) {
+function GiftHomeDetailFriends({ roomId, targetDate }: GiftHomeDetailFriendsProps) {
   const { data, isLoading, isError } = useGetFriendGift({ roomId: Number(roomId) });
   if (isLoading) {
     return <div>LOADING...</div>;
@@ -16,11 +17,10 @@ function GiftHomeDetailFriends({ roomId }: GiftHomeDetailFriendsProps) {
     return <div>ERROR,,,</div>;
   }
 
-  const now = new Date();
   return (
     <S.GiftHomeDetailPageWrapper>
       {/* 공통 헤더 추가 예정 */}
-      <MiniTimer time={now} />
+      <MiniTimer targetDate={targetDate} />
       <S.GiftHomeDetailWrapper>
         {data.data.friendGiftDto.length > 0 ? (
           data.data.friendGiftDto.map((item, index) => (

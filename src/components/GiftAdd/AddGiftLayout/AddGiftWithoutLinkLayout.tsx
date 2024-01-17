@@ -40,8 +40,6 @@ function AddGiftWithoutLinkLayout({
     }
   };
 
-  const now = new Date();
-
   const handleClickConfirmClick = () => {
     setStep((prev) => prev + 1);
   };
