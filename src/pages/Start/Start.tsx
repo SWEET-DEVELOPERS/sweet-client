@@ -6,6 +6,7 @@ import * as S from './Start.style';
 // import SweetHomeAnimation from '../../../public/motions/motion_02.json';
 // import { useEffect, useRef, useState } from 'react';
 import { ScrollAnimationContainer } from '../../components/ScrollAnimationContainer/ScrollAnimationContainer';
+import StartHeader from './StartHeader/StartHeader';
 
 // interface TokenResponseType {
 //   data: {
@@ -38,6 +39,7 @@ const Start = () => {
   // };
   return (
     <S.Wrapper>
+      <StartHeader />
       <IcKakoLarge onClick={handleLogin} />
       {/* <S.Animation>
         <LottieAnimation animation={SweetHomeAnimation} customStyle={{ width: '37.5rem' }} />

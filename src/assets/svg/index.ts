@@ -64,4 +64,5 @@ export { default as Person1 } from './Person1';
 export { default as Person2 } from './Person2';
 export { default as Person3 } from './Person3';
 export { default as Person4 } from './Person4';
+export { default as SweetLogoPink } from './SweetLogoPink';
 export { default as Vite } from './Vite';
