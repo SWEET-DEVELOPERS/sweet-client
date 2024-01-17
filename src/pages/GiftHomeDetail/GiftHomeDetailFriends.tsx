@@ -5,12 +5,12 @@ function GiftHomeDetail() {
   const price = 42000;
   const name = '왕호은';
   const people = 3;
-  const time = '00:00:00';
 
+  const now = new Date();
   return (
     <S.GiftHomeDetailPageWrapper>
       {/* 공통 헤더 추가 예정 */}
-      <MiniTimer time={time} />
+      <MiniTimer time={now} />
       <S.GiftHomeDetailWrapper>
         <S.GiftsItemWrapper>
           <S.GiftsItemImage></S.GiftsItemImage>
