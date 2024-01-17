@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
 import usePostParticipation from '../../../hooks/queries/onboarding/usePostParticipation';
+import OnboardingFinalHeader from './OnboardingFinalHeader';
 
 const OnboardingFinal = () => {
   const location = useLocation();
@@ -95,7 +96,7 @@ const OnboardingFinal = () => {
       kakao.Share.sendDefault({
         objectType: 'feed',
         content: {
-          title: `${getGifteeInfo.data.gifteeName}님을 위한 선물 준비방에 초대장이 도착했어요`,
+          title: `님을 위한 선물 준비방에 초대장이 도착했어요`,
           description: '스윗과 함께 선물을 준비해보세요.',
           imageUrl: 'https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/sweet.png',
           link: {
@@ -108,8 +109,12 @@ const OnboardingFinal = () => {
     console.log('카카오 공유 버튼 클릭!!');
   };
 
-  const handleClickRoom = async (body: string) => {
+  const handleClickRoom = async (body: string | null) => {
     console.log('입장 버튼 클릭! 그리고 초대 코드', invitationCode);
+    if (body === null) {
+      console.error('초대 코드가 유효하지 않습니다.');
+      return;
+    }
     try {
       const response = mutation.mutate(body, {
         onSuccess: (data) => {
@@ -123,6 +128,7 @@ const OnboardingFinal = () => {
 
   return (
     <>
+      <OnboardingFinalHeader />
       <S.OnboardingFinalWrapper>
         {/* TODO presignedUrl이 null 또는 빈 스트링일 경우 엠티 뷰 보이기 / 값이 있으면 저장되어있는 imageUrl 보이기 */}
         {/* <S.GradientImg> */}
@@ -136,7 +142,8 @@ const OnboardingFinal = () => {
             ></div>
             <S.TitleContainer>
               <div style={{ marginBottom: '4.6rem' }}>
-                {/* <Title userName={onboardingInfo.gifteeName} title='님을 위한' /> */}
+                <Title title='시동훈님을 위한' />
+
                 <Title title='선물 준비방이 개설됐어요' />
               </div>
               {/* TODO 추후 지민이 버튼으로 변경(항상 활성화) */}
