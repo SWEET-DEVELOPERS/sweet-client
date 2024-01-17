@@ -13,7 +13,6 @@ const StartHeader = () => {
     <S.StartHeaderWrapper>
       <SweetLogoPink style={{ width: '9.9rem' }} />
       <IcMenu style={{ width: '2.8rem' }} />
-      <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
     </S.StartHeaderWrapper>
   );
 };
