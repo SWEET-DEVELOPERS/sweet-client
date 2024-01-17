@@ -50,8 +50,8 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     // imageUrl,
     setImageUrl,
     onboardingInfo,
-    // invitationCode,
-    // setInvitationCode,
+    invitationCode,
+    setInvitationCode,
     presignedUrl,
     setPresignedUrl,
   } = props;
@@ -60,7 +60,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   const postPresignedUrl = usePostPresignedUrl();
   const putPresignedUrl = usePutPresignedUrl();
   const navigate = useNavigate();
-  const { mutate, invitationCode } = usePostOnboardingInfo();
+  const { mutation } = usePostOnboardingInfo();
   // const postOnboardingInfoMutation = usePostOnboardingInfo();
   // const { mutate } = usePostOnboardingInfo();
 
@@ -73,8 +73,8 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   }, [tournamentDuration]);
 
   useEffect(() => {
-    console.log('step05 내 유즈이펙트로 초대코드 확인', invitationCode);
-  }, [invitationCode]);
+    console.log('step05 내 유즈이펙트로 초대코드 확인', mutation);
+  }, [mutation]);
 
   const handleTimeSelect = (time: string) => {
     const updatedTime = new Date(tournamentStartDate);
@@ -102,7 +102,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   const saveImageUrl = async (fileName: string) => {
     const { presignedUrl, imageUrl } = await fetchPresignedUrl(fileName);
     console.log(' save ImageUrl 안 presignedUrl', presignedUrl);
-    console.log('step05 내 invitationCode3', invitationCode);
+    console.log('step05 내 invitationCode3', mutation);
 
     if (presignedUrl && presignedUrl !== '') {
       try {
@@ -110,34 +110,35 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
         console.log('saveImageUrl 안 imageUrl 값 확인', imageUrl);
       } catch (error) {
         console.log('putPresignedUrl 실행 중 에러 발생:', error);
-        return; // 에러가 발생하면 함수를 여기서 종료
+        return;
       }
     } else {
       console.log('preSignedUrl이 비어있어서 putPresignedUrl을 실행하지 않습니다.');
     }
 
     // putPresignedUrl이 성공하거나 빈 값일 때 실행됨
-    onNext();
-    console.log('step05 내 invitationCode1', invitationCode);
+    console.log('step05 내 invitationCode1', mutation);
     try {
       const updatedOnboardingInfo = { ...onboardingInfo, imageUrl: imageUrl };
-      mutate(updatedOnboardingInfo, {
+      const response = mutation.mutate(updatedOnboardingInfo, {
         onSuccess: (data) => {
-          const code = (data as any).invitationCode;
-          console.log('step05 내 invitationCode2', code);
-          setPresignedUrl(presignedUrl);
-          console.log('presignedUrl 1', presignedUrl);
+          navigate(`/result?invitationCode=${data.invitationCode}`);
         },
       });
-      // const { invitationCode } = await postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
+      const code = response.invitationCode;
 
-      // postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
+      setInvitationCode(code);
+      console.log('code', code);
+      console.log('code', invitationCode);
 
-      // setInvitationCode(invitationCode);
-      console.log('presignedUrl 2', presignedUrl);
+      onNext();
     } catch (error) {
       console.log('postOnboardingInfoMutation 실행 중 에러 발생:', error);
     }
+    // const { invitationCode } = await postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
+
+    // postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
+
     // try {
     //   await putPresignedUrl.mutateAsync(presignedUrl);
     //   console.log('saveImageUrl 안 imageUrl 값 확인', imageUrl);
@@ -189,7 +190,9 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
           setStep={async () => {
             const { presignedUrl } = await fetchPresignedUrl(fileName);
             await saveImageUrl(presignedUrl);
-            navigate('/result', { state: { value: 1234 } });
+            // await navigate(`/result?invitationCode=${invitationCode}`, {
+            //   state: { value: invitationCode },
+            // });
           }}
         >
           다음
