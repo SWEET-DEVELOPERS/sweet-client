@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const SetTournamentScheduleWrapper = styled.div<{ hasContent: boolean }>`
+export const SetTournamentScheduleWrapper = styled.div<{ $hasContent: boolean }>`
   ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'center' })}
   width: 100%;
   height: 3.6rem;
@@ -8,7 +8,7 @@ export const SetTournamentScheduleWrapper = styled.div<{ hasContent: boolean }>`
   border-bottom: 0.1rem solid ${({ theme }) => theme.colors.G_02};
 
   ${(props) =>
-    props.hasContent &&
+    props.$hasContent &&
     css`
       border-bottom: 0.1rem solid ${({ theme }) => theme.colors.P_06};
     `}
@@ -29,7 +29,7 @@ export const Input = styled.input`
   outline: none;
 `;
 
-export const Container = styled.div<{ hasContent: boolean }>`
+export const Container = styled.div<{ $hasContent: boolean }>`
   ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'center' })}
   width: 100%;
   height: 3.6rem;
@@ -37,8 +37,12 @@ export const Container = styled.div<{ hasContent: boolean }>`
   border-bottom: 0.1rem solid ${({ theme }) => theme.colors.G_02};
 
   ${(props) =>
-    props.hasContent &&
+    props.$hasContent &&
     css`
       border-bottom: 0.1rem solid ${({ theme }) => theme.colors.P_06};
     `}
+`;
+
+export const TimeInput = styled.input<{ isOpen: boolean }>`
+  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
 `;

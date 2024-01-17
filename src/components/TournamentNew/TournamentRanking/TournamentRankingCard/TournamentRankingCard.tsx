@@ -1,7 +1,14 @@
 import * as S from './TournamentRankingCard.style';
 import example from '../../../../assets/img/Rectangle.png';
 import PriceTag from '../../../common/title/Price/PriceTag';
-const TournamentRankingCard = () => {
+import { GiftRankingData } from '../../../../types/tournament';
+
+interface TournamentRankingProps {
+  RankingData: GiftRankingData[];
+}
+
+const TournamentRankingCard = ({ RankingData }: TournamentRankingProps) => {
+  console.log(RankingData);
   return (
     <S.TournamentRankingCardWrapper>
       <img src={example} />

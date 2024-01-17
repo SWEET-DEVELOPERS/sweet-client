@@ -1,22 +1,41 @@
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 import BtnLogout from '../../components/common/Button/Logout/BtnLogout';
-import * as S from './MyPage.style';
 import ProfileImage from './ProfileImage/ProfileImage';
 import Rectangle from '../../assets/img/Rectangle.png';
 import DoneGiftView from './GiftRoomView/DoneGiftView/DoneGiftView';
 import ProgressGiftView from './GiftRoomView/ProgressGiftView/ProgressGiftView';
+import useGetMyPage from '../../hooks/queries/member/useGetMypage';
+import * as S from './MyPage.style';
+import { MyPageType } from '../../types/member';
+interface MyPage {
+  memberData: MyPageType;
+}
 
 const MyPage = () => {
-  const giftData: boolean = true;
+  const memberData = useGetMyPage();
+  console.log(memberData);
+  console.log(memberData?.data);
+  console.log(memberData?.data?.memberInfo);
+
+  const userName = memberData?.data?.memberInfo.nickname;
+  const translatedUserName = userName && userName.length > 5 ? userName.substring(0, 5) : userName;
+
+  const progressRoomData = memberData?.data?.activeRooms;
+  const doneMemberRoomData = memberData?.data?.closedRooms;
+
+  //console.log(doneMemberRoomData && doneMemberRoomData[0]);
+
+  const giftData: boolean = progressRoomData !== null && doneMemberRoomData !== null;
+
   return (
-    <S.Wrapper>
+    <S.MyPageWrapper>
       <S.TopImage />
       <S.ProfileWrapper>
         <S.UserButtonWrapper>
           <S.UserWrapper>
             <ProfileImage image={Rectangle} />
             <S.UserName>
-              <p>김스윗</p>님
+              <S.User>{translatedUserName}</S.User>님
             </S.UserName>
           </S.UserWrapper>
           <BtnLogout customStyle={{ width: '8.4rem', height: '2.6rem' }}>로그아웃</BtnLogout>
@@ -30,17 +49,16 @@ const MyPage = () => {
           새로운 선물 준비하기
         </BtnFill>
       </S.ProfileWrapper>
-      <S.GiftRoomWrapper>
-        {giftData ? (
-          <>
-            <ProgressGiftView />
-            <DoneGiftView />
-          </>
-        ) : (
-          <S.NoneText> 아직 선물방이 없어요</S.NoneText>
-        )}
-      </S.GiftRoomWrapper>
-    </S.Wrapper>
+
+      {giftData ? (
+        <S.GiftRoomWrapper>
+          <ProgressGiftView data={progressRoomData} />
+          <DoneGiftView data={doneMemberRoomData} />
+        </S.GiftRoomWrapper>
+      ) : (
+        <S.NoneText> 아직 선물방이 없어요</S.NoneText>
+      )}
+    </S.MyPageWrapper>
   );
 };
 

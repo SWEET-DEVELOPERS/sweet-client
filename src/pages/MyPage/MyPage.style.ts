@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import MypageImage from '../../../public/svg/mypage_image.svg';
 
-export const Wrapper = styled.div`
+export const MyPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -18,14 +18,13 @@ export const TopImage = styled.div`
   margin: 0;
 `;
 export const UserName = styled.div`
-  display: flex;
-  align-items: center;
+  ${({ theme: { mixin } }) => mixin.flexBox({ align: 'center' })};
 
   ${({ theme: { fonts } }) => fonts.heading_03};
-  > p {
-    ${({ theme: { fonts } }) => fonts.heading_01};
-    color: ${({ theme: { colors } }) => colors.P_06};
-  }
+`;
+export const User = styled.div`
+  ${({ theme: { fonts } }) => fonts.heading_01};
+  color: ${({ theme: { colors } }) => colors.P_06};
 `;
 export const UserButtonWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ align: 'center', justify: 'space-between' })};
@@ -63,6 +62,8 @@ export const GiftRoomWrapper = styled.div`
 `;
 
 export const NoneText = styled.div`
+  ${({ theme: { mixin } }) => mixin.flexCenter({})};
+  height: 32.7rem;
   color: ${({ theme: { colors } }) => colors.G_07};
   ${({ theme: { fonts } }) => fonts.body_07};
 `;

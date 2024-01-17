@@ -1,55 +1,50 @@
-import { useState } from 'react';
 import * as S from './WriteItemInfo.styled';
 import ItemTextField from '../../../ItemTextField/ItemTextField';
 
 interface WriteItemInfoProps {
   setIsActivated: React.Dispatch<React.SetStateAction<boolean>>;
-  isLink: boolean;
+
+  setName: React.Dispatch<React.SetStateAction<string>>;
+  setCost: React.Dispatch<React.SetStateAction<number>>;
+  name: string;
+  cost: number;
 }
 
-const WriteItemInfo = ({ setIsActivated, isLink }: WriteItemInfoProps) => {
-  const [nameText, setNameText] = useState<string>('');
-  const [priceText, setPriceText] = useState<string>('');
-  const [linkText, setLinkText] = useState<string>('');
-
-  const handleSetIsActivated = () => {
-    if (nameText.length > 0 && priceText.length > 0) {
+const WriteItemInfo = ({ setIsActivated, setName, setCost, name, cost }: WriteItemInfoProps) => {
+  const handleSetIsActivated = (newNameText: string, newPriceText: string) => {
+    if (newNameText.length > 0 && newPriceText.length > 0) {
       setIsActivated(true);
     } else {
       setIsActivated(false);
     }
   };
 
+  const handleNameTextChange = (newText: string) => {
+    setName(newText);
+    handleSetIsActivated(newText, cost.toString());
+  };
+
+  const handlePriceTextChange = (newCost: number) => {
+    setCost(newCost);
+    handleSetIsActivated(name, newCost.toString());
+  };
+
   return (
     <S.WriteItemInfoWrapper>
       <ItemTextField
         type='text'
-        text={nameText}
-        setText={setNameText}
-        handleSetIsActivated={handleSetIsActivated}
+        text={name}
+        handleTextChange={handleNameTextChange}
         placeholderText='상품명을 입력해주세요'
         categoryTitle='상품이름'
       />
       <ItemTextField
-        text={priceText}
-        setText={setPriceText}
-        handleSetIsActivated={handleSetIsActivated}
+        text={cost.toString()}
+        handleTextChange={(newText) => handlePriceTextChange(Number(newText))}
         type='number'
         categoryTitle='가격'
         placeholderText='가격을 입력해주세요'
       />
-      {isLink ? (
-        ''
-      ) : (
-        <ItemTextField
-          text={linkText}
-          setText={setLinkText}
-          handleSetIsActivated={handleSetIsActivated}
-          categoryTitle='링크'
-          placeholderText='링크를 입력해주세요 (선택)'
-          type='text'
-        />
-      )}
     </S.WriteItemInfoWrapper>
   );
 };

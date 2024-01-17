@@ -1,14 +1,13 @@
-import { useState } from 'react';
 import * as S from './InputUrl.styled';
 import IcCancelCircleFinal from '../../../../../assets/svg/IcCancelCircleFinal';
 
 interface InputUrlProps {
   setIsActivated: React.Dispatch<React.SetStateAction<boolean>>;
+  text: string;
+  setText: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const InputUrl = ({ setIsActivated }: InputUrlProps) => {
-  const [text, setText] = useState<string>('');
-
+const InputUrl = ({ setIsActivated, text, setText }: InputUrlProps) => {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     inputValue.length > 0 ? setIsActivated(true) : setIsActivated(false);

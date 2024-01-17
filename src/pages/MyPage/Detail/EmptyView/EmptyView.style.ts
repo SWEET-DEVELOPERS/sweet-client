@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const EmptyViewWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter({ align: 'center', justify: 'center' })};
 `;
 

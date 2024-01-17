@@ -1,20 +1,39 @@
 import DoneCardRoom from '../../../../components/CardRoom/DoneCardRoom';
 import GiftRoomHeader from '../GiftRoomHeader/GiftRoomHeader';
+import { ClosedRoomType } from '../../../../types/member';
 import * as S from './DoneGiftView.style';
 
-const DoneGiftView = () => {
-  const giftData: boolean = true;
+interface DoneGiftViewType {
+  data: ClosedRoomType | undefined;
+}
+
+const DoneGiftView = ({ data }: DoneGiftViewType) => {
+  const doneData1 = Array.isArray(data) ? data[0] : undefined;
+  const doneData2 = Array.isArray(data) ? data[1] : undefined;
+
   return (
-    <S.Wrapper>
-      <GiftRoomHeader name='종료된 선물방' page='detail-done' />
-      {giftData ? (
-        <S.RoomWrapper>
-          <DoneCardRoom />
-        </S.RoomWrapper>
-      ) : (
-        <S.NoneRoom>준비했던 선물이 없어요</S.NoneRoom>
-      )}
-    </S.Wrapper>
+    <S.DoneGiftViewWrapper>
+      <GiftRoomHeader name='종료된 선물방' page='detail-done' doneData={data} />
+      <S.RoomWrapper>
+        {doneData1 && (
+          <DoneCardRoom
+            user={doneData1?.gifteeName || ''}
+            srcImage={doneData1?.imageUrl || ''}
+            userCount={doneData1?.gifterNumber || 0}
+          />
+        )}
+
+        {doneData2 && (
+          <DoneCardRoom
+            user={doneData2?.gifteeName || ''}
+            srcImage={doneData2?.imageUrl || ''}
+            userCount={doneData2?.gifterNumber || 0}
+          />
+        )}
+
+        {!doneData1 && !doneData2 && <S.NoneRoom>지금 진행 중인 선물방이 없어요</S.NoneRoom>}
+      </S.RoomWrapper>
+    </S.DoneGiftViewWrapper>
   );
 };
 

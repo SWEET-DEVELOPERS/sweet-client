@@ -1,14 +1,17 @@
 import * as S from './CardRoom.style';
-import Rectangle from '../../assets/img/Rectangle.png';
 import { IcUser } from '../../assets/svg';
 import Type3Tag from '../IcTag/Type3/Type3';
 
-const DoneCardRoom = () => {
-  const user = '가나다라마바사';
-  const userCount = 5;
+interface DoneCardRoomType {
+  user: string;
+  srcImage: string;
+  userCount: number;
+}
+
+const DoneCardRoom = ({ user, srcImage, userCount }: DoneCardRoomType) => {
   return (
-    <S.Wrapper>
-      <img src={Rectangle} />
+    <S.CardRoomWrapper>
+      <img src={srcImage} />
       <S.Text>
         <S.User>{user}님</S.User>을 위한 선물방
       </S.Text>
@@ -19,7 +22,7 @@ const DoneCardRoom = () => {
       <S.TagWrapper>
         <Type3Tag tag='토너먼트 완료' />
       </S.TagWrapper>
-    </S.Wrapper>
+    </S.CardRoomWrapper>
   );
 };
 

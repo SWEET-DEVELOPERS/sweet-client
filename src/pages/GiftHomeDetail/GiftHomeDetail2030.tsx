@@ -1,40 +1,37 @@
 import * as S from './GiftHomeDetail.styled';
 import MiniTimer from '../../components/common/MiniTimer/MiniTimer';
+import useGetHotProduct from '../../hooks/queries/product/useGetHotProduct';
 
-function GiftHomeDetail() {
-  const price = 42000;
-  const name = '왕호은';
-  const time = '00:00:00';
+interface GiftHomeDetailProps {
+  roomId: number;
+}
+
+function GiftHomeDetail({ roomId }: GiftHomeDetailProps) {
+  const { data, isLoading, isError } = useGetHotProduct({ roomId: Number(roomId) });
+  if (isLoading) {
+    return <div>LOADING...</div>;
+  }
+
+  if (isError || !data) {
+    return <div>ERROR,,,</div>;
+  }
 
   return (
     <S.GiftHomeDetailPageWrapper>
       {/* 공통 헤더 추가 예정 */}
-      <MiniTimer time={time} />
+      <MiniTimer targetDate={data.data.tournamentStartDate.toLocaleString()} />
       <S.GiftHomeDetailWrapper>
-        <S.GiftsItemWrapper>
-          <S.GiftsItemImage></S.GiftsItemImage>
-          <S.GiftsItemTitle>어센틱 로고 후디 멜란지 그레이</S.GiftsItemTitle>
-          <S.GiftsItemPrice>{price}원</S.GiftsItemPrice>
-          <S.GiftsItemUser>{name}</S.GiftsItemUser>
-        </S.GiftsItemWrapper>
-        <S.GiftsItemWrapper>
-          <S.GiftsItemImage></S.GiftsItemImage>
-          <S.GiftsItemTitle>어센틱 로고 후디 멜란지 그레이</S.GiftsItemTitle>
-          <S.GiftsItemPrice>{price}원</S.GiftsItemPrice>
-          <S.GiftsItemUser>{name}</S.GiftsItemUser>
-        </S.GiftsItemWrapper>
-        <S.GiftsItemWrapper>
-          <S.GiftsItemImage></S.GiftsItemImage>
-          <S.GiftsItemTitle>어센틱 로고 후디 멜란지 그레이</S.GiftsItemTitle>
-          <S.GiftsItemPrice>{price}원</S.GiftsItemPrice>
-          <S.GiftsItemUser>{name}</S.GiftsItemUser>
-        </S.GiftsItemWrapper>
-        <S.GiftsItemWrapper>
-          <S.GiftsItemImage></S.GiftsItemImage>
-          <S.GiftsItemTitle>어센틱 로고 후디 멜란지 그레이</S.GiftsItemTitle>
-          <S.GiftsItemPrice>{price}원</S.GiftsItemPrice>
-          <S.GiftsItemUser>{name}</S.GiftsItemUser>
-        </S.GiftsItemWrapper>
+        {data.data.hotProductDtoList.length > 0 ? (
+          data.data.hotProductDtoList.map((item) => (
+            <S.GiftsItemWrapper>
+              <S.GiftsItemImage src={item.imageUrl} />
+              <S.GiftsItemTitle>{item.name}</S.GiftsItemTitle>
+              <S.GiftsItemPrice>{item.cost}원</S.GiftsItemPrice>
+            </S.GiftsItemWrapper>
+          ))
+        ) : (
+          <></>
+        )}
       </S.GiftHomeDetailWrapper>
     </S.GiftHomeDetailPageWrapper>
   );

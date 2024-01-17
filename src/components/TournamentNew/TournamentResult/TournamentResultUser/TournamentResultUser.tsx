@@ -1,18 +1,29 @@
 import styled from 'styled-components';
-const TournamentResultUser = () => {
-  const user = 4;
-  const totalUser = 8;
+import { TournamentUser } from '../../../../types/tournament';
+
+interface TournamentResultUserProps {
+  memberData: TournamentUser;
+}
+
+const TournamentResultUser = ({ memberData }: TournamentResultUserProps) => {
+  console.log('wtf.', memberData);
+  const tournamentUserData = memberData || {};
+
+  console.log(memberData.ParticipantsCount);
+
   return (
     <TournamentResultUserWrapper>
       <UserWrapper>
         <User>현재까지 참여자</User>
         <UserCount>
-          {user}/{totalUser}
+          {tournamentUserData.ParticipantsCount}/{tournamentUserData.TotalParticipantsCount}
         </UserCount>
       </UserWrapper>
       <TimerWrapper>
         <Timer>종료까지 남은 시간</Timer>
-        <TimerCount>00:31:40</TimerCount>
+        <TimerCount>
+          {tournamentUserData.tournamentDuration} {tournamentUserData.tournamentStartDate}
+        </TimerCount>
       </TimerWrapper>
     </TournamentResultUserWrapper>
   );
