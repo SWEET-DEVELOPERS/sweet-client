@@ -9,9 +9,9 @@ import MyPage from '../pages/MyPage/MyPage';
 import EditRoom from '../pages/MyPage/EditRoom/EditRoom';
 import DetailProgressRoom from '../pages/MyPage/Detail/DetailProgressRoom/DetailProgressRoom';
 import DetailDoneRoom from '../pages/MyPage/Detail/DetailDoneRoom/DetailDoneRoom';
-import GiftHome from '../pages/GiftHome/GiftHome';
 import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
 import TournamentContainer from '../components/TournamentNew/Intro/TournamentContainer';
+import GiftHome from '../pages/GiftHome/GiftHome';
 
 const router = createBrowserRouter([
   {
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/editpage',
-        element: <EditRoom />,
+        element: <EditRoom roomId={1} />,
       },
       {
         path: '/detail-progress',
@@ -43,19 +43,16 @@ const router = createBrowserRouter([
         element: <DetailDoneRoom />,
       },
       {
-        // 임의로 선물방 홈 페이지 연결
-        path: '/gifthome',
-        element: <GiftHome />,
+        path: '/gift-home',
+        element: <GiftHome roomId={1} />,
       },
       {
-        // 임의로 세부페이지 추가
-        path: '/giftdetailfriends',
+        path: '/gift-detail-friends',
         element: <GiftHomeDetailFriends />,
       },
       {
-        // 임의로 세부페이지 추가
-        path: '/giftdetail2030',
-        element: <GiftHomeDetail2030 />,
+        path: '/gift-detail-2030',
+        element: <GiftHomeDetail2030 roomId={1} />,
       },
       {
         path: '/onboarding',
@@ -66,8 +63,8 @@ const router = createBrowserRouter([
         element: <TournamentContainer />,
       },
       {
-        path: '/addgift',
-        element: <GiftAddPage />,
+        path: '/add-gift',
+        element: <GiftAddPage roomId={1} />,
       },
     ],
   },

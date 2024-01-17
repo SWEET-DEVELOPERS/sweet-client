@@ -9,7 +9,7 @@ interface HotProductResponse extends Response {
 export const HOT_PRODUCT_QUERY_KEY: string[] = ['hotProductData'];
 
 export const fetchHotProduct = async (roomId: number): Promise<HotProductResponse> =>
-  get(`product/hot/${roomId}`);
+  get(`/product/hot/${roomId}`);
 
 const useGetHotProduct = ({ roomId }: { roomId: number }) => {
   const { data, isLoading, isError } = useQuery({

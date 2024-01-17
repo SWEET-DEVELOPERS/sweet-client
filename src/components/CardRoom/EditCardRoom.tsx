@@ -1,20 +1,25 @@
 import * as S from './CardRoom.style';
-import Rectangle from '../../assets/img/Rectangle.png';
 import { IcSettings, IcUser } from '../../assets/svg';
 import Type2Tag from '../IcTag/Type2/Type2';
 import Type1Tag from '../IcTag/Type1/Type1';
 import { useNavigate } from 'react-router';
 
-const EditCardRoom = () => {
+interface EditCardRoomType {
+  user: string;
+  srcImage: string;
+  userCount: number;
+  roomId: number;
+}
+
+const EditCardRoom = ({ user, srcImage, userCount, roomId }: EditCardRoomType) => {
   const navigate = useNavigate();
-  const user = '가나다라마바사';
-  const userCount = 5;
+
   const handleSettingIcon = () => {
-    navigate('/editpage');
+    navigate(`/editpage`, { state: { roomId } });
   };
   return (
     <S.CardRoomWrapper>
-      <img src={Rectangle} />
+      <img src={srcImage} />
       <S.Text>
         <S.User>{user}님</S.User>을 위한 선물방
       </S.Text>

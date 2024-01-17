@@ -29,14 +29,44 @@ export type MemberInfoType = {
   profileImage: string;
 };
 
-export type CloseRoomType = {
+export type RoomMemberType = {
+  room: RoomsListType;
+  owner: OwnerListType;
+  members: MembersListType;
+};
+
+export type OwnerListType = {
+  ownerId: number;
+  profileImgUrl: string;
+  name: string;
+};
+
+export type RoomsListType = {
+  gifteeName: string;
+  gifterNumber: number;
+};
+export type MembersListType = {
+  memberId: number;
+  profileImageUrl: string;
+  name: string;
+};
+
+export type ClosedRoomType = {
+  data: Array<ClosedRoomArrayType>;
+};
+
+export type ActiveRoomType = {
+  data: Array<ActiveRoomArrayType>;
+};
+
+export type ClosedRoomArrayType = {
   roomId: number;
   imageUrl: string;
   gifteeName: string;
   gifterNumber: number;
 };
 
-export type ActiveRoomType = {
+export type ActiveRoomArrayType = {
   roomId: number;
   imageUrl: string;
   gifteeName: string;
@@ -46,9 +76,7 @@ export type ActiveRoomType = {
 };
 
 export type MyPageType = {
-  data: {
-    memberInfo: MemberInfoType;
-    closeRooms: CloseRoomType;
-    activeRooms: ActiveRoomType;
-  };
+  memberInfo: MemberInfoType;
+  closedRooms: ClosedRoomType;
+  activeRooms: ActiveRoomType;
 };
