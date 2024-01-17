@@ -4,93 +4,19 @@ import TournamentCard from './TournamentCard/TournamentCard';
 import TournamentTitle from './TournamentTitle/TournamentTitle';
 import TournamentFooter from './TournamentFooter/TournamentFooter';
 import TournamentResult from '../TournamentResult/TournamentResult';
+import { GiftData } from '../../../types/tournament';
 
-interface GiftData {
-  giftId: number;
-  imageUrl: string;
-  name: string;
-  cost: number;
-  url: string;
+interface TournamentProps {
+  memberData: GiftData[];
 }
 
-const TournamentFlowContainer: React.FC = () => {
-  const items: GiftData[] = [
-    {
-      giftId: 1,
-      imageUrl: '../assets/img/img.png',
-      name: 'Gift 1',
-      cost: 20,
-      url: 'https://example.com',
-    },
-    {
-      giftId: 2,
-      imageUrl: '../assets/img/img.png',
-      name: 'Gift 2',
-      cost: 30,
-      url: 'https://example.com',
-    },
-    {
-      giftId: 3,
-      imageUrl: '../assets/img/img.png',
-      name: 'Gift 3',
-      cost: 22,
-      url: 'https://example.com',
-    },
-    {
-      giftId: 4,
-      imageUrl: '../assets/img/img.png',
-      name: 'Gift 4',
-      cost: 22,
-      url: 'https://example.com',
-    },
-    {
-      giftId: 5,
-      imageUrl: '../assets/img/img.png',
-      name: 'Gift 5',
-      cost: 22,
-      url: 'https://example.com',
-    },
-    {
-      giftId: 6,
-      imageUrl: '../assets/img/img.png',
-      name: 'Gift 6',
-      cost: 22,
-      url: 'https://example.com',
-    },
-    {
-      giftId: 7,
-      imageUrl: '../assets/img/img.png',
-      name: 'Gift 7',
-      cost: 22,
-      url: 'https://example.com',
-    },
-    {
-      giftId: 8,
-      imageUrl: '../assets/img/img.png',
-      name: 'Gift 8',
-      cost: 22,
-      url: 'https://example.com',
-    },
-    {
-      giftId: 9,
-      imageUrl: '../assets/img/img.png',
-      name: 'Gift 9',
-      cost: 22,
-      url: 'https://example.com',
-    },
-    {
-      giftId: 10,
-      imageUrl: '../assets/img/img.png',
-      name: 'Gift10',
-      cost: 22,
-      url: 'https://example.com',
-    },
-  ];
-
+const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
   const [itemPick, setitemPick] = useState<GiftData[]>([]);
   const [displays, setDisplays] = useState<GiftData[]>([]);
   //선택된 아이템 저장
   const [selectedItem, setSelectedItem] = useState<GiftData | null>(null);
+  const [firstItems, setFirstItems] = useState<GiftData[]>([]);
+  const [secondItems, setSecondItems] = useState<GiftData[]>([]);
 
   const [winners, setWinners] = useState<GiftData[]>([]);
   // 최신 인덱스
@@ -98,12 +24,11 @@ const TournamentFlowContainer: React.FC = () => {
   const [roundIndex, setRoundIndex] = useState<number>(1);
 
   useEffect(() => {
-    // 초기 아이템 섞기
-    items.sort(() => Math.random() - 0.5);
-    setitemPick([...items]);
-    //첫번째와 두번째를 보여준다.
-    setDisplays([items[0], items[1]]);
-  }, []);
+    // Use memberData instead of items from local data
+    memberData.sort(() => Math.random() - 0.5);
+    setitemPick([...memberData]);
+    setDisplays([memberData[0], memberData[1]]);
+  }, [memberData]);
   //
   const [showTournamentResult, setShowTournamentResult] = useState(false);
 
@@ -114,6 +39,8 @@ const TournamentFlowContainer: React.FC = () => {
         setDisplays([item]);
         setSelectedItem(item);
         console.log('결과?=:', itemPick); //결승 두개 아이템
+        setFirstItems([itemPick[0]]);
+        setSecondItems([itemPick[1]]);
         console.log('결과!=:', [item]); //우승한 한개 아이템
         setShowTournamentResult(true);
       } else {
@@ -135,8 +62,12 @@ const TournamentFlowContainer: React.FC = () => {
         setDisplays([item]);
         //아 이걸 ..?이거 때문에 12개로 토너먼트하면 미리 결승이 일어나는건가?
         setSelectedItem(item);
-        console.log('결과?=:', itemPick); //결승 두개 아이템
-        console.log('결과!=:', [item]); //우승한 한개 아이템
+        console.log('결과?!!=:', itemPick); //결승 두개 아이템
+        // Filter out the selected item from itemPick
+        setFirstItems([itemPick[0]]);
+        setSecondItems([itemPick[1]]);
+     
+        console.log('우승템', [item]); //우승한 한개 아이템
         setShowTournamentResult(true);
       } else {
         let updateditem = [...winners, itemPick[2]];
@@ -153,20 +84,26 @@ const TournamentFlowContainer: React.FC = () => {
     }
   };
 
-  console.log(selectedItem);
-  console.log(winners);
-  const footerClickHandler = () => {};
+  console.log('???', itemPick);
+  console.log('dma??', firstItems);
+  console.log('dma?????', secondItems);
 
+  const footerClickHandler = () => {};
   return (
     <>
       {showTournamentResult ? (
-        <TournamentResult winners={selectedItem} />
+        <TournamentResult
+          winners={selectedItem}
+          firstGiftId={firstItems.length > 0 ? firstItems[0].giftId : 0}
+          secondGiftId={secondItems.length > 0 ? secondItems[0].giftId : 0}
+          finalGiftId={selectedItem?.giftId || 0}
+        />
       ) : (
         <S.TournamentFlowContainerWrapper>
           <TournamentTitle
             rounds={roundIndex}
             currentIndex={currentIndex}
-            totalRounds={items.length}
+            totalRounds={memberData.length}
           />
           <S.TournamentCardWrapper>
             {displays.map((d) => (
