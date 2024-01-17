@@ -56,7 +56,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     setPresignedUrl,
   } = props;
 
-  const [selectedOption] = useState<string>('');
+  const [selectedOption, setSelectedOption] = useState<string>('');
   const postPresignedUrl = usePostPresignedUrl();
   const putPresignedUrl = usePutPresignedUrl();
   const navigate = useNavigate();
@@ -81,6 +81,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     updatedTime.setHours(updatedTime.getHours() + parseInt(time.split('시간')[0]));
 
     updatedTime.setMinutes(updatedTime.getMinutes() - updatedTime.getTimezoneOffset());
+    setSelectedOption(time);
     // const formattedTime = updatedTime.toISOString();
   };
 
@@ -123,40 +124,19 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
       const response = mutation.mutate(updatedOnboardingInfo, {
         onSuccess: (data) => {
           navigate(`/result?invitationCode=${data.invitationCode}`);
+          console.log('step05 내 response:', data.invitationCode);
         },
       });
       const code = response.invitationCode;
 
-      setInvitationCode(code);
-      console.log('code', code);
+      // setInvitationCode(code);
+      // console.log('code', code);
       console.log('code', invitationCode);
 
       onNext();
     } catch (error) {
       console.log('postOnboardingInfoMutation 실행 중 에러 발생:', error);
     }
-    // const { invitationCode } = await postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
-
-    // postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
-
-    // try {
-    //   await putPresignedUrl.mutateAsync(presignedUrl);
-    //   console.log('saveImageUrl 안 imageUrl 값 확인', imageUrl);
-    //   onNext();
-    //   const updatedOnboardingInfo = { ...onboardingInfo, imageUrl: imageUrl };
-    //   const { invitationCode } = await postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
-    //   postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
-
-    //   console.log('초대코드1', invitationCode);
-    //   console.log('presignedUrl 1', presignedUrl);
-
-    //   setPresignedUrl(presignedUrl);
-    //   setInvitationCode(invitationCode);
-    //   console.log('초대코드2', invitationCode);
-    //   console.log('presignedUrl 2', presignedUrl);
-    // } catch (error) {
-    //   console.log(error);
-    // }
   };
 
   return (
@@ -186,7 +166,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
 
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <OnBoardingBtn
-          isActivated={selectedOption !== null}
+          isActivated={!!selectedOption}
           setStep={async () => {
             const { presignedUrl } = await fetchPresignedUrl(fileName);
             await saveImageUrl(presignedUrl);
