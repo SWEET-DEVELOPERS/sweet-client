@@ -4,6 +4,7 @@ import AddGiftWithLinkLayout from '../../components/GiftAdd/AddGiftLayout/AddGif
 import AddGiftWithoutLinkLayout from '../../components/GiftAdd/AddGiftLayout/AddGiftWithoutLinkLayout';
 import GiftAddSecondLinkLayout from '../../components/GiftAdd/AddGiftLink/GiftAddSecondLinkLayout/GiftAddSecondLinkLayout';
 import GiftAddPageLayout from '../../components/GiftAdd/GiftAddPageLayout/GiftAddPageLayout';
+import { OpenGraphResponseType } from '../../types/etc';
 
 interface GiftAddPage {
   roomId: number;
@@ -12,16 +13,31 @@ interface GiftAddPage {
 const GiftAddPage = ({ roomId }: GiftAddPage) => {
   const [step, setStep] = useState(0);
   const [linkText, setLinkText] = useState<string>('');
+  const [openGraph, setOpenGraph] = useState<OpenGraphResponseType>({ title: '', image: '' });
 
   switch (step) {
     case 0:
       return <GiftAddPageLayout setStep={setStep} roomId={roomId} />;
 
     case 1:
-      return <GiftAddFirstLinkLayout setStep={setStep} setLinkText={setLinkText} />;
+      return (
+        <GiftAddFirstLinkLayout
+          setStep={setStep}
+          setLinkText={setLinkText}
+          openGraph={openGraph}
+          setOpenGraph={setOpenGraph}
+        />
+      );
 
     case 2:
-      return <AddGiftWithLinkLayout setStep={setStep} roomId={roomId} link={linkText} />;
+      return (
+        <AddGiftWithLinkLayout
+          setStep={setStep}
+          roomId={roomId}
+          link={linkText}
+          openGraph={openGraph}
+        />
+      );
 
     case 3:
       return (

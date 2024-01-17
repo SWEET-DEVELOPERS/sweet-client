@@ -14,8 +14,8 @@ export const usePostOpenGraph = ({ body }: { body: OpenGraphRequestType }) => {
     onSuccess: (data) => {
       console.log('POST 성공, 오픈그래프 data 값', data);
     },
-    onError: () => {
-      console.log('오픈그래프 정보를 가져오던 중 에러가 발생했습니다.');
+    onError: (error) => {
+      console.log(error.message);
     },
   });
 
