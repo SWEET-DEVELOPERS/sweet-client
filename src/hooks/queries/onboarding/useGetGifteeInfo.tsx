@@ -10,7 +10,11 @@ export const fetchOnboarding = async (invitationCode: string) => {
   return response.data;
 };
 
-const useGetGifteeInfo = (invitationCode: string) => {
+const useGetGifteeInfo = (invitationCode: string | null) => {
+  if (invitationCode === null) {
+    // ... null에 대한 처리 로직
+    return { data: null, isLoading: false, isError: false };
+  }
   const { data, isLoading, isError } = useQuery<any, Error>({
     queryKey: ONBOARDING_INFO_QUERY_KEY,
     queryFn: () => fetchOnboarding(invitationCode),
