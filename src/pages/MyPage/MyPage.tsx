@@ -15,7 +15,6 @@ interface MyPage {
 
 const MyPage = () => {
   const memberData = useGetMyPage();
-  const navigate = useNavigate();
   const fetchAuth = async () => post(`/oauth/kakao/logout`);
   console.log(memberData);
   console.log(memberData?.data);
