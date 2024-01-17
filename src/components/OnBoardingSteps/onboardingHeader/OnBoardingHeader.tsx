@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { IcLeft } from '../../../assets/svg';
 
 interface OnBoardingHeaderProps {
-  step: number;
+  step?: number;
 }
 
 const OnBoardingHeader = ({ step }: OnBoardingHeaderProps) => {
