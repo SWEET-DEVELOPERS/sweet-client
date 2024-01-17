@@ -9,7 +9,15 @@ interface TournamentStartButtonProps {
 const TournamentStartButton: React.FC<TournamentStartButtonProps> = ({ onClick }) => {
   return (
     <S.TournamentStartButtonWrapper>
-      <BtnFill customStyle={{ backgroundColor: '#FF2176', border: 'none' }} onClick={onClick}>
+      <BtnFill
+        customStyle={{
+          width: '33.5rem',
+          height: '5.2rem',
+          backgroundColor: '#FF2176',
+          border: 'none',
+        }}
+        onClick={onClick}
+      >
         시작하기
       </BtnFill>
     </S.TournamentStartButtonWrapper>
