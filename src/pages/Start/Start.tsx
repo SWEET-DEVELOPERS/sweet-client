@@ -1,12 +1,12 @@
 import { IcKakoLarge } from '../../assets/svg';
 import * as S from './Start.style';
 
-interface TokenResponseType {
-  data: {
-    accessToken: string;
-    refreshToken: string;
-  };
-}
+// interface TokenResponseType {
+//   data: {
+//     accessToken: string;
+//     refreshToken: string;
+//   };
+// }
 
 const Start = () => {
   const REST_API_KEY: string = import.meta.env.VITE_REST_API_KEY;
@@ -32,7 +32,7 @@ const Start = () => {
   // };
   return (
     <S.Wrapper>
-      <IcKakoLarge onClick={handleClick} />
+      <IcKakoLarge onClick={handleLogin} />
     </S.Wrapper>
   );
 };
