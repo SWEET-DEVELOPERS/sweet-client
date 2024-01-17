@@ -1,5 +1,7 @@
+//import { useNavigate } from 'react-router';
 import { IcKakoLarge } from '../../assets/svg';
 import * as S from './Start.style';
+//import { post } from '../../apis/client';
 
 // interface TokenResponseType {
 //   data: {

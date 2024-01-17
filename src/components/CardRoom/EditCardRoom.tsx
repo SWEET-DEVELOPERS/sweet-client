@@ -11,11 +11,11 @@ interface EditCardRoomType {
   roomId: number;
 }
 
-const EditCardRoom = ({ user, srcImage, userCount, roomId }: EditCardRoomType) => {
+const EditCardRoom = ({ user, srcImage, userCount }: EditCardRoomType) => {
   const navigate = useNavigate();
 
   const handleSettingIcon = () => {
-    navigate(`/editpage`, { state: { roomId } });
+    navigate(`/editpage`);
   };
   return (
     <S.CardRoomWrapper>

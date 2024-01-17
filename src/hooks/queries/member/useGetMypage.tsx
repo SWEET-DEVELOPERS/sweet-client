@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { get } from '../../../apis/client';
 import { MyPageType } from '../../../types/member';
 
@@ -11,12 +11,9 @@ export const MYPAGE_BY_ID_QUERY_KEY: string[] = ['myPageData'];
 export const fetchMyPage = async (): Promise<MyPageResponse> => get(`/member/mypage`);
 
 const useGetMyPage = () => {
-  const shouldFetch = !!localStorage.getItem('EXIT_LOGIN_TOKEN');
-
-  const { data } = useQuery({
+  const { data } = useSuspenseQuery({
     queryKey: MYPAGE_BY_ID_QUERY_KEY,
     queryFn: () => fetchMyPage(),
-    enabled: shouldFetch,
   });
   return data;
 };
