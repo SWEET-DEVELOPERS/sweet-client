@@ -10,9 +10,11 @@ interface AddGiftImgProps {
 const AddGiftImg = ({ imageUrl, setImageUrl }: AddGiftImgProps) => {
   // 빌드 에러 해결 위해 임의로 추가
   // 나중에 이미지 첨부 기능 presignedUrl이랑 같이 구현 예정
-  setImageUrl('');
+  const onClickEditBtn = () => {
+    setImageUrl('');
+  };
   return (
-    <S.ThumbnailWrapper>
+    <S.ThumbnailWrapper onClick={onClickEditBtn}>
       {imageUrl !== '' ? (
         <>
           <IcImgEditBtn
@@ -24,7 +26,7 @@ const AddGiftImg = ({ imageUrl, setImageUrl }: AddGiftImgProps) => {
               right: '0.8rem',
             }}
           />
-          <S.ImgPreview src='' />
+          <S.ImgPreview src={imageUrl} />
         </>
       ) : (
         <IcPlusImageFinal style={{ width: '5rem', height: '5rem' }} />

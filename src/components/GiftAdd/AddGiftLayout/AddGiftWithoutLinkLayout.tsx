@@ -6,20 +6,23 @@ import ShowLink from '../ShowLink/ShowLink';
 import * as S from './common/AddGiftLayout.styled';
 import AddGiftImg from './common/AddGiftImg/AddGiftImg';
 import WithoutLinkWriteItemInfo from './common/WriteItemInfo/WithoutLinkWriteItemInfo';
+import Modal from '../../common/Modal/Modal';
 
 interface AddGiftWithLinkLayoutProps {
   roomId: number;
   linkText: string;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   setLinkText: React.Dispatch<React.SetStateAction<string>>;
+  targetDate: string;
 }
-
-const AddGiftWithoutLinkLayout = ({
+// 직접 입력 화면
+function AddGiftWithoutLinkLayout({
   roomId,
   setStep,
   linkText,
   setLinkText,
-}: AddGiftWithLinkLayoutProps) => {
+  targetDate,
+}: AddGiftWithLinkLayoutProps) {
   const [isActivated, setIsActivated] = useState(false);
   const [nameText, setNameText] = useState<string>('');
   const [priceText, setPriceText] = useState<number | null>(null);
@@ -37,11 +40,16 @@ const AddGiftWithoutLinkLayout = ({
     }
   };
 
-  const now = new Date();
+  const handleClickConfirmClick = () => {
+    setStep((prev) => prev + 1);
+  };
   return (
     <S.AddGiftWithLinkLayoutWrapper>
+      <Modal onConfirmClick={handleClickConfirmClick}>
+        상품 데이터를 불러올 수 없어요 <br /> 직접 입력해주세요
+      </Modal>
       <S.AddGiftWithLinkHeader>
-        <MiniTimer time={now} />
+        <MiniTimer targetDate={targetDate} />
       </S.AddGiftWithLinkHeader>
       <GiftStatusBar registeredGiftNum={1} isMargin={false} />
       <AddGiftImg imageUrl={imageUrl} setImageUrl={setImageUrl} />
@@ -66,6 +74,6 @@ const AddGiftWithoutLinkLayout = ({
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );
-};
+}
 
 export default AddGiftWithoutLinkLayout;
