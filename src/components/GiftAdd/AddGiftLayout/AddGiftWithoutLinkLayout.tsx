@@ -28,6 +28,15 @@ const AddGiftWithoutLinkLayout = ({
   const itemInfo = {
     roomId: roomId,
   };
+
+  const checkPriceNull = (price: number | null) => {
+    if (price === null) {
+      return 0;
+    } else {
+      return price;
+    }
+  };
+
   const now = new Date();
   return (
     <S.AddGiftWithLinkLayoutWrapper>
@@ -52,7 +61,8 @@ const AddGiftWithoutLinkLayout = ({
         itemInfo={itemInfo}
         link={linkText}
         name={nameText}
-        cost={priceText}
+        imageUrl={imageUrl}
+        cost={checkPriceNull(priceText)}
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );

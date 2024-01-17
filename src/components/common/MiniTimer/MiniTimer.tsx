@@ -5,6 +5,10 @@ interface MiniTimerProps {
 }
 
 function MiniTimer({ time }: MiniTimerProps) {
+  if (!time || !(time instanceof Date)) {
+    return <div>Error: Invalid targetDate</div>;
+  }
+
   const formattedTime = time.toLocaleTimeString();
 
   return (

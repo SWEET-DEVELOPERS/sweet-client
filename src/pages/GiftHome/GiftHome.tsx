@@ -25,7 +25,7 @@ export default function GiftHome({ roomId }: GiftHomeProps) {
   }
 
   const handleClickBtn = () => {
-    navigate('/addGift');
+    navigate('/add-gift');
   };
 
   return (
