@@ -7,7 +7,7 @@ import * as S from '../common/GiftAddLinkLayout.styled';
 import Title from '../../../common/title/Title';
 import usePostOpenGraph from '../../../../hooks/queries/etc/usePostOpengraph';
 import { OpenGraphResponseType } from '../../../../types/etc';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 interface GiftAddFirstLinkLayoutProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
@@ -19,8 +19,8 @@ interface GiftAddFirstLinkLayoutProps {
 
 const GiftAddFirstLinkLayout = ({
   setStep,
-  setLinkText,
-  openGraph,
+  // setLinkText,
+  // openGraph,
   setOpenGraph,
   targetDate,
 }: GiftAddFirstLinkLayoutProps) => {

@@ -1,15 +1,13 @@
 import { HotGiftsType } from '../../../types/room';
-import MiniTimer from '../../common/MiniTimer/MiniTimer';
 import * as S from '../common/GiftHomeShowcase.styled';
 import GiftHomeShowcaseHeader from '../common/GiftHomeShowcaseHeader/GiftHomeShowcaseHeader';
 import GiftHome2030Item from './GiftHome2030Item';
 
 interface GiftHome2030GiftsProps {
   data: HotGiftsType[];
-  targetDate: string;
 }
 
-export default function GiftHome2030Gifts({ data, targetDate }: GiftHome2030GiftsProps) {
+export default function GiftHome2030Gifts({ data }: GiftHome2030GiftsProps) {
   return (
     <S.GiftHomeShowcaseWrapper>
       <GiftHomeShowcaseHeader
@@ -17,7 +15,6 @@ export default function GiftHome2030Gifts({ data, targetDate }: GiftHome2030Gift
         category='2030'
         length={data.length}
       />
-      <MiniTimer targetDate={targetDate} />
       {data.length > 0 ? (
         <S.GiftsWrapper>
           {data.map((gift, index) => (
