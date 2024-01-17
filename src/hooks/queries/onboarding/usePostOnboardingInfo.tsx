@@ -4,7 +4,7 @@ import { OnboardingInfo } from '../../../types/Onboarding';
 import { AxiosResponse } from 'axios';
 import { useState } from 'react';
 
-const postOnboardingInfo = async (onboardingInfo: OnboardingInfo): Promise<AxiosResponse> => {
+const postOnboardingInfo = async (onboardingInfo: OnboardingInfo) => {
   const response: AxiosResponse = await post(`/room`, onboardingInfo);
   return response.data;
 };
