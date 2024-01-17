@@ -1,7 +1,7 @@
 import * as S from './ProfileImage.style';
 
 interface ProfileImageProps {
-  image: string;
+  image?: string;
 }
 
 const ProfileImage = ({ image }: ProfileImageProps) => {

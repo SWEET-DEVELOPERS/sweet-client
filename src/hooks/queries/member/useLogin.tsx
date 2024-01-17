@@ -18,7 +18,7 @@ interface LoginResponseType {
   };
 }
 
-export const useLogin = () => {
+const useLogin = () => {
   const code = new URL(window.location.href).searchParams.get('code');
 
   const fetchAuth = (code: string): Promise<LoginResponseType> =>
@@ -41,3 +41,5 @@ export const useLogin = () => {
     }
   }, []);
 };
+
+export default useLogin;

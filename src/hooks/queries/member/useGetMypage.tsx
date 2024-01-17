@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { get } from '../../../apis/client';
-import { MyPageType } from '../../../types/user';
+import { MyPageType } from '../../../types/member';
 
 interface MyPageResponse extends Response {
   data: MyPageType;
@@ -18,8 +18,6 @@ const useGetMyPage = () => {
     queryFn: () => fetchMyPage(),
     enabled: shouldFetch,
   });
-
-  console.log(data);
   return data;
 };
 
