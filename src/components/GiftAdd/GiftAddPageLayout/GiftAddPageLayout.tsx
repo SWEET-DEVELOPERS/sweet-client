@@ -10,9 +10,10 @@ import useDeleteMyGift from '../../../hooks/queries/gift/useDeleteMyGift';
 interface GiftAddPageLayoutProps {
   roomId: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
+  targetDate: string;
 }
 
-const GiftAddPageLayout = ({ roomId, setStep }: GiftAddPageLayoutProps) => {
+const GiftAddPageLayout = ({ roomId, setStep, targetDate }: GiftAddPageLayoutProps) => {
   const { data, isLoading, isError } = useGetMyGift({ roomId: Number(roomId) });
 
   if (isLoading) {
@@ -44,7 +45,7 @@ const GiftAddPageLayout = ({ roomId, setStep }: GiftAddPageLayoutProps) => {
   return (
     <S.GiftAddPageWrapper>
       <GiftAddPageLayoutHeader title={'내가 등록한 선물'} />
-      <MiniTimer time={initialTime} />
+      <MiniTimer targetDate={targetDate} />
       <S.AddButtonsWrapper>
         {myGiftData.map((item, index) => (
           <GiftAddButtonsWrapper

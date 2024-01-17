@@ -13,6 +13,7 @@ interface AddGiftWithLinkLayoutProps {
   roomId: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   openGraph: OpenGraphResponseType;
+  targetDate: string;
 }
 // 링크가 유효할 때 넘어가는 곳
 const AddGiftWithLinkLayout = ({
@@ -20,6 +21,7 @@ const AddGiftWithLinkLayout = ({
   roomId,
   setStep,
   openGraph,
+  targetDate
 }: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(false);
   const [nameText, setNameText] = useState<string>(openGraph.title);
@@ -39,7 +41,7 @@ const AddGiftWithLinkLayout = ({
   return (
     <S.AddGiftWithLinkLayoutWrapper>
       <S.AddGiftWithLinkHeader>
-        <MiniTimer time={now} />
+        <MiniTimer targetDate={targetDate} />
       </S.AddGiftWithLinkHeader>
       <GiftStatusBar registeredGiftNum={1} isMargin={false} />
       <AddGiftImg imageUrl={imageUrl} setImageUrl={setImageUrl} />

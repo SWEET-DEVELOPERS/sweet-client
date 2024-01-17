@@ -13,6 +13,7 @@ interface AddGiftWithLinkLayoutProps {
   linkText: string;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   setLinkText: React.Dispatch<React.SetStateAction<string>>;
+  targetDate: string;
 }
 // 직접 입력 화면
 function AddGiftWithoutLinkLayout({
@@ -20,6 +21,7 @@ function AddGiftWithoutLinkLayout({
   setStep,
   linkText,
   setLinkText,
+  targetDate,
 }: AddGiftWithLinkLayoutProps) {
   const [isActivated, setIsActivated] = useState(false);
   const [nameText, setNameText] = useState<string>('');
@@ -45,33 +47,33 @@ function AddGiftWithoutLinkLayout({
   };
   return (
     <S.AddGiftWithLinkLayoutWrapper>
-        <Modal onConfirmClick={handleClickConfirmClick}>
-          상품 데이터를 불러올 수 없어요 <br /> 직접 입력해주세요
-        </Modal>
-          <S.AddGiftWithLinkHeader>
-            <MiniTimer time={now} />
-          </S.AddGiftWithLinkHeader>
-          <GiftStatusBar registeredGiftNum={1} isMargin={false} />
-          <AddGiftImg imageUrl={imageUrl} setImageUrl={setImageUrl} />
-          <ShowLink />
-          <WithoutLinkWriteItemInfo
-            setIsActivated={setIsActivated}
-            setName={setNameText}
-            setCost={setPriceText}
-            setUrl={setLinkText}
-            name={nameText}
-            cost={priceText}
-            url={linkText}
-          />
-          <AddGiftFooter
-            setStep={setStep}
-            isActivated={isActivated}
-            itemInfo={itemInfo}
-            link={linkText}
-            name={nameText}
-            imageUrl={imageUrl}
-            cost={checkPriceNull(priceText)}
-          />
+      <Modal onConfirmClick={handleClickConfirmClick}>
+        상품 데이터를 불러올 수 없어요 <br /> 직접 입력해주세요
+      </Modal>
+      <S.AddGiftWithLinkHeader>
+        <MiniTimer targetDate={targetDate} />
+      </S.AddGiftWithLinkHeader>
+      <GiftStatusBar registeredGiftNum={1} isMargin={false} />
+      <AddGiftImg imageUrl={imageUrl} setImageUrl={setImageUrl} />
+      <ShowLink />
+      <WithoutLinkWriteItemInfo
+        setIsActivated={setIsActivated}
+        setName={setNameText}
+        setCost={setPriceText}
+        setUrl={setLinkText}
+        name={nameText}
+        cost={priceText}
+        url={linkText}
+      />
+      <AddGiftFooter
+        setStep={setStep}
+        isActivated={isActivated}
+        itemInfo={itemInfo}
+        link={linkText}
+        name={nameText}
+        imageUrl={imageUrl}
+        cost={checkPriceNull(priceText)}
+      />
     </S.AddGiftWithLinkLayoutWrapper>
   );
 }

@@ -22,7 +22,7 @@ const GiftAddPage = () => {
 
   switch (step) {
     case 0:
-      return <GiftAddPageLayout setStep={setStep} roomId={roomId} />;
+      return <GiftAddPageLayout setStep={setStep} roomId={roomId} targetDate={targetDate} />;
 
     case 1:
       return (
@@ -31,6 +31,7 @@ const GiftAddPage = () => {
           setLinkText={setLinkText}
           openGraph={openGraph}
           setOpenGraph={setOpenGraph}
+          targetDate={targetDate}
         />
       );
 
@@ -41,6 +42,7 @@ const GiftAddPage = () => {
           roomId={roomId}
           link={linkText}
           openGraph={openGraph}
+          targetDate={targetDate}
         />
       );
 
@@ -51,11 +53,19 @@ const GiftAddPage = () => {
           roomId={roomId}
           linkText={linkText}
           setLinkText={setLinkText}
+          targetDate={targetDate}
         />
       );
 
     case 4:
-      return <GiftAddSecondLinkLayout setStep={setStep} setLink={setLinkText} link={linkText} />;
+      return (
+        <GiftAddSecondLinkLayout
+          setStep={setStep}
+          setLink={setLinkText}
+          link={linkText}
+          targetDate={targetDate}
+        />
+      );
   }
 };
 
