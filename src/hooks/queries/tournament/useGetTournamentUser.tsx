@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useSuspenseQuery } from '@tanstack/react-query';
 import { get } from '../../../apis/client';
 import { TournamentUser } from '../../../types/tournament';
 
@@ -12,7 +12,7 @@ export const fetchTournamentUser = async (roomId: number): Promise<TournamentUse
   get(`/gift/tournament-info/${roomId}`);
 
 const useGetTournamentUser = ({ roomId }: { roomId: number }) => {
-  const { data } = useQuery({
+  const { data } = useSuspenseQuery({
     queryKey: [TOURNAMENT_USER_BY_ID_QUERY_KEY, roomId],
     queryFn: () => fetchTournamentUser(roomId),
   });
