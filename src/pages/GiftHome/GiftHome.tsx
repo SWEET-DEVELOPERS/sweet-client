@@ -5,53 +5,35 @@ import GiftHomeHeader from '../../components/GiftHome/GiftHomeHeader/GiftHomeHea
 import GiftHomeSummary from '../../components/GiftHome/GiftHomeSummary/GiftHomeSummary';
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 import * as S from './GiftHome.styled';
+import useGetRoomInfo from '../../hooks/queries/room/useGetRoomInfo';
 
-export default function GiftHome() {
+interface GiftHomeProps {
+  roomId: number;
+}
+
+export default function GiftHome({ roomId }: GiftHomeProps) {
   const navigate = useNavigate();
 
-  const userData = {
-    friendsNumber: 42,
-    giftOwner: '가나다라마바사아자차',
-    targetDate: new Date('2024-01-13T00:10:00'),
-  };
+  const { data, isLoading, isError } = useGetRoomInfo({ roomId: Number(roomId) });
 
-  const exampleData = [
-    {
-      price: '42000',
-      title: '어센틱 로고 후디 멜란지 그레이',
-      user: '왕보리',
-      imgUrl: '',
-    },
-    {
-      price: '37000',
-      title: '오로라 레터링 케이크(소)',
-      user: '왕보리',
-      imgUrl: '',
-    },
-    {
-      price: '42000',
-      title: '어센틱 로고 후디 멜란지 그레이',
-      user: '왕보리',
-      imgUrl: '',
-    },
-    {
-      price: '37000',
-      title: '오로라 레터링 케이크(소)',
-      user: '왕보리',
-      imgUrl: '',
-    },
-  ];
+  if (isLoading) {
+    return <div>LOADING...</div>;
+  }
+
+  if (isError || !data) {
+    return <div>ERROR,,,</div>;
+  }
 
   const handleClickBtn = () => {
-    navigate('/addGift');
+    navigate('/add-gift');
   };
 
   return (
     <S.GiftHomeWrapper>
       <GiftHomeHeader />
-      <GiftHomeSummary data={userData} />
-      <GiftHomeFriendsGifts data={exampleData} />
-      <GiftHome2030Gifts data={exampleData} />
+      <GiftHomeSummary data={data.data} />
+      <GiftHomeFriendsGifts data={data.data.roomFriendsGiftDtoList} />
+      <GiftHome2030Gifts data={data.data.hotProductGiftDtoList} />
       <BtnFill
         children={'선물 등록하기'}
         onClick={handleClickBtn}

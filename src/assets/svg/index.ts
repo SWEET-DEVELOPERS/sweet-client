@@ -19,6 +19,7 @@ export { default as IcEdit2 } from './IcEdit2';
 export { default as IcEdit } from './IcEdit';
 export { default as IcEmptyBox } from './IcEmptyBox';
 export { default as IcEmptyThumbnail } from './IcEmptyThumbnail';
+export { default as IcError } from './IcError';
 export { default as IcExternal } from './IcExternal';
 export { default as IcExternalGray } from './IcExternalGray';
 export { default as IcGift } from './IcGift';

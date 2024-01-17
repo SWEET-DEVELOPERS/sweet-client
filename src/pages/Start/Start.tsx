@@ -1,4 +1,4 @@
-//import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { IcKakoLarge, Main02, Main03, Main04 } from '../../assets/svg';
 import * as S from './Start.style';
 import { post } from '../../apis/client';
@@ -11,10 +11,10 @@ interface TokenResponseType {
 }
 
 const Start = () => {
-  //const REST_API_KEY: string = import.meta.env.VITE_REST_API_KEY;
-  //const REDIRECT_URI: string = import.meta.env.VITE_REDIRECT_URI || '';
-  //const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-  //const navigate = useNavigate();
+  // const REST_API_KEY: string = import.meta.env.VITE_REST_API_KEY;
+  // const REDIRECT_URI: string = import.meta.env.VITE_REDIRECT_URI || '';
+  // const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+  const navigate = useNavigate();
 
   // const handleLogin = () => {
   //   window.location.replace(kakaoURL);
@@ -26,14 +26,11 @@ const Start = () => {
       const JWT = data.data.accessToken;
       if (data) {
         localStorage.setItem('EXIT_LOGIN_TOKEN', JWT);
-        console.log(data);
-        console.log(JWT);
+        //console.log(data);
       }
-
-      console.log(data);
     });
-    console.log(localStorage.getItem('EXIT_LOGIN_TOKEN'));
-    // navigate('/mypage');
+
+    navigate('/mypage');
   };
   return (
     <S.Wrapper>

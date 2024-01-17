@@ -3,7 +3,7 @@ import * as S from '../common/GiftHomeShowcaseItem.styled';
 interface GiftHomeFriendsItemProps {
   imgUrl: string;
   title: string;
-  price: string;
+  price: number;
   user: string;
 }
 
