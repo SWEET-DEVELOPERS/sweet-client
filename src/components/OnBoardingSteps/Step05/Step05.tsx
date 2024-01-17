@@ -28,6 +28,7 @@ interface SetTournamentDurationProps {
   };
   invitationCode: string;
   setInvitationCode: React.Dispatch<React.SetStateAction<string>>;
+  presignedUrl: string;
   setPresignedUrl: React.Dispatch<React.SetStateAction<string>>;
 }
 
@@ -51,6 +52,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     onboardingInfo,
     invitationCode,
     // setInvitationCode,
+    presignedUrl,
     setPresignedUrl,
   } = props;
 
@@ -65,6 +67,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     instance.defaults.headers.Authorization = getAccessTokenLocalStorage();
     console.log('selectedOption', tournamentDuration);
     console.log('step05 fileName', fileName);
+    console.log('확인용 프리사인 유알엘', presignedUrl);
   }, [tournamentDuration]);
 
   const handleTimeSelect = (time: string) => {
