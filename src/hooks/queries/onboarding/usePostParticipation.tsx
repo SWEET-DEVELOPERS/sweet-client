@@ -2,8 +2,11 @@ import { useMutation } from '@tanstack/react-query';
 import { post } from '../../../apis/client';
 import { AxiosResponse } from 'axios';
 
-const postParticipation = async (body: string) => {
-  const response: AxiosResponse = await post('/room/participation', body);
+const postParticipation = async (invitationCode: string) => {
+  const response: AxiosResponse = await post(
+    `/room/participation?invitationCode=${invitationCode}`,
+    invitationCode,
+  );
   return response.data;
 };
 
