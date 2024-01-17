@@ -4,6 +4,8 @@ import { RecoilRoot } from 'recoil';
 import router from './router/Router';
 import GlobalStyle from './style/GlobalStyle';
 import { styled } from 'styled-components';
+import Loading from './pages/Loading/Loading';
+import { Suspense } from 'react';
 
 function App() {
   const Wrapper = styled.div`
