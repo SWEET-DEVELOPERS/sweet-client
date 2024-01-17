@@ -4,12 +4,12 @@ import * as S from './GiftAddButtonsWrapper.styled';
 
 interface GiftAddButtonsProps {
   data: GiftType;
-  onClick: () => void;
+  onCancelClick: () => void;
 }
 
-const GiftAddButtonsWrapper = ({ data, onClick }: GiftAddButtonsProps) => {
+const GiftAddButtonsWrapper = ({ data, onCancelClick }: GiftAddButtonsProps) => {
   return (
-    <S.GiftsItemWrapper onClick={() => onClick()}>
+    <S.GiftsItemWrapper>
       <IcBookmark
         style={{
           position: 'absolute',
@@ -28,6 +28,7 @@ const GiftAddButtonsWrapper = ({ data, onClick }: GiftAddButtonsProps) => {
           height: '2.4rem',
           cursor: 'pointer',
         }}
+        onClick={() => onCancelClick()}
       />
       <S.GiftsItemImage src={data.imageUrl} />
       <S.GiftsItemTitle>{data.name}</S.GiftsItemTitle>

@@ -29,7 +29,11 @@ const GiftAddPageLayout = ({ roomId, setStep }: GiftAddPageLayoutProps) => {
   const adPrice = 39000;
 
   const handleClickAddBtn = () => {
-    setStep((prev) => prev + 1);
+    if (myGiftData.length === 0) {
+      setStep(1);
+    } else if (myGiftData.length === 1) {
+      setStep(4);
+    }
   };
 
   const handleClickCancelBtn = (giftId: number) => {
@@ -46,7 +50,7 @@ const GiftAddPageLayout = ({ roomId, setStep }: GiftAddPageLayoutProps) => {
           <GiftAddButtonsWrapper
             key={index}
             data={item}
-            onClick={() => handleClickCancelBtn(item.giftId)}
+            onCancelClick={() => handleClickCancelBtn(item.giftId)}
           />
         ))}
         {Array.from({ length: 2 - myGiftData.length }).map((_, index) => (

@@ -7,7 +7,7 @@ interface GiftAddButtonsProps {
 
 const EmptyGiftAddButtonsWrapper = ({ onClick }: GiftAddButtonsProps) => {
   return (
-    <S.IcEmptyBoxWrapper onClick={onClick}>
+    <S.IcEmptyBoxWrapper onClick={onClick} style={{ cursor: 'pointer' }}>
       <IcEmptyBox style={{ width: '15.9rem', height: '16rem' }} />
     </S.IcEmptyBoxWrapper>
   );
