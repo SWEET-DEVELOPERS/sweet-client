@@ -11,27 +11,31 @@ interface TournamentProps {
 }
 
 const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
+  //전체 아이템 memberData {1,2,3,4,5,6,7,8,9,10} -> useEffect로 랜덤으로 섞어줌
   const [itemPick, setitemPick] = useState<GiftData[]>([]);
+  // 보여질 아이템
   const [displays, setDisplays] = useState<GiftData[]>([]);
   //선택된 아이템 저장
   const [selectedItem, setSelectedItem] = useState<GiftData | null>(null);
+  //post 요청을 위한 state
   const [firstItems, setFirstItems] = useState<GiftData[]>([]);
   const [secondItems, setSecondItems] = useState<GiftData[]>([]);
-
+  // 결승을 위한 state
   const [winners, setWinners] = useState<GiftData[]>([]);
-  // 최신 인덱스
+  // 최신 인덱스 & 라운드 인덱스 값
   const [currentIndex, setCurrentIndex] = useState<number>(1);
   const [roundIndex, setRoundIndex] = useState<number>(1);
+  // 토너먼트 결과화면으로 넘어가게 해주는
+  const [showTournamentResult, setShowTournamentResult] = useState(false);
 
+  //전체 아이템 memberData 랜덤 섞어주기
   useEffect(() => {
-    // Use memberData instead of items from local data
     memberData.sort(() => Math.random() - 0.5);
     setitemPick([...memberData]);
     setDisplays([memberData[0], memberData[1]]);
   }, [memberData]);
-  //
-  const [showTournamentResult, setShowTournamentResult] = useState(false);
 
+  //토너먼트 라운딩 로직 함수
   const clickHandler = (item: GiftData) => () => {
     if (itemPick.length <= 2) {
       if (winners.length === 0) {
@@ -57,28 +61,18 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
       if (itemPick[3]) {
         setDisplays([itemPick[2], itemPick[3]]);
         console.log('그냥!');
-      } else if (winners.length === 0) {
-        //위너가 1이 되니까 ,, 요기에 못들어가네
-        setDisplays([item]);
-        //아 이걸 ..?이거 때문에 12개로 토너먼트하면 미리 결승이 일어나는건가?
-        setSelectedItem(item);
-        console.log('결과?!!=:', itemPick); //결승 두개 아이템
-        // Filter out the selected item from itemPick
-        setFirstItems([itemPick[0]]);
-        setSecondItems([itemPick[1]]);
-     
-        console.log('우승템', [item]); //우승한 한개 아이템
-        setShowTournamentResult(true);
+        setitemPick([...itemPick.slice(2)]);
       } else {
-        let updateditem = [...winners, itemPick[2]];
+        let updateditem = [...winners, item, itemPick[2]];
+
         setitemPick([...updateditem]);
         setDisplays([updateditem[0], updateditem[1]]);
         setRoundIndex((roundIndex) => roundIndex + 1);
-        setCurrentIndex(1);
+        setCurrentIndex(0);
         console.log('부전승!');
+        setWinners([]);
       }
 
-      setitemPick([...itemPick.slice(2)]);
       setCurrentIndex((prevIndex) => prevIndex + 1);
       console.log('변햇다!');
     }

@@ -5,6 +5,10 @@ import TournamentResultFooter from './TournamentResultFooter/TournamentResultFoo
 import * as S from './TournamentResult.sytle';
 import { GiftData } from '../../../core/mockupData';
 import usePostScore from '../../../hooks/queries/tournament/usePostScore';
+import useGetTournamentUser from '../../../hooks/queries/tournament/useGetTournamentUser';
+import { useState } from 'react';
+import Modal from '../../common/Modal/Modal';
+import TournamentTitleSub from './TournamentTitleSub/TournamnetTitleSub';
 
 interface TournamentResultProps {
   winners: GiftData | null;
@@ -15,35 +19,47 @@ interface TournamentResultProps {
 
 const TournamentResult: React.FC<TournamentResultProps> = ({
   winners,
-  firstGiftId, //1
-  secondGiftId, //2
+  firstGiftId,
+  secondGiftId,
   finalGiftId,
 }) => {
-  console.log(firstGiftId);
-  console.log(secondGiftId);
-  console.log(finalGiftId);
-  // const footerClickHandler = () => {
-  //   const itemInfo: TournamentScore = {
-  //     firstPlaceGiftId: firstPlaceGiftId,
-  //     secondPlaceGiftId: secondPlaceGiftId,
-  //   };
+  const memberData = useGetTournamentUser({ roomId: 2 });
+  const tournamentData = memberData?.data || [];
 
-  //   const { mutation } = usePostScore({ body: itemInfo });
-  //   mutation.mutate(itemInfo);
-  // };
-  // const footerClickHandler = () => {};
+  //버튼 ture
+  const [isButton, setIsButton] = useState(true);
+  //modat state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const { mutation } = usePostScore({ body: { firstGiftId, secondGiftId, finalGiftId } });
 
   const footerClickHandler = () => {
+    setIsModalOpen(true);
     mutation.mutate({ firstGiftId, secondGiftId, finalGiftId });
+
+    console.log('모달열림', isModalOpen);
+  };
+
+  const handleConfirmClick = () => {
+    setIsModalOpen(false);
+    setIsButton(false);
+    console.log('모달닫힘', isModalOpen);
   };
 
   return (
     <S.TournamentResult>
-      <TournamentTitle />
+      {isButton && <TournamentTitle />}
+      {!isButton && <TournamentTitleSub />}
       <TournamentResultCard item={winners} />
-      <TournamentResultUser />
-      <TournamentResultFooter onClick={footerClickHandler} />
+      <TournamentResultUser memberData={tournamentData} />
+      {isButton && <TournamentResultFooter onClick={footerClickHandler} />}
+      {isModalOpen && (
+        <Modal onConfirmClick={handleConfirmClick}>
+          선물토너먼트
+          <br />
+          결과가제출되었어요!
+        </Modal>
+      )}
     </S.TournamentResult>
   );
 };

@@ -1,4 +1,4 @@
-import { useLogin } from '../../hooks/queries/member';
+import useLogin from '../../hooks/queries/member/useLogin';
 
 const Login = () => {
   useLogin();

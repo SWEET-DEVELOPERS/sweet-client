@@ -60,3 +60,9 @@ export const Title = styled.p`
   font-weight: 600;
   line-height: 150%; /* 42px */
 `;
+
+export const ImgWrapper = styled.div`
+  img {
+    width: 33.5rem;
+  }
+`;
