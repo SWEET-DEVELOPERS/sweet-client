@@ -6,6 +6,15 @@ export type GiftData = {
   url: string;
 };
 
+export type GiftRankingData = {
+  ranking: number;
+  giftId: number;
+  imageUrl: string;
+  name: string;
+  cost: number;
+  url: string;
+};
+
 export type TournamentScore = {
   firstGiftId: number;
   secondGiftId: number;
