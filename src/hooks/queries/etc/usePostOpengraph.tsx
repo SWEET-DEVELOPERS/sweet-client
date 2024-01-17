@@ -13,6 +13,7 @@ export const usePostOpenGraph = ({ body }: { body: OpenGraphRequestType }) => {
     mutationFn: postOpenGraph,
     onSuccess: (data) => {
       console.log('POST 성공, 오픈그래프 data 값', data);
+      console.log('body값', body);
     },
     onError: (error) => {
       console.log(error.message);

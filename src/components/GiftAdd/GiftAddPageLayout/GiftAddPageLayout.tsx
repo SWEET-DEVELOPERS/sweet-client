@@ -26,7 +26,6 @@ const GiftAddPageLayout = ({ roomId, setStep, targetDate }: GiftAddPageLayoutPro
 
   const myGiftData = data.data.myGiftDtoList;
 
-  const initialTime = new Date();
   const adPrice = 39000;
 
   const handleClickAddBtn = () => {
