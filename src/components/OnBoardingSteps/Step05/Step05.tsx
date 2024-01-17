@@ -50,7 +50,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     // imageUrl,
     setImageUrl,
     onboardingInfo,
-    invitationCode,
+    // invitationCode,
     // setInvitationCode,
     presignedUrl,
     setPresignedUrl,
@@ -60,7 +60,9 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   const postPresignedUrl = usePostPresignedUrl();
   const putPresignedUrl = usePutPresignedUrl();
   const navigate = useNavigate();
-  const postOnboardingInfoMutation = usePostOnboardingInfo();
+  const { mutate, invitationCode } = usePostOnboardingInfo();
+  // const postOnboardingInfoMutation = usePostOnboardingInfo();
+  // const { mutate } = usePostOnboardingInfo();
 
   useEffect(() => {
     // 컴포넌트가 마운트될 때마다 최신 토큰을 가져와서 설정
@@ -69,6 +71,10 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     console.log('step05 fileName', fileName);
     console.log('확인용 프리사인 유알엘', presignedUrl);
   }, [tournamentDuration]);
+
+  useEffect(() => {
+    console.log('step05 내 유즈이펙트로 초대코드 확인', invitationCode);
+  }, [invitationCode]);
 
   const handleTimeSelect = (time: string) => {
     const updatedTime = new Date(tournamentStartDate);
@@ -96,6 +102,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   const saveImageUrl = async (fileName: string) => {
     const { presignedUrl, imageUrl } = await fetchPresignedUrl(fileName);
     console.log(' save ImageUrl 안 presignedUrl', presignedUrl);
+    console.log('step05 내 invitationCode3', invitationCode);
 
     if (presignedUrl && presignedUrl !== '') {
       try {
@@ -111,15 +118,21 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
 
     // putPresignedUrl이 성공하거나 빈 값일 때 실행됨
     onNext();
-    console.log('step05 내 invitationCode', invitationCode);
+    console.log('step05 내 invitationCode1', invitationCode);
     try {
       const updatedOnboardingInfo = { ...onboardingInfo, imageUrl: imageUrl };
+      mutate(updatedOnboardingInfo, {
+        onSuccess: (data) => {
+          const code = (data as any).invitationCode;
+          console.log('step05 내 invitationCode2', code);
+          setPresignedUrl(presignedUrl);
+          console.log('presignedUrl 1', presignedUrl);
+        },
+      });
       // const { invitationCode } = await postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
-      postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
 
-      console.log('presignedUrl 1', presignedUrl);
+      // postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
 
-      setPresignedUrl(presignedUrl);
       // setInvitationCode(invitationCode);
       console.log('presignedUrl 2', presignedUrl);
     } catch (error) {
