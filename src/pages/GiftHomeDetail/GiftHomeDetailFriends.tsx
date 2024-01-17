@@ -1,10 +1,20 @@
 import * as S from './GiftHomeDetail.styled';
 import MiniTimer from '../../components/common/MiniTimer/MiniTimer';
+import useGetFriendGift from '../../hooks/queries/gift/useGetFriendGift';
 
-function GiftHomeDetail() {
-  const price = 42000;
-  const name = '왕호은';
-  const people = 3;
+interface GiftHomeDetailFriendsProps {
+  roomId: number;
+}
+
+function GiftHomeDetailFriends({ roomId }: GiftHomeDetailFriendsProps) {
+  const { data, isLoading, isError } = useGetFriendGift({ roomId: Number(roomId) });
+  if (isLoading) {
+    return <div>LOADING...</div>;
+  }
+
+  if (isError || !data) {
+    return <div>ERROR,,,</div>;
+  }
 
   const now = new Date();
   return (
@@ -12,41 +22,20 @@ function GiftHomeDetail() {
       {/* 공통 헤더 추가 예정 */}
       <MiniTimer time={now} />
       <S.GiftHomeDetailWrapper>
-        <S.GiftsItemWrapper>
-          <S.GiftsItemImage></S.GiftsItemImage>
-          <S.GiftsItemTitle>어센틱 로고 후디 멜란지 그레이</S.GiftsItemTitle>
-          <S.GiftsItemPrice>{price}원</S.GiftsItemPrice>
-          <S.GiftsItemUser>
-            {name} | 인당 {Math.floor(price / people)}원
-          </S.GiftsItemUser>
-        </S.GiftsItemWrapper>
-        <S.GiftsItemWrapper>
-          <S.GiftsItemImage></S.GiftsItemImage>
-          <S.GiftsItemTitle>어센틱 로고 후디 멜란지 그레이</S.GiftsItemTitle>
-          <S.GiftsItemPrice>{price}원</S.GiftsItemPrice>
-          <S.GiftsItemUser>
-            {name} | 인당 {Math.floor(price / people)}원
-          </S.GiftsItemUser>
-        </S.GiftsItemWrapper>
-        <S.GiftsItemWrapper>
-          <S.GiftsItemImage></S.GiftsItemImage>
-          <S.GiftsItemTitle>어센틱 로고 후디 멜란지 그레이</S.GiftsItemTitle>
-          <S.GiftsItemPrice>{price}원</S.GiftsItemPrice>
-          <S.GiftsItemUser>
-            {name} | 인당 {Math.floor(price / people)}원
-          </S.GiftsItemUser>
-        </S.GiftsItemWrapper>
-        <S.GiftsItemWrapper>
-          <S.GiftsItemImage></S.GiftsItemImage>
-          <S.GiftsItemTitle>어센틱 로고 후디 멜란지 그레이</S.GiftsItemTitle>
-          <S.GiftsItemPrice>{price}원</S.GiftsItemPrice>
-          <S.GiftsItemUser>
-            {name} | 인당 {Math.floor(price / people)}원
-          </S.GiftsItemUser>
-        </S.GiftsItemWrapper>
+        {data.data.friendGiftDto.length > 0 ? (
+          data.data.friendGiftDto.map((item) => (
+            <S.GiftsItemWrapper>
+              <S.GiftsItemImage src={item.imageUrl} />
+              <S.GiftsItemTitle>{item.name}</S.GiftsItemTitle>
+              <S.GiftsItemPrice>{item.cost}원</S.GiftsItemPrice>
+            </S.GiftsItemWrapper>
+          ))
+        ) : (
+          <></>
+        )}
       </S.GiftHomeDetailWrapper>
     </S.GiftHomeDetailPageWrapper>
   );
 }
 
-export default GiftHomeDetail;
+export default GiftHomeDetailFriends;
