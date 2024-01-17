@@ -7,6 +7,7 @@ interface OnBoardingBtnProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
   isActivated: boolean;
   customStyle?: CSSProperties;
+  onClick?: () => void;
 }
 const OnBoardingBtn = ({ children, setStep, isActivated }: OnBoardingBtnProps) => {
   const onClick = () => {
