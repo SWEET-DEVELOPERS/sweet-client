@@ -20,8 +20,10 @@ function App() {
     <Wrapper>
       <RecoilRoot>
         <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
-          <GlobalStyle />
+          <Suspense fallback={<Loading />}>
+            <RouterProvider router={router} />
+            <GlobalStyle />
+          </Suspense>
         </QueryClientProvider>
       </RecoilRoot>
     </Wrapper>
