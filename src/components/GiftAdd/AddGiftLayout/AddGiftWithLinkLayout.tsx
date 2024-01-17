@@ -21,7 +21,7 @@ const AddGiftWithLinkLayout = ({
   roomId,
   setStep,
   openGraph,
-  targetDate
+  targetDate,
 }: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(false);
   const [nameText, setNameText] = useState<string>(openGraph.title);
@@ -32,12 +32,11 @@ const AddGiftWithLinkLayout = ({
     roomId: roomId,
   };
 
-  const now = new Date();
   useEffect(() => {
     setNameText(openGraph.title);
     setImageUrl(openGraph.image);
   }, [openGraph]);
-  
+
   return (
     <S.AddGiftWithLinkLayoutWrapper>
       <S.AddGiftWithLinkHeader>
