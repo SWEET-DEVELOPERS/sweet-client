@@ -15,7 +15,6 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
   const [displays, setDisplays] = useState<GiftData[]>([]);
   //선택된 아이템 저장
   const [selectedItem, setSelectedItem] = useState<GiftData | null>(null);
-  const [remainingItems, setRemainingItems] = useState<GiftData[]>([]);
   const [firstItems, setFirstItems] = useState<GiftData[]>([]);
   const [secondItems, setSecondItems] = useState<GiftData[]>([]);
 
@@ -67,9 +66,7 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
         // Filter out the selected item from itemPick
         setFirstItems([itemPick[0]]);
         setSecondItems([itemPick[1]]);
-        const updatedRemainingItems = itemPick.filter((remainingItem) => remainingItem !== item);
-        setRemainingItems(updatedRemainingItems);
-
+     
         console.log('우승템', [item]); //우승한 한개 아이템
         setShowTournamentResult(true);
       } else {
