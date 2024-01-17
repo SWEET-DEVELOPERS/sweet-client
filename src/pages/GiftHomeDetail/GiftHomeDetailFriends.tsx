@@ -23,8 +23,8 @@ function GiftHomeDetailFriends({ roomId }: GiftHomeDetailFriendsProps) {
       <MiniTimer time={now} />
       <S.GiftHomeDetailWrapper>
         {data.data.friendGiftDto.length > 0 ? (
-          data.data.friendGiftDto.map((item) => (
-            <S.GiftsItemWrapper>
+          data.data.friendGiftDto.map((item, index) => (
+            <S.GiftsItemWrapper key={index}>
               <S.GiftsItemImage src={item.imageUrl} />
               <S.GiftsItemTitle>{item.name}</S.GiftsItemTitle>
               <S.GiftsItemPrice>{item.cost}원</S.GiftsItemPrice>
