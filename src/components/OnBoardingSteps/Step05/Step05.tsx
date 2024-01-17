@@ -51,9 +51,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     setImageUrl,
     onboardingInfo,
     invitationCode,
-    setInvitationCode,
     presignedUrl,
-    setPresignedUrl,
   } = props;
 
   const [selectedOption, setSelectedOption] = useState<string>('');
@@ -131,7 +129,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
 
       // setInvitationCode(code);
       // console.log('code', code);
-      console.log('code', invitationCode);
+      console.log('code', code);
 
       onNext();
     } catch (error) {
