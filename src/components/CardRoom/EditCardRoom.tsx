@@ -15,7 +15,7 @@ const EditCardRoom = ({ user, srcImage, userCount, roomId }: EditCardRoomType) =
   const navigate = useNavigate();
 
   const handleSettingIcon = () => {
-    navigate(`/editpage`, { state: { roomId } });
+    navigate(`/editpage/${roomId}`);
   };
   return (
     <S.CardRoomWrapper>

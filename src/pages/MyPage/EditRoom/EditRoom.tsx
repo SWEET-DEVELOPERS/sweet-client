@@ -1,3 +1,4 @@
+import { useParams } from 'react-router';
 import useGetRoomMember from '../../../hooks/queries/room/useGetRoomMember';
 import CardGuest from './CardGuest/CardGuest';
 import * as S from './EditRoom.style';
@@ -7,6 +8,8 @@ interface EditRoom {
 }
 
 const EditRoom = ({ roomId }: EditRoom) => {
+  // const { roomId } = useParams<{ roomId: string }>();
+  // const parsedRoomId = parseInt(roomId, 10);
   const roomMemberWholeData = useGetRoomMember(roomId)?.data;
   console.log(roomMemberWholeData);
 
