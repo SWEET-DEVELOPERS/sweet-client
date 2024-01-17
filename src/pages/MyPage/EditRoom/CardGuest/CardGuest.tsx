@@ -8,22 +8,24 @@ import { useNavigate } from 'react-router';
 interface CardGuestProps {
   user?: string;
   makerState: boolean;
-  profileImageUrl: string | undefined;
+  profileImageUrl?: string;
   roomId: number;
-  memberId: number;
+  memberId?: number;
 }
 
 const CardGuest = ({ user, makerState, profileImageUrl, roomId, memberId }: CardGuestProps) => {
   const navigate = useNavigate();
+
   const handleButton = () => {
-    navigate('/editpage', { state: { roomId, memberId } });
-    useDeleteRoomMember(roomId, memberId);
+    if (memberId !== undefined) {
+      const { mutation } = useDeleteRoomMember({ roomId, memberId });
+      mutation.mutateAsync();
+    }
   };
   return (
     <S.CardGuestWrapper>
       <S.UserWrapper>
-        {profileImageUrl ? <ProfileImage image={profileImageUrl} /> : <p>null</p>}
-
+        <ProfileImage image={profileImageUrl} />
         <S.User>{user}</S.User>
       </S.UserWrapper>
       {makerState ? (

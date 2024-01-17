@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/editpage',
-        element: <EditRoom />,
+        element: <EditRoom roomId={1} />,
       },
       {
         path: '/detail-progress',

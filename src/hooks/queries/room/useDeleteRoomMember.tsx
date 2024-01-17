@@ -1,20 +1,22 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { del } from '../../../apis/client';
-import { RoomMemberType } from '../../../types/member';
-
-interface RoomMemberResponse extends Response {
-  data: RoomMemberType;
-}
 
 export const MEMBER_DELETE_QUERY_KEY: string[] = ['roomDeleteData'];
 
-const useDeleteRoomMember = (roomId: number, memberId: number) => {
-  const fetchMyPage = async (roomId: number, memberId: number): Promise<RoomMemberResponse> =>
-    del(`/api/room/${roomId}/members/${memberId}`);
+interface DeleteRoomMember {
+  roomId: number;
+  memberId: number;
+}
+
+export const deleteRoomMember = async ({ roomId, memberId }: DeleteRoomMember) => {
+  await del(`/api/room/${roomId}/members/${memberId}`);
+};
+
+const useDeleteRoomMember = ({ roomId, memberId }: DeleteRoomMember) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: () => fetchMyPage(roomId, memberId),
+    mutationFn: () => deleteRoomMember({ roomId, memberId }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: MEMBER_DELETE_QUERY_KEY });
     },

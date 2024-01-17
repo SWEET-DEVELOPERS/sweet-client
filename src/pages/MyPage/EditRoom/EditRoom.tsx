@@ -8,6 +8,8 @@ interface EditRoom {
 
 const EditRoom = ({ roomId }: EditRoom) => {
   const roomMemberWholeData = useGetRoomMember(roomId)?.data;
+  console.log(roomMemberWholeData);
+
   const roomOwnerData = roomMemberWholeData?.owner;
   const roomGifteeData = roomMemberWholeData?.room;
   const roomMemberData = roomMemberWholeData?.members;
@@ -24,7 +26,7 @@ const EditRoom = ({ roomId }: EditRoom) => {
           user={roomOwnerData?.name}
           makerState={true}
           profileImageUrl={roomOwnerData?.profileImgUrl}
-          memberId={roomOwnerData.ownerId}
+          memberId={roomOwnerData?.ownerId}
           roomId={roomId}
         />
 
