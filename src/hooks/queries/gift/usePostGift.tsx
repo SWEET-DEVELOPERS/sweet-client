@@ -17,11 +17,11 @@ export const usePostGift = ({ body }: { body: GiftPostRequestType }) => {
     mutationFn: postNewGift,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [POST_GIFT_QUERY_KEY[0], body] });
-      navigate(`/addgift`);
+      navigate(`/add-gift`);
     },
 
     onError: () => {
-      console.log('에러!!');
+      console.log('선물 등록 에러!!');
     },
   });
 

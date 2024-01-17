@@ -11,7 +11,7 @@ export const FRIEND_GIFT_QUERY_KEY: string[] = ['friendGiftData'];
 export const fetchFriendGift = async (roomId: number): Promise<FriendGiftResponse> =>
   get(`/gift/friend/${roomId}`);
 
-const useGetMyGift = ({ roomId }: { roomId: number }) => {
+const useGetFriendGift = ({ roomId }: { roomId: number }) => {
   const { data, isLoading, isError } = useQuery({
     queryKey: [FRIEND_GIFT_QUERY_KEY, roomId],
     queryFn: () => fetchFriendGift(roomId),
@@ -20,4 +20,4 @@ const useGetMyGift = ({ roomId }: { roomId: number }) => {
   return { data, isLoading, isError };
 };
 
-export default useGetMyGift;
+export default useGetFriendGift;
