@@ -1154,7 +1154,9 @@ Error generating stack: `+c.message+`
 `,Title$5=ut.p`
   ${({theme:e})=>e.fonts.Title};
 `,SubTitle=ut.p`
+  margin-bottom: 2rem;
   ${({theme:e})=>e.fonts.body_07};
+  text-align: center;
 `,UserName=ut.span`
   color: ${({theme:e})=>e.colors.P_06};
 `;function TournamentStartText(){const e=Recoil_index_20(nickNameState);return jsxRuntimeExports$1.jsxs(TournamentStartTextWrapper,{children:[jsxRuntimeExports$1.jsx(SubTitle,{children:"선물 등록이 마감되어"}),jsxRuntimeExports$1.jsxs(Title$5,{children:[jsxRuntimeExports$1.jsx(UserName,{children:e}),"님을 위한 ",jsxRuntimeExports$1.jsx("br",{}),"선물 토너먼트를 시작합니다"]})]})}const TournamentItemCountWrapper=ut.article`
