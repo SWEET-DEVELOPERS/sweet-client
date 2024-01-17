@@ -3,106 +3,78 @@ import * as S from './Step06.style';
 import { IcKakaoShare, IcLink } from '../../../assets/svg';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import { useEffect } from 'react';
-// import usePostOnboardingInfo from '../../../hooks/queries/onboarding/usePostOnboardingInfo';
-// import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
 import { useLocation } from 'react-router-dom';
-// import usePostInvitationCode from '../../../hooks/queries/onboarding/usePostInvitationCode';
-// import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
-// interface OnboardingFinalProps {
-//   onboardingInfo: {
-//     gifteeName: string;
-//     // imageUrl: string;
-//     deliveryDate: string;
-//     tournamentStartDate: string;
-//     tournamentDuration: string;
-//   };
-//   imageUrl: string;
-//   invitationCode: string;
-//   presignedUrl: string;
-// }
+import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
+
 const OnboardingFinal = () => {
-  // TODO 추후 이전 STEP에서 유저가 입력한 값으로 변경
-  // const { onboardingInfo, imageUrl, invitationCode, presignedUrl } = props;
-
-  // const updatedOnBoardingInfo = {
-  //   ...onboardingInfo,
-  //   imageUrl: imageUrl,
-  // };
-
   const location = useLocation();
-  const state = location.state?.value;
-  // const invitationCode = location.state;
-  console.log('Step06 location.state', state);
-  // const postInvitation = usePostInvitationCode();
-  // const { data, isLoading, isError } = useGetGifteeInfo(invitationCode);
+  const searchParams = new URLSearchParams(location.search);
+  const invitationCode = searchParams.get('invitationCode');
+  console.log('추출된 초대 코드', invitationCode);
 
-  // const formatDate = (dateString: any) => {
-  //   const date = new Date(dateString);
-  //   const year = date.getFullYear();
-  //   const month = date.getMonth() + 1;
-  //   const day = date.getDate();
-  //   const hours = date.getHours();
-  //   const minutes = date.getMinutes();
+  const getGifteeInfo = useGetGifteeInfo(invitationCode);
 
-  //   return `${year}.${month}.${day} (${getDayOfWeek(date)}) ${hours}시 ${minutes}분`;
-  // };
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await useGetGifteeInfo(invitationCode);
+      console.log('data1', data);
+      fetchData();
+      console.log('data2', data);
+    };
+  }, []);
 
-  // const getDayOfWeek = (date: any) => {
-  //   const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
-  //   const dayOfWeekIndex = date.getDay();
-  //   return daysOfWeek[dayOfWeekIndex];
-  // };
+  console.log('getGifteeInfo', getGifteeInfo);
 
-  // const formatDuration = (durationType: any) => {
-  //   switch (durationType) {
-  //     case 'SIX_HOURS':
-  //       return '6시간';
-  //     case 'TWELVE_HOURS':
-  //       return '12시간';
-  //     case 'EIGHTEEN_HOURS':
-  //       return '18시간';
-  //     case 'TWENTY_FOUR_HOURS':
-  //       return '24시간';
-  //     default:
-  //       return '';
-  //   }
-  // };
+  const formatDate = (dateString: any, includeTime: boolean = true) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
 
-  // const infoDetails = [
-  //   { title: '선물 받을 사람', detail: onboardingInfo.gifteeName },
-  //   { title: '선물 등록 마감', detail: formatDate(onboardingInfo.tournamentStartDate) },
-  //   { title: '토너먼트 진행 시간', detail: formatDuration(onboardingInfo.tournamentDuration) },
-  //   { title: '선물 전달일', detail: formatDate(onboardingInfo.deliveryDate) },
-  // ];
+    if (includeTime) {
+      return `${year}.${month}.${day} (${getDayOfWeek(date)}) ${hours}시 ${minutes}분`;
+    } else {
+      return `${year}.${month}.${day} (${getDayOfWeek(date)})`;
+    }
+  };
 
-  // const infoDetails = [
-  //   { title: '선물 받을 사람', detail: onboardingInfo.gifteeName },
-  //   { title: '선물 등록 마감', detail: onboardingInfo.tournamentStartDate },
-  //   { title: '토너먼트 진행 시간', detail: onboardingInfo.tournamentDuration },
-  //   { title: '선물 전달일', detail: onboardingInfo.deliveryDate },
-  // ];
+  const getDayOfWeek = (date: any) => {
+    const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
+    const dayOfWeekIndex = date.getDay();
+    return daysOfWeek[dayOfWeekIndex];
+  };
 
-  const infoDetails = [
-    { title: '선물 받을 사람', detail: '시동훈' },
-    { title: '선물 등록 마감', detail: '선물 등록 마감' },
-    { title: '토너먼트 진행 시간', detail: '토너먼트 진행 시간' },
-    { title: '선물 전달일', detail: '선물 전달일' },
-  ];
+  const formatDuration = (durationType: any) => {
+    switch (durationType) {
+      case 'SIX_HOURS':
+        return '6시간';
+      case 'TWELVE_HOURS':
+        return '12시간';
+      case 'EIGHTEEN_HOURS':
+        return '18시간';
+      case 'TWENTY_FOUR_HOURS':
+        return '24시간';
+      default:
+        return '';
+    }
+  };
 
-  // useEffect(() => {
-  //   console.log('step06내 response.data', data);
-  //   // console.log('step06 내 presigned Url', presignedUrl);
-  // }, [data]);
-
-  // useEffect(() => {
-  //   if (invitationCode && !isLoading && !isError) {
-  //     console.log('받은 데이타', data);
-  //   } else if (isLoading) {
-  //     console.log('Loading...');
-  //   } else if (isError) {
-  //     console.log('isError...');
-  //   }
-  // }, [data, isLoading, isError, invitationCode]);
+  const infoDetails = getGifteeInfo?.data
+    ? [
+        { title: '선물 받을 사람', detail: getGifteeInfo.data.gifteeName },
+        {
+          title: '선물 등록 마감',
+          detail: formatDate(getGifteeInfo.data.tournamentStartDate, true),
+        },
+        {
+          title: '토너먼트 진행 시간',
+          detail: formatDuration(getGifteeInfo.data.tournamentDuration),
+        },
+        { title: '선물 전달일', detail: formatDate(getGifteeInfo.data.deliveryDate, true) },
+      ]
+    : [];
 
   useEffect(() => {
     const initializeKakao = async () => {
@@ -121,9 +93,9 @@ const OnboardingFinal = () => {
       kakao.Share.sendDefault({
         objectType: 'feed',
         content: {
-          // title: `${onboardingInfo.gifteeName}님을 위한 선물 준비방에 초대장이 도착했어요`,
-          // description: onboardingInfo.gifteeName,
-          // imageUrl: updatedOnBoardingInfo.imageUrl,
+          title: `${getGifteeInfo.data.gifteeName}님을 위한 선물 준비방에 초대장이 도착했어요`,
+          description: '스윗과 함께 선물을 준비해보세요.',
+          imageUrl: 'https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/sweet.png',
           link: {
             mobileWebUrl: 'https://localhost:5173',
             webUrl: 'https://localhost:5173',
@@ -135,7 +107,7 @@ const OnboardingFinal = () => {
   };
 
   const enterRoom = () => {
-    console.log('입장 버튼 클릭!');
+    console.log('입장 버튼 클릭! 그리고 초대 코드', invitationCode);
   };
 
   return (
