@@ -5,11 +5,15 @@ import { Svg3Dicons } from '../../../assets/svg';
 import TournamentStartButton from './TournamentStartButton/TournamentStartButton';
 import useTournament from '../../../hooks/tournament/useTournament';
 import TournamentFlowContainer from '../TournamentFlow/TournamentFlowContainer';
+import useGetItem from '../../../hooks/queries/tournament/useGetItem';
 
 const TournamentContainer = () => {
   const { showTournamentContainer, handleStartClick } = useTournament();
-  // const memberData = useGetItem({ roomId: 2 });
-  // console.log(memberData);
+  const memberData = useGetItem({ roomId: 2 });
+  console.log(memberData);
+
+  // Use an empty array as a fallback if memberData is undefined
+  const tournamentData = memberData?.data || [];
   return (
     <>
       {showTournamentContainer ? (
@@ -22,7 +26,7 @@ const TournamentContainer = () => {
           <TournamentStartButton onClick={handleStartClick} />
         </>
       ) : (
-        <TournamentFlowContainer />
+        <TournamentFlowContainer memberData={tournamentData} />
       )}
     </>
   );

@@ -10,28 +10,43 @@ import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
 
 interface GiftDeliveryProps {
   onNext: VoidFunction;
+  deliveryDate: string;
+  setDeliveryDate: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const GiftDelivery = (props: GiftDeliveryProps) => {
-  const { onNext } = props;
+  const { onNext, deliveryDate, setDeliveryDate } = props;
 
   const disabledDays = { before: new Date() };
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [isActivated, setIsActivated] = useState<boolean>(false);
+  const time = new Date();
 
   const openCalendar = () => {
     setIsOpen(!isOpen);
   };
 
+  //TODO 이거 step04에서도 쓰이니 분리하면 좋겠다
   const handleDateSelect = (date: Date) => {
+    const padTwoDigits = (value: number) => String(value).padStart(2, '0');
+
+    const formattedDate =
+      format(date, 'y-MM-dd') +
+      'T' +
+      `${padTwoDigits(time.getHours())}:${padTwoDigits(time.getMinutes())}:${padTwoDigits(
+        time.getSeconds(),
+      )}`;
+
     setSelectedDate(date);
     setIsOpen(false);
+    setDeliveryDate(formattedDate);
+    console.log('날짜', formattedDate);
   };
 
   useEffect(() => {
-    selectedDate ? setIsActivated(true) : setIsActivated(false);
-  }, [selectedDate]);
+    deliveryDate ? setIsActivated(true) : setIsActivated(false);
+  }, [deliveryDate]);
 
   return (
     <>
@@ -40,11 +55,12 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
       <Title userName='시동훈' title='님께' />
       <Title title='언제 선물을' />
       <Title title='전달하실 예정인가요?' />
-      <S.Wrapper hasContent={isOpen}>
+      <S.Wrapper $hasContent={isOpen}>
         <S.TextField>
           <S.Input
             placeholder='날짜를 선택해주세요'
             value={selectedDate ? format(selectedDate, 'y년 M월 d일') : ''}
+            onChange={(e) => e.preventDefault()}
           />
         </S.TextField>
         <S.IconField>
