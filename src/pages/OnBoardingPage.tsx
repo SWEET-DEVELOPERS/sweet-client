@@ -11,6 +11,7 @@ import SetTournamentDuration from '../components/OnBoardingSteps/Step05/Step05';
 import { useEffect, useState } from 'react';
 import SetTournamentSchedule from '../components/OnBoardingSteps/Step04/Step04';
 import { useNavigate } from 'react-router-dom';
+import OnBoardingHeader from '../components/OnBoardingSteps/onboardingHeader/OnBoardingHeader';
 
 const OnBoardingPage = () => {
   const { Funnel, setStep } = useFunnel(ONBOARDING_FORM_STEP, ONBOARDING_FORM_STEP[0]);
@@ -40,6 +41,7 @@ const OnBoardingPage = () => {
     <OnBoardingPageWrapper>
       <Funnel>
         <Funnel.Step name='NAME'>
+          <OnBoardingHeader step={1} />
           <div style={{ margin: '2rem' }}>
             {/* step01 */}
             <NameInput
@@ -50,6 +52,8 @@ const OnBoardingPage = () => {
           </div>
         </Funnel.Step>
         <Funnel.Step name='THUMBNAIL'>
+          <OnBoardingHeader step={2} />
+
           <div style={{ margin: '2rem' }}>
             {/* step02 */}
             <ThumbnailInput
@@ -62,6 +66,8 @@ const OnBoardingPage = () => {
           </div>
         </Funnel.Step>
         <Funnel.Step name='PRESENT'>
+          <OnBoardingHeader step={3} />
+
           <div style={{ margin: '2rem' }}>
             {/* step03 */}
             <GiftDelivery
@@ -73,6 +79,8 @@ const OnBoardingPage = () => {
         </Funnel.Step>
 
         <Funnel.Step name='TOURNAMENT_SCHEDULE_REGISTRATION'>
+          <OnBoardingHeader step={4} />
+
           <div style={{ margin: '2rem' }}>
             {/* step04 */}
             <SetTournamentSchedule
@@ -83,6 +91,8 @@ const OnBoardingPage = () => {
           </div>
         </Funnel.Step>
         <Funnel.Step name='TOURNAMENT_PROCEEDING'>
+          <OnBoardingHeader step={5} />
+
           <div style={{ margin: '2rem' }}>
             {/* step05 여기서 post (이미지 url먼저 post 후 전체 값 post*/}
             <SetTournamentDuration

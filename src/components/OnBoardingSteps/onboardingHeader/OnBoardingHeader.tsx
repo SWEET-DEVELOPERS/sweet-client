@@ -21,6 +21,7 @@ const OnBoardingHeaderWrapper = styled.div`
     theme.mixin.flexBox({ direction: 'row', align: 'center', justify: 'space-between' })};
   width: 100%;
   height: 5.6rem;
+  padding: 2rem;
 `;
 
 const StepText = styled.p`

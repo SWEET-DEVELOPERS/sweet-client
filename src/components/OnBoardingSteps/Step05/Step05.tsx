@@ -4,7 +4,6 @@ import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import * as S from './Step05.style';
-import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
 import { getAccessTokenLocalStorage, instance } from '../../../apis/client';
 import usePostOnboardingInfo from '../../../hooks/queries/onboarding/usePostOnboardingInfo';
 import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
@@ -139,7 +138,6 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
 
   return (
     <>
-      <OnBoardingHeader step={5} />
       <div>
         <Title title='선물 토너먼트' />
         <Title title='진행 시간을 설정해주세요' />
