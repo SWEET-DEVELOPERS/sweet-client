@@ -21,7 +21,7 @@ export const TextOneLine = styled.div`
   gap: 0.8rem;
 `;
 
-export const BoldText = styled.div`
+export const BoldText = styled.a`
   color: ${({ theme }) => theme.colors.black};
 
   font-family: 'SUIT';
