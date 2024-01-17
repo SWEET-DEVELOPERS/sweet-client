@@ -9,9 +9,10 @@ import Title from '../../../common/title/Title';
 interface GiftAddSecondLinkLayoutProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
   setLink: React.Dispatch<React.SetStateAction<string>>;
+  link: string;
 }
 
-const GiftAddSecondLinkLayout = ({ setStep }: GiftAddSecondLinkLayoutProps) => {
+const GiftAddSecondLinkLayout = ({ setStep, setLink, link }: GiftAddSecondLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(false);
 
   const onClick = () => {
@@ -24,7 +25,7 @@ const GiftAddSecondLinkLayout = ({ setStep }: GiftAddSecondLinkLayoutProps) => {
       <GiftStatusBar registeredGiftNum={2} isMargin={true} />
       <Title title='두번째 상품의 ' />
       <Title title='판매 링크를 입력해주세요' />
-      <InputUrl setIsActivated={setIsActivated} />
+      <InputUrl setIsActivated={setIsActivated} text={link} setText={setLink} />
       <GiftAddBtnWrapper setStep={setStep} isActivated={isActivated} onClick={onClick} />
     </S.GiftAddLinkLayoutWrapper>
   );
