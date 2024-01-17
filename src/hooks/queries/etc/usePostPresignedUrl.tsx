@@ -9,7 +9,8 @@ interface PostPresignedUrlArgs {
 
 const postPresignedUrl = async ({ filename, url }: PostPresignedUrlArgs) => {
   try {
-    const response: AxiosResponse = await post(`presigned-url?fileName=${filename}`, url);
+    const queryString = filename ? `presigned-url?fileName=${filename}` : '';
+    const response: AxiosResponse = await post(queryString, url);
     return response.data;
   } catch (error) {
     if (error instanceof AxiosError) {
