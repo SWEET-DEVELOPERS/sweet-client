@@ -13,6 +13,6 @@ export interface PresignedUrlResponseType {
   presignedUrl: string;
 }
 
-export interface OpenGraphRequestType {
+export interface PresignedUrlRequestType {
   fileName: string;
 }
