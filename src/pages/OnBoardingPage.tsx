@@ -10,6 +10,7 @@ import SetTournamentDuration from '../components/OnBoardingSteps/Step05/Step05';
 import OnboardingFinal from '../components/OnBoardingSteps/Step06/Step06';
 import { useEffect, useState } from 'react';
 import SetTournamentSchedule from '../components/OnBoardingSteps/Step04/Step04';
+import { useNavigate } from 'react-router-dom';
 
 const OnBoardingPage = () => {
   const { Funnel, setStep } = useFunnel(ONBOARDING_FORM_STEP, ONBOARDING_FORM_STEP[0]);
@@ -21,7 +22,7 @@ const OnBoardingPage = () => {
   const [fileName, setFileName] = useState<string>('');
   const [invitationCode, setInvitationCode] = useState<string>('');
   const [presignedUrl, setPresignedUrl] = useState<string>('');
-
+  const navigate = useNavigate();
   const onboardingInfo = {
     gifteeName: gifteeName,
     // imageUrl: imageUrl,
@@ -85,7 +86,7 @@ const OnBoardingPage = () => {
           <div style={{ margin: '2rem' }}>
             {/* step05 여기서 post (이미지 url먼저 post 후 전체 값 post*/}
             <SetTournamentDuration
-              onNext={() => setStep(() => 'GIFT_ROOM_FIX')}
+              onNext={() => navigate('/result')}
               tournamentDuration={tournamentDuration}
               setTournamentDuration={setTournamentDuration}
               tournamentStartDate={tournamentStartDate}
@@ -93,20 +94,21 @@ const OnBoardingPage = () => {
               imageUrl={imageUrl}
               setImageUrl={setImageUrl}
               onboardingInfo={onboardingInfo}
+              invitationCode={invitationCode}
               setInvitationCode={setInvitationCode}
               setPresignedUrl={setPresignedUrl}
             />
           </div>
         </Funnel.Step>
-        <Funnel.Step name='GIFT_ROOM_FIX'>
-          {/* step06 */}
-          <OnboardingFinal
+        {/* <Funnel.Step name='GIFT_ROOM_FIX'> */}
+        {/* step06 */}
+        {/* <OnboardingFinal
             onboardingInfo={onboardingInfo}
             imageUrl={imageUrl}
             invitationCode={invitationCode}
             presignedUrl={presignedUrl}
-          />
-        </Funnel.Step>
+          /> */}
+        {/* </Funnel.Step> */}
       </Funnel>
     </OnBoardingPageWrapper>
   );

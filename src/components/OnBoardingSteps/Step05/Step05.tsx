@@ -9,6 +9,7 @@ import { getAccessTokenLocalStorage, instance } from '../../../apis/client';
 import usePostOnboardingInfo from '../../../hooks/queries/onboarding/usePostOnboardingInfo';
 import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
 import usePutPresignedUrl from '../../../hooks/queries/onboarding/usePutPresignedUrl';
+import { useNavigate } from 'react-router-dom';
 
 interface SetTournamentDurationProps {
   onNext: VoidFunction;
@@ -25,6 +26,7 @@ interface SetTournamentDurationProps {
     tournamentStartDate: string;
     tournamentDuration: string;
   };
+  invitationCode: string;
   setInvitationCode: React.Dispatch<React.SetStateAction<string>>;
   setPresignedUrl: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -44,9 +46,10 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     setTournamentDuration,
     tournamentStartDate,
     fileName,
-    // imageUrl,
+    imageUrl,
     setImageUrl,
     onboardingInfo,
+    invitationCode,
     setInvitationCode,
     setPresignedUrl,
   } = props;
@@ -54,6 +57,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   const [selectedOption] = useState<string>('');
   const postPresignedUrl = usePostPresignedUrl();
   const putPresignedUrl = usePutPresignedUrl();
+  const navigate = useNavigate();
   const postOnboardingInfoMutation = usePostOnboardingInfo();
 
   useEffect(() => {
@@ -63,20 +67,21 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     console.log('step05 fileName', fileName);
   }, [tournamentDuration]);
 
-  console.log('기존 step04에서 가지고 온 날짜와 시간을 step05에서 사용', tournamentStartDate);
-
   const handleTimeSelect = (time: string) => {
     const updatedTime = new Date(tournamentStartDate);
     updatedTime.setHours(updatedTime.getHours() + parseInt(time.split('시간')[0]));
 
     updatedTime.setMinutes(updatedTime.getMinutes() - updatedTime.getTimezoneOffset());
     const formattedTime = updatedTime.toISOString();
-
-    console.log(`선택된 시간: ${tournamentStartDate} + ${time}:`, formattedTime);
   };
 
   const fetchPresignedUrl = async (fileName: string) => {
+    if (!fileName) {
+      console.log('파일명이 없어서 fetchPresignedUrl을 실행하지 않습니다.');
+      return { imageUrl: '', presignedUrl: '' };
+    }
     const response = await postPresignedUrl.mutateAsync({ filename: fileName, url: '' });
+
     const presignedUrl = response.presignedUrl;
     const imageUrl = presignedUrl.split('?')[0];
     console.log('imageUrl', imageUrl);
@@ -88,24 +93,53 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   const saveImageUrl = async (fileName: string) => {
     const { presignedUrl, imageUrl } = await fetchPresignedUrl(fileName);
     console.log(' save ImageUrl 안 presignedUrl', presignedUrl);
+
+    if (presignedUrl && presignedUrl !== '') {
+      try {
+        await putPresignedUrl.mutateAsync(presignedUrl);
+        console.log('saveImageUrl 안 imageUrl 값 확인', imageUrl);
+      } catch (error) {
+        console.log('putPresignedUrl 실행 중 에러 발생:', error);
+        return; // 에러가 발생하면 함수를 여기서 종료
+      }
+    } else {
+      console.log('preSignedUrl이 비어있어서 putPresignedUrl을 실행하지 않습니다.');
+    }
+
+    // putPresignedUrl이 성공하거나 빈 값일 때 실행됨
+    onNext();
+    console.log('step05 내 invitationCode', invitationCode);
     try {
-      await putPresignedUrl.mutateAsync(presignedUrl);
-      console.log('saveImageUrl 안 imageUrl 값 확인', imageUrl);
-      onNext();
       const updatedOnboardingInfo = { ...onboardingInfo, imageUrl: imageUrl };
-      const { invitationCode } = await postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
+      // const { invitationCode } = await postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
       postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
 
-      console.log('초대코드1', invitationCode);
       console.log('presignedUrl 1', presignedUrl);
 
       setPresignedUrl(presignedUrl);
-      setInvitationCode(invitationCode);
-      console.log('초대코드2', invitationCode);
+      // setInvitationCode(invitationCode);
       console.log('presignedUrl 2', presignedUrl);
     } catch (error) {
-      console.log(error);
+      console.log('postOnboardingInfoMutation 실행 중 에러 발생:', error);
     }
+    // try {
+    //   await putPresignedUrl.mutateAsync(presignedUrl);
+    //   console.log('saveImageUrl 안 imageUrl 값 확인', imageUrl);
+    //   onNext();
+    //   const updatedOnboardingInfo = { ...onboardingInfo, imageUrl: imageUrl };
+    //   const { invitationCode } = await postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
+    //   postOnboardingInfoMutation.mutate(updatedOnboardingInfo);
+
+    //   console.log('초대코드1', invitationCode);
+    //   console.log('presignedUrl 1', presignedUrl);
+
+    //   setPresignedUrl(presignedUrl);
+    //   setInvitationCode(invitationCode);
+    //   console.log('초대코드2', invitationCode);
+    //   console.log('presignedUrl 2', presignedUrl);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (
@@ -139,6 +173,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
           setStep={async () => {
             const { presignedUrl } = await fetchPresignedUrl(fileName);
             await saveImageUrl(presignedUrl);
+            navigate('/result', { state: { value: 1234 } });
           }}
         >
           다음
