@@ -6,7 +6,7 @@ export const deleteMyGift = async (giftId: number) => {
   await del(`/gift/my/${giftId}`);
 };
 
-export const usePostGift = ({ giftId }: { giftId: number }) => {
+export const useDeleteMyGift = ({ giftId }: { giftId: number }) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -22,4 +22,4 @@ export const usePostGift = ({ giftId }: { giftId: number }) => {
   return { mutation };
 };
 
-export default usePostGift;
+export default useDeleteMyGift;
