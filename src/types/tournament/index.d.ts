@@ -11,3 +11,10 @@ export type TournamentScore = {
   secondGiftId: number;
   finalGiftId: number;
 };
+
+export type TournamentUser = {
+  tournamentStartDate: string;
+  tournamentDuration: string;
+  TotalParticipantsCount: number;
+  ParticipantsCount: number;
+};
