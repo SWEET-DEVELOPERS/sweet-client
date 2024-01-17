@@ -9,7 +9,9 @@ interface PostPresignedUrlArgs {
 
 const postPresignedUrl = async ({ filename, url }: PostPresignedUrlArgs) => {
   try {
-    const queryString = filename ? `presigned-url?fileName=${filename}` : '';
+    const queryString = filename
+      ? `presigned-url?fileName=${filename}`
+      : 'presigned-url?fileName=https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/sweet.png';
     const response: AxiosResponse = await post(queryString, url);
     return response.data;
   } catch (error) {

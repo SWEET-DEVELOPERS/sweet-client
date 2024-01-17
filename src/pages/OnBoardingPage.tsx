@@ -20,6 +20,7 @@ const OnBoardingPage = () => {
   const [tournamentDuration, setTournamentDuration] = useState<string>('');
   const [fileName, setFileName] = useState<string>('');
   const [invitationCode, setInvitationCode] = useState<string>('');
+  const [presignedUrl, setPresignedUrl] = useState<string>('');
 
   const onboardingInfo = {
     gifteeName: gifteeName,
@@ -93,6 +94,7 @@ const OnBoardingPage = () => {
               setImageUrl={setImageUrl}
               onboardingInfo={onboardingInfo}
               setInvitationCode={setInvitationCode}
+              setPresignedUrl={setPresignedUrl}
             />
           </div>
         </Funnel.Step>
@@ -102,6 +104,7 @@ const OnBoardingPage = () => {
             onboardingInfo={onboardingInfo}
             imageUrl={imageUrl}
             invitationCode={invitationCode}
+            presignedUrl={presignedUrl}
           />
         </Funnel.Step>
       </Funnel>
