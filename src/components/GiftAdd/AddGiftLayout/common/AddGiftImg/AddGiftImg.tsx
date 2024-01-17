@@ -1,6 +1,8 @@
 import * as S from './AddGiftImg.styled';
 import { IcImgEditBtn, IcPlusImageFinal } from '../../../../../assets/svg';
 
+// 들어오는 이미지 있으면 넣어주고 상품 이름 넣어주고, 아니면 그냥 빈 화면
+
 const AddGiftImg = () => {
   return (
     <S.ThumbnailWrapper>

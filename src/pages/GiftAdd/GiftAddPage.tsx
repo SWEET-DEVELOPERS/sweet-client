@@ -16,7 +16,7 @@ const GiftAddPage = ({ roomId }: GiftAddPage) => {
   switch (step) {
     case 0:
       return <GiftAddPageLayout setStep={setStep} roomId={roomId} />;
-
+                                                                                                                                              
     case 1:
       return <GiftAddFirstLinkLayout setStep={setStep} setLinkText={setLinkText} />;
 

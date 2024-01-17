@@ -1,13 +1,15 @@
 import * as S from './MiniTimer.styled';
 
 interface MiniTimerProps {
-  time: string;
+  time: Date;
 }
 
 function MiniTimer({ time }: MiniTimerProps) {
+  const formattedTime = time.toLocaleTimeString();
+
   return (
     <S.MiniTimerWrapper>
-      <S.MiniTimerNumbers>{time}</S.MiniTimerNumbers>
+      <S.MiniTimerNumbers>{formattedTime}</S.MiniTimerNumbers>
     </S.MiniTimerWrapper>
   );
 }
