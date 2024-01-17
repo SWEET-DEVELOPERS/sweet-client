@@ -7,6 +7,8 @@ interface EditRoom {
 }
 
 const EditRoom = ({ roomId }: EditRoom) => {
+  // const { roomId } = useParams<{ roomId: string }>();
+  // const parsedRoomId = parseInt(roomId, 10);
   const roomMemberWholeData = useGetRoomMember(roomId)?.data;
   console.log(roomMemberWholeData);
 
