@@ -63,7 +63,6 @@ const GiftAddFirstLinkLayout = ({
   const onClick = async () => {
     // 서버 통신 후 링크 유효성 검사 결과 기준으로 모달 띄우거나 다음 화면으로 넘어가기
     fetchOpenGraph(text);
-    console.log('linkText 링크 들어오고 있냐?????', linkText);
   };
 
   return (

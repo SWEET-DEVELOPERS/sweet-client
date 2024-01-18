@@ -14,7 +14,7 @@ const GiftStatusBar = ({ registeredGiftNum, isMargin }: GiftStatusBarProps) => {
           style={{
             width: '2.4rem',
             height: '2.4rem',
-            stroke: registeredGiftNum === 1 ? '#E1DEDF' : '##FF2176',
+            color: registeredGiftNum === 0 ? '#E1DEDF' : '#FF2176',
           }}
         />
         <IcGift style={{ width: '2.4rem', height: '2.4rem', color: '#E1DEDF' }} />

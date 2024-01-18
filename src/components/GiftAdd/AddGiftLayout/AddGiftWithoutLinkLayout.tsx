@@ -24,7 +24,7 @@ function AddGiftWithoutLinkLayout({
   linkText,
   setLinkText,
   targetDate,
-  modalStatus,
+  // modalStatus,
 }: AddGiftWithLinkLayoutProps) {
   const [isActivated, setIsActivated] = useState(false);
   const [nameText, setNameText] = useState<string>('');
