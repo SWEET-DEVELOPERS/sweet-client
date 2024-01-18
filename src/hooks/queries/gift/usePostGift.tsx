@@ -15,6 +15,7 @@ export const usePostGift = () => {
     onSuccess: (data) => {
       navigate(`/add-gift`);
       console.log('POST로 선물 등록 성공!', data);
+      return { data };
     },
 
     onError: () => {

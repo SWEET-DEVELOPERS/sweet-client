@@ -161,7 +161,7 @@ function AddGiftWithoutLinkLayout({
         url={linkText}
       />
       <AddGiftFooter
-        // targetDate={targetDate}
+        targetDate={targetDate}
         name={nameText}
         cost={checkPriceNull(priceText)}
         imageUrl={imageUrl}

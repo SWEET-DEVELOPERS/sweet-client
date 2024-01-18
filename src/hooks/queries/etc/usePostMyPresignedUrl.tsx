@@ -26,7 +26,7 @@ const postPresignedUrl = async ({ filename, url }: PostPresignedUrlArgs) => {
 };
 
 const usePostMyPresignedUrl = (roomId: number) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -35,7 +35,7 @@ const usePostMyPresignedUrl = (roomId: number) => {
     onSuccess: (data) => {
       console.log('usePostPresignedUrl onSuccess 내꺼로 포스트 성공~', data);
       queryClient.invalidateQueries({ queryKey: [MY_GIFT_QUERY_KEY[0], roomId] });
-      navigate(`/add-gift?roomId=${data.roomId}&targetTime=${data.targetDate}`);
+    
     },
     onError: (error) => {
       console.log('내 선물 POST 중 에러가 발생했습니다.', error.message);
