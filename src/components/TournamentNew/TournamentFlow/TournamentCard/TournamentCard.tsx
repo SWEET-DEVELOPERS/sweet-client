@@ -29,7 +29,7 @@ const TournamentCard = ({ item, onClick, selected }: TournamentCardProps) => {
           <PriceTag price={item.cost} />
         </S.ItemInfo>
       </S.TournamentCardWrapper>
-      <S.LinkIconWrapper>
+      <S.LinkIconWrapper onClick={() => window.open(item.url)}>
         <IcExternalGray style={{ width: '1.6rem' }} />
         더보기
       </S.LinkIconWrapper>
