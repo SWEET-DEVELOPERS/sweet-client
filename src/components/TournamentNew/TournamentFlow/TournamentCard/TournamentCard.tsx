@@ -9,8 +9,7 @@ interface TournamentCardProps {
   onClick: () => void;
   selected: boolean;
 }
-
-const TournamentCard: React.FC<TournamentCardProps> = ({ item, onClick, selected }) => {
+const TournamentCard = ({ item, onClick, selected }: TournamentCardProps) => {
   const handleClick = () => {
     onClick();
   };
