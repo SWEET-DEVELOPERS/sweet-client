@@ -31,11 +31,11 @@ export function get<T>(...args: Parameters<typeof instance.get>) {
 }
 
 export function post<T>(...args: Parameters<typeof instance.post>) {
-  return instance.post<T, T>(...args);
+  return instance.post<T>(...args);
 }
 
 export function put<T>(...args: Parameters<typeof instance.put>) {
-  return instance.put<T, T>(...args);
+  return instance.put<T>(...args);
 }
 
 export function patch<T>(...args: Parameters<typeof instance.patch>) {
@@ -43,5 +43,5 @@ export function patch<T>(...args: Parameters<typeof instance.patch>) {
 }
 
 export function del<T>(...args: Parameters<typeof instance.delete>) {
-  return instance.delete<T, T>(...args);
+  return instance.delete<T>(...args);
 }
