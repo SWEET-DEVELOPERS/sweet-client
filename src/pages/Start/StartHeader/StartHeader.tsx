@@ -1,17 +1,29 @@
 import { useState } from 'react';
-import { IcMenu, SweetLogoPink } from '../../../assets/svg';
+import { IcCancel, IcMenu, SweetLogoPink } from '../../../assets/svg';
 import * as S from './StartHeader.style';
 
 const StartHeader = () => {
-  // const [isOpen, setIsOpen] = useState(false);
-  // const toggleSide = () => {
-  //   setIsOpen(true);
-  // };
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+    console.log('눌렀다!');
+  };
 
   return (
     <S.StartHeaderWrapper>
+      <S.SidebarWrapper isOpen={isSidebarOpen}>
+        <S.Sidebar>
+          <h2>홈</h2>
+          <h2>마이페이지</h2>
+        </S.Sidebar>
+      </S.SidebarWrapper>
       <SweetLogoPink style={{ width: '9.9rem' }} />
-      <IcMenu style={{ width: '2.8rem' }} />
+      {isSidebarOpen ? (
+        <IcCancel style={{ width: '2.8rem' }} onClick={toggleSidebar} />
+      ) : (
+        <IcMenu style={{ width: '2.8rem' }} onClick={toggleSidebar} />
+      )}
     </S.StartHeaderWrapper>
   );
 };
