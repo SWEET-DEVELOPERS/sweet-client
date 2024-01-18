@@ -34,6 +34,7 @@ const useLogin = () => {
 
         const JWT = data.data.memberToken.accessToken;
         const RefreshToken = data.data.memberToken.refreshToken;
+
         console.log(data);
         if (data) {
           localStorage.setItem('EXIT_LOGIN_TOKEN', JWT);
