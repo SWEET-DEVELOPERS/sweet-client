@@ -39,13 +39,13 @@ const AddGiftFooter = ({
   setImageUrl,
 }: AddGiftFooterProps) => {
   console.log('itemInfo.roomId', itemInfo.roomId);
-  const updatedItemInfo = {
-    roomId: itemInfo.roomId,
-    name: name,
-    cost: cost,
-    imageUrl: imageUrl,
-    url: link,
-  };
+  // const updatedItemInfo = {
+  //   roomId: itemInfo.roomId,
+  //   name: name,
+  //   cost: cost,
+  //   imageUrl: imageUrl,
+  //   url: link,
+  // };
   const navigate = useNavigate();
   const { mutation } = usePostGift(itemInfo.roomId, targetDate);
 
