@@ -15,6 +15,8 @@ export const ThumbnailWrapper = styled.div`
 `;
 
 export const ImgPreview = styled.img`
-  width: 5rem;
-  height: 5rem;
+  width: 19.2rem;
+  height: 19.2rem;
+
+  object-fit: contain;
 `;

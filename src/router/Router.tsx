@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/gift-detail-friends',
-        element: <GiftHomeDetailFriends />,
+        element: <GiftHomeDetailFriends roomId={1} targetDate='' />,
       },
       {
         path: '/gift-detail-2030',
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/add-gift',
-        element: <GiftAddPage roomId={1} />,
+        element: <GiftAddPage />,
       },
     ],
   },

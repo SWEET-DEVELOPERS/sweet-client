@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { get } from '../../../apis/client';
-import { FriendsGiftsType } from '../../../types/room';
+import { FriendsGiftsInfoType } from '../../../types/room';
 
 interface FriendGiftResponse extends Response {
-  data: FriendsGiftsType;
+  data: FriendsGiftsInfoType;
 }
 
 export const FRIEND_GIFT_QUERY_KEY: string[] = ['friendGiftData'];
