@@ -5,33 +5,54 @@ import InputUrl from '../common/InputUrl/InputUrl';
 import LinkAddHeader from '../common/LinkAddHeader/LinkAddHeader';
 import * as S from '../common/GiftAddLinkLayout.styled';
 import Title from '../../../common/title/Title';
+import usePostOpenGraph from '../../../../hooks/queries/etc/usePostOpengraph';
+import { OpenGraphResponseType } from '../../../../types/etc';
+// import { useNavigate } from 'react-router-dom';
 
 interface GiftAddSecondLinkLayoutProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
-  setLink: React.Dispatch<React.SetStateAction<string>>;
-  link: string;
+  setLinkText: React.Dispatch<React.SetStateAction<string>>;
+  openGraph: OpenGraphResponseType;
+  setOpenGraph: React.Dispatch<React.SetStateAction<OpenGraphResponseType>>;
   targetDate: string;
 }
 
 const GiftAddSecondLinkLayout = ({
   setStep,
-  setLink,
-  link,
+  // setLinkText,
+  // openGraph,
+  setOpenGraph,
   targetDate,
 }: GiftAddSecondLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(false);
+  const [text, setText] = useState<string>('');
+  const { mutation } = usePostOpenGraph({ body: { BaseURL: text } });
+
+  const fetchOpenGraph = async (BaseUrl: string) => {
+    try {
+      const response = await mutation.mutateAsync({ BaseURL: BaseUrl });
+      const giftTitle = response.title;
+      const giftImage = response.image;
+      setOpenGraph({ title: giftTitle, image: giftImage });
+      console.log('오픈그래프 정보를 가져왔습니다.', { giftTitle, giftImage });
+    } catch (error) {
+      setStep(3);
+    }
+  };
 
   const onClick = () => {
-    setStep(1);
+    // 서버 통신 후 링크 유효성 검사 결과 기준으로 모달 띄우거나 다음 화면으로 넘어가기
+    fetchOpenGraph(text);
+    setStep(2);
   };
 
   return (
     <S.GiftAddLinkLayoutWrapper>
       <LinkAddHeader targetDate={targetDate} />
-      <GiftStatusBar registeredGiftNum={2} isMargin={true} />
+      <GiftStatusBar registeredGiftNum={1} isMargin={true} />
       <Title title='두번째 상품의 ' />
       <Title title='판매 링크를 입력해주세요' />
-      <InputUrl setIsActivated={setIsActivated} text={link} setText={setLink} />
+      <InputUrl text={text} setText={setText} setIsActivated={setIsActivated} />
       <GiftAddBtnWrapper setStep={setStep} isActivated={isActivated} onClick={onClick} />
     </S.GiftAddLinkLayoutWrapper>
   );
