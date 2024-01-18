@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { IcDown, IcKakoLarge, Main03, Main04 } from '../../assets/svg';
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
-import LottieAnimation from '../../hooks/lottie-animation/LottieAnimation';
 
 export const Wrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter};
