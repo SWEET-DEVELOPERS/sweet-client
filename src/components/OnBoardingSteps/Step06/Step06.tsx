@@ -28,7 +28,7 @@ const OnboardingFinal = () => {
 
   console.log('getGifteeInfo', getGifteeInfo);
 
-  const formatDate = (dateString: any, includeTime: boolean = true) => {
+  const formatDate = (dateString: string, includeTime: boolean = true) => {
     const date = new Date(dateString);
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
@@ -75,7 +75,7 @@ const OnboardingFinal = () => {
           title: '토너먼트 진행 시간',
           detail: formatDuration(getGifteeInfo.data.tournamentDuration),
         },
-        { title: '선물 전달일', detail: formatDate(getGifteeInfo.data.deliveryDate, true) },
+        { title: '선물 전달일', detail: formatDate(getGifteeInfo.data.deliveryDate, false) },
       ]
     : [];
 
@@ -92,21 +92,24 @@ const OnboardingFinal = () => {
   const handleShareKakaoClick = () => {
     if (window.Kakao) {
       const kakao = window.Kakao;
+      console.log('카카오 공유 버튼 클릭11!!');
 
       kakao.Share.sendDefault({
         objectType: 'feed',
         content: {
-          title: `님을 위한 선물 준비방에 초대장이 도착했어요`,
+          title: `${getGifteeInfo.data.gifteeName}님을 위한 선물 준비방에 초대장이 도착했어요`,
           description: '스윗과 함께 선물을 준비해보세요.',
-          imageUrl: 'https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/sweet.png',
+          // imageUrl: 'https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/sweet.png',
+          imageUrl: `${getGifteeInfo.data.imageUrl}`,
           link: {
             mobileWebUrl: 'https://localhost:5173',
             webUrl: 'https://localhost:5173',
           },
         },
       });
+      console.log('카카오 공유 버튼 클릭22!!');
     }
-    console.log('카카오 공유 버튼 클릭!!');
+    console.log('카카오 공유 버튼 클릭33!!');
   };
 
   const handleClickRoom = async (body: string | null) => {
