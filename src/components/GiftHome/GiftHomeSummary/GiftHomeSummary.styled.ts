@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import HomeBackgroundImage from '../../../assets/img/giftroom_bg_final.png';
 
 export const GiftHomeSummaryWrapper = styled.section`
   width: 100%;
@@ -9,6 +10,9 @@ export const GiftHomeSummaryWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background-image: url(${HomeBackgroundImage});
+  background-size: cover;
+  background-repeat: no-repeat;
 `;
 
 export const FriendsNumber = styled.p`
