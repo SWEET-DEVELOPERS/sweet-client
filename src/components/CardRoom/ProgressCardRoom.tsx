@@ -1,16 +1,19 @@
 import * as S from './CardRoom.style';
 import { IcUser } from '../../assets/svg';
 import Type2Tag from '../IcTag/Type2/Type2';
+import DateCheck from '../DateCheck/DateCheck';
 
 interface ProgressCardRoomType {
   user: string;
   srcImage: string;
   userCount: number;
   roomId: number;
+  date: string;
   onClick: VoidFunction;
 }
 
-const ProgressCardRoom = ({ user, srcImage, userCount, onClick }: ProgressCardRoomType) => {
+const ProgressCardRoom = ({ user, srcImage, userCount, date, onClick }: ProgressCardRoomType) => {
+  const isFuture = DateCheck({ date: date });
   return (
     <S.CardRoomWrapper onClick={onClick}>
       <img src={srcImage} />
@@ -22,7 +25,7 @@ const ProgressCardRoom = ({ user, srcImage, userCount, onClick }: ProgressCardRo
         {userCount}
       </S.CountUser>
       <S.TagWrapper>
-        <Type2Tag tag='토너먼트 진행 중' />
+        {!isFuture ? <Type2Tag tag='토너먼트 진행 중' /> : <Type2Tag tag='선물 등록 중' />}
       </S.TagWrapper>
     </S.CardRoomWrapper>
   );

@@ -28,6 +28,7 @@ const ProgressGiftView = ({ data }: ProgressGiftViewType) => {
                 userCount={progressData1.gifterNumber}
                 srcImage={progressData1.imageUrl}
                 roomId={progressData1.roomId}
+                date={progressData1.tournamentStartDate}
                 onClick={() =>
                   navigate(
                     `/tournament?giftee=${progressData1.gifteeName}&roomId=${progressData1.roomId}`,
@@ -40,6 +41,7 @@ const ProgressGiftView = ({ data }: ProgressGiftViewType) => {
                 userCount={progressData1.gifterNumber || 0}
                 srcImage={progressData1.imageUrl || ''}
                 roomId={progressData1.roomId}
+                date={progressData1.tournamentStartDate}
                 onClick={() =>
                   navigate(
                     `/tournament?giftee=${progressData1.gifteeName}&roomId=${progressData1.roomId}`,
@@ -58,6 +60,7 @@ const ProgressGiftView = ({ data }: ProgressGiftViewType) => {
                 userCount={progressData2.gifterNumber}
                 srcImage={progressData2.imageUrl}
                 roomId={progressData2.roomId}
+                date={progressData2.tournamentStartDate}
                 onClick={() =>
                   navigate(
                     `/tournament?giftee=${progressData2.gifteeName}?roomId=${progressData2.roomId}`,
@@ -70,6 +73,7 @@ const ProgressGiftView = ({ data }: ProgressGiftViewType) => {
                 userCount={progressData2.gifterNumber || 0}
                 srcImage={progressData2.imageUrl || ''}
                 roomId={progressData2.roomId}
+                date={progressData2.tournamentStartDate}
                 onClick={() =>
                   navigate(
                     `/tournament?giftee=${progressData2.gifteeName}?roomId=${progressData2.roomId}`,
