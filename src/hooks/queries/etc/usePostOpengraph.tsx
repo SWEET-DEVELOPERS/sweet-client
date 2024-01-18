@@ -1,27 +1,28 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { post } from '../../../apis/client';
 import { OpenGraphRequestType } from '../../../types/etc';
-
-export const POST_OPEN_GRAPH_QUERY_KEY: string[] = ['postOpenGraph'];
+import { AxiosResponse } from 'axios';
 
 export const postOpenGraph = async (body: OpenGraphRequestType) => {
-  post(`/opengraph`, body);
+  const response: AxiosResponse = await post(`/opengraph`, body);
+  return response.data;
 };
 
 export const usePostOpenGraph = ({ body }: { body: OpenGraphRequestType }) => {
-  const queryClient = useQueryClient();
-
   const mutation = useMutation({
     mutationFn: postOpenGraph,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [POST_OPEN_GRAPH_QUERY_KEY[0], body] });
+    onSuccess: (data) => {
+      console.log('POST 성공, 오픈그래프 data 값', data);
+      console.log('body값', body);
     },
-    onError: () => {
-      console.log('오픈그래프 정보를 가져오던 중 에러가 발생했습니다.');
+    onError: (error) => {
+      console.log(error.message);
     },
   });
 
-  return { mutation };
+  const { isError } = mutation;
+
+  return { mutation, isError };
 };
 
 export default usePostOpenGraph;

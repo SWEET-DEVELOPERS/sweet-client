@@ -16,6 +16,7 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
   // 보여질 아이템
   const [displays, setDisplays] = useState<GiftData[]>([]);
   //선택된 아이템 저장
+
   const [selectedItem, setSelectedItem] = useState<GiftData | null>(null);
   //post 요청을 위한 state
   const [firstItems, setFirstItems] = useState<GiftData[]>([]);
@@ -27,6 +28,9 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
   const [roundIndex, setRoundIndex] = useState<number>(1);
   // 토너먼트 결과화면으로 넘어가게 해주는
   const [showTournamentResult, setShowTournamentResult] = useState(false);
+  const [isSelected, setSelected] = useState<GiftData | null>(null);
+
+  const [isClickSelect, setClickSelect] = useState<GiftData[]>([]);
 
   //전체 아이템 memberData 랜덤 섞어주기
   useEffect(() => {
@@ -35,11 +39,15 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
     setDisplays([memberData[0], memberData[1]]);
   }, [memberData]);
 
+  const clickSelect = (item: GiftData) => () => {
+    setClickSelect([item]);
+    setSelected(item);
+  };
+
   //토너먼트 라운딩 로직 함수
   const clickHandler = (item: GiftData) => () => {
     if (itemPick.length <= 2) {
       if (winners.length === 0) {
-        //위너가 1이 되니까 ,, 요기에 못들어가네
         setDisplays([item]);
         setSelectedItem(item);
         console.log('결과?=:', itemPick); //결승 두개 아이템
@@ -64,7 +72,6 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
         setitemPick([...itemPick.slice(2)]);
       } else {
         let updateditem = [...winners, item, itemPick[2]];
-
         setitemPick([...updateditem]);
         setDisplays([updateditem[0], updateditem[1]]);
         setRoundIndex((roundIndex) => roundIndex + 1);
@@ -76,13 +83,9 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
       setCurrentIndex((prevIndex) => prevIndex + 1);
       console.log('변햇다!');
     }
+    setSelected(null);
   };
 
-  console.log('???', itemPick);
-  console.log('dma??', firstItems);
-  console.log('dma?????', secondItems);
-
-  const footerClickHandler = () => {};
   return (
     <>
       {showTournamentResult ? (
@@ -100,11 +103,16 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
             totalRounds={memberData.length}
           />
           <S.TournamentCardWrapper>
-            {displays.map((d) => (
-              <TournamentCard key={d.name} item={d} onClick={clickHandler(d)} selected={true} />
+            {displays.map((displayitem) => (
+              <TournamentCard
+                key={displayitem.name}
+                item={displayitem}
+                onClick={clickSelect(displayitem)}
+                selected={isSelected === displayitem}
+              />
             ))}
           </S.TournamentCardWrapper>
-          <TournamentFooter onNextClick={footerClickHandler} disabled={false} />
+          <TournamentFooter onNextClick={clickHandler(isClickSelect[0])} disabled={false} />
         </S.TournamentFlowContainerWrapper>
       )}
     </>

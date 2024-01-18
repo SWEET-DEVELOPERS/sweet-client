@@ -12,6 +12,7 @@ import DetailDoneRoom from '../pages/MyPage/Detail/DetailDoneRoom/DetailDoneRoom
 import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
 import TournamentContainer from '../components/TournamentNew/Intro/TournamentContainer';
 import GiftHome from '../pages/GiftHome/GiftHome';
+import TournamentPage from '../pages/TournamentPage';
 
 const router = createBrowserRouter([
   {
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/gift-detail-friends',
-        element: <GiftHomeDetailFriends />,
+        element: <GiftHomeDetailFriends roomId={1} targetDate='' />,
       },
       {
         path: '/gift-detail-2030',
@@ -63,8 +64,12 @@ const router = createBrowserRouter([
         element: <TournamentContainer />,
       },
       {
+        path: '/tournament-ranking',
+        element: <TournamentPage />,
+      },
+      {
         path: '/add-gift',
-        element: <GiftAddPage roomId={1} />,
+        element: <GiftAddPage />,
       },
     ],
   },
