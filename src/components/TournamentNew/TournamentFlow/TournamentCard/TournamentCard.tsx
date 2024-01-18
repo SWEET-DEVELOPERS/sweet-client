@@ -32,7 +32,7 @@ const TournamentCard = ({ item, onClick, selected }: TournamentCardProps) => {
       {item.url && (
         <S.LinkIconWrapper onClick={() => window.open(item.url)}>
           <IcExternalGray style={{ width: '1.6rem' }} />
-          더보기
+          보러가기
         </S.LinkIconWrapper>
       )}
     </S.Wrapper>
