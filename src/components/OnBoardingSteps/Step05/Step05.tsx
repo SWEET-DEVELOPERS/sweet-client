@@ -163,7 +163,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
       <S.SetTournamentDurationWrapper>
         {timeOptions.map((hours) => {
           const optionText = `${hours.time}시간`;
-          const textEnglish = hours.textEnglish;
+          // const textEnglish = hours.textEnglish;
 
           // tournamentStartDate에 timeOptions 숫자와 시간 형식을 더한 값
           const optionDateTime = new Date(tournamentStartDate);
