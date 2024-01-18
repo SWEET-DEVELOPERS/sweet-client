@@ -3,6 +3,7 @@ import MiniTimer from '../../components/common/MiniTimer/MiniTimer';
 import useGetHotProduct from '../../hooks/queries/product/useGetHotProduct';
 import { useLocation } from 'react-router-dom';
 import GiftHomePriceTag from '../../components/common/GiftHome/Price/GiftHomePriceTag';
+import GiftDetailHeader from '../../components/common/GiftDetail/GiftDetailHeader';
 
 function GiftHomeDetail() {
   const location = useLocation();
@@ -13,20 +14,11 @@ function GiftHomeDetail() {
   const targetDate = params?.split('targetTime=')[1];
 
   const roomIdNumber = parseInt(roomId || '');
-  const { data, isLoading, isError } = useGetHotProduct({ roomId: roomIdNumber });
-
-  if (isLoading) {
-    return <div>LOADING...</div>;
-  }
-
-  if (isError || !data) {
-    return <div>ERROR,,,</div>;
-  }
-  console.log('뭐가 들어오고 있니?', targetDate);
+  const { data } = useGetHotProduct({ roomId: roomIdNumber });
 
   return (
     <S.GiftHomeDetailPageWrapper>
-      {/* 공통 헤더 추가 예정 */}
+      <GiftDetailHeader title='요즘 2030이 주목하는 선물' />
       <MiniTimer targetDate={targetDate || ''} />
       <S.GiftHomeDetailWrapper>
         {data.data.hotProductDtoList.length > 0 ? (

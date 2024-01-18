@@ -16,3 +16,4 @@ export interface GiftType {
 export interface MyGiftsType {
   myGiftDtoList: GiftType[];
 }
+
