@@ -29,7 +29,7 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
   // 토너먼트 결과화면으로 넘어가게 해주는
   const [showTournamentResult, setShowTournamentResult] = useState(false);
   const [isSelected, setSelected] = useState<GiftData | null>(null);
-
+  const [disabled, setDisabled] = useState(false);
   const [isClickSelect, setClickSelect] = useState<GiftData[]>([]);
 
   //전체 아이템 memberData 랜덤 섞어주기
@@ -42,6 +42,7 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
   const clickSelect = (item: GiftData) => () => {
     setClickSelect([item]);
     setSelected(item);
+    setDisabled(true);
   };
 
   //토너먼트 라운딩 로직 함수
@@ -84,6 +85,7 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
       console.log('변햇다!');
     }
     setSelected(null);
+    setDisabled(false);
   };
 
   const refresh = (): void => {
@@ -119,7 +121,7 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
               />
             ))}
           </S.TournamentCardWrapper>
-          <TournamentFooter onNextClick={clickHandler(isClickSelect[0])} disabled={false} />
+          <TournamentFooter onNextClick={clickHandler(isClickSelect[0])} disabled={disabled} />
         </S.TournamentFlowContainerWrapper>
       )}
     </>
