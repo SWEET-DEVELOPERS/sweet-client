@@ -6,19 +6,30 @@ import useTournament from '../../../hooks/tournament/useTournament';
 import TournamentFlowContainer from '../TournamentFlow/TournamentFlowContainer';
 import useGetItem from '../../../hooks/queries/tournament/useGetItem';
 import trophy from '../../../assets/img/3dic_trophy3.png';
+import { useLocation } from 'react-router';
 
 const TournamentContainer = () => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+
+  const giftee = searchParams.get('giftee') || '';
+  const roomIdString = searchParams.get('roomId');
+  const roomId = parseInt(roomIdString || '', 10);
+  console.log('추출된 초대 코드', roomId);
+  // const roomMemberWholeData = useGetRoomMember(roomId)?.data;
+  // 여기다가 query api 불러오기
+  // console.log(roomMemberWholeData);
+
   const { showTournamentContainer, handleStartClick } = useTournament();
-  const memberData = useGetItem({ roomId: 2 });
+  const memberData = useGetItem({ roomId: roomId });
   console.log(memberData);
 
-  // Use an empty array as a fallback if memberData is undefined
   const tournamentData = memberData?.data || [];
   return (
     <>
       {showTournamentContainer ? (
         <>
-          <TournamentStartText />
+          <TournamentStartText giftee={giftee} />
           <TournamentItemCount />
           <S.TournamentImg>
             <img src={trophy} alt='트로피' />

@@ -3,16 +3,19 @@ import GiftRoomHeader from '../GiftRoomHeader/GiftRoomHeader';
 import { ActiveRoomType } from '../../../../types/member';
 import ProgressCardRoom from '../../../../components/CardRoom/ProgressCardRoom';
 import * as S from './ProgressGiftView.style';
+import { useNavigate } from 'react-router-dom';
 
 interface ProgressGiftViewType {
   data: ActiveRoomType | undefined;
 }
 
 const ProgressGiftView = ({ data }: ProgressGiftViewType) => {
+  const navigate = useNavigate();
   const progressData1 = Array.isArray(data) ? data[0] : undefined;
   const progressData2 = Array.isArray(data) ? data[1] : undefined;
 
   console.log(progressData1);
+
   return (
     <S.ProgressGiftViewWrapper>
       <GiftRoomHeader name='진행중인 선물방' page='detail-progress' activeData={data} />
@@ -25,6 +28,11 @@ const ProgressGiftView = ({ data }: ProgressGiftViewType) => {
                 userCount={progressData1.gifterNumber}
                 srcImage={progressData1.imageUrl}
                 roomId={progressData1.roomId}
+                onClick={() =>
+                  navigate(
+                    `/tournament?giftee=${progressData1.gifteeName}&roomId=${progressData1.roomId}`,
+                  )
+                }
               />
             ) : (
               <ProgressCardRoom
@@ -32,6 +40,11 @@ const ProgressGiftView = ({ data }: ProgressGiftViewType) => {
                 userCount={progressData1.gifterNumber || 0}
                 srcImage={progressData1.imageUrl || ''}
                 roomId={progressData1.roomId}
+                onClick={() =>
+                  navigate(
+                    `/tournament?giftee=${progressData1.gifteeName}&roomId=${progressData1.roomId}`,
+                  )
+                }
               />
             )}
           </>
@@ -45,6 +58,11 @@ const ProgressGiftView = ({ data }: ProgressGiftViewType) => {
                 userCount={progressData2.gifterNumber}
                 srcImage={progressData2.imageUrl}
                 roomId={progressData2.roomId}
+                onClick={() =>
+                  navigate(
+                    `/tournament?giftee=${progressData2.gifteeName}?roomId=${progressData2.roomId}`,
+                  )
+                }
               />
             ) : (
               <ProgressCardRoom
@@ -52,6 +70,11 @@ const ProgressGiftView = ({ data }: ProgressGiftViewType) => {
                 userCount={progressData2.gifterNumber || 0}
                 srcImage={progressData2.imageUrl || ''}
                 roomId={progressData2.roomId}
+                onClick={() =>
+                  navigate(
+                    `/tournament?giftee=${progressData2.gifteeName}?roomId=${progressData2.roomId}`,
+                  )
+                }
               />
             )}
           </>

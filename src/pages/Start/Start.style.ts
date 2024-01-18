@@ -81,11 +81,20 @@ export const KakaoLogin = styled(IcKakoLarge)`
   margin: 2rem;
 `;
 
-export const Main2 = styled(Main02)``;
+export const Main2 = styled(Main02)`
+  position: relative;
+  top: -52rem;
+`;
 
-export const Main3 = styled(Main03)``;
+export const Main3 = styled(Main03)`
+  position: relative;
+  top: -100rem;
+`;
 
-export const Main4 = styled(Main04)``;
+export const Main4 = styled(Main04)`
+  position: relative;
+  top: -100rem;
+`;
 
 export const DownIcon = styled(IcDown)`
   position: relative;

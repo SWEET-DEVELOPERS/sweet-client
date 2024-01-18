@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router';
 import useGetRoomMember from '../../../hooks/queries/room/useGetRoomMember';
 import CardGuest from './CardGuest/CardGuest';
 import * as S from './EditRoom.style';
@@ -6,9 +7,15 @@ interface EditRoom {
   roomId: number;
 }
 
-const EditRoom = ({ roomId }: EditRoom) => {
+const EditRoom = () => {
   // const { roomId } = useParams<{ roomId: string }>();
   // const parsedRoomId = parseInt(roomId, 10);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+
+  const roomIdString = searchParams.get('roomId');
+  const roomId = parseInt(roomIdString || '', 10);
+  console.log('추출된 초대 코드', roomId);
   const roomMemberWholeData = useGetRoomMember(roomId)?.data;
   console.log(roomMemberWholeData);
 
@@ -29,7 +36,6 @@ const EditRoom = ({ roomId }: EditRoom) => {
           makerState={true}
           profileImageUrl={roomOwnerData?.profileImgUrl}
           memberId={roomOwnerData?.ownerId}
-          roomId={roomId}
         />
 
         {Array.isArray(roomMemberData) ? (
@@ -39,7 +45,6 @@ const EditRoom = ({ roomId }: EditRoom) => {
               user={item?.name}
               makerState={false}
               profileImageUrl={item?.profileImageUrl}
-              roomId={roomId}
               memberId={item?.memberId}
             />
           ))

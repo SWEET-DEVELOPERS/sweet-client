@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { IcLogoEmpty } from '../../../../assets/svg';
 import DoneCardRoom from '../../../../components/CardRoom/DoneCardRoom';
 import BtnSmallStroke from '../../../../components/common/Button/Cta/SmallStroke/BtnSmallStroke';
@@ -6,6 +7,7 @@ import DetailHeader from '../DetailHeader/DetailHeader';
 import * as S from './DetailDoneRoom.style';
 
 const DetailDoneRoom = () => {
+  const navigate = useNavigate();
   const data = useGetDoneRoom()?.data;
   console.log(data);
   return (
@@ -19,6 +21,9 @@ const DetailDoneRoom = () => {
               user={item?.gifteeName}
               srcImage={item?.imageUrl}
               userCount={item?.gifterNumber}
+              onClick={() =>
+                navigate(`/tournament-ranking?giftee=${item.gifteeName}&roomId=${item.roomId}`)
+              }
             />
           ))
         ) : (

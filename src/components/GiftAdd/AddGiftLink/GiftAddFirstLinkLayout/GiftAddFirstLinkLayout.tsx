@@ -13,6 +13,7 @@ import { OpenGraphResponseType } from '../../../../types/etc';
 interface GiftAddFirstLinkLayoutProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
   setLinkText: React.Dispatch<React.SetStateAction<string>>;
+  linkText: string;
   // openGraph: OpenGraphResponseType;
   setOpenGraph: React.Dispatch<React.SetStateAction<OpenGraphResponseType>>;
   targetDate: string;
@@ -22,6 +23,7 @@ const GiftAddFirstLinkLayout = ({
   setStep,
   setLinkText,
   // openGraph,
+  linkText,
   setOpenGraph,
   targetDate,
 }: GiftAddFirstLinkLayoutProps) => {
@@ -29,24 +31,33 @@ const GiftAddFirstLinkLayout = ({
   const [text, setText] = useState<string>('');
   const { mutation } = usePostOpenGraph({ body: { BaseURL: text } });
 
-  const fetchOpenGraph = async (BaseUrl: string) => {
+  const fetchOpenGraph = (BaseUrl: string) => {
     try {
-      const response = await mutation.mutateAsync({ BaseURL: BaseUrl });
-      const giftTitle = response.title;
-      const giftImage = response.image;
-      setOpenGraph({ title: giftTitle, image: giftImage });
-      console.log('오픈그래프 정보를 가져왔습니다.', { giftTitle, giftImage });
-      setLinkText(text);
+      const response = mutation.mutate(
+        { BaseURL: BaseUrl },
+        {
+          onSuccess: (data) => {
+            const giftTitle = data.title;
+            const giftImage = data.image;
+            setOpenGraph({ title: giftTitle, image: giftImage });
+            console.log('오픈그래프 정보를 가져왔습니다.', { giftTitle, giftImage });
+            console.log('작성한 링크 텍스트', text);
+            console.log('fetchOpenGraph 속 response', response);
+
+            setLinkText(text);
+            setStep(2);
+          },
+        },
+      );
     } catch (error) {
       setStep(3);
     }
   };
 
-  const onClick = () => {
+  const onClick = async () => {
     // 서버 통신 후 링크 유효성 검사 결과 기준으로 모달 띄우거나 다음 화면으로 넘어가기
     fetchOpenGraph(text);
-    console.log('링크 들어오고 있냐?????', text);
-    setStep(2);
+    console.log('linkText 링크 들어오고 있냐?????', linkText);
   };
 
   return (
