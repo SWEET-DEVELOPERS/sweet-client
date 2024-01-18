@@ -8,6 +8,7 @@ import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo
 import usePostParticipation from '../../../hooks/queries/onboarding/usePostParticipation';
 import OnboardingFinalHeader from './OnboardingFinalHeader';
 import useClipboard from '../../../hooks/useCopyClip';
+import { useKakaoShare } from '../../../hooks/queries/onboarding/useKakaoShare';
 
 const OnboardingFinal = () => {
   const location = useLocation();
@@ -22,12 +23,10 @@ const OnboardingFinal = () => {
   const { mutation } = usePostParticipation();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await useGetGifteeInfo(invitationCode);
-      console.log('data1', data);
-      fetchData();
-      console.log('data2', data);
-    };
+    if (!window.Kakao.isInitialized()) {
+      console.log('카카오 SDK 초기화 중...');
+      window.Kakao.init(import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY);
+    }
   }, []);
 
   console.log('getGifteeInfo', getGifteeInfo);
@@ -83,43 +82,6 @@ const OnboardingFinal = () => {
       ]
     : [];
 
-  useEffect(() => {
-    const initializeKakao = async () => {
-      if (!window.Kakao.isInitialized()) {
-        await window.Kakao.init(import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY);
-      }
-    };
-    initializeKakao();
-
-    console.log('카카오 공유하기 확인', initializeKakao());
-  }, []);
-
-  const handleShareKakaoClick = () => {
-    if (window.Kakao) {
-      const kakao = window.Kakao;
-      console.log('카카오 공유 버튼 클릭11!!, window.kakao!!', window.Kakao);
-
-      if (!kakao.isInitialized()) {
-        kakao.init(`${import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY}`);
-        console.log('!kakao.isInitialized()');
-      }
-      kakao.Share.sendDefault({
-        objectType: 'feed',
-        content: {
-          title: `${getGifteeInfo.data.gifteeName}님을 위한 선물 준비방에 초대장이 도착했어요`,
-          description: '스윗과 함께 선물을 준비해보세요.',
-          imageUrl: 'https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/sweet.png',
-          link: {
-            mobileWebUrl: 'https://sweetgift.vercel.app/onboarding',
-            webUrl: 'https://sweetgift.vercel.app/onboarding',
-          },
-        },
-      });
-      console.log('카카오 공유 버튼 클릭22!!');
-    }
-    console.log('카카오 공유 버튼 클릭33!!');
-  };
-
   const handleClickRoom = async (body: string | null) => {
     console.log('입장 버튼 클릭! 그리고 초대 코드', invitationCode);
     if (body === null) {
@@ -138,16 +100,6 @@ const OnboardingFinal = () => {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    const initializeKakao = async () => {
-      if (!window.Kakao.isInitialized()) {
-        await window.Kakao.init(import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY);
-      }
-    };
-    initializeKakao();
-    console.log('카카오 공유하기 확인', initializeKakao());
-  }, []);
 
   return (
     <>
@@ -194,7 +146,7 @@ const OnboardingFinal = () => {
           <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
           링크 복사
         </S.LinkCopyBtn>
-        <S.KakaoLinkCopyBtn onClick={handleShareKakaoClick}>
+        <S.KakaoLinkCopyBtn onClick={() => useKakaoShare()}>
           <IcKakaoShare style={{ width: '1.8rem', height: '1.8rem' }} />
           카카오톡 공유
         </S.KakaoLinkCopyBtn>
