@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import GiftAddFirstLinkLayout from '../../components/GiftAdd/AddGiftLink/GiftAddFirstLinkLayout/GiftAddFirstLinkLayout';
 import AddGiftWithoutLinkLayout from '../../components/GiftAdd/AddGiftLayout/AddGiftWithoutLinkLayout';
-import GiftAddSecondLinkLayout from '../../components/GiftAdd/AddGiftLink/GiftAddSecondLinkLayout/GiftAddSecondLinkLayout';
 import GiftAddPageLayout from '../../components/GiftAdd/GiftAddPageLayout/GiftAddPageLayout';
 import { OpenGraphResponseType } from '../../types/etc';
 import { useLocation } from 'react-router-dom';
@@ -11,6 +10,8 @@ const GiftAddPage = () => {
   const [step, setStep] = useState(0);
   const [linkText, setLinkText] = useState<string>('');
   const [openGraph, setOpenGraph] = useState<OpenGraphResponseType>({ title: '', image: '' });
+  const [itemNum, setItemNum] = useState(0);
+  const [modalStatus, setModalStatus] = useState(false);
 
   const location = useLocation();
 
@@ -24,7 +25,14 @@ const GiftAddPage = () => {
   switch (step) {
     case 0:
       return (
-        <GiftAddPageLayout setStep={setStep} roomId={roomId || ''} targetDate={targetDate || ''} />
+        <GiftAddPageLayout
+          step={step}
+          setStep={setStep}
+          roomId={roomId || ''}
+          targetDate={targetDate || ''}
+          setItemNum={setItemNum}
+          itemNum={itemNum}
+        />
       );
 
     case 1:
@@ -35,6 +43,8 @@ const GiftAddPage = () => {
           setLinkText={setLinkText}
           setOpenGraph={setOpenGraph}
           targetDate={targetDate || ''}
+          itemNum={itemNum}
+          setModalStatus={setModalStatus}
         />
       );
 
@@ -57,17 +67,7 @@ const GiftAddPage = () => {
           linkText={linkText}
           setLinkText={setLinkText}
           targetDate={targetDate || ''}
-        />
-      );
-
-    case 4:
-      return (
-        <GiftAddSecondLinkLayout
-          setStep={setStep}
-          setLinkText={setLinkText}
-          openGraph={openGraph}
-          setOpenGraph={setOpenGraph}
-          targetDate={targetDate || ''}
+          modalStatus={modalStatus}
         />
       );
   }

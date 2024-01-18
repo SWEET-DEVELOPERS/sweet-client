@@ -14,18 +14,20 @@ interface GiftAddFirstLinkLayoutProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
   setLinkText: React.Dispatch<React.SetStateAction<string>>;
   linkText: string;
-  // openGraph: OpenGraphResponseType;
+  itemNum: number;
   setOpenGraph: React.Dispatch<React.SetStateAction<OpenGraphResponseType>>;
   targetDate: string;
+  setModalStatus: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const GiftAddFirstLinkLayout = ({
   setStep,
   setLinkText,
-  // openGraph,
+  itemNum,
   linkText,
   setOpenGraph,
   targetDate,
+  setModalStatus,
 }: GiftAddFirstLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(false);
   const [text, setText] = useState<string>('');
@@ -47,6 +49,10 @@ const GiftAddFirstLinkLayout = ({
             setLinkText(text);
             setStep(2);
           },
+          onError: () => {
+            setModalStatus(true);
+            setStep(3);
+          },
         },
       );
     } catch (error) {
@@ -57,14 +63,13 @@ const GiftAddFirstLinkLayout = ({
   const onClick = async () => {
     // 서버 통신 후 링크 유효성 검사 결과 기준으로 모달 띄우거나 다음 화면으로 넘어가기
     fetchOpenGraph(text);
-    console.log('linkText 링크 들어오고 있냐?????', linkText);
   };
 
   return (
     <S.GiftAddLinkLayoutWrapper>
-      <LinkAddHeader targetDate={targetDate} />
-      <GiftStatusBar registeredGiftNum={1} isMargin={true} />
-      <Title title='첫번째 상품의 ' />
+      <LinkAddHeader targetDate={targetDate} setStep={setStep} />
+      <GiftStatusBar registeredGiftNum={itemNum} isMargin={true} />
+      <Title title={itemNum === 0 ? '첫번째 상품의 ' : '두번째 상품의'} />
       <Title title='판매 링크를 입력해주세요' />
       <InputUrl text={text} setText={setText} setIsActivated={setIsActivated} />
       <GiftAddBtnWrapper setStep={setStep} isActivated={isActivated} onClick={onClick} />

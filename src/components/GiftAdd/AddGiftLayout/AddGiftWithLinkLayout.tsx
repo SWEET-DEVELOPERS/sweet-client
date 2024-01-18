@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import MiniTimer from '../../common/MiniTimer/MiniTimer';
 import AddGiftFooter from '../AddGiftFooter/AddGiftFooter';
 import GiftStatusBar from '../AddGiftLink/common/GiftStatusBar/GiftStatusBar';
 import ShowLink from '../ShowLink/ShowLink';
@@ -10,6 +9,7 @@ import { OpenGraphResponseType } from '../../../types/etc';
 // import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
 import usePutPresignedUrl from '../../../hooks/queries/onboarding/usePutPresignedUrl';
 import usePostMyPresignedUrl from '../../../hooks/queries/etc/usePostMyPresignedUrl';
+import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
 // import { useNavigate } from 'react-router-dom';
 
 interface AddGiftWithLinkLayoutProps {
@@ -148,9 +148,7 @@ const AddGiftWithLinkLayout = ({
 
   return (
     <S.AddGiftWithLinkLayoutWrapper>
-      <S.AddGiftWithLinkHeader>
-        <MiniTimer targetDate={targetDate} />
-      </S.AddGiftWithLinkHeader>
+      <LinkAddHeader targetDate={targetDate} setStep={setStep} />
       <GiftStatusBar registeredGiftNum={1} isMargin={false} />
       <AddGiftImg
         imageUrl={imageUrl}
