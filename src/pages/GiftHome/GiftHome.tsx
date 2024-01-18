@@ -10,12 +10,11 @@ import useGetRoomInfo from '../../hooks/queries/room/useGetRoomInfo';
 interface GiftHomeProps {
   roomId: number;
 }
-
 export default function GiftHome({ roomId }: GiftHomeProps) {
   const navigate = useNavigate();
 
   const { data, isLoading, isError } = useGetRoomInfo({ roomId: Number(roomId) });
-
+  const tournamentStartTime = data?.data.tournamentStartDate;
   if (isLoading) {
     return <div>LOADING...</div>;
   }
@@ -25,15 +24,24 @@ export default function GiftHome({ roomId }: GiftHomeProps) {
   }
 
   const handleClickBtn = () => {
-    navigate('/add-gift');
+    navigate(`/add-gift?roomId=${roomId}&targetTime=${tournamentStartTime}`);
+    console.log('찾아보자', location.search);
   };
 
   return (
     <S.GiftHomeWrapper>
       <GiftHomeHeader />
       <GiftHomeSummary data={data.data} />
-      <GiftHomeFriendsGifts data={data.data.roomFriendsGiftDtoList} />
-      <GiftHome2030Gifts data={data.data.hotProductGiftDtoList} />
+      <GiftHomeFriendsGifts
+        roomId={roomId}
+        targetDate={data.data.tournamentStartDate}
+        data={data.data.roomFriendsGiftDtoList}
+      />
+      <GiftHome2030Gifts
+        roomId={roomId}
+        targetDate={data.data.tournamentStartDate}
+        data={data.data.hotProductGiftDtoList}
+      />
       <BtnFill
         children={'선물 등록하기'}
         onClick={handleClickBtn}

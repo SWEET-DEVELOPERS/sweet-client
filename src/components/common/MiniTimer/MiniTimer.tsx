@@ -1,19 +1,19 @@
+import { useCountDown } from '../../../hooks/useCountDown';
 import * as S from './MiniTimer.styled';
 
 interface MiniTimerProps {
-  time: Date;
+  targetDate: string;
 }
 
-function MiniTimer({ time }: MiniTimerProps) {
-  if (!time || !(time instanceof Date)) {
-    return <div>Error: Invalid targetDate</div>;
-  }
-
-  const formattedTime = time.toLocaleTimeString();
+function MiniTimer({ targetDate }: MiniTimerProps) {
+  const [hours, minutes, seconds] = useCountDown(targetDate);
+  console.log('Countdown:', hours, 'hours', minutes, 'minutes', seconds, 'seconds');
 
   return (
     <S.MiniTimerWrapper>
-      <S.MiniTimerNumbers>{formattedTime}</S.MiniTimerNumbers>
+      <S.MiniTimerNumbers>
+        {hours}:{minutes}:{seconds}
+      </S.MiniTimerNumbers>
     </S.MiniTimerWrapper>
   );
 }

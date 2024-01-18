@@ -2,13 +2,15 @@ import { useState } from 'react';
 import { IcCancel } from '../../../assets/svg';
 import GiftAddCompleteBtn from '../GiftAddCompleteBtn/GiftAddCompleteBtn';
 import * as S from './GiftAddPageBottom.styled';
+import { GiftType } from '../../../types/gift';
 
 interface GiftAddPageBottomProps {
   adPrice: number;
+  myGiftData: GiftType[];
 }
 
-const GiftAddPageBottom = ({ adPrice }: GiftAddPageBottomProps) => {
-  const [isAdVisible, setIsAdVisible] = useState(true);
+const GiftAddPageBottom = ({ adPrice, myGiftData }: GiftAddPageBottomProps) => {
+  const [isAdVisible, setIsAdVisible] = useState(myGiftData.length <= 1);
 
   const handleIcCancelClick = () => {
     setIsAdVisible(false);
@@ -17,7 +19,7 @@ const GiftAddPageBottom = ({ adPrice }: GiftAddPageBottomProps) => {
   return (
     <S.AddPageDownWrapper>
       <S.GiftAddCompleteBtnWrapper>
-        <GiftAddCompleteBtn />
+        <GiftAddCompleteBtn isCompleted={myGiftData.length === 2} />
       </S.GiftAddCompleteBtnWrapper>
       {isAdVisible ? (
         <S.AdWrapper>

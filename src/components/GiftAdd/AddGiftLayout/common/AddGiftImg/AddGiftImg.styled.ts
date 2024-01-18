@@ -8,13 +8,27 @@ export const ThumbnailWrapper = styled.div`
   height: 19.2rem;
 
   margin: 0 auto;
-  margin-top: 2.1rem;
+  /* margin-top: 2.1rem; */
 
   background-color: ${({ theme }) => theme.colors.G_01};
   border-radius: 1.2rem;
 `;
 
 export const ImgPreview = styled.img`
-  width: 5rem;
-  height: 5rem;
+  width: 19.2rem;
+  height: 19.2rem;
+
+  object-fit: contain;
+`;
+
+export const IcEmptyThumbnailWrapper = styled.div`
+  ${({ theme }) =>
+    theme.mixin.flexCenter({ direction: 'column', align: 'center', justify: 'center' })};
+
+  margin-top: 2.8rem;
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
 `;

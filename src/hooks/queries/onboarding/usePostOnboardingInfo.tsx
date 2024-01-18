@@ -1,31 +1,27 @@
 import { useMutation } from '@tanstack/react-query';
 import { post } from '../../../apis/client';
 import { OnboardingInfo } from '../../../types/Onboarding';
-import { AxiosError, AxiosResponse } from 'axios';
 
-const postOnboardingInfo = async (onboardingInfo: OnboardingInfo): Promise<AxiosResponse> => {
-  try {
-    const response: AxiosResponse = await post(`/room`, onboardingInfo);
-    return response.data;
-  } catch (error) {
-    if (error instanceof AxiosError) {
-      throw new Error(error.response?.data?.message ?? error.message);
-    } else {
-      throw error;
-    }
-  }
+interface PostOnboardingInfoRes {
+  roomId: number;
+  invitationCode: string;
+}
+
+const postOnboardingInfo = async (onboardingInfo: OnboardingInfo) => {
+  const response = await post<PostOnboardingInfoRes>(`/room`, onboardingInfo);
+  return response.data;
 };
 
 const usePostOnboardingInfo = () => {
-  //   const queryClient = useQueryClient();
-
-  return useMutation({
+  const mutation = useMutation({
     mutationFn: postOnboardingInfo,
     onSuccess: (data) => {
       console.log('포스트 성공?', data);
-      // queryClient.invalidateQueries('rooms');
+      const code = (data as any).invitationCode;
+      console.log('커스텀 훅 내 초대코드', code);
     },
   });
-};
 
+  return { mutation };
+};
 export default usePostOnboardingInfo;

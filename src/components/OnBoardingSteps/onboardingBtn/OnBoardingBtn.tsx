@@ -7,6 +7,7 @@ interface OnBoardingBtnProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
   isActivated: boolean;
   customStyle?: CSSProperties;
+  onClick?: () => void;
 }
 const OnBoardingBtn = ({ children, setStep, isActivated }: OnBoardingBtnProps) => {
   const onClick = () => {
@@ -14,7 +15,7 @@ const OnBoardingBtn = ({ children, setStep, isActivated }: OnBoardingBtnProps) =
   };
 
   return (
-    <S.Wrapper $isActivated={isActivated} onClick={onClick}>
+    <S.Wrapper $isActivated={isActivated} onClick={onClick} disabled={!isActivated}>
       {children}
       <IcRight style={{ width: '2.4rem', height: '2.4rem' }} />
     </S.Wrapper>

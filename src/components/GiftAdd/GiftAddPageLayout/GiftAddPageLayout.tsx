@@ -8,24 +8,25 @@ import EmptyGiftAddButtonsWrapper from '../GiftAddButtons/EmptyGiftAddButtonsWra
 import useDeleteMyGift from '../../../hooks/queries/gift/useDeleteMyGift';
 
 interface GiftAddPageLayoutProps {
-  roomId: number;
+  roomId: string;
   setStep: React.Dispatch<React.SetStateAction<number>>;
+  targetDate: string;
 }
 
-const GiftAddPageLayout = ({ roomId, setStep }: GiftAddPageLayoutProps) => {
-  const { data, isLoading, isError } = useGetMyGift({ roomId: Number(roomId) });
+const GiftAddPageLayout = ({ targetDate, roomId, setStep }: GiftAddPageLayoutProps) => {
+  const roomIdNumber = parseInt(roomId);
+  const { data, isLoading, isError } = useGetMyGift({ roomId: roomIdNumber });
 
+  const parsedRoomId = parseInt(roomId);
+  const { mutation } = useDeleteMyGift(parsedRoomId);
   if (isLoading) {
     return <div>LOADING...</div>;
   }
-
   if (isError || !data) {
     return <div>ERROR,,,</div>;
   }
 
   const myGiftData = data.data.myGiftDtoList;
-
-  const initialTime = new Date();
   const adPrice = 39000;
 
   const handleClickAddBtn = () => {
@@ -37,14 +38,13 @@ const GiftAddPageLayout = ({ roomId, setStep }: GiftAddPageLayoutProps) => {
   };
 
   const handleClickCancelBtn = (giftId: number) => {
-    const { mutation } = useDeleteMyGift({ giftId });
     mutation.mutate(giftId);
   };
 
   return (
     <S.GiftAddPageWrapper>
       <GiftAddPageLayoutHeader title={'내가 등록한 선물'} />
-      <MiniTimer time={initialTime} />
+      <MiniTimer targetDate={targetDate || ''} />
       <S.AddButtonsWrapper>
         {myGiftData.map((item, index) => (
           <GiftAddButtonsWrapper
@@ -57,7 +57,7 @@ const GiftAddPageLayout = ({ roomId, setStep }: GiftAddPageLayoutProps) => {
           <EmptyGiftAddButtonsWrapper key={index} onClick={handleClickAddBtn} />
         ))}
       </S.AddButtonsWrapper>
-      <GiftAddPageBottom adPrice={adPrice} />
+      <GiftAddPageBottom adPrice={adPrice} myGiftData={myGiftData} />
     </S.GiftAddPageWrapper>
   );
 };

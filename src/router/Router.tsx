@@ -13,6 +13,10 @@ import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
 import TournamentContainer from '../components/TournamentNew/Intro/TournamentContainer';
 import GiftHome from '../pages/GiftHome/GiftHome';
 
+import OnboardingFinal from '../components/OnBoardingSteps/Step06/Step06';
+
+import TournamentPage from '../pages/TournamentPage';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -52,19 +56,27 @@ const router = createBrowserRouter([
       },
       {
         path: '/gift-detail-2030',
-        element: <GiftHomeDetail2030 roomId={1} />,
+        element: <GiftHomeDetail2030 />,
       },
       {
         path: '/onboarding',
         element: <OnBoardingPage />,
       },
       {
+        path: '/result',
+        element: <OnboardingFinal />,
+      },
+      {
         path: '/tournament',
         element: <TournamentContainer />,
       },
       {
+        path: '/tournament-ranking',
+        element: <TournamentPage />,
+      },
+      {
         path: '/add-gift',
-        element: <GiftAddPage roomId={1} />,
+        element: <GiftAddPage />,
       },
     ],
   },

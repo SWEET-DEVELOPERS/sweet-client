@@ -12,7 +12,7 @@ export const CategoryTitle = styled.span`
   color: ${({ theme }) => theme.colors.G_07};
 `;
 
-export const Wrapper = styled.div<{ hasContent: boolean }>`
+export const Wrapper = styled.div<{ $hasContent: boolean }>`
   ${({ theme }) => theme.mixin.flexBox('center', 'center')}
   width: 100%;
   height: 3.6rem;
@@ -21,7 +21,7 @@ export const Wrapper = styled.div<{ hasContent: boolean }>`
   border-bottom: 0.1rem solid ${({ theme }) => theme.colors.G_02};
 
   ${(props) =>
-    props.hasContent &&
+    props.$hasContent &&
     css`
       border-bottom: 0.1rem solid ${({ theme }) => theme.colors.P_06};
     `}
@@ -35,7 +35,7 @@ export const IconField = styled.div`
   width: 10%;
 `;
 
-export const Input = styled.input<{ hasContent?: boolean }>`
+export const Input = styled.input<{ $hasContent?: boolean }>`
   ${({ theme }) => theme.mixin.flexBox('flex-center', 'center')};
   width: 100%;
   height: 3.5rem;

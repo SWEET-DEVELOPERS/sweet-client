@@ -1,8 +1,6 @@
 export interface OpenGraphResponseType {
-  data: {
-    title: string;
-    image: string;
-  };
+  title: string;
+  image: string;
 }
 
 export interface OpenGraphRequestType {
@@ -13,6 +11,6 @@ export interface PresignedUrlResponseType {
   presignedUrl: string;
 }
 
-export interface OpenGraphRequestType {
+export interface PresignedUrlRequestType {
   fileName: string;
 }

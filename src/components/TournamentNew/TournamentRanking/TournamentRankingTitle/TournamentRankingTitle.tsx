@@ -1,9 +1,16 @@
 import * as S from './TournamentRankingTitle.style';
 import { SubTitle } from '../../Intro/TournamentStartText/TournamentStartText.style';
 import RankingImg from '../../../../assets/img/3dic_podium2.png';
-const TournamentRenameTitle = () => {
+import { useLocation } from 'react-router-dom';
+import useClipboard from '../../../../hooks/useCopyClip';
+
+const TournamentRankingTitle = () => {
+  const location = useLocation();
+  const baseURL = import.meta.env.VITE_APP_BASE_URL;
+  const { handleCopyToClipboard } = useClipboard();
+
   return (
-    <div>
+    <section>
       <S.TournamentRenameTitleWrapper>
         <S.ImgWrapper>
           <img src={RankingImg} alt='최종-순위-확인' />
@@ -15,19 +22,14 @@ const TournamentRenameTitle = () => {
           최종 선물 순위를 확인하세요
         </SubTitle>
         <S.ButtonWrapper>
-          <S.LinkButton>
-            {/* <IcLinkShare /> */}
+          <S.LinkButton onClick={() => handleCopyToClipboard(`${baseURL}${location.pathname}`)}>
             링크로 공유
           </S.LinkButton>
-          <S.ImageButton>
-            {/* <IcImgShare style={{ width: '1.8rem', height: '1.8rem' }} /> */}
-            이미지로 공유
-          </S.ImageButton>
         </S.ButtonWrapper>
         <S.Line></S.Line>
       </S.TournamentRenameTitleWrapper>
-    </div>
+    </section>
   );
 };
 
-export default TournamentRenameTitle;
+export default TournamentRankingTitle;

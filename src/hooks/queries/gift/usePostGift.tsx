@@ -1,23 +1,20 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { post } from '../../../apis/client';
 import { GiftPostRequestType } from '../../../types/gift';
 import { useNavigate } from 'react-router-dom';
 
-export const POST_GIFT_QUERY_KEY: string[] = ['postGiftData'];
-
 export const postNewGift = async (body: GiftPostRequestType) => {
-  post(`/gift/friend/${body.roomId}`, body);
+  post(`/gift`, body);
 };
 
-export const usePostGift = ({ body }: { body: GiftPostRequestType }) => {
+export const usePostGift = () => {
   const navigate = useNavigate();
-  const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: postNewGift,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [POST_GIFT_QUERY_KEY[0], body] });
+    onSuccess: (data) => {
       navigate(`/add-gift`);
+      console.log('POST로 선물 등록 성공!', data);
     },
 
     onError: () => {

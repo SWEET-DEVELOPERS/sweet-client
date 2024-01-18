@@ -4,13 +4,17 @@ import GiftHomeShowcaseHeader from '../common/GiftHomeShowcaseHeader/GiftHomeSho
 import GiftHome2030Item from './GiftHome2030Item';
 
 interface GiftHome2030GiftsProps {
+  roomId: number;
   data: HotGiftsType[];
+  targetDate: Date;
 }
 
-export default function GiftHome2030Gifts({ data }: GiftHome2030GiftsProps) {
+export default function GiftHome2030Gifts({ roomId, data, targetDate }: GiftHome2030GiftsProps) {
   return (
     <S.GiftHomeShowcaseWrapper>
       <GiftHomeShowcaseHeader
+        targetDate={targetDate}
+        roomId={roomId}
         title={'요즘 2030이 주목하는 선물'}
         category='2030'
         length={data.length}
