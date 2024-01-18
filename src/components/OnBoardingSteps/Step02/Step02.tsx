@@ -3,17 +3,18 @@ import { IcEmptyThumbnail } from '../../../assets/svg';
 import * as S from './Step02.style';
 import { useState } from 'react';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
-import OnBoardingHeader from '../onboardingHeader/OnBoardingHeader';
 
 interface ThumbnailInputProps {
   onNext: VoidFunction;
   imageUrl: string;
   setImageUrl: React.Dispatch<React.SetStateAction<string>>;
+  fileName: string;
+  setFileName: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const ThumbnailInput = (props: ThumbnailInputProps) => {
   // TODO 이미지 클릭 시 사진 업로드
-  const { onNext, imageUrl, setImageUrl } = props;
+  const { onNext, setFileName } = props;
   const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
@@ -40,14 +41,18 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
 
       // 최종 이미지 이름
       const finalImageName = `${firstThreeLetters}${uploadTime}`;
-      setImageUrl(finalImageName);
-      console.log('imageUrl', imageUrl);
+
+      // TODO 그냥 imageUrl에는 presignedUrl을 값에 넣어줘야함
+      // setImageUrl(finalImageName);
+
+      setFileName(finalImageName);
+
+      console.log('fileName:', finalImageName);
     }
   };
 
   return (
     <>
-      <OnBoardingHeader step={2} />
       <Title title='썸네일을 등록해주세요' />
       <div>
         <S.IcEmptyThumbnailWrapper>
@@ -83,5 +88,4 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
     </>
   );
 };
-
 export default ThumbnailInput;

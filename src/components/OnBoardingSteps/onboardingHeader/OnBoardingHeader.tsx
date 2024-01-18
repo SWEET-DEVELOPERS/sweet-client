@@ -2,13 +2,14 @@ import styled from 'styled-components';
 import { IcLeft } from '../../../assets/svg';
 
 interface OnBoardingHeaderProps {
-  step: number;
+  step?: number;
+  onClick?: () => void;
 }
 
-const OnBoardingHeader = ({ step }: OnBoardingHeaderProps) => {
+const OnBoardingHeader = ({ step, onClick }: OnBoardingHeaderProps) => {
   return (
     <OnBoardingHeaderWrapper>
-      <IcLeft style={{ width: '3.6rem', height: '3.6rem' }} />
+      <IcLeft style={{ width: '3.6rem', height: '3.6rem' }} onClick={onClick} />
       <StepText>{step}/5</StepText>
     </OnBoardingHeaderWrapper>
   );
@@ -21,6 +22,7 @@ const OnBoardingHeaderWrapper = styled.div`
     theme.mixin.flexBox({ direction: 'row', align: 'center', justify: 'space-between' })};
   width: 100%;
   height: 5.6rem;
+  padding: 2rem;
 `;
 
 const StepText = styled.p`

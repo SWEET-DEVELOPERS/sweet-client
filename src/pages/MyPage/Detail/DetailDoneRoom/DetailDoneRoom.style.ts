@@ -11,7 +11,7 @@ export const RoomWrapper = styled.div`
   width: 100%;
   height: 100%;
   gap: 1.5rem;
-  margin: 0 2rem;
+  padding: 1.6rem 2rem;
 `;
 
 export const EmptyWrapper = styled.div`
