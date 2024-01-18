@@ -22,7 +22,7 @@ const DetailDoneRoom = () => {
               srcImage={item?.imageUrl}
               userCount={item?.gifterNumber}
               onClick={() =>
-                navigate(`/tournament-ranking?giftee=${item.gifteeName}?roomId=${item.roomId}`)
+                navigate(`/tournament-ranking?giftee=${item.gifteeName}&roomId=${item.roomId}`)
               }
             />
           ))

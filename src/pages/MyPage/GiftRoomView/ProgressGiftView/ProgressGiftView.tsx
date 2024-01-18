@@ -30,7 +30,7 @@ const ProgressGiftView = ({ data }: ProgressGiftViewType) => {
                 roomId={progressData1.roomId}
                 onClick={() =>
                   navigate(
-                    `/tournament?giftee=${progressData1.gifteeName}?roomId=${progressData1.roomId}`,
+                    `/tournament?giftee=${progressData1.gifteeName}&roomId=${progressData1.roomId}`,
                   )
                 }
               />
@@ -42,7 +42,7 @@ const ProgressGiftView = ({ data }: ProgressGiftViewType) => {
                 roomId={progressData1.roomId}
                 onClick={() =>
                   navigate(
-                    `/tournament?giftee=${progressData1.gifteeName}?roomId=${progressData1.roomId}`,
+                    `/tournament?giftee=${progressData1.gifteeName}&roomId=${progressData1.roomId}`,
                   )
                 }
               />

@@ -25,7 +25,7 @@ const DetailProgressRoom = () => {
                 srcImage={item.imageUrl}
                 roomId={item.roomId}
                 onClick={() =>
-                  navigate(`/tournament?giftee=${item.gifteeName}?roomId=${item.roomId}`)
+                  navigate(`/tournament?giftee=${item.gifteeName}&roomId=${item.roomId}`)
                 }
               />
             ) : (
@@ -36,7 +36,7 @@ const DetailProgressRoom = () => {
                 srcImage={item.imageUrl || ''}
                 roomId={item.roomId}
                 onClick={() =>
-                  navigate(`/tournament?giftee=${item.gifteeName}?roomId=${item.roomId}`)
+                  navigate(`/tournament?giftee=${item.gifteeName}&roomId=${item.roomId}`)
                 }
               />
             ),
