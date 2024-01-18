@@ -3,6 +3,7 @@ import MiniTimer from '../../components/common/MiniTimer/MiniTimer';
 import useGetFriendGift from '../../hooks/queries/gift/useGetFriendGift';
 import { useLocation } from 'react-router-dom';
 import GiftHomePriceTag from '../../components/common/GiftHome/Price/GiftHomePriceTag';
+import GiftDetailHeader from '../../components/common/GiftDetail/GiftDetailHeader';
 
 function GiftHomeDetailFriends() {
   const location = useLocation();
@@ -25,7 +26,7 @@ function GiftHomeDetailFriends() {
 
   return (
     <S.GiftHomeDetailPageWrapper>
-      {/* 공통 헤더 추가 예정 */}
+      <GiftDetailHeader title='친구가 등록한 선물' />
       <MiniTimer targetDate={targetDate || ''} />
       <S.GiftHomeDetailWrapper>
         {data.data.friendGiftDto.length > 0 ? (
