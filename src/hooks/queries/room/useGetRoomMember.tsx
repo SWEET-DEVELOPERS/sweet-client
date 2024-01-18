@@ -6,7 +6,7 @@ interface RoomMemberResponse extends Response {
   data: RoomMemberType;
 }
 
-export const ROOM_MEMBER_QUERY_KEY: string[] = ['room', 'owner', 'members'];
+export const ROOM_MEMBER_QUERY_KEY: string[] = ['roomMemberData'];
 
 const useGetRoomMember = (roomId: number) => {
   const fetchMyPage = async (roomId: number): Promise<RoomMemberResponse> =>

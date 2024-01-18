@@ -17,12 +17,9 @@ const useDeleteRoomMember = ({ roomId, memberId }: DeleteRoomMember) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationKey: [ROOM_MEMBER_QUERY_KEY[2]],
     mutationFn: () => deleteRoomMember({ roomId, memberId }),
     onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: [ROOM_MEMBER_QUERY_KEY[2], { roomId, memberId }],
-      });
+      queryClient.invalidateQueries({ queryKey: [...ROOM_MEMBER_QUERY_KEY, roomId, memberId] });
     },
     onError: () => {
       console.log('선물 삭제 중 에러가 발생했습니다.');
