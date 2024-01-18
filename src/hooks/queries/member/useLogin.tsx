@@ -31,8 +31,8 @@ const useLogin = () => {
       console.log('실행');
       fetchAuth(code).then((response: any) => {
         const data = response.data;
-        const JWT = data.data.memberToken.accessToken;
-        const RefreshToken = data.data.memberToken.refreshToken;
+        const JWT = data.memberToken.accessToken;
+        const RefreshToken = data.memberToken.refreshToken;
         console.log(data);
         if (data) {
           localStorage.setItem('EXIT_LOGIN_TOKEN', JWT);
