@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { get } from '../../../apis/client';
 import { MyGiftsType } from '../../../types/gift';
 
@@ -13,7 +13,7 @@ export const getMyGift = async (roomId: number): Promise<MyGiftResponse> => {
 };
 
 export const useGetMyGift = ({ roomId }: { roomId: number }) => {
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError } = useSuspenseQuery({
     queryKey: [MY_GIFT_QUERY_KEY[0], roomId],
     queryFn: () => getMyGift(roomId),
   });

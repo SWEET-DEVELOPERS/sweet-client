@@ -1,18 +1,23 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { del } from '../../../apis/client';
+import { MY_GIFT_QUERY_KEY } from './useGetMyGift';
 
 export const deleteMyGift = async (giftId: number) => {
   await del(`/gift/my/${giftId}`);
 };
 
-export const useDeleteMyGift = ({ giftId }: { giftId: number }) => {
+export const useDeleteMyGift = (roomId: number) => {
+  const queryClient = useQueryClient();
+
   const mutation = useMutation({
+    mutationKey: [MY_GIFT_QUERY_KEY[0]],
     mutationFn: deleteMyGift,
-    onSuccess: () => {
-      console.log('선물 삭제 선물 아이디', giftId);
+    onSuccess() {
+      console.log('선물 삭제 성공');
+      queryClient.invalidateQueries({ queryKey: [MY_GIFT_QUERY_KEY[0], roomId] });
     },
-    onError: () => {
-      console.log('선물 삭제 중 에러가 발생했습니다.');
+    onError: (error) => {
+      console.log('선물 삭제 중 에러가 발생했습니다.', error.message);
     },
   });
 

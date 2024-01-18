@@ -4,13 +4,21 @@ import GiftHomeShowcaseHeader from '../common/GiftHomeShowcaseHeader/GiftHomeSho
 import GiftHomeFriendsItem from './GiftHomeFriendsItem';
 
 interface GiftHomeFriendsGiftsProps {
+  roomId: number;
+  targetDate: Date;
   data: friendGiftDtoType[];
 }
 
-export default function GiftHomeFriendsGifts({ data }: GiftHomeFriendsGiftsProps) {
+export default function GiftHomeFriendsGifts({
+  roomId,
+  targetDate,
+  data,
+}: GiftHomeFriendsGiftsProps) {
   return (
     <S.GiftHomeShowcaseWrapper>
       <GiftHomeShowcaseHeader
+        roomId={roomId}
+        targetDate={targetDate}
         title={'친구가 등록한 선물'}
         category='friends'
         length={data.length}

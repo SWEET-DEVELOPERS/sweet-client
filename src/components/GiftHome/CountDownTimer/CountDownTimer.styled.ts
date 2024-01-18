@@ -5,6 +5,8 @@ export const TimerWrapper = styled.article`
   column-gap: 0.8rem;
   align-items: center;
   justify-content: center;
+
+  margin-bottom: 1.8rem;
 `;
 
 export const DashDiv = styled.div`
