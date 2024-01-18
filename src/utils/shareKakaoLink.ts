@@ -12,16 +12,16 @@ export const shareKakao = () => {
         description: '스윗에서 토너먼트 결과가 나왔습니다! 지금 확인해보세요.',
         imageUrl: 'https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/rank.png',
         link: {
-          mobileWebUrl: import.meta.env.VITE_APP_BASE_URL + '/tournament-ranking',
-          webUrl: import.meta.env.VITE_APP_BASE_URL + '/tournament-ranking',
+          mobileWebUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + '/tournament-ranking',
+          webUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + '/tournament-ranking',
         },
       },
       buttons: [
         {
           title: '바로 가기',
           link: {
-            mobileWebUrl: import.meta.env.VITE_APP_BASE_URL + '/tournament-ranking',
-            webUrl: import.meta.env.VITE_APP_BASE_URL + '/tournament-ranking',
+            mobileWebUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + '/tournament-ranking',
+            webUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + '/tournament-ranking',
           },
         },
       ],
