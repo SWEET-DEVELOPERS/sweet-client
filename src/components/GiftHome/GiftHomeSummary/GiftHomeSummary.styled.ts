@@ -12,7 +12,9 @@ export const GiftHomeSummaryWrapper = styled.section`
   align-items: flex-start;
   background-image: url(${HomeBackgroundImage});
   background-size: cover;
+  background-position-x: right;
   background-repeat: no-repeat;
+  width: 100%;
 `;
 
 export const FriendsNumber = styled.p`
