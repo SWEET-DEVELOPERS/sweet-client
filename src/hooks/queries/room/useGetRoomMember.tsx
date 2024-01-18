@@ -13,10 +13,9 @@ const useGetRoomMember = (roomId: number) => {
     get(`/room/${roomId}/members`);
 
   const { data } = useSuspenseQuery({
-    queryKey: ROOM_MEMBER_QUERY_KEY,
+    queryKey: [...ROOM_MEMBER_QUERY_KEY, roomId],
     queryFn: () => fetchMyPage(roomId),
   });
   return data;
 };
-
 export default useGetRoomMember;
