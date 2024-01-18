@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useSuspenseQuery } from '@tanstack/react-query';
 import { get } from '../../../apis/client';
 import { HotProductsType } from '../../../types/product';
 
@@ -12,7 +12,7 @@ export const fetchHotProduct = async (roomId: number): Promise<HotProductRespons
   get(`/product/hot/${roomId}`);
 
 const useGetHotProduct = ({ roomId }: { roomId: number }) => {
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError } = useSuspenseQuery({
     queryKey: [HOT_PRODUCT_QUERY_KEY, roomId],
     queryFn: () => fetchHotProduct(roomId),
   });

@@ -13,16 +13,7 @@ function GiftHomeDetail() {
   const targetDate = params?.split('targetTime=')[1];
 
   const roomIdNumber = parseInt(roomId || '');
-  const { data, isLoading, isError } = useGetHotProduct({ roomId: roomIdNumber });
-
-  if (isLoading) {
-    return <div>LOADING...</div>;
-  }
-
-  if (isError || !data) {
-    return <div>ERROR,,,</div>;
-  }
-  console.log('뭐가 들어오고 있니?', targetDate);
+  const { data } = useGetHotProduct({ roomId: roomIdNumber });
 
   return (
     <S.GiftHomeDetailPageWrapper>
