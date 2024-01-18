@@ -40,7 +40,7 @@ const useLogin = () => {
           localStorage.setItem('EXIT_LOGIN_TOKEN', JWT);
           localStorage.setItem('EXIT_LOGIN_REFRESH_TOKEN', RefreshToken);
           console.log(data);
-
+          console.log(localStorage.getItem('EXIT_LOGIN_TOKEN'));
           console.log(JWT);
 
           navigate('/');
