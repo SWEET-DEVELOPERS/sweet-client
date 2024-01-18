@@ -1,5 +1,4 @@
-import { SetStateAction, useEffect, useState } from 'react';
-import MiniTimer from '../../common/MiniTimer/MiniTimer';
+import { useEffect, useState } from 'react';
 import AddGiftFooter from '../AddGiftFooter/AddGiftFooter';
 import GiftStatusBar from '../AddGiftLink/common/GiftStatusBar/GiftStatusBar';
 import ShowLink from '../ShowLink/ShowLink';

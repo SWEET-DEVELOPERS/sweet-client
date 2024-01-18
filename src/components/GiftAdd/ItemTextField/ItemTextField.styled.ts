@@ -46,4 +46,32 @@ export const Input = styled.input<{ $hasContent?: boolean }>`
     color: ${({ theme }) => theme.colors.G_07};
     ${({ theme }) => theme.fonts.body_06};
   }
+
+  input::placeholder {
+    color: ${({ theme }) => theme.colors.G_07};
+    ${({ theme }) => theme.fonts.body_06};
+  }
+
+  /* Hide arrows for number input */
+  input[type='number'] {
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+    margin: 0;
+
+    /* Chrome, Safari, Edge */
+    &[type='number']::-webkit-inner-spin-button,
+    &[type='number']::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+
+      /* Firefox */
+      input[type='number'] {
+        -moz-appearance: textfield;
+      }
+    }
+  }
 `;
