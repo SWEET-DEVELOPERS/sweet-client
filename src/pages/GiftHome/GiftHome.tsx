@@ -16,15 +16,8 @@ export default function GiftHome() {
   const roomId = parseInt(roomIdString || '', 10);
   console.log('추출된 초대 코드', roomId);
 
-  const { data, isLoading, isError } = useGetRoomInfo({ roomId: Number(roomId) });
+  const { data } = useGetRoomInfo({ roomId: Number(roomId) });
   const tournamentStartTime = data?.data.tournamentStartDate;
-  if (isLoading) {
-    return <div>LOADING...</div>;
-  }
-
-  if (isError || !data) {
-    return <div>ERROR,,,</div>;
-  }
 
   const handleClickBtn = () => {
     navigate(`/add-gift?roomId=${roomId}&targetTime=${tournamentStartTime}`);
@@ -34,7 +27,8 @@ export default function GiftHome() {
   return (
     <S.GiftHomeWrapper>
       <GiftHomeHeader />
-      <GiftHomeSummary data={data.data} />
+      <GiftHomeSummary data={data?.data} />
+      <GiftHomeMyGifts />
       <GiftHomeFriendsGifts
         roomId={roomId}
         targetDate={data.data.tournamentStartDate}

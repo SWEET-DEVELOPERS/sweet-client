@@ -28,7 +28,9 @@ const GiftHomeShowcaseHeader = ({
             navigate(
               category === 'friends'
                 ? `/gift-detail-friends?roomId=${roomId}&targetTime=${targetDate}`
-                : `/gift-detail-2030?roomId=${roomId}&targetTime=${targetDate}`,
+                : category === 'my'
+                  ? `add-gift`
+                  : `/gift-detail-2030?roomId=${roomId}&targetTime=${targetDate}`,
             )
           }
         />
