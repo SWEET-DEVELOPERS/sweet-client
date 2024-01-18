@@ -86,6 +86,12 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
     setSelected(null);
   };
 
+  const refresh = (): void => {
+    const shuffledArray = [...itemPick].sort(() => Math.random() - 0.5);
+    setitemPick(shuffledArray);
+    setDisplays([shuffledArray[0], shuffledArray[1]]);
+  };
+
   return (
     <>
       {showTournamentResult ? (
@@ -101,6 +107,7 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
             rounds={roundIndex}
             currentIndex={currentIndex}
             totalRounds={memberData.length}
+            onClick={refresh}
           />
           <S.TournamentCardWrapper>
             {displays.map((displayitem) => (
