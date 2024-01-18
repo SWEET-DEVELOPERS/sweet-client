@@ -3,17 +3,21 @@ import * as S from './Step06.style';
 import { IcKakaoShare, IcLink } from '../../../assets/svg';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
 import usePostParticipation from '../../../hooks/queries/onboarding/usePostParticipation';
 import OnboardingFinalHeader from './OnboardingFinalHeader';
+import useClipboard from '../../../hooks/useCopyClip';
 
 const OnboardingFinal = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const invitationCode = searchParams.get('invitationCode');
-  console.log('추출된 초대 코드', invitationCode);
+  const navigate = useNavigate();
+  const baseUrl = import.meta.env.VITE_APP_BASE_URL;
+  const { handleCopyToClipboard } = useClipboard();
 
+  console.log('추출된 초대 코드', invitationCode);
   const getGifteeInfo = useGetGifteeInfo(invitationCode);
   const { mutation } = usePostParticipation();
 
@@ -86,24 +90,28 @@ const OnboardingFinal = () => {
       }
     };
     initializeKakao();
+
     console.log('카카오 공유하기 확인', initializeKakao());
   }, []);
 
   const handleShareKakaoClick = () => {
     if (window.Kakao) {
       const kakao = window.Kakao;
-      console.log('카카오 공유 버튼 클릭11!!');
+      console.log('카카오 공유 버튼 클릭11!!, window.kakao!!', window.Kakao);
 
+      if (!kakao.isInitialized()) {
+        kakao.init(`${import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY}`);
+        console.log('!kakao.isInitialized()');
+      }
       kakao.Share.sendDefault({
         objectType: 'feed',
         content: {
           title: `${getGifteeInfo.data.gifteeName}님을 위한 선물 준비방에 초대장이 도착했어요`,
           description: '스윗과 함께 선물을 준비해보세요.',
-          // imageUrl: 'https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/sweet.png',
-          imageUrl: `${getGifteeInfo.data.imageUrl}`,
+          imageUrl: 'https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/sweet.png',
           link: {
-            mobileWebUrl: 'https://localhost:5173',
-            webUrl: 'https://localhost:5173',
+            mobileWebUrl: 'https://sweetgift.vercel.app/onboarding',
+            webUrl: 'https://sweetgift.vercel.app/onboarding',
           },
         },
       });
@@ -123,6 +131,7 @@ const OnboardingFinal = () => {
         onSuccess: (data) => {
           console.log('step06 내 포스트', data);
           console.log('step06 내 response', response);
+          navigate('/gift-home');
         },
       });
     } catch (error) {
@@ -148,12 +157,10 @@ const OnboardingFinal = () => {
         {/* <S.GradientImg> */}
         <div>
           <S.GradientImg>
-            <div
-              style={{
-                backgroundImage:
-                  'https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/sweet.png',
-              }}
-            ></div>
+            <img
+              src='https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/sweet.png'
+              style={{ width: '100%', opacity: 0.7 }}
+            />
             <S.TitleContainer>
               <div style={{ marginBottom: '4.6rem' }}>
                 <Title title='시동훈님을 위한' />
@@ -183,7 +190,7 @@ const OnboardingFinal = () => {
         ))}
       </S.InfoWrapper>
       <S.BtnWrapper>
-        <S.LinkCopyBtn>
+        <S.LinkCopyBtn onClick={() => handleCopyToClipboard(`${baseUrl}`)}>
           <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
           링크 복사
         </S.LinkCopyBtn>
