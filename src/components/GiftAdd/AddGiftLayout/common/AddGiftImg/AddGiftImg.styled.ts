@@ -8,7 +8,7 @@ export const ThumbnailWrapper = styled.div`
   height: 19.2rem;
 
   margin: 0 auto;
-  /* margin-top: 2.1rem; */
+  cursor: pointer;
 
   background-color: ${({ theme }) => theme.colors.G_01};
   border-radius: 1.2rem;
@@ -26,6 +26,7 @@ export const IcEmptyThumbnailWrapper = styled.div`
     theme.mixin.flexCenter({ direction: 'column', align: 'center', justify: 'center' })};
 
   margin-top: 2.8rem;
+  cursor: pointer;
   img {
     object-fit: cover;
     width: 100%;

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { IcLeft } from '../../../assets/svg';
 import usePostGift from '../../../hooks/queries/gift/usePostGift';
 import GiftAddNextBtn from '../AddGiftLink/common/GiftAddNextBtn/GiftAddNextBtn';
@@ -9,7 +9,7 @@ interface ItemInfoType {
 }
 
 interface AddGiftFooterProps {
-  targetDate: string;
+  // targetDate: string;
   itemInfo: ItemInfoType;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   isActivated: boolean;
@@ -24,7 +24,7 @@ interface AddGiftFooterProps {
 }
 
 const AddGiftFooter = ({
-  targetDate,
+  // targetDate,
   itemInfo,
   setStep,
   isActivated,
@@ -38,13 +38,13 @@ const AddGiftFooter = ({
   setImageUrl,
 }: AddGiftFooterProps) => {
   const updatedItemInfo = {
-    ...itemInfo,
+    roomId: itemInfo.roomId,
     name: name,
     cost: cost,
     imageUrl: imageUrl,
     url: link,
   };
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { mutation } = usePostGift();
 
   const onClick = async () => {
@@ -54,7 +54,6 @@ const AddGiftFooter = ({
     setImageUrl(presignedUrl);
     if (isActivated) {
       mutation.mutate(updatedItemInfo);
-      navigate(`/add-gift?roomId=${itemInfo.roomId}&targetTime=${targetDate}`);
     }
   };
 

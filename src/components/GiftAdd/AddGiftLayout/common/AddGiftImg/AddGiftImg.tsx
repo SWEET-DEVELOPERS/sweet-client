@@ -55,6 +55,7 @@ const AddGiftImg = ({
                       height: '2.8rem',
                       top: '0.8rem',
                       right: '0.8rem',
+                      cursor: 'pointer',
                     }}
                   />
                 </S.ThumbnailWrapper>
@@ -65,6 +66,7 @@ const AddGiftImg = ({
                     height: '19.2rem',
                     position: 'relative',
                     marginTop: '2.8rem',
+                    cursor: 'pointer',
                   }}
                 />
               )}
@@ -72,7 +74,9 @@ const AddGiftImg = ({
           </S.IcEmptyThumbnailWrapper>
         </>
       ) : (
-        <IcEmptyThumbnail style={{ width: '19.2rem', height: '19.2rem', position: 'relative' }} />
+        <IcEmptyThumbnail
+          style={{ width: '19.2rem', height: '19.2rem', position: 'relative', cursor: 'pointer' }}
+        />
       )}
     </>
   );

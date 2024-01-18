@@ -29,7 +29,7 @@ const AddGiftWithLinkLayout = ({
 }: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(false);
   const [nameText, setNameText] = useState<string>(openGraph.title);
-  const [priceText, setPriceText] = useState<number>(0);
+  const [priceText, setPriceText] = useState<number | null>(null);
   const [imageUrl, setImageUrl] = useState<string>(openGraph.image);
   const [fileName, setFileName] = useState<string>('');
   const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
@@ -131,6 +131,14 @@ const AddGiftWithLinkLayout = ({
     }
   };
 
+  const checkPriceNull = (price: number | null) => {
+    if (price === null) {
+      return 0;
+    } else {
+      return price;
+    }
+  };
+
   const itemInfo = {
     roomId: roomId,
   };
@@ -163,9 +171,9 @@ const AddGiftWithLinkLayout = ({
         cost={priceText}
       />
       <AddGiftFooter
-        targetDate={targetDate}
+        // targetDate={targetDate}
         name={nameText}
-        cost={priceText}
+        cost={checkPriceNull(priceText)}
         imageUrl={imageUrl}
         setImageUrl={setImageUrl}
         link={link}

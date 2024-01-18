@@ -32,7 +32,6 @@ const GiftAddPage = () => {
         <GiftAddFirstLinkLayout
           setStep={setStep}
           setLinkText={setLinkText}
-          openGraph={openGraph}
           setOpenGraph={setOpenGraph}
           targetDate={targetDate || ''}
         />
