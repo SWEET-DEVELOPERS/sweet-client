@@ -5,10 +5,11 @@ interface TournamentTitleProps {
   rounds: number;
   currentIndex: number;
   totalRounds: number;
+  onClick: () => void;
 }
 
-const TournamentTitle = ({ rounds, currentIndex, totalRounds }: TournamentTitleProps) => {
-  const round = currentIndex; // Adjust the index to start from 1
+const TournamentTitle = ({ rounds, currentIndex, totalRounds, onClick }: TournamentTitleProps) => {
+  const round = currentIndex; 
   return (
     <>
       {/* 라운드 컴포넌트 */}
@@ -18,7 +19,7 @@ const TournamentTitle = ({ rounds, currentIndex, totalRounds }: TournamentTitleP
       </S.SetCount>
       {/* 세트 수 현재 상황 */}
       <S.RefreshWrapper>
-        <IcRefreshGray />
+        <IcRefreshGray onClick={onClick} />
       </S.RefreshWrapper>
     </>
   );

@@ -3,7 +3,7 @@ export type GiftData = {
   imageUrl: string;
   name: string;
   cost: number;
-  url: string;
+  url?: string;
 };
 
 export type GiftRankingData = {
