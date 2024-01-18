@@ -23,6 +23,7 @@ const OnBoardingPage = () => {
   const [fileName, setFileName] = useState<string>('');
   const [invitationCode, setInvitationCode] = useState<string>('');
   const [presignedUrl, setPresignedUrl] = useState<string>('');
+
   const navigate = useNavigate();
   const onboardingInfo = {
     gifteeName: gifteeName,
@@ -30,6 +31,10 @@ const OnBoardingPage = () => {
     deliveryDate: deliveryDate,
     tournamentStartDate: tournamentStartDate,
     tournamentDuration: tournamentDuration,
+  };
+
+  const handleFirstHistoryClick = () => {
+    navigate('/');
   };
 
   //전체 값 확인용
@@ -41,7 +46,7 @@ const OnBoardingPage = () => {
     <OnBoardingPageWrapper>
       <Funnel>
         <Funnel.Step name='NAME'>
-          <OnBoardingHeader step={1} />
+          <OnBoardingHeader step={1} onClick={handleFirstHistoryClick} />
           <div style={{ margin: '2rem' }}>
             {/* step01 */}
             <NameInput
