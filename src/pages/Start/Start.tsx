@@ -1,51 +1,51 @@
 import { Person1, Person2, Person3, Person4 } from '../../assets/svg';
 import * as S from './Start.style';
-//import { post } from '../../apis/client';
+import { post } from '../../apis/client';
 import StartAnimation from '../../../public/motions/start_motion.json';
 // import { useEffect, useRef, useState } from 'react';
 import { ScrollAnimationContainer } from '../../components/ScrollAnimationContainer/ScrollAnimationContainer';
 import { ScrollAnimationLeftContainer } from '../../components/ScrollAnimationContainer/ScrollAnimationContainerLeft';
 import StartHeader from './StartHeader/StartHeader';
 import Footer from '../../components/Footer/Footer';
-//import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import LottieAnimation from '../../hooks/lottie-animation/LottieAnimation';
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 
-// interface TokenResponseType {
-//   data: {
-//     accessToken: string;
-//     refreshToken: string;
-//   };
-// }
+interface TokenResponseType {
+  data: {
+    accessToken: string;
+    refreshToken: string;
+  };
+}
 
 const Start = () => {
   const REST_API_KEY: string = import.meta.env.VITE_REST_API_KEY;
   const REDIRECT_URI: string = import.meta.env.VITE_REDIRECT_URI || '';
   const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
   const isLogin: boolean = !localStorage.getItem('EXIT_LOGIN_TOKEN');
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     window.location.replace(kakaoURL);
   };
-  // const handleClick = () => {
-  //   const fetchExAuth = (): Promise<TokenResponseType> => post('/member/token/2');
-  //   fetchExAuth().then((response: TokenResponseType) => {
-  //     const data = response;
-  //     const JWT = data.data.accessToken;
-  //     if (data) {
-  //       localStorage.setItem('EXIT_LOGIN_TOKEN', JWT);
-  //       console.log(data);
-  //       console.log(localStorage.getItem('EXIT_LOGIN_TOKEN'));
-  //     }
-  //   });
+  const handleClick = () => {
+    const fetchExAuth = (): Promise<TokenResponseType> => post('/member/token/2');
+    fetchExAuth().then((response: TokenResponseType) => {
+      const data = response;
+      const JWT = data.data.accessToken;
+      if (data) {
+        localStorage.setItem('EXIT_LOGIN_TOKEN', JWT);
+        console.log(data);
+        console.log(localStorage.getItem('EXIT_LOGIN_TOKEN'));
+      }
+    });
 
-  //   // navigate('/mypage');
-  // };
+    navigate('/mypage');
+  };
 
   const goGiftRoom = () => {
     console.log('선물방으로 이동');
-    //navigate('/giftroom');
+    navigate('/onboarding');
   };
 
   return (
@@ -78,7 +78,7 @@ const Start = () => {
           새로운 선물 준비하기
         </BtnFill>
       ) : (
-        <S.KakaoLogin onClick={handleLogin} />
+        <S.KakaoLogin onClick={handleClick} />
       )}
       <S.BtnGradient />
 
