@@ -22,7 +22,11 @@ const DoneGiftView = ({ data }: DoneGiftViewType) => {
             user={doneData1?.gifteeName || ''}
             srcImage={doneData1?.imageUrl || ''}
             userCount={doneData1?.gifterNumber || 0}
-            onClick={() => navigate('/tournament-ranking')}
+            onClick={() =>
+              navigate(
+                `/tournament-ranking?giftee=${doneData1.gifteeName}?roomId=${doneData1.roomId}`,
+              )
+            }
           />
         )}
 
@@ -31,7 +35,11 @@ const DoneGiftView = ({ data }: DoneGiftViewType) => {
             user={doneData2?.gifteeName || ''}
             srcImage={doneData2?.imageUrl || ''}
             userCount={doneData2?.gifterNumber || 0}
-            onClick={() => navigate('/tournament-ranking')}
+            onClick={() =>
+              navigate(
+                `/tournament-ranking?giftee=${doneData2.gifteeName}?roomId=${doneData2.roomId}`,
+              )
+            }
           />
         )}
 
