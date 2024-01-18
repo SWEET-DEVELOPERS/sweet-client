@@ -8,6 +8,7 @@ import useGetMyPage from '../../hooks/queries/member/useGetMypage';
 import * as S from './MyPage.style';
 import { MyPageType } from '../../types/member';
 import { post } from '../../apis/client';
+import MyPageHeader from './MyPageHeader/MyPageHeader';
 interface MyPage {
   memberData: MyPageType;
 }
@@ -40,6 +41,7 @@ const MyPage = () => {
 
   return (
     <S.MyPageWrapper>
+      <MyPageHeader />
       <S.TopImage />
       <S.ProfileWrapper>
         <S.UserButtonWrapper>
