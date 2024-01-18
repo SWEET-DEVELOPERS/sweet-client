@@ -2,9 +2,13 @@ import { Divider, IcInstagram, IcPalmspring, LongDivider, SweetLogoGray } from '
 import * as S from './Footer.style';
 import { Link } from '../../utils/Footer.utils';
 
-const Footer = () => {
+interface FooterType {
+  customStyle?: React.CSSProperties;
+}
+
+const Footer = ({ customStyle }: FooterType) => {
   return (
-    <S.FooterWrapper>
+    <S.FooterWrapper style={customStyle}>
       <S.TextWrapper>
         <SweetLogoGray style={{ width: '7.6rem', height: '2.6rem' }} />
         <S.TextOneLine>
