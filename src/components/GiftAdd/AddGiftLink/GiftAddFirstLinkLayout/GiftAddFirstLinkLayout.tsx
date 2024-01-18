@@ -24,7 +24,7 @@ const GiftAddFirstLinkLayout = ({
   setStep,
   setLinkText,
   itemNum,
-  linkText,
+  // linkText,
   setOpenGraph,
   targetDate,
   setModalStatus,
