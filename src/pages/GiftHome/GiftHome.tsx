@@ -6,13 +6,15 @@ import GiftHomeSummary from '../../components/GiftHome/GiftHomeSummary/GiftHomeS
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 import * as S from './GiftHome.styled';
 import useGetRoomInfo from '../../hooks/queries/room/useGetRoomInfo';
+import GiftHomeMyGifts from './GiftHomeMyGifts/GiftHomeMyGifts';
 
 export default function GiftHome() {
   const navigate = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-
+  console.log('searchParams', searchParams);
   const roomIdString = searchParams.get('roomId');
+  console.log('roomIdString', roomIdString);
   const roomId = parseInt(roomIdString || '', 10);
   console.log('추출된 초대 코드', roomId);
 
@@ -28,7 +30,11 @@ export default function GiftHome() {
     <S.GiftHomeWrapper>
       <GiftHomeHeader />
       <GiftHomeSummary data={data?.data} />
-      <GiftHomeMyGifts />
+      <GiftHomeMyGifts
+        roomId={roomId}
+        data={data.data.roomMyGiftDtoList}
+        targetDate={tournamentStartTime}
+      />
       <GiftHomeFriendsGifts
         roomId={roomId}
         targetDate={data.data.tournamentStartDate}

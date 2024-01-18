@@ -32,15 +32,7 @@ export interface MyGiftsType {
   name: string;
   url: string;
   cost: number;
-}
-
-export interface FriendsGiftsType {
-  giftId: number;
-  imageUrl: string;
-  name: string;
-  url: string;
-  cost: number;
-  ownerName: string;
+  // ownerName: string;
 }
 
 export interface HotGiftsType {
