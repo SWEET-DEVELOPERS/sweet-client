@@ -40,7 +40,7 @@ const Start = () => {
   //     }
   //   });
 
-  //   navigate('/mypage');
+  //   // navigate('/mypage');
   // };
 
   const goGiftRoom = () => {
