@@ -3,8 +3,16 @@ import { SubTitle } from '../../Intro/TournamentStartText/TournamentStartText.st
 import RankingImg from '../../../../assets/img/3dic_podium2.png';
 import { useLocation } from 'react-router-dom';
 import useClipboard from '../../../../hooks/useCopyClip';
+import { useEffect } from 'react';
+import { shareKakao } from '../../../../utils/shareKakaoLink';
 
 const TournamentRankingTitle = () => {
+  useEffect(() => {
+    if (!window.Kakao.isInitialized()) {
+      window.Kakao.init(import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY);
+    }
+  }, []);
+
   const location = useLocation();
   const baseURL = import.meta.env.VITE_APP_BASE_URL;
   const { handleCopyToClipboard } = useClipboard();
@@ -25,6 +33,7 @@ const TournamentRankingTitle = () => {
           <S.LinkButton onClick={() => handleCopyToClipboard(`${baseURL}${location.pathname}`)}>
             링크로 공유
           </S.LinkButton>
+          <S.LinkButton onClick={() => shareKakao()}>카카오 공유</S.LinkButton>
         </S.ButtonWrapper>
         <S.Line></S.Line>
       </S.TournamentRenameTitleWrapper>

@@ -5,9 +5,9 @@ interface WriteItemInfoProps {
   setIsActivated: React.Dispatch<React.SetStateAction<boolean>>;
 
   setName: React.Dispatch<React.SetStateAction<string>>;
-  setCost: React.Dispatch<React.SetStateAction<number>>;
+  setCost: React.Dispatch<React.SetStateAction<number | null>>;
   name: string;
-  cost: number;
+  cost: number | null;
 }
 
 const WriteItemInfo = ({ setIsActivated, setName, setCost, name, cost }: WriteItemInfoProps) => {
@@ -21,7 +21,9 @@ const WriteItemInfo = ({ setIsActivated, setName, setCost, name, cost }: WriteIt
 
   const handleNameTextChange = (newText: string) => {
     setName(newText);
-    handleSetIsActivated(newText, cost.toString());
+    if (cost !== null) {
+      handleSetIsActivated(newText, cost.toString());
+    }
   };
 
   const handlePriceTextChange = (newCost: number) => {
@@ -39,7 +41,7 @@ const WriteItemInfo = ({ setIsActivated, setName, setCost, name, cost }: WriteIt
         categoryTitle='상품이름'
       />
       <ItemTextField
-        text={cost.toString()}
+        text={cost ? cost.toString() : ''}
         handleTextChange={(newText) => handlePriceTextChange(Number(newText))}
         type='number'
         categoryTitle='가격'

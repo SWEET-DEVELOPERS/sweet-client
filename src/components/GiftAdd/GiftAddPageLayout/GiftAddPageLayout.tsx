@@ -16,7 +16,9 @@ interface GiftAddPageLayoutProps {
 const GiftAddPageLayout = ({ targetDate, roomId, setStep }: GiftAddPageLayoutProps) => {
   const roomIdNumber = parseInt(roomId);
   const { data, isLoading, isError } = useGetMyGift({ roomId: roomIdNumber });
-
+  console.log('레이아웃 안 data', data);
+  console.log('presignedUrl 잘 들어갔나?', data.data.myGiftDtoList);
+  console.log('룸 아이디 잘 들어갔니?', roomId);
   const parsedRoomId = parseInt(roomId);
   const { mutation } = useDeleteMyGift(parsedRoomId);
   if (isLoading) {
