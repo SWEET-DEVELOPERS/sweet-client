@@ -5,7 +5,11 @@ export const getAccessTokenLocalStorage = () => {
   return accessToken ? `Bearer ${accessToken}` : '';
 };
 
-export const authInstance = axios.create({});
+export const authInstance = axios.create({
+  baseURL: import.meta.env.VITE_APP_BASE_URL,
+  withCredentials: false,
+  headers: {},
+});
 
 export const instance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_URL,

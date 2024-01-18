@@ -7,7 +7,6 @@ import ProgressGiftView from './GiftRoomView/ProgressGiftView/ProgressGiftView';
 import useGetMyPage from '../../hooks/queries/member/useGetMypage';
 import * as S from './MyPage.style';
 import { MyPageType } from '../../types/member';
-import { useNavigate } from 'react-router';
 import { post } from '../../apis/client';
 interface MyPage {
   memberData: MyPageType;
@@ -15,7 +14,9 @@ interface MyPage {
 
 const MyPage = () => {
   const memberData = useGetMyPage();
-  const fetchAuth = async () => post(`/oauth/kakao/logout`);
+  const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
+  console.log(accessToken);
+  const fetchAuth = async () => post(`/oauth/logout`);
   console.log(memberData);
   console.log(memberData?.data);
   console.log(memberData?.data?.memberInfo);
