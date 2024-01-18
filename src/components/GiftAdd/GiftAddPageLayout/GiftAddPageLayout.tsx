@@ -9,34 +9,37 @@ import useDeleteMyGift from '../../../hooks/queries/gift/useDeleteMyGift';
 
 interface GiftAddPageLayoutProps {
   roomId: string;
+  step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   targetDate: string;
+  itemNum: number;
+  setItemNum: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const GiftAddPageLayout = ({ targetDate, roomId, setStep }: GiftAddPageLayoutProps) => {
+const GiftAddPageLayout = ({
+  targetDate,
+  step,
+  roomId,
+  setStep,
+  itemNum,
+  setItemNum,
+}: GiftAddPageLayoutProps) => {
   const roomIdNumber = parseInt(roomId);
-  const { data, isLoading, isError } = useGetMyGift({ roomId: roomIdNumber });
-  console.log('레이아웃 안 data', data);
-  console.log('presignedUrl 잘 들어갔나?', data.data.myGiftDtoList);
-  console.log('룸 아이디 잘 들어갔니?', roomId);
+  const { data } = useGetMyGift({ roomId: roomIdNumber });
+  setItemNum(data.data.myGiftDtoList.length);
   const parsedRoomId = parseInt(roomId);
   const { mutation } = useDeleteMyGift(parsedRoomId);
-  if (isLoading) {
-    return <div>LOADING...</div>;
-  }
-  if (isError || !data) {
-    return <div>ERROR,,,</div>;
-  }
 
   const myGiftData = data.data.myGiftDtoList;
   const adPrice = '39,000';
 
   const handleClickAddBtn = () => {
-    if (myGiftData.length === 0) {
-      setStep(1);
-    } else if (myGiftData.length === 1) {
-      setStep(4);
-    }
+    // if (itemNum === 0) {
+    //   setStep(1);
+    // } else if (itemNum === 1) {
+    //   setStep(4);
+    // }
+    setStep(1);
   };
 
   const handleClickCancelBtn = (giftId: number) => {

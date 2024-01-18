@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import MiniTimer from '../../common/MiniTimer/MiniTimer';
 import AddGiftFooter from '../AddGiftFooter/AddGiftFooter';
 import GiftStatusBar from '../AddGiftLink/common/GiftStatusBar/GiftStatusBar';
@@ -9,6 +9,7 @@ import Modal from '../../common/Modal/Modal';
 // import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
 import usePutPresignedUrl from '../../../hooks/queries/onboarding/usePutPresignedUrl';
 import usePostMyPresignedUrl from '../../../hooks/queries/etc/usePostMyPresignedUrl';
+import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
 
 interface AddGiftWithLinkLayoutProps {
   roomId: number;
@@ -131,7 +132,7 @@ function AddGiftWithoutLinkLayout({
   // 모달 확인 클릭 버튼
   const handleClickConfirmClick = () => {
     setIsModalOpen(false);
-    setStep(3);
+    setStep(1);
   };
 
   return (
@@ -141,9 +142,7 @@ function AddGiftWithoutLinkLayout({
           상품 데이터를 불러올 수 없어요 <br /> 직접 입력해주세요
         </Modal>
       )}
-      <S.AddGiftWithLinkHeader>
-        <MiniTimer targetDate={targetDate} />
-      </S.AddGiftWithLinkHeader>
+      <LinkAddHeader targetDate={targetDate} setStep={setStep} />
       <GiftStatusBar registeredGiftNum={1} isMargin={false} />
       <AddGiftImg
         imageUrl={imageUrl}

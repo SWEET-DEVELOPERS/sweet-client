@@ -13,6 +13,7 @@ export const GiftHomeDetailPageWrapper = styled.div`
 export const GiftHomeDetailWrapper = styled.div`
   width: 100%;
   padding: 0 2rem;
+  margin-top: 1.2rem;
 
   display: flex;
   justify-content: space-between;
