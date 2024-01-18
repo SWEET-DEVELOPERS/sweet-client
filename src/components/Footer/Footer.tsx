@@ -4,7 +4,6 @@ import * as S from './Footer.style';
 import { Link } from '../../utils/Footer.utils';
 
 const Footer = () => {
-  const navigate = useNavigate();
   return (
     <S.FooterWrapper>
       <S.TextWrapper>
