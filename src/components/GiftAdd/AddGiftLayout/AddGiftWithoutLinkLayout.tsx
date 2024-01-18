@@ -32,7 +32,8 @@ function AddGiftWithoutLinkLayout({
   const [fileName, setFileName] = useState<string>('');
   const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
-
+  //빌드 에러 해결용
+  console.log(previewImage);
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
     if (files && files.length > 0) {

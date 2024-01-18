@@ -7,7 +7,7 @@ import WriteItemInfo from './common/WriteItemInfo/WriteItemInfo';
 import * as S from './common/AddGiftLayout.styled';
 import AddGiftImg from './common/AddGiftImg/AddGiftImg';
 import { OpenGraphResponseType } from '../../../types/etc';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
 import usePutPresignedUrl from '../../../hooks/queries/onboarding/usePutPresignedUrl';
 
@@ -33,7 +33,7 @@ const AddGiftWithLinkLayout = ({
   const [fileName, setFileName] = useState<string>('');
   const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
-  
+
   //빌드 에러용
   console.log(previewImage);
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
