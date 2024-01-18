@@ -23,7 +23,7 @@ export default function GiftHome() {
 
   const handleClickBtn = () => {
     navigate(`/add-gift?roomId=${roomId}&targetTime=${tournamentStartTime}`);
-    console.log('찾아보자', location.search);
+    // console.log('찾아보자', location.search);
   };
 
   return (

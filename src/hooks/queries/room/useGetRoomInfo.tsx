@@ -16,6 +16,7 @@ const useGetRoomInfo = ({ roomId }: { roomId: number }) => {
     queryKey: [GET_ROOM_INFO_QUERY_KEY, roomId],
     queryFn: () => fetchRoomInfo(roomId),
   });
+  console.log(data);
 
   return { data, isLoading, isError };
 };
