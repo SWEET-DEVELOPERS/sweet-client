@@ -5,13 +5,18 @@ import { IcMedal1, IcMedal2, IcMedal3, IcMedal4 } from '../../../assets/svg';
 import useGetRanking from '../../../hooks/queries/tournament/useGetRanking';
 import * as S from './TournamentRanking.style';
 
-const TournamentRanking = () => {
-  const rankingData = useGetRanking({ roomId: 2 });
+interface TournamentRankingProps {
+  roomId: number;
+  giftee?: string;
+}
+
+const TournamentRanking = ({ roomId, giftee }: TournamentRankingProps) => {
+  const rankingData = useGetRanking({ roomId: roomId });
   const tournamentRankingData = rankingData?.data || [];
 
   return (
     <S.TournamentRankingWrapper>
-      <TournamentRankingTitle />
+      <TournamentRankingTitle giftee={giftee} />
       <RankingWrapper>
         <S.Wrapper>
           {tournamentRankingData.map((data, index) => {

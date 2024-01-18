@@ -16,7 +16,6 @@ export const Title = styled.p`
 export const SubTitle = styled.p`
   margin-bottom: 2rem;
   ${({ theme }) => theme.fonts.body_07};
-  text-align: center;
 `;
 
 export const UserName = styled.span`

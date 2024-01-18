@@ -6,7 +6,11 @@ import useClipboard from '../../../../hooks/useCopyClip';
 import { useEffect } from 'react';
 import { shareKakao } from '../../../../utils/shareKakaoLink';
 
-const TournamentRankingTitle = () => {
+interface TournamentRankingGifteeProps {
+  giftee?: string;
+}
+
+const TournamentRankingTitle = ({ giftee }: TournamentRankingGifteeProps) => {
   useEffect(() => {
     if (!window.Kakao.isInitialized()) {
       window.Kakao.init(import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY);
@@ -26,7 +30,7 @@ const TournamentRankingTitle = () => {
 
         <S.Title>최종 순위 확인</S.Title>
         <SubTitle>
-          시동훈님을 위한 <br />
+          {giftee}님을 위한 <br />
           최종 선물 순위를 확인하세요
         </SubTitle>
         <S.ButtonWrapper>

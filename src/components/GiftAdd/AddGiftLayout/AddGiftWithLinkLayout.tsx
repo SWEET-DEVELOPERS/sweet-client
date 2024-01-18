@@ -90,14 +90,12 @@ const AddGiftWithLinkLayout = ({
 
   const fetchPresignedUrl = async (fileName: string) => {
     if (openGraph.image) {
-      console.log('여기 실행되나요~?', openGraph.image);
       const openGraphFileName = setParsedFileName(openGraph.image);
-      console.log('fileName에 파싱된 거 들어갔나요~?', fileName);
+
       const response = await postPresignedUrl.mutateAsync({ filename: openGraphFileName, url: '' });
       const presignedUrl = response.presignedUrl;
       const imageUrl = presignedUrl.split('?')[0];
-      console.log('imageUrl', imageUrl);
-      console.log('presignedUrl', presignedUrl);
+
       setImageUrl(imageUrl);
       return { imageUrl, presignedUrl };
     }
