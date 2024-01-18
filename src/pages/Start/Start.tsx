@@ -10,7 +10,6 @@ import Footer from '../../components/Footer/Footer';
 import { useNavigate } from 'react-router';
 import LottieAnimation from '../../hooks/lottie-animation/LottieAnimation';
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
-import BtnLogout from '../../components/common/Button/Logout/BtnLogout';
 
 // interface TokenResponseType {
 //   data: {
@@ -53,13 +52,8 @@ const Start = () => {
     navigate('/onboarding');
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('EXIT_LOGIN_TOKEN');
-  };
-
   return (
     <S.Wrapper>
-      <BtnLogout onClick={handleLogout}>로그아웃</BtnLogout>
       <StartHeader />
       <S.TextWrapper>
         <S.TitleText>
