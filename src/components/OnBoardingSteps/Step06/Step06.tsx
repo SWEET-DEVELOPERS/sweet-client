@@ -10,17 +10,29 @@ import OnboardingFinalHeader from './OnboardingFinalHeader';
 import useClipboard from '../../../hooks/useCopyClip';
 import { useKakaoShare } from '../../../hooks/queries/onboarding/useKakaoShare';
 
-const OnboardingFinal = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const invitationCode = searchParams.get('invitationCode');
-  const navigate = useNavigate();
-  const baseUrl = import.meta.env.VITE_APP_BASE_URL;
-  const { handleCopyToClipboard } = useClipboard();
+interface OnboardingFinalProps {
+  onboardingInfo: {
+    gifteeName: string;
+    // imageUrl: string;
+    deliveryDate: string;
+    tournamentStartDate: string;
+    tournamentDuration: string;
+  };
+  invitationCode: string;
+}
 
-  console.log('추출된 초대 코드', invitationCode);
-  const getGifteeInfo = useGetGifteeInfo(invitationCode);
+const OnboardingFinal = (props: OnboardingFinalProps) => {
+  const { onboardingInfo, invitationCode } = props;
   const { mutation } = usePostParticipation();
+
+  // const location = useLocation();
+  // const searchParams = new URLSearchParams(location.search);
+  // const invitationCode = searchParams.get('invitationCode');
+  const baseUrl = import.meta.env.VITE_APP_BASE_URL;
+  console.log('step06 내 초대코드', invitationCode);
+
+  const navigate = useNavigate();
+  const { handleCopyToClipboard } = useClipboard();
 
   useEffect(() => {
     if (!window.Kakao.isInitialized()) {
@@ -29,7 +41,7 @@ const OnboardingFinal = () => {
     }
   }, []);
 
-  console.log('getGifteeInfo', getGifteeInfo);
+  // console.log('getGifteeInfo', getGifteeInfo);
 
   const formatDate = (dateString: string, includeTime: boolean = true) => {
     const date = new Date(dateString);
@@ -67,22 +79,37 @@ const OnboardingFinal = () => {
     }
   };
 
-  const infoDetails = getGifteeInfo?.data
+  const infoDetails = onboardingInfo.gifteeName
     ? [
-        { title: '선물 받을 사람', detail: getGifteeInfo.data.gifteeName },
+        { title: '선물 받을 사람', detail: onboardingInfo.gifteeName },
         {
           title: '선물 등록 마감',
-          detail: formatDate(getGifteeInfo.data.tournamentStartDate, true),
+          detail: formatDate(onboardingInfo.tournamentStartDate, true),
         },
         {
           title: '토너먼트 진행 시간',
-          detail: formatDuration(getGifteeInfo.data.tournamentDuration),
+          detail: formatDuration(onboardingInfo.tournamentDuration),
         },
-        { title: '선물 전달일', detail: formatDate(getGifteeInfo.data.deliveryDate, false) },
+        { title: '선물 전달일', detail: formatDate(onboardingInfo.deliveryDate, false) },
       ]
     : [];
 
-  const handleClickRoom = async (body: string | null) => {
+  // const infoDetails = getGifteeInfo?.data
+  //   ? [
+  //       { title: '선물 받을 사람', detail: getGifteeInfo.data.gifteeName },
+  //       {
+  //         title: '선물 등록 마감',
+  //         detail: formatDate(getGifteeInfo.data.tournamentStartDate, true),
+  //       },
+  //       {
+  //         title: '토너먼트 진행 시간',
+  //         detail: formatDuration(getGifteeInfo.data.tournamentDuration),
+  //       },
+  //       { title: '선물 전달일', detail: formatDate(getGifteeInfo.data.deliveryDate, false) },
+  //     ]
+  //   : [];
+
+  const handleClickRoom = async (body: string) => {
     console.log('입장 버튼 클릭! 그리고 초대 코드', invitationCode);
     if (body === null) {
       console.error('초대 코드가 유효하지 않습니다.');
@@ -94,6 +121,9 @@ const OnboardingFinal = () => {
           console.log('step06 내 포스트', data);
           console.log('step06 내 response', response);
           navigate('/gift-home');
+        },
+        onError: () => {
+          navigate('/deadline');
         },
       });
     } catch (error) {
@@ -142,7 +172,12 @@ const OnboardingFinal = () => {
         ))}
       </S.InfoWrapper>
       <S.BtnWrapper>
-        <S.LinkCopyBtn onClick={() => handleCopyToClipboard(`${baseUrl}`)}>
+        <S.LinkCopyBtn
+          onClick={() =>
+            // TODO 추후 로컬 주소를 배포 주소로 변경
+            handleCopyToClipboard(`http://localhost:5173/result?invitationCode=${invitationCode}`)
+          }
+        >
           <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
           링크 복사
         </S.LinkCopyBtn>
