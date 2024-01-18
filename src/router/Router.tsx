@@ -68,11 +68,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/tournament',
-        element: <TournamentContainer />,
+        element: <TournamentContainer giftee={'시동훈'} roomId={2} />,
       },
       {
         path: '/tournament-ranking',
-        element: <TournamentPage />,
+        element: <TournamentPage giftee={'시동훈'} roomId={2} />,
       },
       {
         path: '/add-gift',
