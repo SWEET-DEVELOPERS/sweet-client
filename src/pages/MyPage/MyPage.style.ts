@@ -6,6 +6,7 @@ export const MyPageWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
+  padding-bottom: 3.2rem;
 `;
 
 export const TopImage = styled.div`
