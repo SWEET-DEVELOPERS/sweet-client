@@ -3,7 +3,6 @@ import * as S from './CountDownTimer.styled';
 import { IcTimeColon } from '../../../assets/svg';
 import CountDownCard from './ CountDownCard/CountDownCard';
 import { useCountDown } from '../../../hooks/useCountDown';
-// import { useNavigate } from 'react-router-dom';
 
 interface CountdownTimerProps {
   targetDate: Date;
@@ -25,15 +24,15 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
         <>
           <CountDownCard text={'D'} />
           <S.DashDiv />
-          <CountDownCard text={days.toString()} />
+          <CountDownCard text={days.toString().padStart(2, '0')} />
         </>
       ) : (
         <>
-          <CountDownCard text={hours.toString()} />
+          <CountDownCard text={hours.toString().padStart(2, '0')} />
           <IcTimeColon style={{ width: '0.3rem' }} />
-          <CountDownCard text={minutes.toString()} />
+          <CountDownCard text={minutes.toString().padStart(2, '0')} />
           <IcTimeColon style={{ width: '0.3rem' }} />
-          <CountDownCard text={seconds.toString()} />
+          <CountDownCard text={seconds.toString().padStart(2, '0')} />
         </>
       )}
     </S.TimerWrapper>

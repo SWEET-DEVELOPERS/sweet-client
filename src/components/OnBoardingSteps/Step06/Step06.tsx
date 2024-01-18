@@ -139,6 +139,16 @@ const OnboardingFinal = () => {
     }
   };
 
+  useEffect(() => {
+    const initializeKakao = async () => {
+      if (!window.Kakao.isInitialized()) {
+        await window.Kakao.init(import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY);
+      }
+    };
+    initializeKakao();
+    console.log('카카오 공유하기 확인', initializeKakao());
+  }, []);
+
   return (
     <>
       <OnboardingFinalHeader />
