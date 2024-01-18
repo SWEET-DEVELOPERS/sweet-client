@@ -28,7 +28,7 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
   const [roundIndex, setRoundIndex] = useState<number>(1);
   // 토너먼트 결과화면으로 넘어가게 해주는
   const [showTournamentResult, setShowTournamentResult] = useState(false);
-  const [isSelected, setSelected] = useState(false);
+  const [isSelected, setSelected] = useState<GiftData | null>(null);
 
   const [isClickSelect, setClickSelect] = useState<GiftData[]>([]);
 
@@ -41,7 +41,7 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
 
   const clickSelect = (item: GiftData) => () => {
     setClickSelect([item]);
-    setSelected(true);
+    setSelected(item);
   };
 
   //토너먼트 라운딩 로직 함수
@@ -83,11 +83,8 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
       setCurrentIndex((prevIndex) => prevIndex + 1);
       console.log('변햇다!');
     }
-    setSelected(false);
+    setSelected(null);
   };
-
-  console.log('dma??', firstItems);
-  console.log('dma?????', secondItems);
 
   return (
     <>
@@ -111,7 +108,7 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
                 key={displayitem.name}
                 item={displayitem}
                 onClick={clickSelect(displayitem)}
-                selected={isSelected}
+                selected={isSelected === displayitem}
               />
             ))}
           </S.TournamentCardWrapper>
