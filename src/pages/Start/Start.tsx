@@ -7,9 +7,10 @@ import { ScrollAnimationContainer } from '../../components/ScrollAnimationContai
 import { ScrollAnimationLeftContainer } from '../../components/ScrollAnimationContainer/ScrollAnimationContainerLeft';
 import StartHeader from './StartHeader/StartHeader';
 import Footer from '../../components/Footer/Footer';
-//import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import LottieAnimation from '../../hooks/lottie-animation/LottieAnimation';
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
+import BtnLogout from '../../components/common/Button/Logout/BtnLogout';
 
 // interface TokenResponseType {
 //   data: {
@@ -18,12 +19,16 @@ import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 //   };
 // }
 
+export const isTokenExist = (): boolean => {
+  const token = localStorage.getItem('EXIT_LOGIN_TOKEN'); // 'yourTokenKey'는 실제 사용하는 토큰의 키로 대체하세요
+  return !!token;
+};
+
 const Start = () => {
   const REST_API_KEY: string = import.meta.env.VITE_REST_API_KEY;
   const REDIRECT_URI: string = import.meta.env.VITE_REDIRECT_URI || '';
   const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-  const isLogin: boolean = !localStorage.getItem('EXIT_LOGIN_TOKEN');
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     window.location.replace(kakaoURL);
@@ -40,16 +45,21 @@ const Start = () => {
   //     }
   //   });
 
-  //   // navigate('/mypage');
+  //   navigate('/mypage');
   // };
 
   const goGiftRoom = () => {
     console.log('선물방으로 이동');
-    //navigate('/giftroom');
+    navigate('/onboarding');
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('EXIT_LOGIN_TOKEN');
   };
 
   return (
     <S.Wrapper>
+      <BtnLogout onClick={handleLogout}>로그아웃</BtnLogout>
       <StartHeader />
       <S.TextWrapper>
         <S.TitleText>
@@ -65,7 +75,7 @@ const Start = () => {
 
       <S.DownIcon />
 
-      {isLogin ? (
+      {isTokenExist() ? (
         <BtnFill
           onClick={goGiftRoom}
           customStyle={{

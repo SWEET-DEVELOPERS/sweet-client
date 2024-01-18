@@ -8,7 +8,6 @@ import { getAccessTokenLocalStorage, instance } from '../../../apis/client';
 import usePostOnboardingInfo from '../../../hooks/queries/onboarding/usePostOnboardingInfo';
 import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
 import usePutPresignedUrl from '../../../hooks/queries/onboarding/usePutPresignedUrl';
-import { useNavigate } from 'react-router-dom';
 
 interface SetTournamentDurationProps {
   onNext: VoidFunction;
@@ -35,6 +34,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   // TODO 오늘 기준 날짜로 수정 & map함수로 수정
 
   const {
+    onNext,
     tournamentDuration,
     setTournamentDuration,
     tournamentStartDate,
@@ -42,13 +42,13 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     // imageUrl,
     setImageUrl,
     onboardingInfo,
-    presignedUrl,
+    // presignedUrl,
+    setInvitationCode,
   } = props;
 
   const [selectedOption, setSelectedOption] = useState<string>('');
   const postPresignedUrl = usePostPresignedUrl();
   const putPresignedUrl = usePutPresignedUrl();
-  const navigate = useNavigate();
   const { mutation } = usePostOnboardingInfo();
 
   const timeOptions = [
@@ -69,15 +69,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     instance.defaults.headers.Authorization = getAccessTokenLocalStorage();
     console.log('selectedOption', tournamentDuration);
     console.log('step05 fileName', fileName);
-    console.log('확인용 프리사인 유알엘', presignedUrl);
   }, [tournamentDuration]);
-
-  useEffect(() => {
-    const timeOptionDate = new Date(tournamentStartDate);
-    console.log('step05  내 유즈이펙트로 초대코드 확인', mutation);
-    console.log('timeOptionDate', timeOptionDate);
-    // console.log('formattedTime', formattedTime);
-  }, [mutation]);
 
   const handleTimeSelect = (time: string) => {
     const updatedTime = new Date(tournamentStartDate);
@@ -138,13 +130,14 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
         onSuccess: (data) => {
           // console.log('step05 내 code:', code);
           console.log('step05 내 response:', response);
-
-          navigate(`/result?invitationCode=${data.invitationCode}`);
+          console.log('step05 내 data:', data);
+          setInvitationCode(data.invitationCode);
+          onNext();
+          // navigate(`/result?invitationCode=${data.invitationCode}`);
         },
       });
 
       // const code = mutation.data?.invitationCode;
-      // setInvitationCode(code);
       // console.log('code', code);
     } catch (error) {
       console.log('postOnboardingInfoMutation 실행 중 에러 발생:', error);
@@ -169,12 +162,19 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
           const optionDateTime = new Date(tournamentStartDate);
           optionDateTime.setHours(optionDateTime.getHours() + hours.time);
 
+          const deliveryDateStart = new Date(onboardingInfo.deliveryDate);
+          deliveryDateStart.setHours(0, 0, 0, 0);
+
+          const deliveryDateEnd = new Date(onboardingInfo.deliveryDate);
+          deliveryDateEnd.setHours(23, 59, 59, 999);
+
           // 선물 전달일과의 비교를 통해 isAfterDelivery 계산
-          const isAfterDelivery =
-            optionDateTime.getTime() > new Date(onboardingInfo.deliveryDate).getTime();
+          const isAfterDelivery = optionDateTime.getTime() > deliveryDateEnd.getTime();
+          const isBeforeDelivery = optionDateTime.getTime() < deliveryDateStart.getTime();
+
           const dateType = isAfterDelivery
             ? '선물 전달일 이후'
-            : optionDateTime.getTime() < new Date(onboardingInfo.deliveryDate).getTime()
+            : isBeforeDelivery
               ? ''
               : '선물 전달일 당일';
 
@@ -186,7 +186,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
                 isSelected={() => selectedOption === optionText}
                 onClick={() => setTournamentDuration(hours.textEnglish)}
                 onTimeSelect={handleTimeSelect}
-                isAfterDelivery={isAfterDelivery}
+                $isAfterDelivery={isAfterDelivery}
               />
             </S.TimeOptionsWrapper>
           );

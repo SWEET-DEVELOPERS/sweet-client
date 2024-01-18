@@ -5,14 +5,20 @@ interface TournamentCardWrapperProps {
 }
 export const Wrapper = styled.div``;
 export const LinkIconWrapper = styled.button`
-  ${({ theme: { mixin } }) => mixin.inlineFlexBox({ align: 'center', justify: 'center' })}
-
+  display: inline-flex;
+  align-items: center;
   position: relative;
+
+  padding-right: 14px;
   left: 50%;
+  flex-shrink: 0;
   transform: translateX(-50%);
-  width: 9.9rem;
+  gap: 1.2rem;
   border: none;
-  background-color: ${({ theme }) => theme.colors.white};
+
+  background-color: #ffffff00;
+  ${({ theme }) => theme.fonts.body_10};
+  color: ${({ theme }) => theme.colors.G_07};
 `;
 
 export const SelectWrapper = styled.div<{ isClicked: boolean }>`
@@ -36,6 +42,7 @@ export const TournamentCardWrapper = styled.div<TournamentCardWrapperProps>`
   border: ${({ isClicked }) =>
     isClicked ? '3px solid var(--Pink-P-06, #FF2176)' : '3px solid var(--Gray-G-02, #ebe9ea)'};
   border-radius: 12px;
+  margin-bottom: 2rem;
   background: ${({ theme }) => theme.colors.white};
   cursor: pointer;
 

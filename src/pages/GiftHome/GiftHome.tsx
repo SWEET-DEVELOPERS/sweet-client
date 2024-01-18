@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import GiftHome2030Gifts from '../../components/GiftHome/GiftHome2030Gifts/GiftHome2030Gifts';
 import GiftHomeFriendsGifts from '../../components/GiftHome/GiftHomeFriendsGifts/GiftHomeFriendsGifts';
 import GiftHomeHeader from '../../components/GiftHome/GiftHomeHeader/GiftHomeHeader';
@@ -7,11 +7,14 @@ import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 import * as S from './GiftHome.styled';
 import useGetRoomInfo from '../../hooks/queries/room/useGetRoomInfo';
 
-interface GiftHomeProps {
-  roomId: number;
-}
-export default function GiftHome({ roomId }: GiftHomeProps) {
+export default function GiftHome() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+
+  const roomIdString = searchParams.get('roomId');
+  const roomId = parseInt(roomIdString || '', 10);
+  console.log('추출된 초대 코드', roomId);
 
   const { data, isLoading, isError } = useGetRoomInfo({ roomId: Number(roomId) });
   const tournamentStartTime = data?.data.tournamentStartDate;
