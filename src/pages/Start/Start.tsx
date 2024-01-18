@@ -40,8 +40,10 @@ const Start = () => {
       }
     });
 
+
     navigate('/mypage');
   };
+
 
   const goGiftRoom = () => {
     console.log('선물방으로 이동');
