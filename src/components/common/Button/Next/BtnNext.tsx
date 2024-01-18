@@ -9,7 +9,7 @@ type BtnNextProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   onClick?: () => void;
 };
 
-const BtnNext = ({ disabled, children, customStyle, onClick }: BtnNextProps) => {
+const BtnNext = ({ disabled, children, onClick }: BtnNextProps) => {
   console.log('disabled:', disabled);
   return (
     <S.Wrapper
