@@ -20,9 +20,10 @@ const CardGuest = ({ user, makerState, profileImageUrl, memberId }: CardGuestPro
       const roomIdString = searchParams.get('roomId');
 
       if (roomIdString !== null) {
-        const roomId = parseInt(roomIdString, 10);
+        const roomId = parseInt(roomIdString);
         console.log('추출된 초대 코드', roomId);
         const { mutation } = useDeleteRoomMember({ roomId, memberId });
+
         mutation.mutate();
       } else {
         console.error('roomId is null');
