@@ -7,9 +7,11 @@ import NameInput from '../components/OnBoardingSteps/Step01/Step01';
 import ThumbnailInput from '../components/OnBoardingSteps/Step02/Step02';
 import GiftDelivery from '../components/OnBoardingSteps/Step03/Step03';
 import SetTournamentDuration from '../components/OnBoardingSteps/Step05/Step05';
-import OnboardingFinal from '../components/OnBoardingSteps/Step06/Step06';
+// import OnboardingFinal from '../components/OnBoardingSteps/Step06/Step06';
 import { useEffect, useState } from 'react';
 import SetTournamentSchedule from '../components/OnBoardingSteps/Step04/Step04';
+import { useNavigate } from 'react-router-dom';
+import OnBoardingHeader from '../components/OnBoardingSteps/onboardingHeader/OnBoardingHeader';
 
 const OnBoardingPage = () => {
   const { Funnel, setStep } = useFunnel(ONBOARDING_FORM_STEP, ONBOARDING_FORM_STEP[0]);
@@ -18,13 +20,21 @@ const OnBoardingPage = () => {
   const [deliveryDate, setDeliveryDate] = useState<string>('');
   const [tournamentStartDate, setTournamentStartDate] = useState<string>('');
   const [tournamentDuration, setTournamentDuration] = useState<string>('');
+  const [fileName, setFileName] = useState<string>('');
+  const [invitationCode, setInvitationCode] = useState<string>('');
+  const [presignedUrl, setPresignedUrl] = useState<string>('');
 
+  const navigate = useNavigate();
   const onboardingInfo = {
     gifteeName: gifteeName,
-    imageUrl: imageUrl,
+    // imageUrl: imageUrl,
     deliveryDate: deliveryDate,
     tournamentStartDate: tournamentStartDate,
     tournamentDuration: tournamentDuration,
+  };
+
+  const handleFirstHistoryClick = () => {
+    navigate('/');
   };
 
   //전체 값 확인용
@@ -36,6 +46,7 @@ const OnBoardingPage = () => {
     <OnBoardingPageWrapper>
       <Funnel>
         <Funnel.Step name='NAME'>
+          <OnBoardingHeader step={1} onClick={handleFirstHistoryClick} />
           <div style={{ margin: '2rem' }}>
             {/* step01 */}
             <NameInput
@@ -46,16 +57,22 @@ const OnBoardingPage = () => {
           </div>
         </Funnel.Step>
         <Funnel.Step name='THUMBNAIL'>
+          <OnBoardingHeader step={2} />
+
           <div style={{ margin: '2rem' }}>
             {/* step02 */}
             <ThumbnailInput
               onNext={() => setStep(() => 'PRESENT')}
               imageUrl={imageUrl}
               setImageUrl={setImageUrl}
+              fileName={fileName}
+              setFileName={setFileName}
             />
           </div>
         </Funnel.Step>
         <Funnel.Step name='PRESENT'>
+          <OnBoardingHeader step={3} />
+
           <div style={{ margin: '2rem' }}>
             {/* step03 */}
             <GiftDelivery
@@ -67,6 +84,8 @@ const OnBoardingPage = () => {
         </Funnel.Step>
 
         <Funnel.Step name='TOURNAMENT_SCHEDULE_REGISTRATION'>
+          <OnBoardingHeader step={4} />
+
           <div style={{ margin: '2rem' }}>
             {/* step04 */}
             <SetTournamentSchedule
@@ -77,21 +96,35 @@ const OnBoardingPage = () => {
           </div>
         </Funnel.Step>
         <Funnel.Step name='TOURNAMENT_PROCEEDING'>
+          <OnBoardingHeader step={5} />
+
           <div style={{ margin: '2rem' }}>
             {/* step05 여기서 post (이미지 url먼저 post 후 전체 값 post*/}
             <SetTournamentDuration
-              onNext={() => setStep(() => 'GIFT_ROOM_FIX')}
+              onNext={() => navigate('/result')}
               tournamentDuration={tournamentDuration}
               setTournamentDuration={setTournamentDuration}
               tournamentStartDate={tournamentStartDate}
+              fileName={fileName}
+              imageUrl={imageUrl}
+              setImageUrl={setImageUrl}
               onboardingInfo={onboardingInfo}
+              invitationCode={invitationCode}
+              setInvitationCode={setInvitationCode}
+              presignedUrl={presignedUrl}
+              setPresignedUrl={setPresignedUrl}
             />
           </div>
         </Funnel.Step>
-        <Funnel.Step name='GIFT_ROOM_FIX'>
-          {/* step06 */}
-          <OnboardingFinal onboardingInfo={onboardingInfo} />
-        </Funnel.Step>
+        {/* <Funnel.Step name='GIFT_ROOM_FIX'> */}
+        {/* step06 */}
+        {/* <OnboardingFinal
+            onboardingInfo={onboardingInfo}
+            imageUrl={imageUrl}
+            invitationCode={invitationCode}
+            presignedUrl={presignedUrl}
+          /> */}
+        {/* </Funnel.Step> */}
       </Funnel>
     </OnBoardingPageWrapper>
   );
