@@ -1,69 +1,89 @@
-// import { useNavigate } from 'react-router';
-import { IcKakoLarge, Main03, Main04, Person1, Person2, Person3, Person4 } from '../../assets/svg';
+import { Main02, Person1, Person2, Person3, Person4 } from '../../assets/svg';
 import * as S from './Start.style';
-// import LottieAnimation from '../../hooks/lottie-animation/LottieAnimation';
-// import SweetHomeAnimation from '../../../public/motions/motion_02.json';
+import { post } from '../../apis/client';
+import StartAnimation from '../../../public/motions/start_motion.json';
 // import { useEffect, useRef, useState } from 'react';
 import { ScrollAnimationContainer } from '../../components/ScrollAnimationContainer/ScrollAnimationContainer';
+import { ScrollAnimationLeftContainer } from '../../components/ScrollAnimationContainer/ScrollAnimationContainerLeft';
 import StartHeader from './StartHeader/StartHeader';
-// import { post } from '../../apis/client';
 import Footer from '../../components/Footer/Footer';
+import { useNavigate } from 'react-router';
+import LottieAnimation from '../../hooks/lottie-animation/LottieAnimation';
 
-// interface TokenResponseType {
-//   data: {
-//     accessToken: string;
-//     refreshToken: string;
-//   };
-// }
+interface TokenResponseType {
+  data: {
+    accessToken: string;
+    refreshToken: string;
+  };
+}
 
 const Start = () => {
   const REST_API_KEY: string = import.meta.env.VITE_REST_API_KEY;
   const REDIRECT_URI: string = import.meta.env.VITE_REDIRECT_URI || '';
   const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-  //const navigate = useNavigate();
+  const isLogin: boolean = !!localStorage.getItem('EXIT_LOGIN_TOKEN');
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     window.location.replace(kakaoURL);
   };
-  // const handleClick = () => {
-  //   const fetchExAuth = (): Promise<TokenResponseType> => post('/member/token/2');
-  //   fetchExAuth().then((response: TokenResponseType) => {
-  //     const data = response;
-  //     const JWT = data.data.accessToken;
-  //     if (data) {
-  //       localStorage.setItem('EXIT_LOGIN_TOKEN', JWT);
-  //       console.log(data);
-  //     }
-  //   });
+  const handleClick = () => {
+    const fetchExAuth = (): Promise<TokenResponseType> => post('/member/token/2');
+    fetchExAuth().then((response: TokenResponseType) => {
+      const data = response;
+      const JWT = data.data.accessToken;
+      if (data) {
+        localStorage.setItem('EXIT_LOGIN_TOKEN', JWT);
+        console.log(data);
+        console.log(localStorage.getItem('EXIT_LOGIN_TOKEN'));
+      }
+    });
 
-  //   navigate('/mypage');
-  // };
+    // navigate('/mypage');
+  };
+
+  const goGiftRoom = () => {
+    console.log('선물방으로 이동');
+    //navigate('/giftroom');
+  };
+
   return (
     <S.Wrapper>
       <StartHeader />
-      <IcKakoLarge onClick={handleLogin} />
-      {/* <S.Animation>
-        <LottieAnimation animation={SweetHomeAnimation} customStyle={{ width: '37.5rem' }} />
-      </S.Animation> */}
+      <S.TextWrapper>
+        <S.TitleText>
+          <div>함께라서</div> 더 스윗한 마음
+        </S.TitleText>
+        <S.SubTitleText>여러 명이 선물을 준비하는 가장 쉬운 방법</S.SubTitleText>
+      </S.TextWrapper>
+      <LottieAnimation animation={StartAnimation} />
 
-      <S.MainSecond>
-        <S.PersonWrapper>
-          <ScrollAnimationContainer>
-            <Person1 style={{ width: '25.1rem' }} />
-          </ScrollAnimationContainer>
-          <ScrollAnimationContainer>
-            <Person2 style={{ width: '21.4rem' }} />
-          </ScrollAnimationContainer>
-          <ScrollAnimationContainer>
-            <Person3 style={{ width: '31.5rem' }} />
-          </ScrollAnimationContainer>
-          <ScrollAnimationContainer>
-            <Person4 style={{ width: '22.5rem' }} />
-          </ScrollAnimationContainer>
-        </S.PersonWrapper>
-      </S.MainSecond>
-      <Main03 />
-      <Main04 />
+      <S.DownIcon />
+
+      {isLogin ? (
+        <S.BtnFillStyle
+          onClick={goGiftRoom}
+          customStyle={{ padding: '1.5rem 8.1rem 1.6rem 8.1rem' }}
+        >
+          새로운 선물 준비하기
+        </S.BtnFillStyle>
+      ) : (
+        <S.KakaoLogin onClick={handleClick} />
+      )}
+
+      <Main02 />
+      <S.PersonWrapper>
+        <ScrollAnimationContainer>
+          <Person1 style={{ width: '25.1rem' }} />
+          <Person2 style={{ width: '21.4rem' }} />
+          <Person3 style={{ width: '31.5rem' }} />
+        </ScrollAnimationContainer>
+        <ScrollAnimationLeftContainer>
+          <Person4 style={{ width: '22.5rem' }} />
+        </ScrollAnimationLeftContainer>
+      </S.PersonWrapper>
+      <S.Main3 />
+      <S.Main4 />
       <Footer />
     </S.Wrapper>
   );
