@@ -28,7 +28,7 @@ const ItemTextField = ({
   return (
     <S.ItemTextFieldWrapper>
       <S.CategoryTitle>{categoryTitle}</S.CategoryTitle>
-      <S.Wrapper hasContent={text.length > 0}>
+      <S.Wrapper $hasContent={text.length > 0}>
         <S.TextField>
           <S.Input type={type} value={text} onChange={handleChange} placeholder={placeholderText} />
         </S.TextField>

@@ -15,7 +15,7 @@ export default function GiftHome({ roomId }: GiftHomeProps) {
   const navigate = useNavigate();
 
   const { data, isLoading, isError } = useGetRoomInfo({ roomId: Number(roomId) });
-
+  const tournamentStartTime = data?.data.tournamentStartDate;
   if (isLoading) {
     return <div>LOADING...</div>;
   }
@@ -25,7 +25,7 @@ export default function GiftHome({ roomId }: GiftHomeProps) {
   }
 
   const handleClickBtn = () => {
-    navigate('/add-gift');
+    navigate('/add-gift', { state: { roomId: roomId, targetTime: tournamentStartTime } });
   };
 
   return (

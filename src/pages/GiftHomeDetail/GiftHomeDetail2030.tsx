@@ -19,7 +19,7 @@ function GiftHomeDetail({ roomId }: GiftHomeDetailProps) {
   return (
     <S.GiftHomeDetailPageWrapper>
       {/* 공통 헤더 추가 예정 */}
-      <MiniTimer time={data.data.tournamentStartDate} />
+      <MiniTimer targetDate={data.data.tournamentStartDate.toLocaleString()} />
       <S.GiftHomeDetailWrapper>
         {data.data.hotProductDtoList.length > 0 ? (
           data.data.hotProductDtoList.map((item) => (
