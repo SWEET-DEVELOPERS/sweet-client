@@ -149,9 +149,7 @@ const AddGiftWithLinkLayout = ({
 
   return (
     <S.AddGiftWithLinkLayoutWrapper>
-      <LinkAddHeader targetDate={targetDate} setStep={setStep}>
-        <MiniTimer targetDate={targetDate} />
-      </LinkAddHeader>
+      <LinkAddHeader targetDate={targetDate} setStep={setStep} />
       <GiftStatusBar registeredGiftNum={1} isMargin={false} />
       <AddGiftImg
         imageUrl={imageUrl}
