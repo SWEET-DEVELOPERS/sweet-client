@@ -11,7 +11,7 @@ type BtnRadioProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   isSelected?: () => void;
   onTimeSelect?: (time: string) => void;
   setSelectedTime?: (time: string) => VoidFunction;
-  isAfterDelivery: boolean;
+  $isAfterDelivery: boolean;
 };
 const BtnRadio = ({
   disabled,
@@ -21,7 +21,7 @@ const BtnRadio = ({
   onClick,
   onTimeSelect,
   setSelectedTime,
-  isAfterDelivery,
+  $isAfterDelivery,
 }: BtnRadioProps) => {
   const [focused, setFocused] = useState(false);
 
@@ -49,7 +49,7 @@ const BtnRadio = ({
         <IcCircle style={{ width: '2.4rem' }} />
       )}
       <S.Time>{time}</S.Time>
-      <Period isAfterDelivery={isAfterDelivery}>{period}</Period>
+      <Period $isAfterDelivery={$isAfterDelivery}>{period}</Period>
     </S.Wrapper>
   );
 };
