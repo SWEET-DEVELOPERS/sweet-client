@@ -1,5 +1,13 @@
 import styled from 'styled-components';
-import { IcDown, IcKakoLarge, Main03, Main04 } from '../../assets/svg';
+import {
+  HomeBgGradientFix,
+  HomeCtaBgGradient,
+  IcDown,
+  IcKakoLarge,
+  Main02,
+  Main03,
+  Main04,
+} from '../../assets/svg';
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 
 export const Wrapper = styled.div`
@@ -7,20 +15,13 @@ export const Wrapper = styled.div`
   margin: auto;
 `;
 
-export const ButtonWrapper = styled.div`
-  position: fixed;
-  top: -2rem;
-  z-index: -1;
-`;
-
 export const TextWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter};
   position: relative;
-  top: 20rem;
 
   margin-top: 4.4rem;
 
-  z-index: 4;
+  z-index: 1;
 `;
 
 export const TitleText = styled.div`
@@ -48,15 +49,24 @@ export const SubTitleText = styled.div`
 
   margin-top: 2.7rem;
 `;
+export const Gradient = styled(HomeBgGradientFix)`
+  position: relative;
+  top: -48rem;
+  z-index: 2;
+`;
+
+export const BtnGradient = styled(HomeCtaBgGradient)`
+  position: fixed;
+  z-index: 4;
+`;
 
 export const PersonWrapper = styled.div`
   position: relative;
-  top: -57rem;
+  top: -108rem;
 `;
 
 export const BtnFillStyle = styled(BtnFill)`
   position: fixed;
-  bottom: 2rem;
   z-index: 3;
   width: 33.5rem;
   margin: 2rem;
@@ -70,19 +80,24 @@ export const KakaoLogin = styled(IcKakoLarge)`
   margin: 2rem;
 `;
 
+export const Main2 = styled(Main02)`
+  position: relative;
+  top: -52rem;
+`;
+
 export const Main3 = styled(Main03)`
   position: relative;
-  top: -50rem;
+  top: -100rem;
 `;
 
 export const Main4 = styled(Main04)`
   position: relative;
-  top: -50rem;
+  top: -100rem;
 `;
 
 export const DownIcon = styled(IcDown)`
   position: relative;
-  top: -9.5rem;
+  top: -58rem;
   width: 4rem;
   color: ${({ theme: { colors } }) => colors.G_07};
 `;
