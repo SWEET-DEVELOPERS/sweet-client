@@ -24,7 +24,7 @@ const TournamentResultUser = ({ memberData }: TournamentResultUserProps) => {
         </UserCount>
       </UserWrapper>
       <TimerWrapper>
-        <Timer>종료까지 남은 시간</Timer>
+        <Timer>토너먼트 종료까지</Timer>
         <TimerCount>
           {hours.toString().padStart(2, '0')}:{minutes.toString().padStart(2, '0')}:
           {seconds.toString().padStart(2, '0')}
