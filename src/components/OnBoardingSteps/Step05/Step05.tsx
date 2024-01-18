@@ -33,12 +33,6 @@ interface SetTournamentDurationProps {
 
 const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   // TODO 오늘 기준 날짜로 수정 & map함수로 수정
-  const timeOptions = [
-    { text: '6시간', dateType: 'today', textEnglish: 'SIX_HOURS' },
-    { text: '12시간', dateType: 'today', textEnglish: 'TWELVE_HOURS' },
-    { text: '18시간', dateType: 'nottoday', textEnglish: 'EIGHTEEN_HOURS' },
-    { text: '24시간', dateType: 'nottoday', textEnglish: 'TWENTY_FOUR_HOURS' },
-  ];
 
   const {
     tournamentDuration,
@@ -56,8 +50,19 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   const putPresignedUrl = usePutPresignedUrl();
   const navigate = useNavigate();
   const { mutation } = usePostOnboardingInfo();
-  // const postOnboardingInfoMutation = usePostOnboardingInfo();
-  // const { mutate } = usePostOnboardingInfo();
+
+  const timeOptions = [
+    { time: 6, textEnglish: 'SIX_HOURS' },
+    { time: 12, textEnglish: 'TWELVE_HOURS' },
+    { time: 18, textEnglish: 'EIGHTEEN_HOURS' },
+    { time: 24, textEnglish: 'TWENTY_FOUR_HOURS' },
+  ];
+  // const timeOptions = [
+  //   { text: '6시간', dateType: 'today', textEnglish: 'SIX_HOURS' },
+  //   { text: '12시간', dateType: 'today', textEnglish: 'TWELVE_HOURS' },
+  //   { text: '18시간', dateType: 'nottoday', textEnglish: 'EIGHTEEN_HOURS' },
+  //   { text: '24시간', dateType: 'nottoday', textEnglish: 'TWENTY_FOUR_HOURS' },
+  // ];
 
   useEffect(() => {
     // 컴포넌트가 마운트될 때마다 최신 토큰을 가져와서 설정
@@ -68,17 +73,30 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   }, [tournamentDuration]);
 
   useEffect(() => {
-    console.log('step05 내 유즈이펙트로 초대코드 확인', mutation);
+    const timeOptionDate = new Date(tournamentStartDate);
+    console.log('step05  내 유즈이펙트로 초대코드 확인', mutation);
+    console.log('timeOptionDate', timeOptionDate);
+    // console.log('formattedTime', formattedTime);
   }, [mutation]);
 
   const handleTimeSelect = (time: string) => {
     const updatedTime = new Date(tournamentStartDate);
     updatedTime.setHours(updatedTime.getHours() + parseInt(time.split('시간')[0]));
 
-    updatedTime.setMinutes(updatedTime.getMinutes() - updatedTime.getTimezoneOffset());
+    // updatedTime.setMinutes(updatedTime.getMinutes() - updatedTime.getTimezoneOffset());
     setSelectedOption(time);
     // const formattedTime = updatedTime.toISOString();
   };
+
+  // const isAfterDelivery = (dateType: string) => {
+  //   const selectedTime = timeOptions.find((option) => option.textEnglish === dateType);
+  //   if (!selectedTime) return false;
+
+  //   const updatedTime = new Date(tournamentStartDate);
+  //   updatedTime.setHours(updatedTime.getHours() + parseInt(selectedTime.text.split('시간')[0]));
+
+  //   return updatedTime > new Date(onboardingInfo.deliveryDate);
+  // };
 
   const fetchPresignedUrl = async (fileName: string) => {
     if (!fileName) {
@@ -143,6 +161,39 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
         <SubTitle subTitle='토너먼트가 아래 시간 동안 진행돼요.' />
       </div>
       <S.SetTournamentDurationWrapper>
+        {timeOptions.map((hours) => {
+          const optionText = `${hours.time}시간`;
+          // const textEnglish = hours.textEnglish;
+
+          // tournamentStartDate에 timeOptions 숫자와 시간 형식을 더한 값
+          const optionDateTime = new Date(tournamentStartDate);
+          optionDateTime.setHours(optionDateTime.getHours() + hours.time);
+
+          // 선물 전달일과의 비교를 통해 isAfterDelivery 계산
+          const isAfterDelivery =
+            optionDateTime.getTime() > new Date(onboardingInfo.deliveryDate).getTime();
+          const dateType = isAfterDelivery
+            ? '선물 전달일 이후'
+            : optionDateTime.getTime() < new Date(onboardingInfo.deliveryDate).getTime()
+              ? ''
+              : '선물 전달일 당일';
+
+          return (
+            <S.TimeOptionsWrapper key={optionText}>
+              <BtnRadio
+                time={optionText}
+                period={dateType}
+                isSelected={() => selectedOption === optionText}
+                onClick={() => setTournamentDuration(hours.textEnglish)}
+                onTimeSelect={handleTimeSelect}
+                isAfterDelivery={isAfterDelivery}
+              />
+            </S.TimeOptionsWrapper>
+          );
+        })}
+      </S.SetTournamentDurationWrapper>
+
+      {/* <S.SetTournamentDurationWrapper>
         {timeOptions.map((option, index) => (
           <S.TimeOptionsWrapper>
             <BtnRadio
@@ -152,10 +203,11 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
               isSelected={() => selectedOption === option.text}
               onClick={() => setTournamentDuration(option.textEnglish)}
               onTimeSelect={handleTimeSelect}
+              isAfterDelivery={isAfterDelivery(option.textEnglish)}
             />
           </S.TimeOptionsWrapper>
         ))}
-      </S.SetTournamentDurationWrapper>
+      </S.SetTournamentDurationWrapper> */}
 
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <OnBoardingBtn
