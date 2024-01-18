@@ -169,12 +169,19 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
           const optionDateTime = new Date(tournamentStartDate);
           optionDateTime.setHours(optionDateTime.getHours() + hours.time);
 
+          const deliveryDateStart = new Date(onboardingInfo.deliveryDate);
+          deliveryDateStart.setHours(0, 0, 0, 0);
+
+          const deliveryDateEnd = new Date(onboardingInfo.deliveryDate);
+          deliveryDateEnd.setHours(23, 59, 59, 999);
+
           // 선물 전달일과의 비교를 통해 isAfterDelivery 계산
-          const isAfterDelivery =
-            optionDateTime.getTime() > new Date(onboardingInfo.deliveryDate).getTime();
+          const isAfterDelivery = optionDateTime.getTime() > deliveryDateEnd.getTime();
+          const isBeforeDelivery = optionDateTime.getTime() < deliveryDateStart.getTime();
+
           const dateType = isAfterDelivery
             ? '선물 전달일 이후'
-            : optionDateTime.getTime() < new Date(onboardingInfo.deliveryDate).getTime()
+            : isBeforeDelivery
               ? ''
               : '선물 전달일 당일';
 
@@ -186,7 +193,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
                 isSelected={() => selectedOption === optionText}
                 onClick={() => setTournamentDuration(hours.textEnglish)}
                 onTimeSelect={handleTimeSelect}
-                isAfterDelivery={isAfterDelivery}
+                $isAfterDelivery={isAfterDelivery}
               />
             </S.TimeOptionsWrapper>
           );
