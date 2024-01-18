@@ -4,17 +4,17 @@ import { GiftPostRequestType } from '../../../types/gift';
 import { useNavigate } from 'react-router-dom';
 
 export const postNewGift = async (body: GiftPostRequestType) => {
-  post(`/gift/friend/${body.roomId}`, body);
+  post(`/gift`, body);
 };
 
-export const usePostGift = ({ body }: { body: GiftPostRequestType }) => {
+export const usePostGift = () => {
   const navigate = useNavigate();
 
   const mutation = useMutation({
     mutationFn: postNewGift,
-    onSuccess: () => {
-      console.log('선물 등록 완료 body값', body);
+    onSuccess: (data) => {
       navigate(`/add-gift`);
+      console.log('POST로 선물 등록 성공!', data);
     },
 
     onError: () => {

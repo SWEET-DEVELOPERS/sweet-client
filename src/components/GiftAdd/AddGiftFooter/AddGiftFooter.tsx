@@ -15,6 +15,10 @@ interface AddGiftFooterProps {
   cost: number;
   imageUrl: string;
   link: string;
+  saveImageUrl: (fileName: string) => Promise<void>;
+  fileName: string;
+  fetchPresignedUrl: (fileName: string) => Promise<{ imageUrl: any; presignedUrl: any }>;
+  setImageUrl: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const AddGiftFooter = ({
@@ -25,6 +29,10 @@ const AddGiftFooter = ({
   cost,
   imageUrl,
   link,
+  saveImageUrl,
+  fileName,
+  fetchPresignedUrl,
+  setImageUrl,
 }: AddGiftFooterProps) => {
   const updatedItemInfo = {
     ...itemInfo,
@@ -34,9 +42,14 @@ const AddGiftFooter = ({
     url: link,
   };
 
-  const onClick = () => {
+  const { mutation } = usePostGift();
+
+  const onClick = async () => {
+    const { presignedUrl } = await fetchPresignedUrl(fileName);
+    console.log('푸터 안에서 fileName', fileName);
+    await saveImageUrl(presignedUrl);
+    setImageUrl(presignedUrl);
     if (isActivated) {
-      const { mutation } = usePostGift({ body: updatedItemInfo });
       mutation.mutate(updatedItemInfo);
       setStep(0);
     }

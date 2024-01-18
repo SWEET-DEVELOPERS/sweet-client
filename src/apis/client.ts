@@ -91,5 +91,5 @@ export function patch<T>(...args: Parameters<typeof instance.patch>) {
 }
 
 export function del<T>(...args: Parameters<typeof instance.delete>) {
-  return instance.delete<T, T>(...args);
+  return instance.delete<T>(...args);
 }

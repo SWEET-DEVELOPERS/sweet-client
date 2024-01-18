@@ -3,12 +3,20 @@ import { IcRight } from '../../../../assets/svg';
 import * as S from './GiftHoeShowcaseHeader.style';
 
 interface GiftHomeShowcaseHeaderProps {
+  targetDate: Date;
+  roomId: number;
   title: string;
   category: string;
   length: number;
 }
 
-const GiftHomeShowcaseHeader = ({ title, category, length }: GiftHomeShowcaseHeaderProps) => {
+const GiftHomeShowcaseHeader = ({
+  targetDate,
+  roomId,
+  title,
+  category,
+  length,
+}: GiftHomeShowcaseHeaderProps) => {
   const navigate = useNavigate();
   return (
     <S.GiftHomeShowcaseHeaderWrapper>
@@ -17,7 +25,11 @@ const GiftHomeShowcaseHeader = ({ title, category, length }: GiftHomeShowcaseHea
         <IcRight
           style={{ width: '2.4rem', height: '2.4rem', cursor: 'pointer' }}
           onClick={() =>
-            navigate(category === 'friends' ? '/gift-detail-friends' : '/gift-detail-2030')
+            navigate(
+              category === 'friends'
+                ? `/gift-detail-friends?roomId=${roomId}&targetTime=${targetDate}`
+                : `/gift-detail-2030?roomId=${roomId}&targetTime=${targetDate}`,
+            )
           }
         />
       ) : (
