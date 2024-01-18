@@ -41,6 +41,7 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
 
   const clickSelect = (item: GiftData) => () => {
     setClickSelect([item]);
+    setSelected(true);
   };
 
   //토너먼트 라운딩 로직 함수
@@ -82,7 +83,7 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
       setCurrentIndex((prevIndex) => prevIndex + 1);
       console.log('변햇다!');
     }
-    setSelected(true);
+    setSelected(false);
   };
 
   console.log('dma??', firstItems);
@@ -110,7 +111,7 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
                 key={displayitem.name}
                 item={displayitem}
                 onClick={clickSelect(displayitem)}
-                selected={true}
+                selected={isSelected}
               />
             ))}
           </S.TournamentCardWrapper>
