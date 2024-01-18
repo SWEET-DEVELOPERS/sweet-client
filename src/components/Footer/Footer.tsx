@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router';
 import { Divider, IcInstagram, IcPalmspring, LongDivider, SweetLogoGray } from '../../assets/svg';
 import * as S from './Footer.style';
 import { Link } from '../../utils/Footer.utils';
