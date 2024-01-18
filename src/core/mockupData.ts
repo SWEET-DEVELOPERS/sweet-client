@@ -3,7 +3,7 @@ export interface GiftData {
   imageUrl: string;
   name: string;
   cost: number;
-  url: string;
+  url?: string;
 }
 
 const mockupData: GiftData[] = [
