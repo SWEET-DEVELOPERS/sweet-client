@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 // import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
 // import usePostParticipation from '../../../hooks/queries/onboarding/usePostParticipation';
-import { IcKakaoShare, IcLink } from '../../assets/svg';
+import { IcKakaoShare, IcKakoLarge, IcLink } from '../../assets/svg';
 import OnBoardingBtn from '../../components/OnBoardingSteps/onboardingBtn/OnBoardingBtn';
 import OnboardingFinalHeader from '../../components/OnBoardingSteps/Step06/OnboardingFinalHeader';
 import useClipboard from '../../hooks/useCopyClip';
@@ -192,14 +192,15 @@ const ParticipantsView = () => {
         ))}
       </S.InfoWrapper>
       <S.BtnWrapper>
-        <S.LinkCopyBtn onClick={() => handleCopyToClipboard(`${baseUrl}`)}>
+        <IcKakoLarge onClick={() => navigate('/')} />
+        {/* <S.LinkCopyBtn onClick={() => handleCopyToClipboard(`${baseUrl}`)}>
           <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
           링크 복사
         </S.LinkCopyBtn>
         <S.KakaoLinkCopyBtn onClick={() => useKakaoShare()}>
           <IcKakaoShare style={{ width: '1.8rem', height: '1.8rem' }} />
           카카오톡 공유
-        </S.KakaoLinkCopyBtn>
+        </S.KakaoLinkCopyBtn> */}
       </S.BtnWrapper>
     </>
   );
