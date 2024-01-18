@@ -21,14 +21,17 @@ const GiftHomeShowcaseHeader = ({
   return (
     <S.GiftHomeShowcaseHeaderWrapper>
       <S.ShowcaseTitle>{title}</S.ShowcaseTitle>
-      {length > 0 ? (
+      {category === 'my' && length > 0 ? <S.EditText>수정하기</S.EditText> : null}
+      {category !== 'my' && length > 0 ? (
         <IcRight
           style={{ width: '2.4rem', height: '2.4rem', cursor: 'pointer' }}
           onClick={() =>
             navigate(
               category === 'friends'
                 ? `/gift-detail-friends?roomId=${roomId}&targetTime=${targetDate}`
-                : `/gift-detail-2030?roomId=${roomId}&targetTime=${targetDate}`,
+                : category === 'my'
+                  ? `/add-gift`
+                  : `/gift-detail-2030?roomId=${roomId}&targetTime=${targetDate}`,
             )
           }
         />

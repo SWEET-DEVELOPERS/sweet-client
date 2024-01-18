@@ -3,7 +3,7 @@ export interface RoomInfoType {
   gifteeName: string;
   invitationCode: string;
   tournamentStartDate: Date;
-  roomMyGiftDtoList: FriendsGiftsType[];
+  roomMyGiftDtoList: MyGiftsType[];
   roomFriendsGiftDtoList: friendGiftDtoType[];
   hotProductGiftDtoList: HotGiftsType[];
 }
@@ -26,7 +26,7 @@ export interface friendGiftDtoType {
   giftOwner: string;
 }
 
-export interface FriendsGiftsType {
+export interface MyGiftsType {
   giftId: number;
   imageUrl: string;
   name: string;
