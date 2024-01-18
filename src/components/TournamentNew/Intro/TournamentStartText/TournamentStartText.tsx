@@ -1,7 +1,7 @@
 import * as S from './TournamentStartText.style';
 
 interface TournamentTitleGifteeProps {
-  giftee: string;
+  giftee?: string;
 }
 
 const TournamentStartText = ({ giftee }: TournamentTitleGifteeProps) => {

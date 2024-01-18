@@ -7,7 +7,7 @@ import * as S from './TournamentRanking.style';
 
 interface TournamentRankingProps {
   roomId: number;
-  giftee: string;
+  giftee?: string;
 }
 
 const TournamentRanking = ({ roomId, giftee }: TournamentRankingProps) => {

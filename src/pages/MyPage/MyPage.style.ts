@@ -1,11 +1,12 @@
 import styled from 'styled-components';
-import MypageImage from '../../../public/svg/mypage_image.svg';
+import BackgroundImage from '../../assets/img/mypage_background.png';
 
 export const MyPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
+  padding-bottom: 3.2rem;
 `;
 
 export const TopImage = styled.div`
@@ -13,7 +14,8 @@ export const TopImage = styled.div`
   height: 34rem;
   flex-shrink: 0;
 
-  background-image: url(${MypageImage});
+  background-image: url(${BackgroundImage});
+  background-size: contain;
   z-index: 0;
   margin: 0;
 `;
