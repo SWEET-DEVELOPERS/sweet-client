@@ -2,6 +2,7 @@ import * as S from './GiftHomeDetail.styled';
 import MiniTimer from '../../components/common/MiniTimer/MiniTimer';
 import useGetFriendGift from '../../hooks/queries/gift/useGetFriendGift';
 import { useLocation } from 'react-router-dom';
+import GiftHomePriceTag from '../../components/common/GiftHome/Price/GiftHomePriceTag';
 
 function GiftHomeDetailFriends() {
   const location = useLocation();
@@ -11,8 +12,6 @@ function GiftHomeDetailFriends() {
   const roomId = params?.split('targetTime=')[0];
   const targetDate = params?.split('targetTime=')[1];
 
-  // console.log('추출된 roomId', roomId);
-  // console.log('추출된 targetDate', targetDate);
   const roomIdNumber = parseInt(roomId || '');
   const { data, isLoading, isError } = useGetFriendGift({ roomId: roomIdNumber });
 
@@ -34,7 +33,7 @@ function GiftHomeDetailFriends() {
             <S.GiftsItemWrapper key={index}>
               <S.GiftsItemImage src={item.imageUrl} />
               <S.GiftsItemTitle>{item.name}</S.GiftsItemTitle>
-              <S.GiftsItemPrice>{item.cost}원</S.GiftsItemPrice>
+              <GiftHomePriceTag price={item.cost} fonts={`body_07`} />
             </S.GiftsItemWrapper>
           ))
         ) : (
