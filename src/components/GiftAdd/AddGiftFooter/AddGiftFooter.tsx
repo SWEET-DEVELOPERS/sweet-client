@@ -47,17 +47,29 @@ const AddGiftFooter = ({
     url: link,
   };
   const navigate = useNavigate();
-  const { mutation } = usePostGift();
+  const { mutation } = usePostGift(itemInfo.roomId, targetDate);
 
   const onClick = async () => {
     const { presignedUrl } = await fetchPresignedUrl(fileName);
-    console.log('푸터 안에서 fileName', fileName);
+    // console.log('푸터 안에서 fileName', fileName);
     await saveImageUrl(presignedUrl);
     setImageUrl(presignedUrl);
     if (isActivated) {
-      mutation.mutate(updatedItemInfo);
-      navigate(`/add-gift?roomId=${itemInfo.roomId}&targetTime=${targetDate}`);
-      navigate(`/add-gift`);
+      mutation.mutate(
+        {
+          roomId: itemInfo.roomId,
+          name,
+          cost,
+          imageUrl,
+          url: link,
+        },
+        {
+          onSuccess: () => {
+            navigate(`/add-gift?roomId=${itemInfo.roomId}&targetTime=${targetDate}`);
+            setStep(0);
+          },
+        },
+      );
     }
   };
 
