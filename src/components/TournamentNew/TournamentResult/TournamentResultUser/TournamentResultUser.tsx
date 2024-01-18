@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useCountDown } from '../../../../hooks/useCountDown';
 import { TournamentUser } from '../../../../types/tournament';
 
 interface TournamentResultUserProps {
@@ -9,7 +10,10 @@ const TournamentResultUser = ({ memberData }: TournamentResultUserProps) => {
   console.log('wtf.', memberData);
   const tournamentUserData = memberData || {};
 
-  console.log(memberData.ParticipantsCount);
+  const [days, hours, minutes, seconds] = useCountDown(tournamentUserData.tournamentStartDate);
+  console.log('Countdown:', hours, 'hours', minutes, 'minutes', seconds, 'seconds');
+
+  console.log(days);
 
   return (
     <TournamentResultUserWrapper>
@@ -22,7 +26,8 @@ const TournamentResultUser = ({ memberData }: TournamentResultUserProps) => {
       <TimerWrapper>
         <Timer>종료까지 남은 시간</Timer>
         <TimerCount>
-          {tournamentUserData.tournamentDuration} {tournamentUserData.tournamentStartDate}
+          {hours.toString().padStart(2, '0')}:{minutes.toString().padStart(2, '0')}:
+          {seconds.toString().padStart(2, '0')}
         </TimerCount>
       </TimerWrapper>
     </TournamentResultUserWrapper>
