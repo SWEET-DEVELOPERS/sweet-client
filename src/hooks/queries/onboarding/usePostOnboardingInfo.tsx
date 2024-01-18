@@ -1,10 +1,14 @@
 import { useMutation } from '@tanstack/react-query';
 import { post } from '../../../apis/client';
 import { OnboardingInfo } from '../../../types/Onboarding';
-import { AxiosResponse } from 'axios';
+
+interface PostOnboardingInfoRes {
+  roomId: number;
+  invitationCode: string;
+}
 
 const postOnboardingInfo = async (onboardingInfo: OnboardingInfo) => {
-  const response: AxiosResponse = await post(`/room`, onboardingInfo);
+  const response = await post<PostOnboardingInfoRes>(`/room`, onboardingInfo);
   return response.data;
 };
 
