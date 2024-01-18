@@ -2,8 +2,6 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { del } from '../../../apis/client';
 import { ROOM_MEMBER_QUERY_KEY } from './useGetRoomMember';
 
-export const MEMBER_DELETE_QUERY_KEY: string[] = ['roomDeleteData'];
-
 interface DeleteRoomMember {
   roomId: number;
   memberId: number;
@@ -17,9 +15,11 @@ const useDeleteRoomMember = ({ roomId, memberId }: DeleteRoomMember) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: () => deleteRoomMember({ roomId, memberId }),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [...ROOM_MEMBER_QUERY_KEY, roomId, memberId] });
+    mutationKey: [ROOM_MEMBER_QUERY_KEY[0]],
+    mutationFn: deleteRoomMember,
+    onSuccess() {
+      console.log('삭제 성공');
+      queryClient.invalidateQueries({ queryKey: [ROOM_MEMBER_QUERY_KEY[0], roomId, memberId] });
     },
     onError: () => {
       console.log('선물 삭제 중 에러가 발생했습니다.');
