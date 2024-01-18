@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import GiftAddFirstLinkLayout from '../../components/GiftAdd/AddGiftLink/GiftAddFirstLinkLayout/GiftAddFirstLinkLayout';
 import AddGiftWithoutLinkLayout from '../../components/GiftAdd/AddGiftLayout/AddGiftWithoutLinkLayout';
-import GiftAddSecondLinkLayout from '../../components/GiftAdd/AddGiftLink/GiftAddSecondLinkLayout/GiftAddSecondLinkLayout';
 import GiftAddPageLayout from '../../components/GiftAdd/GiftAddPageLayout/GiftAddPageLayout';
 import { OpenGraphResponseType } from '../../types/etc';
 import { useLocation } from 'react-router-dom';
@@ -68,17 +67,6 @@ const GiftAddPage = () => {
           targetDate={targetDate || ''}
         />
       );
-
-    // case 4:
-    //   return (
-    //     <GiftAddSecondLinkLayout
-    //       setStep={setStep}
-    //       setLinkText={setLinkText}
-    //       openGraph={openGraph}
-    //       setOpenGraph={setOpenGraph}
-    //       targetDate={targetDate || ''}
-    //     />
-    //   );
   }
 };
 
