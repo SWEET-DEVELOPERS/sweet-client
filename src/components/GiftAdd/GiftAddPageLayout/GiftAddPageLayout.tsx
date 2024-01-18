@@ -19,7 +19,8 @@ const GiftAddPageLayout = ({ targetDate, roomId, setStep }: GiftAddPageLayoutPro
   const roomIdNumber = parseInt(roomId);
   const { data, isLoading, isError } = useGetMyGift({ roomId: roomIdNumber });
   console.log('받아온 데이터', data);
-  const { mutation } = useDeleteMyGift();
+  const parsedRoomId = parseInt(roomId);
+  const { mutation } = useDeleteMyGift(parsedRoomId);
   if (isLoading) {
     return <div>LOADING...</div>;
   }

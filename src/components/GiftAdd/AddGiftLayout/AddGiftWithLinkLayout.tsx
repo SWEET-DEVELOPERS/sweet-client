@@ -122,7 +122,7 @@ const AddGiftWithLinkLayout = ({
         openGraph={openGraph}
         setPreviewImage={setPreviewImage}
       />
-      <ShowLink />
+      <ShowLink link={link} />
       <WriteItemInfo
         setIsActivated={setIsActivated}
         setName={setNameText}
