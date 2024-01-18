@@ -64,8 +64,9 @@ const GiftAddPage = () => {
       return (
         <GiftAddSecondLinkLayout
           setStep={setStep}
-          setLink={setLinkText}
-          link={linkText}
+          setLinkText={setLinkText}
+          openGraph={openGraph}
+          setOpenGraph={setOpenGraph}
           targetDate={targetDate || ''}
         />
       );

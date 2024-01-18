@@ -14,17 +14,14 @@ interface GiftAddPageLayoutProps {
 }
 
 const GiftAddPageLayout = ({ targetDate, roomId, setStep }: GiftAddPageLayoutProps) => {
-  console.log('targetDate 받아온 거', targetDate);
-  console.log('roomId 받아온 거', roomId);
   const roomIdNumber = parseInt(roomId);
   const { data, isLoading, isError } = useGetMyGift({ roomId: roomIdNumber });
-  console.log('받아온 데이터', data);
+
   const parsedRoomId = parseInt(roomId);
   const { mutation } = useDeleteMyGift(parsedRoomId);
   if (isLoading) {
     return <div>LOADING...</div>;
   }
-
   if (isError || !data) {
     return <div>ERROR,,,</div>;
   }
@@ -60,7 +57,7 @@ const GiftAddPageLayout = ({ targetDate, roomId, setStep }: GiftAddPageLayoutPro
           <EmptyGiftAddButtonsWrapper key={index} onClick={handleClickAddBtn} />
         ))}
       </S.AddButtonsWrapper>
-      <GiftAddPageBottom adPrice={adPrice} />
+      <GiftAddPageBottom adPrice={adPrice} myGiftData={myGiftData} />
     </S.GiftAddPageWrapper>
   );
 };
