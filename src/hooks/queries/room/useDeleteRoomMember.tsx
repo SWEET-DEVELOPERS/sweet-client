@@ -17,11 +17,11 @@ const useDeleteRoomMember = ({ roomId, memberId }: DeleteRoomMember) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationKey: [ROOM_MEMBER_QUERY_KEY[0]],
+    mutationKey: [ROOM_MEMBER_QUERY_KEY[2]],
     mutationFn: () => deleteRoomMember({ roomId, memberId }),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [ROOM_MEMBER_QUERY_KEY[0], { roomId, memberId }],
+        queryKey: [ROOM_MEMBER_QUERY_KEY[2], { roomId, memberId }],
       });
     },
     onError: () => {

@@ -9,26 +9,18 @@ interface CardGuestProps {
   user?: string;
   makerState: boolean;
   profileImageUrl?: string;
-  memberId?: number;
+  memberId: number;
 }
 
 const CardGuest = ({ user, makerState, profileImageUrl, memberId }: CardGuestProps) => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const roomIdString = searchParams.get('roomId');
+  const roomId = parseInt(roomIdString || '');
+  console.log('추출된 초대 코드', roomId);
+  const { mutation } = useDeleteRoomMember({ roomId, memberId });
   const handleButton = () => {
-    if (memberId !== undefined) {
-      const location = useLocation();
-      const searchParams = new URLSearchParams(location.search);
-      const roomIdString = searchParams.get('roomId');
-
-      if (roomIdString !== null) {
-        const roomId = parseInt(roomIdString);
-        console.log('추출된 초대 코드', roomId);
-        const { mutation } = useDeleteRoomMember({ roomId, memberId });
-
-        mutation.mutate();
-      } else {
-        console.error('roomId is null');
-      }
-    }
+    mutation.mutate();
   };
   return (
     <S.CardGuestWrapper>
