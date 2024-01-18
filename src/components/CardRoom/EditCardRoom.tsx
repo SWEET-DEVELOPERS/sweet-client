@@ -12,11 +12,11 @@ interface EditCardRoomType {
   onClick: VoidFunction;
 }
 
-const EditCardRoom = ({ user, srcImage, userCount, onClick }: EditCardRoomType) => {
+const EditCardRoom = ({ user, srcImage, userCount, roomId, onClick }: EditCardRoomType) => {
   const navigate = useNavigate();
 
   const handleSettingIcon = () => {
-    navigate(`/editpage`);
+    navigate(`/editpage?roomId=${roomId}`);
   };
   return (
     <S.CardRoomWrapper onClick={onClick}>
