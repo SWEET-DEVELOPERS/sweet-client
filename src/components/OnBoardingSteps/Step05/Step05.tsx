@@ -41,7 +41,6 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   ];
 
   const {
-    onNext,
     tournamentDuration,
     setTournamentDuration,
     tournamentStartDate,
@@ -49,7 +48,6 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     // imageUrl,
     setImageUrl,
     onboardingInfo,
-    invitationCode,
     presignedUrl,
   } = props;
 
@@ -120,17 +118,16 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
       const updatedOnboardingInfo = { ...onboardingInfo, imageUrl: imageUrl };
       const response = mutation.mutate(updatedOnboardingInfo, {
         onSuccess: (data) => {
+          // console.log('step05 내 code:', code);
+          console.log('step05 내 response:', response);
+
           navigate(`/result?invitationCode=${data.invitationCode}`);
-          console.log('step05 내 response:', data.invitationCode);
         },
       });
-      const code = response.invitationCode;
 
+      // const code = mutation.data?.invitationCode;
       // setInvitationCode(code);
       // console.log('code', code);
-      console.log('code', code);
-
-      onNext();
     } catch (error) {
       console.log('postOnboardingInfoMutation 실행 중 에러 발생:', error);
     }
@@ -166,9 +163,6 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
           setStep={async () => {
             const { presignedUrl } = await fetchPresignedUrl(fileName);
             await saveImageUrl(presignedUrl);
-            // await navigate(`/result?invitationCode=${invitationCode}`, {
-            //   state: { value: invitationCode },
-            // });
           }}
         >
           다음
