@@ -11,6 +11,7 @@ const GiftAddPage = () => {
   const [linkText, setLinkText] = useState<string>('');
   const [openGraph, setOpenGraph] = useState<OpenGraphResponseType>({ title: '', image: '' });
   const [itemNum, setItemNum] = useState(0);
+  const [modalStatus, setModalStatus] = useState(false);
 
   const location = useLocation();
 
@@ -43,6 +44,7 @@ const GiftAddPage = () => {
           setOpenGraph={setOpenGraph}
           targetDate={targetDate || ''}
           itemNum={itemNum}
+          setModalStatus={setModalStatus}
         />
       );
 
@@ -65,6 +67,7 @@ const GiftAddPage = () => {
           linkText={linkText}
           setLinkText={setLinkText}
           targetDate={targetDate || ''}
+          modalStatus={modalStatus}
         />
       );
   }

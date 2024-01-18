@@ -1,12 +1,10 @@
-import { SetStateAction, useState } from 'react';
-import MiniTimer from '../../common/MiniTimer/MiniTimer';
+import { useState } from 'react';
 import AddGiftFooter from '../AddGiftFooter/AddGiftFooter';
 import GiftStatusBar from '../AddGiftLink/common/GiftStatusBar/GiftStatusBar';
 import * as S from './common/AddGiftLayout.styled';
 import AddGiftImg from './common/AddGiftImg/AddGiftImg';
 import WithoutLinkWriteItemInfo from './common/WriteItemInfo/WithoutLinkWriteItemInfo';
 import Modal from '../../common/Modal/Modal';
-// import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
 import usePutPresignedUrl from '../../../hooks/queries/onboarding/usePutPresignedUrl';
 import usePostMyPresignedUrl from '../../../hooks/queries/etc/usePostMyPresignedUrl';
 import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
@@ -17,6 +15,7 @@ interface AddGiftWithLinkLayoutProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
   setLinkText: React.Dispatch<React.SetStateAction<string>>;
   targetDate: string;
+  modalStatus: boolean;
 }
 // 직접 입력 화면
 function AddGiftWithoutLinkLayout({
@@ -25,6 +24,7 @@ function AddGiftWithoutLinkLayout({
   linkText,
   setLinkText,
   targetDate,
+  modalStatus,
 }: AddGiftWithLinkLayoutProps) {
   const [isActivated, setIsActivated] = useState(false);
   const [nameText, setNameText] = useState<string>('');
@@ -131,15 +131,17 @@ function AddGiftWithoutLinkLayout({
 
   // 모달 확인 클릭 버튼
   const handleClickConfirmClick = () => {
-    setIsModalOpen(false);
-    setStep(1);
+    setIsModalOpen(!isModalOpen);
+    setStep(3);
   };
 
   return (
     <S.AddGiftWithLinkLayoutWrapper>
       {isModalOpen && (
         <Modal onConfirmClick={handleClickConfirmClick}>
-          상품 데이터를 불러올 수 없어요 <br /> 직접 입력해주세요
+          상품 정보를 자동으로
+          <br />
+          불러올 수 없어요 <br />
         </Modal>
       )}
       <LinkAddHeader targetDate={targetDate} setStep={setStep} />
