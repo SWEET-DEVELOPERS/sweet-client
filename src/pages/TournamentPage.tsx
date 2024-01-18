@@ -9,9 +9,6 @@ const TournamentPage = () => {
   const roomIdString = searchParams.get('roomId');
   const roomId = parseInt(roomIdString || '', 10);
   console.log('추출된 초대 코드', roomId);
-  // const roomMemberWholeData = useGetRoomMember(roomId)?.data;
-  // 여기다가 query api 불러오기
-  // console.log(roomMemberWholeData);
   return <TournamentRanking roomId={roomId} giftee={giftee} />;
 };
 
