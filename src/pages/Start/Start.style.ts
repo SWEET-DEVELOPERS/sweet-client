@@ -13,6 +13,7 @@ import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 export const Wrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter};
   margin: auto;
+  height: fit-content;
 `;
 
 export const TextWrapper = styled.div`
