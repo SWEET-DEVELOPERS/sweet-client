@@ -5,7 +5,7 @@ import * as S from './GiftAddPageBottom.styled';
 import { GiftType } from '../../../types/gift';
 
 interface GiftAddPageBottomProps {
-  adPrice: number;
+  adPrice: string;
   myGiftData: GiftType[];
 }
 

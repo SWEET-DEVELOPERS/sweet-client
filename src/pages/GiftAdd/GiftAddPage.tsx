@@ -30,6 +30,7 @@ const GiftAddPage = () => {
     case 1:
       return (
         <GiftAddFirstLinkLayout
+          linkText={linkText}
           setStep={setStep}
           setLinkText={setLinkText}
           setOpenGraph={setOpenGraph}
