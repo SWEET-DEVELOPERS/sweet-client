@@ -16,8 +16,11 @@ export const SetCount = styled.p`
 `;
 
 export const RefreshWrapper = styled.div`
+  position: relative;
   display: flex;
   justify-content: flex-end;
 
   width: 2.4rem;
+  margin-bottom: 2rem;
+  left: 86%;
 `;
