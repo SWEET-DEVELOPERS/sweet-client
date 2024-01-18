@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { shareKakao } from '../../../../utils/shareKakaoLink';
 
 interface TournamentRankingGifteeProps {
-  giftee: string;
+  giftee?: string;
 }
 
 const TournamentRankingTitle = ({ giftee }: TournamentRankingGifteeProps) => {

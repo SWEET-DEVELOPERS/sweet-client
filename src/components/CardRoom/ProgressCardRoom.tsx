@@ -7,11 +7,12 @@ interface ProgressCardRoomType {
   srcImage: string;
   userCount: number;
   roomId: number;
+  onClick: VoidFunction;
 }
 
-const ProgressCardRoom = ({ user, srcImage, userCount }: ProgressCardRoomType) => {
+const ProgressCardRoom = ({ user, srcImage, userCount, onClick }: ProgressCardRoomType) => {
   return (
-    <S.CardRoomWrapper>
+    <S.CardRoomWrapper onClick={onClick}>
       <img src={srcImage} />
       <S.Text>
         <S.User>{user}님</S.User>을 위한 선물방

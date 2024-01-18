@@ -2,12 +2,14 @@ import DoneCardRoom from '../../../../components/CardRoom/DoneCardRoom';
 import GiftRoomHeader from '../GiftRoomHeader/GiftRoomHeader';
 import { ClosedRoomType } from '../../../../types/member';
 import * as S from './DoneGiftView.style';
+import { useNavigate } from 'react-router-dom';
 
 interface DoneGiftViewType {
   data: ClosedRoomType | undefined;
 }
 
 const DoneGiftView = ({ data }: DoneGiftViewType) => {
+  const navigate = useNavigate();
   const doneData1 = Array.isArray(data) ? data[0] : undefined;
   const doneData2 = Array.isArray(data) ? data[1] : undefined;
 
@@ -20,6 +22,11 @@ const DoneGiftView = ({ data }: DoneGiftViewType) => {
             user={doneData1?.gifteeName || ''}
             srcImage={doneData1?.imageUrl || ''}
             userCount={doneData1?.gifterNumber || 0}
+            onClick={() =>
+              navigate(
+                `/tournament-ranking?giftee=${doneData1.gifteeName}&roomId=${doneData1.roomId}`,
+              )
+            }
           />
         )}
 
@@ -28,6 +35,11 @@ const DoneGiftView = ({ data }: DoneGiftViewType) => {
             user={doneData2?.gifteeName || ''}
             srcImage={doneData2?.imageUrl || ''}
             userCount={doneData2?.gifterNumber || 0}
+            onClick={() =>
+              navigate(
+                `/tournament-ranking?giftee=${doneData2.gifteeName}&roomId=${doneData2.roomId}`,
+              )
+            }
           />
         )}
 
