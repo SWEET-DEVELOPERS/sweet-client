@@ -9,16 +9,17 @@ interface EditCardRoomType {
   srcImage: string;
   userCount: number;
   roomId: number;
+  onClick: VoidFunction;
 }
 
-const EditCardRoom = ({ user, srcImage, userCount }: EditCardRoomType) => {
+const EditCardRoom = ({ user, srcImage, userCount, onClick }: EditCardRoomType) => {
   const navigate = useNavigate();
 
   const handleSettingIcon = () => {
     navigate(`/editpage`);
   };
   return (
-    <S.CardRoomWrapper>
+    <S.CardRoomWrapper onClick={onClick}>
       <img src={srcImage} />
       <S.Text>
         <S.User>{user}님</S.User>을 위한 선물방

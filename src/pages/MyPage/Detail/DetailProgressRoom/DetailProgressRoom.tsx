@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { IcLogoEmpty } from '../../../../assets/svg';
 import EditCardRoom from '../../../../components/CardRoom/EditCardRoom';
 import ProgressCardRoom from '../../../../components/CardRoom/ProgressCardRoom';
@@ -7,6 +8,7 @@ import DetailHeader from '../DetailHeader/DetailHeader';
 import * as S from './DetailProgress.style';
 
 const DetailProgressRoom = () => {
+  const navigate = useNavigate();
   const data = useGetActiveRoom()?.data;
   console.log(data);
   return (
@@ -22,6 +24,7 @@ const DetailProgressRoom = () => {
                 userCount={item.gifterNumber}
                 srcImage={item.imageUrl}
                 roomId={item.roomId}
+                onClick={() => navigate('/tournament')}
               />
             ) : (
               <ProgressCardRoom
@@ -30,6 +33,7 @@ const DetailProgressRoom = () => {
                 userCount={item.gifterNumber || 0}
                 srcImage={item.imageUrl || ''}
                 roomId={item.roomId}
+                onClick={() => navigate('/tournament')}
               />
             ),
           )
