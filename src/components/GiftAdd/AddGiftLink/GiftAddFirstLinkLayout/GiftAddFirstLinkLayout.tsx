@@ -7,7 +7,7 @@ import * as S from '../common/GiftAddLinkLayout.styled';
 import Title from '../../../common/title/Title';
 import usePostOpenGraph from '../../../../hooks/queries/etc/usePostOpengraph';
 import { OpenGraphResponseType } from '../../../../types/etc';
-import { LinkText } from '../../ShowLink/ShowLink.styled';
+// import { LinkText } from '../../ShowLink/ShowLink.styled';
 // import { useNavigate } from 'react-router-dom';
 
 interface GiftAddFirstLinkLayoutProps {

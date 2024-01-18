@@ -10,7 +10,7 @@ import { OpenGraphResponseType } from '../../../types/etc';
 // import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
 import usePutPresignedUrl from '../../../hooks/queries/onboarding/usePutPresignedUrl';
 import usePostMyPresignedUrl from '../../../hooks/queries/etc/usePostMyPresignedUrl';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 interface AddGiftWithLinkLayoutProps {
   link: string;
@@ -86,7 +86,7 @@ const AddGiftWithLinkLayout = ({
 
   const postPresignedUrl = usePostMyPresignedUrl(roomId);
   const putPresignedUrl = usePutPresignedUrl();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const fetchPresignedUrl = async (fileName: string) => {
     if (openGraph.image) {

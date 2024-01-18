@@ -2,7 +2,7 @@ import { AxiosError, AxiosResponse } from 'axios';
 import { post } from '../../../apis/client';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { MY_GIFT_QUERY_KEY } from '../gift/useGetMyGift';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 interface PostPresignedUrlArgs {
   url: string;
