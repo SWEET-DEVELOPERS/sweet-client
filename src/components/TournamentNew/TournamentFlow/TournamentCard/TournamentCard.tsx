@@ -1,4 +1,5 @@
 import * as S from './TournamentCard.style';
+import example from '../../../../assets/img/img.png';
 import { IcExternalGray, Logo } from '../../../../assets/svg';
 import PriceTag from '../../../common/title/Price/PriceTag';
 import { GiftData } from '../../../../core/mockupData';

@@ -11,6 +11,7 @@ interface GiftAddPageLayoutProps {
   targetDate: string;
   roomId: string;
   setStep: React.Dispatch<React.SetStateAction<number>>;
+  targetDate: string;
 }
 
 const GiftAddPageLayout = ({ targetDate, roomId, setStep }: GiftAddPageLayoutProps) => {

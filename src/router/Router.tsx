@@ -17,7 +17,6 @@ import OnboardingFinal from '../components/OnBoardingSteps/Step06/Step06';
 
 import TournamentPage from '../pages/TournamentPage';
 
-
 const router = createBrowserRouter([
   {
     path: '/',

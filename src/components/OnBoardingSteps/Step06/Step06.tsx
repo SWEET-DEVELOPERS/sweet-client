@@ -130,6 +130,40 @@ const OnboardingFinal = () => {
     }
   };
 
+  const enterRoom = () => {
+    console.log('생성된 룸으로 입장', onboardingInfo);
+  };
+
+  useEffect(() => {
+    const initializeKakao = async () => {
+      if (!window.Kakao.isInitialized()) {
+        await window.Kakao.init(import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY);
+      }
+    };
+    initializeKakao();
+    console.log('카카오 공유하기 확인', initializeKakao());
+  }, []);
+
+  const handleShareKakaoClick = () => {
+    if (window.Kakao) {
+      const kakao = window.Kakao;
+
+      kakao.Share.sendDefault({
+        objectType: 'feed',
+        content: {
+          title: `${onboardingInfo.gifteeName}님을 위한 선물 준비방에 초대장이 도착했어요`,
+          description: onboardingInfo.gifteeName,
+          imageUrl: onboardingInfo.imageUrl,
+          link: {
+            mobileWebUrl: 'https://localhost:5173',
+            webUrl: 'https://localhost:5173',
+          },
+        },
+      });
+    }
+    console.log('카카오 공유 버튼 클릭!!');
+  };
+
   return (
     <>
       <OnboardingFinalHeader />
