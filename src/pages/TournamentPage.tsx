@@ -1,16 +1,10 @@
-import styled from 'styled-components';
-import TournamentContainer from '../components/TournamentNew/Intro/TournamentContainer';
+import TournamentRanking from '../components/TournamentNew/TournamentRanking/TournamentRanking';
 
 const TournamentPage = () => {
   return (
-    <TournamentPageWrapper>
-      <TournamentContainer />
-    </TournamentPageWrapper>
+    <TournamentRanking />
   );
 };
 
 export default TournamentPage;
 
-const TournamentPageWrapper = styled.section`
-  padding: 1.2rem 2rem 0 2rem;
-`;

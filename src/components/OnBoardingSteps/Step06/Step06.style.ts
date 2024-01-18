@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import imageSample from './image_sample.png';
 
 export const OnboardingFinalWrapper = styled.div`
   ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'center' })}
@@ -10,7 +9,6 @@ export const OnboardingFinalWrapper = styled.div`
 `;
 
 export const GradientImg = styled.div`
-  background-image: url(${imageSample});
   background-size: cover;
   background-blend-mode: overlay;
   opacity: 0.7;
