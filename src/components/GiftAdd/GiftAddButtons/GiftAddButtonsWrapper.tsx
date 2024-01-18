@@ -1,5 +1,6 @@
 import { IcBookmark, IcCancelCircleFinal } from '../../../assets/svg';
 import { GiftType } from '../../../types/gift';
+import GiftHomePriceTag from '../../common/GiftHome/Price/GiftHomePriceTag';
 import * as S from './GiftAddButtonsWrapper.styled';
 
 interface GiftAddButtonsProps {
@@ -32,7 +33,9 @@ const GiftAddButtonsWrapper = ({ data, onCancelClick }: GiftAddButtonsProps) => 
       />
       <S.GiftsItemImage src={data.imageUrl} />
       <S.GiftsItemTitle>{data.name}</S.GiftsItemTitle>
-      <S.GiftsItemPrice>{data.cost}원</S.GiftsItemPrice>
+      <S.GiftsItemPrice>
+        <GiftHomePriceTag price={data.cost} fonts={'body_09'} />
+      </S.GiftsItemPrice>
     </S.GiftsItemWrapper>
   );
 };
