@@ -1,20 +1,19 @@
 import * as S from './TournamentRankingCard.style';
-import example from '../../../../assets/img/Rectangle.png';
 import PriceTag from '../../../common/title/Price/PriceTag';
-import { GiftRankingData } from '../../../../types/tournament';
 
-interface TournamentRankingProps {
-  RankingData: GiftRankingData[];
+interface TournamentRankingCardProps {
+  name: string;
+  cost: number;
+  imageUrl: string;
 }
 
-const TournamentRankingCard = ({ RankingData }: TournamentRankingProps) => {
-  console.log(RankingData);
+const TournamentRankingCard: React.FC<TournamentRankingCardProps> = ({ name, cost, imageUrl }) => {
   return (
     <S.TournamentRankingCardWrapper>
-      <img src={example} />
+      <img src={imageUrl} />
       <S.InfoWrapper>
-        <S.Title>CHANEL 22 MINI 핸드백</S.Title>
-        <PriceTag price={8130000} />
+        <S.Title>{name}</S.Title>
+        <PriceTag price={cost} />
       </S.InfoWrapper>
     </S.TournamentRankingCardWrapper>
   );

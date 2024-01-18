@@ -1,11 +1,13 @@
-//import { useNavigate } from 'react-router';
+// import { useNavigate } from 'react-router';
 import { IcKakoLarge, Main03, Main04, Person1, Person2, Person3, Person4 } from '../../assets/svg';
 import * as S from './Start.style';
-// import { post } from '../../apis/client';
 // import LottieAnimation from '../../hooks/lottie-animation/LottieAnimation';
 // import SweetHomeAnimation from '../../../public/motions/motion_02.json';
 // import { useEffect, useRef, useState } from 'react';
 import { ScrollAnimationContainer } from '../../components/ScrollAnimationContainer/ScrollAnimationContainer';
+import StartHeader from './StartHeader/StartHeader';
+// import { post } from '../../apis/client';
+import Footer from '../../components/Footer/Footer';
 
 // interface TokenResponseType {
 //   data: {
@@ -30,7 +32,7 @@ const Start = () => {
   //     const JWT = data.data.accessToken;
   //     if (data) {
   //       localStorage.setItem('EXIT_LOGIN_TOKEN', JWT);
-  //       //console.log(data);
+  //       console.log(data);
   //     }
   //   });
 
@@ -38,6 +40,7 @@ const Start = () => {
   // };
   return (
     <S.Wrapper>
+      <StartHeader />
       <IcKakoLarge onClick={handleLogin} />
       {/* <S.Animation>
         <LottieAnimation animation={SweetHomeAnimation} customStyle={{ width: '37.5rem' }} />
@@ -61,6 +64,7 @@ const Start = () => {
       </S.MainSecond>
       <Main03 />
       <Main04 />
+      <Footer />
     </S.Wrapper>
   );
 };
