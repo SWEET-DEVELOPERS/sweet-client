@@ -18,11 +18,15 @@ interface TokenResponseType {
   };
 }
 
+export const isTokenExist = (): boolean => {
+  const token = localStorage.getItem('EXIT_LOGIN_TOKEN'); // 'yourTokenKey'는 실제 사용하는 토큰의 키로 대체하세요
+  return !!token;
+};
+
 const Start = () => {
   const REST_API_KEY: string = import.meta.env.VITE_REST_API_KEY;
   const REDIRECT_URI: string = import.meta.env.VITE_REDIRECT_URI || '';
   const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-  const isLogin: boolean = !localStorage.getItem('EXIT_LOGIN_TOKEN');
   const navigate = useNavigate();
 
   // const handleLogin = () => {
@@ -65,7 +69,7 @@ const Start = () => {
 
       <S.DownIcon />
 
-      {isLogin ? (
+      {isTokenExist() ? (
         <BtnFill
           onClick={goGiftRoom}
           customStyle={{
