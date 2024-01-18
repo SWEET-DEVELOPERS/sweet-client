@@ -33,7 +33,9 @@ const AddGiftWithLinkLayout = ({
   const [fileName, setFileName] = useState<string>('');
   const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
-
+  
+  //빌드 에러용
+  console.log(previewImage);
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
     if (files && files.length > 0) {
@@ -41,6 +43,7 @@ const AddGiftWithLinkLayout = ({
       setPreviewImage(URL.createObjectURL(selectedFiles[0]));
       setImageUrl(URL.createObjectURL(selectedFiles[0]));
       setIsImageUploaded(!!selectedFiles?.[0]);
+      console.log(isImageUploaded);
 
       const imageName = openGraph.image ? openGraph.image : files[0].name.trim();
       console.log('페이지 안에서 fileName', fileName);
@@ -66,7 +69,7 @@ const AddGiftWithLinkLayout = ({
 
   const postPresignedUrl = usePostPresignedUrl();
   const putPresignedUrl = usePutPresignedUrl();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const fetchPresignedUrl = async (fileName: string) => {
     if (!fileName) {
@@ -118,9 +121,9 @@ const AddGiftWithLinkLayout = ({
         imageUrl={imageUrl}
         setImageUrl={setImageUrl}
         onClickEditBtn={handleImageUpload}
-        previewImage={previewImage}
+        // previewImage={previewImage}
         openGraph={openGraph}
-        setPreviewImage={setPreviewImage}
+        // setPreviewImage={setPreviewImage}
       />
       <ShowLink link={link} />
       <WriteItemInfo
