@@ -1,10 +1,11 @@
 import TournamentRanking from '../components/TournamentNew/TournamentRanking/TournamentRanking';
 
-const TournamentPage = () => {
-  return (
-    <TournamentRanking />
-  );
+interface TournamentRankingProps {
+  roomId: number;
+  giftee: string;
+}
+const TournamentPage = ({ roomId, giftee }: TournamentRankingProps) => {
+  return <TournamentRanking roomId={roomId} giftee={giftee} />;
 };
 
 export default TournamentPage;
-

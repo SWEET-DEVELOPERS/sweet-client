@@ -8,9 +8,14 @@ import useGetItem from '../../../hooks/queries/tournament/useGetItem';
 import trophy from '../../../assets/img/3dic_trophy3.png';
 //import { useLocation } from 'react-router';
 
-const TournamentContainer = () => {
+interface TournamentIntroProps {
+  roomId: number;
+  giftee: string;
+}
+
+const TournamentContainer = ({ roomId, giftee }: TournamentIntroProps) => {
   const { showTournamentContainer, handleStartClick } = useTournament();
-  const memberData = useGetItem({ roomId: 2 });
+  const memberData = useGetItem({ roomId: roomId });
   console.log(memberData);
   // const location = useLocation();
   // const searchParams = new URLSearchParams(location.search);
@@ -22,13 +27,12 @@ const TournamentContainer = () => {
   // 여기다가 query api 불러오기
   //console.log(roomMemberWholeData);
 
-  // Use an empty array as a fallback if memberData is undefined
   const tournamentData = memberData?.data || [];
   return (
     <>
       {showTournamentContainer ? (
         <>
-          <TournamentStartText />
+          <TournamentStartText giftee={giftee} />
           <TournamentItemCount />
           <S.TournamentImg>
             <img src={trophy} alt='트로피' />
