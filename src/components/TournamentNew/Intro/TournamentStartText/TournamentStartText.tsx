@@ -1,5 +1,3 @@
-import { useRecoilValue } from 'recoil';
-import { nickNameState } from '../../../../recoil/atoms';
 import * as S from './TournamentStartText.style';
 
 interface TournamentTitleGifteeProps {
