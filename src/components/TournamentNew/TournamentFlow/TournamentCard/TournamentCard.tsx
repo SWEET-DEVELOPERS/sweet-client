@@ -1,5 +1,4 @@
 import * as S from './TournamentCard.style';
-import example from '../../../../assets/img/img.png';
 import { IcExternalGray, Logo } from '../../../../assets/svg';
 import PriceTag from '../../../common/title/Price/PriceTag';
 import { GiftData } from '../../../../core/mockupData';
@@ -9,10 +8,10 @@ interface TournamentCardProps {
   onClick: () => void;
   selected: boolean;
 }
-
-const TournamentCard: React.FC<TournamentCardProps> = ({ item, onClick, selected }) => {
+const TournamentCard = ({ item, onClick, selected }: TournamentCardProps) => {
   const handleClick = () => {
     onClick();
+    selected = !selected;
   };
 
   return (
@@ -22,7 +21,7 @@ const TournamentCard: React.FC<TournamentCardProps> = ({ item, onClick, selected
           <Logo />
         </S.SelectWrapper>
         <S.TournamentImgWrapper>
-          <img src={example} alt={item.name} />
+          <img src={item.imageUrl} alt={item.name} />
         </S.TournamentImgWrapper>
 
         <S.ItemInfo>
