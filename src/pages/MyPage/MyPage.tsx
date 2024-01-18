@@ -7,6 +7,7 @@ import ProgressGiftView from './GiftRoomView/ProgressGiftView/ProgressGiftView';
 import useGetMyPage from '../../hooks/queries/member/useGetMypage';
 import * as S from './MyPage.style';
 import { MyPageType } from '../../types/member';
+import { post } from '../../apis/client';
 import MyPageHeader from './MyPageHeader/MyPageHeader';
 interface MyPage {
   memberData: MyPageType;
@@ -14,6 +15,9 @@ interface MyPage {
 
 const MyPage = () => {
   const memberData = useGetMyPage();
+  const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
+  console.log(accessToken);
+  const fetchAuth = async () => post(`/oauth/logout`);
   console.log(memberData);
   console.log(memberData?.data);
   console.log(memberData?.data?.memberInfo);
@@ -28,6 +32,13 @@ const MyPage = () => {
 
   const giftData: boolean = progressRoomData !== null && doneMemberRoomData !== null;
 
+  const handleClick = () => {
+    fetchAuth().then((response: any) => {
+      console.log(response);
+    });
+    localStorage.removeItem('EXIT_LOGIN_TOKEN');
+  };
+
   return (
     <S.MyPageWrapper>
       <MyPageHeader />
@@ -40,7 +51,9 @@ const MyPage = () => {
               <S.User>{translatedUserName}</S.User>님
             </S.UserName>
           </S.UserWrapper>
-          <BtnLogout customStyle={{ width: '8.4rem', height: '2.6rem' }}>로그아웃</BtnLogout>
+          <BtnLogout onClick={handleClick} customStyle={{ width: '8.4rem', height: '2.6rem' }}>
+            로그아웃
+          </BtnLogout>
         </S.UserButtonWrapper>
         <BtnFill
           customStyle={{
