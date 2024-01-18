@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
+export const WholeWrapper = styled.div`
+  ${({ theme: { mixin } }) => mixin.flexBox({ direction: 'column' })};
+  flex-shrink: 0;
+  z-index: 0;
+`;
+
 export const CardRoomWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ direction: 'column' })};
 
   width: 16rem;
   height: 27.5rem;
-  flex-shrink: 0;
 
   border-radius: 1.2rem;
 
@@ -48,7 +53,7 @@ export const SettingWrapper = styled.div`
   width: fit-content;
   height: fit-content;
   left: 13rem;
-  top: -26rem;
+  top: -27.5rem;
   z-index: 999;
   margin-top: 0.8rem;
   cursor: pointer;

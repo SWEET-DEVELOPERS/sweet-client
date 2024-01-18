@@ -6,11 +6,14 @@ interface TournamentFooterProps {
   disabled: boolean;
 }
 
-const TournamentFooter = ({ onNextClick }: TournamentFooterProps) => {
+const TournamentFooter = ({ onNextClick, disabled }: TournamentFooterProps) => {
+  console.log('여기선?', disabled);
   return (
     <>
       <S.TournamentFooterWrapper>
-        <BtnNext onClick={onNextClick}>다음</BtnNext>
+        <BtnNext onClick={onNextClick} disabled={disabled}>
+          다음
+        </BtnNext>
       </S.TournamentFooterWrapper>
     </>
   );

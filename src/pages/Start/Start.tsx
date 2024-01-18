@@ -7,7 +7,7 @@ import { ScrollAnimationContainer } from '../../components/ScrollAnimationContai
 import { ScrollAnimationLeftContainer } from '../../components/ScrollAnimationContainer/ScrollAnimationContainerLeft';
 import StartHeader from './StartHeader/StartHeader';
 import Footer from '../../components/Footer/Footer';
-//import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import LottieAnimation from '../../hooks/lottie-animation/LottieAnimation';
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 
@@ -23,7 +23,7 @@ const Start = () => {
   const REDIRECT_URI: string = import.meta.env.VITE_REDIRECT_URI || '';
   const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
   const isLogin: boolean = !localStorage.getItem('EXIT_LOGIN_TOKEN');
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     window.location.replace(kakaoURL);
@@ -45,7 +45,7 @@ const Start = () => {
 
   const goGiftRoom = () => {
     console.log('선물방으로 이동');
-    //navigate('/giftroom');
+    navigate('/onboarding');
   };
 
   return (
