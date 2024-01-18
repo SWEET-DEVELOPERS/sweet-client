@@ -8,7 +8,6 @@ import { getAccessTokenLocalStorage, instance } from '../../../apis/client';
 import usePostOnboardingInfo from '../../../hooks/queries/onboarding/usePostOnboardingInfo';
 import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
 import usePutPresignedUrl from '../../../hooks/queries/onboarding/usePutPresignedUrl';
-import { useNavigate } from 'react-router-dom';
 
 interface SetTournamentDurationProps {
   onNext: VoidFunction;
@@ -50,7 +49,6 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   const [selectedOption, setSelectedOption] = useState<string>('');
   const postPresignedUrl = usePostPresignedUrl();
   const putPresignedUrl = usePutPresignedUrl();
-  const navigate = useNavigate();
   const { mutation } = usePostOnboardingInfo();
 
   const timeOptions = [

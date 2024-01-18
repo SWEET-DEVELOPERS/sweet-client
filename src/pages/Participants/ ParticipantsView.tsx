@@ -3,11 +3,8 @@ import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 // import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
 // import usePostParticipation from '../../../hooks/queries/onboarding/usePostParticipation';
-import { IcKakaoShare, IcKakoLarge, IcLink } from '../../assets/svg';
-import OnBoardingBtn from '../../components/OnBoardingSteps/onboardingBtn/OnBoardingBtn';
+import { IcKakoLarge } from '../../assets/svg';
 import OnboardingFinalHeader from '../../components/OnBoardingSteps/Step06/OnboardingFinalHeader';
-import useClipboard from '../../hooks/useCopyClip';
-import { useKakaoShare } from '../../hooks/queries/onboarding/useKakaoShare';
 import Title from '../../components/common/title/Title';
 import useGetGifteeInfo from '../../hooks/queries/onboarding/useGetGifteeInfo';
 
@@ -28,11 +25,9 @@ const ParticipantsView = () => {
   // const location = useLocation();
   // const searchParams = new URLSearchParams(location.search);
   // const invitationCode = searchParams.get('invitationCode');
-  const baseUrl = import.meta.env.VITE_APP_BASE_URL;
   // console.log('step06 내 초대코드', invitationCode);
 
   const navigate = useNavigate();
-  const { handleCopyToClipboard } = useClipboard();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const invitationCode = searchParams.get('invitationCode');

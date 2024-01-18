@@ -3,8 +3,7 @@ import * as S from './Step06.style';
 import { IcKakaoShare, IcLink } from '../../../assets/svg';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
+import { useNavigate } from 'react-router-dom';
 import usePostParticipation from '../../../hooks/queries/onboarding/usePostParticipation';
 import OnboardingFinalHeader from './OnboardingFinalHeader';
 import useClipboard from '../../../hooks/useCopyClip';
@@ -28,7 +27,6 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
   // const location = useLocation();
   // const searchParams = new URLSearchParams(location.search);
   // const invitationCode = searchParams.get('invitationCode');
-  const baseUrl = import.meta.env.VITE_APP_BASE_URL;
   console.log('step06 내 초대코드', invitationCode);
 
   const navigate = useNavigate();

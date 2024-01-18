@@ -3,10 +3,6 @@ import OnboardingFinalHeader from '../Step06/OnboardingFinalHeader';
 import { useNavigate } from 'react-router-dom';
 import * as S from './InvitationDeadline.style';
 
-interface InvitationDeadlineProps {
-  onClick: () => void;
-}
-
 const InvitationDeadline = () => {
   const navigate = useNavigate();
 
