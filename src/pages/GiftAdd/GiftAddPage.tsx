@@ -7,22 +7,25 @@ import GiftAddPageLayout from '../../components/GiftAdd/GiftAddPageLayout/GiftAd
 import { OpenGraphResponseType } from '../../types/etc';
 import { useLocation } from 'react-router-dom';
 
-// interface GiftAddPage {
-//   roomId: number;
-// }
-
 const GiftAddPage = () => {
   const [step, setStep] = useState(0);
   const [linkText, setLinkText] = useState<string>('');
   const [openGraph, setOpenGraph] = useState<OpenGraphResponseType>({ title: '', image: '' });
 
   const location = useLocation();
-  const roomId = location.state.roomId;
-  const targetDate = location.state.targetDate;
+
+  const params = location.search;
+  const newParams = new URLSearchParams(params);
+  const roomId = newParams.get('roomId');
+  const targetDate = newParams.get('targetTime');
+
+  const roomIdNumber = parseInt(roomId || '');
 
   switch (step) {
     case 0:
-      return <GiftAddPageLayout setStep={setStep} roomId={roomId} targetDate={targetDate} />;
+      return (
+        <GiftAddPageLayout setStep={setStep} roomId={roomId || ''} targetDate={targetDate || ''} />
+      );
 
     case 1:
       return (
@@ -31,7 +34,7 @@ const GiftAddPage = () => {
           setLinkText={setLinkText}
           openGraph={openGraph}
           setOpenGraph={setOpenGraph}
-          targetDate={targetDate}
+          targetDate={targetDate || ''}
         />
       );
 
@@ -39,10 +42,10 @@ const GiftAddPage = () => {
       return (
         <AddGiftWithLinkLayout
           setStep={setStep}
-          roomId={roomId}
+          roomId={roomIdNumber}
           link={linkText}
           openGraph={openGraph}
-          targetDate={targetDate}
+          targetDate={targetDate || ''}
         />
       );
 
@@ -50,10 +53,10 @@ const GiftAddPage = () => {
       return (
         <AddGiftWithoutLinkLayout
           setStep={setStep}
-          roomId={roomId}
+          roomId={roomIdNumber}
           linkText={linkText}
           setLinkText={setLinkText}
-          targetDate={targetDate}
+          targetDate={targetDate || ''}
         />
       );
 
@@ -63,7 +66,7 @@ const GiftAddPage = () => {
           setStep={setStep}
           setLink={setLinkText}
           link={linkText}
-          targetDate={targetDate}
+          targetDate={targetDate || ''}
         />
       );
   }

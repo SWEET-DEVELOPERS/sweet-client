@@ -5,14 +5,14 @@ export const deleteMyGift = async (giftId: number) => {
   await del(`/gift/my/${giftId}`);
 };
 
-export const useDeleteMyGift = ({ giftId }: { giftId: number }) => {
+export const useDeleteMyGift = () => {
   const mutation = useMutation({
     mutationFn: deleteMyGift,
     onSuccess: () => {
-      console.log('선물 삭제 선물 아이디', giftId);
+      console.log('선물 삭제 성공');
     },
-    onError: () => {
-      console.log('선물 삭제 중 에러가 발생했습니다.');
+    onError: (error) => {
+      console.log('선물 삭제 중 에러가 발생했습니다.', error.message);
     },
   });
 

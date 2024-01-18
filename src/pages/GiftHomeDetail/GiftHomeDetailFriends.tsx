@@ -1,14 +1,21 @@
 import * as S from './GiftHomeDetail.styled';
 import MiniTimer from '../../components/common/MiniTimer/MiniTimer';
 import useGetFriendGift from '../../hooks/queries/gift/useGetFriendGift';
+import { useLocation } from 'react-router-dom';
 
-interface GiftHomeDetailFriendsProps {
-  roomId: number;
-  targetDate: string;
-}
+function GiftHomeDetailFriends() {
+  const location = useLocation();
 
-function GiftHomeDetailFriends({ roomId, targetDate }: GiftHomeDetailFriendsProps) {
-  const { data, isLoading, isError } = useGetFriendGift({ roomId: Number(roomId) });
+  const searchParams = new URLSearchParams(location.search);
+  const params = searchParams.get('roomId');
+  const roomId = params?.split('targetTime=')[0];
+  const targetDate = params?.split('targetTime=')[1];
+
+  // console.log('추출된 roomId', roomId);
+  // console.log('추출된 targetDate', targetDate);
+  const roomIdNumber = parseInt(roomId || '');
+  const { data, isLoading, isError } = useGetFriendGift({ roomId: roomIdNumber });
+
   if (isLoading) {
     return <div>LOADING...</div>;
   }
@@ -20,7 +27,7 @@ function GiftHomeDetailFriends({ roomId, targetDate }: GiftHomeDetailFriendsProp
   return (
     <S.GiftHomeDetailPageWrapper>
       {/* 공통 헤더 추가 예정 */}
-      <MiniTimer targetDate={targetDate} />
+      <MiniTimer targetDate={targetDate || ''} />
       <S.GiftHomeDetailWrapper>
         {data.data.friendGiftDto.length > 0 ? (
           data.data.friendGiftDto.map((item, index) => (

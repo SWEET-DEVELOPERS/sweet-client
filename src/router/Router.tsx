@@ -48,11 +48,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/gift-detail-friends',
-        element: <GiftHomeDetailFriends roomId={1} targetDate='' />,
+        element: <GiftHomeDetailFriends />,
       },
       {
         path: '/gift-detail-2030',
-        element: <GiftHomeDetail2030 roomId={1} />,
+        element: <GiftHomeDetail2030 />,
       },
       {
         path: '/onboarding',
