@@ -8,7 +8,6 @@ import EmptyGiftAddButtonsWrapper from '../GiftAddButtons/EmptyGiftAddButtonsWra
 import useDeleteMyGift from '../../../hooks/queries/gift/useDeleteMyGift';
 
 interface GiftAddPageLayoutProps {
-  targetDate: string;
   roomId: string;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   targetDate: string;
