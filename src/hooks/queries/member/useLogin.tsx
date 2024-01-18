@@ -30,8 +30,10 @@ const useLogin = () => {
       fetchAuth(code).then((response: LoginResponseType) => {
         const data = response.data;
         const JWT = data.data.memberToken.accessToken;
+        const RefreshToken = data.data.memberToken.refreshToken;
         if (data) {
           localStorage.setItem('EXIT_LOGIN_TOKEN', JWT);
+          localStorage.setItem('EXIT_LOGIN_REFRESH_TOKEN', RefreshToken);
           console.log(data);
           console.log(JWT);
         }
