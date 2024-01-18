@@ -7,15 +7,14 @@ export const postNewGift = async (body: GiftPostRequestType) => {
   post(`/gift`, body);
 };
 
-export const usePostGift = () => {
+export const usePostGift = (roomId: number, targetDate: string) => {
   const navigate = useNavigate();
 
   const mutation = useMutation({
     mutationFn: postNewGift,
-    onSuccess: (data) => {
-      navigate(`/add-gift`);
-      console.log('POST로 선물 등록 성공!', data);
-      return { data };
+    onSuccess: () => {
+      console.log('roomId, targetDate', roomId, targetDate);
+      navigate(`/add-gift?roomId=${roomId}&targetTime=${targetDate}`);
     },
 
     onError: () => {
