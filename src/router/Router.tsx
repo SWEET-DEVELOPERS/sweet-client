@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/gift-home',
-        element: <GiftHome roomId={1} />,
+        element: <GiftHome />,
       },
       {
         path: '/gift-detail-friends',

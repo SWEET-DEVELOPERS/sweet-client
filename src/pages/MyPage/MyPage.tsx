@@ -5,10 +5,10 @@ import Rectangle from '../../assets/img/Rectangle.png';
 import DoneGiftView from './GiftRoomView/DoneGiftView/DoneGiftView';
 import ProgressGiftView from './GiftRoomView/ProgressGiftView/ProgressGiftView';
 import useGetMyPage from '../../hooks/queries/member/useGetMypage';
-import * as S from './MyPage.style';
 import { MyPageType } from '../../types/member';
 import { post } from '../../apis/client';
 import MyPageHeader from './MyPageHeader/MyPageHeader';
+import * as S from './MyPage.style';
 interface MyPage {
   memberData: MyPageType;
 }

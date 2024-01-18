@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { IcLogoEmpty } from '../../../../assets/svg';
 import EditCardRoom from '../../../../components/CardRoom/EditCardRoom';
 import ProgressCardRoom from '../../../../components/CardRoom/ProgressCardRoom';
@@ -5,10 +6,19 @@ import BtnSmallStroke from '../../../../components/common/Button/Cta/SmallStroke
 import useGetActiveRoom from '../../../../hooks/queries/member/useGetActiveRoom';
 import DetailHeader from '../DetailHeader/DetailHeader';
 import * as S from './DetailProgress.style';
+import DateCheck from '../../../../components/DateCheck/DateCheck';
 
 const DetailProgressRoom = () => {
+  const navigate = useNavigate();
   const data = useGetActiveRoom()?.data;
   console.log(data);
+  const getNavigateLink = (item: any) => {
+    const isFuture = DateCheck({ date: item.tournamentStartDate });
+    return isFuture
+      ? `/gift-home?roomId=${item.roomId}`
+      : `/tournament?giftee=${item.gifteeName}&roomId=${item.roomId}`;
+  };
+
   return (
     <S.DetailProgressRoomWrapper>
       <DetailHeader title='진행중인 선물방' />
@@ -22,6 +32,8 @@ const DetailProgressRoom = () => {
                 userCount={item.gifterNumber}
                 srcImage={item.imageUrl}
                 roomId={item.roomId}
+                date={item.tournamentStartDate}
+                onClick={() => navigate(getNavigateLink(item))}
               />
             ) : (
               <ProgressCardRoom
@@ -30,6 +42,8 @@ const DetailProgressRoom = () => {
                 userCount={item.gifterNumber || 0}
                 srcImage={item.imageUrl || ''}
                 roomId={item.roomId}
+                date={item.tournamentStartDate}
+                onClick={() => navigate(getNavigateLink(item))}
               />
             ),
           )
