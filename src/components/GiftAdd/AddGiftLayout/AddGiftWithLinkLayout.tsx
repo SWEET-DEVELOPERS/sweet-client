@@ -68,7 +68,11 @@ const AddGiftWithLinkLayout = ({
 
     if (files && files.length > 0) {
       const selectedFiles = files as FileList;
-      setPreviewImage(URL.createObjectURL(selectedFiles[0]));
+      if (openGraph) {
+        setPreviewImage(openGraph.image);
+      } else {
+        setPreviewImage(URL.createObjectURL(selectedFiles[0]));
+      }
       setImageUrl(URL.createObjectURL(selectedFiles[0]));
       setIsImageUploaded(!!selectedFiles?.[0]);
       // 초기화

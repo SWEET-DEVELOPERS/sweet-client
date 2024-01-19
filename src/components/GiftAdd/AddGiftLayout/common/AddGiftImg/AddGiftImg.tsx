@@ -36,10 +36,10 @@ const AddGiftImg = ({
               onChange={onClickEditBtn}
             />
             <label htmlFor='imgInput'>
-              {openGraph ? (
+              {imageUrl ? (
                 <S.ThumbnailWrapper>
                   <img
-                    src={openGraph.image}
+                    src={imageUrl || ''}
                     alt='preview'
                     style={{
                       position: 'relative',
