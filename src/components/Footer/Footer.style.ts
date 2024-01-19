@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const FooterWrapper = styled.div`
   height: 38.6rem;
   width: 100%;
+  background-color: white;
 `;
 
 export const TextWrapper = styled.div`
@@ -21,7 +22,7 @@ export const TextOneLine = styled.div`
   gap: 0.8rem;
 `;
 
-export const BoldText = styled.a`
+export const BoldText = styled.div`
   color: ${({ theme }) => theme.colors.black};
 
   font-family: 'SUIT';

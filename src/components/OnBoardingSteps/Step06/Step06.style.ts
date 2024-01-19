@@ -8,6 +8,12 @@ export const OnboardingFinalWrapper = styled.div`
   overflow: hidden;
 `;
 
+export const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0 0 2.8rem;
+`;
+
 export const GradientImg = styled.div`
   background-size: cover;
   background-blend-mode: overlay;
@@ -67,7 +73,7 @@ export const InfoDetail = styled.p`
   ${({ theme }) => theme.fonts.body_07};
 `;
 
-export const KakaoLinkCopyBtn = styled.button`
+export const KakaoLinkCopyBtn = styled.div`
   ${({ theme }) =>
     theme.mixin.flexCenter({ direction: 'row', align: 'center', justify: 'center' })};
   width: 16.3rem;
@@ -76,13 +82,15 @@ export const KakaoLinkCopyBtn = styled.button`
   border-radius: 10rem;
   border: none;
   background: #fee500;
-  color: (0, 0, 0, 0.85);
+  color: ${({ theme }) => theme.colors.black};
   ${({ theme }) => theme.fonts.body_09};
+  z-index: 1;
 `;
 
 export const BtnWrapper = styled.div`
   ${({ theme }) =>
     theme.mixin.flexCenter({ direction: 'row', align: 'center', justify: 'center' })};
+  color: ${({ theme }) => theme.colors.black};
   gap: 1.2rem;
   width: 100%;
   margin-top: 1.7rem;

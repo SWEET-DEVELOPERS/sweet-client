@@ -4,7 +4,6 @@ import theme from '../../../style/theme';
 export const Wrapper = styled.div<{ $hasContent: boolean; $maxLengthReached: boolean }>`
   ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'space-between' })}
   width: 100%;
-  height: 3.6rem;
   margin-top: 7.2rem;
   border-bottom: 0.1rem solid ${({ theme }) => theme.colors.G_02};
 
