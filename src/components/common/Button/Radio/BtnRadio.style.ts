@@ -27,14 +27,16 @@ export const Time = styled.p`
   display: flex;
   padding-left: 1.6rem;
   width: 4.2rem;
-  width: 100%;
+  width: 60%;
   ${({ theme: { fonts } }) => fonts.body_09};
 `;
 
-export const Period = styled.p`
+export const Period = styled.p<{ $isAfterDelivery: boolean }>`
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  color: ${({ theme: { colors } }) => colors.B_02};
-  ${({ theme: { fonts } }) => fonts.caption_01};
+  /* color: ${({ theme: { colors } }) => colors.B_02};
+  ${({ theme: { fonts } }) => fonts.caption_01}; */
+  color: ${({ theme, $isAfterDelivery }) =>
+    $isAfterDelivery ? theme.colors.R_02 : theme.colors.B_02};
 `;

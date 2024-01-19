@@ -3,15 +3,15 @@ import { post } from '../../../apis/client';
 import { useMutation } from '@tanstack/react-query';
 
 interface PostPresignedUrlArgs {
-  url: string;
+  // url: string;
   filename: string;
 }
 
-const postPresignedUrl = async ({ filename, url }: PostPresignedUrlArgs) => {
+const postPresignedUrl = async ({ filename }: PostPresignedUrlArgs) => {
   try {
     const queryString = filename ? `presigned-url?fileName=${filename}` : '';
     if (queryString) {
-      const response: AxiosResponse = await post(queryString, url);
+      const response: AxiosResponse = await post(queryString);
       return response.data;
     }
   } catch (error) {

@@ -1,12 +1,13 @@
 import * as S from './ParticipantsView.style';
 import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 // import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
 // import usePostParticipation from '../../../hooks/queries/onboarding/usePostParticipation';
 import { IcKakoLarge } from '../../assets/svg';
 import OnboardingFinalHeader from '../../components/OnBoardingSteps/Step06/OnboardingFinalHeader';
 import Title from '../../components/common/title/Title';
 import useGetGifteeInfo from '../../hooks/queries/onboarding/useGetGifteeInfo';
+import { kakaoURL } from '../../utils/login';
 
 // interface OnboardingFinalProps {
 //   onboardingInfo: {
@@ -27,7 +28,6 @@ const ParticipantsView = () => {
   // const invitationCode = searchParams.get('invitationCode');
   // console.log('step06 내 초대코드', invitationCode);
 
-  const navigate = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const invitationCode = searchParams.get('invitationCode');
@@ -159,8 +159,7 @@ const ParticipantsView = () => {
             />
             <S.TitleContainer>
               <div style={{ marginBottom: '4.6rem' }}>
-                <Title title='시동훈님을 위한' />
-
+                <Title title={`${getGifteeInfo.data.gifteeName}님을 위한`} />
                 <Title title='선물 준비방이 개설됐어요' />
               </div>
               {/* TODO 추후 지민이 버튼으로 변경(항상 활성화) */}
@@ -187,7 +186,7 @@ const ParticipantsView = () => {
         ))}
       </S.InfoWrapper>
       <S.BtnWrapper>
-        <IcKakoLarge onClick={() => navigate('/')} />
+        <IcKakoLarge onClick={() => window.location.replace(kakaoURL)} />
         {/* <S.LinkCopyBtn onClick={() => handleCopyToClipboard(`${baseUrl}`)}>
           <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
           링크 복사
