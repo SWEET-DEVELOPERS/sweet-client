@@ -17,7 +17,6 @@ export const TitleWrapper = styled.div`
 export const GradientImg = styled.div`
   background-size: cover;
   background-blend-mode: overlay;
-  opacity: 0.7;
   /* 이렇게 height를 의도적으로 주는 방법밖에 없나... 하 */
   height: 36.5rem;
   width: 100%;
