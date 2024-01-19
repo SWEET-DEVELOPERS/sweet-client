@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, useState } from 'react';
 import * as S from './BtnRadio.style';
 import { IcCircle, IcCirclePink } from '../../../../assets/svg';
-import { Period } from '../../../OnBoardingSteps/Step05/Step05.style';
+// import { Period } from '../../../OnBoardingSteps/Step05/Step05.style';
 type BtnRadioProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   disabled?: boolean;
   time: string;
@@ -44,12 +44,12 @@ const BtnRadio = ({
       onBlur={() => setFocused(false)}
     >
       {focused ? (
-        <IcCirclePink style={{ width: '2.4rem' }} />
+        <IcCirclePink style={{ width: '4.8rem' }} />
       ) : (
-        <IcCircle style={{ width: '2.4rem' }} />
+        <IcCircle style={{ width: '4.8rem' }} />
       )}
       <S.Time>{time}</S.Time>
-      <Period $isAfterDelivery={$isAfterDelivery}>{period}</Period>
+      <S.Period $isAfterDelivery={$isAfterDelivery}>{period}</S.Period>
     </S.Wrapper>
   );
 };
