@@ -1,6 +1,6 @@
 import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
-import { IcUnselectedCalender, IcUnselectedClock } from '../../../assets/svg';
+import { IcUnselectedCalender } from '../../../assets/svg';
 import * as S from './Step04.style';
 import { useState } from 'react';
 import { DayPicker } from 'react-day-picker';
@@ -67,7 +67,7 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
         </S.IconField>
       </S.SetTournamentScheduleWrapper>
       {isCalendarOpen && (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', zIndex: 1000, position: 'fixed' }}>
           <DayPicker
             defaultMonth={new Date()}
             mode='single'
@@ -87,7 +87,9 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
             disabled
           />
         </S.TextField>
-        <TimePicker onSelect={(time) => handleTimerSelect(time)} />
+        <div>
+          <TimePicker onSelect={(time) => handleTimerSelect(time)} />
+        </div>
         {/* <S.IconField>
           <input type='time' style={{ display: 'none' }} id='timeInput' />
           <label htmlFor='timeInput'>
