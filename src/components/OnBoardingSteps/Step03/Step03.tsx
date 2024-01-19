@@ -20,22 +20,6 @@ interface GiftDeliveryProps {
   };
 }
 
-const css = `
-  .my-selected:not([disabled]) { 
-    font-weight: bold; 
-    border: 2px solid currentColor;
-  }
-  .my-selected:hover:not([disabled]) { 
-    border-color: blue;
-    color: blue;
-  }
-  .my-today { 
-    font-weight: bold;
-    font-size: 140%; 
-    color: red;
-  }
-`;
-
 const GiftDelivery = (props: GiftDeliveryProps) => {
   const { onNext, deliveryDate, setDeliveryDate, onboardingInfo } = props;
 
