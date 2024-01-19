@@ -6,7 +6,7 @@ import GiftAddPageLayoutHeader from './GiftAddPageLayoutHeader';
 import useGetMyGift from '../../../hooks/queries/gift/useGetMyGift';
 import EmptyGiftAddButtonsWrapper from '../GiftAddButtons/EmptyGiftAddButtonsWrapper';
 import useDeleteMyGift from '../../../hooks/queries/gift/useDeleteMyGift';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 interface GiftAddPageLayoutProps {
   roomId: string;
