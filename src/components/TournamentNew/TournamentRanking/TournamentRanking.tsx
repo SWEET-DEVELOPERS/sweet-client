@@ -18,7 +18,7 @@ const TournamentRanking = ({ roomId, giftee }: TournamentRankingProps) => {
   return (
     <S.TournamentRankingWrapper>
       <Header />
-      <TournamentRankingTitle giftee={giftee} />
+      <TournamentRankingTitle roomId={roomId} giftee={giftee} />
       <RankingWrapper>
         <S.Wrapper>
           {Array.isArray(tournamentRankingData) && tournamentRankingData.length > 0 ? (

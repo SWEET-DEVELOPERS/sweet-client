@@ -19,12 +19,16 @@ export const TextField = styled.div`
 
 export const IconField = styled.div`
   width: 10%;
+  /* input[type='time']::-webkit-calendar-picker-indicator {
+    display: none;
+  } */
 `;
 
 export const Input = styled.input`
   ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'center' })};
   width: 100%;
   height: 3.5rem;
+  background-color: ${({ theme }) => theme.colors.white};
   border: none;
   outline: none;
 `;

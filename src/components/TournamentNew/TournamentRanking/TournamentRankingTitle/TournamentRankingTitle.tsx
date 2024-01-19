@@ -7,16 +7,19 @@ import { shareKakao } from '../../../../utils/shareKakaoLink';
 import { IcLink3, KakaoLo } from '../../../../assets/svg';
 
 interface TournamentRankingGifteeProps {
+  roomId: number;
   giftee?: string;
 }
 
-const TournamentRankingTitle = ({ giftee }: TournamentRankingGifteeProps) => {
+const TournamentRankingTitle = ({ roomId, giftee }: TournamentRankingGifteeProps) => {
   useEffect(() => {
     if (!window.Kakao.isInitialized()) {
       window.Kakao.init(import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY);
     }
   }, []);
 
+  const gifteeValue = giftee;
+  const roomIdValue = roomId;
   const location = useLocation();
   const baseURL = import.meta.env.VITE_APP_BASE_URL;
   const { handleCopyToClipboard } = useClipboard();
@@ -39,7 +42,7 @@ const TournamentRankingTitle = ({ giftee }: TournamentRankingGifteeProps) => {
             링크로 공유
           </S.LinkButton>
 
-          <S.KakaoButton onClick={() => shareKakao()}>
+          <S.KakaoButton onClick={() => shareKakao(gifteeValue, roomIdValue)}>
             <KakaoLo style={{ width: '1.7rem', height: '1.7rem', cursor: 'pointer' }} />
             카카오 공유
           </S.KakaoButton>
