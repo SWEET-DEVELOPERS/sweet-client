@@ -46,7 +46,7 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
       const uploadTime = Math.random();
 
       // 최종 이미지 이름
-      const finalImageName = `${firstThreeLetters}${uploadTime}`;
+      const finalImageName = `${firstThreeLetters}${uploadTime}`.replace('.', '');
 
       // TODO 그냥 imageUrl에는 presignedUrl을 값에 넣어줘야함
       // setImageUrl(finalImageName);
