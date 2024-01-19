@@ -7,14 +7,12 @@ import TournamentFlowContainer from '../TournamentFlow/TournamentFlowContainer';
 import useGetItem from '../../../hooks/queries/tournament/useGetItem';
 import trophy from '../../../assets/img/3dic_trophy3.png';
 import { useParams } from 'react-router';
+import Header from '../../common/Header';
 
 const TournamentContainer = () => {
   const params = useParams();
-
-
   const giftee = params.giftee;
-
-  const roomIdString = params.roomId;
+  const roomIdString = params.roomId || '';
   const roomId = parseInt(roomIdString || '', 10);
   console.log('추출된 초대 코드', roomId);
 
@@ -27,15 +25,25 @@ const TournamentContainer = () => {
     <>
       {showTournamentContainer ? (
         <>
-          <TournamentStartText giftee={giftee} />
-          <TournamentItemCount memberData={[]} />
-          <S.TournamentImg>
-            <img src={trophy} alt='트로피' />
-          </S.TournamentImg>
-          <TournamentStartButton onClick={handleStartClick} />
+          <Header />
+          <S.TournamentFlowWrapper>
+            <TournamentStartText giftee={giftee} />
+            <TournamentItemCount memberData={tournamentData} />
+            <S.TournamentImg>
+              <img src={trophy} alt='트로피' />
+            </S.TournamentImg>
+            <TournamentStartButton onClick={handleStartClick} />
+          </S.TournamentFlowWrapper>
+        </>
+      ) : memberData ? (
+        <>
+          <Header />
+
+          <TournamentFlowContainer memberData={tournamentData} roomId={roomId} />
+
         </>
       ) : (
-        <TournamentFlowContainer memberData={tournamentData} />
+        <TournamentFlowContainer memberData={tournamentData} roomId={roomId} />
       )}
     </>
   );

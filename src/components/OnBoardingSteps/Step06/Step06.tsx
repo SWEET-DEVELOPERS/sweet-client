@@ -24,6 +24,10 @@ interface OnboardingFinalProps {
 const OnboardingFinal = (props: OnboardingFinalProps) => {
   const { onboardingInfo, invitationCode, imageUrl, roomId } = props;
 
+
+  console.log('step06 내 imageUrl', imageUrl);
+
+
   const navigate = useNavigate();
   const { handleCopyToClipboard } = useClipboard();
 

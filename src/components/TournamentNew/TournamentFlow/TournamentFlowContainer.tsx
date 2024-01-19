@@ -8,14 +8,16 @@ import { GiftData } from '../../../types/tournament';
 
 interface TournamentProps {
   memberData: GiftData[];
+  roomId: number;
 }
 
-const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
+const TournamentFlowContainer = ({ memberData, roomId }: TournamentProps) => {
   //전체 아이템 memberData {1,2,3,4,5,6,7,8,9,10} -> useEffect로 랜덤으로 섞어줌
   const [itemPick, setitemPick] = useState<GiftData[]>([]);
   // 보여질 아이템
   const [displays, setDisplays] = useState<GiftData[]>([]);
   //선택된 아이템 저장
+  const roomIdTour = roomId;
 
   const [totalItemLength, setTotalRoundsLength] = useState<number>(
     Math.floor(memberData.length / 2),
@@ -102,6 +104,7 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
     <>
       {showTournamentResult ? (
         <TournamentResult
+          roomId={roomIdTour}
           winners={selectedItem}
           firstGiftId={firstItems.length > 0 ? firstItems[0].giftId : 0}
           secondGiftId={secondItems.length > 0 ? secondItems[0].giftId : 0}
