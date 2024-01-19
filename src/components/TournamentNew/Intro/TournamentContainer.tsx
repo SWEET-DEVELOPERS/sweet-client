@@ -14,7 +14,6 @@ import TournamentNoneText from './TournamentNoneText/TournamentNoneText';
 const TournamentContainer = () => {
   const params = useParams();
 
-  const giftee = params.giftee;
   const roomIdString = params.roomId || '';
   const roomId = parseInt(roomIdString || '', 10);
   console.log('추출된 초대 코드', roomId);
@@ -30,7 +29,7 @@ const TournamentContainer = () => {
         <>
           <Header />
           <S.TournamentFlowWrapper>
-            <TournamentStartText giftee={giftee} />
+            <TournamentStartText />
             <TournamentItemCount memberData={tournamentData} />
             <S.TournamentImg>
               <img src={trophy} alt='트로피' />
