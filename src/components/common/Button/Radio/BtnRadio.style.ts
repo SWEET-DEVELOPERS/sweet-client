@@ -27,7 +27,7 @@ export const Time = styled.p`
   display: flex;
   padding-left: 1.6rem;
   width: 4.2rem;
-  width: 100%;
+  width: 60%;
   ${({ theme: { fonts } }) => fonts.body_09};
 `;
 
