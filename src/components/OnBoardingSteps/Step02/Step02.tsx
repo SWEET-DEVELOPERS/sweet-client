@@ -38,7 +38,6 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
       // const imageNameWithoutExtension = imageName.replace(/\.[^/.]+$/, '');
 
       // 띄워쓰기 제거
-      const formattedImageName = imageName.replace(/\s/g, '');
 
       // 앞 3글자 가져오기
       // const firstThreeLetters = formattedImageName.substring(0, 3);
