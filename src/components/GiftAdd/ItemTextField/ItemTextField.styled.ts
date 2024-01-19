@@ -17,6 +17,7 @@ export const Wrapper = styled.div<{ $hasContent: boolean }>`
   width: 100%;
   height: 3.6rem;
   row-gap: 1.2rem;
+  justify-content: space-between;
 
   border-bottom: 0.1rem solid ${({ theme }) => theme.colors.G_02};
 
