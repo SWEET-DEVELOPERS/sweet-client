@@ -1,5 +1,5 @@
 <div>
-  <img align="left" src="" width="160"/>
+  <img align="left" src="https://cdn.discordapp.com/attachments/1187801115425771641/1197493329630330960/sweetlogo_128x128.png?ex=65bb7792&is=65a90292&hm=6a313638edfd8c992eab5fe1945e4172f88f0ea5dc8becb4da400f07eb8ba2a1&" width="160"/>
   <div align="right">
     <a align="right" href="https://github.com/SWEET-DEVELOPERS/sweet-client">
     </a>
