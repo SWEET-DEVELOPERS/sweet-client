@@ -66,7 +66,7 @@ const AddGiftFooter = ({
         {
           onSuccess: () => {
             console.log('PUT 서버통신 후 presignedUrl', presignedUrl);
-            navigate(`/add-gift?roomId=${itemInfo.roomId}&targetTime=${targetDate}`);
+            navigate(`/add-gift/${itemInfo.roomId}/${targetDate}`);
             setStep(0);
           },
         },

@@ -10,9 +10,9 @@ export const GiftHomeSummaryWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
   background-image: url(${HomeBackgroundImage});
   background-size: cover;
-  background-position-x: right;
   background-repeat: no-repeat;
   width: 100%;
 `;
