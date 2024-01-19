@@ -20,7 +20,7 @@ const CardGuest = ({ user, makerState, profileImageUrl, memberId }: CardGuestPro
   console.log('추출된 초대 코드', roomId);
   const { mutation } = useDeleteRoomMember({ roomId, memberId });
   const handleButton = () => {
-    mutation.mutate();
+    mutation.mutate({ roomId, memberId });
   };
   return (
     <S.CardGuestWrapper>

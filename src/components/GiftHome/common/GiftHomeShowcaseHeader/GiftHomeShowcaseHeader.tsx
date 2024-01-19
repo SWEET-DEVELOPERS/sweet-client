@@ -18,6 +18,11 @@ const GiftHomeShowcaseHeader = ({
   length,
 }: GiftHomeShowcaseHeaderProps) => {
   const navigate = useNavigate();
+
+  const onClickEditBtn = () => {
+    navigate(`/add-gift?roomId=${roomId}&targetTime=${targetDate}`);
+  };
+
   return (
     <S.GiftHomeShowcaseHeaderWrapper>
       <S.ShowcaseTitle>{title}</S.ShowcaseTitle>
