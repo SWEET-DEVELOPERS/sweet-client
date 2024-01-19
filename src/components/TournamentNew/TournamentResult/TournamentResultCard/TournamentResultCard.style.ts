@@ -45,6 +45,7 @@ export const Title = styled.p`
 
 export const Price = styled.p`
   margin-bottom: 2rem;
+  color: ${({ theme }) => theme.colors.G_09};
   ${({ theme }) => theme.fonts.caption_01};
 `;
 

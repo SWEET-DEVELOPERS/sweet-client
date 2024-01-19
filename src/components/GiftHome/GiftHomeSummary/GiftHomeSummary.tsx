@@ -10,7 +10,11 @@ interface GiftHomeSummaryProps {
 }
 
 export const GiftHomeSummary = ({ data }: GiftHomeSummaryProps) => {
-  // const baseURL = import.meta.env.VITE_APP_BASE_URL;
+
+
+
+  const baseURL = import.meta.env.VITE_APP_BASE_URL_KAKAO;
+
   const { handleCopyToClipboard } = useClipboard();
 
   return (

@@ -158,9 +158,9 @@ const AddGiftWithLinkLayout = ({
         imageUrl={imageUrl}
         setImageUrl={setImageUrl}
         onClickEditBtn={handleImageUpload}
-        // previewImage={previewImage}
+        previewImage={previewImage}
         openGraph={openGraph}
-        // setPreviewImage={setPreviewImage}
+        setPreviewImage={setPreviewImage}
       />
       <ShowLink link={link} />
       <WriteItemInfo
@@ -171,6 +171,7 @@ const AddGiftWithLinkLayout = ({
         cost={priceText}
       />
       <AddGiftFooter
+        openGraph={openGraph}
         targetDate={targetDate}
         name={nameText}
         cost={checkPriceNull(priceText)}

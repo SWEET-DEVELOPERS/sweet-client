@@ -8,6 +8,8 @@ import Modal from '../../common/Modal/Modal';
 import usePutPresignedUrl from '../../../hooks/queries/onboarding/usePutPresignedUrl';
 import usePostMyPresignedUrl from '../../../hooks/queries/etc/usePostMyPresignedUrl';
 import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
+// import { postOpenGraph } from '../../../hooks/queries/etc/usePostOpengraph';
+import { OpenGraphResponseType } from '../../../types/etc';
 
 interface AddGiftWithLinkLayoutProps {
   roomId: number;
@@ -16,6 +18,7 @@ interface AddGiftWithLinkLayoutProps {
   setLinkText: React.Dispatch<React.SetStateAction<string>>;
   targetDate: string;
   modalStatus: boolean;
+  openGraph: OpenGraphResponseType;
 }
 // 직접 입력 화면
 function AddGiftWithoutLinkLayout({
@@ -25,6 +28,7 @@ function AddGiftWithoutLinkLayout({
   setLinkText,
   targetDate,
   // modalStatus,
+  openGraph,
 }: AddGiftWithLinkLayoutProps) {
   const [isActivated, setIsActivated] = useState(false);
   const [nameText, setNameText] = useState<string>('');
@@ -151,6 +155,8 @@ function AddGiftWithoutLinkLayout({
         setImageUrl={setImageUrl}
         openGraph={null}
         onClickEditBtn={handleImageUpload}
+        previewImage={previewImage}
+        setPreviewImage={setPreviewImage}
       />
       <WithoutLinkWriteItemInfo
         imageUrl={imageUrl}
@@ -166,6 +172,7 @@ function AddGiftWithoutLinkLayout({
       <AddGiftFooter
         targetDate={targetDate}
         name={nameText}
+        openGraph={openGraph}
         cost={checkPriceNull(priceText)}
         imageUrl={imageUrl}
         setImageUrl={setImageUrl}

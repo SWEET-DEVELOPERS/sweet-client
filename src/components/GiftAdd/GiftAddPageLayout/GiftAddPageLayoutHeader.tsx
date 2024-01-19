@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { IcLeft } from '../../../assets/svg';
 import * as S from './GiftAddPageLayoutHeader.style';
 
@@ -8,10 +8,11 @@ interface GiftAddPageLayoutHeaderProps {
 
 const GiftAddPageLayoutHeader = ({ title }: GiftAddPageLayoutHeaderProps) => {
   const navigate = useNavigate();
-
+  const params = useParams();
+  const roomId = params.roomId;
   const onClickBackBtn = () => {
     console.log('navigate 되나?');
-    navigate('/gift-home');
+    navigate(`/gift-home/${roomId}`);
   };
 
   return (
