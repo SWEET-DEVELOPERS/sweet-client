@@ -27,8 +27,8 @@ const TournamentContainer = () => {
     <>
       {showTournamentContainer ? (
         <>
+          <Header />
           <S.TournamentFlowWrapper>
-            <Header />
             <TournamentStartText giftee={giftee} />
             <TournamentItemCount />
             <S.TournamentImg>
