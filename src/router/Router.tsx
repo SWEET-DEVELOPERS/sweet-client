@@ -48,7 +48,7 @@ const router = createBrowserRouter([
         element: <DetailDoneRoom />,
       },
       {
-        path: '/gift-home',
+        path: '/gift-home/:roomId',
         element: <GiftHome />,
       },
       {
@@ -68,11 +68,11 @@ const router = createBrowserRouter([
         element: <ParticipantsView />,
       },
       {
-        path: '/tournament',
+        path: '/tournament/:roomId',
         element: <TournamentContainer />,
       },
       {
-        path: '/tournament-ranking',
+        path: '/tournament-ranking/:giftee/:roomId',
         element: <TournamentPage />,
       },
       {
