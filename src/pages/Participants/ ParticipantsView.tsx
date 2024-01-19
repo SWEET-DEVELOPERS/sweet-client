@@ -28,7 +28,6 @@ const ParticipantsView = () => {
   // const invitationCode = searchParams.get('invitationCode');
   // console.log('step06 내 초대코드', invitationCode);
 
-  const navigate = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const invitationCode = searchParams.get('invitationCode');
@@ -161,7 +160,6 @@ const ParticipantsView = () => {
             <S.TitleContainer>
               <div style={{ marginBottom: '4.6rem' }}>
                 <Title title={`${getGifteeInfo.data.gifteeName}님을 위한`} />
-
                 <Title title='선물 준비방이 개설됐어요' />
               </div>
               {/* TODO 추후 지민이 버튼으로 변경(항상 활성화) */}
