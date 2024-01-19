@@ -5,6 +5,11 @@ export const getAccessTokenLocalStorage = () => {
   return accessToken ? `Bearer ${accessToken}` : '';
 };
 
+export const getRefreshTokenLocalStorage = () => {
+  const refreshToken = localStorage.getItem('EXIT_LOGIN_REFRESH_TOKEN');
+  return refreshToken ? `Bearer ${refreshToken}` : '';
+};
+
 export const authInstance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_URL,
   withCredentials: false,
@@ -19,8 +24,16 @@ export const instance = axios.create({
   },
 });
 
+export const refreshInstance = axios.create({
+  baseURL: import.meta.env.VITE_APP_BASE_URL,
+  withCredentials: false,
+  headers: {
+    Authorization: `${getRefreshTokenLocalStorage()},`,
+  },
+});
+
 export async function postRefreshToken() {
-  const response = await instance.get('/oauth/reissue');
+  const response = await refreshInstance.get('/oauth/reissue');
   return response;
 }
 
