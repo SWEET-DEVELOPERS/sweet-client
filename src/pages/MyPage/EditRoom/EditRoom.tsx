@@ -3,6 +3,7 @@ import useGetRoomMember from '../../../hooks/queries/room/useGetRoomMember';
 import CardGuest from './CardGuest/CardGuest';
 import * as S from './EditRoom.style';
 import useGetRoomOwner from '../../../hooks/queries/room/useGetRoomOwner';
+import { useEffect, useState } from 'react';
 
 interface EditRoom {
   roomId: number;
@@ -15,15 +16,17 @@ const EditRoom = () => {
   const roomIdString = searchParams.get('roomId');
   const roomId = parseInt(roomIdString || '', 10);
   console.log('추출된 초대 코드', roomId);
-  const roomWholeMemberData = useGetRoomMember(roomId).data;
-  const roomWholeOwnerData = useGetRoomOwner(roomId).data;
-  console.log(roomWholeMemberData);
-  console.log(roomWholeOwnerData);
-
+  const [roomWholeMemberData, setWholeMemberData] = useState<any>();
+  const [roomWholeOwnerData, setWholeOwnerData] = useState<any>();
+  useEffect(() => {
+    setWholeOwnerData(useGetRoomMember(roomId).data);
+    setWholeMemberData(useGetRoomOwner(roomId).data);
+    console.log(roomWholeMemberData);
+    console.log(roomWholeOwnerData);
+  }, []);
   const roomOwnerData = roomWholeOwnerData.owner;
   const roomGifteeData = roomWholeOwnerData.room;
   const roomMemberData = roomWholeMemberData.members;
-
   return (
     <S.EditRoomWrapper>
       <S.TextWrapper>

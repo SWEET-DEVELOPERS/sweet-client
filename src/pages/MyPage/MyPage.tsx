@@ -9,14 +9,17 @@ import { MyPageType } from '../../types/member';
 import { post } from '../../apis/client';
 import MyPageHeader from './MyPageHeader/MyPageHeader';
 import * as S from './MyPage.style';
+import { useNavigate } from 'react-router';
 interface MyPage {
   memberData: MyPageType;
 }
 
 const MyPage = () => {
   const memberData = useGetMyPage();
+  const navigate = useNavigate();
   const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
   console.log(accessToken);
+
   const fetchAuth = async () => post(`/oauth/logout`);
   console.log(memberData);
   console.log(memberData?.data);
@@ -28,8 +31,6 @@ const MyPage = () => {
   const progressRoomData = memberData?.data?.activeRooms;
   const doneMemberRoomData = memberData?.data?.closedRooms;
 
-  //console.log(doneMemberRoomData && doneMemberRoomData[0]);
-
   const giftData: boolean = progressRoomData !== null && doneMemberRoomData !== null;
 
   const handleClick = () => {
@@ -37,6 +38,11 @@ const MyPage = () => {
       console.log(response);
     });
     localStorage.removeItem('EXIT_LOGIN_TOKEN');
+    navigate('/');
+  };
+
+  const goOnboarding = () => {
+    navigate('/onboarding');
   };
 
   return (
@@ -56,6 +62,7 @@ const MyPage = () => {
           </BtnLogout>
         </S.UserButtonWrapper>
         <BtnFill
+          onClick={goOnboarding}
           customStyle={{
             width: '30.3rem',
             height: '5.2rem',
