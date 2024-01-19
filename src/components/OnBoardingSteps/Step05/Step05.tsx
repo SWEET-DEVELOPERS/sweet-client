@@ -5,6 +5,7 @@ import Title from '../../common/title/Title';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import * as S from './Step05.style';
 import { getAccessTokenLocalStorage, instance } from '../../../apis/client';
+import usePostOnboardingInfo from '../../../hooks/queries/onboarding/usePostOnboardingInfo';
 
 interface SetTournamentDurationProps {
   onNext: VoidFunction;
@@ -41,6 +42,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     onboardingInfo,
     // presignedUrl,
     imageFile,
+    setInvitationCode,
   } = props;
 
   const [selectedOption, setSelectedOption] = useState<string>('');
@@ -67,6 +69,23 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     // updatedTime.setMinutes(updatedTime.getMinutes() - updatedTime.getTimezoneOffset());
     setSelectedOption(time);
     // const formattedTime = updatedTime.toISOString();
+  };
+
+  const { mutation } = usePostOnboardingInfo();
+
+  const postOnboarding = async () => {
+    try {
+      const updatedOnboardingInfo = { ...onboardingInfo, imageUrl: '' };
+      const response = mutation.mutate(updatedOnboardingInfo, {
+        onSuccess: (data) => {
+          setInvitationCode(data.invitationCode);
+          onNext();
+          console.log(response);
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -140,7 +159,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
           // setStep={async () => {
           //   const { finalPresigned } = await fetchPresignedUrl(fileName);
           //   await saveImageUrl(finalPresigned);
-          setStep={onNext}
+          setStep={postOnboarding}
         >
           다음
         </OnBoardingBtn>
