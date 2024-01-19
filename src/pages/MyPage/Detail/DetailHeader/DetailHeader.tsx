@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { IcLeft, IcMenu } from '../../../../assets/svg';
+import { IcLeft } from '../../../../assets/svg';
 import * as S from './DetailHeader.style';
 
 interface DetailHeaderProps {
