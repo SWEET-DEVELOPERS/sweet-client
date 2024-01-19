@@ -18,10 +18,10 @@ interface GiftAddPageLayoutProps {
 
 const GiftAddPageLayout = ({
   targetDate,
-  step,
+  // step,
   roomId,
   setStep,
-  itemNum,
+  // itemNum,
   setItemNum,
 }: GiftAddPageLayoutProps) => {
   const roomIdNumber = parseInt(roomId);
