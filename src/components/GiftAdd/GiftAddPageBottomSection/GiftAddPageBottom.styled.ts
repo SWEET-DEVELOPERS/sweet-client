@@ -64,7 +64,7 @@ export const AdItemImg = styled.img`
   height: 7.6rem;
 
   border-radius: 0.8rem;
-  background-color: ${({ theme }) => theme.colors.G_01};
+  outline: none;
 `;
 
 export const AdItemDescriptionWrapper = styled.div`

@@ -1,4 +1,4 @@
-export const useKakaoShare = () => {
+export const useKakaoShare = (invitationCode: string, gifteeName: string) => {
   if (window.Kakao) {
     const kakao = window.Kakao;
     if (!kakao.isInitialized()) {
@@ -10,20 +10,20 @@ export const useKakaoShare = () => {
     kakao.Link.sendDefault({
       objectType: 'feed',
       content: {
-        title: '님을 위한 선물방이 개설되었어요.',
+        title: `${gifteeName}님을 위한 선물방이 개설되었어요.`,
         description: '스윗과 함께 선물을 준비해보세요!',
         imageUrl: 'https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/invitation.png',
         link: {
-          mobileWebUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + '/result',
-          webUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + '/result',
+          mobileWebUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + `/result/${invitationCode}`,
+          webUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + `/result/${invitationCode}`,
         },
       },
       buttons: [
         {
           title: '선물방 참여하기',
           link: {
-            mobileWebUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + '/result',
-            webUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + '/result',
+            mobileWebUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + `/result/${invitationCode}`,
+            webUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + `/result/${invitationCode}`,
           },
         },
       ],
