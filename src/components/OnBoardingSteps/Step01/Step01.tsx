@@ -41,14 +41,25 @@ const NameInput = (props: NameInputProps) => {
               placeholder='이름을 입력해주세요'
             />
           </S.TextField>
-          <S.IconField>
-            {gifteeName.length > 0 && (
-              <IcCancelCircleFinal
-                style={{ width: '2.4rem', height: '2.4rem' }}
-                onClick={handleBtnClick}
-              />
-            )}
-          </S.IconField>
+          <div
+            style={{
+              display: 'flex',
+              width: '4rem',
+              height: '4rem',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            onClick={handleBtnClick}
+          >
+            <S.IconField>
+              {gifteeName.length > 0 && (
+                <IcCancelCircleFinal
+                  style={{ width: '2.4rem', height: '2.4rem' }}
+                  onClick={handleBtnClick}
+                />
+              )}
+            </S.IconField>
+          </div>
         </S.Wrapper>
         <S.LetterLength>({gifteeName.length}/10)</S.LetterLength>
       </div>
