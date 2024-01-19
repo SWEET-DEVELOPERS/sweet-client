@@ -63,7 +63,7 @@ const Start = () => {
       </S.TextWrapper>
       <LottieAnimation
         animation={StartAnimation}
-        customStyle={{ position: 'relative', top: '-40rem' }}
+        customStyle={{ position: 'absolute', top: '-15rem' }}
       />
       <S.Gradient />
 
@@ -99,7 +99,7 @@ const Start = () => {
       </S.PersonWrapper>
       <S.Main3 />
       <S.Main4 />
-      <Footer customStyle={{ position: 'relative', top: '-100rem' }} />
+      <Footer customStyle={{ position: 'absolute', top: '290rem' }} />
     </S.Wrapper>
   );
 };
