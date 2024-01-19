@@ -1,7 +1,6 @@
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 import BtnLogout from '../../components/common/Button/Logout/BtnLogout';
 import ProfileImage from './ProfileImage/ProfileImage';
-import Rectangle from '../../assets/img/Rectangle.png';
 import DoneGiftView from './GiftRoomView/DoneGiftView/DoneGiftView';
 import ProgressGiftView from './GiftRoomView/ProgressGiftView/ProgressGiftView';
 import useGetMyPage from '../../hooks/queries/member/useGetMypage';
