@@ -2,7 +2,7 @@ import IcLink from '../../../assets/svg/IcLink';
 import useClipboard from '../../../hooks/useCopyClip';
 import { RoomInfoType } from '../../../types/room';
 import CountDownTimer from '../CountDownTimer/CountDownTimer';
-import GiftHomeHeader from '../GiftHomeHeader/GiftHomeHeader';
+// import GiftHomeHeader from '../GiftHomeHeader/GiftHomeHeader';
 import * as S from './GiftHomeSummary.styled';
 
 interface GiftHomeSummaryProps {
