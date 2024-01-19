@@ -64,7 +64,7 @@ const router = createBrowserRouter([
         element: <OnBoardingPage />,
       },
       {
-        path: '/result',
+        path: '/result/:invitationCode',
         element: <ParticipantsView />,
       },
       {

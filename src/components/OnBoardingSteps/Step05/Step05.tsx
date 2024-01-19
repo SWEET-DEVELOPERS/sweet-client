@@ -108,7 +108,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   };
 
   const saveImageUrl = async (fileName: string) => {
-    const { finalPresigned, imageUrl, formData } = await fetchPresignedUrl(fileName);
+    const { finalPresigned, formData } = await fetchPresignedUrl(fileName);
     console.log(' save ImageUrl 안 presignedUrl', finalPresigned);
     console.log('step05 내formData', formData);
 
@@ -129,7 +129,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     }
 
     try {
-      const updatedOnboardingInfo = { ...onboardingInfo, imageUrl: imageUrl };
+      const updatedOnboardingInfo = { ...onboardingInfo, imageUrl: '' };
       const response = mutation.mutate(updatedOnboardingInfo, {
         onSuccess: (data) => {
           // console.log('step05 내 code:', code);
