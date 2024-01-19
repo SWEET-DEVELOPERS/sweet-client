@@ -13,6 +13,7 @@ const GiftDetailHeader = ({ title, roomId }: GiftDetailHeaderProps) => {
 
   const handleClickBtn = () => {
     navigate(`/gift-home/${roomId}`);
+    // navigate(-1);
   };
 
   return (

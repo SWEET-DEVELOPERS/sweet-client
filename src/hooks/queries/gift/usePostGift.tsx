@@ -14,7 +14,7 @@ export const usePostGift = (roomId: number, targetDate: string) => {
     mutationFn: postNewGift,
     onSuccess: () => {
       console.log('roomId, targetDate', roomId, targetDate);
-      navigate(`/add-gift?roomId=${roomId}&targetTime=${targetDate}`);
+      navigate(`/add-gift/${roomId}/${targetDate}`);
     },
 
     onError: () => {

@@ -1,7 +1,7 @@
 import * as S from './GiftHomeDetail.styled';
 import MiniTimer from '../../components/common/MiniTimer/MiniTimer';
 import useGetHotProduct from '../../hooks/queries/product/useGetHotProduct';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import GiftHomePriceTag from '../../components/common/GiftHome/Price/GiftHomePriceTag';
 import GiftDetailHeader from '../../components/common/GiftDetail/GiftDetailHeader';
 
@@ -15,6 +15,8 @@ function GiftHomeDetail() {
   const params = useParams();
   console.log('params', params);
   const roomId = params.roomId;
+  console.log('뭔데?!', roomId);
+
   const targetDate = params.targetDate;
   const roomIdNumber = parseInt(roomId || '');
   const { data } = useGetHotProduct({ roomId: roomIdNumber });
