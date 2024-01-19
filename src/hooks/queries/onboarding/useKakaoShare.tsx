@@ -1,4 +1,4 @@
-export const useKakaoShare = (invitationCode: string) => {
+export const useKakaoShare = (invitationCode: string, gifteeName: string) => {
   if (window.Kakao) {
     const kakao = window.Kakao;
     if (!kakao.isInitialized()) {
@@ -10,7 +10,7 @@ export const useKakaoShare = (invitationCode: string) => {
     kakao.Link.sendDefault({
       objectType: 'feed',
       content: {
-        title: '님을 위한 선물방이 개설되었어요.',
+        title: `${gifteeName}님을 위한 선물방이 개설되었어요.`,
         description: '스윗과 함께 선물을 준비해보세요!',
         imageUrl: 'https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/invitation.png',
         link: {

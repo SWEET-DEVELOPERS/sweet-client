@@ -25,6 +25,7 @@ const OnBoardingPage = () => {
   const [invitationCode, setInvitationCode] = useState<string>('');
   const [presignedUrl, setPresignedUrl] = useState<string>('');
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const [roomId, setRoomId] = useState<number>(0);
 
   const navigate = useNavigate();
   const onboardingInfo = {
@@ -41,6 +42,7 @@ const OnBoardingPage = () => {
   //전체 값 확인용
   useEffect(() => {
     console.log('전체 값 정리', onboardingInfo);
+    console.log('roomid', roomId);
   }, [onboardingInfo]);
 
   return (
@@ -110,6 +112,7 @@ const OnBoardingPage = () => {
             presignedUrl={presignedUrl}
             setPresignedUrl={setPresignedUrl}
             imageFile={imageFile}
+            setRoomId={setRoomId}
           />
         </Funnel.Step>
         <Funnel.Step name='GIFT_ROOM_FIX'>
@@ -118,6 +121,7 @@ const OnBoardingPage = () => {
             onboardingInfo={onboardingInfo}
             imageUrl={imageUrl}
             invitationCode={invitationCode}
+            roomId={roomId}
             // presignedUrl={presignedUrl}
           />
         </Funnel.Step>
