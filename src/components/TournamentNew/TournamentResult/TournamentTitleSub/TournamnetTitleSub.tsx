@@ -28,6 +28,7 @@ const Title = styled.div`
 
 const PinkText = styled.p`
   margin-left: 0.5rem;
+  margin-bottom: 0.3rem;
   ${({ theme }) => theme.fonts.Title};
   color: ${({ theme }) => theme.colors.P_06};
 `;

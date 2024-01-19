@@ -12,7 +12,7 @@ function MiniTimer({ targetDate }: MiniTimerProps) {
   console.log(days);
   return (
     <S.MiniTimerWrapper>
-      <IcClock style={{ width: '1.7rem', height: '1.7rem' }} />
+      <IcClock style={{ width: '1.7rem', height: '1.7rem', color: '#FF2176' }} />
       <S.MiniTimerNumbers>
         {hours.toString().padStart(2, '0')}:{minutes.toString().padStart(2, '0')}:
         {seconds.toString().padStart(2, '0')}

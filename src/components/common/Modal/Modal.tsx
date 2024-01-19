@@ -14,7 +14,7 @@ const Modal = ({ children, onConfirmClick }: ModalProps) => {
       <S.ModalWrapper>
         <S.ModalContent>{children}</S.ModalContent>
         <BtnMedium customStyle={{ width: '21.3rem' }} onClick={onConfirmClick}>
-          직접 입력하기
+          확인
         </BtnMedium>
       </S.ModalWrapper>
     </>

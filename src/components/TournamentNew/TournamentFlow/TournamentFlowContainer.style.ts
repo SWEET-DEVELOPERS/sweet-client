@@ -9,6 +9,7 @@ export const TournamentFlowContainerWrapper = styled.section`
   background-image: url(${bgGround});
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 6.5rem 2rem;
+  padding: 5.6rem 2rem;
+  position: relative;
   height: 100vh;
 `;

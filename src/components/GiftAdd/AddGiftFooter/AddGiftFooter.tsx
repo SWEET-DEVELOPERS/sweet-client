@@ -1,6 +1,6 @@
 // import { useNavigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { IcLeft } from '../../../assets/svg';
+// import { IcLeft } from '../../../assets/svg';
 import usePostGift from '../../../hooks/queries/gift/usePostGift';
 import GiftAddNextBtn from '../AddGiftLink/common/GiftAddNextBtn/GiftAddNextBtn';
 import * as S from './AddGiftFooter.styled';
@@ -74,16 +74,12 @@ const AddGiftFooter = ({
     }
   };
 
-  const handlePrevBtnClick = () => {
-    setStep(1);
-  };
+  // const handlePrevBtnClick = () => {
+  //   setStep(1);
+  // };
 
   return (
     <S.AddGiftFooterWrapper>
-      <S.BtnPrev>
-        <IcLeft style={{ width: '2.4rem', height: '2.4rem' }} onClick={handlePrevBtnClick} />
-        이전
-      </S.BtnPrev>
       <GiftAddNextBtn isActivated={isActivated} onClick={onClick} children='완료' />
     </S.AddGiftFooterWrapper>
   );

@@ -22,5 +22,5 @@ export const RefreshWrapper = styled.div`
 
   width: 2.4rem;
   margin-bottom: 2rem;
-  left: 86%;
+  left: 92%;
 `;

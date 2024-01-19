@@ -8,6 +8,7 @@ export const Wrapper = styled.button`
   padding: 1.5rem 0rem 1.6rem 0rem;
   border-radius: 2.6rem;
 
+  outline: none;
   background-color: ${({ theme: { colors } }) => colors.black};
   color: ${({ theme: { colors } }) => colors.white};
   ${({ theme: { fonts } }) => fonts.body_09};

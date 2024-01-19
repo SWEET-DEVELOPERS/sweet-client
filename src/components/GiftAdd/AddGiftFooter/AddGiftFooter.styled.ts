@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const AddGiftFooterWrapper = styled.footer`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   position: absolute;
   align-items: center;
 

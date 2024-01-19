@@ -14,9 +14,8 @@ export const Title = styled.p`
 `;
 
 export const SubTitle = styled.p`
-  margin-bottom: 5.5rem;
-  color: ${({ theme }) => theme.colors.G_09};
-  ${({ theme }) => theme.fonts.body_09};
+  color: ${({ theme }) => theme.colors.black};
+  ${({ theme }) => theme.fonts.body_07};
 `;
 
 export const UserName = styled.span`

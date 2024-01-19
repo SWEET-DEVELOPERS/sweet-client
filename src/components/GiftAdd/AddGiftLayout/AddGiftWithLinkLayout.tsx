@@ -158,9 +158,9 @@ const AddGiftWithLinkLayout = ({
         imageUrl={imageUrl}
         setImageUrl={setImageUrl}
         onClickEditBtn={handleImageUpload}
-        // previewImage={previewImage}
+        previewImage={previewImage}
         openGraph={openGraph}
-        // setPreviewImage={setPreviewImage}
+        setPreviewImage={setPreviewImage}
       />
       <ShowLink link={link} />
       <WriteItemInfo
