@@ -109,7 +109,7 @@ const ParticipantsView = () => {
         onSuccess: (data) => {
           console.log('step06 내 포스트', data);
           console.log('step06 내 response', response);
-          navigate('/gift-home');
+          navigate(`/gift-home/${data.roomId}`);
         },
         onError: () => {
           navigate('/deadline');
