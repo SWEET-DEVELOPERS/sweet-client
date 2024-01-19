@@ -74,9 +74,9 @@ const AddGiftFooter = ({
     }
   };
 
-  const handlePrevBtnClick = () => {
-    setStep(1);
-  };
+  // const handlePrevBtnClick = () => {
+  //   setStep(1);
+  // };
 
   return (
     <S.AddGiftFooterWrapper>

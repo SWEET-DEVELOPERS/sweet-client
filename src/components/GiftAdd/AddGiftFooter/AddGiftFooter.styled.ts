@@ -21,6 +21,5 @@ export const BtnPrev = styled.button`
 
   border: none;
   border-radius: 9.9rem;
-  color: ${({ theme }) => theme.colors.};;
   background-color: ${({ theme }) => theme.colors.white};
 `;
