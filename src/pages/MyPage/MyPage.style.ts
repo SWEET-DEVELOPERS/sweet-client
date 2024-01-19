@@ -51,7 +51,7 @@ export const ProfileWrapper = styled.div`
   top: 19rem;
   left: 1.7rem;
 
-  z-index: 999;
+  z-index: 8;
 
   box-shadow: 0rem 0rem 2rem 0rem rgba(220, 180, 180, 0.35);
 `;

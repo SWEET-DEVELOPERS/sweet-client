@@ -8,6 +8,10 @@ const StartHeader = () => {
   const handleSettingIcon = () => {
     navigate(`/mypage`);
   };
+  const handleSettingHomeIcon = () => {
+    setSidebarOpen(!isSidebarOpen);
+    navigate(`/`);
+  };
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -23,7 +27,7 @@ const StartHeader = () => {
         </S.ImgWrapper>
 
         <S.Sidebar>
-          <h2>홈</h2>
+          <h2 onClick={handleSettingHomeIcon}>홈</h2>
           <h2 onClick={handleSettingIcon}>마이페이지</h2>
         </S.Sidebar>
       </S.SidebarWrapper>

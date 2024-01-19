@@ -21,7 +21,7 @@ const TournamentContainer = () => {
   console.log('추출된 초대 코드', roomId);
 
   const { showTournamentContainer, handleStartClick } = useTournament();
-  const memberData = useGetItem({ roomId: roomId });
+  const memberData = useGetItem({ roomId: 2 });
   console.log(memberData);
 
   const tournamentData = memberData?.data || [];
@@ -31,7 +31,7 @@ const TournamentContainer = () => {
         <>
           <Header />
           <S.TournamentFlowWrapper>
-            <TournamentStartText giftee={giftee} />
+            <TournamentStartText giftee={'멋진 시동훈'} />
             <TournamentItemCount memberData={tournamentData} />
             <S.TournamentImg>
               <img src={trophy} alt='트로피' />
