@@ -1,11 +1,12 @@
 import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
-import { IcUnselectedCalender, IcUnselectedClock } from '../../../assets/svg';
+import { IcUnselectedCalender } from '../../../assets/svg';
 import * as S from './Step04.style';
 import { useState } from 'react';
 import { DayPicker } from 'react-day-picker';
 import { format } from 'date-fns';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
+import TimePicker from './TimePicker';
 
 interface SetTournamentScheduleProps {
   onNext: VoidFunction;
@@ -20,14 +21,10 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
   const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string>('');
-  const [isTimerOpen, setIsTimerOpen] = useState<boolean>(false);
+  const [isTimerOpen] = useState<boolean>(false);
 
   const openCalendar = () => {
     setIsCalendarOpen(!isCalendarOpen);
-  };
-
-  const openTimer = () => {
-    setIsTimerOpen(!isTimerOpen);
   };
 
   const handleDateSelect = (date: Date) => {
@@ -70,12 +67,14 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
         </S.IconField>
       </S.SetTournamentScheduleWrapper>
       {isCalendarOpen && (
-        <DayPicker
-          defaultMonth={new Date()}
-          mode='single'
-          onDayClick={handleDateSelect}
-          disabled={disabledDays}
-        />
+        <div style={{ display: 'flex', justifyContent: 'center', zIndex: 1000, position: 'fixed' }}>
+          <DayPicker
+            defaultMonth={new Date()}
+            mode='single'
+            onDayClick={handleDateSelect}
+            disabled={disabledDays}
+          />
+        </div>
       )}
 
       {/* 여기서부터 타이머 */}
@@ -85,19 +84,24 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
             placeholder='시작 시간을 선택해주세요'
             value={selectedTime}
             onChange={(e) => setSelectedTime(e.target.value)}
+            disabled
           />
         </S.TextField>
-        <S.IconField>
-          <input type='time' style={{ display: 'none' }} id='timeInput' onClick={openTimer} />
+        <div>
+          <TimePicker onSelect={(time) => handleTimerSelect(time)} />
+        </div>
+        {/* <S.IconField>
+          <input type='time' style={{ display: 'none' }} id='timeInput' />
           <label htmlFor='timeInput'>
             <IcUnselectedClock
               style={{ width: '2.4rem', height: '2.4rem', position: 'relative' }}
+              onClick={openTimer}
             />
           </label>
           {isTimerOpen ? (
             <input id='timeInput' type='time' onChange={(e) => handleTimerSelect(e.target.value)} />
           ) : null}
-        </S.IconField>
+        </S.IconField> */}
       </S.Container>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <OnBoardingBtn isActivated={selectedDate !== null && selectedTime !== ''} setStep={onNext}>
