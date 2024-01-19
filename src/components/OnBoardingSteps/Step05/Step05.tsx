@@ -129,7 +129,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     }
 
     try {
-      const updatedOnboardingInfo = { ...onboardingInfo, imageUrl: imageUrl };
+      const updatedOnboardingInfo = { ...onboardingInfo, imageUrl: '' };
       const response = mutation.mutate(updatedOnboardingInfo, {
         onSuccess: (data) => {
           // console.log('step05 내 code:', code);
