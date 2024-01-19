@@ -17,7 +17,8 @@ export const Wrapper = styled.button<WrapperProps>`
   border: 1px solid ${({ theme: { colors } }) => colors.white};
   background-color: transparent;
 
-  &:focus {
+  &:focus,
+  &:active {
     border: 1px solid ${({ theme: { colors } }) => colors.P_06};
     background-color: ${({ theme: { colors } }) => colors.white};
   }
