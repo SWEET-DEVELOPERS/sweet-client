@@ -46,9 +46,9 @@ const OnBoardingPage = () => {
   }, [onboardingInfo]);
 
   return (
-    <OnBoardingPageWrapper>
-      <Funnel>
-        <Funnel.Step name='NAME'>
+    <Funnel>
+      <Funnel.Step name='NAME'>
+        <OnBoardingPageWrapper>
           <OnBoardingHeader step={1} onClick={handleFirstHistoryClick} />
           {/* step01 */}
           <NameInput
@@ -56,8 +56,10 @@ const OnBoardingPage = () => {
             gifteeName={gifteeName}
             setGifteeName={setGifteeName}
           />
-        </Funnel.Step>
-        <Funnel.Step name='THUMBNAIL'>
+        </OnBoardingPageWrapper>
+      </Funnel.Step>
+      <Funnel.Step name='THUMBNAIL'>
+        <OnBoardingPageWrapper>
           <OnBoardingHeader step={2} />
 
           {/* step02 */}
@@ -70,10 +72,11 @@ const OnBoardingPage = () => {
             imageFile={imageFile}
             setImageFile={setImageFile}
           />
-        </Funnel.Step>
-        <Funnel.Step name='PRESENT'>
-          <OnBoardingHeader step={3} />
-
+        </OnBoardingPageWrapper>
+      </Funnel.Step>
+      <Funnel.Step name='PRESENT'>
+        <OnBoardingHeader step={3} />
+        <OnBoardingPageWrapper>
           {/* step03 */}
           <GiftDelivery
             onNext={() => setStep(() => 'TOURNAMENT_SCHEDULE_REGISTRATION')}
@@ -81,9 +84,10 @@ const OnBoardingPage = () => {
             setDeliveryDate={setDeliveryDate}
             onboardingInfo={onboardingInfo}
           />
-        </Funnel.Step>
-
-        <Funnel.Step name='TOURNAMENT_SCHEDULE_REGISTRATION'>
+        </OnBoardingPageWrapper>
+      </Funnel.Step>
+      <Funnel.Step name='TOURNAMENT_SCHEDULE_REGISTRATION'>
+        <OnBoardingPageWrapper>
           <OnBoardingHeader step={4} />
 
           {/* step04 */}
@@ -92,8 +96,10 @@ const OnBoardingPage = () => {
             tournamentStartDate={tournamentStartDate}
             setTournamentStartDate={setTournamentStartDate}
           />
-        </Funnel.Step>
-        <Funnel.Step name='TOURNAMENT_PROCEEDING'>
+        </OnBoardingPageWrapper>
+      </Funnel.Step>
+      <Funnel.Step name='TOURNAMENT_PROCEEDING'>
+        <OnBoardingPageWrapper>
           <OnBoardingHeader step={5} />
 
           {/* step05 여기서 post (이미지 url먼저 post 후 전체 값 post*/}
@@ -114,19 +120,19 @@ const OnBoardingPage = () => {
             imageFile={imageFile}
             setRoomId={setRoomId}
           />
-        </Funnel.Step>
-        <Funnel.Step name='GIFT_ROOM_FIX'>
-          {/* step06 */}
-          <OnboardingFinal
-            onboardingInfo={onboardingInfo}
-            imageUrl={imageUrl}
-            invitationCode={invitationCode}
-            roomId={roomId}
-            // presignedUrl={presignedUrl}
-          />
-        </Funnel.Step>
-      </Funnel>
-    </OnBoardingPageWrapper>
+        </OnBoardingPageWrapper>
+      </Funnel.Step>
+      <Funnel.Step name='GIFT_ROOM_FIX'>
+        {/* step06 */}
+        <OnboardingFinal
+          onboardingInfo={onboardingInfo}
+          imageUrl={imageUrl}
+          invitationCode={invitationCode}
+          roomId={roomId}
+          // presignedUrl={presignedUrl}
+        />
+      </Funnel.Step>
+    </Funnel>
   );
 };
 
