@@ -4,7 +4,7 @@ export const ItemTextFieldWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  row-gap: 0.8rem;
+  /* row-gap: 0.8rem; */
 `;
 
 export const CategoryTitle = styled.span`
