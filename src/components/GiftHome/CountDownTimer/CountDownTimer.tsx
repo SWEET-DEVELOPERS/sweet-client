@@ -9,7 +9,7 @@ interface CountdownTimerProps {
 }
 
 const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
-  const [days, hours, minutes, seconds] = useCountDown(targetDate.toLocaleString());
+  const [days, hours, minutes, seconds] = useCountDown(targetDate.toISOString());
   console.log('시간이 어떻게 됐어??? targetDate', targetDate);
   console.log('시간이 어떻게 됐어??? targetDate to localestring', targetDate.toLocaleString);
   return (
