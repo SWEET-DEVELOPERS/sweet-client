@@ -11,7 +11,7 @@ import Header from '../../common/Header';
 
 const TournamentContainer = () => {
   const params = useParams();
-  const giftee = '멋진 시동훈';
+  const giftee = params.giftee;
   console.log('울랄라', giftee);
   const roomIdString = params.roomId || '';
   const roomId = parseInt(roomIdString || '', 10);
