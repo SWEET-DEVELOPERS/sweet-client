@@ -1,10 +1,10 @@
 import * as S from './TournamentRankingTitle.style';
-import { SubTitle } from '../../Intro/TournamentStartText/TournamentStartText.style';
 import RankingImg from '../../../../assets/img/3dic_podium2.png';
 import { useLocation } from 'react-router-dom';
 import useClipboard from '../../../../hooks/useCopyClip';
 import { useEffect } from 'react';
 import { shareKakao } from '../../../../utils/shareKakaoLink';
+import { IcLink3, KakaoLo } from '../../../../assets/svg';
 
 interface TournamentRankingGifteeProps {
   giftee?: string;
@@ -29,15 +29,20 @@ const TournamentRankingTitle = ({ giftee }: TournamentRankingGifteeProps) => {
         </S.ImgWrapper>
 
         <S.Title>최종 순위 확인</S.Title>
-        <SubTitle>
-          {giftee}님을 위한 <br />
+        <S.SubTitle>
+          <S.PinkText>{giftee}</S.PinkText>님을 위한 <br />
           최종 선물 순위를 확인하세요
-        </SubTitle>
+        </S.SubTitle>
         <S.ButtonWrapper>
           <S.LinkButton onClick={() => handleCopyToClipboard(`${baseURL}${location.pathname}`)}>
+            <IcLink3 style={{ width: '1.8rem', height: '1.8rem', cursor: 'pointer' }} />
             링크로 공유
           </S.LinkButton>
-          <S.LinkButton onClick={() => shareKakao()}>카카오 공유</S.LinkButton>
+
+          <S.KakaoButton onClick={() => shareKakao()}>
+            <KakaoLo style={{ width: '1.7rem', height: '1.7rem', cursor: 'pointer' }} />
+            카카오 공유
+          </S.KakaoButton>
         </S.ButtonWrapper>
         <S.Line></S.Line>
       </S.TournamentRenameTitleWrapper>
