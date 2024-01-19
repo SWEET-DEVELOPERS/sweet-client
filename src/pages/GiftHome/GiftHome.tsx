@@ -30,11 +30,16 @@ export default function GiftHome() {
     <S.GiftHomeWrapper>
       <GiftHomeHeader />
       <GiftHomeSummary data={data?.data} />
-      <GiftHomeMyGifts
-        roomId={roomId}
-        data={data.data.roomMyGiftDtoList}
-        targetDate={tournamentStartTime}
-      />
+      {data?.data.roomMyGiftDtoList.length > 0 ? (
+        <GiftHomeMyGifts
+          roomId={roomId}
+          data={data.data.roomMyGiftDtoList}
+          targetDate={tournamentStartTime}
+        />
+      ) : (
+        <></>
+      )}
+
       <GiftHomeFriendsGifts
         roomId={roomId}
         targetDate={data.data.tournamentStartDate}
