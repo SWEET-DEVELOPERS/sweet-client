@@ -216,10 +216,10 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <OnBoardingBtn
           isActivated={!!selectedOption}
-          setStep={async () => {
-            const { finalPresigned } = await fetchPresignedUrl(fileName);
-            await saveImageUrl(finalPresigned);
-          }}
+          // setStep={async () => {
+          //   const { finalPresigned } = await fetchPresignedUrl(fileName);
+          //   await saveImageUrl(finalPresigned);
+          setStep={onNext}
         >
           다음
         </OnBoardingBtn>

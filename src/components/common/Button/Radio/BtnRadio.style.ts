@@ -45,6 +45,7 @@ export const Time = styled.p`
   width: 4.2rem;
   width: 60%;
   ${({ theme: { fonts } }) => fonts.body_09};
+  color: black;
 `;
 
 export const Period = styled.p<{ $isAfterDelivery: boolean }>`
