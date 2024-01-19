@@ -163,7 +163,9 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
           <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
           링크 복사
         </S.LinkCopyBtn>
-        <S.KakaoLinkCopyBtn onClick={() => useKakaoShare(invitationCode)}>
+        <S.KakaoLinkCopyBtn
+          onClick={() => useKakaoShare(invitationCode, onboardingInfo.gifteeName)}
+        >
           <IcKakaoShare style={{ width: '1.8rem', height: '1.8rem' }} />
           카카오톡 공유
         </S.KakaoLinkCopyBtn>
