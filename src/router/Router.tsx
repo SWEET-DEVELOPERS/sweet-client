@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         element: <DetailProgressRoom />,
       },
       {
-        path: '/detail-done',
+        path: '/detail-done/:giftee/:roomId',
         element: <DetailDoneRoom />,
       },
       {
