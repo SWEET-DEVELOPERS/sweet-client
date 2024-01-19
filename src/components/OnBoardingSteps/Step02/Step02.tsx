@@ -10,11 +10,13 @@ interface ThumbnailInputProps {
   setImageUrl: React.Dispatch<React.SetStateAction<string>>;
   fileName: string;
   setFileName: React.Dispatch<React.SetStateAction<string>>;
+  imageFile: File | null;
+  setImageFile: React.Dispatch<React.SetStateAction<File | null>>;
 }
 
 const ThumbnailInput = (props: ThumbnailInputProps) => {
   // TODO 이미지 클릭 시 사진 업로드
-  const { onNext, setFileName } = props;
+  const { onNext, setFileName, imageFile, setImageFile } = props;
   const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
@@ -24,7 +26,9 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
       const selectedFiles = files as FileList;
       setPreviewImage(URL.createObjectURL(selectedFiles[0]));
       setIsImageUploaded(!!selectedFiles?.[0]);
+      const imageFile = selectedFiles[0];
 
+      setImageFile(imageFile);
       const imageName = files[0].name.trim();
 
       // 확장자 제거
@@ -37,7 +41,8 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
       const firstThreeLetters = formattedImageName.substring(0, 3);
 
       // 이미지 업로드 시간
-      const uploadTime = new Date().toISOString();
+      // const uploadTime = new Date().toISOString();
+      const uploadTime = new Date().toISOString().split('.')[0];
 
       // 최종 이미지 이름
       const finalImageName = `${firstThreeLetters}${uploadTime}`;
@@ -47,7 +52,8 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
 
       setFileName(finalImageName);
 
-      console.log('fileName:', finalImageName);
+      console.log('step02 내 fileName:', finalImageName);
+      console.log('step02 내 imageFile:', imageFile);
     }
   };
 
