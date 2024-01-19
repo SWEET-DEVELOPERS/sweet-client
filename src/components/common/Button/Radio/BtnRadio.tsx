@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, useState } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 import * as S from './BtnRadio.style';
 import { IcCircle, IcCirclePink } from '../../../../assets/svg';
 // import { Period } from '../../../OnBoardingSteps/Step05/Step05.style';
@@ -24,8 +24,6 @@ const BtnRadio = ({
   $isAfterDelivery,
   isSelected,
 }: BtnRadioProps) => {
-  const [focused, setFocused] = useState(false);
-
   return (
     <S.Wrapper
       disabled={disabled}
@@ -41,8 +39,6 @@ const BtnRadio = ({
           onClick();
         }
       }}
-      onFocus={() => setFocused(true)}
-      onBlur={() => setFocused(false)}
       isSelected={isSelected}
     >
       {isSelected ? (
