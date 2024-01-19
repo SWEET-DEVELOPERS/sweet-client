@@ -30,7 +30,7 @@ const TournamentContainer = () => {
           <Header />
           <S.TournamentFlowWrapper>
             <TournamentStartText giftee={giftee} />
-            <TournamentItemCount />
+            <TournamentItemCount memberData={tournamentData} />
             <S.TournamentImg>
               <img src={trophy} alt='트로피' />
             </S.TournamentImg>
