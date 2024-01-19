@@ -153,6 +153,8 @@ function AddGiftWithoutLinkLayout({
         onClickEditBtn={handleImageUpload}
       />
       <WithoutLinkWriteItemInfo
+        imageUrl={imageUrl}
+        // setImageUrl={setImageUrl}
         setIsActivated={setIsActivated}
         setName={setNameText}
         setCost={setPriceText}
