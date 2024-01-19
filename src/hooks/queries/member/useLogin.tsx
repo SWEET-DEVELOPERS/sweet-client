@@ -43,7 +43,7 @@ const useLogin = () => {
           console.log(localStorage.getItem('EXIT_LOGIN_TOKEN'));
           console.log(JWT);
 
-          navigate('/');
+          // navigate('/');
         }
 
         console.log(data);
