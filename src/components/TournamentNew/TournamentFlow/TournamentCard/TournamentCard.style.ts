@@ -55,7 +55,7 @@ export const TournamentCardWrapper = styled.div<TournamentCardWrapperProps>`
 `;
 
 export const ItemInfo = styled.div`
-  padding: 0 1.2rem;
+  padding: 0 1.2rem 1.2rem;
 `;
 
 export const Title = styled.p`
