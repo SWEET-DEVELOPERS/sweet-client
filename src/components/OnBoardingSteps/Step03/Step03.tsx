@@ -11,10 +11,16 @@ interface GiftDeliveryProps {
   onNext: VoidFunction;
   deliveryDate: string;
   setDeliveryDate: React.Dispatch<React.SetStateAction<string>>;
+  onboardingInfo: {
+    gifteeName: string;
+    deliveryDate: string;
+    tournamentStartDate: string;
+    tournamentDuration: string;
+  };
 }
 
 const GiftDelivery = (props: GiftDeliveryProps) => {
-  const { onNext, deliveryDate, setDeliveryDate } = props;
+  const { onNext, deliveryDate, setDeliveryDate, onboardingInfo } = props;
 
   const disabledDays = { before: new Date() };
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -50,7 +56,7 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
   return (
     <>
       {/* TODO 추후 로그인된 유저네임으로 변경 및 인풋창 클릭 시 켈린더 호출*/}
-      <Title userName='시동훈' title='님께' />
+      <Title userName={`${onboardingInfo.gifteeName}`} title='님께' />
       <Title title='언제 선물을' />
       <Title title='전달하실 예정인가요?' />
       <S.Wrapper $hasContent={isOpen}>

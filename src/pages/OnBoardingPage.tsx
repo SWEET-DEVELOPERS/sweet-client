@@ -77,6 +77,7 @@ const OnBoardingPage = () => {
             onNext={() => setStep(() => 'TOURNAMENT_SCHEDULE_REGISTRATION')}
             deliveryDate={deliveryDate}
             setDeliveryDate={setDeliveryDate}
+            onboardingInfo={onboardingInfo}
           />
         </Funnel.Step>
 
