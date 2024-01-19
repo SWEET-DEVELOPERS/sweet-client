@@ -185,14 +185,6 @@ const ParticipantsView = () => {
       </S.InfoWrapper>
       <S.BtnWrapper>
         <IcKakoLarge onClick={() => window.location.replace(kakaoURL)} />
-        {/* <S.LinkCopyBtn onClick={() => handleCopyToClipboard(`${baseUrl}`)}>
-          <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
-          링크 복사
-        </S.LinkCopyBtn>
-        <S.KakaoLinkCopyBtn onClick={() => useKakaoShare()}>
-          <IcKakaoShare style={{ width: '1.8rem', height: '1.8rem' }} />
-          카카오톡 공유
-        </S.KakaoLinkCopyBtn> */}
       </S.BtnWrapper>
     </>
   );
