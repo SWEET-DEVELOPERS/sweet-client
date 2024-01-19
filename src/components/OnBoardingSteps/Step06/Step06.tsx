@@ -120,11 +120,10 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
         {/* <S.GradientImg> */}
         <div>
           <S.GradientImg>
-            {/* <img
+            <img
               src='https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/sweet.png'
-              style={{ width: '100%', opacity: 0.7 }}
-            /> */}
-            <img src={imageUrl} />
+              style={{ width: '100%' }}
+            />
             <S.TitleContainer>
               <div style={{ marginBottom: '4.6rem' }}>
                 <Title title={`${onboardingInfo.gifteeName} 님을 위한 `} />
