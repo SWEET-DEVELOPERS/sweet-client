@@ -35,7 +35,7 @@ export const User = styled.div`
 
 export const CountUser = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ align: 'center' })};
-  ${({ theme: { colors } }) => colors.caption_01};
+  ${({ theme: { fonts } }) => fonts.caption_01};
   color: ${({ theme: { colors } }) => colors.G_07};
   margin: 0 1.2rem;
   margin-top: 0.4rem;

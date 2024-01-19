@@ -9,7 +9,7 @@ const Loading = () => {
         animation={SymbolLoading}
         customStyle={{ width: '12rem', height: '12rem' }}
       />
-      <S.Text>불러오는중...</S.Text>
+      <S.Text>불러오는 중...</S.Text>
     </S.LoadingWrapper>
   );
 };
