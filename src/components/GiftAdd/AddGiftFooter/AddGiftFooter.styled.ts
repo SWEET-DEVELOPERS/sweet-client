@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const AddGiftFooterWrapper = styled.footer`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   position: absolute;
   align-items: center;
 
@@ -21,5 +21,6 @@ export const BtnPrev = styled.button`
 
   border: none;
   border-radius: 9.9rem;
+  color: ${({ theme }) => theme.colors.};;
   background-color: ${({ theme }) => theme.colors.white};
 `;
