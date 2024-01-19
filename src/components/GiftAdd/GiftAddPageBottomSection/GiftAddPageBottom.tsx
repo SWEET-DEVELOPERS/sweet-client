@@ -3,6 +3,7 @@ import { IcCancel } from '../../../assets/svg';
 import GiftAddCompleteBtn from '../GiftAddCompleteBtn/GiftAddCompleteBtn';
 import * as S from './GiftAddPageBottom.styled';
 import { GiftType } from '../../../types/gift';
+import AdImage from '../../../assets/img/ad_img.png';
 
 interface GiftAddPageBottomProps {
   adPrice: string;
@@ -40,7 +41,7 @@ const GiftAddPageBottom = ({ adPrice, myGiftData }: GiftAddPageBottomProps) => {
             />
           </S.AdHeaderWrapper>
           <S.AdItemWrapper>
-            <S.AdItemImg />
+            <S.AdItemImg src={AdImage} />
             <S.AdItemDescriptionWrapper>
               <S.AdItemTitle>헤이즈 워시드 와이드 데님 팬츠 (VINTAGE INDIGO)</S.AdItemTitle>
               <S.AdItemPrice>{adPrice}원</S.AdItemPrice>
