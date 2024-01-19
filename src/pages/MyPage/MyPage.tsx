@@ -23,6 +23,7 @@ const MyPage = () => {
   console.log(memberData?.data?.memberInfo);
 
   const userName = memberData?.data?.memberInfo.nickname;
+  const userImage = memberData?.data?.memberInfo.profileImage;
   const translatedUserName = userName && userName.length > 5 ? userName.substring(0, 5) : userName;
 
   const progressRoomData = memberData?.data?.activeRooms;
@@ -46,7 +47,7 @@ const MyPage = () => {
       <S.ProfileWrapper>
         <S.UserButtonWrapper>
           <S.UserWrapper>
-            <ProfileImage image={Rectangle} />
+            <ProfileImage image={userImage} />
             <S.UserName>
               <S.User>{translatedUserName}</S.User>님
             </S.UserName>
