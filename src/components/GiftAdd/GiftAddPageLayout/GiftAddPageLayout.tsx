@@ -6,6 +6,7 @@ import GiftAddPageLayoutHeader from './GiftAddPageLayoutHeader';
 import useGetMyGift from '../../../hooks/queries/gift/useGetMyGift';
 import EmptyGiftAddButtonsWrapper from '../GiftAddButtons/EmptyGiftAddButtonsWrapper';
 import useDeleteMyGift from '../../../hooks/queries/gift/useDeleteMyGift';
+// import { useEffect } from 'react';
 
 interface GiftAddPageLayoutProps {
   roomId: string;
@@ -34,17 +35,16 @@ const GiftAddPageLayout = ({
   const adPrice = '39,000';
 
   const handleClickAddBtn = () => {
-    // if (itemNum === 0) {
-    //   setStep(1);
-    // } else if (itemNum === 1) {
-    //   setStep(4);
-    // }
     setStep(1);
   };
 
   const handleClickCancelBtn = (giftId: number) => {
     mutation.mutate(giftId);
   };
+
+  // useEffect(()=> {
+
+  // }, [])
 
   return (
     <S.GiftAddPageWrapper>
