@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 type WrapperProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   isSelected?: boolean;
@@ -17,10 +17,26 @@ export const Wrapper = styled.button<WrapperProps>`
   border: 1px solid ${({ theme: { colors } }) => colors.white};
   background-color: transparent;
 
-  &:focus {
+  &:focus,
+  &:active {
     border: 1px solid ${({ theme: { colors } }) => colors.P_06};
     background-color: ${({ theme: { colors } }) => colors.white};
   }
+
+  ${({ isSelected, theme: { colors } }) =>
+    isSelected &&
+    css`
+      /* 선택된 상태에서의 스타일 */
+      border: 1px solid ${colors.P_06};
+      background-color: ${colors.white};
+
+      &:active {
+        /* 선택된 상태에서 클릭할 때의 스타일 */
+        border: 1px solid ${colors.P_06};
+        background-color: ${colors.white};
+        /* 추가로 필요한 스타일을 여기에 추가하세요 */
+      }
+    `}
 `;
 
 export const Time = styled.p`
@@ -29,6 +45,7 @@ export const Time = styled.p`
   width: 4.2rem;
   width: 60%;
   ${({ theme: { fonts } }) => fonts.body_09};
+  color: black;
 `;
 
 export const Period = styled.p<{ $isAfterDelivery: boolean }>`
