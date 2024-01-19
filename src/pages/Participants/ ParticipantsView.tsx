@@ -1,6 +1,6 @@
 import * as S from './ParticipantsView.style';
 import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 // import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
 // import usePostParticipation from '../../../hooks/queries/onboarding/usePostParticipation';
 import { IcKakoLarge } from '../../assets/svg';
