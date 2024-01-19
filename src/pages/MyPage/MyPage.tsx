@@ -9,15 +9,18 @@ import { MyPageType } from '../../types/member';
 import { post } from '../../apis/client';
 import MyPageHeader from './MyPageHeader/MyPageHeader';
 import * as S from './MyPage.style';
+import { useNavigate } from 'react-router';
 interface MyPage {
   memberData: MyPageType;
 }
 
 const MyPage = () => {
   const memberData = useGetMyPage();
+  const navigate = useNavigate();
   const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
   console.log(accessToken);
-  const fetchAuth = async () => post(`/oauth/logout`);
+
+  // const fetchAuth = async () => post(`/oauth/logout`);
   console.log(memberData);
   console.log(memberData?.data);
   console.log(memberData?.data?.memberInfo);
@@ -32,12 +35,13 @@ const MyPage = () => {
 
   const giftData: boolean = progressRoomData !== null && doneMemberRoomData !== null;
 
-  const handleClick = () => {
-    fetchAuth().then((response: any) => {
-      console.log(response);
-    });
-    localStorage.removeItem('EXIT_LOGIN_TOKEN');
-  };
+  // const handleClick = () => {
+  //   fetchAuth().then((response: any) => {
+  //     console.log(response);
+  //   });
+  //   localStorage.removeItem('EXIT_LOGIN_TOKEN');
+  //   navigate('/');
+  // };
 
   return (
     <S.MyPageWrapper>
@@ -51,9 +55,9 @@ const MyPage = () => {
               <S.User>{translatedUserName}</S.User>님
             </S.UserName>
           </S.UserWrapper>
-          <BtnLogout onClick={handleClick} customStyle={{ width: '8.4rem', height: '2.6rem' }}>
+          {/* <BtnLogout onClick={handleClick} customStyle={{ width: '8.4rem', height: '2.6rem' }}>
             로그아웃
-          </BtnLogout>
+          </BtnLogout> */}
         </S.UserButtonWrapper>
         <BtnFill
           customStyle={{
