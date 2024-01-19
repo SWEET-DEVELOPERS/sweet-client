@@ -16,7 +16,7 @@ interface ThumbnailInputProps {
 
 const ThumbnailInput = (props: ThumbnailInputProps) => {
   // TODO 이미지 클릭 시 사진 업로드
-  const { onNext, setFileName, imageFile, setImageFile } = props;
+  const { onNext, setFileName, setImageFile } = props;
   const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
