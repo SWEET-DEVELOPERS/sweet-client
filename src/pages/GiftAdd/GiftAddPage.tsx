@@ -3,7 +3,7 @@ import GiftAddFirstLinkLayout from '../../components/GiftAdd/AddGiftLink/GiftAdd
 import AddGiftWithoutLinkLayout from '../../components/GiftAdd/AddGiftLayout/AddGiftWithoutLinkLayout';
 import GiftAddPageLayout from '../../components/GiftAdd/GiftAddPageLayout/GiftAddPageLayout';
 import { OpenGraphResponseType } from '../../types/etc';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import AddGiftWithLinkLayout from '../../components/GiftAdd/AddGiftLayout/AddGiftWithLinkLayout';
 
 const GiftAddPage = () => {
@@ -13,12 +13,9 @@ const GiftAddPage = () => {
   const [itemNum, setItemNum] = useState(0);
   const [modalStatus, setModalStatus] = useState(false);
 
-  const location = useLocation();
-
-  const params = location.search;
-  const newParams = new URLSearchParams(params);
-  const roomId = newParams.get('roomId');
-  const targetDate = newParams.get('targetTime');
+  const params = useParams();
+  const roomId = params.roomId;
+  const targetDate = params.targetTime;
 
   const roomIdNumber = parseInt(roomId || '');
 

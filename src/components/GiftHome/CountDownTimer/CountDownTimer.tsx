@@ -9,22 +9,14 @@ interface CountdownTimerProps {
 }
 
 const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
-  const today = new Date();
-  // const navigate = useNavigate();
-  if (targetDate < today) {
-    // 이따가 토너먼트 뷰로 연결!
-    console.log('시간 지남~!');
-  }
-  const [days, hours, minutes, seconds] = useCountDown(targetDate.toLocaleString());
-  console.log('시간이 어떻게 됐어??? targetDate', targetDate);
-  console.log('시간이 어떻게 됐어??? targetDate to localestring', targetDate.toLocaleString);
+  const [days, hours, minutes, seconds] = useCountDown(targetDate.toISOString());
   return (
     <S.TimerWrapper>
       {days > 0 ? (
         <>
           <CountDownCard text={'D'} />
           <S.DashDiv />
-          <CountDownCard text={days.toString().padStart(2, '0')} />
+          <CountDownCard text={days.toString()} />
         </>
       ) : (
         <>

@@ -9,9 +9,8 @@ function GiftHomeDetail() {
   const location = useLocation();
 
   const searchParams = new URLSearchParams(location.search);
-  const params = searchParams.get('roomId');
-  const roomId = params?.split('targetTime=')[0];
-  const targetDate = params?.split('targetTime=')[1];
+  const roomId = searchParams.get('roomId');
+  const targetDate = searchParams.get('targetTime');
 
   const roomIdNumber = parseInt(roomId || '');
   const { data } = useGetHotProduct({ roomId: roomIdNumber });
@@ -19,11 +18,11 @@ function GiftHomeDetail() {
   return (
     <S.GiftHomeDetailPageWrapper>
       <GiftDetailHeader title='요즘 2030이 주목하는 선물' />
-      <MiniTimer targetDate={targetDate || ''} />
+      <MiniTimer targetDate={targetDate?.toString() || ''} />
       <S.GiftHomeDetailWrapper>
         {data.data.hotProductDtoList.length > 0 ? (
-          data.data.hotProductDtoList.map((item) => (
-            <S.GiftsItemWrapper>
+          data.data.hotProductDtoList.map((item, index) => (
+            <S.GiftsItemWrapper key={index} onClick={() => window.open(item.url)}>
               <S.GiftsItemImage src={item.imageUrl} />
               <S.GiftsItemTitle>{item.name}</S.GiftsItemTitle>
               <S.GiftsItemPrice>

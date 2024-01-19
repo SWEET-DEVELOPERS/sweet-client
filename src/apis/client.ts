@@ -5,6 +5,11 @@ export const getAccessTokenLocalStorage = () => {
   return accessToken ? `Bearer ${accessToken}` : '';
 };
 
+export const getRefreshTokenLocalStorage = () => {
+  const refreshToken = localStorage.getItem('EXIT_LOGIN_REFRESH_TOKEN');
+  return refreshToken ? `Bearer ${refreshToken}` : '';
+};
+
 export const authInstance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_URL,
   withCredentials: false,
@@ -19,8 +24,14 @@ export const instance = axios.create({
   },
 });
 
+const refreshToken = localStorage.getItem('EXIT_LOGIN_REFRESH_TOKEN');
+const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
+
 export async function postRefreshToken() {
-  const response = await instance.get('/oauth/reissue');
+  const response = await authInstance.post('/oauth/reissue', {
+    accessToken: accessToken,
+    refreshToken: refreshToken,
+  });
   return response;
 }
 
@@ -39,14 +50,14 @@ instance.interceptors.response.use(
 
     //토큰이 만료되을 때
     if (status === 401) {
-      if (error.response.data.message === 'Unauthorized') {
+      if (error.response.message === 'Unauthorized') {
         const originRequest = config;
         //리프레시 토큰 api
         const response = await postRefreshToken();
         //리프레시 토큰 요청이 성공할 때
         if (response.status === 200) {
-          const newAccessToken = response.data.token;
-          localStorage.setItem('EXIT_LOGIN_TOKEN', response.data.token);
+          const newAccessToken = response.data.accessToken;
+          localStorage.setItem('EXIT_LOGIN_TOKEN', newAccessToken);
           localStorage.setItem('EXIT_LOGIN_REFRESH_TOKEN', response.data.refreshToken);
           axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
           //진행중이던 요청 이어서하기

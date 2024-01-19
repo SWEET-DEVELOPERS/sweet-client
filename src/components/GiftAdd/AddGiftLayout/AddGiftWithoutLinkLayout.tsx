@@ -145,7 +145,7 @@ function AddGiftWithoutLinkLayout({
         </Modal>
       )}
       <LinkAddHeader targetDate={targetDate} setStep={setStep} />
-      <GiftStatusBar registeredGiftNum={1} isMargin={false} />
+      <GiftStatusBar registeredGiftNum={1} isMargin={true} />
       <AddGiftImg
         imageUrl={imageUrl}
         setImageUrl={setImageUrl}
@@ -153,6 +153,8 @@ function AddGiftWithoutLinkLayout({
         onClickEditBtn={handleImageUpload}
       />
       <WithoutLinkWriteItemInfo
+        imageUrl={imageUrl}
+        // setImageUrl={setImageUrl}
         setIsActivated={setIsActivated}
         setName={setNameText}
         setCost={setPriceText}

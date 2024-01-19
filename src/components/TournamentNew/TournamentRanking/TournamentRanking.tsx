@@ -13,37 +13,41 @@ interface TournamentRankingProps {
 
 const TournamentRanking = ({ roomId, giftee }: TournamentRankingProps) => {
   const rankingData = useGetRanking({ roomId: roomId });
-  const tournamentRankingData = rankingData?.data || [];
+  const tournamentRankingData = rankingData?.data.data || [];
 
   return (
     <S.TournamentRankingWrapper>
       <Header />
-      <TournamentRankingTitle giftee={giftee} />
+      <TournamentRankingTitle roomId={roomId} giftee={giftee} />
       <RankingWrapper>
         <S.Wrapper>
-          {tournamentRankingData.map((data, index) => {
-            const imageUrlParts = data.imageUrl.split('?');
-            const imageUrlWithoutParams = imageUrlParts[0];
-            console.log(imageUrlWithoutParams);
-            return (
-              <S.WrapperItem key={index}>
-                {data.ranking === 1 && <IcMedal1 style={{ width: '2.5rem' }} />}
-                {data.ranking === 2 && <IcMedal2 style={{ width: '2.5rem' }} />}
-                {data.ranking === 3 && <IcMedal3 style={{ width: '2.5rem' }} />}
-                {data.ranking !== 1 && data.ranking !== 2 && data.ranking !== 3 && (
-                  <S.IconWrapper>
-                    <IcMedal4 style={{ width: '2.5rem' }} />
-                    <S.IcTitle>{data.ranking}</S.IcTitle>
-                  </S.IconWrapper>
-                )}
-                <TournamentRankingCard
-                  name={data.name}
-                  cost={data.cost}
-                  imageUrl={imageUrlWithoutParams}
-                />
-              </S.WrapperItem>
-            );
-          })}
+          {Array.isArray(tournamentRankingData) && tournamentRankingData.length > 0 ? (
+            tournamentRankingData.map((data, index) => {
+              const imageUrlParts = data.imageUrl.split('?');
+              const imageUrlWithoutParams = imageUrlParts[0];
+              console.log(imageUrlWithoutParams);
+              return (
+                <S.WrapperItem key={index}>
+                  {data.ranking === 1 && <IcMedal1 style={{ width: '2.5rem' }} />}
+                  {data.ranking === 2 && <IcMedal2 style={{ width: '2.5rem' }} />}
+                  {data.ranking === 3 && <IcMedal3 style={{ width: '2.5rem' }} />}
+                  {data.ranking !== 1 && data.ranking !== 2 && data.ranking !== 3 && (
+                    <S.IconWrapper>
+                      <IcMedal4 style={{ width: '2.5rem' }} />
+                      <S.IcTitle>{data.ranking}</S.IcTitle>
+                    </S.IconWrapper>
+                  )}
+                  <TournamentRankingCard
+                    name={data.name}
+                    cost={data.cost}
+                    imageUrl={imageUrlWithoutParams}
+                  />
+                </S.WrapperItem>
+              );
+            })
+          ) : (
+            <p>No data available</p>
+          )}
         </S.Wrapper>
       </RankingWrapper>
     </S.TournamentRankingWrapper>

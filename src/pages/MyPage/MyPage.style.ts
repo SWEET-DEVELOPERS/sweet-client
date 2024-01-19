@@ -10,9 +10,11 @@ export const MyPageWrapper = styled.div`
 `;
 
 export const TopImage = styled.div`
+  position: relative;
   width: 37.5rem;
   height: 34rem;
   flex-shrink: 0;
+  top: -1rem;
 
   background-image: url(${BackgroundImage});
   background-size: contain;
@@ -61,6 +63,8 @@ export const GiftRoomWrapper = styled.div`
     mixin.flexBox({ direction: 'column', align: 'center', justify: 'center' })};
   background-color: white;
   width: 100%;
+  position: relative;
+  top: -5rem;
 `;
 
 export const NoneText = styled.div`
