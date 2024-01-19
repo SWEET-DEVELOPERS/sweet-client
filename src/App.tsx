@@ -26,7 +26,7 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <QueryErrorResetBoundary>
             {({ reset }) => (
-              <ErrorBoundary onReset={reset} FallbackComponent={FallbackUI}>
+              <ErrorBoundary onReset={() => reset()} FallbackComponent={FallbackUI}>
                 <Suspense fallback={<Loading />}>
                   <RouterProvider router={router} />
                   <GlobalStyle />
