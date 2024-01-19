@@ -22,7 +22,7 @@ function GiftHomeDetailFriends() {
       <S.GiftHomeDetailWrapper>
         {data.data.friendGiftDto.length > 0 ? (
           data.data.friendGiftDto.map((item, index) => (
-            <S.GiftsItemWrapper key={index}>
+            <S.GiftsItemWrapper key={index} onClick={() => window.open(item.url)}>
               <S.GiftsItemImage src={item.imageUrl} />
               <S.GiftsItemTitle>{item.name}</S.GiftsItemTitle>
               <GiftHomePriceTag price={item.cost} fonts={`body_07`} />

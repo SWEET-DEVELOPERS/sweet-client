@@ -32,6 +32,7 @@ export default function GiftHomeFriendsGifts({
               title={gift.name}
               price={gift.cost}
               user={gift.giftOwner}
+              url={gift.url}
             />
           ))}
         </S.GiftsWrapper>
