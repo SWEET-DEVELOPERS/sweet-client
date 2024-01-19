@@ -61,7 +61,7 @@ const Start = () => {
       </S.TextWrapper>
       <LottieAnimation
         animation={StartAnimation}
-        customStyle={{ position: 'absolute', top: '-13rem' }}
+        customStyle={{ position: 'absolute', top: '-15rem' }}
       />
       <S.Gradient />
 
@@ -75,7 +75,6 @@ const Start = () => {
             position: 'fixed',
             bottom: '2rem',
             zIndex: '3',
-            width: '33.5rem',
           }}
         >
           새로운 선물 준비하기
@@ -98,7 +97,7 @@ const Start = () => {
       </S.PersonWrapper>
       <S.Main3 />
       <S.Main4 />
-      <Footer customStyle={{ position: 'absolute', top: '283rem' }} />
+      <Footer customStyle={{ position: 'absolute', top: '290rem' }} />
     </S.Wrapper>
   );
 };

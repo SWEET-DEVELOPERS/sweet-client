@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const OnboardingFinalWrapper = styled.div`
   ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'center' })}
   width: 100%;
-  border-bottom: 0.1rem solid ${({ theme }) => theme.colors.G_02};
+  /* border-bottom: 0.1rem solid ${({ theme }) => theme.colors.G_02}; */
   position: relative;
   overflow: hidden;
 `;
@@ -11,13 +11,12 @@ export const OnboardingFinalWrapper = styled.div`
 export const TitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 0 0 2.8rem;
+  margin-bottom: 8rem;
 `;
 
 export const GradientImg = styled.div`
   background-size: cover;
   background-blend-mode: overlay;
-  opacity: 0.7;
   /* 이렇게 height를 의도적으로 주는 방법밖에 없나... 하 */
   height: 36.5rem;
   width: 100%;
@@ -105,6 +104,6 @@ export const LinkCopyBtn = styled.button`
   border-radius: 10rem;
   border: none;
   background: ${({ theme }) => theme.colors.G_02};
-  color: (0, 0, 0, 0.85);
+  color: ${({ theme }) => theme.colors.black};
   ${({ theme }) => theme.fonts.body_09};
 `;
