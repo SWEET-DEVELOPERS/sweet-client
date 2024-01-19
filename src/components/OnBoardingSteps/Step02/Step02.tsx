@@ -42,7 +42,8 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
 
       // 이미지 업로드 시간
       // const uploadTime = new Date().toISOString();
-      const uploadTime = new Date().toISOString().split('.')[0];
+      // const uploadTime = new Date().toISOString().split('.')[0].repl(':', '-');
+      const uploadTime = Math.random();
 
       // 최종 이미지 이름
       const finalImageName = `${firstThreeLetters}${uploadTime}`;
