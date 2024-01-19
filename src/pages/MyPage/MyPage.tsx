@@ -20,7 +20,7 @@ const MyPage = () => {
   const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
   console.log(accessToken);
 
-  // const fetchAuth = async () => post(`/oauth/logout`);
+  const fetchAuth = async () => post(`/oauth/logout`);
   console.log(memberData);
   console.log(memberData?.data);
   console.log(memberData?.data?.memberInfo);
@@ -31,17 +31,19 @@ const MyPage = () => {
   const progressRoomData = memberData?.data?.activeRooms;
   const doneMemberRoomData = memberData?.data?.closedRooms;
 
-  //console.log(doneMemberRoomData && doneMemberRoomData[0]);
-
   const giftData: boolean = progressRoomData !== null && doneMemberRoomData !== null;
 
-  // const handleClick = () => {
-  //   fetchAuth().then((response: any) => {
-  //     console.log(response);
-  //   });
-  //   localStorage.removeItem('EXIT_LOGIN_TOKEN');
-  //   navigate('/');
-  // };
+  const handleClick = () => {
+    fetchAuth().then((response: any) => {
+      console.log(response);
+    });
+    localStorage.removeItem('EXIT_LOGIN_TOKEN');
+    navigate('/');
+  };
+
+  const goOnboarding = () => {
+    navigate('/onboarding');
+  };
 
   return (
     <S.MyPageWrapper>
@@ -55,11 +57,12 @@ const MyPage = () => {
               <S.User>{translatedUserName}</S.User>님
             </S.UserName>
           </S.UserWrapper>
-          {/* <BtnLogout onClick={handleClick} customStyle={{ width: '8.4rem', height: '2.6rem' }}>
+          <BtnLogout onClick={handleClick} customStyle={{ width: '8.4rem', height: '2.6rem' }}>
             로그아웃
-          </BtnLogout> */}
+          </BtnLogout>
         </S.UserButtonWrapper>
         <BtnFill
+          onClick={goOnboarding}
           customStyle={{
             width: '30.3rem',
             height: '5.2rem',
