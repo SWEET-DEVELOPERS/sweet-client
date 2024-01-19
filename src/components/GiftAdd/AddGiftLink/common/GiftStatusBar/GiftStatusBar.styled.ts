@@ -18,6 +18,6 @@ export const GiftsWrapper = styled.div`
 export const GiftsStatusText = styled.span`
   position: absolute;
   right: 2rem;
-  ${({ theme }) => theme.colors.G_05};
+  color: ${({ theme }) => theme.colors.G_05};
   ${({ theme }) => theme.fonts.body_02};
 `;
