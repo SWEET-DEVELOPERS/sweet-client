@@ -60,21 +60,4 @@ export const ButtonWrapper = styled(IcCancel)`
   color: white;
   cursor: pointer;
   z-index: 2; /* 추가 */
-export const Sidebar = styled.div`
-  padding: 4.5rem 1.6rem 1.6rem 1.6rem;
-  h2 {
-    ${({ theme }) => theme.fonts.heading_01};
-    margin-bottom: 2.3rem;
-  }
-`;
-export const ButtonWrapper = styled(IcCancel)`
-  position: absolute; /* 추가 */
-  right: 2rem; /* 추가 */
-  top: 50%; /* 추가 */
-  transform: translateY(-50%); /* 추가 */
-
-  font-size: 20px;
-  color: white;
-  cursor: pointer;
-  z-index: 2; /* 추가 */
 `;
