@@ -15,6 +15,7 @@ interface GiftAddFirstLinkLayoutProps {
   setLinkText: React.Dispatch<React.SetStateAction<string>>;
   linkText: string;
   itemNum: number;
+  step: number;
   setOpenGraph: React.Dispatch<React.SetStateAction<OpenGraphResponseType>>;
   targetDate: string;
   setModalStatus: React.Dispatch<React.SetStateAction<boolean>>;
@@ -24,6 +25,7 @@ const GiftAddFirstLinkLayout = ({
   setStep,
   setLinkText,
   itemNum,
+  step,
   // linkText,
   setOpenGraph,
   targetDate,
@@ -67,7 +69,7 @@ const GiftAddFirstLinkLayout = ({
 
   return (
     <S.GiftAddLinkLayoutWrapper>
-      <LinkAddHeader targetDate={targetDate} setStep={setStep} />
+      <LinkAddHeader targetDate={targetDate} setStep={setStep} step={step} />
       <GiftStatusBar registeredGiftNum={itemNum} isMargin={true} />
       <Title title={itemNum === 0 ? '첫번째 상품의 ' : '두번째 상품의'} />
       <Title title='판매 링크를 입력해주세요' />

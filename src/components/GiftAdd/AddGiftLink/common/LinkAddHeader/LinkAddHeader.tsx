@@ -4,12 +4,17 @@ import * as S from './LinkAddHeader.styled';
 
 interface LinkAddHeaderProps {
   targetDate: string;
+  step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const LinkAddHeader = ({ targetDate, setStep }: LinkAddHeaderProps) => {
+const LinkAddHeader = ({ targetDate, step, setStep }: LinkAddHeaderProps) => {
   const onClickBackBtn = () => {
-    setStep(1);
+    if (step === 1) {
+      setStep(0);
+    } else if (step === 2 || step === 3) {
+      setStep(1);
+    }
   };
   return (
     <S.LinkAddHeaderWrapper>

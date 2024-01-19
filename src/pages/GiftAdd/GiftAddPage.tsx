@@ -41,6 +41,7 @@ const GiftAddPage = () => {
           setOpenGraph={setOpenGraph}
           targetDate={targetDate || ''}
           itemNum={itemNum}
+          step={step}
           setModalStatus={setModalStatus}
         />
       );
@@ -48,6 +49,7 @@ const GiftAddPage = () => {
     case 2:
       return (
         <AddGiftWithLinkLayout
+          step={step}
           setStep={setStep}
           roomId={roomIdNumber}
           link={linkText}
@@ -59,6 +61,7 @@ const GiftAddPage = () => {
     case 3:
       return (
         <AddGiftWithoutLinkLayout
+          step={step}
           openGraph={openGraph}
           setStep={setStep}
           roomId={roomIdNumber}

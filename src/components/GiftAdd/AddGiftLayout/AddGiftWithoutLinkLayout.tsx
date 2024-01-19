@@ -14,6 +14,7 @@ import { OpenGraphResponseType } from '../../../types/etc';
 interface AddGiftWithLinkLayoutProps {
   roomId: number;
   linkText: string;
+  step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   setLinkText: React.Dispatch<React.SetStateAction<string>>;
   targetDate: string;
@@ -23,6 +24,7 @@ interface AddGiftWithLinkLayoutProps {
 // 직접 입력 화면
 function AddGiftWithoutLinkLayout({
   roomId,
+  step,
   setStep,
   linkText,
   setLinkText,
@@ -148,7 +150,7 @@ function AddGiftWithoutLinkLayout({
           불러올 수 없어요 <br />
         </Modal>
       )}
-      <LinkAddHeader targetDate={targetDate} setStep={setStep} />
+      <LinkAddHeader targetDate={targetDate} setStep={setStep} step={step} />
       <GiftStatusBar registeredGiftNum={1} isMargin={true} />
       <AddGiftImg
         imageUrl={imageUrl}
