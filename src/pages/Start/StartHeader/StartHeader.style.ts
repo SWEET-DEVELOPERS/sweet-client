@@ -8,20 +8,35 @@ export const StartHeaderWrapper = styled.div`
   gap: 21.2rem;
 `;
 
+export const ImgWrapper = styled.header`
+  display: flex;
+  justify-content: flex-end;
+  height: 5.6rem;
+`;
+
 export const SidebarWrapper = styled.div<{ isOpen: boolean }>`
+  display: flex;
+  flex-direction: column;
   position: fixed;
-  top: 0;
+  transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(-100%)')};
+  transition: transform 0.3s ease-in-out;
+
+  width: 100%;
+  height: 100vh;
+  bottom: 0;
   left: 0;
-  width: ${({ isOpen }) => (isOpen ? '100%' : '0')};
-  height: 100%;
+
+  padding: 0 1.5rem;
   background-color: white;
-  z-index: 1; /* 다른 요소 위로 표시되도록 설정 */
-  transition: width 0.3s ease;
-  overflow-x: hidden;
+  z-index: 4;
 `;
 
 export const Sidebar = styled.div`
-  padding: 16px;
+  padding: 4.5rem 1.6rem 1.6rem 1.6rem;
+  h2 {
+    ${({ theme }) => theme.fonts.heading_01};
+    margin-bottom: 2.3rem;
+  }
 `;
 export const ButtonWrapper = styled(IcCancel)`
   position: absolute; /* 추가 */

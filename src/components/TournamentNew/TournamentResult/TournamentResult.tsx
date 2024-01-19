@@ -12,7 +12,7 @@ import TournamentTitleSub from './TournamentTitleSub/TournamnetTitleSub';
 
 interface TournamentResultProps {
   winners: GiftData | null;
-  firstGiftId: number; // Replace with the actual type of giftId
+  firstGiftId: number; 
   secondGiftId: number;
   finalGiftId: number;
 }

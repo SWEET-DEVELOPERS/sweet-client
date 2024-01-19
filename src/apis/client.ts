@@ -20,7 +20,7 @@ export const instance = axios.create({
 });
 
 export async function postRefreshToken() {
-  const response = await instance.get('/member/reissue');
+  const response = await instance.get('/oauth/reissue');
   return response;
 }
 
