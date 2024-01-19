@@ -161,6 +161,7 @@ const ParticipantsView = () => {
       </S.InfoWrapper>
       {/* 수정된 부분 시작 */}
       <S.BtnWrapper>
+
         {isToken === false ? (
           <IcKakoLarge onClick={() => window.location.replace(kakaoURL)} />
         ) : (
@@ -186,6 +187,7 @@ const ParticipantsView = () => {
             </S.KakaoLinkCopyBtn>
           </>
         )}
+
       </S.BtnWrapper>
       {/* 수정된 부분 끝 */}
     </>

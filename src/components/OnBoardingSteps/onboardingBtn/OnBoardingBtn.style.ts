@@ -6,8 +6,7 @@ export const Wrapper = styled.button<{ $isActivated: boolean }>`
   padding: 1rem 1.1rem 1rem 2rem;
   border-radius: 9.9rem;
   position: absolute;
-  bottom: 0;
-  margin-bottom: 2rem;
+  bottom: 2rem;
   ${({ $isActivated, theme: { colors } }) =>
     $isActivated
       ? `
