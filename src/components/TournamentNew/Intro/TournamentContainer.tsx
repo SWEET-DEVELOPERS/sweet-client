@@ -8,8 +8,6 @@ import useGetItem from '../../../hooks/queries/tournament/useGetItem';
 import trophy from '../../../assets/img/3dic_trophy3.png';
 import { useParams } from 'react-router';
 import Header from '../../common/Header';
-import { TrophyNone } from '../../../assets/svg';
-import TournamentNoneText from './TournamentNoneText/TournamentNoneText';
 
 const TournamentContainer = () => {
   const params = useParams();
@@ -43,15 +41,7 @@ const TournamentContainer = () => {
           <TournamentFlowContainer memberData={tournamentData} />
         </>
       ) : (
-        <>
-          <Header />
-          <S.TournamentFlowWrapper>
-            <TournamentNoneText />
-            <S.TournamentImg>
-              <TrophyNone />
-            </S.TournamentImg>
-          </S.TournamentFlowWrapper>
-        </>
+        <TournamentFlowContainer memberData={tournamentData} />
       )}
     </>
   );
