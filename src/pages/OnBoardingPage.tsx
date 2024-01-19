@@ -24,6 +24,7 @@ const OnBoardingPage = () => {
   const [fileName, setFileName] = useState<string>('');
   const [invitationCode, setInvitationCode] = useState<string>('');
   const [presignedUrl, setPresignedUrl] = useState<string>('');
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
   const navigate = useNavigate();
   const onboardingInfo = {
@@ -64,6 +65,8 @@ const OnBoardingPage = () => {
             setImageUrl={setImageUrl}
             fileName={fileName}
             setFileName={setFileName}
+            imageFile={imageFile}
+            setImageFile={setImageFile}
           />
         </Funnel.Step>
         <Funnel.Step name='PRESENT'>
@@ -105,13 +108,14 @@ const OnBoardingPage = () => {
             setInvitationCode={setInvitationCode}
             presignedUrl={presignedUrl}
             setPresignedUrl={setPresignedUrl}
+            imageFile={imageFile}
           />
         </Funnel.Step>
         <Funnel.Step name='GIFT_ROOM_FIX'>
           {/* step06 */}
           <OnboardingFinal
             onboardingInfo={onboardingInfo}
-            // imageUrl={imageUrl}
+            imageUrl={imageUrl}
             invitationCode={invitationCode}
             // presignedUrl={presignedUrl}
           />

@@ -18,16 +18,14 @@ interface OnboardingFinalProps {
     tournamentDuration: string;
   };
   invitationCode: string;
+  imageUrl: string;
 }
 
 const OnboardingFinal = (props: OnboardingFinalProps) => {
-  const { onboardingInfo, invitationCode } = props;
+  const { onboardingInfo, invitationCode, imageUrl } = props;
   const { mutation } = usePostParticipation();
 
-  // const location = useLocation();
-  // const searchParams = new URLSearchParams(location.search);
-  // const invitationCode = searchParams.get('invitationCode');
-  console.log('step06 내 초대코드', invitationCode);
+  console.log('step06 내 imageUrl', imageUrl);
 
   const navigate = useNavigate();
   const { handleCopyToClipboard } = useClipboard();
@@ -92,21 +90,6 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
       ]
     : [];
 
-  // const infoDetails = getGifteeInfo?.data
-  //   ? [
-  //       { title: '선물 받을 사람', detail: getGifteeInfo.data.gifteeName },
-  //       {
-  //         title: '선물 등록 마감',
-  //         detail: formatDate(getGifteeInfo.data.tournamentStartDate, true),
-  //       },
-  //       {
-  //         title: '토너먼트 진행 시간',
-  //         detail: formatDuration(getGifteeInfo.data.tournamentDuration),
-  //       },
-  //       { title: '선물 전달일', detail: formatDate(getGifteeInfo.data.deliveryDate, false) },
-  //     ]
-  //   : [];
-
   const handleClickRoom = async (body: string) => {
     console.log('입장 버튼 클릭! 그리고 초대 코드', invitationCode);
     if (body === null) {
@@ -137,14 +120,14 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
         {/* <S.GradientImg> */}
         <div>
           <S.GradientImg>
-            <img
+            {/* <img
               src='https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/sweet.png'
               style={{ width: '100%', opacity: 0.7 }}
-            />
+            /> */}
+            <img src={imageUrl} />
             <S.TitleContainer>
               <div style={{ marginBottom: '4.6rem' }}>
-                <Title title='시동훈님을 위한' />
-
+                <Title title={`${onboardingInfo.gifteeName} 님을 위한 `} />
                 <Title title='선물 준비방이 개설됐어요' />
               </div>
               {/* TODO 추후 지민이 버튼으로 변경(항상 활성화) */}
