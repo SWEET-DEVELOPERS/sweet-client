@@ -1,9 +1,10 @@
 // import { useNavigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { IcLeft } from '../../../assets/svg';
+// import { IcLeft } from '../../../assets/svg';
 import usePostGift from '../../../hooks/queries/gift/usePostGift';
 import GiftAddNextBtn from '../AddGiftLink/common/GiftAddNextBtn/GiftAddNextBtn';
 import * as S from './AddGiftFooter.styled';
+import { OpenGraphResponseType } from '../../../types/etc';
 
 interface ItemInfoType {
   roomId: number;
@@ -14,6 +15,7 @@ interface AddGiftFooterProps {
   itemInfo: ItemInfoType;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   isActivated: boolean;
+  openGraph: OpenGraphResponseType;
   name: string;
   cost: number;
   imageUrl: string;
@@ -29,6 +31,7 @@ const AddGiftFooter = ({
   itemInfo,
   setStep,
   isActivated,
+  openGraph,
   name,
   cost,
   imageUrl,
@@ -55,22 +58,41 @@ const AddGiftFooter = ({
     // setImageUrl(presignedUrl);
     if (isActivated) {
       console.log('값', imageUrl);
-      mutation.mutate(
-        {
-          roomId: itemInfo.roomId,
-          name: name,
-          cost: cost,
-          imageUrl: imageUrl,
-          url: link,
-        },
-        {
-          onSuccess: () => {
-            // console.log('PUT 서버통신 후 presignedUrl', presignedUrl);
-            navigate(`/add-gift/${itemInfo.roomId}/${targetDate}`);
-            setStep(0);
+      if (openGraph.image) {
+        mutation.mutate(
+          {
+            roomId: itemInfo.roomId,
+            name: name,
+            cost: cost,
+            imageUrl: '',
+            url: link,
           },
-        },
-      );
+          {
+            onSuccess: () => {
+              // console.log('PUT 서버통신 후 presignedUrl', presignedUrl);
+              navigate(`/add-gift/${itemInfo.roomId}/${targetDate}`);
+              setStep(0);
+            },
+          },
+        );
+      } else {
+        mutation.mutate(
+          {
+            roomId: itemInfo.roomId,
+            name: name,
+            cost: cost,
+            imageUrl: imageUrl,
+            url: link,
+          },
+          {
+            onSuccess: () => {
+              // console.log('PUT 서버통신 후 presignedUrl', presignedUrl);
+              navigate(`/add-gift/${itemInfo.roomId}/${targetDate}`);
+              setStep(0);
+            },
+          },
+        );
+      }
     }
   };
 

@@ -59,6 +59,7 @@ const GiftAddPage = () => {
     case 3:
       return (
         <AddGiftWithoutLinkLayout
+          openGraph={openGraph}
           setStep={setStep}
           roomId={roomIdNumber}
           linkText={linkText}

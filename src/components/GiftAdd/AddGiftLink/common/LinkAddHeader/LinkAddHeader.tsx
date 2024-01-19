@@ -21,7 +21,6 @@ const LinkAddHeader = ({ targetDate, setStep }: LinkAddHeaderProps) => {
           position: 'absolute',
           left: '0.7rem',
           cursor: 'pointer',
-          marginTop: '5.6rem',
         }}
       />
       <MiniTimer targetDate={targetDate} />
