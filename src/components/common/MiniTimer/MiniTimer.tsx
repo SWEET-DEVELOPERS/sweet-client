@@ -8,8 +8,8 @@ interface MiniTimerProps {
 
 function MiniTimer({ targetDate }: MiniTimerProps) {
   const [days, hours, minutes, seconds] = useCountDown(targetDate);
+// 빌드 에러 해결
   console.log(days);
-
   return (
     <S.MiniTimerWrapper>
       <IcClock style={{ width: '1.7rem', height: '1.7rem' }} />

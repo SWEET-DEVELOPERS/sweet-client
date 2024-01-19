@@ -6,9 +6,9 @@ import useDeleteRoomMember from '../../../../hooks/queries/room/useDeleteRoomMem
 import { useLocation } from 'react-router';
 
 interface CardGuestProps {
-  user?: string;
+  user: string;
   makerState: boolean;
-  profileImageUrl?: string;
+  profileImageUrl: string;
   memberId: number;
 }
 

@@ -14,7 +14,7 @@ import TournamentNoneText from './TournamentNoneText/TournamentNoneText';
 const TournamentContainer = () => {
   const params = useParams();
 
-  const roomIdString = params.roomId || '';
+  const roomIdString = params.roomId;
   const roomId = parseInt(roomIdString || '', 10);
   console.log('추출된 초대 코드', roomId);
 
