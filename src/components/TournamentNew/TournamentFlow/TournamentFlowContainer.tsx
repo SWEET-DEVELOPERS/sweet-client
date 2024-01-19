@@ -17,6 +17,9 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
   const [displays, setDisplays] = useState<GiftData[]>([]);
   //선택된 아이템 저장
 
+  const [totalItemLength, setTotalRoundsLength] = useState<number>(
+    Math.floor(memberData.length / 2),
+  );
   const [selectedItem, setSelectedItem] = useState<GiftData | null>(null);
   //post 요청을 위한 state
   const [firstItems, setFirstItems] = useState<GiftData[]>([]);
@@ -63,6 +66,7 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
         setWinners([]);
         setCurrentIndex(1);
         setRoundIndex((roundIndex) => roundIndex + 1);
+        setTotalRoundsLength(itemPick.length / 2);
         console.log('라운드', updateditem);
       }
     } else if (itemPick.length > 2) {
@@ -108,7 +112,7 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
           <TournamentTitle
             rounds={roundIndex}
             currentIndex={currentIndex}
-            totalRounds={memberData.length}
+            totalRounds={totalItemLength}
             onClick={refresh}
           />
           <S.TournamentCardWrapper>
