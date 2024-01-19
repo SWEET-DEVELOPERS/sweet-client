@@ -14,7 +14,7 @@ const TournamentResultFooter: React.FC<TournamentResultFooterProps> = ({ onClick
         customStyle={{
           width: '16.4rem',
           background: '#FFF',
-          color: 'black',
+          color: '#FF2176',
           border: '1px solid #FF2176',
         }}
         onClick={handleRetryClick}
@@ -34,6 +34,8 @@ const TournamentResultFooterWrapper = styled.div`
 
   gap: 0.8rem;
   height: 5.2rem;
+  position: absolute;
+  bottom: 2rem;
 `;
 
 export default TournamentResultFooter;

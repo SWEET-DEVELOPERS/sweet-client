@@ -21,9 +21,10 @@ const TournamentRankingTitle = ({ roomId, giftee }: TournamentRankingGifteeProps
   const gifteeValue = giftee;
   const roomIdValue = roomId;
   const location = useLocation();
-  const baseURL = import.meta.env.VITE_APP_BASE_URL;
+  const baseURL = import.meta.env.VITE_APP_BASE_URL_KAKAO;
   const { handleCopyToClipboard } = useClipboard();
 
+  console.log('지금 주소입니당', location.pathname);
   return (
     <section>
       <S.TournamentRenameTitleWrapper>
