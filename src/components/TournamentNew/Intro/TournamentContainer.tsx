@@ -11,7 +11,8 @@ import Header from '../../common/Header';
 
 const TournamentContainer = () => {
   const params = useParams();
-  const giftee = params.giftee;
+  const giftee = '멋진 시동훈';
+  console.log('울랄라', giftee);
   const roomIdString = params.roomId || '';
   const roomId = parseInt(roomIdString || '', 10);
   console.log('추출된 초대 코드', roomId);
@@ -40,7 +41,6 @@ const TournamentContainer = () => {
           <Header />
 
           <TournamentFlowContainer memberData={tournamentData} roomId={roomId} />
-
         </>
       ) : (
         <TournamentFlowContainer memberData={tournamentData} roomId={roomId} />

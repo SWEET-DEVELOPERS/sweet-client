@@ -16,7 +16,6 @@ function App() {
     min-height: calc(var(--vh, 1vh) * 100);
     margin-left: auto;
     margin-right: auto;
-    position: relative;
   `;
   const queryClient = new QueryClient();
 
