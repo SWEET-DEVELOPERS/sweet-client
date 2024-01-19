@@ -2,6 +2,8 @@ import * as S from './WriteItemInfo.styled';
 import ItemTextField from '../../../ItemTextField/ItemTextField';
 
 interface WriteItemInfoProps {
+  imageUrl: string;
+  // setImageUrl: React.Dispatch<React.SetStateAction<string>>;
   setIsActivated: React.Dispatch<React.SetStateAction<boolean>>;
   setName: React.Dispatch<React.SetStateAction<string>>;
   setCost: React.Dispatch<React.SetStateAction<number | null>>;
@@ -12,6 +14,8 @@ interface WriteItemInfoProps {
 }
 
 const WriteItemInfo = ({
+  imageUrl,
+  // setImageUrl,
   setIsActivated,
   setName,
   setCost,
@@ -21,7 +25,7 @@ const WriteItemInfo = ({
   url,
 }: WriteItemInfoProps) => {
   const handleSetIsActivated = (newNameText: string, newPriceText: string) => {
-    if (newNameText.length > 0 && newPriceText.length > 0) {
+    if (newNameText.length > 0 && newPriceText.length > 0 && imageUrl !== '') {
       setIsActivated(true);
     } else {
       setIsActivated(false);
