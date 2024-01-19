@@ -5,9 +5,6 @@ import Title from '../../common/title/Title';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import * as S from './Step05.style';
 import { getAccessTokenLocalStorage, instance } from '../../../apis/client';
-import usePostOnboardingInfo from '../../../hooks/queries/onboarding/usePostOnboardingInfo';
-import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
-import axios from 'axios';
 
 interface SetTournamentDurationProps {
   onNext: VoidFunction;
@@ -41,16 +38,12 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     tournamentStartDate,
     fileName,
     // imageUrl,
-    setImageUrl,
     onboardingInfo,
     // presignedUrl,
-    setInvitationCode,
     imageFile,
   } = props;
 
   const [selectedOption, setSelectedOption] = useState<string>('');
-  const postPresignedUrl = usePostPresignedUrl();
-  const { mutation } = usePostOnboardingInfo();
 
   const timeOptions = [
     { time: 6, textEnglish: 'SIX_HOURS' },
@@ -74,78 +67,6 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     // updatedTime.setMinutes(updatedTime.getMinutes() - updatedTime.getTimezoneOffset());
     setSelectedOption(time);
     // const formattedTime = updatedTime.toISOString();
-  };
-
-  const fetchPresignedUrl = async (fileName: string) => {
-    if (!fileName || !imageFile) {
-      console.log('파일명이 없거나 이미지 파일이 없어서 fetchPresignedUrl을 실행하지 않습니다.');
-      return { imageUrl: '', presignedUrl: '' };
-    }
-    console.log('첫 post 확인1');
-    const response = await postPresignedUrl.mutateAsync({ filename: fileName });
-    console.log('첫 post 확인2');
-
-    const presignedUrl = response.presignedUrl;
-    // const finalPresigned = presignedUrl.replace(
-    //   'https%3A/%2Fsweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/roomImage/',
-    //   '',
-    // );
-    const finalPresigned = presignedUrl;
-
-    console.log('지민이랑 확인하는 파싱한 presignedurl', finalPresigned);
-
-    console.log('지민이랑 확인하는 프리사인유알엘', typeof presignedUrl);
-    const imageUrl = presignedUrl.split('?')[0];
-    console.log('step05 내 fetchPresignedUrl 함수의 response:', response);
-    console.log('step05에서 put하기 전 imageUrl', imageUrl);
-    console.log('step05에서 put하기 전 presignedUrl', presignedUrl);
-
-    const formData = new FormData();
-    formData.append('file', imageFile);
-    // formData.append()
-    setImageUrl(imageUrl);
-    return { imageUrl, finalPresigned, formData };
-  };
-
-  const saveImageUrl = async (fileName: string) => {
-    const { finalPresigned, formData } = await fetchPresignedUrl(fileName);
-    console.log(' save ImageUrl 안 presignedUrl', finalPresigned);
-    console.log('step05 내formData', formData);
-
-    if (finalPresigned && finalPresigned !== '') {
-      try {
-        await axios.put(finalPresigned, formData, {
-          headers: {
-            'Content-Type': 'image/*',
-          },
-        });
-        console.log('saveImageUrl 안 finalPresigned 값 확인', finalPresigned);
-      } catch (error) {
-        console.log('putPresignedUrl 실행 중 에러 발생:', error);
-        return;
-      }
-    } else {
-      console.log('preSignedUrl이 비어있어서 putPresignedUrl을 실행하지 않습니다.');
-    }
-
-    try {
-      const updatedOnboardingInfo = { ...onboardingInfo, imageUrl: '' };
-      const response = mutation.mutate(updatedOnboardingInfo, {
-        onSuccess: (data) => {
-          // console.log('step05 내 code:', code);
-          console.log('step05 내 response:', response);
-          console.log('step05 내 data:', data);
-          setInvitationCode(data.invitationCode);
-          onNext();
-          // navigate(`/result?invitationCode=${data.invitationCode}`);
-        },
-      });
-
-      // const code = mutation.data?.invitationCode;
-      // console.log('code', code);
-    } catch (error) {
-      console.log('postOnboardingInfoMutation 실행 중 에러 발생:', error);
-    }
   };
 
   return (
@@ -187,7 +108,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
               <BtnRadio
                 time={optionText}
                 period={dateType}
-                isSelected={() => selectedOption === optionText}
+                isSelected={selectedOption === optionText}
                 onClick={() => setTournamentDuration(hours.textEnglish)}
                 onTimeSelect={handleTimeSelect}
                 $isAfterDelivery={isAfterDelivery}
@@ -216,10 +137,10 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <OnBoardingBtn
           isActivated={!!selectedOption}
-          setStep={async () => {
-            const { finalPresigned } = await fetchPresignedUrl(fileName);
-            await saveImageUrl(finalPresigned);
-          }}
+          // setStep={async () => {
+          //   const { finalPresigned } = await fetchPresignedUrl(fileName);
+          //   await saveImageUrl(finalPresigned);
+          setStep={onNext}
         >
           다음
         </OnBoardingBtn>
