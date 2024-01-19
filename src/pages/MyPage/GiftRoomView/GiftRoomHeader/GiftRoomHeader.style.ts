@@ -6,6 +6,7 @@ export const GiftRoomHeaderWrapper = styled.div`
   padding: 2rem;
   height: 4rem;
   margin-top: 4rem;
+  margin-bottom: 0.7rem;
 `;
 
 export const Icon = styled.div`

@@ -3,9 +3,13 @@ import { IcCancel } from '../../../assets/svg';
 
 export const StartHeaderWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({})};
+  position: fixed;
   padding: 0 2rem;
   height: 5.6rem;
   gap: 21.2rem;
+  z-index: 999;
+  top: -0.5rem;
+  background-color: #fafafa;
 `;
 
 export const ImgWrapper = styled.header`

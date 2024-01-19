@@ -21,7 +21,15 @@ const ProgressCardRoom = ({ user, srcImage, userCount, date, onClick }: Progress
         <S.User>{user}님</S.User>을 위한 선물방
       </S.Text>
       <S.CountUser>
-        <IcUser style={{ width: '1.6rem', height: '1.6rem', color: '#ACA7A9' }} />
+        <IcUser
+          style={{
+            width: '1.6rem',
+            height: '1.6rem',
+            color: '#ACA7A9',
+            position: 'relative',
+            top: '0.2rem',
+          }}
+        />
         {userCount}
       </S.CountUser>
       <S.TagWrapper>

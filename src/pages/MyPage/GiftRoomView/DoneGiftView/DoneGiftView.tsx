@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 interface DoneGiftViewType {
   data: ClosedRoomType | undefined;
+  style?: React.CSSProperties;
 }
 
 const DoneGiftView = ({ data }: DoneGiftViewType) => {
