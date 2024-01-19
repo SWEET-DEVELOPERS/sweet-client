@@ -159,7 +159,7 @@ const ParticipantsView = () => {
             />
             <S.TitleContainer>
               <div style={{ marginBottom: '4.6rem' }}>
-                <Title title='시동훈님을 위한' />
+                <Title title={`${getGifteeInfo.data.gifteeName}님을 위한`} />
 
                 <Title title='선물 준비방이 개설됐어요' />
               </div>
