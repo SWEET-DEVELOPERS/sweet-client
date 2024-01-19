@@ -7,6 +7,7 @@ import TournamentFlowContainer from '../TournamentFlow/TournamentFlowContainer';
 import useGetItem from '../../../hooks/queries/tournament/useGetItem';
 import trophy from '../../../assets/img/3dic_trophy3.png';
 import { useLocation } from 'react-router';
+import Header from '../../common/Header';
 
 const TournamentContainer = () => {
   const location = useLocation();
@@ -26,15 +27,21 @@ const TournamentContainer = () => {
     <>
       {showTournamentContainer ? (
         <>
-          <TournamentStartText giftee={giftee} />
-          <TournamentItemCount />
-          <S.TournamentImg>
-            <img src={trophy} alt='트로피' />
-          </S.TournamentImg>
-          <TournamentStartButton onClick={handleStartClick} />
+          <S.TournamentFlowWrapper>
+            <Header />
+            <TournamentStartText giftee={giftee} />
+            <TournamentItemCount />
+            <S.TournamentImg>
+              <img src={trophy} alt='트로피' />
+            </S.TournamentImg>
+            <TournamentStartButton onClick={handleStartClick} />
+          </S.TournamentFlowWrapper>
         </>
       ) : (
-        <TournamentFlowContainer memberData={tournamentData} />
+        <>
+          <Header />
+          <TournamentFlowContainer memberData={tournamentData} />
+        </>
       )}
     </>
   );
