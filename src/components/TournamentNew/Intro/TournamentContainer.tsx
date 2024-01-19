@@ -11,7 +11,9 @@ import { useParams } from 'react-router';
 const TournamentContainer = () => {
   const params = useParams();
 
+
   const giftee = params.giftee;
+
   const roomIdString = params.roomId;
   const roomId = parseInt(roomIdString || '', 10);
   console.log('추출된 초대 코드', roomId);
