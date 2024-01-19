@@ -7,6 +7,7 @@ import { IcKakoLarge } from '../../assets/svg';
 import OnboardingFinalHeader from '../../components/OnBoardingSteps/Step06/OnboardingFinalHeader';
 import Title from '../../components/common/title/Title';
 import useGetGifteeInfo from '../../hooks/queries/onboarding/useGetGifteeInfo';
+import { kakaoURL } from '../../utils/login';
 
 // interface OnboardingFinalProps {
 //   onboardingInfo: {
@@ -187,7 +188,7 @@ const ParticipantsView = () => {
         ))}
       </S.InfoWrapper>
       <S.BtnWrapper>
-        <IcKakoLarge onClick={() => navigate('/')} />
+        <IcKakoLarge onClick={() => window.location.replace(kakaoURL)} />
         {/* <S.LinkCopyBtn onClick={() => handleCopyToClipboard(`${baseUrl}`)}>
           <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
           링크 복사
