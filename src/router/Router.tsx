@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         element: <DetailProgressRoom />,
       },
       {
-        path: '/detail-done/:giftee/:roomId',
+        path: '/detail-done',
         element: <DetailDoneRoom />,
       },
       {
@@ -64,7 +64,7 @@ const router = createBrowserRouter([
         element: <OnBoardingPage />,
       },
       {
-        path: '/result',
+        path: '/result/:invitationCode',
         element: <ParticipantsView />,
       },
       {
