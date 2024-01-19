@@ -20,9 +20,21 @@ export const GiftHomeSummary = ({ data }: GiftHomeSummaryProps) => {
         <S.PinkTitle>{data.gifteeName}</S.PinkTitle>님의
       </S.GiftHomeSummaryTitle>
       <S.GiftHomeSummaryTitle>선물을 함께 준비해요</S.GiftHomeSummaryTitle>
-      <S.CopyLinkBtnWrapper onClick={() => handleCopyToClipboard(`${baseURL}${location.pathname}`)}>
+      <S.CopyLinkBtnWrapper
+        onClick={() =>
+          // handleCopyToClipboard(`http://sweetgift.vercel.app/result/${data.invitationCode}`)
+          handleCopyToClipboard(`http://sweetgift.vercel.app/result/${data.invitationCode}`)
+        }
+      >
         <IcLink style={{ width: '1.7rem', height: '1.7rem' }} />
-        <S.Caption02Text>초대 링크 복사</S.Caption02Text>
+        <S.Caption02Text
+          onClick={() =>
+            // TODO 추후 로컬 주소를 배포 주소로 변경
+            handleCopyToClipboard(`http://sweetgift.vercel.app/result/${data.invitationCode}`)
+          }
+        >
+          초대 링크 복사
+        </S.Caption02Text>
       </S.CopyLinkBtnWrapper>
       <S.Body09Text>선물 토너먼트</S.Body09Text>
       <CountDownTimer targetDate={new Date(data.tournamentStartDate)} />

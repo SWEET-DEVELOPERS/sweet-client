@@ -40,10 +40,12 @@ const ParticipantsView = () => {
   useEffect(() => {
     if (localStorage.getItem('EXIT_LOGIN_TOKEN') !== '') {
       setIsToken(true);
+      console.log('로컬스토리지 확인', localStorage.getItem('EXIT_LOGIN_TOKEN'));
     } else {
+      console.log('로컬스토리지 ㄴㄴ', localStorage.getItem('EXIT_LOGIN_TOKEN'));
       setIsToken(false);
     }
-  }, []);
+  }, [isToken]);
 
   const formatDate = (dateString: string, includeTime: boolean = true) => {
     const date = new Date(dateString);
@@ -136,14 +138,14 @@ const ParticipantsView = () => {
               {isToken === true ? (
                 <OnBoardingBtn
                   customStyle={{ marginBottom: '1.6rem' }}
-                  setStep={() => console.log('입장 버튼 클릭!')}
+                  setStep={() => handleClickRoom(getGifteeInfo.data.invitationCode)}
                   isActivated={true}
-                  onClick={() => handleClickRoom(getGifteeInfo.data.invitationCode)}
+                  // onClick={() => handleClickRoom(getGifteeInfo.data.invitationCode)}
                 >
                   입장
                 </OnBoardingBtn>
               ) : (
-                '' // 이 부분은 빈 문자열을 반환하는 것이 맞습니다.
+                ''
               )}
             </S.TitleContainer>
           </S.GradientImg>
