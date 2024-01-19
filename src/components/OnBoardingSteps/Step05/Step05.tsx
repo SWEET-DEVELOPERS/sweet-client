@@ -27,6 +27,7 @@ interface SetTournamentDurationProps {
   presignedUrl: string;
   setPresignedUrl: React.Dispatch<React.SetStateAction<string>>;
   imageFile: File | null;
+  setRoomId: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const SetTournamentDuration = (props: SetTournamentDurationProps) => {
@@ -43,6 +44,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     // presignedUrl,
     imageFile,
     setInvitationCode,
+    setRoomId,
   } = props;
 
   const [selectedOption, setSelectedOption] = useState<string>('');
@@ -79,8 +81,12 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
       const response = mutation.mutate(updatedOnboardingInfo, {
         onSuccess: (data) => {
           setInvitationCode(data.invitationCode);
+          console.log('data1', response);
+          const roomId = data.roomId;
+          setRoomId(roomId);
           onNext();
-          console.log(response);
+          console.log('data2', data);
+          return roomId;
         },
       });
     } catch (error) {
@@ -137,29 +143,12 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
         })}
       </S.SetTournamentDurationWrapper>
 
-      {/* <S.SetTournamentDurationWrapper>
-        {timeOptions.map((option, index) => (
-          <S.TimeOptionsWrapper>
-            <BtnRadio
-              key={index}
-              time={option.text}
-              period={option.dateType}
-              isSelected={() => selectedOption === option.text}
-              onClick={() => setTournamentDuration(option.textEnglish)}
-              onTimeSelect={handleTimeSelect}
-              isAfterDelivery={isAfterDelivery(option.textEnglish)}
-            />
-          </S.TimeOptionsWrapper>
-        ))}
-      </S.SetTournamentDurationWrapper> */}
-
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <OnBoardingBtn
           isActivated={!!selectedOption}
-          // setStep={async () => {
-          //   const { finalPresigned } = await fetchPresignedUrl(fileName);
-          //   await saveImageUrl(finalPresigned);
-          setStep={postOnboarding}
+          setStep={() => {
+            postOnboarding();
+          }}
         >
           다음
         </OnBoardingBtn>
