@@ -5,9 +5,24 @@ export const TournamentImg = styled.div`
   height: 22.5rem;
   margin: 0 auto;
 
+  animation: ani 1s infinite alternate;
+
+  @keyframes ani {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(0, 1rem);
+    }
+  }
+
   img {
     width: 22.5rem;
     height: 22.5rem;
     margin: 0 auto;
   }
+`;
+
+export const TournamentFlowWrapper = styled.section`
+  padding: 0 2rem;
 `;
