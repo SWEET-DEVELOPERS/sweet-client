@@ -145,7 +145,7 @@ function AddGiftWithoutLinkLayout({
         </Modal>
       )}
       <LinkAddHeader targetDate={targetDate} setStep={setStep} />
-      <GiftStatusBar registeredGiftNum={1} isMargin={false} />
+      <GiftStatusBar registeredGiftNum={1} isMargin={true} />
       <AddGiftImg
         imageUrl={imageUrl}
         setImageUrl={setImageUrl}

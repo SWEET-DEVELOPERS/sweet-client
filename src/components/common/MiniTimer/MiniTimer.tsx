@@ -7,9 +7,7 @@ interface MiniTimerProps {
 }
 
 function MiniTimer({ targetDate }: MiniTimerProps) {
-  console.log('타겟데이트', targetDate);
   const [days, hours, minutes, seconds] = useCountDown(targetDate);
-  console.log('시간들', days, hours, minutes, seconds);
 
   return (
     <S.MiniTimerWrapper>

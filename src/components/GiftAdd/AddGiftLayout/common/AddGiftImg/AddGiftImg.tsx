@@ -14,6 +14,7 @@ interface AddGiftImgProps {
 
 const AddGiftImg = ({
   imageUrl,
+  setImageUrl,
   onClickEditBtn,
   // previewImage,
   // setPreviewImage,
@@ -21,7 +22,8 @@ const AddGiftImg = ({
 }: AddGiftImgProps) => {
   // 빌드 에러 해결 위해 임의로 추가
   // 나중에 이미지 첨부 기능 presignedUrl이랑 같이 구현 예정
-  if (openGraph?.image !== '') {
+  if (openGraph?.image) {
+    setImageUrl(openGraph.image);
   }
   return (
     <>
@@ -31,6 +33,7 @@ const AddGiftImg = ({
             <input
               type='file'
               accept='.jpg, .jpeg, .png, .svg'
+              // accept='image/*'
               style={{ display: 'none' }}
               id='imgInput'
               onChange={onClickEditBtn}
