@@ -24,16 +24,10 @@ export const instance = axios.create({
   },
 });
 
-export const refreshInstance = axios.create({
-  baseURL: import.meta.env.VITE_APP_BASE_URL,
-  withCredentials: false,
-  headers: {
-    Authorization: `${getRefreshTokenLocalStorage()},`,
-  },
-});
-
+const refreshToken = localStorage.getItem('EXIT_LOGIN_REFRESH_TOKEN');
+const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
 export async function postRefreshToken() {
-  const response = await refreshInstance.get('/oauth/reissue');
+  const response = await authInstance.post('/oauth/reissue', { accessToken, refreshToken });
   return response;
 }
 
@@ -52,7 +46,7 @@ instance.interceptors.response.use(
 
     //토큰이 만료되을 때
     if (status === 401) {
-      if (error.response.data.message === 'Unauthorized') {
+      if (error.response.message === 'Unauthorized') {
         const originRequest = config;
         //리프레시 토큰 api
         const response = await postRefreshToken();
