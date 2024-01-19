@@ -9,7 +9,7 @@ interface LinkAddHeaderProps {
 
 const LinkAddHeader = ({ targetDate, setStep }: LinkAddHeaderProps) => {
   const onClickBackBtn = () => {
-    setStep((prev) => prev - 1);
+    setStep(1);
   };
   return (
     <S.LinkAddHeaderWrapper>

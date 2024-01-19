@@ -42,7 +42,9 @@ const GiftAddPageLayout = ({
     mutation.mutate(giftId);
   };
 
-  console.log('데이터 업뎃 되니?', myGiftData);
+  // useEffect(()=> {
+
+  // }, [])
 
   return (
     <S.GiftAddPageWrapper>
