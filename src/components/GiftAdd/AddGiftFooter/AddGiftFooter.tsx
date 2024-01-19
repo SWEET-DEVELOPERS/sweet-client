@@ -33,10 +33,10 @@ const AddGiftFooter = ({
   cost,
   imageUrl,
   link,
-  saveImageUrl,
+  // saveImageUrl,
   fileName,
-  fetchPresignedUrl,
-  setImageUrl,
+  // fetchPresignedUrl,
+  // setImageUrl,
 }: AddGiftFooterProps) => {
   // const updatedItemInfo = {
   //   roomId: itemInfo.roomId,
@@ -50,9 +50,9 @@ const AddGiftFooter = ({
 
   const onClick = async () => {
     console.log(fileName);
-    const { presignedUrl } = await fetchPresignedUrl(fileName);
-    await saveImageUrl(presignedUrl);
-    setImageUrl(presignedUrl);
+    // const { presignedUrl } = await fetchPresignedUrl(fileName);
+    // await saveImageUrl(presignedUrl);
+    // setImageUrl(presignedUrl);
     if (isActivated) {
       console.log('값', imageUrl);
       mutation.mutate(
@@ -60,12 +60,12 @@ const AddGiftFooter = ({
           roomId: itemInfo.roomId,
           name: name,
           cost: cost,
-          imageUrl: presignedUrl,
+          imageUrl: imageUrl,
           url: link,
         },
         {
           onSuccess: () => {
-            console.log('PUT 서버통신 후 presignedUrl', presignedUrl);
+            // console.log('PUT 서버통신 후 presignedUrl', presignedUrl);
             navigate(`/add-gift/${itemInfo.roomId}/${targetDate}`);
             setStep(0);
           },

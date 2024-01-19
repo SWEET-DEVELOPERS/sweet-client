@@ -37,7 +37,7 @@ const GiftHomeShowcaseHeader = ({
               category === 'friends'
                 ? `/gift-detail-friends/${roomId}/${targetDate}`
                 : category === 'my'
-                  ? `/add-gift`
+                  ? `/add-gift/${roomId}/${targetDate}`
                   : `/gift-detail-2030/${roomId}/${targetDate}`,
             )
           }

@@ -3,6 +3,7 @@ import { IcEmptyThumbnail } from '../../../assets/svg';
 import * as S from './Step02.style';
 import { useState } from 'react';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
+import { NextBtnText } from '../Step01/Step01';
 
 interface ThumbnailInputProps {
   onNext: VoidFunction;
@@ -90,7 +91,7 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
         </S.IcEmptyThumbnailWrapper>
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <OnBoardingBtn isActivated={isImageUploaded} setStep={onNext}>
-            다음
+            <NextBtnText isActivated={isImageUploaded}>다음</NextBtnText>
           </OnBoardingBtn>
         </div>
       </div>
