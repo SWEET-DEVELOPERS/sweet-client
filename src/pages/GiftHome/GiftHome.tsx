@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import GiftHome2030Gifts from '../../components/GiftHome/GiftHome2030Gifts/GiftHome2030Gifts';
 import GiftHomeFriendsGifts from '../../components/GiftHome/GiftHomeFriendsGifts/GiftHomeFriendsGifts';
 import GiftHomeHeader from '../../components/GiftHome/GiftHomeHeader/GiftHomeHeader';
@@ -9,19 +9,20 @@ import useGetRoomInfo from '../../hooks/queries/room/useGetRoomInfo';
 import GiftHomeMyGifts from './GiftHomeMyGifts/GiftHomeMyGifts';
 
 export default function GiftHome() {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const roomId = searchParams.get('roomId');
   const navigate = useNavigate();
   const params = useParams();
-  const roomIdString = params.roomId;
-  console.log('roomIdString', roomIdString);
-  const roomId = parseInt(roomIdString || '', 10);
-  console.log('추출된 초대 코드', roomId);
+  console.log('params', params);
+  // console.log('roomIdString', roomIdString);
+  // console.log('추출된 초대 코드', roomId);
 
   const { data } = useGetRoomInfo({ roomId: Number(roomId) });
   const tournamentStartTime = data?.data.tournamentStartDate;
 
   const handleClickBtn = () => {
     navigate(`/add-gift/${roomId}/${tournamentStartTime}`);
-    // console.log('찾아보자', location.search);
   };
 
   return (
@@ -30,7 +31,7 @@ export default function GiftHome() {
       <GiftHomeSummary data={data?.data} />
       {data?.data.roomMyGiftDtoList.length > 0 ? (
         <GiftHomeMyGifts
-          roomId={roomId}
+          roomId={Number(roomId)}
           data={data.data.roomMyGiftDtoList}
           targetDate={tournamentStartTime}
         />
@@ -39,12 +40,12 @@ export default function GiftHome() {
       )}
 
       <GiftHomeFriendsGifts
-        roomId={roomId}
+        roomId={Number(roomId)}
         targetDate={data.data.tournamentStartDate}
         data={data.data.roomFriendsGiftDtoList}
       />
       <GiftHome2030Gifts
-        roomId={roomId}
+        roomId={Number(roomId)}
         targetDate={data.data.tournamentStartDate}
         data={data.data.hotProductGiftDtoList}
       />

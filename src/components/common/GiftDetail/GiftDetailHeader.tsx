@@ -4,16 +4,22 @@ import * as S from './GiftDetailHeader.style';
 
 interface GiftDetailHeaderProps {
   title: string;
+  roomId: string;
+  // targetDate: string;
 }
 
-const GiftDetailHeader = ({ title }: GiftDetailHeaderProps) => {
+const GiftDetailHeader = ({ title, roomId }: GiftDetailHeaderProps) => {
   const navigate = useNavigate();
-  
+
+  const handleClickBtn = () => {
+    navigate(`/gift-home/${roomId}`);
+  };
+
   return (
     <S.GiftDetailHeaderWrapper>
       <IcLeft
         style={{ width: '3.6rem', height: '3.6rem', cursor: 'pointer' }}
-        onClick={() => navigate('/gift-home')}
+        onClick={handleClickBtn}
       />
       {title}
       <IcMenu style={{ width: '2.8rem', height: '2.8rem', cursor: 'pointer' }} />
