@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { DayPicker } from 'react-day-picker';
 import { format } from 'date-fns';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
+import TimePicker from './TimePicker';
 
 interface SetTournamentScheduleProps {
   onNext: VoidFunction;
@@ -24,10 +25,6 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
 
   const openCalendar = () => {
     setIsCalendarOpen(!isCalendarOpen);
-  };
-
-  const openTimer = () => {
-    setIsTimerOpen(!isTimerOpen);
   };
 
   const handleDateSelect = (date: Date) => {
@@ -85,19 +82,22 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
             placeholder='시작 시간을 선택해주세요'
             value={selectedTime}
             onChange={(e) => setSelectedTime(e.target.value)}
+            disabled
           />
         </S.TextField>
-        <S.IconField>
-          <input type='time' style={{ display: 'none' }} id='timeInput' onClick={openTimer} />
+        <TimePicker onSelect={(time) => handleTimerSelect(time)} />
+        {/* <S.IconField>
+          <input type='time' style={{ display: 'none' }} id='timeInput' />
           <label htmlFor='timeInput'>
             <IcUnselectedClock
               style={{ width: '2.4rem', height: '2.4rem', position: 'relative' }}
+              onClick={openTimer}
             />
           </label>
           {isTimerOpen ? (
             <input id='timeInput' type='time' onChange={(e) => handleTimerSelect(e.target.value)} />
           ) : null}
-        </S.IconField>
+        </S.IconField> */}
       </S.Container>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <OnBoardingBtn isActivated={selectedDate !== null && selectedTime !== ''} setStep={onNext}>
