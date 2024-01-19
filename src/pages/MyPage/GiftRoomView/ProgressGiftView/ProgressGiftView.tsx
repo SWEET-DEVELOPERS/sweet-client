@@ -20,14 +20,14 @@ const ProgressGiftView = ({ data }: ProgressGiftViewType) => {
   const getNavigateLink1 = (progressData1: any) => {
     const isFuture = DateCheck({ date: progressData1.tournamentStartDate });
     return isFuture
-      ? `/gift-home?roomId=${progressData1.roomId}`
-      : `/tournament?giftee=${progressData1.gifteeName}&roomId=${progressData1.roomId}`;
+      ? `/gift-home/:${progressData1.roomId}`
+      : `/tournament/:${progressData1.gifteeName}/:${progressData1.roomId}`;
   };
   const getNavigateLink2 = (progressData2: any) => {
     const isFuture = DateCheck({ date: progressData2.tournamentStartDate });
     return isFuture
-      ? `/gift-home?roomId=${progressData2.roomId}`
-      : `/tournament?giftee=${progressData2.gifteeName}&roomId=${progressData2.roomId}`;
+      ? `/gift-home/:${progressData2.roomId}`
+      : `/tournament/:${progressData2.gifteeName}/:${progressData2.roomId}`;
   };
 
   return (

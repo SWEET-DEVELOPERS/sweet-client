@@ -6,17 +6,16 @@ import useTournament from '../../../hooks/tournament/useTournament';
 import TournamentFlowContainer from '../TournamentFlow/TournamentFlowContainer';
 import useGetItem from '../../../hooks/queries/tournament/useGetItem';
 import trophy from '../../../assets/img/3dic_trophy3.png';
-import { useLocation } from 'react-router';
+import { useParams } from 'react-router';
 import Header from '../../common/Header';
 import { TrophyNone } from '../../../assets/svg';
 import TournamentNoneText from './TournamentNoneText/TournamentNoneText';
 
 const TournamentContainer = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+  const params = useParams();
 
-  const giftee = searchParams.get('giftee') || '';
-  const roomIdString = searchParams.get('roomId');
+  const giftee = params.giftee;
+  const roomIdString = params.roomId || '';
   const roomId = parseInt(roomIdString || '', 10);
   console.log('추출된 초대 코드', roomId);
 
