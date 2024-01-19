@@ -38,10 +38,10 @@ const TournamentContainer = () => {
       ) : memberData ? (
         <>
           <Header />
-          <TournamentFlowContainer memberData={tournamentData} />
+          <TournamentFlowContainer memberData={tournamentData} roomId={roomId} />
         </>
       ) : (
-        <TournamentFlowContainer memberData={tournamentData} />
+        <TournamentFlowContainer memberData={tournamentData} roomId={roomId} />
       )}
     </>
   );

@@ -12,9 +12,10 @@ import TournamentTitleSub from './TournamentTitleSub/TournamnetTitleSub';
 
 interface TournamentResultProps {
   winners: GiftData | null;
-  firstGiftId: number; 
+  firstGiftId: number;
   secondGiftId: number;
   finalGiftId: number;
+  roomId: number;
 }
 
 const TournamentResult: React.FC<TournamentResultProps> = ({
@@ -22,8 +23,9 @@ const TournamentResult: React.FC<TournamentResultProps> = ({
   firstGiftId,
   secondGiftId,
   finalGiftId,
+  roomId,
 }) => {
-  const memberData = useGetTournamentUser({ roomId: 2 });
+  const memberData = useGetTournamentUser({ roomId: roomId });
   const tournamentData = memberData?.data || [];
 
   //버튼 ture
