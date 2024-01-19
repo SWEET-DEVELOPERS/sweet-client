@@ -75,4 +75,5 @@ export { default as Person3 } from './Person3';
 export { default as Person4 } from './Person4';
 export { default as SweetLogoGray } from './SweetLogoGray';
 export { default as SweetLogoPink } from './SweetLogoPink';
+export { default as TrophyNone } from './TrophyNone';
 export { default as Vite } from './Vite';
