@@ -8,6 +8,7 @@ import DateCheck from '../../../../components/DateCheck/DateCheck';
 
 interface ProgressGiftViewType {
   data: ActiveRoomType | undefined;
+  style?: React.CSSProperties;
 }
 
 const ProgressGiftView = ({ data }: ProgressGiftViewType) => {

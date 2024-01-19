@@ -9,16 +9,17 @@ interface GiftRoomHeaderProps {
   page: string;
   activeData?: ActiveRoomType | undefined;
   doneData?: ClosedRoomType | undefined;
+  style?: React.CSSProperties;
 }
 
-const GiftRoomHeader = ({ name, page }: GiftRoomHeaderProps) => {
+const GiftRoomHeader = ({ name, page, style }: GiftRoomHeaderProps) => {
   const navigate = useNavigate();
   const handleHeader = () => {
     navigate(`/${page}`);
   };
 
   return (
-    <S.GiftRoomHeaderWrapper onClick={handleHeader}>
+    <S.GiftRoomHeaderWrapper onClick={handleHeader} style={style}>
       <S.Text>{name}</S.Text>
       <S.Icon>
         <IcRight style={{ width: '2.4rem' }} />

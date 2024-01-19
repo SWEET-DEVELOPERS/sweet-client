@@ -1,21 +1,24 @@
 import { useNavigate } from 'react-router';
-import { IcLeft, IcMenu } from '../../../../assets/svg';
+import { IcLeft } from '../../../../assets/svg';
 import * as S from './DetailHeader.style';
 
 interface DetailHeaderProps {
   title: string;
+  customStyle?: React.CSSProperties;
 }
 
-const DetailHeader = ({ title }: DetailHeaderProps) => {
+const DetailHeader = ({ title, customStyle }: DetailHeaderProps) => {
   const navigate = useNavigate();
   const handleIcon = () => {
     navigate(-1);
   };
   return (
-    <S.DetailHeaderWrapper>
-      <IcLeft style={{ width: '3.6rem' }} onClick={handleIcon} />
+    <S.DetailHeaderWrapper style={customStyle}>
+      <IcLeft
+        style={{ width: '3.6rem', zIndex: '999', marginLeft: '0.7rem' }}
+        onClick={handleIcon}
+      />
       <S.Title>{title}</S.Title>
-      <IcMenu style={{ width: '2.8rem' }} />
     </S.DetailHeaderWrapper>
   );
 };

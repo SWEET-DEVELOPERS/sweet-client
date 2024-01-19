@@ -14,13 +14,14 @@ export const Wrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter};
   margin: auto;
   height: fit-content;
+  background-color: #fafafa;
 `;
 
 export const TextWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter};
   position: absolutes;
 
-  margin-top: 4.4rem;
+  margin-top: 10rem;
 
   z-index: 1;
 `;
@@ -94,7 +95,7 @@ export const Main3 = styled(Main03)`
 
 export const Main4 = styled(Main04)`
   position: absolute;
-  top: 220rem;
+  top: 211rem;
 `;
 
 export const DownIcon = styled(IcDown)`

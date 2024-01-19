@@ -14,7 +14,7 @@ export const TopImage = styled.div`
   width: 37.5rem;
   height: 34rem;
   flex-shrink: 0;
-  top: -1rem;
+  top: 5rem;
 
   background-image: url(${BackgroundImage});
   background-size: contain;
@@ -29,6 +29,7 @@ export const UserName = styled.div`
 export const User = styled.div`
   ${({ theme: { fonts } }) => fonts.heading_01};
   color: ${({ theme: { colors } }) => colors.P_06};
+  margin-right: 0.4rem;
 `;
 export const UserButtonWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ align: 'center', justify: 'space-between' })};
@@ -65,6 +66,7 @@ export const GiftRoomWrapper = styled.div`
   width: 100%;
   position: relative;
   top: -5rem;
+  padding-top: 4rem;
 `;
 
 export const NoneText = styled.div`

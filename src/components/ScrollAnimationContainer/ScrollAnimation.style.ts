@@ -19,7 +19,7 @@ const frameInAnimationLeft = keyframes`
 
   100%{
     opacity: 1;
-    transform: translateX(30%);
+    transform: translate(30%);
   }
 `;
 const frameInAnimationUp = keyframes`
