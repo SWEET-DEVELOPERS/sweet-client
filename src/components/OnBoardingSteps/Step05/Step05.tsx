@@ -5,9 +5,6 @@ import Title from '../../common/title/Title';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import * as S from './Step05.style';
 import { getAccessTokenLocalStorage, instance } from '../../../apis/client';
-import usePostOnboardingInfo from '../../../hooks/queries/onboarding/usePostOnboardingInfo';
-import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
-import axios from 'axios';
 
 interface SetTournamentDurationProps {
   onNext: VoidFunction;
@@ -41,16 +38,12 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     tournamentStartDate,
     fileName,
     // imageUrl,
-    setImageUrl,
     onboardingInfo,
     // presignedUrl,
-    setInvitationCode,
     imageFile,
   } = props;
 
   const [selectedOption, setSelectedOption] = useState<string>('');
-  const postPresignedUrl = usePostPresignedUrl();
-  const { mutation } = usePostOnboardingInfo();
 
   const timeOptions = [
     { time: 6, textEnglish: 'SIX_HOURS' },
