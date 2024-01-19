@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
 
 export const TextWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter};
-  position: relative;
+  position: absolutes;
 
   margin-top: 4.4rem;
 
@@ -27,7 +27,6 @@ export const TextWrapper = styled.div`
 
 export const TitleText = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter};
-  position: relative;
   text-align: center;
   font-family: 'SUIT';
   font-size: 42px;
@@ -51,19 +50,21 @@ export const SubTitleText = styled.div`
   margin-top: 2.7rem;
 `;
 export const Gradient = styled(HomeBgGradientFix)`
-  position: relative;
-  top: -48rem;
+  position: absolute;
+  top: 55rem;
   z-index: 2;
 `;
 
 export const BtnGradient = styled(HomeCtaBgGradient)`
   position: fixed;
-  z-index: 4;
+  z-index: 2;
+  bottom: 0;
 `;
 
 export const PersonWrapper = styled.div`
-  position: relative;
-  top: -108rem;
+  position: absolute;
+  top: 86rem;
+  z-index: 1;
 `;
 
 export const BtnFillStyle = styled(BtnFill)`
@@ -82,23 +83,23 @@ export const KakaoLogin = styled(IcKakoLarge)`
 `;
 
 export const Main2 = styled(Main02)`
-  position: relative;
-  top: -52rem;
+  position: absolute;
+  top: 62rem;
 `;
 
 export const Main3 = styled(Main03)`
-  position: relative;
-  top: -100rem;
+  position: absolute;
+  top: 140rem;
 `;
 
 export const Main4 = styled(Main04)`
-  position: relative;
-  top: -100rem;
+  position: absolute;
+  top: 220rem;
 `;
 
 export const DownIcon = styled(IcDown)`
-  position: relative;
-  top: -58rem;
+  position: absolute;
+  top: 53rem;
   width: 4rem;
   color: ${({ theme: { colors } }) => colors.G_07};
 `;
