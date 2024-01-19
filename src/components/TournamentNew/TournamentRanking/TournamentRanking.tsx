@@ -11,14 +11,14 @@ interface TournamentRankingProps {
   giftee?: string;
 }
 
-const TournamentRanking = () => {
-  const rankingData = useGetRanking({ roomId: 2 });
+const TournamentRanking = ({ roomId, giftee }: TournamentRankingProps) => {
+  const rankingData = useGetRanking({ roomId: roomId });
   const tournamentRankingData = rankingData?.data || [];
 
   return (
     <S.TournamentRankingWrapper>
       <Header />
-      <TournamentRankingTitle giftee={'멋진 시동훈'} />
+      <TournamentRankingTitle giftee={giftee} />
       <RankingWrapper>
         <S.Wrapper>
           {tournamentRankingData.map((data, index) => {
