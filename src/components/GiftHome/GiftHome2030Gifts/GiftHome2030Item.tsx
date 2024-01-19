@@ -10,7 +10,7 @@ interface GiftHome2030ItemProps {
 
 const GiftHome2030Item = ({ imgUrl, title, price, url }: GiftHome2030ItemProps) => {
   return (
-    <S.GiftsItemWrapper onClick={() => window.open(url)}>
+    <S.GiftsItemWrapper onClick={() => window.open(url)} style={{ marginBottom: '4rem' }}>
       <S.GiftsItemImage src={imgUrl} />
       <S.GiftsItemTitle>{title}</S.GiftsItemTitle>
       <S.GiftsItemPrice>
