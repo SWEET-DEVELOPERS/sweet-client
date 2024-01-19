@@ -51,7 +51,6 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
 
   const [selectedOption, setSelectedOption] = useState<string>('');
   const postPresignedUrl = usePostPresignedUrl();
-  const putPresignedUrl = usePutPresignedUrl();
   const { mutation } = usePostOnboardingInfo();
 
   const timeOptions = [
@@ -88,6 +87,13 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     console.log('첫 post 확인2');
 
     const presignedUrl = response.presignedUrl;
+    const finalPresigned = presignedUrl.replace(
+      'https%3A/%2Fsweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/roomImage/',
+      '',
+    );
+    console.log('지민이랑 확인하는 파싱한 presignedurl', finalPresigned);
+
+    console.log('지민이랑 확인하는 프리사인유알엘', typeof presignedUrl);
     const imageUrl = presignedUrl.split('?')[0];
     console.log('step05 내 fetchPresignedUrl 함수의 response:', response);
     console.log('step05에서 put하기 전 imageUrl', imageUrl);
@@ -98,23 +104,24 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     // formData.append()
     setImageUrl(imageUrl);
     console.log('step05 formData', formData);
-    console.log('step05 formData??', Array.from(formData.entries()));
-    return { imageUrl, presignedUrl, formData };
+    console.log('step05 formData 배열로??', Array.from(formData.entries()));
+    return { imageUrl, finalPresigned, formData };
   };
 
   const saveImageUrl = async (fileName: string) => {
-    const { presignedUrl, imageUrl, formData } = await fetchPresignedUrl(fileName);
-    console.log(' save ImageUrl 안 presignedUrl', presignedUrl);
+    const { finalPresigned, imageUrl, formData } = await fetchPresignedUrl(fileName);
+    console.log(' save ImageUrl 안 presignedUrl', finalPresigned);
     console.log('step05 내 invitationCode3', mutation);
+    console.log('step05 내formData', formData);
 
-    if (presignedUrl && presignedUrl !== '') {
+    if (finalPresigned && finalPresigned !== '') {
       try {
-        await axios.put(presignedUrl, formData, {
+        await axios.put(finalPresigned, formData, {
           headers: {
-            'Content-Type': 'multipart/form-data',
+            'Content-Type': 'image/*',
           },
         });
-        console.log('saveImageUrl 안 imageUrl 값 확인', imageUrl);
+        console.log('saveImageUrl 안 finalPresigned 값 확인', finalPresigned);
       } catch (error) {
         console.log('putPresignedUrl 실행 중 에러 발생:', error);
         return;
@@ -212,8 +219,8 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
         <OnBoardingBtn
           isActivated={!!selectedOption}
           setStep={async () => {
-            const { presignedUrl } = await fetchPresignedUrl(fileName);
-            await saveImageUrl(presignedUrl);
+            const { finalPresigned } = await fetchPresignedUrl(fileName);
+            await saveImageUrl(finalPresigned);
           }}
         >
           다음
