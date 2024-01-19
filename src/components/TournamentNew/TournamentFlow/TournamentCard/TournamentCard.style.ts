@@ -48,6 +48,8 @@ export const TournamentCardWrapper = styled.div<TournamentCardWrapperProps>`
 
   img {
     width: 100%;
+    height: 16rem;
+    object-fit: cover;
     border-radius: 9px 9px 0 0;
   }
 `;

@@ -12,8 +12,10 @@ function Header() {
 export default Header;
 const HeaderWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({})};
-
+  justify-content: end;
   height: 5.6rem;
+  width: 100vw;
+  position: fixed;
+  z-index: 1;
   gap: 21.2rem;
-  justify-content: flex-end;
 `;
