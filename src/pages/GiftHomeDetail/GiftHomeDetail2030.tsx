@@ -1,23 +1,31 @@
 import * as S from './GiftHomeDetail.styled';
 import MiniTimer from '../../components/common/MiniTimer/MiniTimer';
 import useGetHotProduct from '../../hooks/queries/product/useGetHotProduct';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import GiftHomePriceTag from '../../components/common/GiftHome/Price/GiftHomePriceTag';
 import GiftDetailHeader from '../../components/common/GiftDetail/GiftDetailHeader';
 
 function GiftHomeDetail() {
-  const location = useLocation();
+  // const location = useLocation();
 
-  const searchParams = new URLSearchParams(location.search);
-  const roomId = searchParams.get('roomId');
-  const targetDate = searchParams.get('targetTime');
-
+  // const searchParams = new URLSearchParams(location.search);
+  // const roomId = searchParams.get('roomId');
+  // console.log('roomId', roomId);
+  // const targetDate = searchParams.get('targetTime');
+  const params = useParams();
+  console.log('params', params);
+  const roomId = params.roomId;
+  const targetDate = params.targetDate;
   const roomIdNumber = parseInt(roomId || '');
   const { data } = useGetHotProduct({ roomId: roomIdNumber });
 
   return (
     <S.GiftHomeDetailPageWrapper>
-      <GiftDetailHeader title='요즘 2030이 주목하는 선물' />
+      <GiftDetailHeader
+        title='요즘 2030이 주목하는 선물'
+        roomId={roomId || ''}
+        // targetDate={targetDate || ''}
+      />
       <MiniTimer targetDate={targetDate?.toString() || ''} />
       <S.GiftHomeDetailWrapper>
         {data.data.hotProductDtoList.length > 0 ? (
