@@ -7,8 +7,8 @@ interface AddGiftImgProps {
   imageUrl: string;
   setImageUrl: React.Dispatch<React.SetStateAction<string>>;
   onClickEditBtn: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  previewImage: string | null;
-  setPreviewImage: React.Dispatch<React.SetStateAction<string | null>>;
+  // previewImage: string | null;
+  // setPreviewImage: React.Dispatch<React.SetStateAction<string | null>>;
   openGraph: OpenGraphResponseType | null;
 }
 
@@ -16,15 +16,14 @@ const AddGiftImg = ({
   imageUrl,
   setImageUrl,
   onClickEditBtn,
-  previewImage,
-  setPreviewImage,
+  // previewImage,
+  // setPreviewImage,
   openGraph,
 }: AddGiftImgProps) => {
   // 빌드 에러 해결 위해 임의로 추가
   // 나중에 이미지 첨부 기능 presignedUrl이랑 같이 구현 예정
   if (openGraph?.image) {
     setImageUrl(openGraph.image);
-    setPreviewImage(openGraph.image);
   }
   return (
     <>
@@ -40,10 +39,10 @@ const AddGiftImg = ({
               onChange={onClickEditBtn}
             />
             <label htmlFor='imgInput'>
-              {previewImage ? (
+              {imageUrl ? (
                 <S.ThumbnailWrapper>
                   <img
-                    src={previewImage || ''}
+                    src={openGraph?.image ? openGraph.image : imageUrl}
                     alt='preview'
                     style={{
                       position: 'relative',
