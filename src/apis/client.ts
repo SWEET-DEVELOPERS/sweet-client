@@ -60,7 +60,7 @@ instance.interceptors.response.use(
         if (response.data.status === 200) {
           const newAccessToken = response.data.data.accessToken;
           localStorage.setItem('EXIT_LOGIN_TOKEN', newAccessToken);
-          localStorage.setItem('EXIT_LOGIN_REFRESH_TOKEN', response.data.data.refreshToken);
+          localStorage.setItem('EXIT_LOGIN_REFRESH_TOKEN', response.data.refreshToken);
           axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
           //진행중이던 요청 이어서하기
           originRequest.headers.Authorization = `Bearer ${newAccessToken}`;
