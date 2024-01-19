@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import MiniTimer from '../../common/MiniTimer/MiniTimer';
 import AddGiftFooter from '../AddGiftFooter/AddGiftFooter';
 import GiftStatusBar from '../AddGiftLink/common/GiftStatusBar/GiftStatusBar';
 import ShowLink from '../ShowLink/ShowLink';
@@ -10,6 +9,7 @@ import { OpenGraphResponseType } from '../../../types/etc';
 // import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
 import usePutPresignedUrl from '../../../hooks/queries/onboarding/usePutPresignedUrl';
 import usePostMyPresignedUrl from '../../../hooks/queries/etc/usePostMyPresignedUrl';
+import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
 // import { useNavigate } from 'react-router-dom';
 
 interface AddGiftWithLinkLayoutProps {
@@ -68,7 +68,11 @@ const AddGiftWithLinkLayout = ({
 
     if (files && files.length > 0) {
       const selectedFiles = files as FileList;
-      setPreviewImage(URL.createObjectURL(selectedFiles[0]));
+      if (openGraph) {
+        setPreviewImage(openGraph.image);
+      } else {
+        setPreviewImage(URL.createObjectURL(selectedFiles[0]));
+      }
       setImageUrl(URL.createObjectURL(selectedFiles[0]));
       setIsImageUploaded(!!selectedFiles?.[0]);
       // 초기화
@@ -148,10 +152,8 @@ const AddGiftWithLinkLayout = ({
 
   return (
     <S.AddGiftWithLinkLayoutWrapper>
-      <S.AddGiftWithLinkHeader>
-        <MiniTimer targetDate={targetDate} />
-      </S.AddGiftWithLinkHeader>
-      <GiftStatusBar registeredGiftNum={1} isMargin={false} />
+      <LinkAddHeader targetDate={targetDate} setStep={setStep} />
+      <GiftStatusBar registeredGiftNum={1} isMargin={true} />
       <AddGiftImg
         imageUrl={imageUrl}
         setImageUrl={setImageUrl}

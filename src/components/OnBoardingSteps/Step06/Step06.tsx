@@ -3,34 +3,41 @@ import * as S from './Step06.style';
 import { IcKakaoShare, IcLink } from '../../../assets/svg';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
+import { useNavigate } from 'react-router-dom';
 import usePostParticipation from '../../../hooks/queries/onboarding/usePostParticipation';
 import OnboardingFinalHeader from './OnboardingFinalHeader';
 import useClipboard from '../../../hooks/useCopyClip';
+import { useKakaoShare } from '../../../hooks/queries/onboarding/useKakaoShare';
 
-const OnboardingFinal = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const invitationCode = searchParams.get('invitationCode');
-  const navigate = useNavigate();
-  const baseUrl = import.meta.env.VITE_APP_BASE_URL;
-  const { handleCopyToClipboard } = useClipboard();
+interface OnboardingFinalProps {
+  onboardingInfo: {
+    gifteeName: string;
+    // imageUrl: string;
+    deliveryDate: string;
+    tournamentStartDate: string;
+    tournamentDuration: string;
+  };
+  invitationCode: string;
+  imageUrl: string;
+}
 
-  console.log('추출된 초대 코드', invitationCode);
-  const getGifteeInfo = useGetGifteeInfo(invitationCode);
+const OnboardingFinal = (props: OnboardingFinalProps) => {
+  const { onboardingInfo, invitationCode, imageUrl } = props;
   const { mutation } = usePostParticipation();
 
+  console.log('step06 내 imageUrl', imageUrl);
+
+  const navigate = useNavigate();
+  const { handleCopyToClipboard } = useClipboard();
+
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await useGetGifteeInfo(invitationCode);
-      console.log('data1', data);
-      fetchData();
-      console.log('data2', data);
-    };
+    if (!window.Kakao.isInitialized()) {
+      console.log('카카오 SDK 초기화 중...');
+      window.Kakao.init(import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY);
+    }
   }, []);
 
-  console.log('getGifteeInfo', getGifteeInfo);
+  // console.log('getGifteeInfo', getGifteeInfo);
 
   const formatDate = (dateString: string, includeTime: boolean = true) => {
     const date = new Date(dateString);
@@ -68,59 +75,22 @@ const OnboardingFinal = () => {
     }
   };
 
-  const infoDetails = getGifteeInfo?.data
+  const infoDetails = onboardingInfo.gifteeName
     ? [
-        { title: '선물 받을 사람', detail: getGifteeInfo.data.gifteeName },
+        { title: '선물 받을 사람', detail: onboardingInfo.gifteeName },
         {
           title: '선물 등록 마감',
-          detail: formatDate(getGifteeInfo.data.tournamentStartDate, true),
+          detail: formatDate(onboardingInfo.tournamentStartDate, true),
         },
         {
           title: '토너먼트 진행 시간',
-          detail: formatDuration(getGifteeInfo.data.tournamentDuration),
+          detail: formatDuration(onboardingInfo.tournamentDuration),
         },
-        { title: '선물 전달일', detail: formatDate(getGifteeInfo.data.deliveryDate, false) },
+        { title: '선물 전달일', detail: formatDate(onboardingInfo.deliveryDate, false) },
       ]
     : [];
 
-  useEffect(() => {
-    const initializeKakao = async () => {
-      if (!window.Kakao.isInitialized()) {
-        await window.Kakao.init(import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY);
-      }
-    };
-    initializeKakao();
-
-    console.log('카카오 공유하기 확인', initializeKakao());
-  }, []);
-
-  const handleShareKakaoClick = () => {
-    if (window.Kakao) {
-      const kakao = window.Kakao;
-      console.log('카카오 공유 버튼 클릭11!!, window.kakao!!', window.Kakao);
-
-      if (!kakao.isInitialized()) {
-        kakao.init(`${import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY}`);
-        console.log('!kakao.isInitialized()');
-      }
-      kakao.Share.sendDefault({
-        objectType: 'feed',
-        content: {
-          title: `${getGifteeInfo.data.gifteeName}님을 위한 선물 준비방에 초대장이 도착했어요`,
-          description: '스윗과 함께 선물을 준비해보세요.',
-          imageUrl: 'https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/sweet.png',
-          link: {
-            mobileWebUrl: 'https://sweetgift.vercel.app/onboarding',
-            webUrl: 'https://sweetgift.vercel.app/onboarding',
-          },
-        },
-      });
-      console.log('카카오 공유 버튼 클릭22!!');
-    }
-    console.log('카카오 공유 버튼 클릭33!!');
-  };
-
-  const handleClickRoom = async (body: string | null) => {
+  const handleClickRoom = async (body: string) => {
     console.log('입장 버튼 클릭! 그리고 초대 코드', invitationCode);
     if (body === null) {
       console.error('초대 코드가 유효하지 않습니다.');
@@ -133,21 +103,14 @@ const OnboardingFinal = () => {
           console.log('step06 내 response', response);
           navigate('/gift-home');
         },
+        onError: () => {
+          navigate('/deadline');
+        },
       });
     } catch (error) {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    const initializeKakao = async () => {
-      if (!window.Kakao.isInitialized()) {
-        await window.Kakao.init(import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY);
-      }
-    };
-    initializeKakao();
-    console.log('카카오 공유하기 확인', initializeKakao());
-  }, []);
 
   return (
     <>
@@ -159,12 +122,11 @@ const OnboardingFinal = () => {
           <S.GradientImg>
             <img
               src='https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/sweet.png'
-              style={{ width: '100%', opacity: 0.7 }}
+              style={{ width: '100%' }}
             />
             <S.TitleContainer>
               <div style={{ marginBottom: '4.6rem' }}>
-                <Title title='시동훈님을 위한' />
-
+                <Title title={`${onboardingInfo.gifteeName} 님을 위한 `} />
                 <Title title='선물 준비방이 개설됐어요' />
               </div>
               {/* TODO 추후 지민이 버튼으로 변경(항상 활성화) */}
@@ -190,11 +152,18 @@ const OnboardingFinal = () => {
         ))}
       </S.InfoWrapper>
       <S.BtnWrapper>
-        <S.LinkCopyBtn onClick={() => handleCopyToClipboard(`${baseUrl}`)}>
+        <S.LinkCopyBtn
+          onClick={() =>
+            // TODO 추후 로컬 주소를 배포 주소로 변경
+            handleCopyToClipboard(
+              `http://sweetgift.vercel.app/result?invitationCode=${invitationCode}`,
+            )
+          }
+        >
           <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
           링크 복사
         </S.LinkCopyBtn>
-        <S.KakaoLinkCopyBtn onClick={handleShareKakaoClick}>
+        <S.KakaoLinkCopyBtn onClick={() => useKakaoShare(invitationCode)}>
           <IcKakaoShare style={{ width: '1.8rem', height: '1.8rem' }} />
           카카오톡 공유
         </S.KakaoLinkCopyBtn>

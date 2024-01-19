@@ -13,10 +13,10 @@ import DetailDoneRoom from '../pages/MyPage/Detail/DetailDoneRoom/DetailDoneRoom
 import TournamentContainer from '../components/TournamentNew/Intro/TournamentContainer';
 import GiftHome from '../pages/GiftHome/GiftHome';
 
-import OnboardingFinal from '../components/OnBoardingSteps/Step06/Step06';
-
 import TournamentPage from '../pages/TournamentPage';
 import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
+import InvitationDeadline from '../components/OnBoardingSteps/invitationDeadline/InvitationDeadline';
+import ParticipantsView from '../pages/Participants/ ParticipantsView';
 
 const router = createBrowserRouter([
   {
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
         element: <MyPage />,
       },
       {
-        path: '/editpage',
+        path: '/editpage/:roomId',
         element: <EditRoom />,
       },
       {
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
         element: <DetailDoneRoom />,
       },
       {
-        path: '/gift-home',
+        path: '/gift-home/:roomId',
         element: <GiftHome />,
       },
       {
@@ -64,20 +64,24 @@ const router = createBrowserRouter([
         element: <OnBoardingPage />,
       },
       {
-        path: '/result',
-        element: <OnboardingFinal />,
+        path: '/result/:invitationCode',
+        element: <ParticipantsView />,
       },
       {
-        path: '/tournament',
+        path: '/tournament/:roomId',
         element: <TournamentContainer />,
       },
       {
-        path: '/tournament-ranking',
+        path: '/tournament-ranking/:giftee/:roomId',
         element: <TournamentPage />,
       },
       {
-        path: '/add-gift',
+        path: '/add-gift/:roomId/:targetTime',
         element: <GiftAddPage />,
+      },
+      {
+        path: '/deadline',
+        element: <InvitationDeadline />,
       },
     ],
   },

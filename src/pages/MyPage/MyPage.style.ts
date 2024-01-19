@@ -10,9 +10,11 @@ export const MyPageWrapper = styled.div`
 `;
 
 export const TopImage = styled.div`
+  position: relative;
   width: 37.5rem;
   height: 34rem;
   flex-shrink: 0;
+  top: -1rem;
 
   background-image: url(${BackgroundImage});
   background-size: contain;
@@ -51,7 +53,7 @@ export const ProfileWrapper = styled.div`
   top: 19rem;
   left: 1.7rem;
 
-  z-index: 999;
+  z-index: 8;
 
   box-shadow: 0rem 0rem 2rem 0rem rgba(220, 180, 180, 0.35);
 `;
@@ -61,6 +63,8 @@ export const GiftRoomWrapper = styled.div`
     mixin.flexBox({ direction: 'column', align: 'center', justify: 'center' })};
   background-color: white;
   width: 100%;
+  position: relative;
+  top: -5rem;
 `;
 
 export const NoneText = styled.div`

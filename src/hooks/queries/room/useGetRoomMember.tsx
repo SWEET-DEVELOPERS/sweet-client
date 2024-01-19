@@ -9,12 +9,12 @@ interface RoomMemberResponse extends Response {
 export const ROOM_MEMBER_QUERY_KEY: string[] = ['roomMemberData'];
 
 const useGetRoomMember = (roomId: number) => {
-  const fetchMyPage = async (roomId: number): Promise<RoomMemberResponse> =>
+  const fetchMember = async (roomId: number): Promise<RoomMemberResponse> =>
     get(`/room/${roomId}/members`);
 
   const { data } = useSuspenseQuery({
     queryKey: [...ROOM_MEMBER_QUERY_KEY, roomId],
-    queryFn: () => fetchMyPage(roomId),
+    queryFn: () => fetchMember(roomId),
   });
   return data;
 };

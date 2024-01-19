@@ -1,17 +1,17 @@
-import { ButtonHTMLAttributes, useState } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 import * as S from './BtnRadio.style';
 import { IcCircle, IcCirclePink } from '../../../../assets/svg';
-import { Period } from '../../../OnBoardingSteps/Step05/Step05.style';
+// import { Period } from '../../../OnBoardingSteps/Step05/Step05.style';
 type BtnRadioProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   disabled?: boolean;
   time: string;
   period: string;
   customStyle?: React.CSSProperties;
   onClick?: () => void;
-  isSelected?: () => void;
+  isSelected?: boolean;
   onTimeSelect?: (time: string) => void;
   setSelectedTime?: (time: string) => VoidFunction;
-  isAfterDelivery: boolean;
+  $isAfterDelivery: boolean;
 };
 const BtnRadio = ({
   disabled,
@@ -21,10 +21,9 @@ const BtnRadio = ({
   onClick,
   onTimeSelect,
   setSelectedTime,
-  isAfterDelivery,
+  $isAfterDelivery,
+  isSelected,
 }: BtnRadioProps) => {
-  const [focused, setFocused] = useState(false);
-
   return (
     <S.Wrapper
       disabled={disabled}
@@ -40,16 +39,15 @@ const BtnRadio = ({
           onClick();
         }
       }}
-      onFocus={() => setFocused(true)}
-      onBlur={() => setFocused(false)}
+      isSelected={isSelected}
     >
-      {focused ? (
-        <IcCirclePink style={{ width: '2.4rem' }} />
+      {isSelected ? (
+        <IcCirclePink style={{ width: '4.8rem' }} />
       ) : (
-        <IcCircle style={{ width: '2.4rem' }} />
+        <IcCircle style={{ width: '4.8rem' }} />
       )}
       <S.Time>{time}</S.Time>
-      <Period isAfterDelivery={isAfterDelivery}>{period}</Period>
+      <S.Period $isAfterDelivery={$isAfterDelivery}>{period}</S.Period>
     </S.Wrapper>
   );
 };

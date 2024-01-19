@@ -27,6 +27,7 @@ export default function GiftHome2030Gifts({ roomId, data, targetDate }: GiftHome
               imgUrl={gift.imageUrl}
               title={gift.name}
               price={gift.cost}
+              url={gift.url}
             />
           ))}
         </S.GiftsWrapper>

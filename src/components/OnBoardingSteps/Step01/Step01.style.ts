@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import theme from '../../../style/theme';
 
 export const Wrapper = styled.div<{ $hasContent: boolean; $maxLengthReached: boolean }>`
-  ${({ theme }) => theme.mixin.flexBox('center', 'center')}
+  ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'space-between' })}
   width: 100%;
   height: 3.6rem;
   margin-top: 7.2rem;
@@ -22,19 +22,23 @@ export const Wrapper = styled.div<{ $hasContent: boolean; $maxLengthReached: boo
 `;
 
 export const TextField = styled.div`
-  width: 90%;
+  display: flex;
+  /* width: 90%; */
 `;
 
 export const IconField = styled.div`
-  width: 10%;
+  display: flex;
+  /* width: 10%; */
 `;
 
 export const Input = styled.input<{ $hasContent?: boolean; $maxLengthReached?: boolean }>`
-  ${({ theme }) => theme.mixin.flexBox('flex-center', 'center')};
+  ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'space-between' })};
+  flex-wrap: nowrap;
   width: 100%;
   height: 3.5rem;
   border: none;
   outline: none;
+  ${({ theme }) => theme.fonts.body_05};
 
   input::placeholder {
     color: ${({ theme }) => theme.colors.G_07};

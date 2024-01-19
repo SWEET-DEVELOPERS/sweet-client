@@ -6,19 +6,20 @@ import useTournament from '../../../hooks/tournament/useTournament';
 import TournamentFlowContainer from '../TournamentFlow/TournamentFlowContainer';
 import useGetItem from '../../../hooks/queries/tournament/useGetItem';
 import trophy from '../../../assets/img/3dic_trophy3.png';
-import { useLocation } from 'react-router';
+import { useParams } from 'react-router';
 
 const TournamentContainer = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+  const params = useParams();
 
-  const giftee = searchParams.get('giftee') || '';
-  const roomIdString = searchParams.get('roomId');
+
+  const giftee = params.giftee;
+
+  const roomIdString = params.roomId;
   const roomId = parseInt(roomIdString || '', 10);
   console.log('추출된 초대 코드', roomId);
 
   const { showTournamentContainer, handleStartClick } = useTournament();
-  const memberData = useGetItem({ roomId: roomId });
+  const memberData = useGetItem({ roomId: Number(roomId) });
   console.log(memberData);
 
   const tournamentData = memberData?.data || [];
@@ -27,7 +28,7 @@ const TournamentContainer = () => {
       {showTournamentContainer ? (
         <>
           <TournamentStartText giftee={giftee} />
-          <TournamentItemCount />
+          <TournamentItemCount memberData={[]} />
           <S.TournamentImg>
             <img src={trophy} alt='트로피' />
           </S.TournamentImg>

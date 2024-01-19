@@ -6,11 +6,12 @@ interface GiftHomeFriendsItemProps {
   title: string;
   price: number;
   user: string;
+  url: string;
 }
 
-const GiftHomeFriendsItem = ({ imgUrl, title, price, user }: GiftHomeFriendsItemProps) => (
+const GiftHomeFriendsItem = ({ imgUrl, title, price, user, url }: GiftHomeFriendsItemProps) => (
   <>
-    <S.GiftsItemWrapper>
+    <S.GiftsItemWrapper onClick={() => window.open(url)}>
       <S.GiftsItemImage src={imgUrl} />
       <S.GiftsItemTitle>{title}</S.GiftsItemTitle>
       <S.GiftsItemPrice>

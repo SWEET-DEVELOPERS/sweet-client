@@ -4,6 +4,10 @@ interface TournamentResultFooterProps {
   onClick?: () => void; // Add the onClick prop
 }
 const TournamentResultFooter: React.FC<TournamentResultFooterProps> = ({ onClick }) => {
+  const handleRetryClick = () => {
+    // Reload the page when "다시하기" button is clicked
+    window.location.reload();
+  };
   return (
     <TournamentResultFooterWrapper>
       <BtnFill
@@ -13,6 +17,7 @@ const TournamentResultFooter: React.FC<TournamentResultFooterProps> = ({ onClick
           color: 'black',
           border: '1px solid #FF2176',
         }}
+        onClick={handleRetryClick}
       >
         다시하기
       </BtnFill>
