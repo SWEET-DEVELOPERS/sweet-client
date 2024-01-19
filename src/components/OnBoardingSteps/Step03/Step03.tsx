@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import { DayPicker } from 'react-day-picker';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import 'react-day-picker/dist/style.css';
+import { NextBtnText } from '../Step01/Step01';
 
 interface GiftDeliveryProps {
   onNext: VoidFunction;
@@ -18,6 +19,22 @@ interface GiftDeliveryProps {
     tournamentDuration: string;
   };
 }
+
+const css = `
+  .my-selected:not([disabled]) { 
+    font-weight: bold; 
+    border: 2px solid currentColor;
+  }
+  .my-selected:hover:not([disabled]) { 
+    border-color: blue;
+    color: blue;
+  }
+  .my-today { 
+    font-weight: bold;
+    font-size: 140%; 
+    color: red;
+  }
+`;
 
 const GiftDelivery = (props: GiftDeliveryProps) => {
   const { onNext, deliveryDate, setDeliveryDate, onboardingInfo } = props;
@@ -81,13 +98,20 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
             mode='single'
             onDayClick={handleDateSelect}
             disabled={disabledDays}
+            modifiersClassNames={{
+              selected: 'my-selected',
+              today: 'my-today',
+            }}
+            modifiersStyles={{
+              disabled: { fontSize: '75%' },
+            }}
           />
         </div>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <OnBoardingBtn isActivated={isActivated} setStep={onNext}>
-          다음
+          <NextBtnText isActivated={isActivated}>다음</NextBtnText>
         </OnBoardingBtn>
       </div>
     </>
