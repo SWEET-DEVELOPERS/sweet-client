@@ -30,22 +30,20 @@ const TimePicker: React.FC<TimePickerProps> = ({ onSelect }) => {
 
   return (
     <S.IconField>
+      <input
+        type='time'
+        id='clock'
+        onChange={(e) => handleTimeSelect(e.target.value)}
+        style={{ display: 'flex' }}
+      />
       <label htmlFor='clock'>
         <IcUnselectedClock
-          style={{ width: '2.4rem', height: '2.4rem', position: 'relative' }}
+          style={{ width: '2.4rem', height: '2.4rem' }}
           onClick={handleIconClick}
         />
       </label>
-      {isPickerOpen ? (
-        <div className='custom-time-picker' style={{ display: isPickerOpen ? 'flex' : 'none' }}>
-          <input
-            type='time'
-            id=''
-            onChange={(e) => handleTimeSelect(e.target.value)}
-            style={{ display: 'block' }}
-          />
-        </div>
-      ) : null}
+
+      <div className='custom-time-picker' style={{ display: 'flex' }}></div>
     </S.IconField>
   );
 };
