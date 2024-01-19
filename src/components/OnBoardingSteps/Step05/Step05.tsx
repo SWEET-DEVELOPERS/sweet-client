@@ -86,10 +86,12 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     console.log('첫 post 확인2');
 
     const presignedUrl = response.presignedUrl;
-    const finalPresigned = presignedUrl.replace(
-      'https%3A/%2Fsweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/roomImage/',
-      '',
-    );
+    // const finalPresigned = presignedUrl.replace(
+    //   'https%3A/%2Fsweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/roomImage/',
+    //   '',
+    // );
+    const finalPresigned = presignedUrl;
+
     console.log('지민이랑 확인하는 파싱한 presignedurl', finalPresigned);
 
     console.log('지민이랑 확인하는 프리사인유알엘', typeof presignedUrl);
