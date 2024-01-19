@@ -29,9 +29,12 @@ export type MemberInfoType = {
   profileImage: string;
 };
 
-export type RoomMemberType = {
+export type RoomOwnerType = {
   room: RoomsListType;
   owner: OwnerListType;
+};
+
+export type RoomMemberType = {
   members: MembersListType;
 };
 
