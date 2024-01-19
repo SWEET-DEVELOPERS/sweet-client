@@ -187,7 +187,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
               <BtnRadio
                 time={optionText}
                 period={dateType}
-                isSelected={() => selectedOption === optionText}
+                isSelected={selectedOption === optionText}
                 onClick={() => setTournamentDuration(hours.textEnglish)}
                 onTimeSelect={handleTimeSelect}
                 $isAfterDelivery={isAfterDelivery}

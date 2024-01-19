@@ -8,7 +8,7 @@ type BtnRadioProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   period: string;
   customStyle?: React.CSSProperties;
   onClick?: () => void;
-  isSelected?: () => void;
+  isSelected?: boolean;
   onTimeSelect?: (time: string) => void;
   setSelectedTime?: (time: string) => VoidFunction;
   $isAfterDelivery: boolean;
@@ -22,6 +22,7 @@ const BtnRadio = ({
   onTimeSelect,
   setSelectedTime,
   $isAfterDelivery,
+  isSelected,
 }: BtnRadioProps) => {
   const [focused, setFocused] = useState(false);
 
@@ -42,8 +43,9 @@ const BtnRadio = ({
       }}
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
+      isSelected={isSelected}
     >
-      {focused ? (
+      {isSelected ? (
         <IcCirclePink style={{ width: '4.8rem' }} />
       ) : (
         <IcCircle style={{ width: '4.8rem' }} />
