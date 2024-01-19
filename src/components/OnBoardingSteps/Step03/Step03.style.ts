@@ -27,6 +27,7 @@ export const Input = styled.input`
   height: 3.5rem;
   border: none;
   outline: none;
+  padding: 0;
   ${({ theme }) => theme.fonts.body_06};
 
   input::placeholder {

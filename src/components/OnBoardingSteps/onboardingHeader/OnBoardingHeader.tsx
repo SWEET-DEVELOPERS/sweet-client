@@ -18,8 +18,7 @@ const OnBoardingHeader = ({ step, onClick }: OnBoardingHeaderProps) => {
 export default OnBoardingHeader;
 
 const OnBoardingHeaderWrapper = styled.div`
-  ${({ theme }) =>
-    theme.mixin.flexBox({ direction: 'row', align: 'center', justify: 'space-between' })};
+  ${({ theme }) => theme.mixin.flexBox({ direction: 'row', align: 'center', justify: 'end' })};
   width: 100%;
   height: 5.6rem;
 `;

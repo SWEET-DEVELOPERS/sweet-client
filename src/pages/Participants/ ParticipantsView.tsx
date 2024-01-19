@@ -1,6 +1,6 @@
 import * as S from './ParticipantsView.style';
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 // import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
 // import usePostParticipation from '../../../hooks/queries/onboarding/usePostParticipation';
 import { IcKakoLarge } from '../../assets/svg';
@@ -28,11 +28,9 @@ const ParticipantsView = () => {
   // const invitationCode = searchParams.get('invitationCode');
   // console.log('step06 내 초대코드', invitationCode);
 
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const invitationCode = searchParams.get('invitationCode');
-  // console.log('추출된 초대 코드', invitationCode);
-  const getGifteeInfo = useGetGifteeInfo(invitationCode);
+  const { invitationCode } = useParams<{ invitationCode?: string }>();
+  const getGifteeInfo = useGetGifteeInfo(invitationCode || null);
+  console.log('추출된 초대 코드', invitationCode);
   // const { mutation } = usePostParticipation();
 
   useEffect(() => {
