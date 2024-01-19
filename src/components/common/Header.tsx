@@ -14,6 +14,7 @@ const HeaderWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({})};
   justify-content: end;
   height: 5.6rem;
+  padding: 0 2rem;
   width: 100vw;
   position: fixed;
   z-index: 1;
