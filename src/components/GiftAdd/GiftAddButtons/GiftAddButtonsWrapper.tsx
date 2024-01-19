@@ -9,6 +9,12 @@ interface GiftAddButtonsProps {
 }
 
 const GiftAddButtonsWrapper = ({ data, onCancelClick }: GiftAddButtonsProps) => {
+  let imageUrl = data.imageUrl;
+
+  if (imageUrl.includes('blob:')) {
+    imageUrl = imageUrl.replace('blob:', '');
+  }
+
   return (
     <S.GiftsItemWrapper>
       <IcBookmark
@@ -31,7 +37,7 @@ const GiftAddButtonsWrapper = ({ data, onCancelClick }: GiftAddButtonsProps) => 
         }}
         onClick={() => onCancelClick()}
       />
-      <S.GiftsItemImage src={data.imageUrl} />
+      <S.GiftsItemImage src={imageUrl} />
       <S.GiftsItemTitle>{data.name}</S.GiftsItemTitle>
       <S.GiftsItemPrice>
         <GiftHomePriceTag price={data.cost} fonts={'body_09'} />

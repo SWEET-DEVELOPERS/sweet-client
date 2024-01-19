@@ -24,7 +24,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
         <>
           <CountDownCard text={'D'} />
           <S.DashDiv />
-          <CountDownCard text={days.toString().padStart(2, '0')} />
+          <CountDownCard text={days.toString()} />
         </>
       ) : (
         <>
