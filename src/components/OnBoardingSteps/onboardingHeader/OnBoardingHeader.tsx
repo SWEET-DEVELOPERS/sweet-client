@@ -1,15 +1,13 @@
 import styled from 'styled-components';
-import { IcLeft } from '../../../assets/svg';
 
 interface OnBoardingHeaderProps {
   step?: number;
   onClick?: () => void;
 }
 
-const OnBoardingHeader = ({ step, onClick }: OnBoardingHeaderProps) => {
+const OnBoardingHeader = ({ step }: OnBoardingHeaderProps) => {
   return (
     <OnBoardingHeaderWrapper>
-      <IcLeft style={{ width: '3.6rem', height: '3.6rem' }} onClick={onClick} />
       <StepText>{step}/5</StepText>
     </OnBoardingHeaderWrapper>
   );
