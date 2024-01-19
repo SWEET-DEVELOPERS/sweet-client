@@ -15,7 +15,7 @@ const DetailProgressRoom = () => {
   const getNavigateLink = (item: any) => {
     const isFuture = DateCheck({ date: item.tournamentStartDate });
 
-    return isFuture ? `/gift-home/${item.roomId}` : `/tournament/${item.roomId}`;
+    return isFuture ? `/gift-home/${item.roomId}` : `/tournament/${item.gifteeName}/${item.roomId}`;
   };
 
   return (

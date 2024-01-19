@@ -7,10 +7,9 @@ interface TournamentResultUserProps {
 }
 
 const TournamentResultUser = ({ memberData }: TournamentResultUserProps) => {
-  console.log('wtf.', memberData);
   const tournamentUserData = memberData || {};
 
-  const [days, hours, minutes, seconds] = useCountDown(tournamentUserData.tournamentStartDate);
+  const [days, hours, minutes, seconds] = useCountDown(tournamentUserData.remainingTime);
   console.log('Countdown:', hours, 'hours', minutes, 'minutes', seconds, 'seconds');
 
   console.log(days);
@@ -20,7 +19,7 @@ const TournamentResultUser = ({ memberData }: TournamentResultUserProps) => {
       <UserWrapper>
         <User>현재까지 참여자</User>
         <UserCount>
-          {tournamentUserData.ParticipantsCount}/{tournamentUserData.TotalParticipantsCount}
+          {tournamentUserData.participantsCount}/{tournamentUserData.totalParticipantsCount}
         </UserCount>
       </UserWrapper>
       <TimerWrapper>

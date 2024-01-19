@@ -68,7 +68,7 @@ const router = createBrowserRouter([
         element: <ParticipantsView />,
       },
       {
-        path: '/tournament/:roomId',
+        path: '/tournament/:giftee/:roomId',
         element: <TournamentContainer />,
       },
       {
