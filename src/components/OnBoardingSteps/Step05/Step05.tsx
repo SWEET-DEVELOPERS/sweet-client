@@ -7,7 +7,6 @@ import * as S from './Step05.style';
 import { getAccessTokenLocalStorage, instance } from '../../../apis/client';
 import usePostOnboardingInfo from '../../../hooks/queries/onboarding/usePostOnboardingInfo';
 import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
-import usePutPresignedUrl from '../../../hooks/queries/onboarding/usePutPresignedUrl';
 import axios from 'axios';
 
 interface SetTournamentDurationProps {

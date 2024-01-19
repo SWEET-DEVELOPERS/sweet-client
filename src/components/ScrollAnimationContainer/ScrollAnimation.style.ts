@@ -8,7 +8,7 @@ const frameInAnimation = keyframes`
 
   100%{
     opacity: 1;
-    transform: translateX(0%);
+    transform: translateX(-3%);
   }
 `;
 const frameInAnimationLeft = keyframes`

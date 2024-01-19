@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import GiftHome2030Gifts from '../../components/GiftHome/GiftHome2030Gifts/GiftHome2030Gifts';
 import GiftHomeFriendsGifts from '../../components/GiftHome/GiftHomeFriendsGifts/GiftHomeFriendsGifts';
 import GiftHomeHeader from '../../components/GiftHome/GiftHomeHeader/GiftHomeHeader';
@@ -10,10 +10,8 @@ import GiftHomeMyGifts from './GiftHomeMyGifts/GiftHomeMyGifts';
 
 export default function GiftHome() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  console.log('searchParams', searchParams);
-  const roomIdString = searchParams.get('roomId');
+  const params = useParams();
+  const roomIdString = params.roomId;
   console.log('roomIdString', roomIdString);
   const roomId = parseInt(roomIdString || '', 10);
   console.log('추출된 초대 코드', roomId);
@@ -22,7 +20,7 @@ export default function GiftHome() {
   const tournamentStartTime = data?.data.tournamentStartDate;
 
   const handleClickBtn = () => {
-    navigate(`/add-gift?roomId=${roomId}&targetTime=${tournamentStartTime}`);
+    navigate(`/add-gift/${roomId}/${tournamentStartTime}`);
     // console.log('찾아보자', location.search);
   };
 
