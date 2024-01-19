@@ -20,7 +20,7 @@ export default function GiftHome() {
   const tournamentStartTime = data?.data.tournamentStartDate;
 
   const handleClickBtn = () => {
-    navigate(`/add-gift?roomId=${roomId}&targetTime=${tournamentStartTime}`);
+    navigate(`/add-gift/${roomId}/${tournamentStartTime}`);
     // console.log('찾아보자', location.search);
   };
 

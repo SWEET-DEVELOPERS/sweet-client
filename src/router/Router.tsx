@@ -76,7 +76,7 @@ const router = createBrowserRouter([
         element: <TournamentPage />,
       },
       {
-        path: '/add-gift',
+        path: '/add-gift/:roomId/:targetTime',
         element: <GiftAddPage />,
       },
       {
