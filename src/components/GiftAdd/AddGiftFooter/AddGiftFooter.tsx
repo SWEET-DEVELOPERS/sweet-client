@@ -33,10 +33,10 @@ const AddGiftFooter = ({
   cost,
   imageUrl,
   link,
-  saveImageUrl,
+  // saveImageUrl,
   fileName,
-  fetchPresignedUrl,
-  setImageUrl,
+  // fetchPresignedUrl,
+  // setImageUrl,
 }: AddGiftFooterProps) => {
   // const updatedItemInfo = {
   //   roomId: itemInfo.roomId,
@@ -60,7 +60,7 @@ const AddGiftFooter = ({
           roomId: itemInfo.roomId,
           name: name,
           cost: cost,
-          imageUrl: presignedUrl,
+          imageUrl: imageUrl,
           url: link,
         },
         {
