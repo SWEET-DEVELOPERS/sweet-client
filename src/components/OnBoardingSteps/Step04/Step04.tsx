@@ -21,7 +21,7 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
   const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string>('');
-  const [isTimerOpen, setIsTimerOpen] = useState<boolean>(false);
+  const [isTimerOpen] = useState<boolean>(false);
 
   const openCalendar = () => {
     setIsCalendarOpen(!isCalendarOpen);
@@ -67,12 +67,14 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
         </S.IconField>
       </S.SetTournamentScheduleWrapper>
       {isCalendarOpen && (
-        <DayPicker
-          defaultMonth={new Date()}
-          mode='single'
-          onDayClick={handleDateSelect}
-          disabled={disabledDays}
-        />
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <DayPicker
+            defaultMonth={new Date()}
+            mode='single'
+            onDayClick={handleDateSelect}
+            disabled={disabledDays}
+          />
+        </div>
       )}
 
       {/* 여기서부터 타이머 */}

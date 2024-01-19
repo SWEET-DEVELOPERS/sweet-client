@@ -69,12 +69,14 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
         </S.IconField>
       </S.Wrapper>
       {isOpen && (
-        <DayPicker
-          defaultMonth={new Date()}
-          mode='single'
-          onDayClick={handleDateSelect}
-          disabled={disabledDays}
-        />
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <DayPicker
+            defaultMonth={new Date()}
+            mode='single'
+            onDayClick={handleDateSelect}
+            disabled={disabledDays}
+          />
+        </div>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
