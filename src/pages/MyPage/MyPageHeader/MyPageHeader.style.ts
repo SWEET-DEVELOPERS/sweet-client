@@ -7,6 +7,7 @@ export const StartHeaderWrapper = styled.div`
   justify-content: end;
   height: 5.6rem;
   gap: 21.2rem;
+  background: none;
 `;
 
 export const ImgWrapper = styled.header`
