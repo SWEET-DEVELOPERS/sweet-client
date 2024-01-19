@@ -26,6 +26,7 @@ export const instance = axios.create({
 
 const refreshToken = localStorage.getItem('EXIT_LOGIN_REFRESH_TOKEN');
 const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
+
 export async function postRefreshToken() {
   const response = await authInstance.post('/oauth/reissue', {
     accessToken: accessToken,
