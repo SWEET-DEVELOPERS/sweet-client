@@ -98,17 +98,6 @@ const TournamentFlowContainer = ({ memberData }: TournamentProps) => {
     setDisplays([shuffledArray[0], shuffledArray[1]]);
   };
 
-  const refresh = (): void => {
-    const shuffledArray = [...itemPick].sort(() => Math.random() - 0.5);
-    setitemPick(shuffledArray);
-    setDisplays([shuffledArray[0], shuffledArray[1]]);
-  };
-
-  const refresh = (): void => {
-    const shuffledArray = [...itemPick].sort(() => Math.random() - 0.5);
-    setitemPick(shuffledArray);
-    setDisplays([shuffledArray[0], shuffledArray[1]]);
-  };
 
   return (
     <>
