@@ -86,7 +86,7 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
         </S.IconField>
       </S.Wrapper>
       {isOpen && (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <S.CalenderWrapper>
           <DayPicker
             defaultMonth={new Date()}
             mode='single'
@@ -100,7 +100,7 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
               disabled: { fontSize: '75%' },
             }}
           />
-        </div>
+        </S.CalenderWrapper>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>

@@ -8,6 +8,12 @@ export const OnboardingFinalWrapper = styled.div`
   overflow: hidden;
 `;
 
+export const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0 0 2.8rem;
+`;
+
 export const GradientImg = styled.div`
   background-size: cover;
   background-blend-mode: overlay;

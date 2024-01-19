@@ -12,7 +12,11 @@ export const Wrapper = styled.div<{ $hasContent: boolean }>`
       border-bottom: 0.1rem solid ${({ theme }) => theme.colors.P_06};
     `}
 `;
-
+export const CalenderWrapper = styled.div`
+  font-size: 17px;
+  display: flex;
+  justify-content: center;
+`;
 export const TextField = styled.div`
   /* width: 90%; */
 `;

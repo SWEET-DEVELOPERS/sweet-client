@@ -68,7 +68,7 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
         </S.IconField>
       </S.SetTournamentScheduleWrapper>
       {isCalendarOpen && (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div style={{ fontSize: '17px', display: 'flex', justifyContent: 'center' }}>
           <DayPicker
             defaultMonth={new Date()}
             mode='single'
