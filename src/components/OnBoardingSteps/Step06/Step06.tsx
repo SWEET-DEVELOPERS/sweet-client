@@ -24,8 +24,6 @@ interface OnboardingFinalProps {
 const OnboardingFinal = (props: OnboardingFinalProps) => {
   const { onboardingInfo, invitationCode, imageUrl, roomId } = props;
 
-  console.log('step06 내 imageUrl', imageUrl);
-
   const navigate = useNavigate();
   const { handleCopyToClipboard } = useClipboard();
 
@@ -133,9 +131,7 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
         <S.LinkCopyBtn
           onClick={() =>
             // TODO 추후 로컬 주소를 배포 주소로 변경
-            handleCopyToClipboard(
-              `http://sweetgift.vercel.app/result?invitationCode=${invitationCode}`,
-            )
+            handleCopyToClipboard(`http://sweetgift.vercel.app/result/${invitationCode}`)
           }
         >
           <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />

@@ -67,7 +67,7 @@ interface NextBtnTextProps {
   isActivated: boolean;
 }
 
-const NextBtnText = styled.p<NextBtnTextProps>`
+export const NextBtnText = styled.p<NextBtnTextProps>`
   ${({ theme }) => theme.fonts.body_09};
   ${({ isActivated, theme }) =>
     isActivated
