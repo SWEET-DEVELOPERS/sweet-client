@@ -102,15 +102,12 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
     formData.append('file', imageFile);
     // formData.append()
     setImageUrl(imageUrl);
-    console.log('step05 formData', formData);
-    console.log('step05 formData 배열로??', Array.from(formData.entries()));
     return { imageUrl, finalPresigned, formData };
   };
 
   const saveImageUrl = async (fileName: string) => {
     const { finalPresigned, imageUrl, formData } = await fetchPresignedUrl(fileName);
     console.log(' save ImageUrl 안 presignedUrl', finalPresigned);
-    console.log('step05 내 invitationCode3', mutation);
     console.log('step05 내formData', formData);
 
     if (finalPresigned && finalPresigned !== '') {
