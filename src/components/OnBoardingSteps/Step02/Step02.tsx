@@ -29,31 +29,34 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
       const imageFile = selectedFiles[0];
 
       setImageFile(imageFile);
+      // setFileName(imageFile);
+      console.log('step02 내 지민이와 함께하는 ', imageFile);
       const imageName = files[0].name.trim();
+      setFileName(imageName);
 
       // 확장자 제거
-      const imageNameWithoutExtension = imageName.replace(/\.[^/.]+$/, '');
+      // const imageNameWithoutExtension = imageName.replace(/\.[^/.]+$/, '');
 
       // 띄워쓰기 제거
-      const formattedImageName = imageNameWithoutExtension.replace(/\s/g, '');
+      const formattedImageName = imageName.replace(/\s/g, '');
 
       // 앞 3글자 가져오기
-      const firstThreeLetters = formattedImageName.substring(0, 3);
+      // const firstThreeLetters = formattedImageName.substring(0, 3);
 
       // 이미지 업로드 시간
       // const uploadTime = new Date().toISOString();
       // const uploadTime = new Date().toISOString().split('.')[0].repl(':', '-');
-      const uploadTime = Math.random();
+      // const uploadTime = Math.random();
 
       // 최종 이미지 이름
-      const finalImageName = `${firstThreeLetters}${uploadTime}`.replace('.', '');
+      // const finalImageName = `${firstThreeLetters}${uploadTime}`.replace('.', '');
 
       // TODO 그냥 imageUrl에는 presignedUrl을 값에 넣어줘야함
       // setImageUrl(finalImageName);
 
-      setFileName(finalImageName);
+      // setFileName(finalImageName);
 
-      console.log('step02 내 fileName:', finalImageName);
+      // console.log('step02 내 fileName:', finalImageName);
       console.log('step02 내 imageFile:', imageFile);
     }
   };
