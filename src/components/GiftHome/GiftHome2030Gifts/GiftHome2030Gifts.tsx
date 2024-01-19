@@ -7,9 +7,15 @@ interface GiftHome2030GiftsProps {
   roomId: number;
   data: HotGiftsType[];
   targetDate: Date;
+  url: string;
 }
 
-export default function GiftHome2030Gifts({ roomId, data, targetDate }: GiftHome2030GiftsProps) {
+export default function GiftHome2030Gifts({
+  roomId,
+  data,
+  targetDate,
+  url,
+}: GiftHome2030GiftsProps) {
   return (
     <S.GiftHomeShowcaseWrapper>
       <GiftHomeShowcaseHeader
@@ -27,6 +33,7 @@ export default function GiftHome2030Gifts({ roomId, data, targetDate }: GiftHome
               imgUrl={gift.imageUrl}
               title={gift.name}
               price={gift.cost}
+              url={url}
             />
           ))}
         </S.GiftsWrapper>
