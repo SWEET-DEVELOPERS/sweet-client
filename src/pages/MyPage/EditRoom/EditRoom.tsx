@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 import useGetRoomMember from '../../../hooks/queries/room/useGetRoomMember';
 import CardGuest from './CardGuest/CardGuest';
 import * as S from './EditRoom.style';
@@ -10,10 +10,9 @@ interface EditRoom {
 }
 
 const EditRoom = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+  const params = useParams();
 
-  const roomIdString = searchParams.get('roomId');
+  const roomIdString = params.roomId;
   const roomId = parseInt(roomIdString || '', 10);
   console.log('추출된 초대 코드', roomId);
   const [roomWholeMemberData, setWholeMemberData] = useState<any>();
