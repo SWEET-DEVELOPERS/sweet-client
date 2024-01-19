@@ -3,7 +3,7 @@ import GiftAddFirstLinkLayout from '../../components/GiftAdd/AddGiftLink/GiftAdd
 import AddGiftWithoutLinkLayout from '../../components/GiftAdd/AddGiftLayout/AddGiftWithoutLinkLayout';
 import GiftAddPageLayout from '../../components/GiftAdd/GiftAddPageLayout/GiftAddPageLayout';
 import { OpenGraphResponseType } from '../../types/etc';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import AddGiftWithLinkLayout from '../../components/GiftAdd/AddGiftLayout/AddGiftWithLinkLayout';
 
 const GiftAddPage = () => {
