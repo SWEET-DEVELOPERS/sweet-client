@@ -23,7 +23,7 @@ const Title = styled.div`
   margin: 0 auto;
   margin-bottom: 1.3rem;
   ${({ theme }) => theme.fonts.body_09};
-  ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.G_09};
 `;
 
 const PinkText = styled.p`
