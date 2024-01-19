@@ -19,7 +19,7 @@ const EditCardRoom = ({ user, srcImage, userCount, roomId, date, onClick }: Edit
   const isFuture = DateCheck({ date: date });
 
   const handleSettingIcon = () => {
-    navigate(`/editpage?roomId=${roomId}`);
+    navigate(`/editpage/${roomId}`);
   };
   return (
     <S.WholeWrapper>
