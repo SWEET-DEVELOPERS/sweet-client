@@ -1,7 +1,6 @@
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 import BtnLogout from '../../components/common/Button/Logout/BtnLogout';
 import ProfileImage from './ProfileImage/ProfileImage';
-import Rectangle from '../../assets/img/Rectangle.png';
 import DoneGiftView from './GiftRoomView/DoneGiftView/DoneGiftView';
 import ProgressGiftView from './GiftRoomView/ProgressGiftView/ProgressGiftView';
 import useGetMyPage from '../../hooks/queries/member/useGetMypage';
@@ -23,6 +22,7 @@ const MyPage = () => {
   console.log(memberData?.data?.memberInfo);
 
   const userName = memberData?.data?.memberInfo.nickname;
+  const userImage = memberData?.data?.memberInfo.profileImage;
   const translatedUserName = userName && userName.length > 5 ? userName.substring(0, 5) : userName;
 
   const progressRoomData = memberData?.data?.activeRooms;
@@ -46,7 +46,7 @@ const MyPage = () => {
       <S.ProfileWrapper>
         <S.UserButtonWrapper>
           <S.UserWrapper>
-            <ProfileImage image={Rectangle} />
+            <ProfileImage image={userImage} />
             <S.UserName>
               <S.User>{translatedUserName}</S.User>님
             </S.UserName>
