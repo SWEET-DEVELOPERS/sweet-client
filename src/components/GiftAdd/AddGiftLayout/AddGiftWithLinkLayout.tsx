@@ -171,6 +171,7 @@ const AddGiftWithLinkLayout = ({
         cost={priceText}
       />
       <AddGiftFooter
+        openGraph={openGraph}
         targetDate={targetDate}
         name={nameText}
         cost={checkPriceNull(priceText)}
