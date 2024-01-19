@@ -64,7 +64,7 @@ const AddGiftFooter = ({
             roomId: itemInfo.roomId,
             name: name,
             cost: cost,
-            imageUrl: '',
+            imageUrl: imageUrl,
             url: link,
           },
           {
@@ -81,7 +81,7 @@ const AddGiftFooter = ({
             roomId: itemInfo.roomId,
             name: name,
             cost: cost,
-            imageUrl: imageUrl,
+            imageUrl: '',
             url: link,
           },
           {

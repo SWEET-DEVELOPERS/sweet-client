@@ -155,8 +155,8 @@ function AddGiftWithoutLinkLayout({
         setImageUrl={setImageUrl}
         openGraph={null}
         onClickEditBtn={handleImageUpload}
-        previewImage={previewImage}
-        setPreviewImage={setPreviewImage}
+        // previewImage={previewImage}
+        // setPreviewImage={setPreviewImage}
       />
       <WithoutLinkWriteItemInfo
         imageUrl={imageUrl}

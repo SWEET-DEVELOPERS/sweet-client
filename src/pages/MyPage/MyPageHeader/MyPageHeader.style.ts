@@ -3,11 +3,15 @@ import { IcCancel } from '../../../assets/svg';
 
 export const StartHeaderWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({})};
+  position: fixed;
+
   padding: 0 2rem;
-  justify-content: end;
   height: 5.6rem;
+  width: 100%;
   gap: 21.2rem;
-  background: none;
+  left: 31rem;
+  background-color: white;
+  z-index: 5;
 `;
 
 export const ImgWrapper = styled.header`
@@ -47,7 +51,6 @@ export const ButtonWrapper = styled(IcCancel)`
   transform: translateY(-50%); /* 추가 */
 
   font-size: 20px;
-  color: white;
   cursor: pointer;
   z-index: 2; /* 추가 */
 `;

@@ -102,19 +102,19 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
               style={{ width: '100%' }}
             />
             <S.TitleContainer>
-              <div style={{ marginBottom: '4.6rem' }}>
+              <S.TitleWrapper>
                 <Title title={`${onboardingInfo.gifteeName} 님을 위한 `} />
                 <Title title='선물 준비방이 개설됐어요' />
-              </div>
+                <OnBoardingBtn
+                  customStyle={{ marginBottom: '1.6rem' }}
+                  // setStep={navigate(`/gift-home/${roomId}`)}
+                  setStep={() => navigate(`/gift-home/${roomId}`)}
+                  isActivated={true}
+                >
+                  입장
+                </OnBoardingBtn>
+              </S.TitleWrapper>
               {/* TODO 추후 지민이 버튼으로 변경(항상 활성화) */}
-              <OnBoardingBtn
-                customStyle={{ marginBottom: '1.6rem' }}
-                // setStep={navigate(`/gift-home/${roomId}`)}
-                setStep={() => navigate(`/gift-home/${roomId}`)}
-                isActivated={true}
-              >
-                입장
-              </OnBoardingBtn>
             </S.TitleContainer>
           </S.GradientImg>
         </div>
