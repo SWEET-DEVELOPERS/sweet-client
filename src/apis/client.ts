@@ -54,7 +54,6 @@ instance.interceptors.response.use(
     if (status === 401) {
       if (error.response.data.message === 'Unauthorized') {
         const originRequest = config;
-        window.location.replace('/');
         //리프레시 토큰 api
         const response = await postRefreshToken();
         //리프레시 토큰 요청이 성공할 때
