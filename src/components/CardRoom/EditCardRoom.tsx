@@ -23,9 +23,6 @@ const EditCardRoom = ({ user, srcImage, userCount, roomId, date, onClick }: Edit
   };
   return (
     <S.WholeWrapper>
-      <S.SettingWrapper onClick={handleSettingIcon}>
-        <IcSettings style={{ width: '2.4rem', height: '2.4rem', color: 'white' }} />
-      </S.SettingWrapper>
       <S.CardRoomWrapper onClick={onClick}>
         <img src={srcImage} />
         <S.Text>

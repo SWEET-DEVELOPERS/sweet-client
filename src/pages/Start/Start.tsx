@@ -83,7 +83,7 @@ const Start = () => {
       ) : (
         <S.KakaoLogin onClick={handleLogin} />
       )}
-      <S.BtnGradient />
+      {/* <S.BtnGradient /> */}
 
       <S.Main2 />
       <S.PersonWrapper>
