@@ -24,5 +24,5 @@ export const TournamentImg = styled.div`
 `;
 
 export const TournamentFlowWrapper = styled.section`
-  padding: 6.5rem 2rem;
+  padding: 6.8rem 2rem;
 `;

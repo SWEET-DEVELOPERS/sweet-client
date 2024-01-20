@@ -13,10 +13,6 @@ function App() {
   const Wrapper = styled.div`
     background-color: white;
     border: none;
-    min-height: calc(var(--vh, 1vh) * 100);
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
   `;
   const queryClient = new QueryClient();
 

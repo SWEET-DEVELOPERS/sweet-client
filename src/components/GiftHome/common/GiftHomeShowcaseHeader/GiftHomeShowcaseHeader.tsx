@@ -20,7 +20,7 @@ const GiftHomeShowcaseHeader = ({
   const navigate = useNavigate();
 
   const onClickEditBtn = () => {
-    navigate(`/add-gift?roomId=${roomId}&targetTime=${targetDate}`);
+    navigate(`/add-gift/${roomId}/${targetDate}`);
   };
 
   return (
@@ -35,10 +35,10 @@ const GiftHomeShowcaseHeader = ({
           onClick={() =>
             navigate(
               category === 'friends'
-                ? `/gift-detail-friends?roomId=${roomId}&targetTime=${targetDate}`
+                ? `/gift-detail-friends/${roomId}/${targetDate}`
                 : category === 'my'
-                  ? `/add-gift`
-                  : `/gift-detail-2030?roomId=${roomId}&targetTime=${targetDate}`,
+                  ? `/add-gift/${roomId}/${targetDate}`
+                  : `/gift-detail-2030/${roomId}/${targetDate}`,
             )
           }
         />

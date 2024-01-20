@@ -8,23 +8,29 @@ import Modal from '../../common/Modal/Modal';
 import usePutPresignedUrl from '../../../hooks/queries/onboarding/usePutPresignedUrl';
 import usePostMyPresignedUrl from '../../../hooks/queries/etc/usePostMyPresignedUrl';
 import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
+// import { postOpenGraph } from '../../../hooks/queries/etc/usePostOpengraph';
+import { OpenGraphResponseType } from '../../../types/etc';
 
 interface AddGiftWithLinkLayoutProps {
   roomId: number;
   linkText: string;
+  step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   setLinkText: React.Dispatch<React.SetStateAction<string>>;
   targetDate: string;
   modalStatus: boolean;
+  openGraph: OpenGraphResponseType;
 }
 // 직접 입력 화면
 function AddGiftWithoutLinkLayout({
   roomId,
+  step,
   setStep,
   linkText,
   setLinkText,
   targetDate,
   // modalStatus,
+  openGraph,
 }: AddGiftWithLinkLayoutProps) {
   const [isActivated, setIsActivated] = useState(false);
   const [nameText, setNameText] = useState<string>('');
@@ -144,13 +150,15 @@ function AddGiftWithoutLinkLayout({
           불러올 수 없어요 <br />
         </Modal>
       )}
-      <LinkAddHeader targetDate={targetDate} setStep={setStep} />
+      <LinkAddHeader targetDate={targetDate} setStep={setStep} step={step} />
       <GiftStatusBar registeredGiftNum={1} isMargin={true} />
       <AddGiftImg
         imageUrl={imageUrl}
         setImageUrl={setImageUrl}
         openGraph={null}
         onClickEditBtn={handleImageUpload}
+        // previewImage={previewImage}
+        // setPreviewImage={setPreviewImage}
       />
       <WithoutLinkWriteItemInfo
         imageUrl={imageUrl}
@@ -166,6 +174,7 @@ function AddGiftWithoutLinkLayout({
       <AddGiftFooter
         targetDate={targetDate}
         name={nameText}
+        openGraph={openGraph}
         cost={checkPriceNull(priceText)}
         imageUrl={imageUrl}
         setImageUrl={setImageUrl}

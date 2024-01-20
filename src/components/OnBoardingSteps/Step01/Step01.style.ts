@@ -4,7 +4,6 @@ import theme from '../../../style/theme';
 export const Wrapper = styled.div<{ $hasContent: boolean; $maxLengthReached: boolean }>`
   ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'space-between' })}
   width: 100%;
-  height: 3.6rem;
   margin-top: 7.2rem;
   border-bottom: 0.1rem solid ${({ theme }) => theme.colors.G_02};
 
@@ -38,6 +37,7 @@ export const Input = styled.input<{ $hasContent?: boolean; $maxLengthReached?: b
   height: 3.5rem;
   border: none;
   outline: none;
+  padding: 0;
   ${({ theme }) => theme.fonts.body_05};
 
   input::placeholder {
@@ -48,5 +48,7 @@ export const Input = styled.input<{ $hasContent?: boolean; $maxLengthReached?: b
 
 export const LetterLength = styled.p`
   color: ${theme.colors.G_07};
-  ${theme.fonts.body_10}
+  ${theme.fonts.body_10}color: ${({ theme }) => theme.colors.G_07};
+  ${({ theme }) => theme.fonts.body_06};
+  margin-top: 0.4rem;
 `;

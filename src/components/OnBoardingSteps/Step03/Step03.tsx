@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import { DayPicker } from 'react-day-picker';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import 'react-day-picker/dist/style.css';
+import { NextBtnText } from '../Step01/Step01';
 
 interface GiftDeliveryProps {
   onNext: VoidFunction;
@@ -68,26 +69,43 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
           />
         </S.TextField>
         <S.IconField>
-          <IcUnselectedCalender
-            style={{ width: '2.4rem', height: '2.4rem' }}
-            onClick={openCalendar}
-          />
+          <div
+            style={{
+              width: '4rem',
+              height: '4rem',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <IcUnselectedCalender
+              style={{ width: '2.4rem', height: '2.4rem' }}
+              onClick={openCalendar}
+            />
+          </div>
         </S.IconField>
       </S.Wrapper>
       {isOpen && (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <S.CalenderWrapper>
           <DayPicker
             defaultMonth={new Date()}
             mode='single'
             onDayClick={handleDateSelect}
             disabled={disabledDays}
+            modifiersClassNames={{
+              selected: 'my-selected',
+              today: 'my-today',
+            }}
+            modifiersStyles={{
+              disabled: { fontSize: '75%' },
+            }}
           />
-        </div>
+        </S.CalenderWrapper>
       )}
 
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <OnBoardingBtn isActivated={isActivated} setStep={onNext}>
-          다음
+          <NextBtnText isActivated={isActivated}>다음</NextBtnText>
         </OnBoardingBtn>
       </div>
     </>

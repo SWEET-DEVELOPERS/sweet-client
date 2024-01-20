@@ -1,9 +1,10 @@
 // import { useNavigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { IcLeft } from '../../../assets/svg';
+// import { IcLeft } from '../../../assets/svg';
 import usePostGift from '../../../hooks/queries/gift/usePostGift';
 import GiftAddNextBtn from '../AddGiftLink/common/GiftAddNextBtn/GiftAddNextBtn';
 import * as S from './AddGiftFooter.styled';
+import { OpenGraphResponseType } from '../../../types/etc';
 
 interface ItemInfoType {
   roomId: number;
@@ -14,6 +15,7 @@ interface AddGiftFooterProps {
   itemInfo: ItemInfoType;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   isActivated: boolean;
+  openGraph: OpenGraphResponseType;
   name: string;
   cost: number;
   imageUrl: string;
@@ -29,14 +31,15 @@ const AddGiftFooter = ({
   itemInfo,
   setStep,
   isActivated,
+  openGraph,
   name,
   cost,
   imageUrl,
   link,
-  saveImageUrl,
+  // saveImageUrl,
   fileName,
-  fetchPresignedUrl,
-  setImageUrl,
+  // fetchPresignedUrl,
+  // setImageUrl,
 }: AddGiftFooterProps) => {
   // const updatedItemInfo = {
   //   roomId: itemInfo.roomId,
@@ -50,40 +53,55 @@ const AddGiftFooter = ({
 
   const onClick = async () => {
     console.log(fileName);
-    const { presignedUrl } = await fetchPresignedUrl(fileName);
-    await saveImageUrl(presignedUrl);
-    setImageUrl(presignedUrl);
+    // const { presignedUrl } = await fetchPresignedUrl(fileName);
+    // await saveImageUrl(presignedUrl);
+    // setImageUrl(presignedUrl);
     if (isActivated) {
       console.log('값', imageUrl);
-      mutation.mutate(
-        {
-          roomId: itemInfo.roomId,
-          name: name,
-          cost: cost,
-          imageUrl: presignedUrl,
-          url: link,
-        },
-        {
-          onSuccess: () => {
-            console.log('PUT 서버통신 후 presignedUrl', presignedUrl);
-            navigate(`/add-gift?roomId=${itemInfo.roomId}&targetTime=${targetDate}`);
-            setStep(0);
+      if (openGraph.image) {
+        mutation.mutate(
+          {
+            roomId: itemInfo.roomId,
+            name: name,
+            cost: cost,
+            imageUrl: imageUrl,
+            url: link,
           },
-        },
-      );
+          {
+            onSuccess: () => {
+              // console.log('PUT 서버통신 후 presignedUrl', presignedUrl);
+              navigate(`/add-gift/${itemInfo.roomId}/${targetDate}`);
+              setStep(0);
+            },
+          },
+        );
+      } else {
+        mutation.mutate(
+          {
+            roomId: itemInfo.roomId,
+            name: name,
+            cost: cost,
+            imageUrl: '',
+            url: link,
+          },
+          {
+            onSuccess: () => {
+              // console.log('PUT 서버통신 후 presignedUrl', presignedUrl);
+              navigate(`/add-gift/${itemInfo.roomId}/${targetDate}`);
+              setStep(0);
+            },
+          },
+        );
+      }
     }
   };
 
-  const handlePrevBtnClick = () => {
-    setStep(1);
-  };
+  // const handlePrevBtnClick = () => {
+  //   setStep(1);
+  // };
 
   return (
     <S.AddGiftFooterWrapper>
-      <S.BtnPrev>
-        <IcLeft style={{ width: '2.4rem', height: '2.4rem' }} onClick={handlePrevBtnClick} />
-        이전
-      </S.BtnPrev>
       <GiftAddNextBtn isActivated={isActivated} onClick={onClick} children='완료' />
     </S.AddGiftFooterWrapper>
   );

@@ -15,6 +15,7 @@ import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
 interface AddGiftWithLinkLayoutProps {
   link: string;
   roomId: number;
+  step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   openGraph: OpenGraphResponseType;
   targetDate: string;
@@ -23,6 +24,7 @@ interface AddGiftWithLinkLayoutProps {
 const AddGiftWithLinkLayout = ({
   link,
   roomId,
+  step,
   setStep,
   openGraph,
   targetDate,
@@ -152,7 +154,7 @@ const AddGiftWithLinkLayout = ({
 
   return (
     <S.AddGiftWithLinkLayoutWrapper>
-      <LinkAddHeader targetDate={targetDate} setStep={setStep} />
+      <LinkAddHeader targetDate={targetDate} setStep={setStep} step={step} />
       <GiftStatusBar registeredGiftNum={1} isMargin={true} />
       <AddGiftImg
         imageUrl={imageUrl}
@@ -171,6 +173,7 @@ const AddGiftWithLinkLayout = ({
         cost={priceText}
       />
       <AddGiftFooter
+        openGraph={openGraph}
         targetDate={targetDate}
         name={nameText}
         cost={checkPriceNull(priceText)}

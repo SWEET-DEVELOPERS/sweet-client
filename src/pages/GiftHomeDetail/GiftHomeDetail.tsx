@@ -5,19 +5,15 @@ import { useParams } from 'react-router-dom';
 import GiftHomePriceTag from '../../components/common/GiftHome/Price/GiftHomePriceTag';
 import GiftDetailHeader from '../../components/common/GiftDetail/GiftDetailHeader';
 
-function GiftHomeDetail() {
+export const GiftHomeDetail = () => {
   // const location = useLocation();
-
-  // const searchParams = new URLSearchParams(location.search);
-  // const roomId = searchParams.get('roomId');
-  // console.log('roomId', roomId);
-  // const targetDate = searchParams.get('targetTime');
   const params = useParams();
   console.log('params', params);
+  // const searchParams = new URLSearchParams(location.search);
   const roomId = params.roomId;
-  console.log('뭔데?!', roomId);
-
+  console.log('roomId', roomId);
   const targetDate = params.targetDate;
+
   const roomIdNumber = parseInt(roomId || '');
   const { data } = useGetHotProduct({ roomId: roomIdNumber });
 
@@ -46,6 +42,5 @@ function GiftHomeDetail() {
       </S.GiftHomeDetailWrapper>
     </S.GiftHomeDetailPageWrapper>
   );
-}
-
+};
 export default GiftHomeDetail;

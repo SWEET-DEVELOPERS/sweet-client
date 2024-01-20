@@ -42,7 +42,7 @@ const AddGiftImg = ({
               {imageUrl ? (
                 <S.ThumbnailWrapper>
                   <img
-                    src={imageUrl || ''}
+                    src={openGraph?.image ? openGraph.image : imageUrl}
                     alt='preview'
                     style={{
                       position: 'relative',

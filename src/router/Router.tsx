@@ -1,5 +1,5 @@
 import GiftHomeDetailFriends from '../pages/GiftHomeDetail/GiftHomeDetailFriends';
-import GiftHomeDetail2030 from '../pages/GiftHomeDetail/GiftHomeDetail2030';
+import GiftHomeDetail2030 from '../pages/GiftHomeDetail/GiftHomeDetail';
 import OnBoardingPage from '../pages/OnBoardingPage';
 import Start from '../pages/Start/Start';
 import Login from '../components/Login';
@@ -52,11 +52,11 @@ const router = createBrowserRouter([
         element: <GiftHome />,
       },
       {
-        path: '/gift-detail-friends',
+        path: '/gift-detail-friends/:roomId/:targetDate',
         element: <GiftHomeDetailFriends />,
       },
       {
-        path: '/gift-detail-2030',
+        path: '/gift-detail-2030/:roomId/:targetDate',
         element: <GiftHomeDetail2030 />,
       },
       {
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
         element: <ParticipantsView />,
       },
       {
-        path: '/tournament/:roomId',
+        path: '/tournament/:giftee/:roomId',
         element: <TournamentContainer />,
       },
       {

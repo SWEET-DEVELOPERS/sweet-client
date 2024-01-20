@@ -14,7 +14,7 @@ export const Title = styled.p`
 `;
 
 export const SubTitle = styled.p`
-  margin-bottom: 2rem;
+  color: ${({ theme }) => theme.colors.black};
   ${({ theme }) => theme.fonts.body_07};
 `;
 

@@ -22,8 +22,7 @@ export type TournamentScore = {
 };
 
 export type TournamentUser = {
-  ParticipantsCount: number;
-  tournamentDuration: string;
-  TotalParticipantsCount: number;
-  tournamentStartDate: string;
+  participantsCount: number;
+  totalParticipantsCount: number;
+  remainingTime: string;
 };

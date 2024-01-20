@@ -4,7 +4,6 @@ import { IcKakaoShare, IcLink } from '../../../assets/svg';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import usePostParticipation from '../../../hooks/queries/onboarding/usePostParticipation';
 import OnboardingFinalHeader from './OnboardingFinalHeader';
 import useClipboard from '../../../hooks/useCopyClip';
 import { useKakaoShare } from '../../../hooks/queries/onboarding/useKakaoShare';
@@ -19,11 +18,11 @@ interface OnboardingFinalProps {
   };
   invitationCode: string;
   imageUrl: string;
+  roomId: number;
 }
 
 const OnboardingFinal = (props: OnboardingFinalProps) => {
-  const { onboardingInfo, invitationCode, imageUrl } = props;
-  const { mutation } = usePostParticipation();
+  const { onboardingInfo, invitationCode, imageUrl, roomId } = props;
 
   console.log('step06 내 imageUrl', imageUrl);
 
@@ -90,28 +89,6 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
       ]
     : [];
 
-  const handleClickRoom = async (body: string) => {
-    console.log('입장 버튼 클릭! 그리고 초대 코드', invitationCode);
-    if (body === null) {
-      console.error('초대 코드가 유효하지 않습니다.');
-      return;
-    }
-    try {
-      const response = mutation.mutate(body, {
-        onSuccess: (data) => {
-          console.log('step06 내 포스트', data);
-          console.log('step06 내 response', response);
-          navigate('/gift-home');
-        },
-        onError: () => {
-          navigate('/deadline');
-        },
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <>
       <OnboardingFinalHeader />
@@ -125,18 +102,19 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
               style={{ width: '100%' }}
             />
             <S.TitleContainer>
-              <div style={{ marginBottom: '4.6rem' }}>
+              <S.TitleWrapper>
                 <Title title={`${onboardingInfo.gifteeName} 님을 위한 `} />
                 <Title title='선물 준비방이 개설됐어요' />
-              </div>
+                <OnBoardingBtn
+                  customStyle={{ marginBottom: '1.6rem' }}
+                  // setStep={navigate(`/gift-home/${roomId}`)}
+                  setStep={() => navigate(`/gift-home/${roomId}`)}
+                  isActivated={true}
+                >
+                  입장
+                </OnBoardingBtn>
+              </S.TitleWrapper>
               {/* TODO 추후 지민이 버튼으로 변경(항상 활성화) */}
-              <OnBoardingBtn
-                customStyle={{ marginBottom: '1.6rem' }}
-                setStep={() => handleClickRoom(invitationCode)}
-                isActivated={true}
-              >
-                입장
-              </OnBoardingBtn>
             </S.TitleContainer>
           </S.GradientImg>
         </div>
@@ -155,15 +133,15 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
         <S.LinkCopyBtn
           onClick={() =>
             // TODO 추후 로컬 주소를 배포 주소로 변경
-            handleCopyToClipboard(
-              `http://sweetgift.vercel.app/result?invitationCode=${invitationCode}`,
-            )
+            handleCopyToClipboard(`http://sweetgift.vercel.app/result/${invitationCode}`)
           }
         >
           <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
           링크 복사
         </S.LinkCopyBtn>
-        <S.KakaoLinkCopyBtn onClick={() => useKakaoShare(invitationCode)}>
+        <S.KakaoLinkCopyBtn
+          onClick={() => useKakaoShare(invitationCode, onboardingInfo.gifteeName)}
+        >
           <IcKakaoShare style={{ width: '1.8rem', height: '1.8rem' }} />
           카카오톡 공유
         </S.KakaoLinkCopyBtn>
