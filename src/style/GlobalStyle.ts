@@ -20,6 +20,12 @@ ${reset}
  :root {
   --vh: 100%
  }
+ html {
+   over-flow-x :  hidden;
+}
+body {
+   over-flow-x :  hidden;
+}
 #root, body, html {
     scrollbar-width: none; /* 파이어폭스 스크롤바 숨김 */
     

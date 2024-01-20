@@ -19,9 +19,11 @@ const EditRoom = () => {
   console.log(roomWholeMemberData);
   console.log(roomWholeOwnerData);
 
-  const roomOwnerData = roomWholeOwnerData.owner;
+  const roomOwnerData = roomWholeOwnerData?.owner;
   const roomGifteeData = roomWholeOwnerData.room;
   const roomMemberData = roomWholeMemberData.members;
+
+  console.log(roomOwnerData);
 
   return (
     <S.EditRoomWrapper>
@@ -34,7 +36,7 @@ const EditRoom = () => {
         <CardGuest
           user={roomOwnerData.name}
           makerState={true}
-          profileImageUrl={roomOwnerData.profileImgUrl}
+          profileImageUrl={roomOwnerData?.profileImgUrl}
           memberId={roomOwnerData.ownerId}
         />
 

@@ -8,7 +8,7 @@ export const DetailProgressRoomWrapper = styled.div`
 
 export const RoomWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({})};
-  position: absolute;
+  position: relative;
   flex-wrap: wrap;
   width: 100%;
   height: 100%;
