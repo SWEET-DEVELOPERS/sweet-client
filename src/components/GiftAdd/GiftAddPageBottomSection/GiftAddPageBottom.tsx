@@ -20,7 +20,7 @@ const GiftAddPageBottom = ({ adPrice, myGiftData }: GiftAddPageBottomProps) => {
   return (
     <S.AddPageDownWrapper>
       <S.GiftAddCompleteBtnWrapper>
-        <GiftAddCompleteBtn isCompleted={myGiftData.length === 2} />
+        <GiftAddCompleteBtn isCompleted={myGiftData.length >= 1} />
       </S.GiftAddCompleteBtnWrapper>
       {isAdVisible ? (
         <S.AdWrapper>
