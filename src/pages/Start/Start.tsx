@@ -1,5 +1,6 @@
 import { Person1, Person2, Person3, Person4 } from '../../assets/svg';
 import * as S from './Start.style';
+import present from '../../assets/img/gift1_2.png';
 //import { post } from '../../apis/client';
 import StartAnimation from '../../../public/motions/start_motion.json';
 // import { useEffect, useRef, useState } from 'react';
@@ -59,10 +60,11 @@ const Start = () => {
         </S.TitleText>
         <S.SubTitleText>여러 명이 선물을 준비하는 가장 쉬운 방법</S.SubTitleText>
       </S.TextWrapper>
-      <LottieAnimation
-        animation={StartAnimation}
-        customStyle={{ position: 'absolute', top: '-13rem' }}
-      />
+<S.ImgWrapper>
+   <img src={present} alt='선물' style={{ width: '22rem' }} />
+</S.ImgWrapper>
+     
+
       <S.Gradient />
 
       <S.DownIcon />
