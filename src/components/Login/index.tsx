@@ -1,7 +1,7 @@
 import useLogin from '../../hooks/queries/member/useLogin';
 
 const Login = () => {
-  useLogin();
+  useLogin({ pageName: 'Start' });
 
   return <div>로그인 중입니다....</div>;
 };
