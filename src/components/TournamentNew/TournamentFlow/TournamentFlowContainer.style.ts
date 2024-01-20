@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import bgGround from '../../../assets/img/tournament_finish_final.png';
+import bgGround from '../../../assets/img/img_tournament_background.png';
 export const TournamentCardWrapper = styled.div`
   display: flex;
   justify-content: center;
