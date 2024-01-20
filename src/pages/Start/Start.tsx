@@ -60,9 +60,11 @@ const Start = () => {
         </S.TitleText>
         <S.SubTitleText>여러 명이 선물을 준비하는 가장 쉬운 방법</S.SubTitleText>
       </S.TextWrapper>
+
       <S.ImgWrapper>
         <img src={present} alt='선물' style={{ width: '22rem' }} />
       </S.ImgWrapper>
+
 
       <S.Gradient />
 
@@ -76,7 +78,6 @@ const Start = () => {
             position: 'fixed',
             bottom: '2rem',
             zIndex: '3',
-            width: '33.5rem',
           }}
         >
           새로운 선물 준비하기
@@ -99,7 +100,7 @@ const Start = () => {
       </S.PersonWrapper>
       <S.Main3 />
       <S.Main4 />
-      <Footer customStyle={{ position: 'absolute', top: '283rem' }} />
+      <Footer customStyle={{ position: 'absolute', top: '290rem' }} />
     </S.Wrapper>
   );
 };
