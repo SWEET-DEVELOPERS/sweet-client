@@ -65,7 +65,6 @@ const Start = () => {
         <img src={present} alt='선물' style={{ width: '22rem' }} />
       </S.ImgWrapper>
 
-
       <S.Gradient />
 
       <S.DownIcon />
@@ -78,6 +77,7 @@ const Start = () => {
             position: 'fixed',
             bottom: '2rem',
             zIndex: '3',
+            width: '33.5rem',
           }}
         >
           새로운 선물 준비하기
@@ -85,7 +85,7 @@ const Start = () => {
       ) : (
         <S.KakaoLogin onClick={handleLogin} />
       )}
-      <S.BtnGradient />
+      {/* <S.BtnGradient /> */}
 
       <S.Main2 />
       <S.PersonWrapper>
@@ -100,7 +100,7 @@ const Start = () => {
       </S.PersonWrapper>
       <S.Main3 />
       <S.Main4 />
-      <Footer customStyle={{ position: 'absolute', top: '290rem' }} />
+      <Footer customStyle={{ position: 'absolute', top: '283rem' }} />
     </S.Wrapper>
   );
 };

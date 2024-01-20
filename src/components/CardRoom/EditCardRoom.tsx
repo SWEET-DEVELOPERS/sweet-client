@@ -23,9 +23,6 @@ const EditCardRoom = ({ user, srcImage, userCount, roomId, date, onClick }: Edit
   };
   return (
     <S.WholeWrapper>
-      <S.SettingWrapper onClick={handleSettingIcon}>
-        <IcSettings style={{ width: '2.4rem', height: '2.4rem', color: 'white' }} />
-      </S.SettingWrapper>
       <S.CardRoomWrapper onClick={onClick}>
         <img src={srcImage} />
         <S.Text>
@@ -48,6 +45,9 @@ const EditCardRoom = ({ user, srcImage, userCount, roomId, date, onClick }: Edit
           {!isFuture ? <Type2Tag tag='토너먼트 진행 중' /> : <Type2Tag tag='선물 등록 중' />}
         </S.TagWrapper>
       </S.CardRoomWrapper>
+      <S.SettingWrapper onClick={handleSettingIcon}>
+        <IcSettings style={{ width: '2.4rem', height: '2.4rem', color: 'white' }} />
+      </S.SettingWrapper>
     </S.WholeWrapper>
   );
 };
