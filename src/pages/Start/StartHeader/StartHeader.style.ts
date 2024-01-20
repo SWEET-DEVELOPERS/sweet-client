@@ -23,15 +23,15 @@ export const SidebarWrapper = styled.div<{ isOpen: boolean }>`
   display: flex;
   flex-direction: column;
   position: fixed;
-  transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(-100%)')};
+  transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(100%)')};
   transition: transform 0.3s ease-in-out;
-
   width: 100%;
   height: 100vh;
   bottom: 0;
   left: 0;
+  margin-top: 3rem;
 
-  padding: 0 1.5rem;
+  padding: 3rem 1.5rem;
   background-color: white;
   z-index: 4;
 `;
