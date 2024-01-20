@@ -11,7 +11,7 @@ function GiftHomeDetailFriends() {
   // const searchParams = new URLSearchParams(location.search);
   const params = useParams();
   const roomId = params.roomId;
-  const targetDate = params.targetTime;
+  const targetDate = params.targetDate;
 
   const roomIdNumber = parseInt(roomId || '');
   const { data } = useGetFriendGift({ roomId: roomIdNumber });

@@ -13,9 +13,8 @@ function GiftHomeDetail() {
   // console.log('roomId', roomId);
   // const targetDate = searchParams.get('targetTime');
   const params = useParams();
-  console.log('params', params);
+  // console.log('params', params);
   const roomId = params.roomId;
-  console.log('뭔데?!', roomId);
 
   const targetDate = params.targetDate;
   const roomIdNumber = parseInt(roomId || '');
