@@ -60,8 +60,12 @@ export const ItemInfo = styled.div`
 
 export const Title = styled.p`
   height: 4.2rem;
-  word-break: keep-all;
-  ${({ theme }) => theme.fonts.body_09};
+  overflow: hidden;
+  color: var(--Black, var(--sponus_black, #222));
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  /* white-space: nowrap; */
+  ${({ theme }) => theme.fonts.body_09}
 `;
 
 export const Price = styled.p`

@@ -1,5 +1,6 @@
 import * as S from './TournamentCard.style';
-import { IcExternalGray, Logo } from '../../../../assets/svg';
+import { IcExternalGray } from '../../../../assets/svg';
+import IconSelected from '../../../../assets/img/Union.png';
 import PriceTag from '../../../common/title/Price/PriceTag';
 import { GiftData } from '../../../../core/mockupData';
 
@@ -18,7 +19,7 @@ const TournamentCard = ({ item, onClick, selected }: TournamentCardProps) => {
     <S.Wrapper>
       <S.TournamentCardWrapper isClicked={selected} onClick={handleClick}>
         <S.SelectWrapper isClicked={selected}>
-          <Logo />
+          <img src={IconSelected} alt='선택-리본' style={{ width: '5rem', height: '4rem' }} />
         </S.SelectWrapper>
         <S.TournamentImgWrapper>
           <img src={item.imageUrl} alt={item.name} />
