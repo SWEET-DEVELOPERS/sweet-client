@@ -11,7 +11,7 @@ export const OnboardingFinalWrapper = styled.div`
 export const GradientImg = styled.div`
   background-size: cover;
   background-blend-mode: overlay;
-  opacity: 0.7;
+  /* opacity: 0.7; */
   /* 이렇게 height를 의도적으로 주는 방법밖에 없나... 하 */
   height: 36.5rem;
   width: 100%;
@@ -76,7 +76,8 @@ export const KakaoLinkCopyBtn = styled.button`
   border-radius: 10rem;
   border: none;
   background: #fee500;
-  color: (0, 0, 0, 0.85);
+  color: ${({ theme }) => theme.colors.black};
+
   ${({ theme }) => theme.fonts.body_09};
 `;
 
@@ -86,6 +87,7 @@ export const BtnWrapper = styled.div`
   gap: 1.2rem;
   width: 100%;
   margin-top: 1.7rem;
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const LinkCopyBtn = styled.button`
@@ -97,6 +99,7 @@ export const LinkCopyBtn = styled.button`
   border-radius: 10rem;
   border: none;
   background: ${({ theme }) => theme.colors.G_02};
-  color: (0, 0, 0, 0.85);
+  color: ${({ theme }) => theme.colors.black};
+
   ${({ theme }) => theme.fonts.body_09};
 `;

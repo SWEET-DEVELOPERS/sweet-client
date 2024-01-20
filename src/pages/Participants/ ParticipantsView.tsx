@@ -131,7 +131,7 @@ const ParticipantsView = () => {
               style={{ width: '100%', opacity: 0.7 }}
             />
             <S.TitleContainer>
-              <div style={{ marginBottom: '4.6rem' }}>
+              <div style={{ marginBottom: '8rem' }}>
                 <Title title={`${getGifteeInfo.data.gifteeName}님을 위한`} />
                 <Title title='선물 준비방이 개설됐어요' />
               </div>
@@ -161,7 +161,6 @@ const ParticipantsView = () => {
       </S.InfoWrapper>
       {/* 수정된 부분 시작 */}
       <S.BtnWrapper>
-
         {isToken === false ? (
           <IcKakoLarge onClick={() => window.location.replace(kakaoURL)} />
         ) : (
@@ -187,7 +186,6 @@ const ParticipantsView = () => {
             </S.KakaoLinkCopyBtn>
           </>
         )}
-
       </S.BtnWrapper>
       {/* 수정된 부분 끝 */}
     </>
