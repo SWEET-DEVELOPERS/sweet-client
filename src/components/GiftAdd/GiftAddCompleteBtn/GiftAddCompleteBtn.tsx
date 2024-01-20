@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { IcRight } from '../../../assets/svg';
 import * as S from './GiftAddCompleteBtn.styled';
 
@@ -8,10 +8,11 @@ interface GiftAddCompleteBtnProps {
 
 const GiftAddCompleteBtn = ({ isCompleted }: GiftAddCompleteBtnProps) => {
   const navigate = useNavigate();
+  const params = useParams();
 
   const onClickComplete = (isCompleted: boolean) => {
     if (isCompleted) {
-      navigate('/gift-home');
+      navigate(`/gift-home/${params.roomId}`);
     }
   };
 
