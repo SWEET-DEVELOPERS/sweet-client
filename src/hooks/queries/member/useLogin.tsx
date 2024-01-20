@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { authInstance } from '../../../apis/client';
-// import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 
 interface LoginResponseType extends Response {
   data: {
@@ -19,8 +19,12 @@ interface LoginResponseType extends Response {
   };
 }
 
-const useLogin = () => {
-  // const navigate = useNavigate();
+interface useLoginProps {
+  pageName?: string;
+}
+
+const useLogin = ({ pageName }: useLoginProps) => {
+  const navigate = useNavigate();
   const code = new URL(window.location.href).searchParams.get('code');
 
   const fetchAuth = (code: string): Promise<LoginResponseType> =>
@@ -42,8 +46,9 @@ const useLogin = () => {
           console.log(data);
           console.log(localStorage.getItem('EXIT_LOGIN_TOKEN'));
           console.log(JWT);
-
-          // navigate('/');
+          if (pageName === 'Start') {
+            navigate('/');
+          }
         }
 
         console.log(data);
