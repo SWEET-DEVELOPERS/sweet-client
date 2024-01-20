@@ -14,7 +14,7 @@ export const GiftHomeSummaryWrapper = styled.section`
   background-image: url(${HomeBackgroundImage});
   background-size: cover;
   background-repeat: no-repeat;
-  width: 100%;
+  width: calc(100% + 1.4rem);
 `;
 
 export const FriendsNumber = styled.p`
