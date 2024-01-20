@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import HomeBg from '../../assets/img/home_bg11.png';
 import {
   HomeBgGradientFix,
   HomeCtaBgGradient,
@@ -11,17 +12,31 @@ import {
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 
 export const Wrapper = styled.div`
+  background-image: url(${HomeBg});
+  background-size: cover;
+  height: 100vh;
+  background-repeat: no-repeat;
   ${({ theme: { mixin } }) => mixin.flexCenter};
   margin: auto;
-  height: fit-content;
   background-color: #fafafa;
 `;
 
+export const ImgWrapper = styled.div`
+  animation: ani 1.5s infinite alternate;
+
+  @keyframes ani {
+    0% {
+      transform: translate(0, 3rem);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+`;
 export const TextWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter};
   position: absolutes;
-
-  margin-top: 10rem;
+  margin-top: -11rem;
 
   z-index: 1;
 `;

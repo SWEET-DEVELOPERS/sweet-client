@@ -1,14 +1,15 @@
 import { Person1, Person2, Person3, Person4 } from '../../assets/svg';
 import * as S from './Start.style';
+import present from '../../assets/img/gift1_2.png';
 //import { post } from '../../apis/client';
-import StartAnimation from '../../../public/motions/start_motion.json';
+// import StartAnimation from '../../../public/motions/start_motion.json';
 // import { useEffect, useRef, useState } from 'react';
 import { ScrollAnimationContainer } from '../../components/ScrollAnimationContainer/ScrollAnimationContainer';
 import { ScrollAnimationLeftContainer } from '../../components/ScrollAnimationContainer/ScrollAnimationContainerLeft';
 import StartHeader from './StartHeader/StartHeader';
 import Footer from '../../components/Footer/Footer';
 import { useNavigate } from 'react-router';
-import LottieAnimation from '../../hooks/lottie-animation/LottieAnimation';
+// import LottieAnimation from '../../hooks/lottie-animation/LottieAnimation';
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 import { kakaoURL } from '../../utils/login';
 
@@ -59,10 +60,10 @@ const Start = () => {
         </S.TitleText>
         <S.SubTitleText>여러 명이 선물을 준비하는 가장 쉬운 방법</S.SubTitleText>
       </S.TextWrapper>
-      <LottieAnimation
-        animation={StartAnimation}
-        customStyle={{ position: 'absolute', top: '-15rem' }}
-      />
+      <S.ImgWrapper>
+        <img src={present} alt='선물' style={{ width: '22rem' }} />
+      </S.ImgWrapper>
+
       <S.Gradient />
 
       <S.DownIcon />
@@ -75,6 +76,7 @@ const Start = () => {
             position: 'fixed',
             bottom: '2rem',
             zIndex: '3',
+            width: '33.5rem',
           }}
         >
           새로운 선물 준비하기
@@ -97,7 +99,7 @@ const Start = () => {
       </S.PersonWrapper>
       <S.Main3 />
       <S.Main4 />
-      <Footer customStyle={{ position: 'absolute', top: '290rem' }} />
+      <Footer customStyle={{ position: 'absolute', top: '283rem' }} />
     </S.Wrapper>
   );
 };

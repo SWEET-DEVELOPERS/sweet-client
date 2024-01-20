@@ -4,7 +4,7 @@ import { RankingWrapper } from './TournamentRanking.style';
 import { IcMedal1, IcMedal2, IcMedal3, IcMedal4 } from '../../../assets/svg';
 import useGetRanking from '../../../hooks/queries/tournament/useGetRanking';
 import * as S from './TournamentRanking.style';
-import Header from '../../common/Header';
+import StartHeader from '../../../pages/Start/StartHeader/StartHeader';
 
 interface TournamentRankingProps {
   roomId: number;
@@ -17,7 +17,7 @@ const TournamentRanking = ({ roomId, giftee }: TournamentRankingProps) => {
 
   return (
     <S.TournamentRankingWrapper>
-      <Header />
+      <StartHeader />
       <TournamentRankingTitle roomId={roomId} giftee={giftee} />
       <RankingWrapper>
         <S.Wrapper>
