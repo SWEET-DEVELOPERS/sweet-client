@@ -61,12 +61,9 @@ const Start = () => {
         <S.SubTitleText>여러 명이 선물을 준비하는 가장 쉬운 방법</S.SubTitleText>
       </S.TextWrapper>
 
-
       <S.ImgWrapper>
         <img src={present} alt='선물' style={{ width: '22rem' }} />
       </S.ImgWrapper>
-
-
 
       <S.Gradient />
 
