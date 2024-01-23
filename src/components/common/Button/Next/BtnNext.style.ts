@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.button`
   ${({ theme: { mixin } }) => mixin.inlineFlexBox({ align: 'center', justify: 'center' })}
@@ -20,4 +20,20 @@ export const Wrapper = styled.button`
     border: none;
     outline: none;
   }
+`;
+
+interface NextBtnTextProps {
+  isActivated: boolean;
+}
+
+export const NextBtnText = styled.p<NextBtnTextProps>`
+  ${({ theme }) => theme.fonts.body_09};
+  ${({ isActivated, theme }) =>
+    isActivated
+      ? css`
+          color: ${theme.colors.white};
+        `
+      : css`
+          color: ${theme.colors.G_07};
+        `}
 `;

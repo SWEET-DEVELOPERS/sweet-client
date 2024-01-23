@@ -65,7 +65,8 @@ const NameInput = (props: NameInputProps) => {
       </div>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <OnBoardingBtn isActivated={gifteeName.length > 0} setStep={onNext}>
-          <NextBtnText isActivated={gifteeName.length > 0}>다음</NextBtnText>
+          {/* <NextBtnText isActivated={gifteeName.length > 0}>다음</NextBtnText> */}
+          다음
         </OnBoardingBtn>
       </div>
     </>
@@ -73,19 +74,3 @@ const NameInput = (props: NameInputProps) => {
 };
 
 export default NameInput;
-
-interface NextBtnTextProps {
-  isActivated: boolean;
-}
-
-export const NextBtnText = styled.p<NextBtnTextProps>`
-  ${({ theme }) => theme.fonts.body_09};
-  ${({ isActivated, theme }) =>
-    isActivated
-      ? css`
-          color: ${theme.colors.white};
-        `
-      : css`
-          color: ${theme.colors.G_07};
-        `}
-`;
