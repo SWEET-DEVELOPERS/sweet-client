@@ -7,7 +7,6 @@ import { DayPicker } from 'react-day-picker';
 import { format } from 'date-fns';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import TimePicker from './TimePicker';
-import { NextBtnText } from '../Step01/Step01';
 
 interface SetTournamentScheduleProps {
   onNext: VoidFunction;
@@ -106,7 +105,7 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
       </S.Container>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <OnBoardingBtn isActivated={selectedDate !== null && selectedTime !== ''} setStep={onNext}>
-          <NextBtnText isActivated={selectedDate !== null && selectedTime !== ''}>다음</NextBtnText>
+          다음
         </OnBoardingBtn>
       </div>
     </>

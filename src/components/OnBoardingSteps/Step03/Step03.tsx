@@ -6,7 +6,6 @@ import { format } from 'date-fns';
 import { DayPicker } from 'react-day-picker';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import 'react-day-picker/dist/style.css';
-import { NextBtnText } from '../Step01/Step01';
 
 interface GiftDeliveryProps {
   onNext: VoidFunction;
@@ -105,7 +104,7 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
 
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <OnBoardingBtn isActivated={isActivated} setStep={onNext}>
-          <NextBtnText isActivated={isActivated}>다음</NextBtnText>
+          다음
         </OnBoardingBtn>
       </div>
     </>

@@ -16,7 +16,7 @@ const OnBoardingBtn = ({ children, setStep, isActivated }: OnBoardingBtnProps) =
 
   return (
     <S.Wrapper $isActivated={isActivated} onClick={onClick} disabled={!isActivated}>
-      {children}
+      <S.NextBtnText isActivated={isActivated}>{children}</S.NextBtnText>
       <IcRight style={{ width: '2.4rem', height: '2.4rem' }} />
     </S.Wrapper>
   );

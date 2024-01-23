@@ -2,7 +2,6 @@ import Title from '../../common/title/Title';
 import * as S from './Step01.style';
 import { IcCancelCircleFinal } from '../../../assets/svg';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
-import styled, { css } from 'styled-components';
 
 interface NameInputProps {
   onNext: VoidFunction;
@@ -41,7 +40,7 @@ const NameInput = (props: NameInputProps) => {
               placeholder='이름을 입력해주세요'
             />
           </S.TextField>
-          <div
+          <S.IconWrapper
             style={{
               display: 'flex',
               width: '4rem',
@@ -59,7 +58,7 @@ const NameInput = (props: NameInputProps) => {
                 />
               )}
             </S.IconField>
-          </div>
+          </S.IconWrapper>
         </S.Wrapper>
         <S.LetterLength>({gifteeName.length}/10)</S.LetterLength>
       </div>

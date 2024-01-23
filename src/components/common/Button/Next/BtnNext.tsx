@@ -7,10 +7,9 @@ type BtnNextProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
   customStyle?: React.CSSProperties;
   onClick?: () => void;
-  isActivated: boolean;
 };
 
-const BtnNext = ({ disabled, children, onClick, isActivated }: BtnNextProps) => {
+const BtnNext = ({ disabled, children, onClick }: BtnNextProps) => {
   console.log('disabled:', disabled);
   return (
     <S.Wrapper
@@ -21,7 +20,7 @@ const BtnNext = ({ disabled, children, onClick, isActivated }: BtnNextProps) => 
       onClick={onClick}
       disabled={!disabled}
     >
-      <S.NextBtnText isActivated={isActivated}>{children}</S.NextBtnText>
+      {children}
       <IcRight style={{ width: '2.4rem', height: '2.4rem' }} />
     </S.Wrapper>
   );
