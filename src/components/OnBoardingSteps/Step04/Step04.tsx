@@ -43,15 +43,13 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
 
   return (
     <>
-      <div>
-        <div>
-          <Title title='선물 토너먼트' />
-          <Title title='시작 일정을 설정해주세요' />
-        </div>
-        <div style={{ marginTop: '0.8rem' }}>
-          <SubTitle subTitle='토너먼트 시작 전까지 선물을 등록할 수 있어요.' />
-        </div>
+      <Title>
+        선물 토너먼트 <br /> 시작 일정을 설정해주세요
+      </Title>
+      <div style={{ marginTop: '0.8rem' }}>
+        <SubTitle subTitle='토너먼트 시작 전까지 선물을 등록할 수 있어요.' />
       </div>
+
       <S.SetTournamentScheduleWrapper $hasContent={isCalendarOpen}>
         <S.TextField>
           <S.Input
@@ -67,7 +65,7 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
         </S.IconField>
       </S.SetTournamentScheduleWrapper>
       {isCalendarOpen && (
-        <div style={{ fontSize: '17px', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ fontSize: '1.7rem', display: 'flex', justifyContent: 'center' }}>
           <DayPicker
             defaultMonth={new Date()}
             mode='single'
@@ -90,18 +88,6 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
         <div>
           <TimePicker onSelect={(time) => handleTimerSelect(time)} />
         </div>
-        {/* <S.IconField>
-          <input type='time' style={{ display: 'none' }} id='timeInput' />
-          <label htmlFor='timeInput'>
-            <IcUnselectedClock
-              style={{ width: '2.4rem', height: '2.4rem', position: 'relative' }}
-              onClick={openTimer}
-            />
-          </label>
-          {isTimerOpen ? (
-            <input id='timeInput' type='time' onChange={(e) => handleTimerSelect(e.target.value)} />
-          ) : null}
-        </S.IconField> */}
       </S.Container>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <OnBoardingBtn isActivated={selectedDate !== null && selectedTime !== ''} setStep={onNext}>

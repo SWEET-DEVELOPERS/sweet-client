@@ -23,11 +23,15 @@ const NameInput = (props: NameInputProps) => {
     setGifteeName('');
   };
 
+  const isActivated = gifteeName.length > 0;
+
   return (
     <>
       <div style={{ gap: '7.2rem' }}>
-        <Title title='선물 받을 분의' />
-        <Title title='이름, 혹은 닉네임을 알려주세요' />
+        <Title>
+          선물 받을 분의 <br />
+          이름,혹은 닉네임을 알려주세요
+        </Title>
       </div>
       <div style={{ gap: '0.4rem' }}>
         <S.Wrapper $hasContent={gifteeName.length > 0} $maxLengthReached={gifteeName.length === 10}>
@@ -63,8 +67,7 @@ const NameInput = (props: NameInputProps) => {
         <S.LetterLength>({gifteeName.length}/10)</S.LetterLength>
       </div>
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <OnBoardingBtn isActivated={gifteeName.length > 0} setStep={onNext}>
-          {/* <NextBtnText isActivated={gifteeName.length > 0}>다음</NextBtnText> */}
+        <OnBoardingBtn isActivated={isActivated} setStep={onNext}>
           다음
         </OnBoardingBtn>
       </div>

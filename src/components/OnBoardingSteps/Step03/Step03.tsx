@@ -51,14 +51,21 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
 
   useEffect(() => {
     deliveryDate ? setIsActivated(true) : setIsActivated(false);
+
+    // setIsActivated(Boolean(deliveryDate));
   }, [deliveryDate]);
 
   return (
     <>
       {/* TODO 추후 로그인된 유저네임으로 변경 및 인풋창 클릭 시 켈린더 호출*/}
-      <Title userName={`${onboardingInfo.gifteeName}`} title='님께' />
-      <Title title='언제 선물을' />
-      <Title title='전달하실 예정인가요?' />
+      {/* <Title userName={`${onboardingInfo.gifteeName}`} title='님께' /> */}
+      <Title userName={`${onboardingInfo.gifteeName}`}>님께</Title>
+      <Title>
+        언제 선물을
+        <br />
+        전달하실 예정인가요?
+      </Title>
+      {/* <Title title='전달하실 예정인가요?' /> */}
       <S.Wrapper $hasContent={isOpen}>
         <S.TextField>
           <S.Input

@@ -33,36 +33,13 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
       console.log('step02 내 지민이와 함께하는 ', imageFile);
       const imageName = files[0].name.trim();
       setFileName(imageName);
-
-      // 확장자 제거
-      // const imageNameWithoutExtension = imageName.replace(/\.[^/.]+$/, '');
-
-      // 띄워쓰기 제거
-
-      // 앞 3글자 가져오기
-      // const firstThreeLetters = formattedImageName.substring(0, 3);
-
-      // 이미지 업로드 시간
-      // const uploadTime = new Date().toISOString();
-      // const uploadTime = new Date().toISOString().split('.')[0].repl(':', '-');
-      // const uploadTime = Math.random();
-
-      // 최종 이미지 이름
-      // const finalImageName = `${firstThreeLetters}${uploadTime}`.replace('.', '');
-
-      // TODO 그냥 imageUrl에는 presignedUrl을 값에 넣어줘야함
-      // setImageUrl(finalImageName);
-
-      // setFileName(finalImageName);
-
-      // console.log('step02 내 fileName:', finalImageName);
       console.log('step02 내 imageFile:', imageFile);
     }
   };
 
   return (
     <>
-      <Title title='썸네일을 등록해주세요' />
+      <Title>썸네일을 등록해주세요</Title>
       <div>
         <S.IcEmptyThumbnailWrapper>
           <input
