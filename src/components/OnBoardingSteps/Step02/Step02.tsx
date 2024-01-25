@@ -4,18 +4,14 @@ import * as S from './Step02.style';
 import { useState } from 'react';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 
+/** @TODO 추후 presigned URL 진행 */
 interface ThumbnailInputProps {
   onNext: VoidFunction;
-  imageUrl: string;
-  setImageUrl: React.Dispatch<React.SetStateAction<string>>;
-  fileName: string;
   setFileName: React.Dispatch<React.SetStateAction<string>>;
-  imageFile: File | null;
   setImageFile: React.Dispatch<React.SetStateAction<File | null>>;
 }
 
 const ThumbnailInput = (props: ThumbnailInputProps) => {
-  // TODO 이미지 클릭 시 사진 업로드
   const { onNext, setFileName, setImageFile } = props;
   const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
@@ -26,14 +22,12 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
       const selectedFiles = files as FileList;
       setPreviewImage(URL.createObjectURL(selectedFiles[0]));
       setIsImageUploaded(!!selectedFiles?.[0]);
-      const imageFile = selectedFiles[0];
 
+      const imageFile = selectedFiles[0];
       setImageFile(imageFile);
-      // setFileName(imageFile);
-      console.log('step02 내 지민이와 함께하는 ', imageFile);
+
       const imageName = files[0].name.trim();
       setFileName(imageName);
-      console.log('step02 내 imageFile:', imageFile);
     }
   };
 
@@ -52,24 +46,11 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
           <label htmlFor='imgInput'>
             <IcEmptyThumbnail style={{ width: '24rem', height: '24rem', position: 'relative' }} />
           </label>
-          {previewImage && (
-            <img
-              src={previewImage}
-              alt='preview'
-              style={{
-                width: '24rem',
-                height: '24rem',
-                position: 'absolute',
-                borderRadius: '1.2rem',
-              }}
-            />
-          )}
+          {previewImage && <S.PreviewImg previewImage={previewImage} />}
         </S.IcEmptyThumbnailWrapper>
-        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <OnBoardingBtn isActivated={isImageUploaded} setStep={onNext}>
-            다음
-          </OnBoardingBtn>
-        </div>
+        <OnBoardingBtn isActivated={isImageUploaded} setStep={onNext}>
+          다음
+        </OnBoardingBtn>
       </div>
     </>
   );
