@@ -53,11 +53,9 @@ const NameInput = (props: NameInputProps) => {
         </S.IconWrapper>
       </S.Wrapper>
       <S.LetterLength>({gifteeName.length}/10)</S.LetterLength>
-      <S.OnBoardingBtnWrapper>
-        <OnBoardingBtn isActivated={isActivated} setStep={onNext}>
-          다음
-        </OnBoardingBtn>
-      </S.OnBoardingBtnWrapper>
+      <OnBoardingBtn isActivated={isActivated} setStep={onNext}>
+        다음
+      </OnBoardingBtn>
     </>
   );
 };

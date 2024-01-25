@@ -1,6 +1,10 @@
 import styled, { css } from 'styled-components';
 
-export const Wrapper = styled.button<{ $isActivated: boolean }>`
+export const Wrapper = styled.div`
+  ${({ theme }) => theme.mixin.flexBox({ justify: 'flex-end' })};
+`;
+
+export const Container = styled.button<{ $isActivated: boolean }>`
   ${({ theme: { mixin } }) => mixin.inlineFlexBox({ align: 'center', justify: 'center' })}
   height: 4.4rem;
   padding: 1rem 1.1rem 1rem 2rem;
