@@ -34,24 +34,22 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
   return (
     <>
       <Title>썸네일을 등록해주세요</Title>
-      <div>
-        <S.IcEmptyThumbnailWrapper>
-          <input
-            type='file'
-            accept='image/*'
-            style={{ display: 'none' }}
-            id='imgInput'
-            onChange={handleImageUpload}
-          />
-          <label htmlFor='imgInput'>
-            <IcEmptyThumbnail style={{ width: '24rem', height: '24rem', position: 'relative' }} />
-          </label>
-          {previewImage && <S.PreviewImg previewImage={previewImage} />}
-        </S.IcEmptyThumbnailWrapper>
-        <OnBoardingBtn isActivated={isImageUploaded} setStep={onNext}>
-          다음
-        </OnBoardingBtn>
-      </div>
+      <S.IcEmptyThumbnailWrapper>
+        <input
+          type='file'
+          accept='image/*'
+          style={{ display: 'none' }}
+          id='imgInput'
+          onChange={handleImageUpload}
+        />
+        <label htmlFor='imgInput'>
+          <IcEmptyThumbnail style={{ width: '24rem', height: '24rem', position: 'relative' }} />
+        </label>
+        {previewImage && <S.PreviewImg src={previewImage} />}
+      </S.IcEmptyThumbnailWrapper>
+      <OnBoardingBtn isActivated={isImageUploaded} setStep={onNext}>
+        다음
+      </OnBoardingBtn>
     </>
   );
 };
