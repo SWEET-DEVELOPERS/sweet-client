@@ -7,7 +7,7 @@ type BtnRadioProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   time: string;
   period: string;
   customStyle?: React.CSSProperties;
-  onClick?: () => void;
+  // onClick?: () => void;
   isSelected?: boolean;
   onTimeSelect?: (time: string) => void;
   setSelectedTime?: (time: string) => VoidFunction;
@@ -28,7 +28,7 @@ const BtnRadio = ({
     <S.Wrapper
       disabled={disabled}
       style={customStyle}
-      onClick={() => {
+      onClick={(e) => {
         if (onTimeSelect) {
           onTimeSelect(time);
         }
@@ -36,7 +36,7 @@ const BtnRadio = ({
           setSelectedTime(time);
         }
         if (onClick) {
-          onClick();
+          onClick(e);
         }
       }}
       isSelected={isSelected}
