@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { IcUnselectedClock } from '../../../assets/svg';
 import * as S from './Step04.style';
 
@@ -10,8 +10,10 @@ const TimePicker: React.FC<TimePickerProps> = ({ onSelect }) => {
   const [isPickerOpen, setIsPickerOpen] = useState<boolean>(false);
   const [selectedTime, setSelectedTime] = useState<string>('');
 
+  const clockRef = useRef<HTMLInputElement>(null);
+
   const handleIconClick = () => {
-    setIsPickerOpen(!isPickerOpen);
+    clockRef.current?.showPicker();
   };
 
   const handleTimeSelect = (time: string) => {
@@ -24,10 +26,11 @@ const TimePicker: React.FC<TimePickerProps> = ({ onSelect }) => {
   return (
     <S.IconField>
       <input
+        ref={clockRef}
         type='time'
         id='clock'
         onChange={(e) => handleTimeSelect(e.target.value)}
-        style={{ display: 'flex' }}
+        style={{ display: 'flex', opacity: 0 }}
       />
       <label htmlFor='clock'>
         <IcUnselectedClock
@@ -36,7 +39,10 @@ const TimePicker: React.FC<TimePickerProps> = ({ onSelect }) => {
         />
       </label>
 
-      <div className='custom-time-picker' style={{ display: 'flex' }}></div>
+      <div
+        className='custom-time-picker'
+        // style={{ display: 'flex' }}
+      ></div>
     </S.IconField>
   );
 };
