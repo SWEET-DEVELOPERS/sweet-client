@@ -30,13 +30,13 @@ export const IconField = styled.div`
 
 export const Input = styled.input<{ $hasContent?: boolean; $maxLengthReached?: boolean }>`
   ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'space-between' })};
-  flex-wrap: nowrap;
   width: 100%;
   height: 3.5rem;
   border: none;
   outline: none;
   padding: 0;
   ${({ theme }) => theme.fonts.body_05};
+  color: ${({ theme }) => theme.colors.black};
 
   input::placeholder {
     color: ${({ theme }) => theme.colors.G_07};
@@ -53,4 +53,10 @@ export const LetterLength = styled.p`
 
 export const IconWrapper = styled.div`
   ${({ theme }) => theme.mixin.flexCenter({ direction: 'row' })};
+  width: 4rem;
+  height: 4rem;
+`;
+
+export const OnBoardingBtnWrapper = styled.div`
+  ${({ theme }) => theme.mixin.flexBox({ justify: 'flex-end' })};
 `;

@@ -27,50 +27,37 @@ const NameInput = (props: NameInputProps) => {
 
   return (
     <>
-      <div style={{ gap: '7.2rem' }}>
-        <Title>
-          선물 받을 분의 <br />
-          이름,혹은 닉네임을 알려주세요
-        </Title>
-      </div>
-      <div style={{ gap: '0.4rem' }}>
-        <S.Wrapper $hasContent={gifteeName.length > 0} $maxLengthReached={gifteeName.length === 10}>
-          <S.TextField>
-            <S.Input
-              type='text'
-              value={gifteeName}
-              onChange={handleInputChange}
-              maxLength={10}
-              placeholder='이름을 입력해주세요'
-            />
-          </S.TextField>
-          <S.IconWrapper
-            style={{
-              display: 'flex',
-              width: '4rem',
-              height: '4rem',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-            onClick={handleBtnClick}
-          >
-            <S.IconField>
-              {gifteeName.length > 0 && (
-                <IcCancelCircleFinal
-                  style={{ width: '2.4rem', height: '2.4rem' }}
-                  onClick={handleBtnClick}
-                />
-              )}
-            </S.IconField>
-          </S.IconWrapper>
-        </S.Wrapper>
-        <S.LetterLength>({gifteeName.length}/10)</S.LetterLength>
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+      <Title>
+        선물 받을 분의 <br />
+        이름,혹은 닉네임을 알려주세요
+      </Title>
+      <S.Wrapper $hasContent={gifteeName.length > 0} $maxLengthReached={gifteeName.length === 10}>
+        <S.TextField>
+          <S.Input
+            type='text'
+            value={gifteeName}
+            onChange={handleInputChange}
+            maxLength={10}
+            placeholder='이름을 입력해주세요'
+          />
+        </S.TextField>
+        <S.IconWrapper onClick={handleBtnClick}>
+          <S.IconField>
+            {gifteeName.length > 0 && (
+              <IcCancelCircleFinal
+                style={{ width: '2.4rem', height: '2.4rem' }}
+                onClick={handleBtnClick}
+              />
+            )}
+          </S.IconField>
+        </S.IconWrapper>
+      </S.Wrapper>
+      <S.LetterLength>({gifteeName.length}/10)</S.LetterLength>
+      <S.OnBoardingBtnWrapper>
         <OnBoardingBtn isActivated={isActivated} setStep={onNext}>
           다음
         </OnBoardingBtn>
-      </div>
+      </S.OnBoardingBtnWrapper>
     </>
   );
 };
