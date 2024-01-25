@@ -56,7 +56,3 @@ export const IconWrapper = styled.div`
   width: 4rem;
   height: 4rem;
 `;
-
-export const OnBoardingBtnWrapper = styled.div`
-  ${({ theme }) => theme.mixin.flexBox({ justify: 'flex-end' })};
-`;
