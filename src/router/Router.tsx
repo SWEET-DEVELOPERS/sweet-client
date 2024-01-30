@@ -17,6 +17,7 @@ import TournamentPage from '../pages/TournamentPage';
 import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
 import InvitationDeadline from '../components/OnBoardingSteps/invitationDeadline/InvitationDeadline';
 import ParticipantsView from '../pages/Participants/ ParticipantsView';
+import { OnboardingProvider } from '../context/Onboarding/OnboardingContext';
 
 const router = createBrowserRouter([
   {
@@ -61,7 +62,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/onboarding',
-        element: <OnBoardingPage />,
+        element: (
+          <OnboardingProvider>
+            <OnBoardingPage />
+          </OnboardingProvider>
+        ),
       },
       {
         path: '/result/:invitationCode',
