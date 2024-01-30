@@ -2,10 +2,10 @@ import Title from '../../common/title/Title';
 import * as S from './Step01.style';
 import { IcCancelCircleFinal } from '../../../assets/svg';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
+import { OnboardingInfo } from '../../../types/Onboarding';
 
-interface NameInputProps {
+interface NameInputProps extends Pick<OnboardingInfo, 'gifteeName'> {
   onNext: VoidFunction;
-  gifteeName: string;
   setGifteeName: React.Dispatch<React.SetStateAction<string>>;
 }
 
