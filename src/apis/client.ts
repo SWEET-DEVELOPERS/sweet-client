@@ -43,31 +43,32 @@ instance.interceptors.response.use(
   },
   // 200번대 응답이 아닐 경우 처리
   async (error) => {
-    const {
-      config,
-      response: { status },
-    } = error;
+    const originalConfig = error.config;
+    const msg = error.response.message;
+    const status = error.response.status;
 
     //토큰이 만료되을 때
     if (status === 401) {
-      if (error.response.message === 'Unauthorized') {
-        const originRequest = config;
-        //리프레시 토큰 api
+      if (msg == '액세스 토큰이 만료되었습니다. 재발급 받아주세요.') {
+        // access 토큰 재발급 api
         const response = await postRefreshToken();
-        //리프레시 토큰 요청이 성공할 때
+        //access 토큰 요청이 성공할 때
         if (response.status === 200) {
           const newAccessToken = response.data.accessToken;
           localStorage.setItem('EXIT_LOGIN_TOKEN', newAccessToken);
           localStorage.setItem('EXIT_LOGIN_REFRESH_TOKEN', response.data.refreshToken);
-          axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
+          axios.defaults.headers.Authorization = `Bearer ${newAccessToken}`;
           //진행중이던 요청 이어서하기
-          originRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-          return axios(originRequest);
-          //리프레시 토큰 요청이 실패할때(리프레시 토큰도 만료되었을때 = 재로그인 안내)
-        } else if (response.status === 404) {
-          window.location.replace('/');
+          originalConfig.headers.Authorization = `Bearer ${newAccessToken}`;
+          return axios(originalConfig);
         } else {
+          console.log('accessToken 재 요청 실패');
         }
+      } //리프레시 토큰 요청이 실패할때(리프레시 토큰도 만료되었을때 = 재로그인 안내)
+      else if (msg == '리프레시 토큰이 만료되었습니다. 다시 로그인해 주세요.') {
+        localStorage.clear();
+        window.location.replace('/');
+        window.alert('토큰이 만료되어 자동으로 로그아웃 되었습니다.');
       }
     }
     return Promise.reject(error);
