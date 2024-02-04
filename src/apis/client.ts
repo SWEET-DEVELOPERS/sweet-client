@@ -53,6 +53,7 @@ instance.interceptors.response.use(
       if (msg == '액세스 토큰이 만료되었습니다. 재발급 받아주세요.') {
         console.log('엑세스 토큰 만료 메세지 인식 했다.');
 
+
         // access 토큰 재발급 api
         const response = await postRefreshToken();
         //access 토큰 요청이 성공할 때
@@ -72,6 +73,7 @@ instance.interceptors.response.use(
       else if (msg == '리프레시 토큰이 만료되었습니다. 다시 로그인해 주세요.') {
 
         console.log('리프레쉬 토큰 만료 메세지 인식 했다.');
+
 
         localStorage.clear();
         window.location.replace('/');
