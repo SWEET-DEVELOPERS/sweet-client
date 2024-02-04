@@ -55,6 +55,7 @@ instance.interceptors.response.use(
 
         // access 토큰 재발급 api
         const response = await postRefreshToken();
+        console.log(response);
         //access 토큰 요청이 성공할 때
         if (response.data.status === 200) {
           console.log('엑세스 토큰 api 요청 성공했다.');
