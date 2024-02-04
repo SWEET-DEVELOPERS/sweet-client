@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 
 export const getAccessTokenLocalStorage = () => {
   const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
@@ -44,8 +44,8 @@ instance.interceptors.response.use(
   // 200번대 응답이 아닐 경우 처리
   async (error) => {
     const originalConfig = error.config;
-    const msg = error.response.message;
-    const status = error.response.status;
+    const msg = error.response.data.message;
+    const status = error.response.data.status;
 
     //토큰이 만료되을 때
     if (status === 401) {
@@ -78,6 +78,17 @@ instance.interceptors.response.use(
     return Promise.reject(error);
   },
 );
+
+function interceptorResponseFulfilled(res: AxiosResponse) {
+  return res.status >= 200 && res.status < 300 ? res.data : Promise.reject(res.data);
+}
+
+function interceptorResponseRejected(error: AxiosError) {
+  // @ts-ignore
+  return Promise.reject(new Error(error.response?.data?.message ?? error));
+}
+
+instance.interceptors.response.use(interceptorResponseFulfilled, interceptorResponseRejected);
 
 export function get<T>(...args: Parameters<typeof instance.get>) {
   return instance.get<T, T>(...args);
