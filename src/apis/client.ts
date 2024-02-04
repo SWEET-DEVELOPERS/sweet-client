@@ -57,11 +57,11 @@ instance.interceptors.response.use(
         // access 토큰 재발급 api
         const response = await postRefreshToken();
         //access 토큰 요청이 성공할 때
-        if (response.status === 200) {
+        if (response.data.status === 200) {
           console.log('엑세스 토큰 api 요청 성공했다.');
-          const newAccessToken = response.data.accessToken;
+          const newAccessToken = response.data.data.accessToken;
           localStorage.setItem('EXIT_LOGIN_TOKEN', newAccessToken);
-          localStorage.setItem('EXIT_LOGIN_REFRESH_TOKEN', response.data.refreshToken);
+          localStorage.setItem('EXIT_LOGIN_REFRESH_TOKEN', response.data.data.refreshToken);
           axios.defaults.headers.Authorization = `Bearer ${newAccessToken}`;
           //진행중이던 요청 이어서하기
           originalConfig.headers.Authorization = `Bearer ${newAccessToken}`;
@@ -71,7 +71,6 @@ instance.interceptors.response.use(
         }
       } //리프레시 토큰 요청이 실패할때(리프레시 토큰도 만료되었을때 = 재로그인 안내)
       else if (msg == '리프레시 토큰이 만료되었습니다. 다시 로그인해 주세요.') {
-
         console.log('리프레쉬 토큰 만료 메세지 인식 했다.');
 
 
