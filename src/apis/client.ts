@@ -44,8 +44,8 @@ instance.interceptors.response.use(
   // 200번대 응답이 아닐 경우 처리
   async (error) => {
     const originalConfig = error.config;
-    const msg = error.response.message;
-    const status = error.response.status;
+    const msg = error.response.data.message;
+    const status = error.response.data.status;
 
     //토큰이 만료되을 때
     if (status === 401) {
