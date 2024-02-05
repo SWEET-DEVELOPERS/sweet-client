@@ -47,7 +47,7 @@ export async function postRefreshToken() {
 instance.interceptors.response.use(
   (response) => response,
   async (error) => {
-    const originalConfig = error.config;
+    const originalConfig = error.response?.config;
     const msg = error.response?.data?.message;
     const status = error.response?.data?.status;
 
