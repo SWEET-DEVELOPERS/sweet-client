@@ -67,6 +67,7 @@ instance.interceptors.response.use(
           originalConfig.headers.Authorization = `Bearer ${newAccessToken}`;
           return axios(originalConfig);
         } else if (
+          response.data.status === 401 &&
           response.data.message == '리프레시 토큰이 만료되었습니다. 다시 로그인해 주세요.'
         ) {
           console.log('리프레쉬 토큰 만료 메세지 인식 했다.');
