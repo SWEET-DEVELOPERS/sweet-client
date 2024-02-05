@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 
 export const getAccessTokenLocalStorage = () => {
   const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
@@ -53,9 +53,9 @@ instance.interceptors.response.use(
       if (msg == '액세스 토큰이 만료되었습니다. 재발급 받아주세요.') {
         console.log('엑세스 토큰 만료 메세지 인식 했다.');
 
-
         // access 토큰 재발급 api
         const response = await postRefreshToken();
+        console.log(response);
         //access 토큰 요청이 성공할 때
         if (response.data.status === 200) {
           console.log('엑세스 토큰 api 요청 성공했다.');
@@ -66,13 +66,18 @@ instance.interceptors.response.use(
           //진행중이던 요청 이어서하기
           originalConfig.headers.Authorization = `Bearer ${newAccessToken}`;
           return axios(originalConfig);
+        } else if (msg == '리프레시 토큰이 만료되었습니다. 다시 로그인해 주세요.') {
+          console.log('리프레쉬 토큰 만료 메세지 인식 했다.');
+
+          localStorage.clear();
+          window.location.replace('/');
+          window.alert('토큰이 만료되어 자동으로 로그아웃 되었습니다.');
         } else {
           console.log('accessToken 재 요청 실패');
         }
       } //리프레시 토큰 요청이 실패할때(리프레시 토큰도 만료되었을때 = 재로그인 안내)
       else if (msg == '리프레시 토큰이 만료되었습니다. 다시 로그인해 주세요.') {
         console.log('리프레쉬 토큰 만료 메세지 인식 했다.');
-
 
         localStorage.clear();
         window.location.replace('/');
@@ -82,6 +87,17 @@ instance.interceptors.response.use(
     return Promise.reject(error);
   },
 );
+
+function interceptorResponseFulfilled(res: AxiosResponse) {
+  return res.status >= 200 && res.status < 300 ? res.data : Promise.reject(res.data);
+}
+
+function interceptorResponseRejected(error: AxiosError) {
+  // @ts-ignore
+  return Promise.reject(new Error(error.response?.data?.message ?? error));
+}
+
+instance.interceptors.response.use(interceptorResponseFulfilled, interceptorResponseRejected);
 
 export function get<T>(...args: Parameters<typeof instance.get>) {
   return instance.get<T, T>(...args);
