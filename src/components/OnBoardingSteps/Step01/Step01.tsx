@@ -3,6 +3,7 @@ import * as S from './Step01.style';
 import { IcCancelCircleFinal } from '../../../assets/svg';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import { OnboardingInfo } from '../../../types/Onboarding';
+import useNameInput from '../../../hooks/onboarding/useNameInput';
 
 interface NameInputProps extends Pick<OnboardingInfo, 'gifteeName'> {
   onNext: VoidFunction;
@@ -10,20 +11,9 @@ interface NameInputProps extends Pick<OnboardingInfo, 'gifteeName'> {
 }
 
 const NameInput = (props: NameInputProps) => {
-  const { onNext, gifteeName, setGifteeName } = props;
+  const { onNext } = props;
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    const unicodeChars = [...inputValue].filter((char) => /[\ud800-\udfff]/.test(char)).length;
-
-    inputValue.length + unicodeChars <= 10 ? setGifteeName(inputValue) : e.preventDefault();
-  };
-
-  const handleBtnClick = () => {
-    setGifteeName('');
-  };
-
-  const isActivated = gifteeName.length > 0;
+  const { onboardingInfo, handleInputChange, handleBtnClick, isActivated } = useNameInput();
 
   return (
     <>
@@ -31,11 +21,14 @@ const NameInput = (props: NameInputProps) => {
         선물 받을 분의 <br />
         이름,혹은 닉네임을 알려주세요
       </Title>
-      <S.Wrapper $hasContent={gifteeName.length > 0} $maxLengthReached={gifteeName.length === 10}>
+      <S.Wrapper
+        $hasContent={onboardingInfo.gifteeName.length > 0}
+        $maxLengthReached={onboardingInfo.gifteeName.length === 10}
+      >
         <S.TextField>
           <S.Input
             type='text'
-            value={gifteeName}
+            value={onboardingInfo.gifteeName}
             onChange={handleInputChange}
             maxLength={10}
             placeholder='이름을 입력해주세요'
@@ -43,7 +36,7 @@ const NameInput = (props: NameInputProps) => {
         </S.TextField>
         <S.IconWrapper onClick={handleBtnClick}>
           <S.IconField>
-            {gifteeName.length > 0 && (
+            {onboardingInfo.gifteeName.length > 0 && (
               <IcCancelCircleFinal
                 style={{ width: '2.4rem', height: '2.4rem' }}
                 onClick={handleBtnClick}
@@ -52,7 +45,7 @@ const NameInput = (props: NameInputProps) => {
           </S.IconField>
         </S.IconWrapper>
       </S.Wrapper>
-      <S.LetterLength>({gifteeName.length}/10)</S.LetterLength>
+      <S.LetterLength>({onboardingInfo.gifteeName.length}/10)</S.LetterLength>
       <OnBoardingBtn isActivated={isActivated} setStep={onNext}>
         다음
       </OnBoardingBtn>
