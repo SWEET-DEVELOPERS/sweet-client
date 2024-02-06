@@ -2,59 +2,39 @@ import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
 import { IcUnselectedCalender } from '../../../assets/svg';
 import * as S from './Step04.style';
-import { useState } from 'react';
 import { DayPicker } from 'react-day-picker';
 import { format } from 'date-fns';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import TimePicker from './TimePicker';
+import useCalendarOpen from '../../../hooks/onboarding/useCalendarOpen';
+import useTimerOpen from '../../../hooks/onboarding/useTimerOpen';
 
 interface SetTournamentScheduleProps {
   onNext: VoidFunction;
-  tournamentStartDate: string;
-  setTournamentStartDate: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
-  // TODO 시간 선택되면 인풋창 가리고, border-bottom 원래대로 돌리기
-  const { onNext, setTournamentStartDate } = props;
-  const disabledDays = { before: new Date() };
-  const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [selectedTime, setSelectedTime] = useState<string>('');
-  const [isTimerOpen] = useState<boolean>(false);
-
-  const openCalendar = () => {
-    setIsCalendarOpen(!isCalendarOpen);
-  };
-
-  const handleDateSelect = (date: Date) => {
-    setSelectedDate(date);
-    setIsCalendarOpen(false);
-    setTournamentStartDate(format(date, "yyyy-mm-dd'T'HH:mm:ss"));
-  };
-
-  const handleTimerSelect = (selectedTime: string) => {
-    setSelectedTime(selectedTime);
-    const currentDate = selectedDate || new Date();
-    setTournamentStartDate(
-      format(new Date(`${currentDate.toDateString()} ${selectedTime}`), "yyyy-MM-dd'T'HH:mm:ss"),
-    );
-  };
+  const { onNext } = props;
+  const { isOpen, selectedDate, disabledDays, openCalendar, handleDateSelect } = useCalendarOpen();
+  const { isTimerOpen, selectedTime, setSelectedTime, handleTimerSelect } = useTimerOpen();
+  const isActivated = selectedDate !== null && selectedTime !== '';
+  const selectedDateValue = selectedDate ? format(selectedDate, 'y년 M월 d일') : '';
 
   return (
     <>
       <Title>
         선물 토너먼트 <br /> 시작 일정을 설정해주세요
       </Title>
-      <div style={{ marginTop: '0.8rem' }}>
+      <S.SubTitleWrapper>
         <SubTitle subTitle='토너먼트 시작 전까지 선물을 등록할 수 있어요.' />
-      </div>
+      </S.SubTitleWrapper>
 
-      <S.SetTournamentScheduleWrapper $hasContent={isCalendarOpen}>
+      <S.SetTournamentScheduleWrapper $hasContent={isOpen}>
         <S.TextField>
           <S.Input
             placeholder='날짜를 선택해주세요'
-            value={selectedDate ? format(selectedDate, 'y년 M월 d일') : ''}
+            value={selectedDateValue}
+            onChange={(e) => e.preventDefault()}
           />
         </S.TextField>
         <S.IconField>
@@ -64,18 +44,18 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
           />
         </S.IconField>
       </S.SetTournamentScheduleWrapper>
-      {isCalendarOpen && (
-        <div style={{ fontSize: '1.7rem', display: 'flex', justifyContent: 'center' }}>
+      {isOpen && (
+        <S.CalendarWrapper>
           <DayPicker
             defaultMonth={new Date()}
             mode='single'
             onDayClick={handleDateSelect}
             disabled={disabledDays}
           />
-        </div>
+        </S.CalendarWrapper>
       )}
 
-      {/* 여기서부터 타이머 */}
+      {/* 타이머 */}
       <S.Container $hasContent={isTimerOpen}>
         <S.TextField>
           <S.Input
@@ -85,15 +65,13 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
             disabled
           />
         </S.TextField>
-        <div>
-          <TimePicker onSelect={(time) => handleTimerSelect(time)} />
-        </div>
+        <TimePicker onSelect={(time) => handleTimerSelect(time)} />
       </S.Container>
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <OnBoardingBtn isActivated={selectedDate !== null && selectedTime !== ''} setStep={onNext}>
+      <S.OnBoardingBtnWrapper>
+        <OnBoardingBtn isActivated={isActivated} setStep={onNext}>
           다음
         </OnBoardingBtn>
-      </div>
+      </S.OnBoardingBtnWrapper>
     </>
   );
 };
