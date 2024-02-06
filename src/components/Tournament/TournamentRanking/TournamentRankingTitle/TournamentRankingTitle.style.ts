@@ -12,13 +12,14 @@ export const PinkText = styled.span`
 `;
 
 export const LinkButton = styled.button`
-  display: flex;
+  ${({ theme }) =>
+    theme.mixin.flexBox({ direction: 'column', align: 'center', justify: 'center' })};
+
   padding: 10px;
-  justify-content: center;
-  align-items: center;
   gap: 1rem;
   width: 13.4rem;
   height: 4rem;
+
   border-radius: 100px;
   border: none;
   color: ${({ theme }) => theme.colors.P_06};
@@ -33,10 +34,10 @@ export const SubTitle = styled.p`
   text-align: center;
 `;
 export const KakaoButton = styled.button`
-  display: flex;
+  ${({ theme }) =>
+    theme.mixin.flexBox({ direction: 'column', align: 'center', justify: 'center' })};
+
   padding: 1rem;
-  justify-content: center;
-  align-items: center;
   gap: 1rem;
   width: 13.4rem;
   height: 4rem;
@@ -49,9 +50,10 @@ export const KakaoButton = styled.button`
 
 export const ImageButton = styled.button`
   display: flex;
-  padding: 1rem;
   flex-direction: column;
   justify-content: center;
+
+  padding: 1rem;
   align-items: center;
   gap: 1rem;
   width: 13.4rem;

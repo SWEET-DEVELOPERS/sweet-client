@@ -3,7 +3,9 @@ import styled from 'styled-components';
 interface TournamentCardWrapperProps {
   isClicked: boolean;
 }
+
 export const Wrapper = styled.div``;
+
 export const LinkIconWrapper = styled.button`
   display: inline-flex;
   align-items: center;
@@ -64,7 +66,6 @@ export const Title = styled.p`
   color: var(--Black, var(--sponus_black, #222));
   text-overflow: ellipsis;
   -webkit-line-clamp: 2;
-  /* white-space: nowrap; */
   ${({ theme }) => theme.fonts.body_09}
 `;
 
