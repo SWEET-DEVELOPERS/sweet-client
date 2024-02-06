@@ -66,3 +66,16 @@ export const TimeInput = styled.input<{ isOpen: boolean }>`
     ${({ theme }) => theme.fonts.body_06};
   }
 `;
+
+export const SubTitleWrapper = styled.div`
+  margin-top: 0.8rem;
+`;
+
+export const CalendarWrapper = styled.div`
+  ${({ theme }) => theme.mixin.flexBox({ justify: 'center' })};
+  font-size: 1.7rem;
+`;
+
+export const OnBoardingBtnWrapper = styled.div`
+  ${({ theme }) => theme.mixin.flexBox({ justify: 'flex-end' })};
+`;
