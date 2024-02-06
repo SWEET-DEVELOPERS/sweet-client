@@ -14,13 +14,13 @@ export const getRefreshTokenLocalStorage = () => {
 
 export const authInstance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_URL,
-  withCredentials: false,
+  withCredentials: true,
   headers: {},
 });
 
 export const instance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_URL,
-  withCredentials: false,
+  withCredentials: true,
   headers: {
     Authorization: `${getAccessTokenLocalStorage()}`,
   },
@@ -28,6 +28,23 @@ export const instance = axios.create({
 
 const refreshToken = localStorage.getItem('EXIT_LOGIN_REFRESH_TOKEN');
 const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
+
+instance.interceptors.request.use(
+  (config) => {
+    if (!accessToken) {
+      window.location.href = '/';
+
+      return config;
+    }
+
+    config.headers.Authorization = `Bearer ${accessToken}`;
+
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
 
 export async function postRefreshToken() {
   console.log('refreshToken ');
