@@ -1,6 +1,6 @@
 import TournamentStartText from './TournamentStartText/TournamentStartText';
 import TournamentItemCount from './TournamentItemCount/TournamentItemCount';
-import * as S from './TournamentContatiner.style';
+import * as S from './TournamentIntroContatiner.style';
 import TournamentStartButton from './TournamentStartButton/TournamentStartButton';
 import useTournament from '../../../hooks/tournament/useTournament';
 import TournamentFlowContainer from '../TournamentFlow/TournamentFlowContainer';
@@ -9,7 +9,7 @@ import trophy from '../../../assets/img/3dic_trophy3.png';
 import { useParams } from 'react-router';
 import Header from '../../common/Header';
 
-const TournamentContainer = () => {
+const TournamentIntroContainer = () => {
   const params = useParams();
   const giftee = params.giftee;
   console.log('울랄라', giftee);
@@ -49,4 +49,4 @@ const TournamentContainer = () => {
   );
 };
 
-export default TournamentContainer;
+export default TournamentIntroContainer;

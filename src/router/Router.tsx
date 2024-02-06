@@ -10,7 +10,7 @@ import EditRoom from '../pages/MyPage/EditRoom/EditRoom';
 import DetailProgressRoom from '../pages/MyPage/Detail/DetailProgressRoom/DetailProgressRoom';
 import DetailDoneRoom from '../pages/MyPage/Detail/DetailDoneRoom/DetailDoneRoom';
 
-import TournamentContainer from '../components/Tournament/Intro/TournamentContainer';
+import TournamentIntroContainer from '../components/Tournament/Intro/TournamentIntroContainer';
 import GiftHome from '../pages/GiftHome/GiftHome';
 
 import TournamentPage from '../pages/TournamentPage';
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/tournament/:giftee/:roomId',
-        element: <TournamentContainer />,
+        element: <TournamentIntroContainer />,
       },
       {
         path: '/tournament-ranking/:giftee/:roomId',
