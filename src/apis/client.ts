@@ -28,51 +28,85 @@ const refreshToken = localStorage.getItem('EXIT_LOGIN_REFRESH_TOKEN');
 const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
 
 export async function postRefreshToken() {
-  const response = await authInstance.post('/oauth/reissue', {
-    accessToken: accessToken,
-    refreshToken: refreshToken,
-  });
-  return response;
+  console.log('refreshToken ');
+
+  try {
+    const response = await authInstance.post('/oauth/reissue', {
+      accessToken: accessToken,
+      refreshToken: refreshToken,
+    });
+
+    return response;
+  } catch (error) {
+    // @ts-ignore
+    handleRefreshTokenError(error);
+    return Promise.reject(error);
+  }
 }
 
-//토큰을 함께보내는 instance에 interceptor를 적용합니다
 instance.interceptors.response.use(
-  // 200번대 응답이 올때 처리
-  (response) => {
-    return response;
-  },
-  // 200번대 응답이 아닐 경우 처리
+  (response) => response,
   async (error) => {
-    const {
-      config,
-      response: { status },
-    } = error;
+    const originalConfig = error.response?.config;
+    const msg = error.response?.data?.message;
+    const status = error.response?.data?.status;
 
-    //토큰이 만료되을 때
     if (status === 401) {
-      if (error.response.message === 'Unauthorized') {
-        const originRequest = config;
-        //리프레시 토큰 api
-        const response = await postRefreshToken();
-        //리프레시 토큰 요청이 성공할 때
-        if (response.status === 200) {
-          const newAccessToken = response.data.accessToken;
-          localStorage.setItem('EXIT_LOGIN_TOKEN', newAccessToken);
-          localStorage.setItem('EXIT_LOGIN_REFRESH_TOKEN', response.data.refreshToken);
-          axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
-          //진행중이던 요청 이어서하기
-          originRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-          return axios(originRequest);
-          //리프레시 토큰 요청이 실패할때(리프레시 토큰도 만료되었을때 = 재로그인 안내)
-        } else if (response.status === 404) {
-          window.location.replace('/');
-        } else {
+      console.log('401에러가 떠서 interceptor 실행한다.');
+      if (msg === '액세스 토큰이 만료되었습니다. 재발급 받아주세요.') {
+        console.log('엑세스 토큰 만료 메세지 인식 했다.');
+
+        try {
+          const response = await postRefreshToken();
+
+          if (response?.data?.status === 200) {
+            console.log('엑세스 토큰 api 요청 성공했다.');
+            updateTokens(response.data.data.accessToken, response.data.data.refreshToken);
+            originalConfig.headers.Authorization = `Bearer ${response.data.data.accessToken}`;
+            return axios(originalConfig);
+          }
+        } catch (error) {
+          // @ts-ignore
+          handleRefreshTokenError(error);
         }
       }
     }
+
     return Promise.reject(error);
   },
 );
+
+function handleRefreshTokenError(error: AxiosError) {
+  if (axios.isAxiosError(error)) {
+    if (error.response) {
+      console.log('에러 응답 데이터:', error.response.data);
+      console.log('에러 상태 코드:', error.response.status);
+    } else {
+      console.error('에러 메시지:', error.message);
+    }
+    // @ts-ignore
+    if (error.response?.data?.message === '리프레시 토큰이 만료되었습니다. 다시 로그인해 주세요.') {
+      console.log('리프레쉬 토큰 만료 메세지 인식 했다.');
+      handleTokenExpiration();
+    } else {
+      console.log('accessToken 재 요청 실패');
+    }
+  } else {
+    console.error('Axios 에러가 아닙니다:', error);
+  }
+}
+
+function handleTokenExpiration() {
+  localStorage.clear();
+  window.location.replace('/');
+  window.alert('토큰이 만료되어 자동으로 로그아웃 되었습니다.');
+}
+
+function updateTokens(newAccessToken: string, newRefreshToken: string) {
+  localStorage.setItem('EXIT_LOGIN_TOKEN', newAccessToken);
+  localStorage.setItem('EXIT_LOGIN_REFRESH_TOKEN', newRefreshToken);
+  axios.defaults.headers.Authorization = `Bearer ${newAccessToken}`;
+}
 
 function interceptorResponseFulfilled(res: AxiosResponse) {
   return res.status >= 200 && res.status < 300 ? res.data : Promise.reject(res.data);
