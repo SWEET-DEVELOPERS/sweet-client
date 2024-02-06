@@ -1,4 +1,4 @@
-import { PropsWithChildren, createContext, useContext, useMemo, useState } from 'react';
+import { PropsWithChildren, createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { OnboardingInfo } from '../../types/Onboarding';
 
 interface OnboardingInfoContext {
@@ -8,6 +8,7 @@ interface OnboardingInfoContext {
 
 const initialOnboardingInfo: OnboardingInfo = {
   gifteeName: '',
+  imageUrl: '',
   deliveryDate: '',
   tournamentStartDate: '',
   tournamentDuration: '',
@@ -26,6 +27,11 @@ export const OnboardingProvider = ({ children }: PropsWithChildren) => {
   const updateOnboardingInfo = (newInfo: Partial<OnboardingInfo>) => {
     setOnboardingInfo((prev) => ({ ...prev, ...newInfo }));
   };
+
+  /**@todo 전체 값 확인용 useEffect */
+  useEffect(() => {
+    console.log('전체 값 확인:', onboardingInfo);
+  }, [onboardingInfo]);
 
   const OnboardingInfoContextValue = useMemo(
     () => ({
