@@ -1,14 +1,6 @@
 import { useOnboardingContext } from '../../context/Onboarding/OnboardingContext';
-import { OnboardingInfo } from '../../types/Onboarding';
 
-interface UseNameInputProps {
-  onboardingInfo: OnboardingInfo;
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleBtnClick: () => void;
-  isActivated: boolean;
-}
-
-const useNameInput = (): UseNameInputProps => {
+const useNameInput = () => {
   const { onboardingInfo, updateOnboardingInfo } = useOnboardingContext();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
