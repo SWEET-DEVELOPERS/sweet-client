@@ -27,13 +27,13 @@ export const Container = styled.button<{ $isActivated: boolean }>`
 `;
 
 interface NextBtnTextProps {
-  isActivated: boolean;
+  $isActivated: boolean;
 }
 
 export const NextBtnText = styled.p<NextBtnTextProps>`
   ${({ theme }) => theme.fonts.body_09};
-  ${({ isActivated, theme }) =>
-    isActivated
+  ${({ $isActivated, theme }) =>
+    $isActivated
       ? css`
           color: ${theme.colors.white};
         `
