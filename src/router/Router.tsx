@@ -10,7 +10,7 @@ import EditRoom from '../pages/MyPage/EditRoom/EditRoom';
 import DetailProgressRoom from '../pages/MyPage/Detail/DetailProgressRoom/DetailProgressRoom';
 import DetailDoneRoom from '../pages/MyPage/Detail/DetailDoneRoom/DetailDoneRoom';
 
-import TournamentContainer from '../components/TournamentNew/Intro/TournamentContainer';
+import TournamentContainer from '../components/Tournament/Intro/TournamentContainer';
 import GiftHome from '../pages/GiftHome/GiftHome';
 
 import TournamentPage from '../pages/TournamentPage';

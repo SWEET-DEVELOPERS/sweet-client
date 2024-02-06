@@ -1,5 +1,5 @@
 import { useParams } from 'react-router';
-import TournamentRanking from '../components/TournamentNew/TournamentRanking/TournamentRanking';
+import TournamentRanking from '../components/Tournament/TournamentRanking/TournamentRanking';
 
 const TournamentPage = () => {
   const params = useParams();
