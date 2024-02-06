@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { IcUnselectedClock } from '../../../assets/svg';
 import * as S from './Step04.style';
 
@@ -6,7 +6,7 @@ interface TimePickerProps {
   onSelect: (selectedTime: string) => void;
 }
 
-const TimePicker: React.FC<TimePickerProps> = ({ onSelect }) => {
+const TimePicker = ({ onSelect }: TimePickerProps) => {
   const [isPickerOpen, setIsPickerOpen] = useState<boolean>(false);
   const [selectedTime, setSelectedTime] = useState<string>('');
 
@@ -20,7 +20,10 @@ const TimePicker: React.FC<TimePickerProps> = ({ onSelect }) => {
     setSelectedTime(time);
     onSelect(time);
     setIsPickerOpen(false);
+
+    /**@todo 사용하는 곳 없는 것을 방지하기 위한 콘솔 */
     console.log(selectedTime);
+    console.log(isPickerOpen);
   };
 
   return (
@@ -38,11 +41,6 @@ const TimePicker: React.FC<TimePickerProps> = ({ onSelect }) => {
           onClick={handleIconClick}
         />
       </label>
-
-      <div
-        className='custom-time-picker'
-        // style={{ display: 'flex' }}
-      ></div>
     </S.IconField>
   );
 };

@@ -1,6 +1,5 @@
 import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
-import { IcUnselectedCalender } from '../../../assets/svg';
 import * as S from './Step04.style';
 import { DayPicker } from 'react-day-picker';
 import { format } from 'date-fns';
@@ -8,6 +7,7 @@ import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import TimePicker from './TimePicker';
 import useCalendarOpen from '../../../hooks/onboarding/useCalendarOpen';
 import useTimerOpen from '../../../hooks/onboarding/useTimerOpen';
+import DatePicker from './DatePicker';
 
 interface SetTournamentScheduleProps {
   onNext: VoidFunction;
@@ -37,12 +37,7 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
             onChange={(e) => e.preventDefault()}
           />
         </S.TextField>
-        <S.IconField>
-          <IcUnselectedCalender
-            style={{ width: '2.4rem', height: '2.4rem' }}
-            onClick={openCalendar}
-          />
-        </S.IconField>
+        <DatePicker onClick={openCalendar} />
       </S.SetTournamentScheduleWrapper>
       {isOpen && (
         <S.CalendarWrapper>
@@ -51,6 +46,13 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
             mode='single'
             onDayClick={handleDateSelect}
             disabled={disabledDays}
+            modifiersClassNames={{
+              selected: 'my-selected',
+              today: 'my-today',
+            }}
+            modifiersStyles={{
+              disabled: { fontSize: '75%' },
+            }}
           />
         </S.CalendarWrapper>
       )}
