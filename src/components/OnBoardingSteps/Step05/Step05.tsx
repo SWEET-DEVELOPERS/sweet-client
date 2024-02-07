@@ -2,11 +2,9 @@ import SubTitle from '../../common/title/SubTitle';
 import Title from '../../common/title/Title';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import * as S from './Step05.style';
-import { getAccessTokenLocalStorage, instance } from '../../../apis/client';
 import usePostOnboardingInfo from '../../../hooks/queries/onboarding/usePostOnboardingInfo';
 import { useOnboardingContext } from '../../../context/Onboarding/OnboardingContext';
 import useSetTournamentDuration from '../../../hooks/onboarding/useSetTournamentDuration';
-import { useEffect } from 'react';
 import { TimeOptionHelper } from '../../../utils/TimeOptionHelper';
 import SelectTimeOptions from './SelectTimeOptions';
 
@@ -28,11 +26,6 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   const { onboardingInfo, updateOnboardingInfo } = useOnboardingContext();
   const { handleTimeSelect, selectedOption } = useSetTournamentDuration();
   const { mutation } = usePostOnboardingInfo();
-
-  useEffect(() => {
-    // 컴포넌트가 마운트될 때마다 최신 토큰을 가져와서 설정
-    instance.defaults.headers.Authorization = getAccessTokenLocalStorage();
-  }, [onboardingInfo.tournamentDuration]);
 
   const postOnboarding = async () => {
     try {
@@ -56,9 +49,9 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
       <Title>
         선물 토너먼트 <br /> 진행 시간을 설정해주세요
       </Title>
-      <div style={{ marginTop: '0.8rem' }}>
+      <S.SubTitleWrapper>
         <SubTitle subTitle='토너먼트가 아래 시간 동안 진행돼요.' />
-      </div>
+      </S.SubTitleWrapper>
       <S.SetTournamentDurationWrapper>
         {timeOptions.map((hours) => {
           const { dateType, isAfterDelivery } = TimeOptionHelper(
@@ -81,7 +74,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
         })}
       </S.SetTournamentDurationWrapper>
 
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+      <S.OnBoardingBtnWrapper>
         <OnBoardingBtn
           isActivated={!!selectedOption}
           setStep={() => {
@@ -90,7 +83,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
         >
           다음
         </OnBoardingBtn>
-      </div>
+      </S.OnBoardingBtnWrapper>
     </>
   );
 };

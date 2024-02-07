@@ -11,7 +11,6 @@ interface ThumbnailInputProps {
 
 const ThumbnailInput = (props: ThumbnailInputProps) => {
   const { onNext } = props;
-
   const { isImageUploaded, previewImage, handleImageUpload } = usePreviewImage();
 
   return (

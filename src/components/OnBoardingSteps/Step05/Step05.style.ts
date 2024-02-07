@@ -35,3 +35,11 @@ export const Period = styled.p<{ $isAfterDelivery: boolean }>`
   color: ${({ theme, $isAfterDelivery }) =>
     $isAfterDelivery ? theme.colors.R_02 : theme.colors.B_02};
 `;
+
+export const SubTitleWrapper = styled.div`
+  margin-top: 0.8rem;
+`;
+
+export const OnBoardingBtnWrapper = styled.div`
+  ${({ theme }) => theme.mixin.flexBox({ justify: 'flex-end' })};
+`;
