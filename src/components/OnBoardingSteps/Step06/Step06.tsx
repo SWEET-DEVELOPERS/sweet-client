@@ -22,6 +22,7 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
   const navigate = useNavigate();
   const { handleCopyToClipboard } = useClipboard();
 
+  /** @see 카카오 공유하기를 위한 useEffect */
   useEffect(() => {
     if (!window.Kakao.isInitialized()) {
       console.log('카카오 SDK 초기화 중...');
@@ -42,8 +43,6 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
             />
             <S.TitleContainer>
               <S.TitleWrapper>
-                {/* <Title title={`${onboardingInfo.gifteeName} 님을 위한 `} />
-                <Title title='선물 준비방이 개설됐어요' /> */}
                 <Title>
                   {`${onboardingInfo.gifteeName}님을 위한`} <br /> 선물 준비방이 개설됐어요
                 </Title>
