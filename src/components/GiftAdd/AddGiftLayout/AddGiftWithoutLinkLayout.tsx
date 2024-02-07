@@ -10,6 +10,7 @@ import usePostMyPresignedUrl from '../../../hooks/queries/etc/usePostMyPresigned
 import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
 // import { postOpenGraph } from '../../../hooks/queries/etc/usePostOpengraph';
 import { OpenGraphResponseType } from '../../../types/etc';
+import useParseFileName from '../../../hooks/useParseFileName';
 
 interface AddGiftWithLinkLayoutProps {
   roomId: number;
@@ -43,30 +44,30 @@ function AddGiftWithoutLinkLayout({
 
   //빌드 에러 해결용
   console.log('previewImage', previewImage);
-  const setParsedFileName = (imageString: string) => {
-    // 확장자 제거
-    const imageNameWithoutExtension = imageString.replace(/\.[^/.]+$/, '');
-    console.log('imageNameWithoutExtension', imageNameWithoutExtension);
-    // 띄워쓰기 제거
-    const formattedImageName = imageNameWithoutExtension.replace(/\s/g, '');
-    console.log('formattedImageName', formattedImageName);
+  // const setParsedFileName = (imageString: string) => {
+  //   // 확장자 제거
+  //   const imageNameWithoutExtension = imageString.replace(/\.[^/.]+$/, '');
+  //   console.log('imageNameWithoutExtension', imageNameWithoutExtension);
+  //   // 띄워쓰기 제거
+  //   const formattedImageName = imageNameWithoutExtension.replace(/\s/g, '');
+  //   console.log('formattedImageName', formattedImageName);
 
-    // 앞 3글자 가져오기
-    const firstThreeLetters = formattedImageName.substring(0, 3);
-    console.log('firstThreeLetters', firstThreeLetters);
+  //   // 앞 3글자 가져오기
+  //   const firstThreeLetters = formattedImageName.substring(0, 3);
+  //   console.log('firstThreeLetters', firstThreeLetters);
 
-    // 이미지 업로드 시간
-    const uploadTime = new Date().toISOString();
-    console.log('uploadTime', uploadTime);
+  //   // 이미지 업로드 시간
+  //   const uploadTime = new Date().toISOString();
+  //   console.log('uploadTime', uploadTime);
 
-    // 최종 이미지 이름
-    const finalImageName = `${firstThreeLetters}${uploadTime}`;
-    console.log('finalImageName', finalImageName);
-    setFileName(finalImageName);
-    console.log('fileName', fileName);
+  //   // 최종 이미지 이름
+  //   const finalImageName = `${firstThreeLetters}${uploadTime}`;
+  //   console.log('finalImageName', finalImageName);
+  //   setFileName(finalImageName);
+  //   console.log('fileName', fileName);
 
-    return finalImageName;
-  };
+  //   return finalImageName;
+  // };
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
@@ -81,7 +82,7 @@ function AddGiftWithoutLinkLayout({
 
       const imageName = files[0].name.trim();
 
-      setParsedFileName(imageName);
+      useParseFileName({ imageString: imageName, setFileName });
       console.log('페이지 안에서 fileName', fileName);
 
       console.log('fileName:', fileName);
