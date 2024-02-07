@@ -16,7 +16,7 @@ import GiftHome from '../pages/GiftHome/GiftHome';
 import TournamentPage from '../pages/TournamentPage';
 import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
 import InvitationDeadline from '../components/OnBoardingSteps/invitationDeadline/InvitationDeadline';
-import ParticipantsView from '../pages/Participants/ ParticipantsView';
+import ParticipantsView from '../pages/Participants/ParticipantsView';
 import { OnboardingProvider } from '../context/Onboarding/OnboardingContext';
 
 const router = createBrowserRouter([
