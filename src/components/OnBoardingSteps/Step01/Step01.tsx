@@ -10,8 +10,9 @@ interface NameInputProps {
 
 const NameInput = (props: NameInputProps) => {
   const { onNext } = props;
-
   const { onboardingInfo, handleInputChange, handleBtnClick, isActivated } = useNameInput();
+  const hasContent = onboardingInfo.gifteeName.length > 0;
+  const maxLengthReached = onboardingInfo.gifteeName.length === 10;
 
   return (
     <>
@@ -19,10 +20,7 @@ const NameInput = (props: NameInputProps) => {
         선물 받을 분의 <br />
         이름,혹은 닉네임을 알려주세요
       </Title>
-      <S.Wrapper
-        $hasContent={onboardingInfo.gifteeName.length > 0}
-        $maxLengthReached={onboardingInfo.gifteeName.length === 10}
-      >
+      <S.Wrapper $hasContent={hasContent} $maxLengthReached={maxLengthReached}>
         <S.TextField>
           <S.Input
             type='text'
