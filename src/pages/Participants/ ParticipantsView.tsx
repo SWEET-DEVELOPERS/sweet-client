@@ -74,12 +74,12 @@ const ParticipantsView = () => {
               style={{ width: '100%', opacity: 0.7 }}
             />
             <S.TitleContainer>
-              <div style={{ marginBottom: '8rem' }}>
+              <S.ParticipantsTitleWrapper>
                 <Title>
                   {`${getGifteeInfo.data.gifteeName}님을 위한`}
                   <br /> 선물 준비방이 개설됐어요
                 </Title>
-              </div>
+              </S.ParticipantsTitleWrapper>
               {isToken === true ? (
                 <OnBoardingBtn
                   customStyle={{ marginBottom: '1.6rem' }}
@@ -130,7 +130,6 @@ const ParticipantsView = () => {
           </>
         )}
       </S.BtnWrapper>
-      {/* 수정된 부분 끝 */}
     </>
   );
 };

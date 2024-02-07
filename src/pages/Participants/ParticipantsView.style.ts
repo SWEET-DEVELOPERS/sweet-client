@@ -103,3 +103,7 @@ export const LinkCopyBtn = styled.button`
 
   ${({ theme }) => theme.fonts.body_09};
 `;
+
+export const ParticipantsTitleWrapper = styled.div`
+  margin-bottom: 8rem;
+`;
