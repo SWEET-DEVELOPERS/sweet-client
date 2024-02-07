@@ -14,25 +14,8 @@ import OnboardingFinal from '../components/OnBoardingSteps/Step06/Step06';
 
 const OnBoardingPage = () => {
   const { Funnel, setStep } = useFunnel(ONBOARDING_FORM_STEP, ONBOARDING_FORM_STEP[0]);
-  const [gifteeName, setGifteeName] = useState<string>('');
-  const [imageUrl, setImageUrl] = useState<string>('');
-  const [deliveryDate, setDeliveryDate] = useState<string>('');
-  const [tournamentStartDate, setTournamentStartDate] = useState<string>('');
-  const [tournamentDuration, setTournamentDuration] = useState<string>('');
-  const [fileName, setFileName] = useState<string>('');
-  const [presignedUrl, setPresignedUrl] = useState<string>('');
-  const [imageFile, setImageFile] = useState<File | null>(null);
   const [invitationCode, setInvitationCode] = useState<string>('');
   const [roomId, setRoomId] = useState<number>(0);
-
-  /**@TODO contextAPI로 변경하면서 props는 필요없음 */
-  const onboardingInfo = {
-    gifteeName: gifteeName,
-    // imageUrl: imageUrl,
-    deliveryDate: deliveryDate,
-    tournamentStartDate: tournamentStartDate,
-    tournamentDuration: tournamentDuration,
-  };
 
   return (
     <Funnel>
@@ -64,16 +47,14 @@ const OnBoardingPage = () => {
       <Funnel.Step name='TOURNAMENT_SCHEDULE_REGISTRATION'>
         <OnBoardingPageWrapper>
           <OnBoardingHeader step={4} />
-
           <SetTournamentSchedule onNext={() => setStep(() => 'TOURNAMENT_PROCEEDING')} />
         </OnBoardingPageWrapper>
       </Funnel.Step>
 
-      {/* step05 여기서 post (이미지 url먼저 post 후 전체 값 post*/}
+      {/* step05 */}
       <Funnel.Step name='TOURNAMENT_PROCEEDING'>
         <OnBoardingPageWrapper>
           <OnBoardingHeader step={5} />
-
           <SetTournamentDuration
             onNext={() => setStep(() => 'GIFT_ROOM_FIX')}
             setInvitationCode={setInvitationCode}
@@ -84,13 +65,7 @@ const OnBoardingPage = () => {
 
       {/* step06 */}
       <Funnel.Step name='GIFT_ROOM_FIX'>
-        <OnboardingFinal
-          onboardingInfo={onboardingInfo}
-          imageUrl={imageUrl}
-          invitationCode={invitationCode}
-          roomId={roomId}
-          // presignedUrl={presignedUrl}
-        />
+        <OnboardingFinal invitationCode={invitationCode} roomId={roomId} />
       </Funnel.Step>
     </Funnel>
   );
