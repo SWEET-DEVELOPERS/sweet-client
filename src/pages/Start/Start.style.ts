@@ -14,9 +14,10 @@ import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 export const Wrapper = styled.div`
   background-image: url(${HomeBg});
   background-size: cover;
+  width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
-  ${({ theme: { mixin } }) => mixin.flexCenter};
+  ${({ theme: { mixin } }) => mixin.flexCenter({})};
   margin: auto;
   background-color: #fafafa;
 `;
@@ -34,7 +35,7 @@ export const ImgWrapper = styled.div`
   }
 `;
 export const TextWrapper = styled.div`
-  ${({ theme: { mixin } }) => mixin.flexCenter};
+  ${({ theme: { mixin } }) => mixin.flexCenter({})};
   position: absolutes;
   margin-top: -11rem;
 
@@ -42,7 +43,7 @@ export const TextWrapper = styled.div`
 `;
 
 export const TitleText = styled.div`
-  ${({ theme: { mixin } }) => mixin.flexCenter};
+  ${({ theme: { mixin } }) => mixin.flexCenter({})};
   text-align: center;
   font-family: 'SUIT';
   font-size: 42px;
@@ -69,18 +70,22 @@ export const Gradient = styled(HomeBgGradientFix)`
   position: absolute;
   top: 55rem;
   z-index: 2;
+  width: 37.5rem;
 `;
 
 export const BtnGradient = styled(HomeCtaBgGradient)`
   position: fixed;
   z-index: 2;
   bottom: 0;
+  width: 37.5rem;
 `;
 
 export const PersonWrapper = styled.div`
+  ${({ theme: { mixin } }) => mixin.flexCenter({})};
   position: absolute;
   top: 86rem;
-  z-index: 1;
+  width: 37.5rem;
+  padding: 2rem;
 `;
 
 export const BtnFillStyle = styled(BtnFill)`
@@ -98,19 +103,26 @@ export const KakaoLogin = styled(IcKakoLarge)`
   margin: 2rem;
 `;
 
+export const BgWrapper = styled.div`
+  width: 37.5rem;
+`;
+
 export const Main2 = styled(Main02)`
   position: absolute;
   top: 62rem;
+  width: 37.5rem;
 `;
 
 export const Main3 = styled(Main03)`
   position: absolute;
   top: 140rem;
+  width: 37.5rem;
 `;
 
 export const Main4 = styled(Main04)`
   position: absolute;
   top: 211rem;
+  width: 37.5rem;
 `;
 
 export const DownIcon = styled(IcDown)`

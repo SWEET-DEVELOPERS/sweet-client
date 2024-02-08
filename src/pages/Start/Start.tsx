@@ -87,20 +87,23 @@ const Start = () => {
       )}
       {/* <S.BtnGradient /> */}
 
-      <S.Main2 />
-      <S.PersonWrapper>
-        <ScrollAnimationContainer>
-          <Person1 style={{ width: '25.1rem' }} />
-          <Person2 style={{ width: '21.4rem' }} />
-          <Person3 style={{ width: '31.5rem' }} />
-        </ScrollAnimationContainer>
-        <ScrollAnimationLeftContainer>
-          <Person4 style={{ width: '22.5rem' }} />
-        </ScrollAnimationLeftContainer>
-      </S.PersonWrapper>
-      <S.Main3 />
-      <S.Main4 />
-      <Footer customStyle={{ position: 'absolute', top: '283rem' }} />
+      <S.BgWrapper>
+        <S.Main2 />
+        <S.PersonWrapper>
+          <ScrollAnimationContainer>
+            <Person1 style={{ width: '25.1rem' }} />
+            <Person2 style={{ width: '21.4rem' }} />
+            <Person3 style={{ width: '31.5rem' }} />
+          </ScrollAnimationContainer>
+          <ScrollAnimationLeftContainer>
+            <Person4 style={{ width: '22.5rem' }} />
+          </ScrollAnimationLeftContainer>
+        </S.PersonWrapper>
+
+        <S.Main3 />
+        <S.Main4 />
+        <Footer customStyle={{ position: 'absolute', top: '283rem' }} />
+      </S.BgWrapper>
     </S.Wrapper>
   );
 };
