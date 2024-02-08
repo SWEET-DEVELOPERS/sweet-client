@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const FooterWrapper = styled.div`
+  position: absolute;
   height: 38.6rem;
   width: 100%;
   background-color: white;

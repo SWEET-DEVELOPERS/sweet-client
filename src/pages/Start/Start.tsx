@@ -74,7 +74,7 @@ const Start = () => {
       <StartScrollAnimation />
       <S.Main3 />
       <S.Main4 />
-      <Footer customStyle={{ position: 'absolute', top: '283rem' }} />
+      <Footer customStyle={{ top: '283rem' }} />
     </S.Wrapper>
   );
 };
