@@ -1,5 +1,5 @@
 import present from '../../../../assets/img/gift1_2.png';
-import * as S from './GiftAnimation.style';
+import * as S from './StartGiftAnimation.style';
 
 const StartGiftAnimation = () => {
   return (

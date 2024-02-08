@@ -4,7 +4,6 @@ import {
   HomeBgGradientFix,
   HomeCtaBgGradient,
   IcDown,
-  IcKakoLarge,
   Main02,
   Main03,
   Main04,
@@ -35,14 +34,6 @@ export const BtnGradient = styled(HomeCtaBgGradient)`
 
 export const BtnFillStyle = styled(BtnFill)`
   position: fixed;
-  z-index: 3;
-  width: 33.5rem;
-  margin: 2rem;
-`;
-
-export const KakaoLogin = styled(IcKakoLarge)`
-  position: fixed;
-  bottom: 0;
   z-index: 3;
   width: 33.5rem;
   margin: 2rem;

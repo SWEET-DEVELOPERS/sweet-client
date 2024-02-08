@@ -1,7 +1,7 @@
 import { Person1, Person2, Person3, Person4 } from '../../../../assets/svg';
 import { ScrollAnimationContainer } from '../../../../components/ScrollAnimationContainer/ScrollAnimationContainer';
 import { ScrollAnimationLeftContainer } from '../../../../components/ScrollAnimationContainer/ScrollAnimationContainerLeft';
-import * as S from './ScrollAnimation.style';
+import * as S from './StartScrollAnimation.style';
 const StartScrollAnimation = () => {
   return (
     <S.PersonWrapper>
