@@ -9,7 +9,6 @@ interface ItemInfoType {
 interface AddGiftFooterProps {
   targetDate: string;
   itemInfo: ItemInfoType;
-  step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   isActivated: boolean;
   openGraph: OpenGraphResponseType;
