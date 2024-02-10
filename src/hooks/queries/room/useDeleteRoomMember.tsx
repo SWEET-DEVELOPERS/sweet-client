@@ -11,7 +11,7 @@ export const deleteRoomMember = async ({ roomId, memberId }: DeleteRoomMember) =
   await del(`/room/${roomId}/members/${memberId}`);
 };
 
-const useDeleteRoomMember = ({ roomId, memberId }: DeleteRoomMember) => {
+const useDeleteRoomMember = ({ roomId }: DeleteRoomMember) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
