@@ -12,7 +12,20 @@ export const getRefreshTokenLocalStorage = () => {
   return refreshToken ? `Bearer ${refreshToken}` : '';
 };
 
+export const checkCurrentMode = () => {
+  const currentMode = import.meta.env.PROD ? 'production' : 'development';
+  return currentMode;
+};
+
 export const authInstance = axios.create({
+  baseURL: import.meta.env.VITE_APP_BASE_URL,
+  withCredentials: true,
+  headers: {
+    'X-Environment': `${checkCurrentMode()}`,
+  },
+});
+
+export const cleanHeaderInstance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_URL,
   withCredentials: true,
   headers: {},
@@ -50,7 +63,7 @@ export async function postRefreshToken() {
   console.log('refreshToken ');
 
   try {
-    const response = await authInstance.post('/oauth/reissue', {
+    const response = await cleanHeaderInstance.post('/oauth/reissue', {
       accessToken: accessToken,
       refreshToken: refreshToken,
     });
