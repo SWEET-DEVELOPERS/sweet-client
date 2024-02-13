@@ -70,14 +70,12 @@ export const Gradient = styled(HomeBgGradientFix)`
   position: absolute;
   top: 55rem;
   z-index: 2;
-  width: 37.5rem;
 `;
 
 export const BtnGradient = styled(HomeCtaBgGradient)`
   position: fixed;
   z-index: 2;
   bottom: 0;
-  width: 37.5rem;
 `;
 
 export const PersonWrapper = styled.div`
@@ -103,26 +101,19 @@ export const KakaoLogin = styled(IcKakoLarge)`
   margin: 2rem;
 `;
 
-export const BgWrapper = styled.div`
-  width: 37.5rem;
-`;
-
 export const Main2 = styled(Main02)`
   position: absolute;
   top: 62rem;
-  width: 37.5rem;
 `;
 
 export const Main3 = styled(Main03)`
   position: absolute;
   top: 140rem;
-  width: 37.5rem;
 `;
 
 export const Main4 = styled(Main04)`
   position: absolute;
   top: 211rem;
-  width: 37.5rem;
 `;
 
 export const DownIcon = styled(IcDown)`
