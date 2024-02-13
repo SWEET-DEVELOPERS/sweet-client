@@ -39,9 +39,8 @@ export const TitleContainer = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  text-align: center;
   color: white;
-  z-index: 999;
+  z-index: 1;
   gap: 1.6rem;
   margin-left: 2rem;
 `;
