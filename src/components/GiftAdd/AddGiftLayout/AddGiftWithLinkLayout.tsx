@@ -6,10 +6,10 @@ import WriteItemInfo from './common/WriteItemInfo/WriteItemInfo';
 import * as S from './common/AddGiftLayout.styled';
 import AddGiftImg from './common/AddGiftImg/AddGiftImg';
 import { OpenGraphResponseType } from '../../../types/etc';
-// import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
-import usePutPresignedUrl from '../../../hooks/queries/onboarding/usePutPresignedUrl';
 import usePostMyPresignedUrl from '../../../hooks/queries/etc/usePostMyPresignedUrl';
 import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
+import useConvertURLtoFile from '../../../hooks/useConvertURLtoFile';
+import { useHandleImageUpload } from '../../../hooks/queries/useHandleImageUpload';
 // import { useNavigate } from 'react-router-dom';
 
 interface AddGiftWithLinkLayoutProps {
@@ -34,6 +34,7 @@ const AddGiftWithLinkLayout = ({
   const [priceText, setPriceText] = useState<number | null>(null);
   const [imageUrl, setImageUrl] = useState<string>(openGraph.image);
   const [fileName, setFileName] = useState<string>('');
+  const [file, setFile] = useState<File | null>(null);
   const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
@@ -65,14 +66,18 @@ const AddGiftWithLinkLayout = ({
     return finalImageName;
   };
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
 
     if (files && files.length > 0) {
       const selectedFiles = files as FileList;
       if (openGraph) {
+        // url => 파일 형식으로 변환해주기
+        const newFile = await useConvertURLtoFile(openGraph.image);
+        setFile(newFile);
         setPreviewImage(openGraph.image);
       } else {
+        setFile(selectedFiles[0]);
         setPreviewImage(URL.createObjectURL(selectedFiles[0]));
       }
       setImageUrl(URL.createObjectURL(selectedFiles[0]));
@@ -91,7 +96,7 @@ const AddGiftWithLinkLayout = ({
   };
 
   const postPresignedUrl = usePostMyPresignedUrl(roomId);
-  const putPresignedUrl = usePutPresignedUrl();
+  // const putPresignedUrl = usePutPresignedUrl();
   // const navigate = useNavigate();
 
   const fetchPresignedUrl = async (fileName: string) => {
@@ -119,16 +124,16 @@ const AddGiftWithLinkLayout = ({
     }
   };
 
+  const { putFormData } = useHandleImageUpload();
+
   const saveImageUrl = async (fileName: string) => {
     const { presignedUrl, imageUrl } = await fetchPresignedUrl(fileName);
-
+    console.log('imageurl 확인용', imageUrl);
     if (presignedUrl && presignedUrl !== '') {
-      try {
-        await putPresignedUrl.mutateAsync(presignedUrl);
-        console.log('saveImageUrl 안 imageUrl 값 확인', imageUrl);
-      } catch (error) {
-        console.log('putPresignedUrl 실행 중 에러 발생:', error);
-        return;
+      if (file) {
+        putFormData(presignedUrl, file);
+      } else {
+        console.error('파일이 없어요!');
       }
     } else {
       console.log('preSignedUrl이 비어있어서 putPresignedUrl을 실행하지 않습니다.');
@@ -148,8 +153,14 @@ const AddGiftWithLinkLayout = ({
   };
 
   useEffect(() => {
-    setNameText(openGraph.title);
-    setImageUrl(openGraph.image);
+    const fetchData = async () => {
+      setNameText(openGraph.title);
+      const convertedOgFile = await useConvertURLtoFile(openGraph.image);
+      setFile(convertedOgFile);
+      setImageUrl(openGraph.image);
+    };
+
+    fetchData();
   }, [openGraph]);
 
   return (

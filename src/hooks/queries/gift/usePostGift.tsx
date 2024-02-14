@@ -13,7 +13,7 @@ export const usePostGift = (roomId: number, targetDate: string) => {
   const mutation = useMutation({
     mutationFn: postNewGift,
     onSuccess: () => {
-      console.log('roomId, targetDate', roomId, targetDate);
+      // console.log('roomId, targetDate', roomId, targetDate);
       navigate(`/add-gift/${roomId}/${targetDate}`);
     },
 

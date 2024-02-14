@@ -36,9 +36,9 @@ const AddGiftFooter = ({
   cost,
   imageUrl,
   link,
-  // saveImageUrl,
+  saveImageUrl,
   fileName,
-  // fetchPresignedUrl,
+  fetchPresignedUrl,
   // setImageUrl,
 }: AddGiftFooterProps) => {
   // const updatedItemInfo = {
@@ -53,8 +53,8 @@ const AddGiftFooter = ({
 
   const onClick = async () => {
     console.log(fileName);
-    // const { presignedUrl } = await fetchPresignedUrl(fileName);
-    // await saveImageUrl(presignedUrl);
+    const { presignedUrl } = await fetchPresignedUrl(fileName);
+    await saveImageUrl(presignedUrl);
     // setImageUrl(presignedUrl);
     if (isActivated) {
       console.log('값', imageUrl);
