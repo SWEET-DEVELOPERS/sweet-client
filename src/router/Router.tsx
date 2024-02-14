@@ -13,7 +13,7 @@ import DetailDoneRoom from '../pages/MyPage/Detail/DetailDoneRoom/DetailDoneRoom
 import TournamentIntroContainer from '../components/Tournament/Intro/TournamentIntroContainer';
 import GiftHome from '../pages/GiftHome/GiftHome';
 
-import TournamentPage from '../pages/TournamentPage';
+import TournamentPage from '../pages/Tournament/TournamentPage';
 import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
 import InvitationDeadline from '../components/OnBoardingSteps/invitationDeadline/InvitationDeadline';
 import ParticipantsView from '../pages/Participants/ ParticipantsView';
