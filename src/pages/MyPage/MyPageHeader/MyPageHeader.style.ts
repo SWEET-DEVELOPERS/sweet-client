@@ -15,15 +15,14 @@ export const StartHeaderWrapper = styled.div`
 `;
 
 export const ImgWrapper = styled.header`
-  display: flex;
-  justify-content: flex-end;
+  ${({ theme: { mixin } }) => mixin.flexBox({ justify: 'flex-end' })};
   height: 5.6rem;
 `;
 
 export const SidebarWrapper = styled.div<{ isOpen: boolean }>`
-  display: flex;
-  flex-direction: column;
+  ${({ theme: { mixin } }) => mixin.flexBox({ direction: 'column' })};
   position: fixed;
+
   transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(-100%)')};
   transition: transform 0.3s ease-in-out;
 
@@ -39,18 +38,18 @@ export const SidebarWrapper = styled.div<{ isOpen: boolean }>`
 
 export const Sidebar = styled.div`
   padding: 4.5rem 1.6rem 1.6rem 1.6rem;
-  h2 {
+  p {
     ${({ theme }) => theme.fonts.heading_01};
     margin-bottom: 2.3rem;
   }
 `;
 export const ButtonWrapper = styled(IcCancel)`
-  position: absolute; /* 추가 */
-  right: 2rem; /* 추가 */
-  top: 50%; /* 추가 */
-  transform: translateY(-50%); /* 추가 */
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
 
   font-size: 20px;
   cursor: pointer;
-  z-index: 2; /* 추가 */
+  z-index: 2;
 `;

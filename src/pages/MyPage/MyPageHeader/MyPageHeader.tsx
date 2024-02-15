@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { IcCancel, IcMenu } from '../../../assets/svg';
-import * as S from './MyPageHeader.style';
 import { useNavigate } from 'react-router-dom';
+import * as S from './MyPageHeader.style';
 
 const MyPageHeader = () => {
   const navigate = useNavigate();
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
   const handleSettingIcon = () => {
     setSidebarOpen(!isSidebarOpen);
     navigate(`/mypage`);
@@ -13,12 +15,11 @@ const MyPageHeader = () => {
     setSidebarOpen(!isSidebarOpen);
     navigate(`/`);
   };
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
-    console.log('눌렀다!');
   };
+
   return (
     <S.StartHeaderWrapper>
       <S.SidebarWrapper isOpen={isSidebarOpen}>
@@ -27,8 +28,8 @@ const MyPageHeader = () => {
         </S.ImgWrapper>
 
         <S.Sidebar>
-          <h2 onClick={handleSettingHomeIcon}>홈</h2>
-          <h2 onClick={handleSettingIcon}>마이페이지</h2>
+          <p onClick={handleSettingHomeIcon}>홈</p>
+          <p onClick={handleSettingIcon}>마이페이지</p>
         </S.Sidebar>
       </S.SidebarWrapper>
 
