@@ -16,13 +16,8 @@ interface MyPage {
 const MyPage = () => {
   const memberData = useGetMyPage();
   const navigate = useNavigate();
-  const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
-  console.log(accessToken);
 
   const fetchAuth = async () => post(`/oauth/logout`);
-  console.log(memberData);
-  console.log(memberData?.data);
-  console.log(memberData?.data?.memberInfo);
 
   const userName = memberData?.data?.memberInfo.nickname;
   const userImage = memberData?.data?.memberInfo.profileImage;
