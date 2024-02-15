@@ -10,7 +10,7 @@ import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 import { kakaoURL } from '../../utils/login';
 
 export const isTokenExist = (): boolean => {
-  const token = localStorage.getItem('EXIT_LOGIN_TOKEN'); // 'yourTokenKey'는 실제 사용하는 토큰의 키로 대체하세요
+  const token = localStorage.getItem('EXIT_LOGIN_TOKEN');
   return !!token;
 };
 
