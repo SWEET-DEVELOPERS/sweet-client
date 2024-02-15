@@ -22,7 +22,7 @@ interface AddGiftFooterProps {
   link: string;
   saveImageUrl: (fileName: string) => Promise<void>;
   fileName: string;
-  fetchPresignedUrl: (fileName: string) => Promise<{ imageUrl: any; presignedUrl: any }>;
+  getPresignedUrl: (fileName: string) => Promise<{ presignedUrl: any }>;
   setImageUrl: React.Dispatch<React.SetStateAction<string>>;
 }
 
@@ -38,7 +38,7 @@ const AddGiftFooter = ({
   link,
   saveImageUrl,
   fileName,
-  fetchPresignedUrl,
+  getPresignedUrl,
   // setImageUrl,
 }: AddGiftFooterProps) => {
   // const updatedItemInfo = {
@@ -53,7 +53,7 @@ const AddGiftFooter = ({
 
   const onClick = async () => {
     console.log(fileName);
-    const { presignedUrl } = await fetchPresignedUrl(fileName);
+    const { presignedUrl } = await getPresignedUrl(fileName);
     await saveImageUrl(presignedUrl);
     // setImageUrl(presignedUrl);
     if (isActivated) {

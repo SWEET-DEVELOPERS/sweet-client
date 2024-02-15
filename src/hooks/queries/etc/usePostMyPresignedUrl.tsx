@@ -30,7 +30,6 @@ const usePostMyPresignedUrl = (roomId: number) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationKey: [MY_GIFT_QUERY_KEY[0]],
     mutationFn: postPresignedUrl,
     onSuccess: (data) => {
       console.log('usePostPresignedUrl onSuccess 내꺼로 포스트 성공~', data);
