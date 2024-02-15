@@ -9,7 +9,7 @@ import { OpenGraphResponseType } from '../../../types/etc';
 import usePostMyPresignedUrl from '../../../hooks/queries/etc/usePostMyPresignedUrl';
 import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
 import useConvertURLtoFile from '../../../hooks/useConvertURLtoFile';
-import { useHandleImageUpload } from '../../../hooks/queries/useHandleImageUpload';
+import { useHandleImageUpload } from '../../../hooks/queries/etc/useHandleImageUpload';
 // import { useNavigate } from 'react-router-dom';
 
 interface AddGiftWithLinkLayoutProps {
@@ -42,23 +42,14 @@ const AddGiftWithLinkLayout = ({
   console.log(previewImage);
 
   const setParsedFileName = (imageString: string) => {
-    // 확장자 제거
-    const imageNameWithoutExtension = imageString.replace(/\.[^/.]+$/, '');
-    console.log('imageNameWithoutExtension', imageNameWithoutExtension);
-    // 띄워쓰기 제거
-    const formattedImageName = imageNameWithoutExtension.replace(/\s/g, '');
-    console.log('formattedImageName', formattedImageName);
-
-    // 앞 3글자 가져오기
-    const firstThreeLetters = formattedImageName.substring(0, 3);
-    console.log('firstThreeLetters', firstThreeLetters);
-
     // 이미지 업로드 시간
     const uploadTime = new Date().toISOString();
     console.log('uploadTime', uploadTime);
+    const uniqueName = `${uploadTime}${imageString}`;
+    const finalImageName = uniqueName
+      .replace(/\//g, '') // 폴더링 방지를 위해 '/' 제거
+      .replace(/\s/g, ''); // 공백 제거
 
-    // 최종 이미지 이름
-    const finalImageName = `${firstThreeLetters}${uploadTime}`;
     console.log('finalImageName', finalImageName);
     setFileName(finalImageName);
     console.log('fileName', fileName);
@@ -99,7 +90,7 @@ const AddGiftWithLinkLayout = ({
   // const putPresignedUrl = usePutPresignedUrl();
   // const navigate = useNavigate();
 
-  const fetchPresignedUrl = async (fileName: string) => {
+  const getPresignedUrl = async (fileName: string) => {
     if (openGraph.image) {
       const openGraphFileName = setParsedFileName(openGraph.image);
 
@@ -120,18 +111,19 @@ const AddGiftWithLinkLayout = ({
       console.log('imageUrl', imageUrl);
       console.log('presignedUrl', presignedUrl);
       setImageUrl(imageUrl);
-      return { imageUrl, presignedUrl };
+      return { presignedUrl };
     }
   };
 
   const { putFormData } = useHandleImageUpload();
 
   const saveImageUrl = async (fileName: string) => {
-    const { presignedUrl, imageUrl } = await fetchPresignedUrl(fileName);
-    console.log('imageurl 확인용', imageUrl);
+    const { presignedUrl } = await getPresignedUrl(fileName);
+    // console.log('imageurl 확인용', imageUrl);
     if (presignedUrl && presignedUrl !== '') {
       if (file) {
-        putFormData(presignedUrl, file);
+        putFormData({ presignedUrl, file });
+        console.log('이미지 풋 성공');
       } else {
         console.error('파일이 없어요!');
       }
@@ -196,7 +188,7 @@ const AddGiftWithLinkLayout = ({
         itemInfo={itemInfo}
         saveImageUrl={saveImageUrl}
         fileName={fileName}
-        fetchPresignedUrl={fetchPresignedUrl}
+        getPresignedUrl={getPresignedUrl}
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );
