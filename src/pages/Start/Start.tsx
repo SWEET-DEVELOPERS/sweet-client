@@ -3,7 +3,7 @@ import StartHeader from './StartHeader/StartHeader';
 import Footer from '../../components/Footer/Footer';
 import StartScrollAnimation from './StartAnimation/ScrollAnimation/StartScrollAnimation';
 import StartGiftAnimation from './StartAnimation/GiftAnimation/StartGiftAnimation';
-import StartFixedButton from './StartFixedButton/StartFixedButton';
+import StartFixedButton from './StartButtonWithTokenCheck/StartButtonWithTokenCheck';
 
 const Start = () => {
   return (
