@@ -13,11 +13,12 @@ interface MyPage {
 }
 
 const MyPage = () => {
-  const memberData = useGetMyPage();
   const navigate = useNavigate();
 
-  const userName = memberData?.data?.memberInfo.nickname;
+  const memberData = useGetMyPage();
+
   const userImage = memberData?.data?.memberInfo.profileImage;
+  const userName = memberData?.data?.memberInfo.nickname;
   const translatedUserName = userName && userName.length > 5 ? userName.substring(0, 5) : userName;
 
   const progressRoomData = memberData?.data?.activeRooms;
