@@ -74,7 +74,7 @@ export type ActiveRoomArrayType = {
   imageUrl: string;
   gifteeName: string;
   gifterNumber: number;
-  tournamentStartDate: Date;
+  tournamentStartDate: string;
   isOwner: boolean;
 };
 
