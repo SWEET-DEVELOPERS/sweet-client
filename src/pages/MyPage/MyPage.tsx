@@ -5,7 +5,6 @@ import DoneGiftView from './GiftRoomView/DoneGiftView/DoneGiftView';
 import ProgressGiftView from './GiftRoomView/ProgressGiftView/ProgressGiftView';
 import useGetMyPage from '../../hooks/queries/member/useGetMypage';
 import { MyPageType } from '../../types/member';
-import { post } from '../../apis/client';
 import * as S from './MyPage.style';
 import { useNavigate } from 'react-router';
 import StartHeader from '../Start/StartHeader/StartHeader';
@@ -17,8 +16,6 @@ const MyPage = () => {
   const memberData = useGetMyPage();
   const navigate = useNavigate();
 
-  const fetchAuth = async () => post(`/oauth/logout`);
-
   const userName = memberData?.data?.memberInfo.nickname;
   const userImage = memberData?.data?.memberInfo.profileImage;
   const translatedUserName = userName && userName.length > 5 ? userName.substring(0, 5) : userName;
@@ -27,14 +24,6 @@ const MyPage = () => {
   const doneMemberRoomData = memberData?.data?.closedRooms;
 
   const giftData: boolean = progressRoomData !== null && doneMemberRoomData !== null;
-
-  const handleClick = () => {
-    fetchAuth().then((response: any) => {
-      console.log(response);
-    });
-    localStorage.removeItem('EXIT_LOGIN_TOKEN');
-    navigate('/');
-  };
 
   const goOnboarding = () => {
     navigate('/onboarding');
@@ -52,9 +41,7 @@ const MyPage = () => {
               <S.User>{translatedUserName}</S.User>님
             </S.UserName>
           </S.UserWrapper>
-          <BtnLogout onClick={handleClick} customStyle={{ width: '8.4rem', height: '2.6rem' }}>
-            로그아웃
-          </BtnLogout>
+          <BtnLogout customStyle={{ width: '8.4rem', height: '2.6rem' }}>로그아웃</BtnLogout>
         </S.UserButtonWrapper>
         <BtnFill
           onClick={goOnboarding}
