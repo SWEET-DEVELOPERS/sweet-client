@@ -13,17 +13,12 @@ const EditRoom = () => {
 
   const roomIdString = params.roomId;
   const roomId = parseInt(roomIdString || '', 10);
-  console.log('추출된 초대 코드', roomId);
   const roomWholeMemberData = useGetRoomMember(roomId).data;
   const roomWholeOwnerData = useGetRoomOwner(roomId).data;
-  console.log(roomWholeMemberData);
-  console.log(roomWholeOwnerData);
 
   const roomOwnerData = roomWholeOwnerData?.owner;
   const roomGifteeData = roomWholeOwnerData.room;
   const roomMemberData = roomWholeMemberData.members;
-
-  console.log(roomOwnerData);
 
   return (
     <S.EditRoomWrapper>
