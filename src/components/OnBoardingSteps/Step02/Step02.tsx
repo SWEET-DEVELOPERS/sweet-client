@@ -1,5 +1,5 @@
 import Title from '../../common/title/Title';
-import { IcEmptyThumbnail } from '../../../assets/svg';
+import { IcEmptyThumbnail, IcImgEditBtn } from '../../../assets/svg';
 import * as S from './Step02.style';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import usePreviewImage from '../../../hooks/common/usePreviewImage';
@@ -20,6 +20,7 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
 
   const postPresignedUrl = usePostPresignedUrl();
 
+  /**@todo 추후 분리 */
   const fetchPresignedUrl = async (filename: string) => {
     try {
       postPresignedUrl.mutate(filename, {
@@ -56,7 +57,11 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
         <label htmlFor='imgInput'>
           <IcEmptyThumbnail style={{ width: '24rem', height: '24rem', position: 'relative' }} />
         </label>
-        {previewImage && <S.PreviewImg src={previewImage} />}
+        {previewImage && (
+          <>
+            <S.PreviewImg src={previewImage} />
+          </>
+        )}
       </S.IcEmptyThumbnailWrapper>
       <OnBoardingBtn
         isActivated={isImageUploaded}
