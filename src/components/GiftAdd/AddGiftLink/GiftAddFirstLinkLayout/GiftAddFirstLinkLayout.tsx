@@ -7,6 +7,7 @@ import * as S from '../common/GiftAddLinkLayout.styled';
 import Title from '../../../common/title/Title';
 import usePostOpenGraph from '../../../../hooks/queries/etc/usePostOpengraph';
 import { OpenGraphResponseType } from '../../../../types/etc';
+import { AddGiftInfo } from '../../../../types/gift';
 // import { LinkText } from '../../ShowLink/ShowLink.styled';
 // import { useNavigate } from 'react-router-dom';
 
@@ -19,6 +20,8 @@ interface GiftAddFirstLinkLayoutProps {
   setOpenGraph: React.Dispatch<React.SetStateAction<OpenGraphResponseType>>;
   targetDate: string;
   setModalStatus: React.Dispatch<React.SetStateAction<boolean>>;
+  updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
+  addGiftInfo: AddGiftInfo;
 }
 
 const GiftAddFirstLinkLayout = ({
@@ -30,9 +33,11 @@ const GiftAddFirstLinkLayout = ({
   setOpenGraph,
   targetDate,
   setModalStatus,
+  updateAddGiftInfo,
+  addGiftInfo,
 }: GiftAddFirstLinkLayoutProps) => {
-  const [isActivated, setIsActivated] = useState(false);
-  const [text, setText] = useState<string>('');
+  const [isActivated, setIsActivated] = useState(!!addGiftInfo.url);
+  const [text, setText] = useState<string>(addGiftInfo.url);
   const { mutation } = usePostOpenGraph({ body: { BaseURL: text } });
 
   const fetchOpenGraph = (BaseUrl: string) => {
@@ -49,6 +54,7 @@ const GiftAddFirstLinkLayout = ({
             console.log('fetchOpenGraph 속 response', response);
 
             setLinkText(text);
+            updateAddGiftInfo({ url: text, imageUrl: giftImage });
             setStep(2);
           },
           onError: () => {
@@ -69,7 +75,13 @@ const GiftAddFirstLinkLayout = ({
 
   return (
     <S.GiftAddLinkLayoutWrapper>
-      <LinkAddHeader targetDate={targetDate} setStep={setStep} step={step} />
+      <LinkAddHeader
+        targetDate={targetDate}
+        setStep={setStep}
+        step={step}
+        url={text}
+        updateAddGiftInfo={updateAddGiftInfo}
+      />
       <GiftStatusBar registeredGiftNum={itemNum} isMargin={true} />
       <Title title={itemNum === 0 ? '첫번째 상품의 ' : '두번째 상품의'} />
       <Title title='판매 링크를 입력해주세요' />
