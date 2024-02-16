@@ -7,7 +7,6 @@ interface TournamentFooterProps {
 }
 
 const TournamentFooter = ({ onNextClick, disabled }: TournamentFooterProps) => {
-  console.log('여기선?', disabled);
   return (
     <>
       <S.TournamentFooterWrapper>
