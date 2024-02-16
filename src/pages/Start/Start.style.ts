@@ -14,9 +14,10 @@ import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 export const Wrapper = styled.div`
   background-image: url(${HomeBg});
   background-size: cover;
+  width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
-  ${({ theme: { mixin } }) => mixin.flexCenter};
+  ${({ theme: { mixin } }) => mixin.flexCenter({})};
   margin: auto;
   background-color: #fafafa;
 `;
@@ -34,7 +35,7 @@ export const ImgWrapper = styled.div`
   }
 `;
 export const TextWrapper = styled.div`
-  ${({ theme: { mixin } }) => mixin.flexCenter};
+  ${({ theme: { mixin } }) => mixin.flexCenter({})};
   position: absolutes;
   margin-top: -11rem;
 
@@ -42,7 +43,7 @@ export const TextWrapper = styled.div`
 `;
 
 export const TitleText = styled.div`
-  ${({ theme: { mixin } }) => mixin.flexCenter};
+  ${({ theme: { mixin } }) => mixin.flexCenter({})};
   text-align: center;
   font-family: 'SUIT';
   font-size: 42px;
@@ -78,9 +79,11 @@ export const BtnGradient = styled(HomeCtaBgGradient)`
 `;
 
 export const PersonWrapper = styled.div`
+  ${({ theme: { mixin } }) => mixin.flexCenter({})};
   position: absolute;
   top: 86rem;
-  z-index: 1;
+  width: 37.5rem;
+  padding: 2rem;
 `;
 
 export const BtnFillStyle = styled(BtnFill)`

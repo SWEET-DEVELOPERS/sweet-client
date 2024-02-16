@@ -60,7 +60,6 @@ const Start = () => {
       ) : (
         <S.KakaoLogin onClick={handleLogin} />
       )}
-      {/* <S.BtnGradient /> */}
 
       <S.Main2 />
       <S.PersonWrapper>
@@ -73,6 +72,7 @@ const Start = () => {
           <Person4 style={{ width: '22.5rem' }} />
         </ScrollAnimationLeftContainer>
       </S.PersonWrapper>
+
       <S.Main3 />
       <S.Main4 />
       <Footer customStyle={{ position: 'absolute', top: '283rem' }} />

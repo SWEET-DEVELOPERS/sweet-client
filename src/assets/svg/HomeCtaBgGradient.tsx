@@ -1,6 +1,12 @@
 import type { SVGProps } from 'react';
 const SvgHomeCtaBgGradient = (props: SVGProps<SVGSVGElement>) => (
-  <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 374 163' {...props}>
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    fill='none'
+    viewBox='0 0 374 163'
+    width='37.5rem'
+    {...props}
+  >
     <path
       fill='url(#home_cta_bg_gradient_svg__a)'
       d='M374 163h374v163H374z'
