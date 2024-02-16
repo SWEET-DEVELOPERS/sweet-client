@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const TournamentStartTextWrapper = styled.article`
-  display: flex;
-  flex-direction: column;
+  ${({ theme: { mixin } }) => mixin.flexBox({ direction: 'column' })};
   gap: 0.4rem;
   margin-bottom: 2rem;
 
