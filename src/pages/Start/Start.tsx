@@ -1,5 +1,5 @@
 import * as S from './Start.style';
-import StartHeader from './StartHeader/StartHeader';
+import StartHeader from '../../components/LogoHeader/LogoHeader';
 import Footer from '../../components/Footer/Footer';
 import StartScrollAnimation from './StartAnimation/ScrollAnimation/StartScrollAnimation';
 import StartGiftAnimation from './StartAnimation/GiftAnimation/StartGiftAnimation';
@@ -8,7 +8,6 @@ import StartFixedButton from './StartButtonWithTokenCheck/StartButtonWithTokenCh
 const Start = () => {
   return (
     <S.Wrapper>
-      <StartHeader />
       <StartGiftAnimation />
       <S.Gradient />
       <S.DownIcon />

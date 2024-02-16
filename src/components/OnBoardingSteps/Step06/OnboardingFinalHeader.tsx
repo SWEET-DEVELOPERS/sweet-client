@@ -1,4 +1,4 @@
-import StartHeader from '../../../pages/Start/StartHeader/StartHeader';
+import StartHeader from '../../LogoHeader/LogoHeader';
 
 const OnboardingFinalHeader = () => {
   return <StartHeader />;

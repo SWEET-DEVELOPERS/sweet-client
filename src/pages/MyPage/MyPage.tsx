@@ -8,7 +8,7 @@ import { MyPageType } from '../../types/member';
 import { post } from '../../apis/client';
 import * as S from './MyPage.style';
 import { useNavigate } from 'react-router';
-import StartHeader from '../Start/StartHeader/StartHeader';
+import StartHeader from '../../components/LogoHeader/LogoHeader';
 interface MyPage {
   memberData: MyPageType;
 }
@@ -47,7 +47,6 @@ const MyPage = () => {
 
   return (
     <S.MyPageWrapper>
-      <StartHeader />
       <S.TopImage />
       <S.ProfileWrapper>
         <S.UserButtonWrapper>

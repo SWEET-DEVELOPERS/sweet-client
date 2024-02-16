@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { IcCancel } from '../../../assets/svg';
+import { IcCancel } from '../../assets/svg';
 
-export const StartHeaderWrapper = styled.div`
+export const LogoHeaderWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({})};
   position: fixed;
   width: 100%;
