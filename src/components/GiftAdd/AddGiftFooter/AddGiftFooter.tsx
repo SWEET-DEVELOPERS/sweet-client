@@ -1,6 +1,3 @@
-// import { useNavigate } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-// import { IcLeft } from '../../../assets/svg';
 import usePostGift from '../../../hooks/queries/gift/usePostGift';
 import GiftAddNextBtn from '../AddGiftLink/common/GiftAddNextBtn/GiftAddNextBtn';
 import * as S from './AddGiftFooter.styled';
@@ -44,18 +41,9 @@ const AddGiftFooter = ({
   // setImageUrl,
   updateAddGiftInfo,
 }: AddGiftFooterProps) => {
-  // const updatedItemInfo = {
-  //   roomId: itemInfo.roomId,
-  //   name: name,
-  //   cost: cost,
-  //   imageUrl: imageUrl,
-  //   url: link,
-  // };
-  const navigate = useNavigate();
-  const { mutation } = usePostGift(itemInfo.roomId, targetDate);
+  const { mutation } = usePostGift(itemInfo.roomId, targetDate, setStep);
 
-  const onClick = async () => {
-    console.log(fileName);
+  function onClickBtn() {
     // const { presignedUrl } = await fetchPresignedUrl(fileName);
     // await saveImageUrl(presignedUrl);
     // setImageUrl(presignedUrl);
@@ -63,50 +51,28 @@ const AddGiftFooter = ({
       updateAddGiftInfo({ name: '', cost: 0, imageUrl: '', url: ',' });
       console.log('값', imageUrl);
       if (openGraph.image) {
-        mutation.mutate(
-          {
-            roomId: itemInfo.roomId,
-            name: name,
-            cost: cost,
-            imageUrl: imageUrl,
-            url: link,
-          },
-          {
-            onSuccess: () => {
-              // console.log('PUT 서버통신 후 presignedUrl', presignedUrl);
-              navigate(`/add-gift/${itemInfo.roomId}/${targetDate}`);
-              setStep(0);
-            },
-          },
-        );
+        mutation.mutate({
+          roomId: itemInfo.roomId,
+          name: name,
+          cost: cost,
+          imageUrl: imageUrl,
+          url: link,
+        });
       } else {
-        mutation.mutate(
-          {
-            roomId: itemInfo.roomId,
-            name: name,
-            cost: cost,
-            imageUrl: '',
-            url: link,
-          },
-          {
-            onSuccess: () => {
-              // console.log('PUT 서버통신 후 presignedUrl', presignedUrl);
-              navigate(`/add-gift/${itemInfo.roomId}/${targetDate}`);
-              setStep(0);
-            },
-          },
-        );
+        mutation.mutate({
+          roomId: itemInfo.roomId,
+          name: name,
+          cost: cost,
+          imageUrl: '',
+          url: link,
+        });
       }
     }
-  };
-
-  // const handlePrevBtnClick = () => {
-  //   setStep(1);
-  // };
+  }
 
   return (
     <S.AddGiftFooterWrapper>
-      <GiftAddNextBtn isActivated={isActivated} onClick={onClick} children='완료' />
+      <GiftAddNextBtn isActivated={isActivated} onClick={onClickBtn} children='완료' />
     </S.AddGiftFooterWrapper>
   );
 };

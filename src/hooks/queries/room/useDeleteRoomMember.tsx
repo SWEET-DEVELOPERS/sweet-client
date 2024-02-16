@@ -11,18 +11,16 @@ export const deleteRoomMember = async ({ roomId, memberId }: DeleteRoomMember) =
   await del(`/room/${roomId}/members/${memberId}`);
 };
 
-const useDeleteRoomMember = ({ roomId, memberId }: DeleteRoomMember) => {
+const useDeleteRoomMember = ({ roomId }: DeleteRoomMember) => {
   const queryClient = useQueryClient();
-
   const mutation = useMutation({
-    mutationKey: [ROOM_MEMBER_QUERY_KEY[0]],
     mutationFn: deleteRoomMember,
     onSuccess() {
       console.log('삭제 성공');
-      queryClient.invalidateQueries({ queryKey: [ROOM_MEMBER_QUERY_KEY[0], roomId, memberId] });
+      queryClient.invalidateQueries({ queryKey: [...ROOM_MEMBER_QUERY_KEY, roomId] });
     },
-    onError: () => {
-      console.log('선물 삭제 중 에러가 발생했습니다.');
+    onError: (error) => {
+      console.log('선물 삭제 중 에러가 발생했습니다.', error.message);
     },
   });
   return { mutation };
