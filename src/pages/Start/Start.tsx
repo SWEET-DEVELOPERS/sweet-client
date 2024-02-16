@@ -1,5 +1,4 @@
 import * as S from './Start.style';
-import StartHeader from './LogoHeader/LogoHeader';
 import Footer from '../../components/Footer/Footer';
 import StartScrollAnimation from './StartAnimation/ScrollAnimation/StartScrollAnimation';
 import StartGiftAnimation from './StartAnimation/GiftAnimation/StartGiftAnimation';
