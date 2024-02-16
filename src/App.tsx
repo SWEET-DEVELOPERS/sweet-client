@@ -1,6 +1,5 @@
 import { QueryClient, QueryClientProvider, QueryErrorResetBoundary } from '@tanstack/react-query';
 import { RouterProvider } from 'react-router-dom';
-import { RecoilRoot } from 'recoil';
 import router from './router/Router';
 import GlobalStyle from './style/GlobalStyle';
 import { styled } from 'styled-components';
@@ -18,20 +17,18 @@ function App() {
 
   return (
     <Wrapper>
-      <RecoilRoot>
-        <QueryClientProvider client={queryClient}>
-          <QueryErrorResetBoundary>
-            {({ reset }) => (
-              <ErrorBoundary onReset={() => reset()} FallbackComponent={FallbackUI}>
-                <Suspense fallback={<Loading />}>
-                  <RouterProvider router={router} />
-                  <GlobalStyle />
-                </Suspense>
-              </ErrorBoundary>
-            )}
-          </QueryErrorResetBoundary>
-        </QueryClientProvider>
-      </RecoilRoot>
+      <QueryClientProvider client={queryClient}>
+        <QueryErrorResetBoundary>
+          {({ reset }) => (
+            <ErrorBoundary onReset={() => reset()} FallbackComponent={FallbackUI}>
+              <Suspense fallback={<Loading />}>
+                <RouterProvider router={router} />
+                <GlobalStyle />
+              </Suspense>
+            </ErrorBoundary>
+          )}
+        </QueryErrorResetBoundary>
+      </QueryClientProvider>
     </Wrapper>
   );
 }
