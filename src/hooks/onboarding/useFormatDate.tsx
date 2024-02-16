@@ -39,21 +39,18 @@ const useFormatDate = () => {
     }
   };
 
-  const infoDetails = onboardingInfo.gifteeName
-    ? [
-        { title: '선물 받을 사람', detail: onboardingInfo.gifteeName },
-        {
-          title: '선물 등록 마감',
-          detail: formatDate(onboardingInfo.tournamentStartDate, true),
-        },
-        {
-          title: '토너먼트 진행 시간',
-          detail: formatDuration(onboardingInfo.tournamentDuration),
-        },
-        { title: '선물 전달일', detail: formatDate(onboardingInfo.deliveryDate, false) },
-      ]
-    : [];
-
+  const infoDetails = [
+    { title: '선물 받을 사람', detail: onboardingInfo.gifteeName },
+    {
+      title: '선물 등록 마감',
+      detail: formatDate(onboardingInfo.tournamentStartDate, true),
+    },
+    {
+      title: '토너먼트 진행 시간',
+      detail: formatDuration(onboardingInfo.tournamentDuration),
+    },
+    { title: '선물 전달일', detail: formatDate(onboardingInfo.deliveryDate, false) },
+  ];
   return {
     infoDetails,
   };

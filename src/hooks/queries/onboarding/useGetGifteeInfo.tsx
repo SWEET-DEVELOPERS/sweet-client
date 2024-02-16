@@ -1,6 +1,6 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { get } from '../../../apis/client';
 import { AxiosResponse } from 'axios';
+import { get } from '../../../apis/client';
 
 export const ONBOARDING_INFO_QUERY_KEY: string[] = ['onboardingData'];
 
@@ -12,7 +12,7 @@ export const fetchOnboarding = async (invitationCode: string) => {
 
 const useGetGifteeInfo = (invitationCode: string | null) => {
   if (invitationCode === null) {
-    // ... null에 대한 처리 로직
+    //  null에 대한 처리 로직
     return { data: null, isLoading: false, isError: false };
   }
   const { data, isLoading, isError } = useSuspenseQuery<any, Error>({
