@@ -2,7 +2,7 @@ import Title from '../../common/title/Title';
 import * as S from './Step06.style';
 import { IcKakaoShare, IcLink } from '../../../assets/svg';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import OnboardingFinalHeader from './OnboardingFinalHeader';
 import useClipboard from '../../../hooks/useCopyClip';
@@ -39,10 +39,6 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
         {/* TODO presignedUrl이 null 또는 빈 스트링일 경우 엠티 뷰 보이기 / 값이 있으면 저장되어있는 imageUrl 보이기 */}
         <div>
           <S.GradientImg>
-            {/* <img
-              src='https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/sweet.png'
-              style={{ width: '100%' }}
-            /> */}
             <img src={onboardingInfo.imageUrl} style={{ width: '100%' }} />
             <S.TitleContainer>
               <S.TitleWrapper>
@@ -72,11 +68,10 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
       </S.InfoWrapper>
       <S.BtnWrapper>
         <S.LinkCopyBtn
-          onClick={
-            () =>
-              // TODO 추후 로컬 주소를 배포 주소로 변경
-              handleCopyToClipboard(`http://localhost:5173/result/${invitationCode}`)
-            // handleCopyToClipboard(`http://sweetgift.vercel.app/result/${invitationCode}`)
+          onClick={() =>
+            // TODO 추후 로컬 주소를 배포 주소로 변경 및 주소 상수처리
+            // handleCopyToClipboard(`http://localhost:5173/result/${invitationCode}`)
+            handleCopyToClipboard(`http://sweetgift.vercel.app/result/${invitationCode}`)
           }
         >
           <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
