@@ -7,7 +7,11 @@ const StartScrollAnimation = () => {
     <S.PersonWrapper>
       <ScrollAnimationContainer>
         <Person1 style={{ width: '25.1rem' }} />
+      </ScrollAnimationContainer>
+      <ScrollAnimationContainer>
         <Person2 style={{ width: '21.4rem' }} />
+      </ScrollAnimationContainer>
+      <ScrollAnimationContainer>
         <Person3 style={{ width: '31.5rem' }} />
       </ScrollAnimationContainer>
       <ScrollAnimationLeftContainer>

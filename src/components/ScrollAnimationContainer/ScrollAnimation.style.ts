@@ -37,7 +37,7 @@ const frameInAnimationUp = keyframes`
 export const Container = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ direction: 'column' })};
   max-width: 37.5rem;
-  gap: 2.4rem;
+  margin: 2.4rem;
 
   &.frame-in {
     animation: ${frameInAnimation} 2s forwards;
