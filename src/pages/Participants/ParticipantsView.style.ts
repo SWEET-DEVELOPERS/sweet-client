@@ -105,5 +105,5 @@ export const LinkCopyBtn = styled.button`
 `;
 
 export const ParticipantsTitleWrapper = styled.div`
-  margin-bottom: 8rem;
+  margin-bottom: 4rem;
 `;
