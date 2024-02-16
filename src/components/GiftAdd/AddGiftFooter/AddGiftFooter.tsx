@@ -37,14 +37,14 @@ function AddGiftFooter({
   const { putImageUrlToS3 } = usePutImageUrlToS3(roomId);
 
   const onClick = async () => {
-    putImageUrlToS3({ fileName, file, roomId, setImageUrl });
+    const { imageUrlS3 } = await putImageUrlToS3({ fileName, file, roomId, setImageUrl });
     if (isActivated) {
       mutation.mutate(
         {
           roomId: roomId,
           name: name,
           cost: cost,
-          imageUrl: imageUrl,
+          imageUrl: imageUrlS3,
           url: link,
         },
         {

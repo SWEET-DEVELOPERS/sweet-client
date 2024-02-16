@@ -13,7 +13,7 @@ const usePutImageUrlToS3 = (roomId: number) => {
   const { binarizeAndPutImage } = useBinarizeAndPutImage();
 
   const putImageUrlToS3 = async ({ fileName, file, roomId, setImageUrl }: PutImageUrlToS3Props) => {
-    const presignedUrl = await getPresignedUrl({ roomId, fileName, setImageUrl });
+    const { presignedUrl, imageUrlS3 } = await getPresignedUrl({ roomId, fileName, setImageUrl });
     if (presignedUrl && presignedUrl !== '') {
       if (file) {
         await binarizeAndPutImage({ presignedUrl, file });
@@ -23,6 +23,7 @@ const usePutImageUrlToS3 = (roomId: number) => {
     } else {
       console.log('preSignedUrl이 비어있어서 putPresignedUrl을 실행하지 않습니다.');
     }
+    return { imageUrlS3 };
   };
 
   return { putImageUrlToS3 };

@@ -16,9 +16,9 @@ const useGetPresignedUrl = (roomId: number) => {
     } else {
       const response = await postPresignedUrl.mutateAsync({ filename: fileName });
       const presignedUrl = response.presignedUrl;
-      const imageUrl = presignedUrl.split('?')[0];
-      setImageUrl(imageUrl);
-      return presignedUrl;
+      const imageUrlS3 = presignedUrl.split('?')[0];
+      setImageUrl(imageUrlS3);
+      return { presignedUrl, imageUrlS3 };
     }
   };
   return { getPresignedUrl };
