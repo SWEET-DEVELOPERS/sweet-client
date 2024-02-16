@@ -3,7 +3,8 @@ import Type1Tag from '../../../../components/IcTag/Type1/Type1';
 import ProfileImage from '../../ProfileImage/ProfileImage';
 import * as S from './CardGuest.style';
 import useDeleteRoomMember from '../../../../hooks/queries/room/useDeleteRoomMember';
-import { useLocation } from 'react-router';
+// import { useLocation } from 'react-router';
+import { useParams } from 'react-router-dom';
 
 interface CardGuestProps {
   user: string;
@@ -13,9 +14,9 @@ interface CardGuestProps {
 }
 
 const CardGuest = ({ user, makerState, profileImageUrl, memberId }: CardGuestProps) => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const roomIdString = searchParams.get('roomId');
+  const params = useParams();
+  const roomIdString = params.roomId;
+
   const roomId = parseInt(roomIdString || '');
   console.log('추출된 초대 코드', roomId);
   const { mutation } = useDeleteRoomMember({ roomId, memberId });
