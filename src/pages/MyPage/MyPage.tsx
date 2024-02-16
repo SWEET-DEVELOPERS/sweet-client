@@ -8,7 +8,7 @@ import { MyPageType } from '../../types/member';
 import { post } from '../../apis/client';
 import * as S from './MyPage.style';
 import { useNavigate } from 'react-router';
-import StartHeader from '../../components/LogoHeader/LogoHeader';
+import StartHeader from '../Start/LogoHeader/LogoHeader';
 interface MyPage {
   memberData: MyPageType;
 }

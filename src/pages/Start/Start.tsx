@@ -1,13 +1,15 @@
 import * as S from './Start.style';
-import StartHeader from '../../components/LogoHeader/LogoHeader';
+import StartHeader from './LogoHeader/LogoHeader';
 import Footer from '../../components/Footer/Footer';
 import StartScrollAnimation from './StartAnimation/ScrollAnimation/StartScrollAnimation';
 import StartGiftAnimation from './StartAnimation/GiftAnimation/StartGiftAnimation';
 import StartFixedButton from './StartButtonWithTokenCheck/StartButtonWithTokenCheck';
+import LogoHeader from './LogoHeader/LogoHeader';
 
 const Start = () => {
   return (
     <S.Wrapper>
+      <LogoHeader />
       <StartGiftAnimation />
       <S.Gradient />
       <S.DownIcon />

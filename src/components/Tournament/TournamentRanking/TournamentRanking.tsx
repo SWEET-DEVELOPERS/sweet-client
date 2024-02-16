@@ -4,7 +4,7 @@ import { RankingWrapper } from './TournamentRanking.style';
 import { IcMedal1, IcMedal2, IcMedal3, IcMedal4 } from '../../../assets/svg';
 import useGetRanking from '../../../hooks/queries/tournament/useGetRanking';
 import * as S from './TournamentRanking.style';
-import StartHeader from '../../LogoHeader/LogoHeader';
+import StartHeader from '../../../pages/Start/LogoHeader/LogoHeader';
 
 interface TournamentRankingProps {
   roomId: number;

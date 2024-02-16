@@ -28,14 +28,14 @@ const router = createBrowserRouter([
         element: <HeaderLayout />,
         children: [
           {
-            path: '/',
-            element: <Start />,
-          },
-          {
             path: '/mypage',
             element: <MyPage />,
           },
         ],
+      },
+      {
+        path: '/',
+        element: <Start />,
       },
       {
         path: '/api/oauth/kakao/login',
