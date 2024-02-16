@@ -49,6 +49,7 @@ const AddGiftWithLinkLayout = ({
       setNameText(openGraph.title);
       const convertedOgFile = await useConvertURLtoFile(openGraph.image);
       setFile(convertedOgFile);
+      setFileName(openGraph.image);
       setImageUrl(openGraph.image);
     };
 
