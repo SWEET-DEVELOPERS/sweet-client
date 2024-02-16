@@ -55,14 +55,43 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
           onChange={handleImageUpload}
         />
         <label htmlFor='imgInput'>
-          <IcEmptyThumbnail style={{ width: '24rem', height: '24rem', position: 'relative' }} />
+          {previewImage ? (
+            <S.ThumbnailWrapper>
+              <img
+                src={previewImage}
+                alt='preview'
+                style={{
+                  position: 'relative',
+                  width: '24rem',
+                  height: '24rem',
+                  borderRadius: '1.2rem',
+                }}
+              />
+              <IcImgEditBtn
+                style={{
+                  position: 'absolute',
+                  width: '2.8rem',
+                  height: '2.8rem',
+                  top: '0.8rem',
+                  right: '0.8rem',
+                  cursor: 'pointer',
+                }}
+              />
+            </S.ThumbnailWrapper>
+          ) : (
+            <IcEmptyThumbnail
+              style={{
+                width: '24rem',
+                height: '24rem',
+                position: 'relative',
+                marginTop: '2.8rem',
+                cursor: 'pointer',
+              }}
+            />
+          )}
         </label>
-        {previewImage && (
-          <>
-            <S.PreviewImg src={previewImage} />
-          </>
-        )}
       </S.IcEmptyThumbnailWrapper>
+
       <OnBoardingBtn
         isActivated={isImageUploaded}
         setStep={() => {
