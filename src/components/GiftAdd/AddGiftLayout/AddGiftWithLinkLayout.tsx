@@ -8,7 +8,6 @@ import AddGiftImg from './common/AddGiftImg/AddGiftImg';
 import { OpenGraphResponseType } from '../../../types/etc';
 import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
 import useConvertURLtoFile from '../../../hooks/useConvertURLtoFile';
-import useParseFileName from '../../../hooks/useParseFileName';
 
 interface AddGiftWithLinkLayoutProps {
   link: string;
