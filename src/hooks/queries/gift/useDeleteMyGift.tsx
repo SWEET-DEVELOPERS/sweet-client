@@ -6,7 +6,7 @@ export async function deleteMyGift(giftId: number) {
   await del(`/gift/my/${giftId}`);
 }
 
-export function useDeleteMyGift(roomId: number) {
+export const useDeleteMyGift = (roomId: number) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -21,6 +21,6 @@ export function useDeleteMyGift(roomId: number) {
   });
 
   return { mutation };
-}
+};
 
 export default useDeleteMyGift;

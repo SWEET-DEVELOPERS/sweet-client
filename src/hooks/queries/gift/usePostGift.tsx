@@ -8,11 +8,11 @@ export async function postNewGift(body: GiftPostRequestType) {
   await post(`/gift`, body);
 }
 
-export function usePostGift(
+export const usePostGift = (
   roomId: number,
   targetDate: string,
   setStep: React.Dispatch<React.SetStateAction<number>>,
-) {
+) => {
   const navigate = useNavigate();
 
   const queryClient = useQueryClient();
@@ -31,6 +31,6 @@ export function usePostGift(
   });
 
   return { mutation };
-}
+};
 
 export default usePostGift;
