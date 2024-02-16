@@ -11,27 +11,24 @@ interface AddGiftFooterProps {
   isActivated: boolean;
   name: string;
   cost: number;
-  imageUrl: string;
   link: string;
   file: File | null;
   setImageUrl: React.Dispatch<React.SetStateAction<string>>;
   fileName: string;
 }
 
-function AddGiftFooter({
+const AddGiftFooter = ({
   targetDate,
   roomId,
   setStep,
   isActivated,
   name,
   cost,
-  imageUrl,
   link,
   file,
   setImageUrl,
-
   fileName,
-}: AddGiftFooterProps) {
+}: AddGiftFooterProps) => {
   const navigate = useNavigate();
   const { mutation } = usePostGift(roomId, targetDate, setStep);
   const { putImageUrlToS3 } = usePutImageUrlToS3(roomId);
@@ -62,5 +59,5 @@ function AddGiftFooter({
       <GiftAddNextBtn isActivated={isActivated} onClick={onClick} children='완료' />
     </S.AddGiftFooterWrapper>
   );
-}
+};
 export default AddGiftFooter;

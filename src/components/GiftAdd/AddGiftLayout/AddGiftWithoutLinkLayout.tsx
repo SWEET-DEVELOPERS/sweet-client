@@ -16,15 +16,16 @@ interface AddGiftWithLinkLayoutProps {
   targetDate: string;
   modalStatus: boolean;
 }
+
 // 직접 입력 화면
-function AddGiftWithoutLinkLayout({
+export const AddGiftWithoutLinkLayout = ({
   roomId,
   step,
   setStep,
   linkText,
   setLinkText,
   targetDate,
-}: AddGiftWithLinkLayoutProps) {
+}: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(false);
   const [nameText, setNameText] = useState<string>('');
   const [priceText, setPriceText] = useState<number | null>(null);
@@ -83,7 +84,6 @@ function AddGiftWithoutLinkLayout({
         targetDate={targetDate}
         name={nameText}
         cost={checkPriceNull(priceText)}
-        imageUrl={imageUrl}
         link={linkText}
         setStep={setStep}
         isActivated={isActivated}
@@ -94,6 +94,6 @@ function AddGiftWithoutLinkLayout({
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );
-}
+};
 
 export default AddGiftWithoutLinkLayout;
