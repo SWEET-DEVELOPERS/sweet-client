@@ -10,6 +10,7 @@ import usePostMyPresignedUrl from '../../../hooks/queries/etc/usePostMyPresigned
 import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
 // import { postOpenGraph } from '../../../hooks/queries/etc/usePostOpengraph';
 import { OpenGraphResponseType } from '../../../types/etc';
+import { AddGiftInfo } from '../../../types/gift';
 
 interface AddGiftWithLinkLayoutProps {
   roomId: number;
@@ -20,6 +21,8 @@ interface AddGiftWithLinkLayoutProps {
   targetDate: string;
   modalStatus: boolean;
   openGraph: OpenGraphResponseType;
+  updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
+  addGiftInfo: AddGiftInfo;
 }
 // 직접 입력 화면
 function AddGiftWithoutLinkLayout({
@@ -31,11 +34,15 @@ function AddGiftWithoutLinkLayout({
   targetDate,
   // modalStatus,
   openGraph,
+  updateAddGiftInfo,
+  addGiftInfo,
 }: AddGiftWithLinkLayoutProps) {
-  const [isActivated, setIsActivated] = useState(false);
-  const [nameText, setNameText] = useState<string>('');
-  const [priceText, setPriceText] = useState<number | null>(null);
-  const [imageUrl, setImageUrl] = useState<string>('');
+  const [isActivated, setIsActivated] = useState(
+    !!addGiftInfo.name && !!addGiftInfo.cost && !!addGiftInfo.url && !!addGiftInfo.imageUrl,
+  );
+  const [nameText, setNameText] = useState<string>(addGiftInfo.name);
+  const [priceText, setPriceText] = useState<number | null>(addGiftInfo.cost);
+  const [imageUrl, setImageUrl] = useState<string>(addGiftInfo.imageUrl);
   const [fileName, setFileName] = useState<string>('');
   const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
@@ -150,7 +157,15 @@ function AddGiftWithoutLinkLayout({
           불러올 수 없어요 <br />
         </Modal>
       )}
-      <LinkAddHeader targetDate={targetDate} setStep={setStep} step={step} />
+      <LinkAddHeader
+        targetDate={targetDate}
+        setStep={setStep}
+        step={step}
+        name={nameText}
+        cost={priceText}
+        imageUrl={imageUrl}
+        updateAddGiftInfo={updateAddGiftInfo}
+      />
       <GiftStatusBar registeredGiftNum={1} isMargin={true} />
       <AddGiftImg
         imageUrl={imageUrl}
@@ -185,6 +200,7 @@ function AddGiftWithoutLinkLayout({
         saveImageUrl={saveImageUrl}
         fileName={fileName}
         fetchPresignedUrl={fetchPresignedUrl}
+        updateAddGiftInfo={updateAddGiftInfo}
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );
