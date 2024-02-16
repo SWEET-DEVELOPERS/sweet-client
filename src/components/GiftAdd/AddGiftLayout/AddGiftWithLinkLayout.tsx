@@ -80,7 +80,6 @@ const AddGiftWithLinkLayout = ({
         targetDate={targetDate}
         name={nameText}
         cost={checkPriceNull(priceText)}
-        imageUrl={imageUrl}
         link={link}
         setStep={setStep}
         isActivated={isActivated}
