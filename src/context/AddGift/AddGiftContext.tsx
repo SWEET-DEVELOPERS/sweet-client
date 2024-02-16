@@ -1,5 +1,5 @@
 import { PropsWithChildren, createContext, useContext, useMemo, useState } from 'react';
-import { AddGiftInfo } from '../../types/etc';
+import { AddGiftInfo } from '../../types/gift';
 
 interface AddGiftInfoContext {
   addGiftInfo: AddGiftInfo;
@@ -7,7 +7,6 @@ interface AddGiftInfoContext {
 }
 
 const initialAddGiftInfo: AddGiftInfo = {
-  roomId: 0,
   name: '',
   cost: 0,
   imageUrl: '',
@@ -22,18 +21,18 @@ const AddGiftContext = createContext<AddGiftInfoContext>({
 export const useAddGiftContext = () => useContext(AddGiftContext);
 
 export const AddGiftProvider = ({ children }: PropsWithChildren) => {
-  const [AddGiftInfo, setAddGiftInfo] = useState<AddGiftInfo>(initialAddGiftInfo);
+  const [addGiftInfo, setAddGiftInfo] = useState<AddGiftInfo>(initialAddGiftInfo);
 
-  const updateAddGiftInfo = (newInfo: Partial<AddGiftInfo>) => {
-    setAddGiftInfo((prev) => ({ ...prev, ...newInfo }));
+  const updateAddGiftInfo = (newState: Partial<AddGiftInfo>) => {
+    setAddGiftInfo((prev) => ({ ...prev, ...newState }));
   };
 
   const AddGiftInfoContextValue = useMemo(
     () => ({
-      AddGiftInfo,
+      addGiftInfo,
       updateAddGiftInfo,
     }),
-    [AddGiftInfo],
+    [addGiftInfo],
   );
 
   return (

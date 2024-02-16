@@ -14,11 +14,3 @@ export interface PresignedUrlResponseType {
 export interface PresignedUrlRequestType {
   fileName: string;
 }
-
-export interface AddGiftInfo {
-  roomId: number;
-  name: name;
-  cost: cost;
-  imageUrl: imageUrl;
-  url: link;
-}

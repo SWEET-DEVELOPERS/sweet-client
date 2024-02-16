@@ -17,6 +17,7 @@ import TournamentPage from '../pages/Tournament/TournamentPage';
 import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
 import InvitationDeadline from '../components/OnBoardingSteps/invitationDeadline/InvitationDeadline';
 import ParticipantsView from '../pages/Participants/ ParticipantsView';
+import { AddGiftProvider } from '../context/AddGift/AddGiftContext';
 
 const router = createBrowserRouter([
   {
@@ -77,7 +78,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/add-gift/:roomId/:targetTime',
-        element: <GiftAddPage />,
+        element: (
+          <AddGiftProvider>
+            <GiftAddPage />
+          </AddGiftProvider>
+        ),
       },
       {
         path: '/deadline',
