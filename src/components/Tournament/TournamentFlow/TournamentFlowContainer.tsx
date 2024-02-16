@@ -5,6 +5,7 @@ import TournamentTitle from './TournamentTitle/TournamentTitle';
 import TournamentFooter from './TournamentFooter/TournamentFooter';
 import TournamentResult from '../TournamentResult/TournamentResult';
 import { GiftData } from '../../../types/tournament';
+import useRandomItems from '../../../hooks/tournament/useRandomItems';
 
 interface TournamentProps {
   memberData: GiftData[];
@@ -18,7 +19,7 @@ const TournamentFlowContainer = ({ memberData, roomId }: TournamentProps) => {
   const [displays, setDisplays] = useState<GiftData[]>([]);
   //선택된 아이템 저장
   const roomIdTour = roomId;
-
+  const randomItems = useRandomItems(memberData);
   const [totalItemLength, setTotalRoundsLength] = useState<number>(
     Math.floor(memberData.length / 2),
   );
@@ -38,11 +39,11 @@ const TournamentFlowContainer = ({ memberData, roomId }: TournamentProps) => {
   const [isClickSelect, setClickSelect] = useState<GiftData[]>([]);
 
   //전체 아이템 memberData 랜덤 섞어주기
+  // 컴포넌트가 처음 마운트될 때와 memberData가 변경될 때 랜덤 아이템 업데이트
   useEffect(() => {
-    memberData.sort(() => Math.random() - 0.5);
-    setitemPick([...memberData]);
-    setDisplays([memberData[0], memberData[1]]);
-  }, [memberData]);
+    setitemPick(randomItems);
+    setDisplays([randomItems[0], randomItems[1]]);
+  }, [randomItems]);
 
   const clickSelect = (item: GiftData) => () => {
     setClickSelect([item]);
@@ -98,6 +99,7 @@ const TournamentFlowContainer = ({ memberData, roomId }: TournamentProps) => {
     const shuffledArray = [...itemPick].sort(() => Math.random() - 0.5);
     setitemPick(shuffledArray);
     setDisplays([shuffledArray[0], shuffledArray[1]]);
+    setDisabled(false);
   };
 
   return (
