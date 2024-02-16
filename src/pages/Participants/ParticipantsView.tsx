@@ -68,16 +68,16 @@ const ParticipantsView = () => {
   };
 
   const infoDetails = [
-    { title: '선물 받을 사람', detail: data.gifteeName },
+    { title: '선물 받을 사람', detail: data.data.gifteeName },
     {
       title: '선물 등록 마감',
-      detail: formatDate(data.tournamentStartDate, true),
+      detail: formatDate(data.data.tournamentStartDate, true),
     },
     {
       title: '토너먼트 진행 시간',
-      detail: formatDuration(data.tournamentDuration),
+      detail: formatDuration(data.data.tournamentDuration),
     },
-    { title: '선물 전달일', detail: formatDate(data.deliveryDate, false) },
+    { title: '선물 전달일', detail: formatDate(data.data.deliveryDate, false) },
   ];
 
   /**@TODO 현재 token값의 유무에 따라 다른 뷰를 보여주는 로직인데,
@@ -121,29 +121,21 @@ const ParticipantsView = () => {
         <div>
           <S.GradientImg>
             {/* TODO s3에 업로드된 이미지로 변경 */}
-            <img src={data.imageUrl} style={{ width: '100%' }} />
+            <img src={data.data.imageUrl} style={{ width: '100%' }} />
             <S.TitleContainer>
               <S.ParticipantsTitleWrapper>
                 <Title>
                   {/* {`${getGifteeInfo.data.gifteeName}님을 위한`} */}
                   {/* {`${onboardingInfo.gifteeName}님을 위한`} */}
-                  {`${data.gifteeName}님을 위한`}
+                  {`${data.data.gifteeName}님을 위한`}
                   <br /> 선물 준비방이 개설됐어요
                 </Title>
               </S.ParticipantsTitleWrapper>
-              <OnBoardingBtn
-                step={6}
-                customStyle={{ marginBottom: '1.6rem' }}
-                setStep={() => handleClickRoom(data.invitationCode)}
-                isActivated={true}
-              >
-                입장
-              </OnBoardingBtn>
-              {isToken === true ? (
+              {localStorage.getItem('EXIT_LOGIN_TOKEN') ? (
                 <OnBoardingBtn
                   step={6}
                   customStyle={{ marginBottom: '1.6rem' }}
-                  setStep={() => handleClickRoom(data.invitationCode)}
+                  setStep={() => handleClickRoom(data.data.invitationCode)}
                   isActivated={true}
                 >
                   입장
@@ -165,23 +157,27 @@ const ParticipantsView = () => {
       </S.InfoWrapper>
       {/* 수정된 부분 시작 */}
       <S.BtnWrapper>
-        {isToken === false ? (
-          <IcKakoLarge onClick={() => window.location.replace(kakaoURL)} />
-        ) : (
+        {localStorage.getItem('EXIT_LOGIN_TOKEN') ? (
           <>
             <S.LinkCopyBtn
               onClick={() =>
-                handleCopyToClipboard(`http://sweetgift.vercel.app/result/${data.invitationCode}`)
+                handleCopyToClipboard(
+                  `http://sweetgift.vercel.app/result/${data.data.invitationCode}`,
+                )
               }
             >
               <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
               링크 복사
             </S.LinkCopyBtn>
-            <S.KakaoLinkCopyBtn onClick={() => useKakaoShare(data.invitationCode, data.gifteeName)}>
+            <S.KakaoLinkCopyBtn
+              onClick={() => useKakaoShare(data.data.invitationCode, data.data.gifteeName)}
+            >
               <IcKakaoShare style={{ width: '1.8rem', height: '1.8rem' }} />
               카카오톡 공유
             </S.KakaoLinkCopyBtn>
           </>
+        ) : (
+          <IcKakoLarge onClick={() => window.location.replace(kakaoURL)} />
         )}
       </S.BtnWrapper>
     </>
