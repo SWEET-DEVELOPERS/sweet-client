@@ -1,6 +1,6 @@
 import { Children, isValidElement, PropsWithChildren, ReactElement, useEffect } from 'react';
 import { NonEmptyArray } from '../../../types/utility';
-import { assert } from '../../../../utils/errors';
+import { assert } from '../../../utils/errors';
 
 export interface FunnelProps<Steps extends NonEmptyArray<string>> {
   steps: Steps;
