@@ -45,8 +45,7 @@ const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
 instance.interceptors.request.use(
   (config) => {
     if (!accessToken) {
-      window.location.href = '/';
-      window.alert('로그인을 실패하였습니다. 재로그인 부탁드립니다.');
+      window.location.href = '/error';
       return config;
     }
 

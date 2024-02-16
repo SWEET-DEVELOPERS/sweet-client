@@ -17,6 +17,7 @@ import TournamentPage from '../pages/Tournament/TournamentPage';
 import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
 import InvitationDeadline from '../components/OnBoardingSteps/invitationDeadline/InvitationDeadline';
 import ParticipantsView from '../pages/Participants/ ParticipantsView';
+import LoginError from '../pages/LoginError/LoginError';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: '/api/oauth/kakao/login',
         element: <Login />,
+      },
+      {
+        path: '/error',
+        element: <LoginError />,
       },
       {
         path: '/mypage',
