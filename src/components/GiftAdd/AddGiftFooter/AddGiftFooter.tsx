@@ -59,7 +59,7 @@ function AddGiftFooter({
 
   return (
     <S.AddGiftFooterWrapper>
-      <GiftAddNextBtn isActivated={isActivated} onClick={onClick} children='완료' />
+      <GiftAddNextBtn isActivated={isActivated} onClick={onClickBtn} children='완료' />
     </S.AddGiftFooterWrapper>
   );
 }
