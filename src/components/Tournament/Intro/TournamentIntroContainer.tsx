@@ -9,7 +9,9 @@ import trophy from '../../../assets/img/3dic_trophy3.png';
 import { TrophyNone } from '../../../assets/svg';
 import { useParams } from 'react-router';
 import Header from '../../common/Header';
-import TournamentNoneText from './TournamentNoneText/TournamentNoneText'; // TournamentStartNone 컴포넌트를 import합니다.
+import TournamentNoneText from './TournamentNoneText/TournamentNoneText';
+import { TournamentResult } from '../TournamentResult/TournamentResult.sytle';
+import { GiftData } from '../../../types/tournament';
 
 const TournamentIntroContainer = () => {
   const params = useParams();
@@ -22,7 +24,14 @@ const TournamentIntroContainer = () => {
   const memberData = useGetItem({ roomId: Number(roomId) });
   console.log(memberData);
 
-  const tournamentData = memberData?.data || [];
+  let tournamentData: GiftData[] = [];
+
+  if (typeof memberData === 'string') {
+    console.log('Error :', memberData);
+    return <TournamentResult />;
+  } else if (memberData && memberData.data) {
+    tournamentData = memberData.data;
+  }
 
   return (
     <>
