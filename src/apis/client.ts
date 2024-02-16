@@ -1,7 +1,5 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
-// 해당 파일 코드리뷰 부탁합니다 !
-
 export const getAccessTokenLocalStorage = () => {
   const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
   return accessToken ? `Bearer ${accessToken}` : '';
@@ -44,13 +42,13 @@ const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
 
 instance.interceptors.request.use(
   (config) => {
-    if (!accessToken) {
+    if (!localStorage.getItem('EXIT_LOGIN_REFRESH_TOKEN')) {
       window.location.href = '/';
       window.alert('로그인을 실패하였습니다. 재로그인 부탁드립니다.');
       return config;
     }
 
-    config.headers.Authorization = `Bearer ${accessToken}`;
+    config.headers.Authorization = `Bearer ${localStorage.getItem('EXIT_LOGIN_TOKEN')}`;
 
     return config;
   },
