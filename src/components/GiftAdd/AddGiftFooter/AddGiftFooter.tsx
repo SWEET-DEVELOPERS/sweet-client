@@ -33,7 +33,7 @@ function AddGiftFooter({
   fileName,
 }: AddGiftFooterProps) {
   const navigate = useNavigate();
-  const { mutation } = usePostGift(roomId, targetDate);
+  const { mutation } = usePostGift(roomId, targetDate, setStep);
   const { putImageUrlToS3 } = usePutImageUrlToS3(roomId);
 
   const onClick = async () => {
@@ -59,7 +59,7 @@ function AddGiftFooter({
 
   return (
     <S.AddGiftFooterWrapper>
-      <GiftAddNextBtn isActivated={isActivated} onClick={onClickBtn} children='완료' />
+      <GiftAddNextBtn isActivated={isActivated} onClick={onClick} children='완료' />
     </S.AddGiftFooterWrapper>
   );
 }

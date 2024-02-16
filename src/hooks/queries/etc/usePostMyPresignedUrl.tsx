@@ -30,7 +30,7 @@ const usePostMyPresignedUrl = (roomId: number) => {
     mutationFn: postPresignedUrl,
     onSuccess: (data) => {
       console.log('usePostPresignedUrl onSuccess 내꺼로 포스트 성공~', data);
-      queryClient.setQueryData([MY_GIFT_QUERY_KEY[0], roomId], data);
+      queryClient.invalidateQueries({ queryKey: [MY_GIFT_QUERY_KEY[0], roomId] });
     },
     onError: (error) => {
       console.log('내 선물 PU 받아오던 중 에러가 발생했습니다.', error.message);
