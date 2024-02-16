@@ -12,7 +12,20 @@ export const getRefreshTokenLocalStorage = () => {
   return refreshToken ? `Bearer ${refreshToken}` : '';
 };
 
+export const checkCurrentMode = () => {
+  const currentMode = import.meta.env.PROD ? 'production' : 'development';
+  return currentMode;
+};
+
 export const authInstance = axios.create({
+  baseURL: import.meta.env.VITE_APP_BASE_URL,
+  withCredentials: true,
+  headers: {
+    'X-Environment': `${checkCurrentMode()}`,
+  },
+});
+
+export const cleanHeaderInstance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_URL,
   withCredentials: true,
   headers: {},
@@ -33,7 +46,7 @@ instance.interceptors.request.use(
   (config) => {
     if (!accessToken) {
       window.location.href = '/';
-
+      window.alert('로그인을 실패하였습니다. 재로그인 부탁드립니다.');
       return config;
     }
 
@@ -50,7 +63,7 @@ export async function postRefreshToken() {
   console.log('refreshToken ');
 
   try {
-    const response = await authInstance.post('/oauth/reissue', {
+    const response = await cleanHeaderInstance.post('/oauth/reissue', {
       accessToken: accessToken,
       refreshToken: refreshToken,
     });

@@ -1,6 +1,7 @@
 import type { SVGProps } from 'react';
 const SvgMain02 = (props: SVGProps<SVGSVGElement>) => (
   <svg
+    width='37.5rem'
     xmlns='http://www.w3.org/2000/svg'
     xmlnsXlink='http://www.w3.org/1999/xlink'
     fill='none'

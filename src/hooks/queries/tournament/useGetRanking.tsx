@@ -1,5 +1,5 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { authInstance } from '../../../apis/client';
+import { cleanHeaderInstance } from '../../../apis/client';
 import { GiftRankingData } from '../../../types/tournament';
 
 interface TournamentRankingResponse extends Response {
@@ -9,7 +9,7 @@ interface TournamentRankingResponse extends Response {
 export const TOURNAMENT_RANKING_BY_ID_QUERY_KEY: string[] = ['tournamentRankingData'];
 
 export const fetchTournamentItem = async (roomId: number): Promise<TournamentRankingResponse> =>
-  authInstance.get(`/gift/ranking/${roomId}`);
+  cleanHeaderInstance.get(`/gift/ranking/${roomId}`);
 
 const useGetRanking = ({ roomId }: { roomId: number }) => {
   const { data } = useSuspenseQuery({
