@@ -6,10 +6,9 @@ import WriteItemInfo from './common/WriteItemInfo/WriteItemInfo';
 import * as S from './common/AddGiftLayout.styled';
 import AddGiftImg from './common/AddGiftImg/AddGiftImg';
 import { OpenGraphResponseType } from '../../../types/etc';
-import usePostMyPresignedUrl from '../../../hooks/queries/etc/usePostMyPresignedUrl';
 import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
 import useConvertURLtoFile from '../../../hooks/useConvertURLtoFile';
-import { useHandleImageUpload } from '../../../hooks/queries/etc/useHandleImageUpload';
+import useParseFileName from '../../../hooks/useParseFileName';
 
 interface AddGiftWithLinkLayoutProps {
   link: string;
@@ -34,69 +33,8 @@ const AddGiftWithLinkLayout = ({
   const [imageUrl, setImageUrl] = useState<string>(openGraph.image);
   const [fileName, setFileName] = useState<string>('');
   const [file, setFile] = useState<File | null>(null);
-  const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
-  const [previewImage, setPreviewImage] = useState<string | null>(null);
-
-  const setParsedFileName = (imageString: string) => {
-    const uploadTime = new Date().toISOString();
-
-    const uniqueName = `${uploadTime}${imageString}`;
-    const finalImageName = uniqueName
-      .replace(/\//g, '') // 폴더링 방지를 위해 '/' 제거
-      .replace(/\s/g, ''); // 공백 제거
-
-    setFileName(finalImageName);
-
-    return finalImageName;
-  };
-
-  const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { files } = event.target;
-
-    if (files && files.length > 0) {
-      const selectedFiles = files as FileList;
-
-      setFile(selectedFiles[0]);
-      setPreviewImage(URL.createObjectURL(selectedFiles[0]));
-
-      setImageUrl(URL.createObjectURL(selectedFiles[0]));
-      setIsImageUploaded(!!selectedFiles?.[0]);
-      openGraph.image = '';
-
-      const imageName = selectedFiles[0].name.trim();
-      setParsedFileName(imageName);
-    }
-  };
-
-  const postPresignedUrl = usePostMyPresignedUrl(roomId);
-
-  const getPresignedUrl = async (fileName: string) => {
-    if (!fileName) {
-      console.log('파일명이 없어서 fetchPresignedUrl을 실행하지 않습니다.');
-      return { imageUrl: '', presignedUrl: '' };
-    } else {
-      const response = await postPresignedUrl.mutateAsync({ filename: fileName });
-      const presignedUrl = response.presignedUrl;
-      const imageUrl = presignedUrl.split('?')[0];
-      setImageUrl(imageUrl);
-      return { presignedUrl };
-    }
-  };
-
-  const { putBinaryData } = useHandleImageUpload();
-
-  const saveImageUrl = async (fileName: string) => {
-    const { presignedUrl } = await getPresignedUrl(fileName);
-    if (presignedUrl && presignedUrl !== '') {
-      if (file) {
-        putBinaryData({ presignedUrl, file });
-      } else {
-        console.error('파일이 없습니다');
-      }
-    } else {
-      console.log('preSignedUrl이 비어있어서 putPresignedUrl을 실행하지 않습니다.');
-    }
-  };
+  const [, setIsImageUploaded] = useState<boolean>(false);
+  const [, setPreviewImage] = useState<string | null>(null);
 
   const checkPriceNull = (price: number | null) => {
     if (price === null) {
@@ -121,7 +59,15 @@ const AddGiftWithLinkLayout = ({
     <S.AddGiftWithLinkLayoutWrapper>
       <LinkAddHeader targetDate={targetDate} setStep={setStep} step={step} />
       <GiftStatusBar registeredGiftNum={1} isMargin={true} />
-      <AddGiftImg imageUrl={imageUrl} onClickEditBtn={handleImageUpload} openGraph={openGraph} />
+      <AddGiftImg
+        imageUrl={imageUrl}
+        openGraph={openGraph}
+        setFile={setFile}
+        setFileName={setFileName}
+        setImageUrl={setImageUrl}
+        setPreviewImage={setPreviewImage}
+        setIsImageUploaded={setIsImageUploaded}
+      />
       <ShowLink link={link} />
       <WriteItemInfo
         setIsActivated={setIsActivated}
@@ -139,8 +85,9 @@ const AddGiftWithLinkLayout = ({
         setStep={setStep}
         isActivated={isActivated}
         roomId={roomId}
-        saveImageUrl={saveImageUrl}
         fileName={fileName}
+        file={file}
+        setImageUrl={setImageUrl}
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );

@@ -1,14 +1,35 @@
 import * as S from './AddGiftImg.styled';
 import { IcEmptyThumbnail, IcImgEditBtn } from '../../../../../assets/svg';
 import { OpenGraphResponseType } from '../../../../../types/etc';
+import useHandleImageUpload from '../../../../../hooks/useHandleImageUpload';
 
 interface AddGiftImgProps {
   imageUrl: string;
-  onClickEditBtn: (event: React.ChangeEvent<HTMLInputElement>) => void;
   openGraph: OpenGraphResponseType | null;
+  setImageUrl: React.Dispatch<React.SetStateAction<string>>;
+  setFile: React.Dispatch<React.SetStateAction<File | null>>;
+  setFileName: React.Dispatch<React.SetStateAction<string>>;
+  setPreviewImage: React.Dispatch<React.SetStateAction<string | null>>;
+  setIsImageUploaded: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const AddGiftImg = ({ imageUrl, onClickEditBtn, openGraph }: AddGiftImgProps) => {
+const AddGiftImg = ({
+  imageUrl,
+  openGraph,
+  setImageUrl,
+  setFile,
+  setFileName,
+  setPreviewImage,
+  setIsImageUploaded,
+}: AddGiftImgProps) => {
+  const { handleImageUpload } = useHandleImageUpload({
+    openGraph,
+    setImageUrl,
+    setFile,
+    setFileName,
+    setPreviewImage,
+    setIsImageUploaded,
+  });
   return (
     <>
       {openGraph?.image !== '' || imageUrl !== '' ? (
@@ -19,7 +40,7 @@ const AddGiftImg = ({ imageUrl, onClickEditBtn, openGraph }: AddGiftImgProps) =>
               accept='image/*'
               style={{ display: 'none' }}
               id='imgInput'
-              onChange={onClickEditBtn}
+              onChange={handleImageUpload}
             />
             <label htmlFor='imgInput'>
               {imageUrl ? (
