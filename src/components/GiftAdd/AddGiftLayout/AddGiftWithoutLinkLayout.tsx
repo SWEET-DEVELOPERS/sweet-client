@@ -5,10 +5,7 @@ import * as S from './common/AddGiftLayout.styled';
 import AddGiftImg from './common/AddGiftImg/AddGiftImg';
 import WithoutLinkWriteItemInfo from './common/WriteItemInfo/WithoutLinkWriteItemInfo';
 import Modal from '../../common/Modal/Modal';
-import usePutPresignedUrl from '../../../hooks/queries/onboarding/usePutPresignedUrl';
-import usePostMyPresignedUrl from '../../../hooks/queries/etc/usePostMyPresignedUrl';
 import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
-import { OpenGraphResponseType } from '../../../types/etc';
 
 interface AddGiftWithLinkLayoutProps {
   roomId: number;
