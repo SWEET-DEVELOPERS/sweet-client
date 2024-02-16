@@ -7,7 +7,6 @@ type BtnRadioProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   time: string;
   period: string;
   customStyle?: React.CSSProperties;
-  // onClick?: () => void;
   $isSelected?: boolean;
   onTimeSelect?: (time: string) => void;
   setSelectedTime?: (time: string) => VoidFunction;
