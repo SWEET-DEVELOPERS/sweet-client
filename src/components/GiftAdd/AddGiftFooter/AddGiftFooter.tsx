@@ -40,9 +40,6 @@ const AddGiftFooter = ({
   const { mutation } = usePostGift(itemInfo.roomId, targetDate, setStep);
 
   function onClickBtn() {
-    //빌드 에러 해결용 콘솔
-    console.log(fileName);
-
     // const { presignedUrl } = await fetchPresignedUrl(fileName);
     // await saveImageUrl(presignedUrl);
     // setImageUrl(presignedUrl);
@@ -67,10 +64,6 @@ const AddGiftFooter = ({
       }
     }
   }
-
-  // const handlePrevBtnClick = () => {
-  //   setStep(1);
-  // };
 
   return (
     <S.AddGiftFooterWrapper>

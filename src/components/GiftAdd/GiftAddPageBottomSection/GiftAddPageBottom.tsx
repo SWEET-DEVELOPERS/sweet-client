@@ -11,7 +11,6 @@ interface GiftAddPageBottomProps {
 }
 
 const GiftAddPageBottom = ({ adPrice, myGiftData }: GiftAddPageBottomProps) => {
-  // const [isAdVisible, setIsAdVisible] = useState(myGiftData.length <= 1);
   const [isAdVisible, setIsAdVisible] = useState(false);
 
   const handleIcCancelClick = () => {

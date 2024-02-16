@@ -14,13 +14,6 @@ interface CardGuestProps {
 }
 
 const CardGuest = ({ user, makerState, profileImageUrl, memberId }: CardGuestProps) => {
-  // 주소가 path variable 형태이기 때문에 location.search로 쿼리 파라미터를 가져올 수 없어
-  // 룸아이디가 null로 받아지고 있었고, 이로 인해 400에러가 발생해서 임의로 수정했습니다
-  // const location = useLocation();
-  // const searchParams = new URLSearchParams(location.search);
-
-  // const roomIdString = searchParams.get('roomId');
-
   const params = useParams();
   const roomIdString = params.roomId;
 
