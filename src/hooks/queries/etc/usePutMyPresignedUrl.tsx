@@ -1,31 +1,13 @@
-// import axios, { AxiosError, AxiosResponse } from 'axios';
 import { useMutation } from '@tanstack/react-query';
-import { put } from '../../../apis/client';
-import axios, { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 
 interface putMyPresignedUrlProps {
   presignedUrl: string;
-  file: File;
+  binaryData: Uint8Array;
 }
 
-// export function putFormData<T>(url: string, data: FormData, config?: AxiosRequestConfig) {
-//   return put<T>(url, data, {
-//     ...config,
-//     headers: {
-//       ...config?.headers,
-//       'Content-Type': 'multipart/form-data',
-//     },
-//   });
-// }
-
-// export const putMyPresignedUrl = async ({ presignedUrl, file }: putMyPresignedUrlProps) => {
-//   console.log('put직전!');
-//   putFormData(presignedUrl, file);
-// };
-
-export const putMyPresignedUrl = async ({ presignedUrl, file }: putMyPresignedUrlProps) => {
-  const arrayBuffer = await file.arrayBuffer();
-  const binaryData = new Uint8Array(arrayBuffer);
+// 추후 client에 PU용 put 새롭게 추가해서 수정할 예정
+export const putMyPresignedUrl = async ({ presignedUrl, binaryData }: putMyPresignedUrlProps) => {
   return await axios.put(presignedUrl, binaryData, {
     headers: {
       'Content-Type': 'binary',

@@ -2,29 +2,13 @@ import * as S from './AddGiftImg.styled';
 import { IcEmptyThumbnail, IcImgEditBtn } from '../../../../../assets/svg';
 import { OpenGraphResponseType } from '../../../../../types/etc';
 
-// 들어오는 이미지 있으면 넣어주고 상품 이름 넣어주고, 아니면 그냥 빈 화면
 interface AddGiftImgProps {
   imageUrl: string;
-  setImageUrl: React.Dispatch<React.SetStateAction<string>>;
   onClickEditBtn: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  // previewImage: string | null;
-  // setPreviewImage: React.Dispatch<React.SetStateAction<string | null>>;
   openGraph: OpenGraphResponseType | null;
 }
 
-const AddGiftImg = ({
-  imageUrl,
-  setImageUrl,
-  onClickEditBtn,
-  // previewImage,
-  // setPreviewImage,
-  openGraph,
-}: AddGiftImgProps) => {
-  // 빌드 에러 해결 위해 임의로 추가
-  // 나중에 이미지 첨부 기능 presignedUrl이랑 같이 구현 예정
-  if (openGraph?.image) {
-    setImageUrl(openGraph.image);
-  }
+const AddGiftImg = ({ imageUrl, onClickEditBtn, openGraph }: AddGiftImgProps) => {
   return (
     <>
       {openGraph?.image !== '' || imageUrl !== '' ? (
@@ -32,8 +16,7 @@ const AddGiftImg = ({
           <S.IcEmptyThumbnailWrapper>
             <input
               type='file'
-              accept='.jpg, .jpeg, .png, .svg'
-              // accept='image/*'
+              accept='image/*'
               style={{ display: 'none' }}
               id='imgInput'
               onChange={onClickEditBtn}

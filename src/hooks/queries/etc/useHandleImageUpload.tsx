@@ -1,6 +1,6 @@
 import usePutMyPresignedUrl from './usePutMyPresignedUrl';
 
-interface putFormDataProps {
+interface putBinaryDataProps {
   presignedUrl: string;
   file: File;
 }
@@ -8,19 +8,19 @@ interface putFormDataProps {
 export const useHandleImageUpload = () => {
   const putPresignedUrl = usePutMyPresignedUrl();
 
-  const putFormData = async ({ presignedUrl, file }: putFormDataProps) => {
-    // const formData = new FormData();
-    // formData.append('file', file);
+  const putBinaryData = async ({ presignedUrl, file }: putBinaryDataProps) => {
+    const arrayBuffer = await file.arrayBuffer();
+    const binaryData = new Uint8Array(arrayBuffer);
 
     try {
       await putPresignedUrl.mutation.mutateAsync({
         presignedUrl,
-        file,
+        binaryData,
       });
     } catch (error) {
       console.error('바이너리 put하다가 error 발생!', error);
     }
   };
 
-  return { putFormData };
+  return { putBinaryData };
 };
