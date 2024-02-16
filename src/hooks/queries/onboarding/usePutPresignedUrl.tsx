@@ -1,40 +1,26 @@
-// import axios, { AxiosError, AxiosResponse } from 'axios';
 import { useMutation } from '@tanstack/react-query';
-import { put } from '../../../apis/client';
-import { AxiosRequestConfig } from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 
-interface putPresignedUrlProps {
-  presignedUrl: string;
-  formData: FormData;
-}
-
-export function putFormData<T>(url: string, data: FormData, config?: AxiosRequestConfig) {
-  return put<T>(url, data, {
-    ...config,
-    headers: {
-      ...config?.headers,
-      'Content-Type': 'multipart/form-data',
-    },
-  });
-}
-
-export const putPresignedUrl = async ({ presignedUrl, formData }: putPresignedUrlProps) => {
-  console.log('put직전!');
-  putFormData(presignedUrl, formData);
+const putPresignedUrl = async (presignedUrl: string): Promise<AxiosResponse> => {
+  try {
+    const response: AxiosResponse = await axios.put(presignedUrl);
+    return response.data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      throw new Error(error.response?.data?.message ?? error.message);
+    } else {
+      throw error;
+    }
+  }
 };
 
-export const usePutPresignedUrl = () => {
-  const mutation = useMutation({
+const usePutPresignedUrl = () => {
+  return useMutation({
     mutationFn: putPresignedUrl,
     onSuccess: (data) => {
-      console.log('PUT 성공', data);
-    },
-    onError: (error) => {
-      console.log('이미지 PUT 에러!', error.message);
+      console.log('풋 성공', data);
     },
   });
-
-  return { mutation };
 };
 
 export default usePutPresignedUrl;
