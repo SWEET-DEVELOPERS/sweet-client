@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import usePostGift from '../../../hooks/queries/gift/usePostGift';
 import GiftAddNextBtn from '../AddGiftLink/common/GiftAddNextBtn/GiftAddNextBtn';
 import * as S from './AddGiftFooter.styled';
+import usePutImageUrlToS3 from '../../../hooks/usePutImageUrlToS3';
 
 interface AddGiftFooterProps {
   targetDate: string;
@@ -12,7 +13,8 @@ interface AddGiftFooterProps {
   cost: number;
   imageUrl: string;
   link: string;
-  saveImageUrl: (fileName: string) => Promise<void>;
+  file: File | null;
+  setImageUrl: React.Dispatch<React.SetStateAction<string>>;
   fileName: string;
 }
 
@@ -25,15 +27,17 @@ function AddGiftFooter({
   cost,
   imageUrl,
   link,
-  // 이미지 put하는 함수
-  saveImageUrl,
+  file,
+  setImageUrl,
+
   fileName,
 }: AddGiftFooterProps) {
   const navigate = useNavigate();
   const { mutation } = usePostGift(roomId, targetDate);
+  const { putImageUrlToS3 } = usePutImageUrlToS3(roomId);
 
   const onClick = async () => {
-    await saveImageUrl(fileName);
+    putImageUrlToS3({ fileName, file, roomId, setImageUrl });
     if (isActivated) {
       mutation.mutate(
         {

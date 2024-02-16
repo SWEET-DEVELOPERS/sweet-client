@@ -8,7 +8,6 @@ import Modal from '../../common/Modal/Modal';
 import usePutPresignedUrl from '../../../hooks/queries/onboarding/usePutPresignedUrl';
 import usePostMyPresignedUrl from '../../../hooks/queries/etc/usePostMyPresignedUrl';
 import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
-// import { postOpenGraph } from '../../../hooks/queries/etc/usePostOpengraph';
 import { OpenGraphResponseType } from '../../../types/etc';
 
 interface AddGiftWithLinkLayoutProps {
