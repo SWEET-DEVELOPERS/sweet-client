@@ -20,7 +20,7 @@ const NameInput = (props: NameInputProps) => {
         선물 받을 분의 <br />
         이름,혹은 닉네임을 알려주세요
       </Title>
-      <S.Wrapper $hasContent={hasContent} $maxLengthReached={maxLengthReached}>
+      <S.NameInputWrapper $hasContent={hasContent} $maxLengthReached={maxLengthReached}>
         <S.TextField>
           <S.Input
             type='text'
@@ -40,7 +40,7 @@ const NameInput = (props: NameInputProps) => {
             )}
           </S.IconField>
         </S.IconWrapper>
-      </S.Wrapper>
+      </S.NameInputWrapper>
       <S.LetterLength>({onboardingInfo.gifteeName.length}/10)</S.LetterLength>
       <OnBoardingBtn isActivated={isActivated} setStep={onNext}>
         다음

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import theme from '../../../style/theme';
 
-export const Wrapper = styled.div<{ $hasContent: boolean; $maxLengthReached: boolean }>`
+export const NameInputWrapper = styled.div<{ $hasContent: boolean; $maxLengthReached: boolean }>`
   ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'space-between' })}
   width: 100%;
   margin-top: 7.2rem;
