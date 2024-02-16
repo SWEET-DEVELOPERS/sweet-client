@@ -1,8 +1,7 @@
-import { PropsWithChildren, ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 import * as S from './Title.style';
 
 interface TitleProps {
-  title?: ReactNode;
   userName?: string;
 }
 
