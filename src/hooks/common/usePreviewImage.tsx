@@ -11,11 +11,9 @@ const usePreviewImage = () => {
 
     if (files && files.length > 0) {
       const selectedFiles = files as FileList;
-      const imageName = files[0].name.trim();
-      // const selectedFile = files[0];
-      // const newFormData = new FormData();
 
-      // newFormData.append('file', selectedFile);
+      /**@todo 이미지 파싱 추가 */
+      const imageName = files[0].name.trim();
 
       setFile(selectedFiles[0]);
 
