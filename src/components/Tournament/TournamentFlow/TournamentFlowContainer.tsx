@@ -13,12 +13,10 @@ interface TournamentUIProps {
 
 const TournamentFlowContainer = ({ memberData, roomId }: TournamentUIProps) => {
   const {
-    itemPick,
     displays,
     selectedItem,
     firstItems,
     secondItems,
-    winners,
     currentIndex,
     roundIndex,
     showTournamentResult,
