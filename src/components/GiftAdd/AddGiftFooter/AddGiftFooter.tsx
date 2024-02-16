@@ -5,6 +5,7 @@ import usePostGift from '../../../hooks/queries/gift/usePostGift';
 import GiftAddNextBtn from '../AddGiftLink/common/GiftAddNextBtn/GiftAddNextBtn';
 import * as S from './AddGiftFooter.styled';
 import { OpenGraphResponseType } from '../../../types/etc';
+import { AddGiftInfo } from '../../../types/gift';
 
 interface ItemInfoType {
   roomId: number;
@@ -24,6 +25,7 @@ interface AddGiftFooterProps {
   fileName: string;
   fetchPresignedUrl: (fileName: string) => Promise<{ imageUrl: any; presignedUrl: any }>;
   setImageUrl: React.Dispatch<React.SetStateAction<string>>;
+  updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
 }
 
 const AddGiftFooter = ({
@@ -40,6 +42,7 @@ const AddGiftFooter = ({
   fileName,
   // fetchPresignedUrl,
   // setImageUrl,
+  updateAddGiftInfo,
 }: AddGiftFooterProps) => {
   // const updatedItemInfo = {
   //   roomId: itemInfo.roomId,
@@ -57,6 +60,7 @@ const AddGiftFooter = ({
     // await saveImageUrl(presignedUrl);
     // setImageUrl(presignedUrl);
     if (isActivated) {
+      updateAddGiftInfo({ name: '', cost: 0, imageUrl: '', url: ',' });
       console.log('값', imageUrl);
       if (openGraph.image) {
         mutation.mutate(
