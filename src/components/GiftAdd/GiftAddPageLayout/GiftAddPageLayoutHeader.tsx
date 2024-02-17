@@ -11,7 +11,6 @@ const GiftAddPageLayoutHeader = ({ title }: GiftAddPageLayoutHeaderProps) => {
   const params = useParams();
   const roomId = params.roomId;
   const onClickBackBtn = () => {
-    console.log('navigate 되나?');
     navigate(`/gift-home/${roomId}`);
   };
 
