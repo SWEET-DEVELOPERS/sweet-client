@@ -18,6 +18,7 @@ import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
 import InvitationDeadline from '../components/OnBoardingSteps/invitationDeadline/InvitationDeadline';
 import ParticipantsView from '../pages/Participants/ ParticipantsView';
 import HeaderLayout from '../layouts/HeaderLayout';
+import LoginError from '../pages/LoginError/LoginError';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: '/api/oauth/kakao/login',
         element: <Login />,
+      },
+      {
+        path: '/error',
+        element: <LoginError />,
       },
       {
         path: '/editpage/:roomId',
