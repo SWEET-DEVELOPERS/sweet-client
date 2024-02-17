@@ -24,7 +24,6 @@ export const IconField = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 4rem;
   height: 4rem;
 `;
 
@@ -36,6 +35,7 @@ export const Input = styled.input`
   border: none;
   outline: none;
   ${({ theme }) => theme.fonts.body_05};
+
   input::placeholder {
     color: ${({ theme }) => theme.colors.G_07};
     ${({ theme }) => theme.fonts.body_05};
@@ -65,4 +65,17 @@ export const TimeInput = styled.input<{ isOpen: boolean }>`
     color: ${({ theme }) => theme.colors.G_07};
     ${({ theme }) => theme.fonts.body_06};
   }
+`;
+
+export const SubTitleWrapper = styled.div`
+  margin-top: 0.8rem;
+`;
+
+export const CalendarWrapper = styled.div`
+  ${({ theme }) => theme.mixin.flexBox({ justify: 'center' })};
+  font-size: 1.7rem;
+`;
+
+export const OnBoardingBtnWrapper = styled.div`
+  ${({ theme }) => theme.mixin.flexBox({ justify: 'flex-end' })};
 `;

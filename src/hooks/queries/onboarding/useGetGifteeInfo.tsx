@@ -1,18 +1,19 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { get } from '../../../apis/client';
-import { AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 export const ONBOARDING_INFO_QUERY_KEY: string[] = ['onboardingData'];
 
 export const fetchOnboarding = async (invitationCode: string) => {
   console.log('get 커스텀 훅 안에 초대코드', invitationCode);
-  const response: AxiosResponse = await get(`/room/invitations/${invitationCode}`);
+  const response: AxiosResponse = await axios.get(
+    `${import.meta.env.VITE_APP_BASE_URL}/room/invitations/${invitationCode}`,
+  );
   return response.data;
 };
 
 const useGetGifteeInfo = (invitationCode: string | null) => {
   if (invitationCode === null) {
-    // ... null에 대한 처리 로직
+    //  null에 대한 처리 로직
     return { data: null, isLoading: false, isError: false };
   }
   const { data, isLoading, isError } = useSuspenseQuery<any, Error>({

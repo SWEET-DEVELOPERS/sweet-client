@@ -1,72 +1,66 @@
+import { useNavigate } from 'react-router-dom';
 import usePostGift from '../../../hooks/queries/gift/usePostGift';
 import GiftAddNextBtn from '../AddGiftLink/common/GiftAddNextBtn/GiftAddNextBtn';
 import * as S from './AddGiftFooter.styled';
-import { OpenGraphResponseType } from '../../../types/etc';
-interface ItemInfoType {
-  roomId: number;
-}
+import { AddGiftInfo } from '../../../types/gift';
+import usePutImageUrlToS3 from '../../../hooks/usePutImageUrlToS3';
 
 interface AddGiftFooterProps {
   targetDate: string;
-  itemInfo: ItemInfoType;
+  roomId: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   isActivated: boolean;
-  openGraph: OpenGraphResponseType;
   name: string;
   cost: number;
-  imageUrl: string;
   link: string;
-  saveImageUrl: (fileName: string) => Promise<void>;
-  fileName: string;
-  fetchPresignedUrl: (fileName: string) => Promise<{ imageUrl: any; presignedUrl: any }>;
+  file: File | null;
   setImageUrl: React.Dispatch<React.SetStateAction<string>>;
+  updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
+  fileName: string;
 }
 
 const AddGiftFooter = ({
   targetDate,
-  itemInfo,
+  roomId,
   setStep,
   isActivated,
-  openGraph,
   name,
   cost,
-  imageUrl,
   link,
-  // saveImageUrl,
-  // fetchPresignedUrl,
-  // setImageUrl,
+  file,
+  setImageUrl,
+  fileName,
+  updateAddGiftInfo,
 }: AddGiftFooterProps) => {
-  const { mutation } = usePostGift(itemInfo.roomId, targetDate, setStep);
+  const navigate = useNavigate();
+  const { mutation } = usePostGift(roomId, targetDate, setStep);
+  const { putImageUrlToS3 } = usePutImageUrlToS3(roomId);
 
-  function onClickBtn() {
-    // const { presignedUrl } = await fetchPresignedUrl(fileName);
-    // await saveImageUrl(presignedUrl);
-    // setImageUrl(presignedUrl);
+  const onClick = async () => {
+    const { imageUrlS3 } = await putImageUrlToS3({ fileName, file, roomId, setImageUrl });
     if (isActivated) {
-      console.log('값', imageUrl);
-      if (openGraph.image) {
-        mutation.mutate({
-          roomId: itemInfo.roomId,
+      updateAddGiftInfo({ name: '', cost: 0, imageUrl: '', url: '' });
+      mutation.mutate(
+        {
+          roomId: roomId,
           name: name,
           cost: cost,
-          imageUrl: imageUrl,
+          imageUrl: imageUrlS3,
           url: link,
-        });
-      } else {
-        mutation.mutate({
-          roomId: itemInfo.roomId,
-          name: name,
-          cost: cost,
-          imageUrl: '',
-          url: link,
-        });
-      }
+        },
+        {
+          onSuccess: () => {
+            navigate(`/add-gift/${roomId}/${targetDate}`);
+            setStep(0);
+          },
+        },
+      );
     }
-  }
+  };
 
   return (
     <S.AddGiftFooterWrapper>
-      <GiftAddNextBtn isActivated={isActivated} onClick={onClickBtn} children='완료' />
+      <GiftAddNextBtn isActivated={isActivated} onClick={onClick} children='완료' />
     </S.AddGiftFooterWrapper>
   );
 };

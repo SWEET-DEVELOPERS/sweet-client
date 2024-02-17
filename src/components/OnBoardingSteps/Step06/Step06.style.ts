@@ -28,7 +28,7 @@ export const GradientImg = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, #fff 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
     z-index: 1;
   }
 `;
@@ -39,9 +39,8 @@ export const TitleContainer = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  text-align: center;
   color: white;
-  z-index: 999;
+  z-index: 1;
   gap: 1.6rem;
   margin-left: 2rem;
 `;
