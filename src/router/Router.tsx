@@ -17,6 +17,8 @@ import TournamentPage from '../pages/Tournament/TournamentPage';
 import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
 import InvitationDeadline from '../components/OnBoardingSteps/invitationDeadline/InvitationDeadline';
 import ParticipantsView from '../pages/Participants/ ParticipantsView';
+import HeaderLayout from '../layouts/HeaderLayout';
+import LoginError from '../pages/LoginError/LoginError';
 
 const router = createBrowserRouter([
   {
@@ -24,16 +26,25 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
+        element: <HeaderLayout />,
+        children: [
+          {
+            path: '/mypage',
+            element: <MyPage />,
+          },
+          {
+            path: '/error',
+            element: <LoginError />,
+          },
+        ],
+      },
+      {
         path: '/',
         element: <Start />,
       },
       {
         path: '/api/oauth/kakao/login',
         element: <Login />,
-      },
-      {
-        path: '/mypage',
-        element: <MyPage />,
       },
       {
         path: '/editpage/:roomId',

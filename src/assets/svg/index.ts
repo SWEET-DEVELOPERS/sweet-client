@@ -1,3 +1,5 @@
+export { default as IcHome2 } from './IcHome2';
+export { default as IcMypage } from './IcMypage';
 export { default as Svg3Dicons } from './3Dicons';
 export { default as Divider } from './Divider';
 export { default as Favicon } from './Favicon';
