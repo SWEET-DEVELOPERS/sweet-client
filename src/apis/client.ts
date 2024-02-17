@@ -1,5 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
+// 해당 파일 코드리뷰 부탁합니다 !
+
 export const getAccessTokenLocalStorage = () => {
   const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
   return accessToken ? `Bearer ${accessToken}` : '';
