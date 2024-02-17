@@ -32,6 +32,10 @@ const router = createBrowserRouter([
             path: '/mypage',
             element: <MyPage />,
           },
+          {
+            path: '/error',
+            element: <LoginError />,
+          },
         ],
       },
       {
@@ -41,10 +45,6 @@ const router = createBrowserRouter([
       {
         path: '/api/oauth/kakao/login',
         element: <Login />,
-      },
-      {
-        path: '/error',
-        element: <LoginError />,
       },
       {
         path: '/editpage/:roomId',
