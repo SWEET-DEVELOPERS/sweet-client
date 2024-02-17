@@ -40,7 +40,7 @@ export type RoomMemberType = {
 
 export type OwnerListType = {
   ownerId: number;
-  profileImgUrl: string;
+  profileImageUrl: string;
   name: string;
 };
 
