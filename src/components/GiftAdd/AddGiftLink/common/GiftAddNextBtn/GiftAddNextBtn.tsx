@@ -4,7 +4,7 @@ import * as S from './GiftAddNextBtn.styled';
 interface GiftAddNextBtnProps {
   children: React.ReactNode;
   isActivated: boolean;
-  onClick: () => void;
+  onClick: VoidFunction;
 }
 const GiftAddNextBtn = ({ children, isActivated, onClick }: GiftAddNextBtnProps) => {
   return (
