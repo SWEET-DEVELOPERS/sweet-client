@@ -20,7 +20,6 @@ const GiftAddPageLayout = ({
   targetDate,
   roomId,
   setStep,
-  // itemNum,
   setItemNum,
 }: GiftAddPageLayoutProps) => {
   const roomIdNumber = parseInt(roomId);
