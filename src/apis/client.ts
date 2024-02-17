@@ -44,7 +44,7 @@ const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
 
 instance.interceptors.request.use(
   (config) => {
-    if (!localStorage.getItem('EXIT_LOGIN_TOKEN')) {
+    if (!localStorage.getItem('EXIT_LOGIN_REFRESH_TOKEN')) {
       window.location.href = '/error';
       return config;
     }
