@@ -5,7 +5,7 @@ import DoneGiftView from './GiftRoomView/DoneGiftView/DoneGiftView';
 import ProgressGiftView from './GiftRoomView/ProgressGiftView/ProgressGiftView';
 import useGetMyPage from '../../hooks/queries/member/useGetMypage';
 import { MyPageType } from '../../types/member';
-import { logOutInstance, post } from '../../apis/client';
+import { logOutInstance } from '../../apis/client';
 import * as S from './MyPage.style';
 import { useNavigate } from 'react-router';
 interface MyPage {
