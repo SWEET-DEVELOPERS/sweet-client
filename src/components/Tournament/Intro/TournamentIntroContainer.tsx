@@ -31,6 +31,7 @@ const TournamentIntroContainer = () => {
     return <TournamentResult />;
   } else if (memberData && memberData.data) {
     tournamentData = memberData.data;
+    console.log(tournamentData.length);
   }
 
   return (
@@ -39,7 +40,7 @@ const TournamentIntroContainer = () => {
         <>
           <Header />
           <S.TournamentFlowWrapper>
-            {tournamentData.length === 0 ? (
+            {tournamentData.length === undefined ? (
               <>
                 <TournamentNoneText />
                 <S.TournamentImg>
