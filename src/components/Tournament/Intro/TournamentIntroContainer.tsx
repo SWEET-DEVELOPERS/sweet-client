@@ -12,6 +12,7 @@ import Header from '../../common/Header';
 import TournamentNoneText from './TournamentNoneText/TournamentNoneText';
 import { TournamentResult } from '../TournamentResult/TournamentResult.sytle';
 import { GiftData } from '../../../types/tournament';
+import TournamentDeleteButton from './TournamentDeleteButton/TournamentDeleteButton';
 
 const TournamentIntroContainer = () => {
   const params = useParams();
@@ -31,7 +32,7 @@ const TournamentIntroContainer = () => {
     return <TournamentResult />;
   } else if (memberData && memberData.data) {
     tournamentData = memberData.data;
-    console.log(tournamentData.length);
+    console.log(tournamentData);
   }
 
   return (
@@ -42,10 +43,22 @@ const TournamentIntroContainer = () => {
           <S.TournamentFlowWrapper>
             {tournamentData.length === undefined ? (
               <>
-                <TournamentNoneText />
-                <S.TournamentImg>
-                  <TrophyNone />
-                </S.TournamentImg>
+                {memberData.data.isOwner ? (
+                  <>
+                    <TournamentNoneText />
+                    <S.TournamentImg>
+                      <TrophyNone />
+                    </S.TournamentImg>
+                    <TournamentDeleteButton onClick={handleStartClick} />
+                  </>
+                ) : (
+                  <>
+                    <TournamentNoneText />
+                    <S.TournamentImg>
+                      <TrophyNone />
+                    </S.TournamentImg>
+                  </>
+                )}
               </>
             ) : (
               <>
