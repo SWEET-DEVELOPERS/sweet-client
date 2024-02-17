@@ -16,9 +16,10 @@ import GiftHome from '../pages/GiftHome/GiftHome';
 import TournamentPage from '../pages/Tournament/TournamentPage';
 import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
 import InvitationDeadline from '../components/OnBoardingSteps/invitationDeadline/InvitationDeadline';
-import ParticipantsView from '../pages/Participants/ ParticipantsView';
 import HeaderLayout from '../layouts/HeaderLayout';
 import LoginError from '../pages/LoginError/LoginError';
+import { OnboardingProvider } from '../context/Onboarding/OnboardingContext';
+import ParticipantsView from '../pages/Participants/ParticipantsView';
 
 const router = createBrowserRouter([
   {
@@ -72,7 +73,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/onboarding',
-        element: <OnBoardingPage />,
+        element: (
+          <OnboardingProvider>
+            <OnBoardingPage />
+          </OnboardingProvider>
+        ),
       },
       {
         path: '/result/:invitationCode',

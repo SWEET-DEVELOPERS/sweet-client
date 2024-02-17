@@ -1,8 +1,6 @@
 import * as S from './ParticipantsView.style';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-// import useGetGifteeInfo from '../../../hooks/queries/onboarding/useGetGifteeInfo';
-// import usePostParticipation from '../../../hooks/queries/onboarding/usePostParticipation';
 import { IcKakaoShare, IcKakoLarge, IcLink } from '../../assets/svg';
 import OnboardingFinalHeader from '../../components/OnBoardingSteps/Step06/OnboardingFinalHeader';
 import Title from '../../components/common/title/Title';
@@ -14,22 +12,16 @@ import useClipboard from '../../hooks/useCopyClip';
 import usePostParticipation from '../../hooks/queries/onboarding/usePostParticipation';
 
 const ParticipantsView = () => {
-  // const { onboardingInfo, invitationCode } = props;
-
-  // const location = useLocation();
-  // const searchParams = new URLSearchParams(location.search);
-  // const invitationCode = searchParams.get('invitationCode');
-  // console.log('step06 내 초대코드', invitationCode);
-
   const { invitationCode } = useParams<{ invitationCode?: string }>();
-  const getGifteeInfo = useGetGifteeInfo(invitationCode || null);
+  const { data } = useGetGifteeInfo(invitationCode || null);
   const [isToken, setIsToken] = useState<boolean>(false);
-  console.log('추출된 초대 코드', invitationCode);
-  const navigate = useNavigate();
   const { handleCopyToClipboard } = useClipboard();
-
   const { mutation } = usePostParticipation();
+  const navigate = useNavigate();
 
+  console.log('useGetGifteeInfo로 받아온 data', data);
+
+  /**@see 카카오 공유하기를 위한 useEffect */
   useEffect(() => {
     if (!window.Kakao.isInitialized()) {
       console.log('카카오 SDK 초기화 중...');
@@ -37,15 +29,7 @@ const ParticipantsView = () => {
     }
   }, []);
 
-  useEffect(() => {
-    if (localStorage.getItem('EXIT_LOGIN_TOKEN') !== '') {
-      setIsToken(true);
-      console.log('로컬스토리지 확인', localStorage.getItem('EXIT_LOGIN_TOKEN'));
-    } else {
-      console.log('로컬스토리지 ㄴㄴ', localStorage.getItem('EXIT_LOGIN_TOKEN'));
-      setIsToken(false);
-    }
-  }, [isToken]);
+  /**@todo 겹치는 부분이니 커스텀 훅 수정  */
 
   const formatDate = (dateString: string, includeTime: boolean = true) => {
     const date = new Date(dateString);
@@ -62,13 +46,13 @@ const ParticipantsView = () => {
     }
   };
 
-  const getDayOfWeek = (date: any) => {
+  const getDayOfWeek = (date: Date) => {
     const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
     const dayOfWeekIndex = date.getDay();
     return daysOfWeek[dayOfWeekIndex];
   };
 
-  const formatDuration = (durationType: any) => {
+  const formatDuration = (durationType: string) => {
     switch (durationType) {
       case 'SIX_HOURS':
         return '6시간';
@@ -83,20 +67,30 @@ const ParticipantsView = () => {
     }
   };
 
-  const infoDetails = getGifteeInfo?.data
-    ? [
-        { title: '선물 받을 사람', detail: getGifteeInfo.data.gifteeName },
-        {
-          title: '선물 등록 마감',
-          detail: formatDate(getGifteeInfo.data.tournamentStartDate, true),
-        },
-        {
-          title: '토너먼트 진행 시간',
-          detail: formatDuration(getGifteeInfo.data.tournamentDuration),
-        },
-        { title: '선물 전달일', detail: formatDate(getGifteeInfo.data.deliveryDate, false) },
-      ]
-    : [];
+  const infoDetails = [
+    { title: '선물 받을 사람', detail: data.data.gifteeName },
+    {
+      title: '선물 등록 마감',
+      detail: formatDate(data.data.tournamentStartDate, true),
+    },
+    {
+      title: '토너먼트 진행 시간',
+      detail: formatDuration(data.data.tournamentDuration),
+    },
+    { title: '선물 전달일', detail: formatDate(data.data.deliveryDate, false) },
+  ];
+
+  /**@TODO 현재 token값의 유무에 따라 다른 뷰를 보여주는 로직인데,
+   * token의 값이 있든 없든 항상 토큰이 있는 값을 보여주고 있음. 처리 필요 */
+  useEffect(() => {
+    if (localStorage.getItem('EXIT_LOGIN_TOKEN') !== '') {
+      setIsToken(true);
+      console.log('로컬스토리지 확인', localStorage.getItem('EXIT_LOGIN_TOKEN'));
+    } else {
+      console.log('로컬스토리지 ㄴㄴ', localStorage.getItem('EXIT_LOGIN_TOKEN'));
+      setIsToken(false);
+    }
+  }, [isToken]);
 
   const handleClickRoom = async (body: string | null) => {
     console.log('입장 버튼 클릭! 그리고 초대 코드', invitationCode);
@@ -126,21 +120,23 @@ const ParticipantsView = () => {
       <S.OnboardingFinalWrapper>
         <div>
           <S.GradientImg>
-            <img
-              src='https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/sweet.png'
-              style={{ width: '100%', opacity: 0.7 }}
-            />
+            {/* TODO s3에 업로드된 이미지로 변경 */}
+            <img src={data.data.imageUrl} style={{ width: '100%' }} />
             <S.TitleContainer>
-              <div style={{ marginBottom: '8rem' }}>
-                <Title title={`${getGifteeInfo.data.gifteeName}님을 위한`} />
-                <Title title='선물 준비방이 개설됐어요' />
-              </div>
-              {isToken === true ? (
+              <S.ParticipantsTitleWrapper>
+                <Title>
+                  {/* {`${getGifteeInfo.data.gifteeName}님을 위한`} */}
+                  {/* {`${onboardingInfo.gifteeName}님을 위한`} */}
+                  {`${data.data.gifteeName}님을 위한`}
+                  <br /> 선물 준비방이 개설됐어요
+                </Title>
+              </S.ParticipantsTitleWrapper>
+              {localStorage.getItem('EXIT_LOGIN_TOKEN') ? (
                 <OnBoardingBtn
+                  step={6}
                   customStyle={{ marginBottom: '1.6rem' }}
-                  setStep={() => handleClickRoom(getGifteeInfo.data.invitationCode)}
+                  setStep={() => handleClickRoom(data.data.invitationCode)}
                   isActivated={true}
-                  // onClick={() => handleClickRoom(getGifteeInfo.data.invitationCode)}
                 >
                   입장
                 </OnBoardingBtn>
@@ -161,15 +157,12 @@ const ParticipantsView = () => {
       </S.InfoWrapper>
       {/* 수정된 부분 시작 */}
       <S.BtnWrapper>
-        {isToken === false ? (
-          <IcKakoLarge onClick={() => window.location.replace(kakaoURL)} />
-        ) : (
+        {localStorage.getItem('EXIT_LOGIN_TOKEN') ? (
           <>
             <S.LinkCopyBtn
               onClick={() =>
-                // TODO 추후 로컬 주소를 배포 주소로 변경
                 handleCopyToClipboard(
-                  `http://sweetgift.vercel.app/result/${getGifteeInfo.data.invitationCode}`,
+                  `http://sweetgift.vercel.app/result/${data.data.invitationCode}`,
                 )
               }
             >
@@ -177,17 +170,16 @@ const ParticipantsView = () => {
               링크 복사
             </S.LinkCopyBtn>
             <S.KakaoLinkCopyBtn
-              onClick={() =>
-                useKakaoShare(getGifteeInfo.data.invitationCode, getGifteeInfo.data.gifteeName)
-              }
+              onClick={() => useKakaoShare(data.data.invitationCode, data.data.gifteeName)}
             >
               <IcKakaoShare style={{ width: '1.8rem', height: '1.8rem' }} />
               카카오톡 공유
             </S.KakaoLinkCopyBtn>
           </>
+        ) : (
+          <IcKakoLarge onClick={() => window.location.replace(kakaoURL)} />
         )}
       </S.BtnWrapper>
-      {/* 수정된 부분 끝 */}
     </>
   );
 };
