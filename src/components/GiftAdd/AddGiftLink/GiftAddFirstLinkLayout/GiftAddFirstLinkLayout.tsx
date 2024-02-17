@@ -8,8 +8,6 @@ import Title from '../../../common/title/Title';
 import usePostOpenGraph from '../../../../hooks/queries/etc/usePostOpengraph';
 import { OpenGraphResponseType } from '../../../../types/etc';
 import { AddGiftInfo } from '../../../../types/gift';
-// import { LinkText } from '../../ShowLink/ShowLink.styled';
-// import { useNavigate } from 'react-router-dom';
 
 interface GiftAddFirstLinkLayoutProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
@@ -29,7 +27,6 @@ const GiftAddFirstLinkLayout = ({
   setLinkText,
   itemNum,
   step,
-  // linkText,
   setOpenGraph,
   targetDate,
   setModalStatus,
@@ -83,8 +80,11 @@ const GiftAddFirstLinkLayout = ({
         updateAddGiftInfo={updateAddGiftInfo}
       />
       <GiftStatusBar registeredGiftNum={itemNum} isMargin={true} />
-      <Title title={itemNum === 0 ? '첫번째 상품의 ' : '두번째 상품의'} />
-      <Title title='판매 링크를 입력해주세요' />
+      <Title>
+        {itemNum === 0 ? '첫번째 상품의' : '두번째 상품의'}
+        <br />
+        판매 링크를 입력해주세요
+      </Title>
       <InputUrl text={text} setText={setText} setIsActivated={setIsActivated} />
       <GiftAddBtnWrapper setStep={setStep} isActivated={isActivated} onClick={onClick} />
     </S.GiftAddLinkLayoutWrapper>

@@ -30,8 +30,6 @@ export const AddGiftWithoutLinkLayout = ({
   linkText,
   setLinkText,
   targetDate,
-  // modalStatus,
-  openGraph,
   updateAddGiftInfo,
   addGiftInfo,
 }: AddGiftWithLinkLayoutProps) => {
