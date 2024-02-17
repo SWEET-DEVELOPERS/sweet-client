@@ -1,9 +1,19 @@
-import axios, { AxiosError, AxiosResponse } from 'axios';
 import { useMutation } from '@tanstack/react-query';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 
-const putPresignedUrl = async (presignedUrl: string): Promise<AxiosResponse> => {
+const putPresignedUrl = async ({
+  presignedUrl,
+  binaryData,
+}: {
+  presignedUrl: string;
+  binaryData: Uint8Array;
+}) => {
   try {
-    const response: AxiosResponse = await axios.put(presignedUrl);
+    const response: AxiosResponse = await axios.put(presignedUrl, binaryData, {
+      headers: {
+        'Content-Type': 'binary',
+      },
+    });
     return response.data;
   } catch (error) {
     if (error instanceof AxiosError) {

@@ -1,100 +1,105 @@
 import Title from '../../common/title/Title';
-import { IcEmptyThumbnail } from '../../../assets/svg';
+import { IcEmptyThumbnail, IcImgEditBtn } from '../../../assets/svg';
 import * as S from './Step02.style';
-import { useState } from 'react';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
-import { NextBtnText } from '../Step01/Step01';
+import usePreviewImage from '../../../hooks/common/usePreviewImage';
+import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
+import { useOnboardingContext } from '../../../context/Onboarding/OnboardingContext';
+import useBinarizeAndPutImage from '../../../hooks/queries/onboarding/useBinarizeAndPutImage';
 
+/** @TODO 추후 presigned URL 진행 */
 interface ThumbnailInputProps {
   onNext: VoidFunction;
-  imageUrl: string;
-  setImageUrl: React.Dispatch<React.SetStateAction<string>>;
-  fileName: string;
-  setFileName: React.Dispatch<React.SetStateAction<string>>;
-  imageFile: File | null;
-  setImageFile: React.Dispatch<React.SetStateAction<File | null>>;
 }
 
 const ThumbnailInput = (props: ThumbnailInputProps) => {
-  // TODO 이미지 클릭 시 사진 업로드
-  const { onNext, setFileName, setImageFile } = props;
-  const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
-  const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const { onNext } = props;
+  const { isImageUploaded, previewImage, handleImageUpload, imageName, file } = usePreviewImage();
+  const { updateOnboardingInfo } = useOnboardingContext();
+  const { binarizeAndPutImage } = useBinarizeAndPutImage();
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { files } = event.target;
-    if (files && files.length > 0) {
-      const selectedFiles = files as FileList;
-      setPreviewImage(URL.createObjectURL(selectedFiles[0]));
-      setIsImageUploaded(!!selectedFiles?.[0]);
-      const imageFile = selectedFiles[0];
+  const postPresignedUrl = usePostPresignedUrl();
 
-      setImageFile(imageFile);
-      // setFileName(imageFile);
-      console.log('step02 내 지민이와 함께하는 ', imageFile);
-      const imageName = files[0].name.trim();
-      setFileName(imageName);
+  /**@todo 추후 분리 */
+  const fetchPresignedUrl = async (filename: string) => {
+    try {
+      postPresignedUrl.mutate(filename, {
+        onSuccess: async (data) => {
+          /** @todo 파일네임 파싱하는 함수 유틸로 처리 */
+          const presignedUrl = data.presignedUrl.split('?')[0];
+          console.log('data.presignedUrl', data.presignedUrl);
+          console.log('parsingpresignedUrl', presignedUrl);
+          updateOnboardingInfo({ imageUrl: presignedUrl });
 
-      // 확장자 제거
-      // const imageNameWithoutExtension = imageName.replace(/\.[^/.]+$/, '');
+          if (file) {
+            await binarizeAndPutImage({ presignedUrl, file });
+          }
 
-      // 띄워쓰기 제거
-
-      // 앞 3글자 가져오기
-      // const firstThreeLetters = formattedImageName.substring(0, 3);
-
-      // 이미지 업로드 시간
-      // const uploadTime = new Date().toISOString();
-      // const uploadTime = new Date().toISOString().split('.')[0].repl(':', '-');
-      // const uploadTime = Math.random();
-
-      // 최종 이미지 이름
-      // const finalImageName = `${firstThreeLetters}${uploadTime}`.replace('.', '');
-
-      // TODO 그냥 imageUrl에는 presignedUrl을 값에 넣어줘야함
-      // setImageUrl(finalImageName);
-
-      // setFileName(finalImageName);
-
-      // console.log('step02 내 fileName:', finalImageName);
-      console.log('step02 내 imageFile:', imageFile);
+          onNext();
+        },
+      });
+    } catch (error) {
+      console.log(error);
     }
   };
 
   return (
     <>
-      <Title title='썸네일을 등록해주세요' />
-      <div>
-        <S.IcEmptyThumbnailWrapper>
-          <input
-            type='file'
-            accept='image/*'
-            style={{ display: 'none' }}
-            id='imgInput'
-            onChange={handleImageUpload}
-          />
-          <label htmlFor='imgInput'>
-            <IcEmptyThumbnail style={{ width: '24rem', height: '24rem', position: 'relative' }} />
-          </label>
-          {previewImage && (
-            <img
-              src={previewImage}
-              alt='preview'
+      <Title>썸네일을 등록해주세요</Title>
+      <S.IcEmptyThumbnailWrapper>
+        <input
+          type='file'
+          accept='.jpg, .jpeg, .png, .svg'
+          style={{ display: 'none' }}
+          id='imgInput'
+          onChange={handleImageUpload}
+        />
+        <label htmlFor='imgInput'>
+          {previewImage ? (
+            <S.ThumbnailWrapper>
+              <img
+                src={previewImage}
+                alt='preview'
+                style={{
+                  position: 'relative',
+                  width: '24rem',
+                  height: '24rem',
+                  borderRadius: '1.2rem',
+                }}
+              />
+              <IcImgEditBtn
+                style={{
+                  position: 'absolute',
+                  width: '2.8rem',
+                  height: '2.8rem',
+                  top: '0.8rem',
+                  right: '0.8rem',
+                  cursor: 'pointer',
+                }}
+              />
+            </S.ThumbnailWrapper>
+          ) : (
+            <IcEmptyThumbnail
               style={{
                 width: '24rem',
                 height: '24rem',
-                position: 'absolute',
-                borderRadius: '1.2rem',
+                position: 'relative',
+                marginTop: '2.8rem',
+                cursor: 'pointer',
               }}
             />
           )}
-        </S.IcEmptyThumbnailWrapper>
-        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <OnBoardingBtn isActivated={isImageUploaded} setStep={onNext}>
-            <NextBtnText isActivated={isImageUploaded}>다음</NextBtnText>
-          </OnBoardingBtn>
-        </div>
-      </div>
+        </label>
+      </S.IcEmptyThumbnailWrapper>
+
+      <OnBoardingBtn
+        isActivated={isImageUploaded}
+        setStep={() => {
+          fetchPresignedUrl(imageName);
+        }}
+      >
+        다음
+      </OnBoardingBtn>
     </>
   );
 };

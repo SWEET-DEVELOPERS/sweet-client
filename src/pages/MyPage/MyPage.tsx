@@ -7,7 +7,6 @@ import useGetMyPage from '../../hooks/queries/member/useGetMypage';
 import { MyPageType } from '../../types/member';
 import * as S from './MyPage.style';
 import { useNavigate } from 'react-router';
-import StartHeader from '../Start/StartHeader/StartHeader';
 interface MyPage {
   memberData: MyPageType;
 }
@@ -32,7 +31,6 @@ const MyPage = () => {
 
   return (
     <S.MyPageWrapper>
-      <StartHeader />
       <S.TopImage />
       <S.ProfileWrapper>
         <S.UserButtonWrapper>
