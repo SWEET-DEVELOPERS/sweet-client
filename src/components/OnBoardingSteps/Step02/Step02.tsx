@@ -4,8 +4,8 @@ import * as S from './Step02.style';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import usePreviewImage from '../../../hooks/common/usePreviewImage';
 import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
-import useBinarizeAndPutImage from '../../../hooks/queries/etc/useBinarizeAndPutImage';
 import { useOnboardingContext } from '../../../context/Onboarding/OnboardingContext';
+import useBinarizeAndPutImage from '../../../hooks/queries/onboarding/useBinarizeAndPutImage';
 
 /** @TODO 추후 presigned URL 진행 */
 interface ThumbnailInputProps {
