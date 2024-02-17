@@ -5,7 +5,7 @@ import DoneGiftView from './GiftRoomView/DoneGiftView/DoneGiftView';
 import ProgressGiftView from './GiftRoomView/ProgressGiftView/ProgressGiftView';
 import useGetMyPage from '../../hooks/queries/member/useGetMypage';
 import { MyPageType } from '../../types/member';
-import { post } from '../../apis/client';
+import { logOutInstance, post } from '../../apis/client';
 import * as S from './MyPage.style';
 import { useNavigate } from 'react-router';
 interface MyPage {
@@ -18,7 +18,7 @@ const MyPage = () => {
   const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
   console.log(accessToken);
 
-  const fetchAuth = async () => post(`/oauth/logout`);
+  const fetchAuth = async () => logOutInstance.post(`/oauth/logout`);
   console.log(memberData);
   console.log(memberData?.data);
   console.log(memberData?.data?.memberInfo);
@@ -36,7 +36,7 @@ const MyPage = () => {
     fetchAuth().then((response: any) => {
       console.log(response);
     });
-    localStorage.removeItem('EXIT_LOGIN_TOKEN');
+    localStorage.clear();
     navigate('/');
   };
 
