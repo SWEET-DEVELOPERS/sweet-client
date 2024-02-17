@@ -16,4 +16,9 @@ export interface GiftType {
 export interface MyGiftsType {
   myGiftDtoList: GiftType[];
 }
-
+export interface AddGiftInfo {
+  name: name;
+  cost: cost;
+  imageUrl: imageUrl;
+  url: link;
+}

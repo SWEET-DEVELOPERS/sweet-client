@@ -16,6 +16,7 @@ import GiftHome from '../pages/GiftHome/GiftHome';
 import TournamentPage from '../pages/Tournament/TournamentPage';
 import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
 import InvitationDeadline from '../components/OnBoardingSteps/invitationDeadline/InvitationDeadline';
+import { AddGiftProvider } from '../context/AddGift/AddGiftContext';
 import HeaderLayout from '../layouts/HeaderLayout';
 import LoginError from '../pages/LoginError/LoginError';
 import { OnboardingProvider } from '../context/Onboarding/OnboardingContext';
@@ -93,7 +94,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/add-gift/:roomId/:targetTime',
-        element: <GiftAddPage />,
+        element: (
+          <AddGiftProvider>
+            <GiftAddPage />
+          </AddGiftProvider>
+        ),
       },
       {
         path: '/deadline',

@@ -1,4 +1,5 @@
 import { IcLeft } from '../../../../../assets/svg';
+import { AddGiftInfo } from '../../../../../types/gift';
 import MiniTimer from '../../../../common/MiniTimer/MiniTimer';
 import * as S from './LinkAddHeader.styled';
 
@@ -6,13 +7,29 @@ interface LinkAddHeaderProps {
   targetDate: string;
   step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
+  name?: string;
+  cost?: number | null;
+  imageUrl?: string;
+  url?: string;
+  updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
 }
 
-const LinkAddHeader = ({ targetDate, step, setStep }: LinkAddHeaderProps) => {
+const LinkAddHeader = ({
+  targetDate,
+  step,
+  setStep,
+  name,
+  cost,
+  imageUrl,
+  url,
+  updateAddGiftInfo,
+}: LinkAddHeaderProps) => {
   const onClickBackBtn = () => {
     if (step === 1) {
+      updateAddGiftInfo({ url: url });
       setStep(0);
     } else if (step === 2 || step === 3) {
+      updateAddGiftInfo({ name: name, cost: cost, imageUrl: imageUrl });
       setStep(1);
     }
   };

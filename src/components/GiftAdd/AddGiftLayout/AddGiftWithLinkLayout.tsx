@@ -7,6 +7,7 @@ import * as S from './common/AddGiftLayout.styled';
 import AddGiftImg from './common/AddGiftImg/AddGiftImg';
 import { OpenGraphResponseType } from '../../../types/etc';
 import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
+import { AddGiftInfo } from '../../../types/gift';
 import useConvertURLtoFile from '../../../hooks/useConvertURLtoFile';
 
 interface AddGiftWithLinkLayoutProps {
@@ -16,6 +17,8 @@ interface AddGiftWithLinkLayoutProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
   openGraph: OpenGraphResponseType;
   targetDate: string;
+  updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
+  addGiftInfo: AddGiftInfo;
 }
 
 const AddGiftWithLinkLayout = ({
@@ -25,11 +28,15 @@ const AddGiftWithLinkLayout = ({
   setStep,
   openGraph,
   targetDate,
+  updateAddGiftInfo,
+  addGiftInfo,
 }: AddGiftWithLinkLayoutProps) => {
-  const [isActivated, setIsActivated] = useState(false);
-  const [nameText, setNameText] = useState<string>(openGraph.title);
-  const [priceText, setPriceText] = useState<number | null>(null);
-  const [imageUrl, setImageUrl] = useState<string>(openGraph.image);
+  const [isActivated, setIsActivated] = useState(
+    !!addGiftInfo.name && !!addGiftInfo.cost && !!addGiftInfo.imageUrl,
+  );
+  const [nameText, setNameText] = useState<string>(addGiftInfo.name);
+  const [priceText, setPriceText] = useState<number | null>(addGiftInfo.cost);
+  const [imageUrl, setImageUrl] = useState<string>(addGiftInfo.imageUrl);
   const [fileName, setFileName] = useState<string>('');
   const [file, setFile] = useState<File | null>(null);
   const [, setIsImageUploaded] = useState<boolean>(false);
@@ -57,7 +64,15 @@ const AddGiftWithLinkLayout = ({
 
   return (
     <S.AddGiftWithLinkLayoutWrapper>
-      <LinkAddHeader targetDate={targetDate} setStep={setStep} step={step} />
+      <LinkAddHeader
+        targetDate={targetDate}
+        setStep={setStep}
+        step={step}
+        name={nameText}
+        cost={priceText}
+        imageUrl={imageUrl}
+        updateAddGiftInfo={updateAddGiftInfo}
+      />
       <GiftStatusBar registeredGiftNum={1} isMargin={true} />
       <AddGiftImg
         imageUrl={imageUrl}
@@ -85,6 +100,7 @@ const AddGiftWithLinkLayout = ({
         isActivated={isActivated}
         roomId={roomId}
         fileName={fileName}
+        updateAddGiftInfo={updateAddGiftInfo}
         file={file}
         setImageUrl={setImageUrl}
       />
