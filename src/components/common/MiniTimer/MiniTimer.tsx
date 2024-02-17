@@ -6,7 +6,7 @@ interface MiniTimerProps {
   targetDate: string;
 }
 
-function MiniTimer({ targetDate }: MiniTimerProps) {
+const MiniTimer = ({ targetDate }: MiniTimerProps) => {
   const [days, hours, minutes, seconds] = useCountDown(targetDate);
   // 빌드 에러 해결
   console.log(days);
@@ -19,6 +19,6 @@ function MiniTimer({ targetDate }: MiniTimerProps) {
       </S.MiniTimerNumbers>
     </S.MiniTimerWrapper>
   );
-}
+};
 
 export default MiniTimer;

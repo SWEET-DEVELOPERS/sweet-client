@@ -19,9 +19,9 @@ export const usePostGift = (
 
   const mutation = useMutation({
     mutationFn: postNewGift,
-    onSuccess: (data) => {
+    onSuccess: () => {
       console.log('선물 등록 성공!!');
-      queryClient.setQueryData([MY_GIFT_QUERY_KEY[0], roomId], data);
+      queryClient.invalidateQueries({ queryKey: [MY_GIFT_QUERY_KEY[0], roomId] });
       navigate(`/add-gift/${roomId}/${targetDate}`);
       setStep(0);
     },

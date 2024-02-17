@@ -2,18 +2,16 @@ import { AxiosError, AxiosResponse } from 'axios';
 import { post } from '../../../apis/client';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { MY_GIFT_QUERY_KEY } from '../gift/useGetMyGift';
-// import { useNavigate } from 'react-router-dom';
 
 interface PostPresignedUrlArgs {
-  url: string;
   filename: string;
 }
 
-const postPresignedUrl = async ({ filename, url }: PostPresignedUrlArgs) => {
+const postPresignedUrl = async ({ filename }: PostPresignedUrlArgs) => {
   try {
     const queryString = filename ? `presigned-url?fileName=${filename}` : '';
     if (queryString) {
-      const response: AxiosResponse = await post(queryString, url);
+      const response: AxiosResponse = await post(queryString, filename);
       return response.data;
     }
   } catch (error) {
@@ -26,17 +24,16 @@ const postPresignedUrl = async ({ filename, url }: PostPresignedUrlArgs) => {
 };
 
 const usePostMyPresignedUrl = (roomId: number) => {
-  // const navigate = useNavigate();
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: postPresignedUrl,
     onSuccess: (data) => {
       console.log('usePostPresignedUrl onSuccess 내꺼로 포스트 성공~', data);
-      queryClient.setQueryData([MY_GIFT_QUERY_KEY[0], roomId], data);
+      queryClient.invalidateQueries({ queryKey: [MY_GIFT_QUERY_KEY[0], roomId] });
     },
     onError: (error) => {
-      console.log('내 선물 POST 중 에러가 발생했습니다.', error.message);
+      console.log('내 선물 PU 받아오던 중 에러가 발생했습니다.', error.message);
     },
   });
 };
