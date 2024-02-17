@@ -5,15 +5,11 @@ import * as S from './GiftAddButtonsWrapper.styled';
 
 interface GiftAddButtonsProps {
   data: GiftType;
-  onCancelClick: () => void;
+  onCancelClick: VoidFunction;
 }
 
 const GiftAddButtonsWrapper = ({ data, onCancelClick }: GiftAddButtonsProps) => {
   let imageUrl = data.imageUrl;
-
-  if (imageUrl.includes('blob:')) {
-    imageUrl = imageUrl.replace('blob:', '');
-  }
 
   return (
     <S.GiftsItemWrapper>

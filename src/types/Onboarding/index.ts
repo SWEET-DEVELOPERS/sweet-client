@@ -1,6 +1,6 @@
 export type OnboardingInfo = {
   gifteeName: string;
-  imageUrl: string;
+  imageUrl?: string;
   deliveryDate: string;
   tournamentStartDate: string;
   tournamentDuration: string;
