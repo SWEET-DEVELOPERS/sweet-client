@@ -9,7 +9,7 @@ interface GiftHome2030GiftsProps {
   targetDate: Date;
 }
 
-export default function GiftHome2030Gifts({ roomId, data, targetDate }: GiftHome2030GiftsProps) {
+export const GiftHome2030Gifts = ({ roomId, data, targetDate }: GiftHome2030GiftsProps) => {
   return (
     <S.GiftHomeShowcaseWrapper>
       <GiftHomeShowcaseHeader
@@ -36,4 +36,5 @@ export default function GiftHome2030Gifts({ roomId, data, targetDate }: GiftHome
       )}
     </S.GiftHomeShowcaseWrapper>
   );
-}
+};
+export default GiftHome2030Gifts;

@@ -10,13 +10,17 @@ import EditRoom from '../pages/MyPage/EditRoom/EditRoom';
 import DetailProgressRoom from '../pages/MyPage/Detail/DetailProgressRoom/DetailProgressRoom';
 import DetailDoneRoom from '../pages/MyPage/Detail/DetailDoneRoom/DetailDoneRoom';
 
-import TournamentContainer from '../components/TournamentNew/Intro/TournamentContainer';
+import TournamentIntroContainer from '../components/Tournament/Intro/TournamentIntroContainer';
 import GiftHome from '../pages/GiftHome/GiftHome';
 
-import TournamentPage from '../pages/TournamentPage';
+import TournamentPage from '../pages/Tournament/TournamentPage';
 import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
 import InvitationDeadline from '../components/OnBoardingSteps/invitationDeadline/InvitationDeadline';
-import ParticipantsView from '../pages/Participants/ ParticipantsView';
+import { AddGiftProvider } from '../context/AddGift/AddGiftContext';
+import HeaderLayout from '../layouts/HeaderLayout';
+import LoginError from '../pages/LoginError/LoginError';
+import { OnboardingProvider } from '../context/Onboarding/OnboardingContext';
+import ParticipantsView from '../pages/Participants/ParticipantsView';
 
 const router = createBrowserRouter([
   {
@@ -24,16 +28,25 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
+        element: <HeaderLayout />,
+        children: [
+          {
+            path: '/mypage',
+            element: <MyPage />,
+          },
+          {
+            path: '/error',
+            element: <LoginError />,
+          },
+        ],
+      },
+      {
         path: '/',
         element: <Start />,
       },
       {
         path: '/api/oauth/kakao/login',
         element: <Login />,
-      },
-      {
-        path: '/mypage',
-        element: <MyPage />,
       },
       {
         path: '/editpage/:roomId',
@@ -61,7 +74,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/onboarding',
-        element: <OnBoardingPage />,
+        element: (
+          <OnboardingProvider>
+            <OnBoardingPage />
+          </OnboardingProvider>
+        ),
       },
       {
         path: '/result/:invitationCode',
@@ -69,7 +86,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/tournament/:giftee/:roomId',
-        element: <TournamentContainer />,
+        element: <TournamentIntroContainer />,
       },
       {
         path: '/tournament-ranking/:giftee/:roomId',
@@ -77,7 +94,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/add-gift/:roomId/:targetTime',
-        element: <GiftAddPage />,
+        element: (
+          <AddGiftProvider>
+            <GiftAddPage />
+          </AddGiftProvider>
+        ),
       },
       {
         path: '/deadline',

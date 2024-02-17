@@ -8,7 +8,7 @@ const frameInAnimation = keyframes`
 
   100%{
     opacity: 1;
-    transform: translateX(-3%);
+    transform: translateX(-5%);
   }
 `;
 const frameInAnimationLeft = keyframes`
@@ -19,7 +19,7 @@ const frameInAnimationLeft = keyframes`
 
   100%{
     opacity: 1;
-    transform: translate(30%);
+    transform: translate(25%);
   }
 `;
 const frameInAnimationUp = keyframes`
@@ -35,11 +35,9 @@ const frameInAnimationUp = keyframes`
 `;
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  gap: 2.4rem;
+  ${({ theme: { mixin } }) => mixin.flexBox({ direction: 'column' })};
+  max-width: 37.5rem;
+  margin: 2.4rem;
 
   &.frame-in {
     animation: ${frameInAnimation} 2s forwards;
@@ -47,10 +45,8 @@ export const Container = styled.div`
 `;
 
 export const LeftContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
+  ${({ theme: { mixin } }) => mixin.flexBox({ direction: 'column' })};
+  max-width: 37.5rem;
   margin-top: 4.9rem;
 
   &.frame-in {

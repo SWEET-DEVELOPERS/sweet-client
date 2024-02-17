@@ -7,28 +7,24 @@ import { useNavigate } from 'react-router-dom';
 import OnboardingFinalHeader from './OnboardingFinalHeader';
 import useClipboard from '../../../hooks/useCopyClip';
 import { useKakaoShare } from '../../../hooks/queries/onboarding/useKakaoShare';
+import { useOnboardingContext } from '../../../context/Onboarding/OnboardingContext';
+import useFormatDate from '../../../hooks/onboarding/useFormatDate';
 
 interface OnboardingFinalProps {
-  onboardingInfo: {
-    gifteeName: string;
-    // imageUrl: string;
-    deliveryDate: string;
-    tournamentStartDate: string;
-    tournamentDuration: string;
-  };
   invitationCode: string;
-  imageUrl: string;
   roomId: number;
 }
 
 const OnboardingFinal = (props: OnboardingFinalProps) => {
-  const { onboardingInfo, invitationCode, imageUrl, roomId } = props;
-
-  console.log('step06 내 imageUrl', imageUrl);
-
+  const { invitationCode, roomId } = props;
+  const { onboardingInfo } = useOnboardingContext();
+  const { infoDetails } = useFormatDate();
   const navigate = useNavigate();
   const { handleCopyToClipboard } = useClipboard();
 
+  const step = 6;
+
+  /** @see 카카오 공유하기를 위한 useEffect */
   useEffect(() => {
     if (!window.Kakao.isInitialized()) {
       console.log('카카오 SDK 초기화 중...');
@@ -36,90 +32,31 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
     }
   }, []);
 
-  // console.log('getGifteeInfo', getGifteeInfo);
-
-  const formatDate = (dateString: string, includeTime: boolean = true) => {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-
-    if (includeTime) {
-      return `${year}.${month}.${day} (${getDayOfWeek(date)}) ${hours}시 ${minutes}분`;
-    } else {
-      return `${year}.${month}.${day} (${getDayOfWeek(date)})`;
-    }
-  };
-
-  const getDayOfWeek = (date: any) => {
-    const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
-    const dayOfWeekIndex = date.getDay();
-    return daysOfWeek[dayOfWeekIndex];
-  };
-
-  const formatDuration = (durationType: any) => {
-    switch (durationType) {
-      case 'SIX_HOURS':
-        return '6시간';
-      case 'TWELVE_HOURS':
-        return '12시간';
-      case 'EIGHTEEN_HOURS':
-        return '18시간';
-      case 'TWENTY_FOUR_HOURS':
-        return '24시간';
-      default:
-        return '';
-    }
-  };
-
-  const infoDetails = onboardingInfo.gifteeName
-    ? [
-        { title: '선물 받을 사람', detail: onboardingInfo.gifteeName },
-        {
-          title: '선물 등록 마감',
-          detail: formatDate(onboardingInfo.tournamentStartDate, true),
-        },
-        {
-          title: '토너먼트 진행 시간',
-          detail: formatDuration(onboardingInfo.tournamentDuration),
-        },
-        { title: '선물 전달일', detail: formatDate(onboardingInfo.deliveryDate, false) },
-      ]
-    : [];
-
   return (
     <>
       <OnboardingFinalHeader />
       <S.OnboardingFinalWrapper>
         {/* TODO presignedUrl이 null 또는 빈 스트링일 경우 엠티 뷰 보이기 / 값이 있으면 저장되어있는 imageUrl 보이기 */}
-        {/* <S.GradientImg> */}
         <div>
           <S.GradientImg>
-            <img
-              src='https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/sweet.png'
-              style={{ width: '100%' }}
-            />
+            <img src={onboardingInfo.imageUrl} style={{ width: '100%' }} />
             <S.TitleContainer>
               <S.TitleWrapper>
-                <Title title={`${onboardingInfo.gifteeName} 님을 위한 `} />
-                <Title title='선물 준비방이 개설됐어요' />
+                <Title>
+                  {`${onboardingInfo.gifteeName}님을 위한`} <br /> 선물 준비방이 개설됐어요
+                </Title>
                 <OnBoardingBtn
+                  step={step}
                   customStyle={{ marginBottom: '1.6rem' }}
-                  // setStep={navigate(`/gift-home/${roomId}`)}
                   setStep={() => navigate(`/gift-home/${roomId}`)}
                   isActivated={true}
                 >
                   입장
                 </OnBoardingBtn>
               </S.TitleWrapper>
-              {/* TODO 추후 지민이 버튼으로 변경(항상 활성화) */}
             </S.TitleContainer>
           </S.GradientImg>
         </div>
-
-        {/* </S.GradientImg> */}
       </S.OnboardingFinalWrapper>
       <S.InfoWrapper>
         {infoDetails.map((item, index) => (
@@ -132,7 +69,8 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
       <S.BtnWrapper>
         <S.LinkCopyBtn
           onClick={() =>
-            // TODO 추후 로컬 주소를 배포 주소로 변경
+            // TODO 추후 로컬 주소를 배포 주소로 변경 및 주소 상수처리
+            // handleCopyToClipboard(`http://localhost:5173/result/${invitationCode}`)
             handleCopyToClipboard(`http://sweetgift.vercel.app/result/${invitationCode}`)
           }
         >

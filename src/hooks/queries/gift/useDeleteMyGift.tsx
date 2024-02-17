@@ -2,15 +2,14 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { del } from '../../../apis/client';
 import { MY_GIFT_QUERY_KEY } from './useGetMyGift';
 
-export const deleteMyGift = async (giftId: number) => {
+export async function deleteMyGift(giftId: number) {
   await del(`/gift/my/${giftId}`);
-};
+}
 
 export const useDeleteMyGift = (roomId: number) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationKey: [MY_GIFT_QUERY_KEY[0]],
     mutationFn: deleteMyGift,
     onSuccess() {
       console.log('선물 삭제 성공');

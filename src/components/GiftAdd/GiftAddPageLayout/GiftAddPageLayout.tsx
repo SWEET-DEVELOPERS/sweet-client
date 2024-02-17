@@ -6,7 +6,6 @@ import GiftAddPageLayoutHeader from './GiftAddPageLayoutHeader';
 import useGetMyGift from '../../../hooks/queries/gift/useGetMyGift';
 import EmptyGiftAddButtonsWrapper from '../GiftAddButtons/EmptyGiftAddButtonsWrapper';
 import useDeleteMyGift from '../../../hooks/queries/gift/useDeleteMyGift';
-// import { useEffect } from 'react';
 
 interface GiftAddPageLayoutProps {
   roomId: string;
@@ -19,14 +18,12 @@ interface GiftAddPageLayoutProps {
 
 const GiftAddPageLayout = ({
   targetDate,
-  // step,
   roomId,
   setStep,
-  // itemNum,
   setItemNum,
 }: GiftAddPageLayoutProps) => {
   const roomIdNumber = parseInt(roomId);
-  const { data } = useGetMyGift({ roomId: roomIdNumber });
+  const { data } = useGetMyGift({ roomId: roomIdNumber});
   setItemNum(data.data.myGiftDtoList.length);
   const parsedRoomId = parseInt(roomId);
   const { mutation } = useDeleteMyGift(parsedRoomId);
@@ -41,10 +38,6 @@ const GiftAddPageLayout = ({
   const handleClickCancelBtn = (giftId: number) => {
     mutation.mutate(giftId);
   };
-
-  // useEffect(()=> {
-
-  // }, [])
 
   return (
     <S.GiftAddPageWrapper>

@@ -4,7 +4,6 @@ import {
   HomeBgGradientFix,
   HomeCtaBgGradient,
   IcDown,
-  IcKakoLarge,
   Main02,
   Main03,
   Main04,
@@ -14,57 +13,14 @@ import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 export const Wrapper = styled.div`
   background-image: url(${HomeBg});
   background-size: cover;
+  width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
-  ${({ theme: { mixin } }) => mixin.flexCenter};
+  ${({ theme: { mixin } }) => mixin.flexCenter({})};
   margin: auto;
   background-color: #fafafa;
 `;
 
-export const ImgWrapper = styled.div`
-  animation: ani 1.5s infinite alternate;
-
-  @keyframes ani {
-    0% {
-      transform: translate(0, 3rem);
-    }
-    100% {
-      transform: translate(0, 0);
-    }
-  }
-`;
-export const TextWrapper = styled.div`
-  ${({ theme: { mixin } }) => mixin.flexCenter};
-  position: absolutes;
-  margin-top: -11rem;
-
-  z-index: 1;
-`;
-
-export const TitleText = styled.div`
-  ${({ theme: { mixin } }) => mixin.flexCenter};
-  text-align: center;
-  font-family: 'SUIT';
-  font-size: 42px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 130%;
-  background: linear-gradient(180deg, #ff2176 0%, #ff4d8f 47.69%, #ffa1c1 140.68%);
-  -webkit-background-clip: text;
-  color: transparent;
-`;
-
-export const SubTitleText = styled.div`
-  color: ${({ theme: { colors } }) => colors.G_07};
-  text-align: center;
-  font-family: 'SUIT';
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 130%;
-
-  margin-top: 2.7rem;
-`;
 export const Gradient = styled(HomeBgGradientFix)`
   position: absolute;
   top: 55rem;
@@ -77,22 +33,8 @@ export const BtnGradient = styled(HomeCtaBgGradient)`
   bottom: 0;
 `;
 
-export const PersonWrapper = styled.div`
-  position: absolute;
-  top: 86rem;
-  z-index: 1;
-`;
-
 export const BtnFillStyle = styled(BtnFill)`
   position: fixed;
-  z-index: 3;
-  width: 33.5rem;
-  margin: 2rem;
-`;
-
-export const KakaoLogin = styled(IcKakoLarge)`
-  position: fixed;
-  bottom: 0;
   z-index: 3;
   width: 33.5rem;
   margin: 2rem;
