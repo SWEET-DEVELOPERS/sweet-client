@@ -16,14 +16,14 @@ const EditRoom = () => {
   console.log('추출된 초대 코드', roomId);
   const roomWholeMemberData = useGetRoomMember(roomId).data;
   const roomWholeOwnerData = useGetRoomOwner(roomId).data;
-  console.log(roomWholeMemberData);
-  console.log(roomWholeOwnerData);
 
   const roomOwnerData = roomWholeOwnerData?.owner;
   const roomGifteeData = roomWholeOwnerData.room;
-  const roomMemberData = roomWholeMemberData.members;
+  const roomMemberData = roomWholeMemberData;
 
-  console.log(roomOwnerData);
+  console.log('개설자 정보', roomOwnerData);
+  console.log('선물방', roomGifteeData);
+  console.log('선물 준비 멤버 정보', roomMemberData);
 
   return (
     <S.EditRoomWrapper>
@@ -36,7 +36,7 @@ const EditRoom = () => {
         <CardGuest
           user={roomOwnerData.name}
           makerState={true}
-          profileImageUrl={roomOwnerData?.profileImgUrl}
+          profileImageUrl={roomOwnerData?.profileImageUrl}
           memberId={roomOwnerData.ownerId}
         />
 
