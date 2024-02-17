@@ -33,7 +33,6 @@ const AddGiftFooter = ({
   imageUrl,
   link,
   // saveImageUrl,
-  fileName,
   // fetchPresignedUrl,
   // setImageUrl,
 }: AddGiftFooterProps) => {
