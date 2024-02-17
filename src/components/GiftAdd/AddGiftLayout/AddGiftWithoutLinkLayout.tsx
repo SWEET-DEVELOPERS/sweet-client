@@ -5,10 +5,7 @@ import * as S from './common/AddGiftLayout.styled';
 import AddGiftImg from './common/AddGiftImg/AddGiftImg';
 import WithoutLinkWriteItemInfo from './common/WriteItemInfo/WithoutLinkWriteItemInfo';
 import Modal from '../../common/Modal/Modal';
-import usePutPresignedUrl from '../../../hooks/queries/onboarding/usePutPresignedUrl';
-import usePostMyPresignedUrl from '../../../hooks/queries/etc/usePostMyPresignedUrl';
 import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
-// import { postOpenGraph } from '../../../hooks/queries/etc/usePostOpengraph';
 import { OpenGraphResponseType } from '../../../types/etc';
 import { AddGiftInfo } from '../../../types/gift';
 
@@ -24,8 +21,9 @@ interface AddGiftWithLinkLayoutProps {
   updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
   addGiftInfo: AddGiftInfo;
 }
+
 // 직접 입력 화면
-function AddGiftWithoutLinkLayout({
+export const AddGiftWithoutLinkLayout = ({
   roomId,
   step,
   setStep,
@@ -36,7 +34,7 @@ function AddGiftWithoutLinkLayout({
   openGraph,
   updateAddGiftInfo,
   addGiftInfo,
-}: AddGiftWithLinkLayoutProps) {
+}: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(
     !!addGiftInfo.name && !!addGiftInfo.cost && !!addGiftInfo.url && !!addGiftInfo.imageUrl,
   );
@@ -44,95 +42,10 @@ function AddGiftWithoutLinkLayout({
   const [priceText, setPriceText] = useState<number | null>(addGiftInfo.cost);
   const [imageUrl, setImageUrl] = useState<string>(addGiftInfo.imageUrl);
   const [fileName, setFileName] = useState<string>('');
-  const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
-  const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [file, setFile] = useState<File | null>(null);
+  const [, setIsImageUploaded] = useState<boolean>(false);
+  const [, setPreviewImage] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(true);
-
-  //빌드 에러 해결용
-  console.log('previewImage', previewImage);
-  const setParsedFileName = (imageString: string) => {
-    // 확장자 제거
-    const imageNameWithoutExtension = imageString.replace(/\.[^/.]+$/, '');
-    console.log('imageNameWithoutExtension', imageNameWithoutExtension);
-    // 띄워쓰기 제거
-    const formattedImageName = imageNameWithoutExtension.replace(/\s/g, '');
-    console.log('formattedImageName', formattedImageName);
-
-    // 앞 3글자 가져오기
-    const firstThreeLetters = formattedImageName.substring(0, 3);
-    console.log('firstThreeLetters', firstThreeLetters);
-
-    // 이미지 업로드 시간
-    const uploadTime = new Date().toISOString();
-    console.log('uploadTime', uploadTime);
-
-    // 최종 이미지 이름
-    const finalImageName = `${firstThreeLetters}${uploadTime}`;
-    console.log('finalImageName', finalImageName);
-    setFileName(finalImageName);
-    console.log('fileName', fileName);
-
-    return finalImageName;
-  };
-
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { files } = event.target;
-
-    if (files && files.length > 0) {
-      const selectedFiles = files as FileList;
-      setPreviewImage(URL.createObjectURL(selectedFiles[0]));
-      setImageUrl(URL.createObjectURL(selectedFiles[0]));
-      setIsImageUploaded(!!selectedFiles?.[0]);
-
-      console.log(isImageUploaded);
-
-      const imageName = files[0].name.trim();
-
-      setParsedFileName(imageName);
-      console.log('페이지 안에서 fileName', fileName);
-
-      console.log('fileName:', fileName);
-    }
-  };
-
-  const postPresignedUrl = usePostMyPresignedUrl(roomId);
-  const putPresignedUrl = usePutPresignedUrl();
-  // const navigate = useNavigate();
-
-  const fetchPresignedUrl = async (fileName: string) => {
-    if (!fileName) {
-      console.log('파일명이 없어서 fetchPresignedUrl을 실행하지 않습니다.');
-      return { imageUrl: '', presignedUrl: '' };
-    } else {
-      const response = await postPresignedUrl.mutateAsync({ filename: fileName, url: '' });
-      const presignedUrl = response.presignedUrl;
-      const imageUrl = presignedUrl.split('?')[0];
-      console.log('imageUrl', imageUrl);
-      console.log('presignedUrl', presignedUrl);
-      setImageUrl(imageUrl);
-      return { imageUrl, presignedUrl };
-    }
-  };
-
-  const saveImageUrl = async (fileName: string) => {
-    const { presignedUrl, imageUrl } = await fetchPresignedUrl(fileName);
-
-    if (presignedUrl && presignedUrl !== '') {
-      try {
-        await putPresignedUrl.mutateAsync(presignedUrl);
-        console.log('saveImageUrl 안 imageUrl 값 확인', imageUrl);
-      } catch (error) {
-        console.log('putPresignedUrl 실행 중 에러 발생:', error);
-        return;
-      }
-    } else {
-      console.log('preSignedUrl이 비어있어서 putPresignedUrl을 실행하지 않습니다.');
-    }
-  };
-
-  const itemInfo = {
-    roomId: roomId,
-  };
 
   const checkPriceNull = (price: number | null) => {
     if (price === null) {
@@ -169,15 +82,15 @@ function AddGiftWithoutLinkLayout({
       <GiftStatusBar registeredGiftNum={1} isMargin={true} />
       <AddGiftImg
         imageUrl={imageUrl}
-        setImageUrl={setImageUrl}
         openGraph={null}
-        onClickEditBtn={handleImageUpload}
-        // previewImage={previewImage}
-        // setPreviewImage={setPreviewImage}
+        setFile={setFile}
+        setFileName={setFileName}
+        setImageUrl={setImageUrl}
+        setPreviewImage={setPreviewImage}
+        setIsImageUploaded={setIsImageUploaded}
       />
       <WithoutLinkWriteItemInfo
         imageUrl={imageUrl}
-        // setImageUrl={setImageUrl}
         setIsActivated={setIsActivated}
         setName={setNameText}
         setCost={setPriceText}
@@ -189,21 +102,18 @@ function AddGiftWithoutLinkLayout({
       <AddGiftFooter
         targetDate={targetDate}
         name={nameText}
-        openGraph={openGraph}
         cost={checkPriceNull(priceText)}
-        imageUrl={imageUrl}
-        setImageUrl={setImageUrl}
         link={linkText}
         setStep={setStep}
         isActivated={isActivated}
-        itemInfo={itemInfo}
-        saveImageUrl={saveImageUrl}
+        roomId={roomId}
         fileName={fileName}
-        fetchPresignedUrl={fetchPresignedUrl}
         updateAddGiftInfo={updateAddGiftInfo}
+        file={file}
+        setImageUrl={setImageUrl}
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );
-}
+};
 
 export default AddGiftWithoutLinkLayout;
