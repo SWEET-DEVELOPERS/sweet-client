@@ -1,4 +1,4 @@
-import usePutPresignedUrl from '../onboarding/usePutPresignedUrl';
+import { usePutMyPresignedUrl } from './usePutMyPresignedUrl'; // Import the hook correctly
 
 interface putBinaryDataProps {
   presignedUrl: string;
@@ -6,14 +6,15 @@ interface putBinaryDataProps {
 }
 
 const useBinarizeAndPutImage = () => {
-  const putPresignedUrl = usePutPresignedUrl();
+  // Change to a custom hook
+  const putPresignedUrl = usePutMyPresignedUrl(); // Use the hook inside the custom hook
 
   const binarizeAndPutImage = async ({ presignedUrl, file }: putBinaryDataProps) => {
     const arrayBuffer = await file.arrayBuffer();
     const binaryData = new Uint8Array(arrayBuffer);
 
     try {
-      await putPresignedUrl.mutateAsync({
+      await putPresignedUrl.mutation.mutateAsync({
         presignedUrl,
         binaryData,
       });
