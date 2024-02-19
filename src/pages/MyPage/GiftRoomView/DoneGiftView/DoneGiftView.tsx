@@ -13,28 +13,34 @@ interface DoneGiftViewProps {
 const DoneGiftView: React.FC<DoneGiftViewProps> = ({ data }) => {
   const navigate = useNavigate();
 
-  const [doneData1, doneData2] = Array.isArray(data) ? data : [undefined, undefined];
+  const [doneGiftRoomData1, doneGiftRoomData2] = Array.isArray(data)
+    ? data
+    : [undefined, undefined];
 
-  const renderRoom = (doneData: ClosedRoomArrayType | undefined, index: number) => {
-    if (!doneData) return null;
+  const renderRoom = (doneGiftRoomData: ClosedRoomArrayType | undefined, index: number) => {
+    if (!doneGiftRoomData) return null;
 
     return (
       <DoneCardRoom
         key={index}
-        user={doneData.gifteeName || ''}
-        srcImage={doneData.imageUrl || ''}
-        userCount={doneData.gifterNumber || 0}
-        onClick={() => navigate(`/tournament-ranking/${doneData.gifteeName}/${doneData.roomId}`)}
+        user={doneGiftRoomData.gifteeName || ''}
+        srcImage={doneGiftRoomData.imageUrl || ''}
+        userCount={doneGiftRoomData.gifterNumber || 0}
+        onClick={() =>
+          navigate(`/tournament-ranking/${doneGiftRoomData.gifteeName}/${doneGiftRoomData.roomId}`)
+        }
       />
     );
   };
 
   return (
     <S.DoneGiftViewWrapper>
-      <GiftRoomHeader name='종료된 선물방' page='detail-done' doneData={data} />
+      <GiftRoomHeader name='종료된 선물방' page='detail-done' doneGiftRoomData={data} />
       <S.RoomWrapper>
-        {[doneData1, doneData2].map(renderRoom)}
-        {!doneData1 && !doneData2 && <S.NoneRoom>지금 진행 중인 선물방이 없어요</S.NoneRoom>}
+        {[doneGiftRoomData1, doneGiftRoomData2].map(renderRoom)}
+        {!doneGiftRoomData1 && !doneGiftRoomData2 && (
+          <S.NoneRoom>지금 진행 중인 선물방이 없어요</S.NoneRoom>
+        )}
       </S.RoomWrapper>
     </S.DoneGiftViewWrapper>
   );

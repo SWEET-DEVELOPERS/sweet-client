@@ -6,8 +6,8 @@ import * as S from './GiftRoomHeader.style';
 interface GiftRoomHeaderProps {
   name: string;
   page: string;
-  activeData?: ActiveRoomType | undefined;
-  doneData?: ClosedRoomType | undefined;
+  activeGiftRoomData?: ActiveRoomType | undefined;
+  doneGiftRoomData?: ClosedRoomType | undefined;
   style?: React.CSSProperties;
 }
 

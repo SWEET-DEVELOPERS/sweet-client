@@ -14,28 +14,30 @@ interface ProgressGiftViewProps {
 const ProgressGiftView: React.FC<ProgressGiftViewProps> = ({ data }) => {
   const navigate = useNavigate();
 
-  const [progressData1, progressData2] = Array.isArray(data) ? data : [undefined, undefined];
+  const [progressGiftRoomData1, progressGiftRoomData2] = Array.isArray(data)
+    ? data
+    : [undefined, undefined];
 
-  const getNavigateLink = (progressData: ActiveRoomArrayType) => {
-    const isFuture = DateCheck({ date: progressData.tournamentStartDate });
+  const getNavigateLink = (progressGiftRoomData: ActiveRoomArrayType) => {
+    const isFuture = DateCheck({ date: progressGiftRoomData.tournamentStartDate });
     return isFuture
-      ? `/gift-home/${progressData.roomId}`
-      : `/tournament/${progressData.gifteeName}/${progressData.roomId}`;
+      ? `/gift-home/${progressGiftRoomData.roomId}`
+      : `/tournament/${progressGiftRoomData.gifteeName}/${progressGiftRoomData.roomId}`;
   };
 
-  const renderRoom = (progressData: ActiveRoomArrayType | undefined, index: number) => {
-    if (!progressData) return null;
+  const renderRoom = (progressGiftRoomData: ActiveRoomArrayType | undefined, index: number) => {
+    if (!progressGiftRoomData) return null;
 
-    const CardComponent = progressData.isOwner ? EditCardRoom : ProgressCardRoom;
+    const CardComponent = progressGiftRoomData.isOwner ? EditCardRoom : ProgressCardRoom;
 
     return (
       <CardComponent
-        user={progressData.gifteeName || ''}
-        userCount={progressData.gifterNumber || 0}
-        srcImage={progressData.imageUrl || ''}
-        roomId={progressData.roomId}
-        date={progressData.tournamentStartDate}
-        onClick={() => navigate(getNavigateLink(progressData))}
+        user={progressGiftRoomData.gifteeName || ''}
+        userCount={progressGiftRoomData.gifterNumber || 0}
+        srcImage={progressGiftRoomData.imageUrl || ''}
+        roomId={progressGiftRoomData.roomId}
+        date={progressGiftRoomData.tournamentStartDate}
+        onClick={() => navigate(getNavigateLink(progressGiftRoomData))}
         key={index}
       />
     );
@@ -43,12 +45,12 @@ const ProgressGiftView: React.FC<ProgressGiftViewProps> = ({ data }) => {
 
   return (
     <S.ProgressGiftViewWrapper>
-      <GiftRoomHeader name='진행중인 선물방' page='detail-progress' activeData={data} />
+      <GiftRoomHeader name='진행중인 선물방' page='detail-progress' activeGiftRoomData={data} />
       <S.RoomWrapper>
-        {[progressData1, progressData2].map((progressData, index) =>
+        {[progressGiftRoomData1, progressGiftRoomData2].map((progressData, index) =>
           renderRoom(progressData, index),
         )}
-        {!progressData1 && !progressData2 && (
+        {!progressGiftRoomData1 && !progressGiftRoomData2 && (
           <S.NoneRoom>지금 진행 중인 선물방이 없어요</S.NoneRoom>
         )}
       </S.RoomWrapper>
