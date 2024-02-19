@@ -6,5 +6,5 @@ export const NavigateHeaderWrapper = styled.div`
   width: 100%;
   z-index: 999;
   top: 0rem;
-  background-color: #fafafa;
+  background-color: white;
 `;
