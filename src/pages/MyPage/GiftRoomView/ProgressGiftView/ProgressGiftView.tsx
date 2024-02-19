@@ -7,7 +7,7 @@ import * as S from './ProgressGiftView.style';
 import { ActiveRoomType, ActiveRoomArrayType } from '../../../../types/member';
 
 interface ProgressGiftViewProps {
-  data?: ActiveRoomType;
+  data: ActiveRoomType | undefined;
   customStyle?: React.CSSProperties;
 }
 

@@ -6,7 +6,7 @@ import GiftRoomHeader from '../GiftRoomHeader/GiftRoomHeader';
 import * as S from './DoneGiftView.style';
 
 interface DoneGiftViewProps {
-  data?: ClosedRoomType;
+  data: ClosedRoomType | undefined;
   customStyle?: React.CSSProperties;
 }
 
