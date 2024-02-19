@@ -11,9 +11,11 @@ const LogoHeader = () => {
 
   return (
     <S.LogoHeaderWrapper>
-      <SweetLogoPink style={{ width: '9.9rem' }} />
+      <S.IconWrapper>
+        <SweetLogoPink style={{ width: '9.9rem' }} />
 
-      <IcProfile style={{ width: '4.8rem' }} onClick={handleMyPageIcon} />
+        <IcProfile style={{ width: '4.8rem' }} onClick={handleMyPageIcon} />
+      </S.IconWrapper>
     </S.LogoHeaderWrapper>
   );
 };
