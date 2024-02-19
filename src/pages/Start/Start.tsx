@@ -7,14 +7,15 @@ import LogoHeader from './LogoHeader/LogoHeader';
 import StartStepAnimation from './StartAnimation/ScrollAnimation/StepAnimation/StartStepAnimation';
 import LottieAnimation from '../../hooks/lottie-animation/LottieAnimation';
 import TournamentAnimation from '../../../public/motions/start_tournament.json';
+import StartDownIconAnimation from './StartAnimation/DownIconAnimation/StartDownIconAnimation';
 
 const Start = () => {
   return (
     <S.Wrapper>
       <LogoHeader />
       <StartGiftAnimation />
+      <StartDownIconAnimation />
       <S.Gradient />
-      <S.DownIcon />
 
       <StartFixedButton />
 

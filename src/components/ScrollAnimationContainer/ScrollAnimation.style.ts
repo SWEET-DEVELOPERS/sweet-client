@@ -43,10 +43,7 @@ export const LeftContainer = styled.div`
 `;
 
 export const UpContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  ${({ theme: { mixin } }) => mixin.flexCenter({})};
 
   &.frame-in {
     animation: ${frameInAnimationUp} 2s forwards;

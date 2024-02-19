@@ -1,13 +1,6 @@
 import styled from 'styled-components';
 import HomeBg from '../../assets/img/home_bg11.png';
-import {
-  HomeBgGradientFix,
-  HomeCtaBgGradient,
-  IcDown,
-  Main02,
-  Main03,
-  Main04,
-} from '../../assets/svg';
+import { HomeBgGradientFix, HomeCtaBgGradient, Main02, Main03, Main04 } from '../../assets/svg';
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 
 export const Wrapper = styled.div`
@@ -53,11 +46,4 @@ export const Main3 = styled(Main03)`
 export const Main4 = styled(Main04)`
   position: absolute;
   top: 211rem;
-`;
-
-export const DownIcon = styled(IcDown)`
-  position: absolute;
-  top: 53rem;
-  width: 4rem;
-  color: ${({ theme: { colors } }) => colors.G_07};
 `;
