@@ -31,6 +31,14 @@ export const cleanHeaderInstance = axios.create({
   headers: {},
 });
 
+export const logOutInstance = axios.create({
+  baseURL: import.meta.env.VITE_APP_BASE_URL,
+  withCredentials: true,
+  headers: {
+    Authorization: `${getAccessTokenLocalStorage()}`,
+  },
+});
+
 export const instance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_URL,
   withCredentials: true,
