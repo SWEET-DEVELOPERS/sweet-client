@@ -14,7 +14,7 @@ const NavigateHeader = () => {
 
   return (
     <S.NavigateHeaderWrapper>
-      <IcHome style={{ width: '2.4rem' }} onClick={handleSettingHomeIcon} />
+      <IcHome style={{ width: '4.3rem' }} onClick={handleSettingHomeIcon} />
       <IcProfile style={{ width: '4.3rem' }} onClick={handleMyPageIcon} />
     </S.NavigateHeaderWrapper>
   );
