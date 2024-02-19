@@ -5,6 +5,8 @@ import StartGiftAnimation from './StartAnimation/GiftAnimation/StartGiftAnimatio
 import StartFixedButton from './StartButtonWithTokenCheck/StartButtonWithTokenCheck';
 import LogoHeader from './LogoHeader/LogoHeader';
 import StartStepAnimation from './StartAnimation/ScrollAnimation/StepAnimation/StartStepAnimation';
+import LottieAnimation from '../../hooks/lottie-animation/LottieAnimation';
+import TournamentAnimation from '../../../public/motions/start_tournament.json';
 
 const Start = () => {
   return (
@@ -16,8 +18,12 @@ const Start = () => {
 
       <StartFixedButton />
 
-      <S.Main2 />
       <StartScrollAnimation />
+      <S.Main2 />
+      <LottieAnimation
+        animation={TournamentAnimation}
+        customStyle={{ position: 'absolute', top: '157.5rem', zIndex: '1' }}
+      />
       <S.Main3 />
       <StartStepAnimation />
       <S.Main4 />
