@@ -16,7 +16,7 @@ const BtnLogout = ({ disabled, children, customStyle }: BtnLogoutProps) => {
     fetchAuth().then((response: any) => {
       console.log(response);
     });
-    localStorage.removeItem('EXIT_LOGIN_TOKEN');
+    localStorage.clear();
     navigate('/');
   };
   return (
