@@ -4,10 +4,6 @@ import CardGuest from './CardGuest/CardGuest';
 import * as S from './EditRoom.style';
 import useGetRoomOwner from '../../../hooks/queries/room/useGetRoomOwner';
 
-interface EditRoom {
-  roomId: number;
-}
-
 const EditRoom = () => {
   const params = useParams();
 
