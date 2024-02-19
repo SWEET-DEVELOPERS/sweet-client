@@ -3,23 +3,13 @@ import styled, { keyframes } from 'styled-components';
 const frameInAnimation = keyframes`
   0% {
     opacity: 0;
-    transform: translateX(-100%);
-  }
-
-  100%{
-    opacity: 1;
-    transform: translateX(-5%);
+    transform: translateX(-1rem);
   }
 `;
 const frameInAnimationLeft = keyframes`
   0% {
     opacity: 0;
-    transform: translateX(100%);
-  }
-
-  100%{
-    opacity: 1;
-    transform: translate(25%);
+    transform: translateX(1.5rem);
   }
 `;
 const frameInAnimationUp = keyframes`
@@ -44,7 +34,7 @@ export const Container = styled.div`
 `;
 
 export const LeftContainer = styled.div`
-  ${({ theme: { mixin } }) => mixin.flexBox({ direction: 'column' })};
+  ${({ theme: { mixin } }) => mixin.flexBox({ justify: 'flex-end' })};
   max-width: 37.5rem;
 
   &.frame-in {

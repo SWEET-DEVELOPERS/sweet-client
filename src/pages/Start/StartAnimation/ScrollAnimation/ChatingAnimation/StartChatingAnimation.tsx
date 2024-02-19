@@ -14,7 +14,7 @@ const StartChatingAnimation = () => {
       <ScrollAnimationContainer>
         <Person3 style={{ width: '31.5rem' }} />
       </ScrollAnimationContainer>
-      <ScrollAnimationLeftContainer customStyle={{ marginTop: '4.9rem' }}>
+      <ScrollAnimationLeftContainer customStyle={{ marginTop: '2.5rem' }}>
         <Person4 style={{ width: '22.5rem' }} />
       </ScrollAnimationLeftContainer>
     </S.PersonWrapper>
