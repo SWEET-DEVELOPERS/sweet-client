@@ -1,4 +1,4 @@
-import { IcMypage, SweetLogoPink } from '../../../assets/svg';
+import { IcProfile, SweetLogoPink } from '../../../assets/svg';
 import { useNavigate } from 'react-router';
 import * as S from './LogoHeader.style';
 
@@ -13,7 +13,7 @@ const LogoHeader = () => {
     <S.LogoHeaderWrapper>
       <SweetLogoPink style={{ width: '9.9rem' }} />
 
-      <IcMypage style={{ width: '4.8rem' }} onClick={handleMyPageIcon} />
+      <IcProfile style={{ width: '4.8rem' }} onClick={handleMyPageIcon} />
     </S.LogoHeaderWrapper>
   );
 };
