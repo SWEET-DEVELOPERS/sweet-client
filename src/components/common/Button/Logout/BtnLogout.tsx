@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from 'react';
 import * as S from './BtnLogout.style';
-import { post } from '../../../../apis/client';
+import { logOutInstance } from '../../../../apis/client';
 import { useNavigate } from 'react-router';
 
 type BtnLogoutProps = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -11,7 +11,7 @@ type BtnLogoutProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const BtnLogout = ({ disabled, children, customStyle }: BtnLogoutProps) => {
   const navigate = useNavigate();
-  const fetchAuth = async () => post(`/oauth/logout`);
+  const fetchAuth = async () => logOutInstance.post(`/oauth/logout`);
   const handleClick = () => {
     fetchAuth().then((response: any) => {
       console.log(response);
