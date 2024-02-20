@@ -19,18 +19,15 @@ const TournamentIntroContainer = () => {
   const navigate = useNavigate();
   const params = useParams();
   const giftee = params.giftee;
-
   const roomIdString = params.roomId || '';
   const roomId = parseInt(roomIdString || '', 10);
+  const memberData = useGetItem({ roomId: Number(roomId) });
+  let tournamentData: GiftData[] = [];
 
   const { showTournamentContainer, handleStartClick } = useTournament();
-  const memberData = useGetItem({ roomId: Number(roomId) });
-
   const handleClearRoom = () => {
     navigate(`/mypage`);
   };
-
-  let tournamentData: GiftData[] = [];
 
   if (typeof memberData === 'string') {
     console.log('Error :', memberData);
