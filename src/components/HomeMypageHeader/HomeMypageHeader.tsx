@@ -4,6 +4,7 @@ import * as S from './HomeMypageHeader.style';
 
 const HomeMypageHeader = () => {
   const navigate = useNavigate();
+  const userImg = localStorage.getItem('EXIT_USER_PROFILE_IMAGE');
 
   const handleMyPageIcon = () => {
     navigate(`/mypage`);
@@ -15,7 +16,11 @@ const HomeMypageHeader = () => {
   return (
     <S.HomeMypageHeaderWrapper>
       <IcHome2 style={{ width: '2.4rem' }} onClick={handleSettingHomeIcon} />
-      <IcMypage style={{ width: '4.3rem' }} onClick={handleMyPageIcon} />
+      {userImg ? (
+        <S.UserProfileImg src={userImg} onClick={handleMyPageIcon} />
+      ) : (
+        <IcMypage style={{ width: '4.3rem' }} onClick={handleMyPageIcon} />
+      )}
     </S.HomeMypageHeaderWrapper>
   );
 };
