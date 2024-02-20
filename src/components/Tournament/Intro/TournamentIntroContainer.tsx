@@ -32,7 +32,7 @@ const TournamentIntroContainer = () => {
   if (typeof memberData === 'string') {
     console.log('Error :', memberData);
     return (
-      <Modal>
+      <Modal onConfirmClick={handleClearRoom}>
         선물 토너먼트를
         <br />
         이미 참여하셨습니다!
