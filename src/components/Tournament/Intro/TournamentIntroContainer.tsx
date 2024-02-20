@@ -14,6 +14,7 @@ import { TournamentResult } from '../TournamentResult/TournamentResult.sytle';
 import { GiftData } from '../../../types/tournament';
 import TournamentDeleteButton from './TournamentDeleteButton/TournamentDeleteButton';
 import { useNavigate } from 'react-router-dom';
+import Modal from '../../common/Modal/Modal';
 
 const TournamentIntroContainer = () => {
   const navigate = useNavigate();
@@ -35,7 +36,13 @@ const TournamentIntroContainer = () => {
 
   if (typeof memberData === 'string') {
     console.log('Error :', memberData);
-    return <TournamentResult />;
+    return (
+      <Modal>
+        선물 토너먼트를 이미 참여하셨습니다!
+        <br />
+        최종 결과까지 조금만 기다려주세요.
+      </Modal>
+    );
   } else if (memberData && memberData.data) {
     tournamentData = memberData.data;
     console.log(tournamentData);
