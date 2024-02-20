@@ -15,8 +15,8 @@ interface ThumbnailInputProps {
 
 const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
   const { onNext } = props;
-  const { isImageUploaded, handleImageUpload, imageName, file } = usePreviewImage();
-  const { updateOnboardingInfo, previewImage } = useOnboardingContext();
+  const { isImageUploaded, handleImageUpload, imageName, file, previewImage } = usePreviewImage();
+  const { updateOnboardingInfo } = useOnboardingContext();
 
   const { binarizeAndPutImage } = useBinarizeAndPutImage();
 
@@ -47,6 +47,9 @@ const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
 
   useEffect(() => {
     console.log('step02 내 isImageUpload', isImageUploaded);
+    if (previewImage) {
+      isImageUploaded === true;
+    }
   }, [isImageUploaded]);
 
   return (
