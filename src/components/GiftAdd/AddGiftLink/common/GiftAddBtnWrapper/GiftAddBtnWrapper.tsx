@@ -4,13 +4,14 @@ import * as S from './GiftAddBtnWrapper.styled';
 interface GiftAddBtnWrapperProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
   isActivated: boolean;
-  onClick: () => void;
+  onClick: VoidFunction;
 }
 
 const GiftAddBtnWrapper = ({ setStep, isActivated, onClick }: GiftAddBtnWrapperProps) => {
   const BtnText = <S.BtnNextText>다음</S.BtnNextText>;
 
   const handleClickNoLink = () => {
+    
     setStep(3);
   };
 

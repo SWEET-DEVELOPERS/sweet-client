@@ -31,6 +31,7 @@ export const AddGiftWithoutLinkLayout = ({
   setLinkText,
   targetDate,
   updateAddGiftInfo,
+  modalStatus,
   addGiftInfo,
 }: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(
@@ -43,7 +44,7 @@ export const AddGiftWithoutLinkLayout = ({
   const [file, setFile] = useState<File | null>(null);
   const [, setIsImageUploaded] = useState<boolean>(false);
   const [, setPreviewImage] = useState<string | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(modalStatus);
 
   const checkPriceNull = (price: number | null) => {
     if (price === null) {
