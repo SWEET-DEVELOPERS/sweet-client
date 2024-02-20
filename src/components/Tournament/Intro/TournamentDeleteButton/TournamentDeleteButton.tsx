@@ -1,4 +1,3 @@
-import React from 'react';
 import BtnFill from '../../../common/Button/Cta/fill/BtnFill';
 import * as S from './TournamentDeleteButton.style';
 
@@ -6,7 +5,7 @@ interface TournamentStartButtonProps {
   onClick: () => void;
 }
 
-const TournamentDeleteButton: React.FC<TournamentStartButtonProps> = ({ onClick }) => {
+function TournamentDeleteButton({ onClick }: TournamentStartButtonProps) {
   return (
     <S.TournamentStartButtonWrapper>
       <BtnFill
@@ -22,6 +21,6 @@ const TournamentDeleteButton: React.FC<TournamentStartButtonProps> = ({ onClick 
       </BtnFill>
     </S.TournamentStartButtonWrapper>
   );
-};
+}
 
 export default TournamentDeleteButton;
