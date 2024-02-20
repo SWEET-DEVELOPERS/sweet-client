@@ -27,7 +27,7 @@ const OnBoardingPage = () => {
     if (stepIndex === 0) {
       navigate('/');
     } else {
-      setStep((prev) => ONBOARDING_FORM_STEP[stepIndex - 1]);
+      setStep(() => ONBOARDING_FORM_STEP[stepIndex - 1]);
       updateOnboardingInfo({
         gifteeName: onboardingInfo.gifteeName,
         imageUrl: onboardingInfo.imageUrl,
