@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { useOnboardingContext } from '../../context/Onboarding/OnboardingContext';
 
 const usePreviewImage = () => {
   const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
-  // const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [imageName, setImageName] = useState<string>('');
   const [file, setFile] = useState<File | null>(null);
-  const { previewImage, setPreviewImage } = useOnboardingContext();
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
