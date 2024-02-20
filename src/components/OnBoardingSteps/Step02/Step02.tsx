@@ -6,17 +6,18 @@ import usePreviewImage from '../../../hooks/common/usePreviewImage';
 import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
 import { useOnboardingContext } from '../../../context/Onboarding/OnboardingContext';
 import useBinarizeAndPutImage from '../../../hooks/queries/onboarding/useBinarizeAndPutImage';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 /** @TODO 추후 presigned URL 진행 */
 interface ThumbnailInputProps {
   onNext: VoidFunction;
 }
 
-const ThumbnailInput = (props: ThumbnailInputProps) => {
+const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
   const { onNext } = props;
   const { isImageUploaded, handleImageUpload, imageName, file } = usePreviewImage();
   const { updateOnboardingInfo, previewImage } = useOnboardingContext();
+
   const { binarizeAndPutImage } = useBinarizeAndPutImage();
 
   const postPresignedUrl = usePostPresignedUrl();
@@ -107,5 +108,5 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
       </OnBoardingBtn>
     </>
   );
-};
+});
 export default ThumbnailInput;
