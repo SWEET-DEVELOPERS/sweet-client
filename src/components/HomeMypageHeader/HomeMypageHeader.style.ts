@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const NavigateHeaderWrapper = styled.div`
+export const HomeMypageHeaderWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ justify: 'flex-end' })};
   position: fixed;
   width: 100%;

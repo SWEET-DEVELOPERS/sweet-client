@@ -1,8 +1,8 @@
 import { IcMypage, IcHome2 } from '../../assets/svg';
 import { useNavigate } from 'react-router';
-import * as S from './NavigateHeader.style';
+import * as S from './HomeMypageHeader.style';
 
-const NavigateHeader = () => {
+const HomeMypageHeader = () => {
   const navigate = useNavigate();
 
   const handleMyPageIcon = () => {
@@ -13,11 +13,11 @@ const NavigateHeader = () => {
   };
 
   return (
-    <S.NavigateHeaderWrapper>
+    <S.HomeMypageHeaderWrapper>
       <IcHome2 style={{ width: '2.4rem' }} onClick={handleSettingHomeIcon} />
       <IcMypage style={{ width: '4.3rem' }} onClick={handleMyPageIcon} />
-    </S.NavigateHeaderWrapper>
+    </S.HomeMypageHeaderWrapper>
   );
 };
 
-export default NavigateHeader;
+export default HomeMypageHeader;
