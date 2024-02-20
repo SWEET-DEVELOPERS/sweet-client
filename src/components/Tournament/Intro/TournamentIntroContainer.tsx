@@ -13,8 +13,10 @@ import TournamentNoneText from './TournamentNoneText/TournamentNoneText';
 import { TournamentResult } from '../TournamentResult/TournamentResult.sytle';
 import { GiftData } from '../../../types/tournament';
 import TournamentDeleteButton from './TournamentDeleteButton/TournamentDeleteButton';
+import { useNavigate } from 'react-router-dom';
 
 const TournamentIntroContainer = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const giftee = params.giftee;
 
@@ -24,6 +26,10 @@ const TournamentIntroContainer = () => {
   const { showTournamentContainer, handleStartClick } = useTournament();
   const memberData = useGetItem({ roomId: Number(roomId) });
   console.log(memberData);
+
+  const handleClearRoom = () => {
+    navigate(`/mypage`);
+  };
 
   let tournamentData: GiftData[] = [];
 
@@ -49,7 +55,7 @@ const TournamentIntroContainer = () => {
                     <S.TournamentImg>
                       <TrophyNone />
                     </S.TournamentImg>
-                    <TournamentDeleteButton onClick={handleStartClick} />
+                    <TournamentDeleteButton onClick={handleClearRoom} />
                   </>
                 ) : (
                   <>
