@@ -3,17 +3,21 @@ import { IcLeft } from '../../../assets/svg';
 
 interface OnBoardingHeaderProps {
   step?: number;
-  onClick?: () => void;
-  setStep: React.Dispatch<React.SetStateAction<number>>;
+  // onClick?: () => void;
+  setStep?: React.Dispatch<React.SetStateAction<number>>;
+  onClickBackBtn: (stemNum: number | undefined) => void;
+  stepNum?: number | undefined;
 }
 
-const OnBoardingHeader = ({ step, setStep }: OnBoardingHeaderProps) => {
-  const onClick = () => {
-    setStep((prev) => prev - 1);
-  };
+const OnBoardingHeader = ({ step, onClickBackBtn, stepNum }: OnBoardingHeaderProps) => {
   return (
     <OnBoardingHeaderWrapper>
-      <IcLeft width='4rem' height='4rem' onClick={onClick} style={{ marginLeft: '0.7rem' }} />
+      <IcLeft
+        width='4rem'
+        height='4rem'
+        onClick={() => onClickBackBtn(stepNum)}
+        style={{ marginLeft: '0.7rem' }}
+      />
       <StepText>{step}/5</StepText>
     </OnBoardingHeaderWrapper>
   );
