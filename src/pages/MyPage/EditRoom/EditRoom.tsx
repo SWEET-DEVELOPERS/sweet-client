@@ -4,26 +4,17 @@ import CardGuest from './CardGuest/CardGuest';
 import * as S from './EditRoom.style';
 import useGetRoomOwner from '../../../hooks/queries/room/useGetRoomOwner';
 
-interface EditRoom {
-  roomId: number;
-}
-
 const EditRoom = () => {
   const params = useParams();
 
   const roomIdString = params.roomId;
   const roomId = parseInt(roomIdString || '', 10);
-  console.log('추출된 초대 코드', roomId);
   const roomWholeMemberData = useGetRoomMember(roomId).data;
   const roomWholeOwnerData = useGetRoomOwner(roomId).data;
 
   const roomOwnerData = roomWholeOwnerData?.owner;
   const roomGifteeData = roomWholeOwnerData.room;
   const roomMemberData = roomWholeMemberData;
-
-  console.log('개설자 정보', roomOwnerData);
-  console.log('선물방', roomGifteeData);
-  console.log('선물 준비 멤버 정보', roomMemberData);
 
   return (
     <S.EditRoomWrapper>

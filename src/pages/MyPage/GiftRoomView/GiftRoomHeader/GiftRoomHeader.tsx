@@ -1,14 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import { IcRight } from '../../../../assets/svg';
-import { ActiveRoomType } from '../../../../types/member';
-import { ClosedRoomType } from '../../../../types/member';
+import { ActiveRoomType, ClosedRoomType } from '../../../../types/member';
 import * as S from './GiftRoomHeader.style';
 
 interface GiftRoomHeaderProps {
   name: string;
   page: string;
-  activeData?: ActiveRoomType | undefined;
-  doneData?: ClosedRoomType | undefined;
+  activeGiftRoomData?: ActiveRoomType | undefined;
+  doneGiftRoomData?: ClosedRoomType | undefined;
   style?: React.CSSProperties;
 }
 

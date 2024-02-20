@@ -5,43 +5,43 @@ import DoneGiftView from './GiftRoomView/DoneGiftView/DoneGiftView';
 import ProgressGiftView from './GiftRoomView/ProgressGiftView/ProgressGiftView';
 import useGetMyPage from '../../hooks/queries/member/useGetMypage';
 import { MyPageType } from '../../types/member';
-import { logOutInstance } from '../../apis/client';
 import * as S from './MyPage.style';
 import { useNavigate } from 'react-router';
 interface MyPage {
   memberData: MyPageType;
 }
 
+const MAX_USERNAME_LENGTH = 5;
+
 const MyPage = () => {
-  const memberData = useGetMyPage();
   const navigate = useNavigate();
-  const accessToken = localStorage.getItem('EXIT_LOGIN_TOKEN');
-  console.log(accessToken);
 
-  const fetchAuth = async () => logOutInstance.post(`/oauth/logout`);
-  console.log(memberData);
-  console.log(memberData?.data);
-  console.log(memberData?.data?.memberInfo);
-
-  const userName = memberData?.data?.memberInfo.nickname;
-  const userImage = memberData?.data?.memberInfo.profileImage;
-  const translatedUserName = userName && userName.length > 5 ? userName.substring(0, 5) : userName;
-
-  const progressRoomData = memberData?.data?.activeRooms;
-  const doneMemberRoomData = memberData?.data?.closedRooms;
-
-  const giftData: boolean = progressRoomData !== null && doneMemberRoomData !== null;
-
-  const handleClick = () => {
-    fetchAuth().then((response: any) => {
-      console.log(response);
-    });
-    localStorage.clear();
-    navigate('/');
-  };
+  const memberData = useGetMyPage();
 
   const goOnboarding = () => {
     navigate('/onboarding');
+  };
+
+  const renderGiftRoom = () => {
+    const progressRoomData = memberData?.data?.activeRooms;
+    const doneMemberRoomData = memberData?.data?.closedRooms;
+    return progressRoomData && doneMemberRoomData ? (
+      <S.GiftRoomWrapper>
+        <ProgressGiftView data={progressRoomData} />
+        <DoneGiftView data={doneMemberRoomData} />
+      </S.GiftRoomWrapper>
+    ) : (
+      <S.NoneText> 아직 선물방이 없어요</S.NoneText>
+    );
+  };
+
+  const renderUserName = () => {
+    const userName = memberData?.data?.memberInfo.nickname;
+    const translatedUserName =
+      userName && userName.length > MAX_USERNAME_LENGTH
+        ? `${userName.substring(0, MAX_USERNAME_LENGTH)}...`
+        : userName;
+    return <S.UserName>{translatedUserName}님</S.UserName>;
   };
 
   return (
@@ -50,34 +50,16 @@ const MyPage = () => {
       <S.ProfileWrapper>
         <S.UserButtonWrapper>
           <S.UserWrapper>
-            <ProfileImage image={userImage} />
-            <S.UserName>
-              <S.User>{translatedUserName}</S.User>님
-            </S.UserName>
+            <ProfileImage image={memberData?.data?.memberInfo.profileImage} />
+            {renderUserName()}
           </S.UserWrapper>
-          <BtnLogout onClick={handleClick} customStyle={{ width: '8.4rem', height: '2.6rem' }}>
-            로그아웃
-          </BtnLogout>
+          <BtnLogout customStyle={{ width: '8.4rem', height: '2.6rem' }}>로그아웃</BtnLogout>
         </S.UserButtonWrapper>
-        <BtnFill
-          onClick={goOnboarding}
-          customStyle={{
-            width: '30.3rem',
-            height: '5.2rem',
-          }}
-        >
+        <BtnFill onClick={goOnboarding} customStyle={{ width: '30.3rem', height: '5.2rem' }}>
           새로운 선물 준비하기
         </BtnFill>
       </S.ProfileWrapper>
-
-      {giftData ? (
-        <S.GiftRoomWrapper>
-          <ProgressGiftView data={progressRoomData} />
-          <DoneGiftView data={doneMemberRoomData} />
-        </S.GiftRoomWrapper>
-      ) : (
-        <S.NoneText> 아직 선물방이 없어요</S.NoneText>
-      )}
+      {renderGiftRoom()}
     </S.MyPageWrapper>
   );
 };
