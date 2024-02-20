@@ -10,7 +10,6 @@ import { TrophyNone } from '../../../assets/svg';
 import { useParams } from 'react-router';
 import Header from '../../common/Header';
 import TournamentNoneText from './TournamentNoneText/TournamentNoneText';
-import { TournamentResult } from '../TournamentResult/TournamentResult.sytle';
 import { GiftData } from '../../../types/tournament';
 import TournamentDeleteButton from './TournamentDeleteButton/TournamentDeleteButton';
 import { useNavigate } from 'react-router-dom';
@@ -26,7 +25,6 @@ const TournamentIntroContainer = () => {
 
   const { showTournamentContainer, handleStartClick } = useTournament();
   const memberData = useGetItem({ roomId: Number(roomId) });
-  console.log(memberData);
 
   const handleClearRoom = () => {
     navigate(`/mypage`);
@@ -38,9 +36,9 @@ const TournamentIntroContainer = () => {
     console.log('Error :', memberData);
     return (
       <Modal>
-        선물 토너먼트를 이미 참여하셨습니다!
+        선물 토너먼트를
         <br />
-        최종 결과까지 조금만 기다려주세요.
+        이미 참여하셨습니다!
       </Modal>
     );
   } else if (memberData && memberData.data) {
