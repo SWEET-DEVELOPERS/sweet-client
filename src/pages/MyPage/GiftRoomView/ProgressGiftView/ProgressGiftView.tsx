@@ -11,7 +11,7 @@ interface ProgressGiftViewProps {
   customStyle?: React.CSSProperties;
 }
 
-const ProgressGiftView: React.FC<ProgressGiftViewProps> = ({ data }) => {
+const ProgressGiftView = ({ data }: ProgressGiftViewProps) => {
   const navigate = useNavigate();
 
   const [progressGiftRoomData1, progressGiftRoomData2] = Array.isArray(data)

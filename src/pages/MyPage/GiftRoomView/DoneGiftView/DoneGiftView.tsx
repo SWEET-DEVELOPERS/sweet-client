@@ -10,7 +10,7 @@ interface DoneGiftViewProps {
   customStyle?: React.CSSProperties;
 }
 
-const DoneGiftView: React.FC<DoneGiftViewProps> = ({ data }) => {
+const DoneGiftView = ({ data }: DoneGiftViewProps) => {
   const navigate = useNavigate();
 
   const [doneGiftRoomData1, doneGiftRoomData2] = Array.isArray(data)
