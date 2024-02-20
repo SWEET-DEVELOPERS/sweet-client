@@ -3,7 +3,7 @@ import { IcLogoEmpty } from '../../../../assets/svg';
 import DoneCardRoom from '../../../../components/CardRoom/DoneCardRoom';
 import BtnSmallStroke from '../../../../components/common/Button/Cta/SmallStroke/BtnSmallStroke';
 import useGetDoneRoom from '../../../../hooks/queries/member/useGetClosedRoom';
-import DetailHeader from '../DetailHeader/DetailHeader';
+import DetailHeader from '../../../../components/LeftIconHeader/LeftIconHeader';
 import { ClosedRoomArrayType } from '../../../../types/member';
 import * as S from './DetailDoneRoom.style';
 

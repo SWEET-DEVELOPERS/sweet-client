@@ -3,6 +3,7 @@ import useGetRoomMember from '../../../hooks/queries/room/useGetRoomMember';
 import CardGuest from './CardGuest/CardGuest';
 import * as S from './EditRoom.style';
 import useGetRoomOwner from '../../../hooks/queries/room/useGetRoomOwner';
+import DetailHeader from '../../../components/LeftIconHeader/LeftIconHeader';
 
 const EditRoom = () => {
   const { roomId } = useParams();
@@ -16,6 +17,7 @@ const EditRoom = () => {
 
   return (
     <S.EditRoomWrapper>
+      <DetailHeader />
       <S.TextWrapper>
         <S.Text>{roomGifteeData?.gifterNumber || 0}명이</S.Text>
         <S.Text>{roomGifteeData?.gifteeName || ''}님을 위한</S.Text>

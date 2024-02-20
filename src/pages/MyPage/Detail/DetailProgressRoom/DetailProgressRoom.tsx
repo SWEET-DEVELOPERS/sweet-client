@@ -4,7 +4,7 @@ import EditCardRoom from '../../../../components/CardRoom/EditCardRoom';
 import ProgressCardRoom from '../../../../components/CardRoom/ProgressCardRoom';
 import BtnSmallStroke from '../../../../components/common/Button/Cta/SmallStroke/BtnSmallStroke';
 import useGetActiveRoom from '../../../../hooks/queries/member/useGetActiveRoom';
-import DetailHeader from '../DetailHeader/DetailHeader';
+import DetailHeader from '../../../../components/LeftIconHeader/LeftIconHeader';
 import DateCheck from '../../../../components/DateCheck/DateCheck';
 import { ActiveRoomArrayType } from '../../../../types/member';
 import * as S from './DetailProgress.style';
