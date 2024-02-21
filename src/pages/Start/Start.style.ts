@@ -6,7 +6,7 @@ import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 export const Wrapper = styled.div`
   background-image: url(${HomeBg});
   background-size: cover;
-  width: 100%;
+  width: 37.5rem;
   height: 100vh;
   background-repeat: no-repeat;
   ${({ theme: { mixin } }) => mixin.flexCenter({})};
