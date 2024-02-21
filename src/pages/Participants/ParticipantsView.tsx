@@ -82,13 +82,19 @@ const ParticipantsView = () => {
 
   /**@TODO 현재 token값의 유무에 따라 다른 뷰를 보여주는 로직인데,
    * token의 값이 있든 없든 항상 토큰이 있는 값을 보여주고 있음. 처리 필요 */
+
   useEffect(() => {
-    if (localStorage.getItem('EXIT_LOGIN_TOKEN') !== '') {
-      setIsToken(true);
-      console.log('로컬스토리지 확인', localStorage.getItem('EXIT_LOGIN_TOKEN'));
-    } else {
-      console.log('로컬스토리지 ㄴㄴ', localStorage.getItem('EXIT_LOGIN_TOKEN'));
+    if (localStorage.getItem('EXIT_LOGIN_TOKEN') === null) {
       setIsToken(false);
+      console.log('로컬스토리지 확인', localStorage.getItem('EXIT_LOGIN_TOKEN'));
+      console.log('isTOken', isToken);
+    } else {
+      console.log(
+        'else 로컬스토리지 확인(로컬스토리지 있어야함)',
+        localStorage.getItem('EXIT_LOGIN_TOKEN'),
+      );
+      setIsToken(true);
+      console.log('isTOken', isToken);
     }
   }, [isToken]);
 
@@ -131,7 +137,7 @@ const ParticipantsView = () => {
                   <br /> 선물 준비방이 개설됐어요
                 </Title>
               </S.ParticipantsTitleWrapper>
-              {localStorage.getItem('EXIT_LOGIN_TOKEN') ? (
+              {isToken === true ? (
                 <OnBoardingBtn
                   step={6}
                   customStyle={{ marginBottom: '1.6rem' }}
@@ -157,13 +163,14 @@ const ParticipantsView = () => {
       </S.InfoWrapper>
       {/* 수정된 부분 시작 */}
       <S.BtnWrapper>
-        {localStorage.getItem('EXIT_LOGIN_TOKEN') ? (
+        {isToken === true ? (
           <>
             <S.LinkCopyBtn
               onClick={() =>
-                handleCopyToClipboard(
-                  `http://sweetgift.vercel.app/result/${data.data.invitationCode}`,
-                )
+                // handleCopyToClipboard(
+                //   `http://sweetgift.vercel.app/result/${data.data.invitationCode}`,
+                // )
+                handleCopyToClipboard(`http://localhost:5173/result/${data.data.invitationCode}`)
               }
             >
               <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
