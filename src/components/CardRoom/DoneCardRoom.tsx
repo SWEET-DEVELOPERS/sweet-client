@@ -12,7 +12,7 @@ interface DoneCardRoomType {
 const DoneCardRoom = ({ user, srcImage, userCount, onClick }: DoneCardRoomType) => {
   return (
     <S.CardRoomWrapper onClick={onClick}>
-      <img src={srcImage} />
+      <S.RoomImgWrapper src={srcImage} />
       <S.Text>
         <S.User>{user}님</S.User>을 위한 선물방
       </S.Text>

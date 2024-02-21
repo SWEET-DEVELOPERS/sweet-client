@@ -24,7 +24,7 @@ const EditCardRoom = ({ user, srcImage, userCount, roomId, date, onClick }: Edit
   return (
     <S.WholeWrapper>
       <S.CardRoomWrapper onClick={onClick}>
-        <img src={srcImage} />
+        <S.RoomImgWrapper src={srcImage} />
         <S.Text>
           <S.User>{user}님</S.User>을 위한 선물방
         </S.Text>
