@@ -1,12 +1,6 @@
 import type { SVGProps } from 'react';
 const SvgMain04 = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns='http://www.w3.org/2000/svg'
-    width='37.5rem'
-    fill='none'
-    viewBox='0 0 375 720'
-    {...props}
-  >
+  <svg xmlns='http://www.w3.org/2000/svg' width='100%' fill='none' viewBox='0 0 375 720' {...props}>
     <path fill='#fff' d='M0 0h375v720H0z' />
     <path
       fill='#FF2176'
