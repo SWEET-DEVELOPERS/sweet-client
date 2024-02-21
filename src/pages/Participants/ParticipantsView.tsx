@@ -14,7 +14,7 @@ import usePostParticipation from '../../hooks/queries/onboarding/usePostParticip
 const ParticipantsView = () => {
   const { invitationCode } = useParams<{ invitationCode?: string }>();
   const { data } = useGetGifteeInfo(invitationCode || null);
-  const [isToken, setIsToken] = useState<boolean>(false);
+  const [isToken, setIsToken] = useState<boolean>();
   const { handleCopyToClipboard } = useClipboard();
   const { mutation } = usePostParticipation();
   const navigate = useNavigate();
@@ -88,6 +88,7 @@ const ParticipantsView = () => {
       setIsToken(false);
       console.log('로컬스토리지 확인', localStorage.getItem('EXIT_LOGIN_TOKEN'));
       console.log('isTOken', isToken);
+      console.log('if');
     } else {
       console.log(
         'else 로컬스토리지 확인(로컬스토리지 있어야함)',
@@ -95,6 +96,7 @@ const ParticipantsView = () => {
       );
       setIsToken(true);
       console.log('isTOken', isToken);
+      console.log('else');
     }
   }, [isToken]);
 
@@ -131,8 +133,6 @@ const ParticipantsView = () => {
             <S.TitleContainer>
               <S.ParticipantsTitleWrapper>
                 <Title>
-                  {/* {`${getGifteeInfo.data.gifteeName}님을 위한`} */}
-                  {/* {`${onboardingInfo.gifteeName}님을 위한`} */}
                   {`${data.data.gifteeName}님을 위한`}
                   <br /> 선물 준비방이 개설됐어요
                 </Title>
@@ -163,29 +163,28 @@ const ParticipantsView = () => {
       </S.InfoWrapper>
       {/* 수정된 부분 시작 */}
       <S.BtnWrapper>
-        {isToken === true ? (
-          <>
-            <S.LinkCopyBtn
-              onClick={() =>
-                // handleCopyToClipboard(
-                //   `http://sweetgift.vercel.app/result/${data.data.invitationCode}`,
-                // )
-                handleCopyToClipboard(`http://localhost:5173/result/${data.data.invitationCode}`)
-              }
-            >
-              <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
-              링크 복사
-            </S.LinkCopyBtn>
-            <S.KakaoLinkCopyBtn
-              onClick={() => useKakaoShare(data.data.invitationCode, data.data.gifteeName)}
-            >
-              <IcKakaoShare style={{ width: '1.8rem', height: '1.8rem' }} />
-              카카오톡 공유
-            </S.KakaoLinkCopyBtn>
-          </>
-        ) : (
-          <IcKakoLarge onClick={() => window.location.replace(kakaoURL)} />
-        )}
+        <>
+          {isToken === false ? (
+            <IcKakoLarge onClick={() => window.location.replace(kakaoURL)} />
+          ) : (
+            <>
+              <S.LinkCopyBtn
+                onClick={() =>
+                  handleCopyToClipboard(`http://localhost:5173/result/${data.data.invitationCode}`)
+                }
+              >
+                <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
+                링크 복사
+              </S.LinkCopyBtn>
+              <S.KakaoLinkCopyBtn
+                onClick={() => useKakaoShare(data.data.invitationCode, data.data.gifteeName)}
+              >
+                <IcKakaoShare style={{ width: '1.8rem', height: '1.8rem' }} />
+                카카오톡 공유
+              </S.KakaoLinkCopyBtn>
+            </>
+          )}
+        </>
       </S.BtnWrapper>
     </>
   );
