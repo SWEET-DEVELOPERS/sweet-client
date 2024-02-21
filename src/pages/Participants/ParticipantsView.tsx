@@ -135,7 +135,9 @@ const ParticipantsView = () => {
                   <br /> 선물 준비방이 개설됐어요
                 </Title>
               </S.ParticipantsTitleWrapper>
+
               {isToken === false ? (
+
                 <OnBoardingBtn
                   step={6}
                   customStyle={{ marginBottom: '1.6rem' }}
@@ -161,6 +163,7 @@ const ParticipantsView = () => {
       </S.InfoWrapper>
       {/* 수정된 부분 시작 */}
       <S.BtnWrapper>
+
         <>
           {isToken === false ? (
             <IcKakoLarge onClick={() => window.location.replace(kakaoURL)} />
@@ -183,6 +186,8 @@ const ParticipantsView = () => {
             </>
           )}
         </>
+
+        
       </S.BtnWrapper>
     </>
   );
