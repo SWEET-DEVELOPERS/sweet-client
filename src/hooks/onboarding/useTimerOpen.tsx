@@ -1,12 +1,9 @@
 import { useState } from 'react';
 import { useOnboardingContext } from '../../context/Onboarding/OnboardingContext';
 import { format } from 'date-fns';
-import useCalendarOpen from './useCalendarOpen';
 
 const useTimerOpen = () => {
   const { onboardingInfo, updateOnboardingInfo } = useOnboardingContext();
-  const { selectedDate } = useCalendarOpen();
-  // const [selectedDate] = useState<Date | null>(null);
 
   const [isTimerOpen] = useState<boolean>(false);
   const [selectedTime, setSelectedTime] = useState<string>('');
@@ -14,7 +11,9 @@ const useTimerOpen = () => {
   const handleTimerSelect = (selectedTime: string) => {
     setSelectedTime(selectedTime);
 
-    const currentDate = onboardingInfo.tournamentStartDate;
+    const currentDate = onboardingInfo.tournamentStartDate
+      ? onboardingInfo.tournamentStartDate
+      : new Date();
 
     updateOnboardingInfo({
       tournamentStartDate: format(
@@ -22,6 +21,8 @@ const useTimerOpen = () => {
         "yyyy-MM-dd'T'HH:mm:ss",
       ),
     });
+
+    console.log('selectedTime', selectedTime);
   };
 
   return {
