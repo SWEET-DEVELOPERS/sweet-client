@@ -84,6 +84,7 @@ const ParticipantsView = () => {
    * token의 값이 있든 없든 항상 토큰이 있는 값을 보여주고 있음. 처리 필요 */
 
   useEffect(() => {
+
     setIsToken(localStorage.getItem('EXIT_LOGIN_TOKEN') !== null);
     // if (localStorage.getItem('EXIT_LOGIN_TOKEN') === null) {
     //   setIsToken(false);
@@ -100,6 +101,8 @@ const ParticipantsView = () => {
     //   console.log('else');
     // }
   }, []);
+
+ 
 
   const handleClickRoom = async (body: string | null) => {
     console.log('입장 버튼 클릭! 그리고 초대 코드', invitationCode);
