@@ -49,7 +49,7 @@ const ThumbnailInput = (props: ThumbnailInputProps) => {
       <S.IcEmptyThumbnailWrapper>
         <input
           type='file'
-          accept='.jpg, .jpeg, .png, .svg'
+          accept='.jpg, .jpeg, .png'
           style={{ display: 'none' }}
           id='imgInput'
           onChange={handleImageUpload}
