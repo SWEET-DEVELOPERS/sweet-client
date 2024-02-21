@@ -26,8 +26,6 @@ const useTournamentScheduleCalendar = () => {
 
     updateOnboardingInfo({ tournamentStartDate: formattedDate });
 
-    console.log('날짜 선택 시 context formattedDate update', formattedDate);
-
     setSelectedDate(date);
     setIsOpen(false);
   };
