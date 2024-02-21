@@ -1,9 +1,10 @@
 const useConvertURLtoFile = async (url: string) => {
+  console.log('들어오고 있는 url', url);
   const response = await fetch(url);
   const data = await response.blob();
-  const ext = url.split('.').pop(); // url 구조에 맞게 수정할 것
-  const filename = url.split('/').pop(); // url 구조에 맞게 수정할 것
-  const metadata = { type: `image/${ext}` };
+  const extensions = url.split('.').pop();
+  const filename = url.split('/').pop();
+  const metadata = { type: `image/${extensions}` };
   return new File([data], filename!, metadata);
 };
 

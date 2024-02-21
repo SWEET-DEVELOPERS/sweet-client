@@ -39,7 +39,6 @@ const AddGiftFooter = ({
   const onClick = async () => {
     const { imageUrlS3 } = await putImageUrlToS3({ fileName, file, roomId, setImageUrl });
     if (isActivated) {
-      updateAddGiftInfo({ name: '', cost: 0, imageUrl: '', url: '' });
       mutation.mutate(
         {
           roomId: roomId,
@@ -50,6 +49,7 @@ const AddGiftFooter = ({
         },
         {
           onSuccess: () => {
+            updateAddGiftInfo({ name: '', cost: 0, imageUrl: '', url: '' });
             navigate(`/add-gift/${roomId}/${targetDate}`);
             setStep(0);
           },
