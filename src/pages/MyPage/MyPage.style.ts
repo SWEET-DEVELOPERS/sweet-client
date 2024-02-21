@@ -1,23 +1,17 @@
 import styled from 'styled-components';
-import BackgroundImage from '../../assets/img/mypage_background.png';
+import { MypageBackground } from '../../assets/svg';
 
 export const MyPageWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter({})};
   width: 100%;
 `;
 
-export const TopImage = styled.div`
+export const TopImage = styled(MypageBackground)`
   ${({ theme: { mixin } }) => mixin.flexBox({})};
   position: relative;
   width: 100%;
-  height: 34rem;
-  flex-shrink: 0;
-  top: 5rem;
-
-  background-image: url(${BackgroundImage});
-  background-size: contain;
-  z-index: 0;
-  margin: 0;
+  top: 4rem;
+  margin-bottom: 2rem;
 `;
 export const UserName = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ align: 'center', justify: 'center' })};
