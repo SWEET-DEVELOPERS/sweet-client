@@ -85,6 +85,7 @@ const ParticipantsView = () => {
 
   useEffect(() => {
 
+
     setIsToken(localStorage.getItem('EXIT_LOGIN_TOKEN') !== null);
     // if (localStorage.getItem('EXIT_LOGIN_TOKEN') === null) {
     //   setIsToken(false);
@@ -103,6 +104,7 @@ const ParticipantsView = () => {
   }, []);
 
  
+
 
   const handleClickRoom = async (body: string | null) => {
     console.log('입장 버튼 클릭! 그리고 초대 코드', invitationCode);
