@@ -124,7 +124,12 @@ function handleRefreshTokenError(error: AxiosError) {
       console.error('에러 메시지:', error.message);
     }
     // @ts-ignore
-    if (error.response?.data?.message === '리프레시 토큰이 만료되었습니다. 다시 로그인해 주세요.') {
+    const errorMessage = error.response?.data?.message;
+    if (
+      errorMessage === '리프레시 토큰이 만료되었습니다. 다시 로그인해 주세요.' ||
+      errorMessage === '리프레시 토큰의 값이 올바르지 않습니다.' ||
+      errorMessage === '일치하지 않는 리프레시 토큰입니다.'
+    ) {
       console.log('리프레쉬 토큰 만료 메세지 인식 했다.');
       handleTokenExpiration();
     } else {

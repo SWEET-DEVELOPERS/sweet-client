@@ -4,26 +4,29 @@ import DoneCardRoom from '../../../../components/CardRoom/DoneCardRoom';
 import BtnSmallStroke from '../../../../components/common/Button/Cta/SmallStroke/BtnSmallStroke';
 import useGetDoneRoom from '../../../../hooks/queries/member/useGetClosedRoom';
 import DetailHeader from '../DetailHeader/DetailHeader';
+import { ClosedRoomArrayType } from '../../../../types/member';
 import * as S from './DetailDoneRoom.style';
 
 const DetailDoneRoom = () => {
   const navigate = useNavigate();
   const data = useGetDoneRoom()?.data;
-  console.log(data);
+
+  const renderDoneRoomCard = (item: ClosedRoomArrayType, index: number) => (
+    <DoneCardRoom
+      key={index}
+      user={item?.gifteeName}
+      srcImage={item?.imageUrl}
+      userCount={item?.gifterNumber}
+      onClick={() => navigate(`/tournament-ranking/${item.gifteeName}/${item.roomId}`)}
+    />
+  );
+
   return (
     <S.DetailDoneRoomWrapper>
       <DetailHeader title='종료된 선물방' />
       <S.RoomWrapper>
-        {Array.isArray(data) ? (
-          data.map((item, index) => (
-            <DoneCardRoom
-              key={index}
-              user={item?.gifteeName}
-              srcImage={item?.imageUrl}
-              userCount={item?.gifterNumber}
-              onClick={() => navigate(`/tournament-ranking/${item.gifteeName}/${item.roomId}`)}
-            />
-          ))
+        {Array.isArray(data) && data.length > 0 ? (
+          data.map(renderDoneRoomCard)
         ) : (
           <S.EmptyWrapper title='종료된 선물방'>
             <IcLogoEmpty style={{ width: '8rem', height: '6.4rem' }} />

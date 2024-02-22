@@ -5,46 +5,40 @@ import ProgressCardRoom from '../../../../components/CardRoom/ProgressCardRoom';
 import BtnSmallStroke from '../../../../components/common/Button/Cta/SmallStroke/BtnSmallStroke';
 import useGetActiveRoom from '../../../../hooks/queries/member/useGetActiveRoom';
 import DetailHeader from '../DetailHeader/DetailHeader';
-import * as S from './DetailProgress.style';
 import DateCheck from '../../../../components/DateCheck/DateCheck';
+import { ActiveRoomArrayType } from '../../../../types/member';
+import * as S from './DetailProgress.style';
 
 const DetailProgressRoom = () => {
   const navigate = useNavigate();
   const data = useGetActiveRoom()?.data;
-  console.log(data);
-  const getNavigateLink = (item: any) => {
+
+  const getNavigateLink = (item: ActiveRoomArrayType) => {
     const isFuture = DateCheck({ date: item.tournamentStartDate });
     return isFuture ? `/gift-home/${item.roomId}` : `/tournament/${item.gifteeName}/${item.roomId}`;
+  };
+
+  const renderRoomCard = (item: ActiveRoomArrayType, index: number) => {
+    const CardComponent = item.isOwner ? EditCardRoom : ProgressCardRoom;
+    return (
+      <CardComponent
+        key={index}
+        user={item.gifteeName || ''}
+        userCount={item.gifterNumber || 0}
+        srcImage={item.imageUrl || ''}
+        roomId={item.roomId}
+        date={item.tournamentStartDate}
+        onClick={() => navigate(getNavigateLink(item))}
+      />
+    );
   };
 
   return (
     <S.DetailProgressRoomWrapper>
       <DetailHeader title='진행중인 선물방' />
       <S.RoomWrapper>
-        {Array.isArray(data) ? (
-          data.map((item, index) =>
-            item.isOwner ? (
-              <EditCardRoom
-                key={index}
-                user={item.gifteeName}
-                userCount={item.gifterNumber}
-                srcImage={item.imageUrl}
-                roomId={item.roomId}
-                date={item.tournamentStartDate}
-                onClick={() => navigate(getNavigateLink(item))}
-              />
-            ) : (
-              <ProgressCardRoom
-                key={index}
-                user={item.gifteeName || ''}
-                userCount={item.gifterNumber || 0}
-                srcImage={item.imageUrl || ''}
-                roomId={item.roomId}
-                date={item.tournamentStartDate}
-                onClick={() => navigate(getNavigateLink(item))}
-              />
-            ),
-          )
+        {Array.isArray(data) && data.length > 0 ? (
+          data.map((item, index) => renderRoomCard(item, index))
         ) : (
           <S.EmptyWrapper title='진행중인 선물방'>
             <IcLogoEmpty style={{ width: '8rem', height: '6.4rem' }} />
