@@ -2,7 +2,6 @@ import IcLink from '../../../assets/svg/IcLink';
 import useClipboard from '../../../hooks/useCopyClip';
 import { RoomInfoType } from '../../../types/room';
 import CountDownTimer from '../CountDownTimer/CountDownTimer';
-// import GiftHomeHeader from '../GiftHomeHeader/GiftHomeHeader';
 import * as S from './GiftHomeSummary.styled';
 
 interface GiftHomeSummaryProps {
@@ -27,7 +26,10 @@ export const GiftHomeSummary = ({ data }: GiftHomeSummaryProps) => {
         <S.Caption02Text>초대 링크 복사</S.Caption02Text>
       </S.CopyLinkBtnWrapper>
       <S.Body09Text>선물 토너먼트</S.Body09Text>
-      <CountDownTimer targetDate={new Date(data.tournamentStartDate)} />
+      <CountDownTimer
+        targetDate={new Date(data.tournamentStartDate)}
+        giftee={data.gifteeName}
+      />
     </S.GiftHomeSummaryWrapper>
   );
 };

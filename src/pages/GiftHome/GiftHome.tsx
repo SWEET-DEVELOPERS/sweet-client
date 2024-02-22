@@ -7,17 +7,11 @@ import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 import * as S from './GiftHome.styled';
 import useGetRoomInfo from '../../hooks/queries/room/useGetRoomInfo';
 import GiftHomeMyGifts from './GiftHomeMyGifts/GiftHomeMyGifts';
-// import { useEffect } from 'react';
 
 export default function GiftHome() {
   const params = useParams();
-  // const location = useLocation();
-  // const searchParams = new URLSearchParams(location.search);
   const roomId = params.roomId;
   const navigate = useNavigate();
-  console.log('params', params);
-  // console.log('roomIdString', roomIdString);
-  // console.log('추출된 초대 코드', roomId);
 
   const { data } = useGetRoomInfo({ roomId: Number(roomId) });
   const tournamentStartTime = data?.data.tournamentStartDate;

@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as S from './CountDownTimer.styled';
 import { IcTimeColon } from '../../../assets/svg';
 import CountDownCard from './ CountDownCard/CountDownCard';
 import { useCountDown } from '../../../hooks/useCountDown';
+import useHandleCountDownZero from '../../../hooks/gift/useHandleCountDownZero';
 
 interface CountdownTimerProps {
   targetDate: Date;
+  giftee: string;
 }
 
-const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
+const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate, giftee }) => {
   const [days, hours, minutes, seconds] = useCountDown(targetDate.toISOString());
+
+  useEffect(() => {
+    if (hours <= 0 && minutes <= 0 && seconds <= 0) {
+      useHandleCountDownZero(giftee);
+    }
+  }, [hours, minutes, seconds, useHandleCountDownZero]);
+
   return (
     <S.TimerWrapper>
       {days > 0 ? (
