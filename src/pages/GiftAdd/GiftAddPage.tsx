@@ -63,6 +63,7 @@ const GiftAddPage = () => {
           link={linkText}
           openGraph={openGraph}
           targetDate={targetDate || ''}
+          setModalStatus={setModalStatus}
           addGiftInfo={addGiftInfo}
           updateAddGiftInfo={updateAddGiftInfo}
         />
