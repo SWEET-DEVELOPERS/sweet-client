@@ -37,7 +37,7 @@ const AddGiftImg = ({
           <S.IcEmptyThumbnailWrapper>
             <input
               type='file'
-              accept='image/jpeg, image/png, image/gif, image/*'
+              accept='image/jpeg, image/png, image/gif, image/heic '
               style={{ display: 'none' }}
               id='imgInput'
               onChange={handleImageUpload}
