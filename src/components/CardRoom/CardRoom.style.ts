@@ -37,17 +37,8 @@ export const Text = styled.div`
   margin-top: 1rem;
 `;
 
-interface UserProps {
-  multiline: boolean;
-}
-export const User = styled.div<UserProps>`
+export const User = styled.div`
   ${({ theme: { fonts } }) => fonts.body_09};
-  ${({ multiline }) =>
-    multiline &&
-    `
-    display: block;
-    white-space: pre-wrap;
-  `}
 `;
 
 export const CountUser = styled.div`

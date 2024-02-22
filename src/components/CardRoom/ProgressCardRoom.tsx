@@ -20,7 +20,13 @@ const ProgressCardRoom = ({ user, srcImage, userCount, date, onClick }: Progress
     <S.CardRoomWrapper onClick={onClick}>
       <S.RoomImgWrapper src={srcImage} />
       <S.Text>
-        <S.User multiline={multiline}>{user}님을 위한 선물방</S.User>
+        {multiline ? (
+          <>
+            <S.User>{user}님</S.User>을 위한 선물방
+          </>
+        ) : (
+          <S.User>{user}님을 위한 선물방</S.User>
+        )}
       </S.Text>
       <S.CountUser>
         <IcUser

@@ -15,7 +15,13 @@ const DoneCardRoom = ({ user, srcImage, userCount, onClick }: DoneCardRoomType) 
     <S.CardRoomWrapper onClick={onClick}>
       <S.RoomImgWrapper src={srcImage} />
       <S.Text>
-        <S.User multiline={multiline}>{user}님</S.User>을 위한 선물방
+        {multiline ? (
+          <>
+            <S.User>{user}님</S.User>을 위한 선물방
+          </>
+        ) : (
+          <S.User>{user}님을 위한 선물방</S.User>
+        )}
       </S.Text>
       <S.CountUser>
         <IcUser style={{ width: '1.6rem', height: '1.6rem', color: '#ACA7A9' }} />
