@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-export const LogoHeaderWrapper = styled.div`
-  ${({ theme: { mixin } }) => mixin.flexBox({ align: 'center' })};
+export const HomeMypageHeaderWrapper = styled.div`
+  ${({ theme: { mixin } }) => mixin.flexBox({ justify: 'flex-end', align: 'center' })};
   position: fixed;
   width: 100%;
-  padding: 0 2rem;
   height: 5.6rem;
-  gap: 21.2rem;
+  gap: 1.6rem;
+  padding: 0 1.8rem;
   z-index: 999;
   top: 0rem;
   background-color: #fafafa;
