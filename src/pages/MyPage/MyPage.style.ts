@@ -17,6 +17,9 @@ export const UserName = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ align: 'center', justify: 'center' })};
 
   ${({ theme: { fonts } }) => fonts.heading_03};
+  > span {
+    color: ${({ theme: { colors } }) => colors.P_06};
+  }
 `;
 export const User = styled.div`
   ${({ theme: { fonts } }) => fonts.heading_01};
