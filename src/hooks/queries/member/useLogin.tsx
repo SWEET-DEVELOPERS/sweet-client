@@ -38,9 +38,11 @@ const useLogin = ({ pageName }: useLoginProps) => {
 
         const JWT = data.data.memberToken.accessToken;
         const RefreshToken = data.data.memberToken.refreshToken;
+        const ProfileImage = data.data.userInfo.profileImage;
 
         console.log(data);
         if (data) {
+          localStorage.setItem('EXIT_USER_PROFILE_IMAGE', ProfileImage);
           localStorage.setItem('EXIT_LOGIN_TOKEN', JWT);
           localStorage.setItem('EXIT_LOGIN_REFRESH_TOKEN', RefreshToken);
           console.log(data);

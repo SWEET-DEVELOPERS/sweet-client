@@ -4,6 +4,7 @@ export const DetailProgressRoomWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter({})};
   width: 100%;
   height: 100%;
+  padding: 0 2rem;
 `;
 
 export const RoomWrapper = styled.div`
@@ -14,7 +15,7 @@ export const RoomWrapper = styled.div`
   height: 100%;
   top: 5rem;
   gap: 1.5rem;
-  padding: 1.6rem 2rem;
+  padding: 1.6rem 0;
 `;
 
 export const EmptyWrapper = styled.div`
