@@ -130,7 +130,7 @@ const ParticipantsView = () => {
         <div>
           <S.GradientImg>
             {/* TODO s3에 업로드된 이미지로 변경 */}
-            <img src={data.data.imageUrl} style={{ width: '100%', height: '100%' }} />
+            <img src={data.data.imageUrl} style={{ width: '100%' }} />
             <S.TitleContainer>
               <S.ParticipantsTitleWrapper>
                 <Title>
