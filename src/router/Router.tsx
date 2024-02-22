@@ -35,6 +35,11 @@ const router = createBrowserRouter([
             element: <MyPage />,
           },
           {
+            path: '/gift-home/:roomId',
+            element: <GiftHome />,
+          },
+
+          {
             path: '/error',
             element: <LoginError />,
           },
@@ -59,10 +64,6 @@ const router = createBrowserRouter([
       {
         path: '/detail-done',
         element: <DetailDoneRoom />,
-      },
-      {
-        path: '/gift-home/:roomId',
-        element: <GiftHome />,
       },
       {
         path: '/gift-detail-friends/:roomId/:targetDate',

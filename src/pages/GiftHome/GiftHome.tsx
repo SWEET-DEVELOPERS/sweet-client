@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import GiftHome2030Gifts from '../../components/GiftHome/GiftHome2030Gifts/GiftHome2030Gifts';
 import GiftHomeFriendsGifts from '../../components/GiftHome/GiftHomeFriendsGifts/GiftHomeFriendsGifts';
-import GiftHomeHeader from '../../components/GiftHome/GiftHomeHeader/GiftHomeHeader';
 import GiftHomeSummary from '../../components/GiftHome/GiftHomeSummary/GiftHomeSummary';
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 import * as S from './GiftHome.styled';
@@ -22,7 +21,6 @@ export default function GiftHome() {
 
   return (
     <S.GiftHomeWrapper>
-      <GiftHomeHeader />
       <GiftHomeSummary data={data?.data} />
       {data?.data.roomMyGiftDtoList.length > 0 ? (
         <GiftHomeMyGifts
