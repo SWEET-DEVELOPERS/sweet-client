@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import usePostGift from '../../../hooks/queries/gift/usePostGift';
 import GiftAddNextBtn from '../AddGiftLink/common/GiftAddNextBtn/GiftAddNextBtn';
 import * as S from './AddGiftFooter.styled';
@@ -32,29 +31,19 @@ const AddGiftFooter = ({
   fileName,
   updateAddGiftInfo,
 }: AddGiftFooterProps) => {
-  const navigate = useNavigate();
-  const { mutation } = usePostGift(roomId, targetDate, setStep);
+  const { mutation } = usePostGift(roomId, targetDate, setStep, updateAddGiftInfo);
   const { putImageUrlToS3 } = usePutImageUrlToS3(roomId);
 
   const onClick = async () => {
     const { imageUrlS3 } = await putImageUrlToS3({ fileName, file, roomId, setImageUrl });
     if (isActivated) {
-      mutation.mutate(
-        {
-          roomId: roomId,
-          name: name,
-          cost: cost,
-          imageUrl: imageUrlS3,
-          url: link,
-        },
-        {
-          onSuccess: () => {
-            updateAddGiftInfo({ name: '', cost: 0, imageUrl: '', url: '' });
-            navigate(`/add-gift/${roomId}/${targetDate}`);
-            setStep(0);
-          },
-        },
-      );
+      mutation.mutate({
+        roomId: roomId,
+        name: name,
+        cost: cost,
+        imageUrl: imageUrlS3,
+        url: link,
+      });
     }
   };
 
