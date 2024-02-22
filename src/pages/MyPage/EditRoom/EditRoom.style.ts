@@ -18,7 +18,7 @@ export const TextWrapper = styled.div`
 
 export const Text = styled.div`
   ${({ theme: { fonts } }) => fonts.heading_01};
-  > p {
+  > span {
     color: ${({ theme: { colors } }) => colors.P_06};
   }
 `;
