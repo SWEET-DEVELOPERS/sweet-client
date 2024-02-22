@@ -81,3 +81,4 @@ export { default as SweetLogoGray } from './SweetLogoGray';
 export { default as SweetLogoPink } from './SweetLogoPink';
 export { default as TrophyNone } from './TrophyNone';
 export { default as Vite } from './Vite';
+export { default as IcShare } from './IcShare';
