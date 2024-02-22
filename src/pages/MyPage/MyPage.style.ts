@@ -10,7 +10,7 @@ export const TopImage = styled(MypageBackground)`
   ${({ theme: { mixin } }) => mixin.flexBox({})};
   position: relative;
   width: 100%;
-  top: 4rem;
+  top: 0rem;
   margin-bottom: 2rem;
 `;
 export const UserName = styled.div`
@@ -46,7 +46,7 @@ export const ProfileWrapper = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 0 1.6rem;
   gap: 1.6rem;
-  top: 19rem;
+  top: 15rem;
 
   z-index: 8;
 
@@ -58,7 +58,7 @@ export const GiftRoomWrapper = styled.div`
     mixin.flexBox({ direction: 'column', align: 'center', justify: 'center' })};
   background-color: white;
   position: relative;
-  top: -5rem;
+  top: -7rem;
   padding-top: 4rem;
 `;
 
