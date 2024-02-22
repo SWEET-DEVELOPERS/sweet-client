@@ -1,6 +1,6 @@
 import { IcLogoEmpty } from '../../../../assets/svg';
 import BtnSmallStroke from '../../../../components/common/Button/Cta/SmallStroke/BtnSmallStroke';
-import DetailHeader from '../DetailHeader/DetailHeader';
+import DetailHeader from '../../../../components/LeftIconHeader/LeftIconHeader';
 import * as S from './EmptyView.style';
 
 interface EmptyViewType {

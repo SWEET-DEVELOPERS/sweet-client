@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import * as S from './LogoHeader.style';
 
 const LogoHeader = () => {
+  const userImg = localStorage.getItem('EXIT_USER_PROFILE_IMAGE');
   const navigate = useNavigate();
 
   const handleMyPageIcon = () => {
@@ -14,7 +15,11 @@ const LogoHeader = () => {
       <S.IconWrapper>
         <SweetLogoPink style={{ width: '9.9rem' }} />
 
-        <IcProfile style={{ width: '4.8rem' }} onClick={handleMyPageIcon} />
+        {userImg ? (
+          <S.UserProfileImg src={userImg} onClick={handleMyPageIcon} />
+        ) : (
+          <IcProfile style={{ width: '4.8rem' }} onClick={handleMyPageIcon} />
+        )}
       </S.IconWrapper>
     </S.LogoHeaderWrapper>
   );

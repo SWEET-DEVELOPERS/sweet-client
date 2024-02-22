@@ -16,3 +16,10 @@ export const IconWrapper = styled.div`
   gap: 21.2rem;
   padding: 0 2rem;
 `;
+
+export const UserProfileImg = styled.img`
+  ${({ theme: { mixin } }) => mixin.flexBox({})};
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9rem;
+`;
