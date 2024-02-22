@@ -9,7 +9,6 @@ export const MyPageWrapper = styled.div`
 export const TopImage = styled(MypageBackground)`
   ${({ theme: { mixin } }) => mixin.flexBox({})};
   position: relative;
-  width: 100%;
   top: 0rem;
   margin-bottom: 2rem;
 `;
@@ -32,7 +31,6 @@ export const UserButtonWrapper = styled.div`
 `;
 export const UserWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ align: 'center' })};
-  width: 100%;
   gap: 1.2rem;
 `;
 export const ProfileWrapper = styled.div`
@@ -60,11 +58,13 @@ export const GiftRoomWrapper = styled.div`
   position: relative;
   top: -7rem;
   padding-top: 4rem;
+  width: 37.5rem;
 `;
 
 export const NoneText = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter({})};
   height: 32.7rem;
+  width: 37.5rem;
   color: ${({ theme: { colors } }) => colors.G_07};
   ${({ theme: { fonts } }) => fonts.body_07};
 `;
