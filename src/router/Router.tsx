@@ -17,10 +17,11 @@ import TournamentPage from '../pages/Tournament/TournamentPage';
 import GiftAddPage from '../pages/GiftAdd/GiftAddPage';
 import InvitationDeadline from '../components/OnBoardingSteps/invitationDeadline/InvitationDeadline';
 import { AddGiftProvider } from '../context/AddGift/AddGiftContext';
-import HeaderLayout from '../layouts/HeaderLayout';
 import LoginError from '../pages/LoginError/LoginError';
 import { OnboardingProvider } from '../context/Onboarding/OnboardingContext';
 import ParticipantsView from '../pages/Participants/ParticipantsView';
+import HomeMypageHeaderLayout from '../layouts/HomeMypageHeaderLayout';
+import LeftIconHeaderLayout from '../layouts/LeftIconHeaderLayout';
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        element: <HeaderLayout />,
+        element: <HomeMypageHeaderLayout />,
         children: [
           {
             path: '/mypage',
@@ -46,16 +47,21 @@ const router = createBrowserRouter([
         ],
       },
       {
+        element: <LeftIconHeaderLayout />,
+        children: [
+          {
+            path: '/editpage/:roomId',
+            element: <EditRoom />,
+          },
+        ],
+      },
+      {
         path: '/',
         element: <Start />,
       },
       {
         path: '/api/oauth/kakao/login',
         element: <Login />,
-      },
-      {
-        path: '/editpage/:roomId',
-        element: <EditRoom />,
       },
       {
         path: '/detail-progress',

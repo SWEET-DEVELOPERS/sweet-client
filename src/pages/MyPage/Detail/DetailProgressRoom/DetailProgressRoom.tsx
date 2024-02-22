@@ -4,10 +4,10 @@ import EditCardRoom from '../../../../components/CardRoom/EditCardRoom';
 import ProgressCardRoom from '../../../../components/CardRoom/ProgressCardRoom';
 import BtnSmallStroke from '../../../../components/common/Button/Cta/SmallStroke/BtnSmallStroke';
 import useGetActiveRoom from '../../../../hooks/queries/member/useGetActiveRoom';
-import DetailHeader from '../DetailHeader/DetailHeader';
 import DateCheck from '../../../../components/DateCheck/DateCheck';
 import { ActiveRoomArrayType } from '../../../../types/member';
 import * as S from './DetailProgress.style';
+import LeftIconHeader from '../../../../components/LeftIconHeader/LeftIconHeader';
 
 const DetailProgressRoom = () => {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const DetailProgressRoom = () => {
 
   return (
     <S.DetailProgressRoomWrapper>
-      <DetailHeader title='진행중인 선물방' />
+      <LeftIconHeader title='진행중인 선물방' />
       <S.RoomWrapper>
         {Array.isArray(data) && data.length > 0 ? (
           data.map((item, index) => renderRoomCard(item, index))

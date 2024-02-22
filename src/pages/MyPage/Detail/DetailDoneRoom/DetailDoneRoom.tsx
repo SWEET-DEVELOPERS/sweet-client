@@ -3,9 +3,9 @@ import { IcLogoEmpty } from '../../../../assets/svg';
 import DoneCardRoom from '../../../../components/CardRoom/DoneCardRoom';
 import BtnSmallStroke from '../../../../components/common/Button/Cta/SmallStroke/BtnSmallStroke';
 import useGetDoneRoom from '../../../../hooks/queries/member/useGetClosedRoom';
-import DetailHeader from '../DetailHeader/DetailHeader';
 import { ClosedRoomArrayType } from '../../../../types/member';
 import * as S from './DetailDoneRoom.style';
+import LeftIconHeader from '../../../../components/LeftIconHeader/LeftIconHeader';
 
 const DetailDoneRoom = () => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const DetailDoneRoom = () => {
 
   return (
     <S.DetailDoneRoomWrapper>
-      <DetailHeader title='종료된 선물방' />
+      <LeftIconHeader title='종료된 선물방' />
       <S.RoomWrapper>
         {Array.isArray(data) && data.length > 0 ? (
           data.map(renderDoneRoomCard)
