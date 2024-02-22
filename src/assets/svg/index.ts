@@ -1,3 +1,4 @@
+export { default as GradientCta } from './GradientCta';
 export { default as HomeBackground } from './HomeBackground';
 export { default as Step1 } from './Step1';
 export { default as Step2 } from './Step2';
@@ -8,7 +9,6 @@ export { default as Svg3Dicons } from './3Dicons';
 export { default as Divider } from './Divider';
 export { default as Favicon } from './Favicon';
 export { default as HomeBgGradientFix } from './HomeBgGradientFix';
-export { default as HomeCtaBgGradient } from './HomeCtaBgGradient';
 export { default as IcAdd } from './IcAdd';
 export { default as IcAlertCircle } from './IcAlertCircle';
 export { default as IcAlertSquare } from './IcAlertSquare';
