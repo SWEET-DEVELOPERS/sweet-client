@@ -33,7 +33,7 @@ const AddGiftFooter = ({
   updateAddGiftInfo,
   setIsLoading,
 }: AddGiftFooterProps) => {
-  const { mutation } = usePostGift(roomId, targetDate, setStep, updateAddGiftInfo);
+  const { mutation } = usePostGift(roomId, targetDate, setStep, updateAddGiftInfo, setIsLoading);
   const { putImageUrlToS3 } = usePutImageUrlToS3(roomId);
 
   const onClick = async () => {
@@ -48,7 +48,6 @@ const AddGiftFooter = ({
         url: link,
       });
     }
-    setIsLoading(false);
   };
 
   return (

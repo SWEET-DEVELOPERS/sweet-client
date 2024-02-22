@@ -58,7 +58,7 @@ export const AddGiftWithoutLinkLayout = ({
 
   // 모달 확인 클릭 버튼
   const handleClickConfirmClick = () => {
-    setIsModalOpen(!isModalOpen);
+    setIsModalOpen(false);
     setStep(3);
   };
 

@@ -13,6 +13,7 @@ export const usePostGift = (
   targetDate: string,
   setStep: React.Dispatch<React.SetStateAction<number>>,
   updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void,
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
 ) => {
   const navigate = useNavigate();
 
@@ -25,6 +26,7 @@ export const usePostGift = (
       queryClient.invalidateQueries({ queryKey: [MY_GIFT_QUERY_KEY[0], roomId] });
       navigate(`/add-gift/${roomId}/${targetDate}`);
       setStep(0);
+      setIsLoading(false);
       updateAddGiftInfo({ name: '', cost: 0, imageUrl: '', url: '' });
     },
     onError: (error) => {
