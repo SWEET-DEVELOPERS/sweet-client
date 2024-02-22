@@ -9,7 +9,6 @@ export const HomeMypageHeaderWrapper = styled.div`
   padding: 0 1.8rem;
   z-index: 999;
   top: 0rem;
-  background-color: #fafafa;
 `;
 
 export const UserProfileImg = styled.img`
