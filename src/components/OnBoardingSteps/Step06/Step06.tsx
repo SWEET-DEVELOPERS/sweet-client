@@ -1,28 +1,41 @@
 import Title from '../../common/title/Title';
 import * as S from './Step06.style';
-import { IcKakaoShare, IcLink } from '../../../assets/svg';
-import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
+import {
+  IcAfterTournamentProgressLine,
+  IcBeforeTournamentProgressLine,
+  IcOnboardingFinal,
+} from '../../../assets/svg';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import OnboardingFinalHeader from './OnboardingFinalHeader';
-import useClipboard from '../../../hooks/useCopyClip';
-import { useKakaoShare } from '../../../hooks/queries/onboarding/useKakaoShare';
 import { useOnboardingContext } from '../../../context/Onboarding/OnboardingContext';
 import useFormatDate from '../../../hooks/onboarding/useFormatDate';
+import OnboardingFinalFooter from './OnboardingFinalFooter';
+import { addHours, format } from 'date-fns';
 
 interface OnboardingFinalProps {
   invitationCode: string;
   roomId: number;
 }
 
+const DURATION_MAPPING = {
+  SIX_HOURS: 6,
+  TWELVE_HOURS: 12,
+  EIGHTEEN_HOURS: 18,
+  TWENTY_FOUR_HOURS: 24,
+};
+
 const OnboardingFinal = (props: OnboardingFinalProps) => {
   const { invitationCode, roomId } = props;
   const { onboardingInfo } = useOnboardingContext();
-  const { infoDetails } = useFormatDate();
-  const navigate = useNavigate();
-  const { handleCopyToClipboard } = useClipboard();
+  const { formatDuration, formatDate } = useFormatDate();
 
-  const step = 6;
+  const tournamentEndDate = addHours(
+    new Date(onboardingInfo.tournamentStartDate),
+    DURATION_MAPPING[onboardingInfo.tournamentDuration as keyof typeof DURATION_MAPPING] as number,
+  );
+
+  const formattedEndDate = format(tournamentEndDate, 'yyyy.MM.dd(EEE)');
+  const isDeliveryBeforeEnd =
+    new Date(onboardingInfo.deliveryDate).getTime() < tournamentEndDate.getTime();
 
   /** @see 카카오 공유하기를 위한 useEffect */
   useEffect(() => {
@@ -34,56 +47,99 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
 
   return (
     <>
-      <OnboardingFinalHeader />
+      {/* <HeaderLayout /> */}
       <S.OnboardingFinalWrapper>
-        {/* TODO presignedUrl이 null 또는 빈 스트링일 경우 엠티 뷰 보이기 / 값이 있으면 저장되어있는 imageUrl 보이기 */}
         <div>
-          <S.GradientImg>
-            <img src={onboardingInfo.imageUrl} style={{ width: '100%' }} />
-            <S.TitleContainer>
-              <S.TitleWrapper>
-                <Title>
-                  {`${onboardingInfo.gifteeName}님을 위한`} <br /> 선물 준비방이 개설됐어요
-                </Title>
-                <OnBoardingBtn
-                  step={step}
-                  customStyle={{ marginBottom: '1.6rem' }}
-                  setStep={() => navigate(`/gift-home/${roomId}`)}
-                  isActivated={true}
-                >
-                  입장
-                </OnBoardingBtn>
-              </S.TitleWrapper>
-            </S.TitleContainer>
-          </S.GradientImg>
+          <S.IconWrapper>
+            <IcOnboardingFinal style={{ width: '6.4rem', height: '6.4rem' }} />
+          </S.IconWrapper>
+          <S.TitleWrapper>
+            <Title>{`${onboardingInfo.gifteeName}님을 위한`}</Title>
+          </S.TitleWrapper>
+          <S.SecondTitleWrapper>
+            <Title>선물 준비방이 개설됐어요</Title>
+          </S.SecondTitleWrapper>
         </div>
+        <S.ProgressLineAndDetailContainer>
+          {/* 선물 전달일이 토너먼트 종료일보다 앞일 경우 */}
+          {isDeliveryBeforeEnd === true ? (
+            <>
+              <IcBeforeTournamentProgressLine
+                style={{ width: '1.6rem', height: '24.1rem', marginTop: '3.5rem' }}
+              />
+
+              <S.DetailWrapper>
+                <S.InfoContainer>
+                  <S.InfoContainerTitle>선물 등록 마감</S.InfoContainerTitle>
+                  <S.InfoContainerDetail>
+                    {formatDate(onboardingInfo.tournamentStartDate)}
+                  </S.InfoContainerDetail>
+                </S.InfoContainer>
+
+                <S.TournamentProceedWrapper>
+                  <S.InfoContainerTitle>토너먼트 진행</S.InfoContainerTitle>
+                  <S.InfoContainerDetail>
+                    {formatDuration(onboardingInfo.tournamentDuration)}
+                  </S.InfoContainerDetail>
+                </S.TournamentProceedWrapper>
+
+                <S.InfoContainer>
+                  <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
+                  <S.InfoContainerDetail>
+                    {formatDate(formattedEndDate, false)}
+                  </S.InfoContainerDetail>
+                </S.InfoContainer>
+
+                <S.InfoContainerPresent>
+                  <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
+                  <S.InfoContainerDetail>
+                    {formatDate(onboardingInfo.deliveryDate, false)}
+                  </S.InfoContainerDetail>
+                </S.InfoContainerPresent>
+              </S.DetailWrapper>
+            </>
+          ) : (
+            //  선물 전달일이 토너먼트 종료일보다 늦을 경우
+            <>
+              <IcAfterTournamentProgressLine
+                style={{ width: '1.6rem', height: '24.1rem', marginTop: '3.5rem' }}
+              />
+
+              <S.DetailWrapper>
+                <S.InfoContainer>
+                  <S.InfoContainerTitle>선물 등록 마감</S.InfoContainerTitle>
+                  <S.InfoContainerDetail>
+                    {formatDate(onboardingInfo.tournamentStartDate)}
+                  </S.InfoContainerDetail>
+                </S.InfoContainer>
+
+                <S.TournamentProceedWrapper>
+                  <S.InfoContainerTitle>토너먼트 진행</S.InfoContainerTitle>
+                  <S.InfoContainerDetail>
+                    {formatDuration(onboardingInfo.tournamentDuration)}
+                  </S.InfoContainerDetail>
+                </S.TournamentProceedWrapper>
+
+                <S.InfoContainerPresent>
+                  <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
+                  <S.InfoContainerDetail>
+                    {formatDate(onboardingInfo.deliveryDate, false)}
+                  </S.InfoContainerDetail>
+                </S.InfoContainerPresent>
+
+                <S.InfoContainer>
+                  <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
+                  <S.InfoContainerDetail>
+                    {formatDate(formattedEndDate, false)}
+                  </S.InfoContainerDetail>
+                </S.InfoContainer>
+              </S.DetailWrapper>
+            </>
+          )}
+        </S.ProgressLineAndDetailContainer>
+
+        <OnboardingFinalFooter invitationCode={invitationCode} roomId={roomId} />
       </S.OnboardingFinalWrapper>
-      <S.InfoWrapper>
-        {infoDetails.map((item, index) => (
-          <S.InfoDetailWrapper key={index}>
-            <S.InfoTitle>{item.title}</S.InfoTitle>
-            <S.InfoDetail>{item.detail}</S.InfoDetail>
-          </S.InfoDetailWrapper>
-        ))}
-      </S.InfoWrapper>
-      <S.BtnWrapper>
-        <S.LinkCopyBtn
-          onClick={() =>
-            // TODO 추후 로컬 주소를 배포 주소로 변경 및 주소 상수처리
-            // handleCopyToClipboard(`http://localhost:5173/result/${invitationCode}`)
-            handleCopyToClipboard(`http://sweetgift.vercel.app/result/${invitationCode}`)
-          }
-        >
-          <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
-          링크 복사
-        </S.LinkCopyBtn>
-        <S.KakaoLinkCopyBtn
-          onClick={() => useKakaoShare(invitationCode, onboardingInfo.gifteeName)}
-        >
-          <IcKakaoShare style={{ width: '1.8rem', height: '1.8rem' }} />
-          카카오톡 공유
-        </S.KakaoLinkCopyBtn>
-      </S.BtnWrapper>
     </>
   );
 };
