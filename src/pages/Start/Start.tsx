@@ -13,6 +13,7 @@ const Start = () => {
   return (
     <S.Wrapper>
       <LogoHeader />
+      <S.Main1 />
       <StartGiftAnimation />
       <StartDownIconAnimation />
       <S.Gradient />

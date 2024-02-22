@@ -1,23 +1,27 @@
 import styled from 'styled-components';
-import HomeBg from '../../assets/img/home_bg11.png';
-import { HomeBgGradientFix, HomeCtaBgGradient, Main02, Main03, Main04 } from '../../assets/svg';
+import {
+  HomeBackground,
+  HomeBgGradientFix,
+  HomeCtaBgGradient,
+  Main02,
+  Main03,
+  Main04,
+} from '../../assets/svg';
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 
 export const Wrapper = styled.div`
-  background-image: url(${HomeBg});
-  background-size: cover;
   width: 37.5rem;
   height: 100vh;
   background-repeat: no-repeat;
   ${({ theme: { mixin } }) => mixin.flexCenter({})};
-  margin: auto;
-  background-color: #fafafa;
+  margin: auto 0;
 `;
 
 export const Gradient = styled(HomeBgGradientFix)`
   position: absolute;
-  top: 55rem;
+  top: 54rem;
   z-index: 2;
+  width: 100%;
 `;
 
 export const BtnGradient = styled(HomeCtaBgGradient)`
@@ -33,9 +37,13 @@ export const BtnFillStyle = styled(BtnFill)`
   margin: 2rem;
 `;
 
+export const Main1 = styled(HomeBackground)`
+  position: absolute;
+`;
+
 export const Main2 = styled(Main02)`
   position: absolute;
-  top: 62rem;
+  top: 61rem;
 `;
 
 export const Main3 = styled(Main03)`
