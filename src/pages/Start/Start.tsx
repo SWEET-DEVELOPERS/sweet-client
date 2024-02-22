@@ -19,6 +19,7 @@ const Start = () => {
       <S.Gradient />
 
       <StartFixedButton />
+      <S.BtnGradient />
 
       <StartScrollAnimation />
       <S.Main2 />

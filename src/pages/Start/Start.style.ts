@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {
   HomeBackground,
   HomeBgGradientFix,
-  HomeCtaBgGradient,
+  GradientCta,
   Main02,
   Main03,
   Main04,
@@ -24,7 +24,7 @@ export const Gradient = styled(HomeBgGradientFix)`
   width: 100%;
 `;
 
-export const BtnGradient = styled(HomeCtaBgGradient)`
+export const BtnGradient = styled(GradientCta)`
   position: fixed;
   z-index: 2;
   bottom: 0;
