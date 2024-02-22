@@ -21,12 +21,13 @@ const EditCardRoom = ({ user, srcImage, userCount, roomId, date, onClick }: Edit
   const handleSettingIcon = () => {
     navigate(`/editpage/${roomId}`);
   };
+  const multiline = user.length > 3 || (/[a-zA-Z]/.test(user) && user.length > 5);
   return (
     <S.WholeWrapper>
       <S.CardRoomWrapper onClick={onClick}>
         <S.RoomImgWrapper src={srcImage} />
         <S.Text>
-          <S.User>{user}님</S.User>을 위한 선물방
+          <S.User multiline={multiline}>{user}님</S.User>을 위한 선물방
         </S.Text>
         <S.CountUser>
           <IcUser
