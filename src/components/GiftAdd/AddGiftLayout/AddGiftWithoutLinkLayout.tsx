@@ -20,6 +20,7 @@ interface AddGiftWithLinkLayoutProps {
   openGraph: OpenGraphResponseType;
   updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
   addGiftInfo: AddGiftInfo;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // 직접 입력 화면
@@ -33,6 +34,7 @@ export const AddGiftWithoutLinkLayout = ({
   updateAddGiftInfo,
   modalStatus,
   addGiftInfo,
+  setIsLoading,
 }: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(
     !!addGiftInfo.name && !!addGiftInfo.cost && !!addGiftInfo.url && !!addGiftInfo.imageUrl,
@@ -110,6 +112,7 @@ export const AddGiftWithoutLinkLayout = ({
         updateAddGiftInfo={updateAddGiftInfo}
         file={file}
         setImageUrl={setImageUrl}
+        setIsLoading={setIsLoading}
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );

@@ -20,6 +20,7 @@ interface AddGiftWithLinkLayoutProps {
   updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
   setModalStatus: React.Dispatch<React.SetStateAction<boolean>>;
   addGiftInfo: AddGiftInfo;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const AddGiftWithLinkLayout = ({
@@ -32,6 +33,7 @@ const AddGiftWithLinkLayout = ({
   updateAddGiftInfo,
   setModalStatus,
   addGiftInfo,
+  setIsLoading,
 }: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(
     !!addGiftInfo.name && !!addGiftInfo.cost && !!addGiftInfo.imageUrl,
@@ -113,6 +115,7 @@ const AddGiftWithLinkLayout = ({
         updateAddGiftInfo={updateAddGiftInfo}
         file={file}
         setImageUrl={setImageUrl}
+        setIsLoading={setIsLoading}
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );

@@ -16,6 +16,7 @@ interface AddGiftFooterProps {
   setImageUrl: React.Dispatch<React.SetStateAction<string>>;
   updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
   fileName: string;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const AddGiftFooter = ({
@@ -30,11 +31,13 @@ const AddGiftFooter = ({
   setImageUrl,
   fileName,
   updateAddGiftInfo,
+  setIsLoading,
 }: AddGiftFooterProps) => {
   const { mutation } = usePostGift(roomId, targetDate, setStep, updateAddGiftInfo);
   const { putImageUrlToS3 } = usePutImageUrlToS3(roomId);
 
   const onClick = async () => {
+    setIsLoading(true);
     const { imageUrlS3 } = await putImageUrlToS3({ fileName, file, roomId, setImageUrl });
     if (isActivated) {
       mutation.mutate({
@@ -45,6 +48,7 @@ const AddGiftFooter = ({
         url: link,
       });
     }
+    setIsLoading(false);
   };
 
   return (
