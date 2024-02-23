@@ -14,11 +14,19 @@ interface ProgressCardRoomType {
 
 const ProgressCardRoom = ({ user, srcImage, userCount, date, onClick }: ProgressCardRoomType) => {
   const isFuture = DateCheck({ date: date });
+  const multiline = user.length > 3 || (/[a-zA-Z]/.test(user) && user.length > 5);
+
   return (
     <S.CardRoomWrapper onClick={onClick}>
-      <img src={srcImage} />
+      <S.RoomImgWrapper src={srcImage} />
       <S.Text>
-        <S.User>{user}님</S.User>을 위한 선물방
+        {multiline ? (
+          <>
+            <S.User>{user}님</S.User>을 위한 선물방
+          </>
+        ) : (
+          <S.User>{user}님을 위한 선물방</S.User>
+        )}
       </S.Text>
       <S.CountUser>
         <IcUser
