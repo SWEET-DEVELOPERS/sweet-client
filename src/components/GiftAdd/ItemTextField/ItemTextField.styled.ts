@@ -3,8 +3,6 @@ import styled, { css } from 'styled-components';
 export const ItemTextFieldWrapper = styled.div`
   display: flex;
   flex-direction: column;
-
-  /* row-gap: 0.8rem; */
 `;
 
 export const CategoryTitle = styled.span`
@@ -12,7 +10,7 @@ export const CategoryTitle = styled.span`
   color: ${({ theme }) => theme.colors.G_07};
 `;
 
-export const Wrapper = styled.div<{ $hasContent: boolean }>`
+export const Wrapper = styled.div<{ $isInputFocused: boolean }>`
   ${({ theme }) => theme.mixin.flexBox('center', 'center')}
   width: 100%;
   height: 3.6rem;
@@ -22,7 +20,7 @@ export const Wrapper = styled.div<{ $hasContent: boolean }>`
   border-bottom: 0.1rem solid ${({ theme }) => theme.colors.G_02};
 
   ${(props) =>
-    props.$hasContent &&
+    props.$isInputFocused &&
     css`
       border-bottom: 0.1rem solid ${({ theme }) => theme.colors.P_06};
     `}

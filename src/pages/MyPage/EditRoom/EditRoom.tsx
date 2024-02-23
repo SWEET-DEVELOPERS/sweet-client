@@ -3,33 +3,35 @@ import useGetRoomMember from '../../../hooks/queries/room/useGetRoomMember';
 import CardGuest from './CardGuest/CardGuest';
 import * as S from './EditRoom.style';
 import useGetRoomOwner from '../../../hooks/queries/room/useGetRoomOwner';
+import DetailHeader from '../../../components/LeftIconHeader/LeftIconHeader';
 
 const EditRoom = () => {
-  const params = useParams();
+  const { roomId } = useParams();
 
-  const roomIdString = params.roomId;
-  const roomId = parseInt(roomIdString || '', 10);
-  const roomWholeMemberData = useGetRoomMember(roomId).data;
-  const roomWholeOwnerData = useGetRoomOwner(roomId).data;
+  const roomIdInt = parseInt(roomId || '', 10);
 
-  const roomOwnerData = roomWholeOwnerData?.owner;
-  const roomGifteeData = roomWholeOwnerData.room;
-  const roomMemberData = roomWholeMemberData;
+  const { data: roomOwnerData } = useGetRoomOwner(roomIdInt);
+  const { data: roomMemberData } = useGetRoomMember(roomIdInt);
+
+  const { owner: roomOwner, room: roomGifteeData } = roomOwnerData || {};
 
   return (
     <S.EditRoomWrapper>
+      <DetailHeader />
       <S.TextWrapper>
-        <S.Text>{roomGifteeData.gifterNumber}명이</S.Text>
-        <S.Text>{roomGifteeData.gifteeName}님을 위한</S.Text>
+        <S.Text>{roomGifteeData?.gifterNumber || 0}명이</S.Text>
+        <S.Text>{roomGifteeData?.gifteeName || ''}님을 위한</S.Text>
         <S.Text>선물을 준비하고 있어요</S.Text>
       </S.TextWrapper>
       <S.CardWrapper>
-        <CardGuest
-          user={roomOwnerData.name}
-          makerState={true}
-          profileImageUrl={roomOwnerData?.profileImageUrl}
-          memberId={roomOwnerData.ownerId}
-        />
+        {roomOwner && (
+          <CardGuest
+            user={roomOwner.name}
+            makerState={true}
+            profileImageUrl={roomOwner.profileImageUrl}
+            memberId={roomOwner.ownerId}
+          />
+        )}
 
         {Array.isArray(roomMemberData) &&
           roomMemberData.map((item, index) => (

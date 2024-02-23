@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export const GiftHomeShowcaseWrapper = styled.section`
+export const GiftHomeShowcaseWrapper = styled.section<{ $isData: boolean }>`
   width: 100%;
-  padding: 0.6rem 0 0.6rem 2rem;
+  padding: ${({ $isData }) => ($isData ? '0.6rem 0 0.6rem 2rem' : '0.6rem 2rem 0.6rem 2rem')};
   margin-bottom: 3.6rem;
 `;
 
@@ -23,7 +23,6 @@ export const NoGiftsWrapper = styled.div`
 export const GiftsWrapper = styled.div`
   width: 36rem;
   height: 22.5rem;
-  /* padding-left: 2rem; */
 
   display: flex;
   column-gap: 0.8rem;
