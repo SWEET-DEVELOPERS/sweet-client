@@ -3,7 +3,6 @@ import ItemTextField from '../../../ItemTextField/ItemTextField';
 
 interface WriteItemInfoProps {
   imageUrl: string;
-  // setImageUrl: React.Dispatch<React.SetStateAction<string>>;
   setIsActivated: React.Dispatch<React.SetStateAction<boolean>>;
   setName: React.Dispatch<React.SetStateAction<string>>;
   setCost: React.Dispatch<React.SetStateAction<number | null>>;
@@ -15,7 +14,6 @@ interface WriteItemInfoProps {
 
 const WriteItemInfo = ({
   imageUrl,
-  // setImageUrl,
   setIsActivated,
   setName,
   setCost,

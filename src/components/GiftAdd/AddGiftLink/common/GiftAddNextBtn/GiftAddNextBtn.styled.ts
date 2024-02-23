@@ -5,6 +5,8 @@ export const GiftAddNextBtnWrapper = styled.button<{ $isActivated: boolean }>`
 
   height: 4.4rem;
   padding: 1rem 1.1rem 1rem 2rem;
+  margin-right: 2rem;
+
   border-radius: 9.9rem;
 
   ${({ theme: { fonts } }) => fonts.body_09}
