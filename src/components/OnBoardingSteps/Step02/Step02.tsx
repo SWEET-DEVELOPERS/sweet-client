@@ -51,7 +51,7 @@ const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
       <S.IcEmptyThumbnailWrapper>
         <input
           type='file'
-          accept='.jpg, .jpeg, .png, .svg'
+          accept='image/jpeg, image/png, image/gif, image/heic '
           style={{ display: 'none' }}
           id='imgInput'
           onChange={handleImageUpload}
