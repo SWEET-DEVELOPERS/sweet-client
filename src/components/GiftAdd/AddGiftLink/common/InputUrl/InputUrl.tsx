@@ -10,8 +10,8 @@ interface InputUrlProps {
 const InputUrl = ({ setIsActivated, text, setText }: InputUrlProps) => {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
-    inputValue.length > 0 ? setIsActivated(true) : setIsActivated(false);
     setText(inputValue);
+    inputValue.length > 0 ? setIsActivated(true) : setIsActivated(false);
   };
 
   const handleBtnClick = () => {
