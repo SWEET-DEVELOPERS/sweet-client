@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const GiftHomeMyGifts = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1.2rem;
 
   height: 7rem;
   img {

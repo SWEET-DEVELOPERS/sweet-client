@@ -1,5 +1,6 @@
 import * as S from './ItemTextField.styled';
 import IcCancelCircleFinal from '../../../assets/svg/IcCancelCircleFinal';
+import { useState } from 'react';
 
 interface ItemTextFieldProps {
   text: string;
@@ -16,6 +17,8 @@ const ItemTextField = ({
   categoryTitle,
   placeholderText,
 }: ItemTextFieldProps) => {
+  const [isInputFocused, setInputFocused] = useState(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     handleTextChange(inputValue);
@@ -28,9 +31,16 @@ const ItemTextField = ({
   return (
     <S.ItemTextFieldWrapper>
       <S.CategoryTitle>{categoryTitle}</S.CategoryTitle>
-      <S.Wrapper $hasContent={text.length > 0}>
+      <S.Wrapper $isInputFocused={isInputFocused}>
         <S.TextField>
-          <S.Input type={type} value={text} onChange={handleChange} placeholder={placeholderText} />
+          <S.Input
+            type={type}
+            value={text}
+            onChange={handleChange}
+            onFocus={() => setInputFocused(true)}
+            onBlur={() => setInputFocused(false)}
+            placeholder={placeholderText}
+          />
         </S.TextField>
         {type === 'number' ? (
           ''

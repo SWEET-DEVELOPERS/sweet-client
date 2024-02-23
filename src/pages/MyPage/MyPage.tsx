@@ -41,7 +41,11 @@ const MyPage = () => {
       userName && userName.length > MAX_USERNAME_LENGTH
         ? `${userName.substring(0, MAX_USERNAME_LENGTH)}...`
         : userName;
-    return <S.UserName>{translatedUserName}님</S.UserName>;
+    return (
+      <S.UserName>
+        <span>{translatedUserName} </span>님
+      </S.UserName>
+    );
   };
 
   return (

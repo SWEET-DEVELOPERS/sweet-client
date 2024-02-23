@@ -29,8 +29,7 @@ body {
 #root, body, html {
     scrollbar-width: none; /* 파이어폭스 스크롤바 숨김 */
     
-    height: 100vh; 
-    width: 100vw;
+    margin: 0 auto;
     padding:0;
     font-size: 62.5%;
     -ms-overflow-style: none; /* 인터넷 익스플로러  스크롤바 숨김 */

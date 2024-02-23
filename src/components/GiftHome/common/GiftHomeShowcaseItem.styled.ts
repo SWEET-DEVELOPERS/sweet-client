@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const GiftsItemWrapper = styled.div`
   width: 13rem;
-  /* height: 22.5rem; */
+  height: 22.5rem;
 
   display: flex;
   flex-direction: column;

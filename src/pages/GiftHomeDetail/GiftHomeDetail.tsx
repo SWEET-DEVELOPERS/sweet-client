@@ -22,7 +22,6 @@ export const GiftHomeDetail = () => {
       <GiftDetailHeader
         title='요즘 2030이 주목하는 선물'
         roomId={roomId || ''}
-        // targetDate={targetDate || ''}
       />
       <MiniTimer targetDate={targetDate?.toString() || ''} />
       <S.GiftHomeDetailWrapper>

@@ -11,7 +11,7 @@ interface GiftHome2030GiftsProps {
 
 export const GiftHome2030Gifts = ({ roomId, data, targetDate }: GiftHome2030GiftsProps) => {
   return (
-    <S.GiftHomeShowcaseWrapper>
+    <S.GiftHomeShowcaseWrapper $isData={data.length > 0}>
       <GiftHomeShowcaseHeader
         targetDate={targetDate}
         roomId={roomId}
