@@ -21,12 +21,14 @@ interface GiftAddPageLayoutProps {
 const GiftAddPageLayout = ({ targetDate, roomId, setStep, setItemNum }: GiftAddPageLayoutProps) => {
   const roomIdNumber = parseInt(roomId);
   const { data } = useGetMyGift({ roomId: roomIdNumber });
-  setItemNum(data.data.myGiftDtoList.length);
+
+  const gifteeName = data.data.gifteeName;
+  setItemNum(data.data.myGiftsResponseDto.myGiftDtoList.length);
 
   const parsedRoomId = parseInt(roomId);
   const { mutation } = useDeleteMyGift(parsedRoomId);
 
-  const myGiftData = data.data.myGiftDtoList;
+  const myGiftData = data.data.myGiftsResponseDto.myGiftDtoList;
   const adPrice = '39,000';
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -58,7 +60,7 @@ const GiftAddPageLayout = ({ targetDate, roomId, setStep, setItemNum }: GiftAddP
           정말 상품을 삭제하시겠어요?
         </DeleteModal>
       )}
-      <GiftAddPageLayoutHeader title={'내가 등록한 선물'} />
+      <GiftAddPageLayoutHeader title={'내가 등록한 선물'} giftee={gifteeName} />
       <MiniTimer targetDate={targetDate || ''} />
       <S.AddButtonsWrapper>
         {myGiftData.map((item, index) => (
