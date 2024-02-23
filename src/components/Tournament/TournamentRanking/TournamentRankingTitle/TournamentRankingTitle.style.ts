@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Line = styled.div`
   width: 335px;
   height: 1px;
+  margin: 0 auto;
   margin-bottom: 2.4rem;
   background-color: ${({ theme }) => theme.colors.G_02};
 `;
@@ -80,10 +81,11 @@ export const Title = styled.p`
   font-size: 28px;
   font-style: normal;
   font-weight: 600;
-  line-height: 150%; /* 42px */
+  line-height: 150%;
 `;
 
 export const ImgWrapper = styled.div`
+  padding: 0 2rem;
   img {
     width: 33.5rem;
   }
