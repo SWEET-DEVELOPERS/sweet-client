@@ -3,8 +3,8 @@ import RankingImg from '../../../../assets/img/3dic_podium2.png';
 import { useLocation } from 'react-router-dom';
 import useClipboard from '../../../../hooks/useCopyClip';
 import { useEffect } from 'react';
-import { IcShare, KakaoLo } from '../../../../assets/svg';
-// import { shareKakao } from '../../../../utils/shareKakaoLink';
+import { IcShare } from '../../../../assets/svg';
+import { shareKakao } from '../../../../utils/shareKakaoLink';
 
 interface TournamentRankingGifteeProps {
   roomId: number;
@@ -18,11 +18,12 @@ const TournamentRankingTitle = ({ roomId, giftee }: TournamentRankingGifteeProps
     }
   }, []);
 
-  // const gifteeValue = giftee;
-  // const roomIdValue = roomId;
-  const location = useLocation();
-  const baseURL = import.meta.env.VITE_APP_BASE_URL_KAKAO;
-  const { handleCopyToClipboard } = useClipboard();
+  const gifteeValue = giftee;
+  const roomIdValue = roomId;
+
+  // const location = useLocation();
+  // const baseURL = import.meta.env.VITE_APP_BASE_URL_KAKAO;
+  // const { handleCopyToClipboard } = useClipboard();
 
   return (
     <section>
@@ -37,7 +38,7 @@ const TournamentRankingTitle = ({ roomId, giftee }: TournamentRankingGifteeProps
           최종 선물 순위를 확인하세요
         </S.SubTitle>
         <S.ButtonWrapper>
-          <S.LinkButton onClick={() => handleCopyToClipboard(`${baseURL}${location.pathname}`)}>
+          <S.LinkButton onClick={() => shareKakao(gifteeValue, roomIdValue)}>
             <p>
               <IcShare style={{ width: '1.8rem', height: '1.8rem', cursor: 'pointer' }} />
               공유하기
