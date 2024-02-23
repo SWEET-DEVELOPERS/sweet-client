@@ -22,8 +22,10 @@ const OnboardingFinalFooter = (props: OnboardingFinalFooterProps) => {
           border: '1px solid #FF2176',
         }}
         /**@TODO 확인을 위한 local 주소로 공유. 추후에 배포페이지로 변경하기 */
-        onClick={() => handleCopyToClipboard(`${PAGE.LOCAL_RESULT_PAGE}${invitationCode}`)}
-        // handleCopyToClipboard(`${PAGE.DEPLOY_RESULT_PAGE}${invitationCode}`
+        onClick={() =>
+          // handleCopyToClipboard(`${PAGE.LOCAL_RESULT_PAGE}${invitationCode}`)
+          handleCopyToClipboard(`${PAGE.DEPLOY_RESULT_PAGE}${invitationCode}`)
+        }
       >
         공유하기
       </BtnFill>
@@ -40,8 +42,8 @@ const OnboardingFinalFooterWrapper = styled.div`
 
   gap: 0.8rem;
   height: 5.2rem;
-  position: absolute;
   bottom: 2rem;
+  margin-top: 3.2rem;
 `;
 
 export default OnboardingFinalFooter;
