@@ -6,7 +6,6 @@ import GiftAddPageLayoutHeader from './GiftAddPageLayoutHeader';
 import useGetMyGift from '../../../hooks/queries/gift/useGetMyGift';
 import EmptyGiftAddButtonsWrapper from '../GiftAddButtons/EmptyGiftAddButtonsWrapper';
 import useDeleteMyGift from '../../../hooks/queries/gift/useDeleteMyGift';
-import { useUpdateGifteeNameContext } from '../../../context/GifteeName/GifteeNameContext';
 import { useState } from 'react';
 import DeleteModal from '../../common/Modal/DeleteModal';
 
@@ -23,12 +22,13 @@ const GiftAddPageLayout = ({ targetDate, roomId, setStep, setItemNum }: GiftAddP
   const roomIdNumber = parseInt(roomId);
   const { data } = useGetMyGift({ roomId: roomIdNumber });
 
-  setItemNum(data.data.myGiftDtoList.length);
+  const gifteeName = data.data.gifteeName;
+  setItemNum(data.data.myGiftsResponseDto.myGiftDtoList.length);
 
   const parsedRoomId = parseInt(roomId);
   const { mutation } = useDeleteMyGift(parsedRoomId);
 
-  const myGiftData = data.data.myGiftDtoList;
+  const myGiftData = data.data.myGiftsResponseDto.myGiftDtoList;
   const adPrice = '39,000';
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,7 +61,7 @@ const GiftAddPageLayout = ({ targetDate, roomId, setStep, setItemNum }: GiftAddP
         </DeleteModal>
       )}
       <GiftAddPageLayoutHeader title={'내가 등록한 선물'} />
-      <MiniTimer targetDate={targetDate || ''} giftee={''} />
+      <MiniTimer targetDate={targetDate || ''} giftee={gifteeName} />
       <S.AddButtonsWrapper>
         {myGiftData.map((item, index) => (
           <GiftAddButtonsWrapper

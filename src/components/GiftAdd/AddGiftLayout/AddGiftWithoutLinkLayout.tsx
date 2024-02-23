@@ -9,6 +9,7 @@ import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
 import { OpenGraphResponseType } from '../../../types/etc';
 import { AddGiftInfo } from '../../../types/gift';
 import { useUpdateGifteeNameContext } from '../../../context/GifteeName/GifteeNameContext';
+import DuplicateModal from '../../common/Modal/DuplicateModal';
 
 interface AddGiftWithLinkLayoutProps {
   roomId: number;
@@ -22,6 +23,8 @@ interface AddGiftWithLinkLayoutProps {
   updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
   addGiftInfo: AddGiftInfo;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  isDuplicateModalOpen: boolean;
+  setIsDuplicateModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // 직접 입력 화면
@@ -36,6 +39,8 @@ export const AddGiftWithoutLinkLayout = ({
   modalStatus,
   addGiftInfo,
   setIsLoading,
+  isDuplicateModalOpen,
+  setIsDuplicateModalOpen,
 }: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(
     !!addGiftInfo.name && !!addGiftInfo.cost && !!addGiftInfo.url && !!addGiftInfo.imageUrl,
@@ -73,6 +78,12 @@ export const AddGiftWithoutLinkLayout = ({
           <br />
           불러올 수 없어요 <br />
         </Modal>
+      )}
+      {isDuplicateModalOpen && (
+        <DuplicateModal onConfirmClick={() => setIsDuplicateModalOpen(false)}>
+          선물방에 이미
+          <br /> 등록된 상품이에요
+        </DuplicateModal>
       )}
       <LinkAddHeader
         targetDate={targetDate}
@@ -117,6 +128,7 @@ export const AddGiftWithoutLinkLayout = ({
         file={file}
         setImageUrl={setImageUrl}
         setIsLoading={setIsLoading}
+        setIsModalOpen={setIsDuplicateModalOpen}
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );
