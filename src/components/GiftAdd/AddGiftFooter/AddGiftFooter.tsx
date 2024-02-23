@@ -60,7 +60,7 @@ const AddGiftFooter = ({
         console.error('Mutation error:', error.message);
         if (error.message === 'Error: 중복된 선물 등록입니다.') {
           console.log('CHECK');
-          setIsModalOpen((prev) => !prev);
+          setIsModalOpen(true);
         }
       } finally {
         setIsLoading(false);

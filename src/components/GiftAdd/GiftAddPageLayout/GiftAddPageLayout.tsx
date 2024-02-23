@@ -6,7 +6,6 @@ import GiftAddPageLayoutHeader from './GiftAddPageLayoutHeader';
 import useGetMyGift from '../../../hooks/queries/gift/useGetMyGift';
 import EmptyGiftAddButtonsWrapper from '../GiftAddButtons/EmptyGiftAddButtonsWrapper';
 import useDeleteMyGift from '../../../hooks/queries/gift/useDeleteMyGift';
-import { useUpdateGifteeNameContext } from '../../../context/GifteeName/GifteeNameContext';
 import { useState } from 'react';
 import DeleteModal from '../../common/Modal/DeleteModal';
 

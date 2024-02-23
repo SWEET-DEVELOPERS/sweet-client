@@ -117,6 +117,7 @@ export const AddGiftWithoutLinkLayout = ({
         file={file}
         setImageUrl={setImageUrl}
         setIsLoading={setIsLoading}
+        setIsModalOpen={setIsModalOpen}
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );

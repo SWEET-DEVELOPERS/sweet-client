@@ -44,7 +44,7 @@ export const usePostGift = (
       console.log('선물 등록 에러!!', error.message);
       if (error.message === 'Error: 중복된 선물 등록입니다.') {
         console.log('잘 들어오고 있닝');
-        setIsModalOpen((prev) => !prev);
+        // setIsModalOpen((prev) => !prev);
         return error;
       }
     },
