@@ -82,3 +82,7 @@ export { default as SweetLogoPink } from './SweetLogoPink';
 export { default as TrophyNone } from './TrophyNone';
 export { default as Vite } from './Vite';
 export { default as IcShare } from './IcShare';
+export { default as Ranking01 } from './Ranking01';
+export { default as Ranking02 } from './Ranking02';
+export { default as Ranking03 } from './Ranking03';
+export { default as Ranking04 } from './Ranking04';
