@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const Line = styled.div`
   width: 335px;
   height: 1px;
-  margin-bottom: 2.4rem;
+  margin: 0 auto;
+  margin-bottom: 2rem;
   background-color: ${({ theme }) => theme.colors.G_02};
 `;
 
@@ -18,11 +19,17 @@ export const LinkButton = styled.button`
   width: 13.4rem;
   height: 4rem;
 
-  border-radius: 100px;
-  border: none;
+  border-radius: 99px;
+  border: 1px solid ${({ theme }) => theme.colors.P_06};
+  background: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.P_06};
-  ${({ theme }) => theme.fonts.body_09};
-  background: var(--Pink-P-06, #ffe9f1);
+
+  p {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 8px;
+    ${({ theme }) => theme.fonts.body_09};
+  }
 `;
 
 export const SubTitle = styled.p`
@@ -73,17 +80,18 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const Title = styled.p`
-  margin-bottom: 2.4rem;
-  color: var(--Black, var(--sponus_black, #222));
+  margin-bottom: 0.8;
+  color: ${({ theme }) => theme.colors.Black};
   text-align: center;
   font-family: SUIT;
   font-size: 28px;
   font-style: normal;
   font-weight: 600;
-  line-height: 150%; /* 42px */
+  line-height: 150%;
 `;
 
 export const ImgWrapper = styled.div`
+  padding: 0 2rem;
   img {
     width: 33.5rem;
   }
