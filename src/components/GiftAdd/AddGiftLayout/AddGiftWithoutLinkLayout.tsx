@@ -38,7 +38,7 @@ export const AddGiftWithoutLinkLayout = ({
   modalStatus,
   addGiftInfo,
   setIsLoading,
-  isDuplicateModalOpen,
+  // isDuplicateModalOpen,
   setIsDuplicateModalOpen,
 }: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(
