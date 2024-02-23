@@ -18,7 +18,7 @@ const SelectTimeOptions = (props: SelectTimeOptionsProps) => {
       <BtnRadio
         time={optionText}
         period={dateType}
-        $isSelected={isSelected}
+        isSelected={isSelected}
         onClick={onClick}
         onTimeSelect={onTimeSelect}
         $isAfterDelivery={isAfterDelivery}
