@@ -47,7 +47,6 @@ const TournamentIntroContainer = () => {
     <>
       {showTournamentContainer ? (
         <>
-          <Header />
           <S.TournamentFlowWrapper>
             {tournamentData.length === undefined ? (
               <>

@@ -70,7 +70,7 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
           onClick={() =>
             // TODO 추후 로컬 주소를 배포 주소로 변경 및 주소 상수처리
             // handleCopyToClipboard(`http://localhost:5173/result/${invitationCode}`)
-            handleCopyToClipboard(`http://sweetgift.vercel.app/result/${invitationCode}`)
+            handleCopyToClipboard(`http://sweetgift.kr/result/${invitationCode}`)
           }
         >
           <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
