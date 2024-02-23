@@ -32,17 +32,14 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
         <br />
         전달하실 예정인가요?
       </Title>
-      <S.Wrapper $hasContent={isOpen}>
+      <S.Wrapper $hasContent={isOpen} onClick={openCalendar}>
         <S.Input
           placeholder='날짜를 선택해주세요'
           value={selectedDate ? format(selectedDate, 'y년 M월 d일') : ''}
           onChange={(e) => e.preventDefault()}
         />
         <S.IconWrapper>
-          <IcUnselectedCalender
-            style={{ width: '2.4rem', height: '2.4rem' }}
-            onClick={openCalendar}
-          />
+          <IcUnselectedCalender style={{ width: '2.4rem', height: '2.4rem' }} />
         </S.IconWrapper>
       </S.Wrapper>
       {isOpen && (

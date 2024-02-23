@@ -16,7 +16,8 @@ interface SetTournamentScheduleProps {
 const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
   const { onNext } = props;
   const { isOpen, selectedDate, disabledDays, openCalendar, handleDateSelect } = useCalendarOpen();
-  const { isTimerOpen, selectedTime, setSelectedTime, handleTimerSelect } = useTimerOpen();
+  const { isTimerOpen, selectedTime, handleTimerSelect } = useTimerOpen();
+
   const isActivated = selectedDate !== null && selectedTime !== '';
   const selectedDateValue = selectedDate ? format(selectedDate, 'y년 M월 d일') : '';
 
@@ -29,7 +30,7 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
         <SubTitle subTitle='토너먼트 시작 전까지 선물을 등록할 수 있어요.' />
       </S.SubTitleWrapper>
 
-      <S.SetTournamentScheduleWrapper $hasContent={isOpen}>
+      <S.SetTournamentScheduleWrapper $hasContent={isOpen} onClick={openCalendar}>
         <S.TextField>
           <S.Input
             placeholder='날짜를 선택해주세요'
@@ -59,14 +60,6 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
 
       {/* 타이머 */}
       <S.Container $hasContent={isTimerOpen}>
-        <S.TextField>
-          <S.Input
-            placeholder='시작 시간을 선택해주세요'
-            value={selectedTime}
-            onChange={(e) => setSelectedTime(e.target.value)}
-            disabled
-          />
-        </S.TextField>
         <TimePicker onSelect={(time) => handleTimerSelect(time)} />
       </S.Container>
       <S.OnBoardingBtnWrapper>

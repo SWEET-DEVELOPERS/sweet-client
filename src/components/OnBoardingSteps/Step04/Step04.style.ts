@@ -17,7 +17,7 @@ export const TextField = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color:; */
+  flex: 1;
 `;
 
 export const IconField = styled.div`
@@ -35,11 +35,14 @@ export const Input = styled.input`
   border: none;
   outline: none;
   ${({ theme }) => theme.fonts.body_05};
+  color: ${({ theme }) => theme.colors.black};
 
   input::placeholder {
     color: ${({ theme }) => theme.colors.G_07};
     ${({ theme }) => theme.fonts.body_05};
   }
+
+  caret-color: transparent;
 `;
 
 export const Container = styled.div<{ $hasContent: boolean }>`
