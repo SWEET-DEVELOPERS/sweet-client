@@ -31,7 +31,6 @@ const useCalendarOpen = () => {
 
   useEffect(() => {
     setIsActivated(Boolean(onboardingInfo.deliveryDate));
-    console.log('step03 내 setIsActivated', onboardingInfo.deliveryDate);
   }, [onboardingInfo.deliveryDate]);
 
   return {

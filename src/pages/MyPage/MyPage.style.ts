@@ -1,29 +1,24 @@
 import styled from 'styled-components';
-import BackgroundImage from '../../assets/img/mypage_background.png';
+import { MypageBackground } from '../../assets/svg';
 
 export const MyPageWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  ${({ theme: { mixin } }) => mixin.flexCenter({})};
   width: 100%;
-  height: 100%;
 `;
 
-export const TopImage = styled.div`
+export const TopImage = styled(MypageBackground)`
+  ${({ theme: { mixin } }) => mixin.flexBox({})};
   position: relative;
-  width: 37.5rem;
-  height: 34rem;
-  flex-shrink: 0;
-  top: 5rem;
-
-  background-image: url(${BackgroundImage});
-  background-size: contain;
-  z-index: 0;
-  margin: 0;
+  top: 0rem;
+  margin-bottom: 2rem;
 `;
 export const UserName = styled.div`
-  ${({ theme: { mixin } }) => mixin.flexBox({ align: 'center' })};
+  ${({ theme: { mixin } }) => mixin.flexBox({ align: 'center', justify: 'center' })};
 
   ${({ theme: { fonts } }) => fonts.heading_03};
+  > span {
+    color: ${({ theme: { colors } }) => colors.P_06};
+  }
 `;
 export const User = styled.div`
   ${({ theme: { fonts } }) => fonts.heading_01};
@@ -36,7 +31,6 @@ export const UserButtonWrapper = styled.div`
 `;
 export const UserWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ align: 'center' })};
-  width: 100%;
   gap: 1.2rem;
 `;
 export const ProfileWrapper = styled.div`
@@ -50,8 +44,7 @@ export const ProfileWrapper = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 0 1.6rem;
   gap: 1.6rem;
-  top: 19rem;
-  left: 1.7rem;
+  top: 15rem;
 
   z-index: 8;
 
@@ -62,15 +55,16 @@ export const GiftRoomWrapper = styled.div`
   ${({ theme: { mixin } }) =>
     mixin.flexBox({ direction: 'column', align: 'center', justify: 'center' })};
   background-color: white;
-  width: 100%;
   position: relative;
-  top: -5rem;
+  top: -7rem;
   padding-top: 4rem;
+  width: 37.5rem;
 `;
 
 export const NoneText = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter({})};
   height: 32.7rem;
+  width: 37.5rem;
   color: ${({ theme: { colors } }) => colors.G_07};
   ${({ theme: { fonts } }) => fonts.body_07};
 `;

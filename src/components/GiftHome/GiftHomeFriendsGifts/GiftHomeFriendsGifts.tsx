@@ -15,7 +15,7 @@ export default function GiftHomeFriendsGifts({
   data,
 }: GiftHomeFriendsGiftsProps) {
   return (
-    <S.GiftHomeShowcaseWrapper>
+    <S.GiftHomeShowcaseWrapper $isData={data.length > 0}>
       <GiftHomeShowcaseHeader
         roomId={roomId}
         targetDate={targetDate}
