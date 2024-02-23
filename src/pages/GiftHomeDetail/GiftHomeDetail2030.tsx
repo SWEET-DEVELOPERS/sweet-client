@@ -16,7 +16,7 @@ function GiftHomeDetail() {
   return (
     <S.GiftHomeDetailPageWrapper>
       <GiftDetailHeader title='요즘 2030이 주목하는 선물' roomId={roomId || ''} />
-      <MiniTimer targetDate={targetDate?.toString() || ''} />
+      <MiniTimer targetDate={targetDate?.toString() || ''} giftee={data.data.gifteeName} />
       <S.GiftHomeDetailWrapper>
         {data.data.hotProductDtoList.length > 0 ? (
           data.data.hotProductDtoList.map((item, index) => (

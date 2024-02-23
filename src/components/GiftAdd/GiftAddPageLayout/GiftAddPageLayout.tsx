@@ -15,7 +15,6 @@ interface GiftAddPageLayoutProps {
   targetDate: string;
   itemNum: number;
   setItemNum: React.Dispatch<React.SetStateAction<number>>;
-  // updateGifteeName: (newInfo: string) => void;
 }
 
 const GiftAddPageLayout = ({
@@ -23,9 +22,8 @@ const GiftAddPageLayout = ({
   roomId,
   setStep,
   setItemNum,
-  // updateGifteeName,
 }: GiftAddPageLayoutProps) => {
-  const { updateGifteeName } = useUpdateGifteeNameContext();
+  // const { updateGifteeName } = useUpdateGifteeNameContext();
   const roomIdNumber = parseInt(roomId);
   const { data } = useGetMyGift({ roomId: roomIdNumber });
   // updateGifteeName(data.data.giftee);

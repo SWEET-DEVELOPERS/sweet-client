@@ -36,7 +36,6 @@ const GiftAddPage = () => {
           targetDate={targetDate || ''}
           setItemNum={setItemNum}
           itemNum={itemNum}
-          // updateGifteeName={updateGifteeName}
         />
       );
 
@@ -53,7 +52,6 @@ const GiftAddPage = () => {
           setModalStatus={setModalStatus}
           addGiftInfo={addGiftInfo}
           updateAddGiftInfo={updateAddGiftInfo}
-          // gifteeName={gifteeName}
         />
       );
 
@@ -71,7 +69,6 @@ const GiftAddPage = () => {
           setModalStatus={setModalStatus}
           addGiftInfo={addGiftInfo}
           updateAddGiftInfo={updateAddGiftInfo}
-          // gifteeName={gifteeName}
           setIsLoading={setIsLoading}
         />
       );
@@ -91,7 +88,6 @@ const GiftAddPage = () => {
           addGiftInfo={addGiftInfo}
           openGraph={openGraph}
           updateAddGiftInfo={updateAddGiftInfo}
-          // gifteeName={gifteeName}
           setIsLoading={setIsLoading}
         />
       );
