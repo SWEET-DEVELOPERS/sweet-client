@@ -10,6 +10,7 @@ import OnBoardingBtn from '../../components/OnBoardingSteps/onboardingBtn/OnBoar
 // import { useKakaoShare } from '../../hooks/queries/onboarding/useKakaoShare';
 // import useClipboard from '../../hooks/useCopyClip';
 import usePostParticipation from '../../hooks/queries/onboarding/usePostParticipation';
+import btnKakao from '../../assets/img/btn_kakao.png';
 
 const ParticipantsView = () => {
   const { invitationCode } = useParams<{ invitationCode?: string }>();
@@ -166,7 +167,7 @@ const ParticipantsView = () => {
       </S.InfoWrapper>
       {/* 수정된 부분 시작 */}
       <S.BtnWrapper>
-        <IcKakoLarge />
+        <img src={btnKakao} />
       </S.BtnWrapper>
     </>
   );
