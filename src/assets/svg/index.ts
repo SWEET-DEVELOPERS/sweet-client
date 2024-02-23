@@ -1,3 +1,4 @@
+export { default as MypageBackground } from './MypageBackground';
 export { default as GradientCta } from './GradientCta';
 export { default as HomeBackground } from './HomeBackground';
 export { default as Step1 } from './Step1';
@@ -76,7 +77,6 @@ export { default as LongDivider } from './LongDivider';
 export { default as Main03 } from './Main03';
 export { default as Main04 } from './Main04';
 export { default as Main02 } from './Main02';
-export { default as MypageImage } from './MypageImage';
 export { default as Person1 } from './Person1';
 export { default as Person2 } from './Person2';
 export { default as Person3 } from './Person3';
