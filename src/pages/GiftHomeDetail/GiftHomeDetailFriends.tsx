@@ -16,7 +16,10 @@ function GiftHomeDetailFriends() {
   return (
     <S.GiftHomeDetailPageWrapper>
       <GiftDetailHeader title='친구가 등록한 선물' roomId={roomId || ''} />
-      <MiniTimer targetDate={targetDate?.toString() || ''} giftee={''}/>
+      <MiniTimer
+        targetDate={targetDate?.toString() || ''}
+        giftee={data.data.roomInfoResponseDto.gifteeName}
+      />
       <S.GiftHomeDetailWrapper>
         {data.data.friendGiftDto.length > 0 ? (
           data.data.friendGiftDto.map((item, index) => (
