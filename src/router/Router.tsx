@@ -43,6 +43,10 @@ const router = createBrowserRouter([
             path: '/tournament-ranking/:giftee/:roomId',
             element: <TournamentPage />,
           },
+          {
+            path: '/tournament/:giftee/:roomId',
+            element: <TournamentIntroContainer />,
+          },
         ],
       },
       {
@@ -94,11 +98,6 @@ const router = createBrowserRouter([
         path: '/result/:invitationCode',
         element: <ParticipantsView />,
       },
-      {
-        path: '/tournament/:giftee/:roomId',
-        element: <TournamentIntroContainer />,
-      },
-
       {
         path: '/add-gift/:roomId/:targetTime',
         element: (
