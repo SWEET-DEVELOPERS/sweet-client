@@ -5,7 +5,6 @@ export const HomeMypageHeaderWrapper = styled.div`
   position: fixed;
   width: 100%;
   height: 5.6rem;
-  gap: 1.6rem;
   padding: 0 1.8rem;
   z-index: 999;
   top: 0rem;

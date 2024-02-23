@@ -30,7 +30,7 @@ const HomeMypageHeader = () => {
 
   return (
     <S.HomeMypageHeaderWrapper>
-      <IcHome style={{ width: '2.4rem' }} onClick={handleSettingHomeIcon} />
+      <IcHome style={{ width: '4.3rem' }} onClick={handleSettingHomeIcon} />
       {userImg ? (
         <S.UserProfileImg src={userImg} onClick={handleMyPageIcon} />
       ) : (
