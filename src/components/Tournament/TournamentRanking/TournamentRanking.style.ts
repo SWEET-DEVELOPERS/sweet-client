@@ -26,7 +26,7 @@ export const IcTitle = styled.p`
   font-size: 14px;
   left: 50%;
   font-weight: 700;
-  top: 9%;
+  top: 18%;
   transform: translateX(-50%);
 `;
 

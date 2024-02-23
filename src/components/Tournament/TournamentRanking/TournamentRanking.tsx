@@ -1,7 +1,7 @@
 import TournamentRankingCard from './TournamentRankingCard/TournamentRankingCard';
 import TournamentRankingTitle from './TournamentRankingTitle/TournamentRankingTitle';
 import { RankingWrapper } from './TournamentRanking.style';
-import { IcMedal1, IcMedal2, IcMedal3, IcMedal4 } from '../../../assets/svg';
+import { Ranking1, Ranking2, Ranking3, Ranking04 } from '../../../assets/svg';
 import useGetRanking from '../../../hooks/queries/tournament/useGetRanking';
 import * as S from './TournamentRanking.style';
 
@@ -26,12 +26,12 @@ const TournamentRanking = ({ roomId, giftee }: TournamentRankingProps) => {
               console.log(imageUrlWithoutParams);
               return (
                 <S.WrapperItem key={index}>
-                  {data.ranking === 1 && <IcMedal1 style={{ width: '2.5rem' }} />}
-                  {data.ranking === 2 && <IcMedal2 style={{ width: '2.5rem' }} />}
-                  {data.ranking === 3 && <IcMedal3 style={{ width: '2.5rem' }} />}
+                  {data.ranking === 1 && <Ranking1 style={{ width: '3.4rem' }} />}
+                  {data.ranking === 2 && <Ranking2 style={{ width: '3.4rem' }} />}
+                  {data.ranking === 3 && <Ranking3 style={{ width: '3.4rem' }} />}
                   {data.ranking !== 1 && data.ranking !== 2 && data.ranking !== 3 && (
                     <S.IconWrapper>
-                      <IcMedal4 style={{ width: '2.5rem' }} />
+                      <Ranking04 style={{ width: '3.4rem' }} />
                       <S.IcTitle>{data.ranking}</S.IcTitle>
                     </S.IconWrapper>
                   )}
