@@ -22,6 +22,7 @@ export const NameInputWrapper = styled.div<{ $hasContent: boolean; $maxLengthRea
 
 export const TextField = styled.div`
   display: flex;
+  flex: 1;
 `;
 
 export const IconField = styled.div`

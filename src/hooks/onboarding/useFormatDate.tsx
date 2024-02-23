@@ -9,12 +9,12 @@ const useFormatDate = () => {
     const month = date.getMonth() + 1;
     const day = date.getDate();
     const hours = date.getHours();
-    const minutes = date.getMinutes();
+    // const minutes = date.getMinutes();
 
     if (includeTime) {
-      return `${year}.${month}.${day} (${getDayOfWeek(date)}) ${hours}시 ${minutes}분`;
+      return `${year}.${month}.${day}(${getDayOfWeek(date)}) ${hours}시`;
     } else {
-      return `${year}.${month}.${day} (${getDayOfWeek(date)})`;
+      return `${year}.${month}.${day}(${getDayOfWeek(date)})`;
     }
   };
 
@@ -53,6 +53,9 @@ const useFormatDate = () => {
   ];
   return {
     infoDetails,
+    formatDate,
+    getDayOfWeek,
+    formatDuration,
   };
 };
 

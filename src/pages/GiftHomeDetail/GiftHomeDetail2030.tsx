@@ -6,14 +6,7 @@ import GiftHomePriceTag from '../../components/common/GiftHome/Price/GiftHomePri
 import GiftDetailHeader from '../../components/common/GiftDetail/GiftDetailHeader';
 
 function GiftHomeDetail() {
-  // const location = useLocation();
-
-  // const searchParams = new URLSearchParams(location.search);
-  // const roomId = searchParams.get('roomId');
-  // console.log('roomId', roomId);
-  // const targetDate = searchParams.get('targetTime');
   const params = useParams();
-  // console.log('params', params);
   const roomId = params.roomId;
 
   const targetDate = params.targetDate;
@@ -22,12 +15,8 @@ function GiftHomeDetail() {
 
   return (
     <S.GiftHomeDetailPageWrapper>
-      <GiftDetailHeader
-        title='요즘 2030이 주목하는 선물'
-        roomId={roomId || ''}
-        // targetDate={targetDate || ''}
-      />
-      <MiniTimer targetDate={targetDate?.toString() || ''} />
+      <GiftDetailHeader title='요즘 2030이 주목하는 선물' roomId={roomId || ''} />
+      <MiniTimer targetDate={targetDate?.toString() || ''} giftee={data.data.gifteeName} />
       <S.GiftHomeDetailWrapper>
         {data.data.hotProductDtoList.length > 0 ? (
           data.data.hotProductDtoList.map((item, index) => (

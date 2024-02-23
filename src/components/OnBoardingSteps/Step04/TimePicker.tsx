@@ -27,21 +27,30 @@ const TimePicker = ({ onSelect }: TimePickerProps) => {
   };
 
   return (
-    <S.IconField>
-      <input
-        ref={clockRef}
-        type='time'
-        id='clock'
-        onChange={(e) => handleTimeSelect(e.target.value)}
-        style={{ display: 'flex', opacity: 0 }}
-      />
-      <label htmlFor='clock'>
-        <IcUnselectedClock
-          style={{ width: '2.4rem', height: '2.4rem' }}
-          onClick={handleIconClick}
+    <>
+      <S.TextField onClick={handleIconClick}>
+        <S.Input
+          placeholder='시작 시간을 선택해주세요'
+          value={selectedTime}
+          onChange={(e) => setSelectedTime(e.target.value)}
         />
-      </label>
-    </S.IconField>
+      </S.TextField>
+      <S.IconField>
+        <input
+          ref={clockRef}
+          type='time'
+          id='clock'
+          onChange={(e) => handleTimeSelect(e.target.value)}
+          style={{ display: 'flex', opacity: 0 }}
+        />
+        <label htmlFor='clock'>
+          <IcUnselectedClock
+            style={{ width: '2.4rem', height: '2.4rem' }}
+            onClick={handleIconClick}
+          />
+        </label>
+      </S.IconField>
+    </>
   );
 };
 
