@@ -6,6 +6,14 @@ export const WholeWrapper = styled.div`
   z-index: 0;
 `;
 
+export const RoomImgWrapper = styled.img`
+  ${({ theme: { mixin } }) => mixin.flexBox({})};
+  width: 100%;
+  height: 16rem;
+  overflow: hidden;
+  object-fit: cover;
+`;
+
 export const CardRoomWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ direction: 'column' })};
 
