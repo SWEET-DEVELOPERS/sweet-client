@@ -1,7 +1,7 @@
 import * as S from './ParticipantsView.style';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { IcKakoLarge } from '../../assets/svg';
+// import { IcKakoLarge } from '../../assets/svg';
 import OnboardingFinalHeader from '../../components/OnBoardingSteps/Step06/OnboardingFinalHeader';
 import Title from '../../components/common/title/Title';
 import useGetGifteeInfo from '../../hooks/queries/onboarding/useGetGifteeInfo';
@@ -10,6 +10,7 @@ import OnBoardingBtn from '../../components/OnBoardingSteps/onboardingBtn/OnBoar
 // import { useKakaoShare } from '../../hooks/queries/onboarding/useKakaoShare';
 // import useClipboard from '../../hooks/useCopyClip';
 import usePostParticipation from '../../hooks/queries/onboarding/usePostParticipation';
+import btnKakao from '../../assets/img/btn_kakao.png';
 
 const ParticipantsView = () => {
   const { invitationCode } = useParams<{ invitationCode?: string }>();
@@ -100,12 +101,8 @@ const ParticipantsView = () => {
     //   console.log('else');
     // }
 
-
     console.log('isTOken', isToken);
   }, [isToken]);
-
-  }, []);
-
 
   const handleClickRoom = async (body: string | null) => {
     console.log('입장 버튼 클릭! 그리고 초대 코드', invitationCode);
@@ -170,12 +167,40 @@ const ParticipantsView = () => {
       </S.InfoWrapper>
       {/* 수정된 부분 시작 */}
       <S.BtnWrapper>
-        <IcKakoLarge />
+        <img src={btnKakao} />
       </S.BtnWrapper>
     </>
   );
 };
 export default ParticipantsView;
+
+// <>
+//   {isToken === false ? (
+//     <IcKakoLarge onClick={() => window.location.replace(kakaoURL)} />
+//   ) : (
+//     <>
+//       <S.LinkCopyBtn
+//         onClick={
+//           () =>
+//             // todo 추후 배포로 변경
+//             handleCopyToClipboard(
+//               `http://sweetgift.vercel.app/result/${data.data.invitationCode}`,
+//             )
+//           // handleCopyToClipboard(`http://localhost:5173/result/${data.data.invitationCode}`)
+//         }
+//       >
+//         <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
+//         링크 복사
+//       </S.LinkCopyBtn>
+//       <S.KakaoLinkCopyBtn
+//         onClick={() => useKakaoShare(data.data.invitationCode, data.data.gifteeName)}
+//       >
+//         <IcKakaoShare style={{ width: '1.8rem', height: '1.8rem' }} />
+//         카카오톡 공유
+//       </S.KakaoLinkCopyBtn>
+//     </>
+//   )}
+// </>
 
 // <>
 //   {isToken === false ? (
