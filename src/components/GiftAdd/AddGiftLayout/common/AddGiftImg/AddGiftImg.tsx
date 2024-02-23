@@ -45,7 +45,7 @@ const AddGiftImg = ({
             <label htmlFor='imgInput'>
               {imageUrl ? (
                 <S.ThumbnailWrapper>
-                  <img
+                  <S.ImgPreview
                     src={openGraph?.image ? openGraph.image : imageUrl}
                     alt='preview'
                     style={{

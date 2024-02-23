@@ -20,7 +20,9 @@ const MiniTimer = ({ targetDate, giftee }: MiniTimerProps) => {
 
   return (
     <S.MiniTimerWrapper>
-      <IcClock style={{ width: '1.7rem', height: '1.7rem', color: '#FF2176' }} />
+      <IcClock
+        style={{ width: '1.7rem', height: '1.7rem', marginRight: '0.4rem', color: '#FF2176' }}
+      />
       <S.MiniTimerNumbers>
         {days > 0 ? (
           <span>D - {days}</span>

@@ -1,5 +1,6 @@
 import * as S from './InputUrl.styled';
 import IcCancelCircleFinal from '../../../../../assets/svg/IcCancelCircleFinal';
+import { useState } from 'react';
 
 interface InputUrlProps {
   setIsActivated: React.Dispatch<React.SetStateAction<boolean>>;
@@ -8,6 +9,8 @@ interface InputUrlProps {
 }
 
 const InputUrl = ({ setIsActivated, text, setText }: InputUrlProps) => {
+  const [isInputFocused, setInputFocused] = useState(false);
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     setText(inputValue);
@@ -20,9 +23,16 @@ const InputUrl = ({ setIsActivated, text, setText }: InputUrlProps) => {
   };
 
   return (
-    <S.InputUrlWrapper $hasContent={text.length > 0}>
+    <S.InputUrlWrapper $isInputFocused={isInputFocused}>
       <S.TextField>
-        <S.Input type='text' value={text} onChange={onChange} placeholder='링크를 입력해주세요' />
+        <S.Input
+          type='text'
+          value={text}
+          onChange={onChange}
+          onFocus={() => setInputFocused(true)}
+          onBlur={() => setInputFocused(false)}
+          placeholder='링크를 입력해주세요'
+        />
       </S.TextField>
       <S.IconField>
         {text.length > 0 && (

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import HomeBg from '../../assets/img/home_bg11.png';
 import {
+  HomeBackground,
   HomeBgGradientFix,
-  HomeCtaBgGradient,
-  IcDown,
+  GradientCta,
   Main02,
   Main03,
   Main04,
@@ -11,23 +10,21 @@ import {
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 
 export const Wrapper = styled.div`
-  background-image: url(${HomeBg});
-  background-size: cover;
-  width: 100%;
+  width: 37.5rem;
   height: 100vh;
   background-repeat: no-repeat;
   ${({ theme: { mixin } }) => mixin.flexCenter({})};
-  margin: auto;
-  background-color: #fafafa;
+  margin: auto 0;
 `;
 
 export const Gradient = styled(HomeBgGradientFix)`
   position: absolute;
-  top: 55rem;
+  top: 54rem;
   z-index: 2;
+  width: 100%;
 `;
 
-export const BtnGradient = styled(HomeCtaBgGradient)`
+export const BtnGradient = styled(GradientCta)`
   position: fixed;
   z-index: 2;
   bottom: 0;
@@ -40,9 +37,13 @@ export const BtnFillStyle = styled(BtnFill)`
   margin: 2rem;
 `;
 
+export const Main1 = styled(HomeBackground)`
+  position: absolute;
+`;
+
 export const Main2 = styled(Main02)`
   position: absolute;
-  top: 62rem;
+  top: 61rem;
 `;
 
 export const Main3 = styled(Main03)`
@@ -53,11 +54,4 @@ export const Main3 = styled(Main03)`
 export const Main4 = styled(Main04)`
   position: absolute;
   top: 211rem;
-`;
-
-export const DownIcon = styled(IcDown)`
-  position: absolute;
-  top: 53rem;
-  width: 4rem;
-  color: ${({ theme: { colors } }) => colors.G_07};
 `;
