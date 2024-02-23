@@ -9,7 +9,7 @@ const initialAddGiftInfo: AddGiftInfo = {
   name: '',
   cost: 0,
   imageUrl: '',
-  url: ',',
+  url: '',
 };
 
 const AddGiftContext = createContext<AddGiftInfoContext>({

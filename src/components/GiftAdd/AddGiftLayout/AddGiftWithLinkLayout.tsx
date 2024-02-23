@@ -19,8 +19,10 @@ interface AddGiftWithLinkLayoutProps {
   openGraph: OpenGraphResponseType;
   targetDate: string;
   updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
+  setModalStatus: React.Dispatch<React.SetStateAction<boolean>>;
   addGiftInfo: AddGiftInfo;
   // gifteeName: string;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const AddGiftWithLinkLayout = ({
@@ -31,8 +33,10 @@ const AddGiftWithLinkLayout = ({
   openGraph,
   targetDate,
   updateAddGiftInfo,
+  setModalStatus,
   addGiftInfo,
   // gifteeName
+  setIsLoading,
 }: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(
     !!addGiftInfo.name && !!addGiftInfo.cost && !!addGiftInfo.imageUrl,
@@ -57,15 +61,23 @@ const AddGiftWithLinkLayout = ({
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log('OpenGraph imageUrl', openGraph);
       setNameText(openGraph.title);
-      const convertedOgFile = await useConvertURLtoFile(openGraph.image);
-      setFile(convertedOgFile);
-      setFileName(openGraph.image);
-      setImageUrl(openGraph.image);
+      const convertResult = await useConvertURLtoFile({
+        url: openGraph.image,
+        setStep,
+        setModalStatus,
+        updateAddGiftInfo,
+      });
+      if (convertResult && 'convertedOgFile' in convertResult) {
+        setFile(convertResult.convertedOgFile);
+        setFileName(openGraph.image);
+        setImageUrl(openGraph.image);
+      }
     };
 
     fetchData();
-  }, [openGraph]);
+  }, [openGraph, setStep]);
 
   return (
     <S.AddGiftWithLinkLayoutWrapper>
@@ -109,6 +121,7 @@ const AddGiftWithLinkLayout = ({
         updateAddGiftInfo={updateAddGiftInfo}
         file={file}
         setImageUrl={setImageUrl}
+        setIsLoading={setIsLoading}
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );

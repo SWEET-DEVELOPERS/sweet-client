@@ -6,9 +6,11 @@ import { OpenGraphResponseType } from '../../types/etc';
 import { useParams } from 'react-router-dom';
 import AddGiftWithLinkLayout from '../../components/GiftAdd/AddGiftLayout/AddGiftWithLinkLayout';
 import { useAddGiftContext } from '../../context/AddGift/AddGiftContext';
+import Loading from '../Loading/Loading';
 
 const GiftAddPage = () => {
   const [step, setStep] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   // case 1 링크 입력 페이지 state들
   const [itemNum, setItemNum] = useState(0);
@@ -56,7 +58,9 @@ const GiftAddPage = () => {
       );
 
     case 2:
-      return (
+      return isLoading ? (
+        <Loading />
+      ) : (
         <AddGiftWithLinkLayout
           step={step}
           setStep={setStep}
@@ -64,14 +68,18 @@ const GiftAddPage = () => {
           link={linkText}
           openGraph={openGraph}
           targetDate={targetDate || ''}
+          setModalStatus={setModalStatus}
           addGiftInfo={addGiftInfo}
           updateAddGiftInfo={updateAddGiftInfo}
           // gifteeName={gifteeName}
+          setIsLoading={setIsLoading}
         />
       );
 
     case 3:
-      return (
+      return isLoading ? (
+        <Loading />
+      ) : (
         <AddGiftWithoutLinkLayout
           step={step}
           setStep={setStep}
@@ -84,6 +92,7 @@ const GiftAddPage = () => {
           openGraph={openGraph}
           updateAddGiftInfo={updateAddGiftInfo}
           // gifteeName={gifteeName}
+          setIsLoading={setIsLoading}
         />
       );
   }
