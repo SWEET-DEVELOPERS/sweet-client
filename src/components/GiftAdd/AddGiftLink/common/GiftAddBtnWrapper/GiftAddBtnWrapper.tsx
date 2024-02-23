@@ -4,7 +4,7 @@ import * as S from './GiftAddBtnWrapper.styled';
 interface GiftAddBtnWrapperProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
   isActivated: boolean;
-  onClick: () => void;
+  onClick: VoidFunction;
 }
 
 const GiftAddBtnWrapper = ({ setStep, isActivated, onClick }: GiftAddBtnWrapperProps) => {
@@ -16,7 +16,7 @@ const GiftAddBtnWrapper = ({ setStep, isActivated, onClick }: GiftAddBtnWrapperP
 
   return (
     <S.GiftAddBtnWrapper>
-      <S.NoLinkText onClick={handleClickNoLink} >링크 없이 상품을 등록할게요</S.NoLinkText>
+      <S.NoLinkText onClick={handleClickNoLink}>링크 없이 상품을 등록할게요</S.NoLinkText>
       <GiftAddNextBtn children={BtnText} isActivated={isActivated} onClick={onClick} />
     </S.GiftAddBtnWrapper>
   );
