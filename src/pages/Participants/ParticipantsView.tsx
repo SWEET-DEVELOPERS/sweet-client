@@ -100,8 +100,12 @@ const ParticipantsView = () => {
     //   console.log('else');
     // }
 
+
     console.log('isTOken', isToken);
   }, [isToken]);
+
+  }, []);
+
 
   const handleClickRoom = async (body: string | null) => {
     console.log('입장 버튼 클릭! 그리고 초대 코드', invitationCode);
