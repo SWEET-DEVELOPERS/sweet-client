@@ -11,6 +11,7 @@ import useFormatDate from '../../../hooks/onboarding/useFormatDate';
 import OnboardingFinalFooter from './OnboardingFinalFooter';
 import { addHours, format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
+import OnboardingFinalHeader from './OnboardingFinalHeader';
 
 interface OnboardingFinalProps {
   invitationCode: string;
@@ -53,87 +54,89 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
 
   return (
     <>
-      <S.OnboardingFinalWrapper>
-        <div>
-          <S.IconWrapper>
-            <IcOnboardingFinal style={{ width: '6.4rem', height: '6.4rem' }} />
-          </S.IconWrapper>
-          <S.TitleWrapper>
-            <Title>{`${onboardingInfo.gifteeName}님을 위한`}</Title>
-          </S.TitleWrapper>
-          <S.SecondTitleWrapper>
-            <Title>선물 준비방이 개설됐어요</Title>
-          </S.SecondTitleWrapper>
-        </div>
-        <S.ProgressLineAndDetailContainer>
-          {isDeliveryBeforeEnd === true ? (
-            <IcBeforeTournamentProgressLine
-              style={{ width: '1.6rem', height: '24.1rem', marginTop: '3.5rem' }}
-            />
-          ) : (
-            <IcAfterTournamentProgressLine
-              style={{ width: '1.6rem', height: '24.1rem', marginTop: '3.5rem' }}
-            />
-          )}
-
-          <S.DetailWrapper>
-            <S.InfoContainer>
-              <S.InfoContainerTitle>선물 등록 마감</S.InfoContainerTitle>
-              <S.InfoContainerDetail>
-                {formatDate(onboardingInfo.tournamentStartDate)}
-              </S.InfoContainerDetail>
-            </S.InfoContainer>
-
-            <S.TournamentProceedWrapper>
-              <S.InfoContainerTitle>토너먼트 진행</S.InfoContainerTitle>
-              <S.InfoContainerDetail>
-                {formatDuration(onboardingInfo.tournamentDuration)}
-              </S.InfoContainerDetail>
-            </S.TournamentProceedWrapper>
-
-            {/* isDeliveryBeforeEnd가 true인 경우와 false인 경우에 따라 렌더링하는 순서가 달라짐 */}
+      <OnboardingFinalHeader />
+      <div>
+        <S.OnboardingFinalWrapper>
+          <div>
+            <S.IconWrapper>
+              <IcOnboardingFinal style={{ width: '6.4rem', height: '6.4rem' }} />
+            </S.IconWrapper>
+            <S.TitleWrapper>
+              <Title>{`${onboardingInfo.gifteeName}님을 위한`}</Title>
+            </S.TitleWrapper>
+            <S.SecondTitleWrapper>
+              <Title>선물 준비방이 개설됐어요</Title>
+            </S.SecondTitleWrapper>
+          </div>
+          <S.ProgressLineAndDetailContainer>
             {isDeliveryBeforeEnd === true ? (
-              <>
-                <S.InfoContainer>
-                  <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
-                  <S.InfoContainerDetail>
-                    {formatDate(formattedEndDate, false)}
-                  </S.InfoContainerDetail>
-                </S.InfoContainer>
-
-                <S.InfoContainerPresent>
-                  <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
-                  <S.InfoContainerDetail>
-                    {formatDate(onboardingInfo.deliveryDate, false)}
-                  </S.InfoContainerDetail>
-                </S.InfoContainerPresent>
-              </>
+              <IcBeforeTournamentProgressLine
+                style={{ width: '1.6rem', height: '24.1rem', marginTop: '3.5rem' }}
+              />
             ) : (
-              <>
-                <S.InfoContainerPresent>
-                  <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
-                  <S.InfoContainerDetail>
-                    {formatDate(onboardingInfo.deliveryDate, false)}
-                  </S.InfoContainerDetail>
-                </S.InfoContainerPresent>
-
-                <S.InfoContainer>
-                  <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
-                  <S.InfoContainerDetail>
-                    {formatDate(formattedEndDate, false)}
-                  </S.InfoContainerDetail>
-                </S.InfoContainer>
-              </>
+              <IcAfterTournamentProgressLine
+                style={{ width: '1.6rem', height: '24.1rem', marginTop: '3.5rem' }}
+              />
             )}
-          </S.DetailWrapper>
-        </S.ProgressLineAndDetailContainer>
 
-        <OnboardingFinalFooter
-          invitationCode={invitationCode}
-          roomId={roomId}
-          onClick={navigateRoom}
-        />
-      </S.OnboardingFinalWrapper>
+            <S.DetailWrapper>
+              <S.InfoContainer>
+                <S.InfoContainerTitle>선물 등록 마감</S.InfoContainerTitle>
+                <S.InfoContainerDetail>
+                  {formatDate(onboardingInfo.tournamentStartDate)}
+                </S.InfoContainerDetail>
+              </S.InfoContainer>
+
+              <S.TournamentProceedWrapper>
+                <S.InfoContainerTitle>토너먼트 진행</S.InfoContainerTitle>
+                <S.InfoContainerDetail>
+                  {formatDuration(onboardingInfo.tournamentDuration)}
+                </S.InfoContainerDetail>
+              </S.TournamentProceedWrapper>
+
+              {/* isDeliveryBeforeEnd가 true인 경우와 false인 경우에 따라 렌더링하는 순서가 달라짐 */}
+              {isDeliveryBeforeEnd === true ? (
+                <>
+                  <S.InfoContainer>
+                    <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
+                    <S.InfoContainerDetail>
+                      {formatDate(formattedEndDate, false)}
+                    </S.InfoContainerDetail>
+                  </S.InfoContainer>
+
+                  <S.InfoContainerPresent>
+                    <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
+                    <S.InfoContainerDetail>
+                      {formatDate(onboardingInfo.deliveryDate, false)}
+                    </S.InfoContainerDetail>
+                  </S.InfoContainerPresent>
+                </>
+              ) : (
+                <>
+                  <S.InfoContainerPresent>
+                    <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
+                    <S.InfoContainerDetail>
+                      {formatDate(onboardingInfo.deliveryDate, false)}
+                    </S.InfoContainerDetail>
+                  </S.InfoContainerPresent>
+
+                  <S.InfoContainer>
+                    <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
+                    <S.InfoContainerDetail>
+                      {formatDate(formattedEndDate, false)}
+                    </S.InfoContainerDetail>
+                  </S.InfoContainer>
+                </>
+              )}
+            </S.DetailWrapper>
+          </S.ProgressLineAndDetailContainer>
+          <OnboardingFinalFooter
+            invitationCode={invitationCode}
+            roomId={roomId}
+            onClick={navigateRoom}
+          />
+        </S.OnboardingFinalWrapper>
+      </div>
     </>
   );
 };

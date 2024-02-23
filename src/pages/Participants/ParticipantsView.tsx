@@ -1,25 +1,16 @@
 import * as S from '../../components/OnBoardingSteps/Step06/Step06.style';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-// import OnboardingFinalHeader from '../../components/OnBoardingSteps/Step06/OnboardingFinalHeader';
 import Title from '../../components/common/title/Title';
 import useGetGifteeInfo from '../../hooks/queries/onboarding/useGetGifteeInfo';
 import { kakaoURL } from '../../utils/login';
-// import OnBoardingBtn from '../../components/OnBoardingSteps/onboardingBtn/OnBoardingBtn';
-import { useKakaoShare } from '../../hooks/queries/onboarding/useKakaoShare';
-import useClipboard from '../../hooks/useCopyClip';
 import usePostParticipation from '../../hooks/queries/onboarding/usePostParticipation';
 import btnKakao from '../../assets/img/btn_kakao.png';
-import {
-  IcAfterTournamentProgressLine,
-  IcBeforeTournamentProgressLine,
-  IcKakaoShare,
-  IcLink,
-  IcOnboardingFinal,
-} from '../../assets/svg';
+import { IcAfterTournamentProgressLine, IcBeforeTournamentProgressLine } from '../../assets/svg';
 import useFormatDate from '../../hooks/onboarding/useFormatDate';
 import { addHours, format } from 'date-fns';
 import OnboardingFinalFooter from '../../components/OnBoardingSteps/Step06/OnboardingFinalFooter';
+import OnboardingFinalHeader from '../../components/OnBoardingSteps/Step06/OnboardingFinalHeader';
 
 const DURATION_MAPPING = {
   SIX_HOURS: 6,
@@ -31,7 +22,6 @@ const ParticipantsView = () => {
   const { invitationCode } = useParams<{ invitationCode?: string }>();
   const { data } = useGetGifteeInfo(invitationCode || null);
   const [isToken, setIsToken] = useState<boolean>();
-  const { handleCopyToClipboard } = useClipboard();
   const { formatDuration, formatDate } = useFormatDate();
   const { mutation } = usePostParticipation();
   const navigate = useNavigate();
@@ -58,9 +48,6 @@ const ParticipantsView = () => {
   /**@see 선물 전달 일이 토너먼트 종료일보다 일찍일 때 */
   const isDeliveryBeforeEnd =
     new Date(data.data.deliveryDate).getTime() < tournamentEndDate.getTime();
-
-  /**@TODO 현재 token값의 유무에 따라 다른 뷰를 보여주는 로직인데,
-   * token의 값이 있든 없든 항상 토큰이 있는 값을 보여주고 있음. 처리 필요 */
 
   useEffect(() => {
     setIsToken(localStorage.getItem('EXIT_LOGIN_TOKEN') !== null);
@@ -93,91 +80,99 @@ const ParticipantsView = () => {
 
   return (
     <>
-      <S.OnboardingFinalWrapper>
-        <div>
-          <S.IconWrapper>
-            <IcOnboardingFinal style={{ width: '6.4rem', height: '6.4rem' }} />
-          </S.IconWrapper>
-          <S.TitleWrapper>
-            <Title>{`${data.data.gifteeName}님을 위한`}</Title>
-          </S.TitleWrapper>
-          <S.SecondTitleWrapper>
-            <Title>선물 준비방이 개설됐어요</Title>
-          </S.SecondTitleWrapper>
-        </div>
-        <S.ProgressLineAndDetailContainer>
-          {isDeliveryBeforeEnd === true ? (
-            <IcBeforeTournamentProgressLine
-              style={{ width: '1.6rem', height: '24.1rem', marginTop: '3.5rem' }}
+      <OnboardingFinalHeader />
+      <div>
+        <S.OnboardingFinalWrapper>
+          <div>
+            <S.IconWrapper>
+              <S.ImageUrlWrapper src={data.data.imageUrl} />
+            </S.IconWrapper>
+            <S.GifterNumberWrapper>
+              <S.GifterNumberText>{`${data.data.gifterNumber}명의 친구가`}</S.GifterNumberText>
+            </S.GifterNumberWrapper>
+            <S.ParticipantsTitleWrapper>
+              <Title>{`${data.data.gifteeName}님을 위한`}</Title>
+            </S.ParticipantsTitleWrapper>
+            <S.SecondTitleWrapper>
+              <Title>선물 준비방이 개설됐어요</Title>
+            </S.SecondTitleWrapper>
+          </div>
+          <S.ProgressLineAndDetailContainer>
+            {isDeliveryBeforeEnd === true ? (
+              <IcBeforeTournamentProgressLine
+                style={{ width: '1.6rem', height: '24.1rem', marginTop: '3.5rem' }}
+              />
+            ) : (
+              <IcAfterTournamentProgressLine
+                style={{ width: '1.6rem', height: '24.1rem', marginTop: '3.5rem' }}
+              />
+            )}
+
+            <S.DetailWrapper>
+              <S.InfoContainer>
+                <S.InfoContainerTitle>선물 등록 마감</S.InfoContainerTitle>
+                <S.InfoContainerDetail>
+                  {formatDate(data.data.tournamentStartDate)}
+                </S.InfoContainerDetail>
+              </S.InfoContainer>
+
+              <S.TournamentProceedWrapper>
+                <S.InfoContainerTitle>토너먼트 진행</S.InfoContainerTitle>
+                <S.InfoContainerDetail>
+                  {formatDuration(data.data.tournamentDuration)}
+                </S.InfoContainerDetail>
+              </S.TournamentProceedWrapper>
+
+              {/* isDeliveryBeforeEnd가 true인 경우와 false인 경우에 따라 렌더링하는 순서가 달라짐 */}
+              {isDeliveryBeforeEnd === true ? (
+                <>
+                  <S.InfoContainer>
+                    <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
+                    <S.InfoContainerDetail>
+                      {formatDate(formattedEndDate, false)}
+                    </S.InfoContainerDetail>
+                  </S.InfoContainer>
+
+                  <S.InfoContainerPresent>
+                    <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
+                    <S.InfoContainerDetail>
+                      {formatDate(data.data.deliveryDate, false)}
+                    </S.InfoContainerDetail>
+                  </S.InfoContainerPresent>
+                </>
+              ) : (
+                <>
+                  <S.InfoContainerPresent>
+                    <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
+                    <S.InfoContainerDetail>
+                      {formatDate(data.data.deliveryDate, false)}
+                    </S.InfoContainerDetail>
+                  </S.InfoContainerPresent>
+
+                  <S.InfoContainer>
+                    <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
+                    <S.InfoContainerDetail>
+                      {formatDate(formattedEndDate, false)}
+                    </S.InfoContainerDetail>
+                  </S.InfoContainer>
+                </>
+              )}
+            </S.DetailWrapper>
+          </S.ProgressLineAndDetailContainer>
+
+          {isToken === true ? (
+            <OnboardingFinalFooter
+              invitationCode={data.data.invitationCode}
+              roomId={data.data.roomId}
+              onClick={() => handleClickRoom}
             />
           ) : (
-            <IcAfterTournamentProgressLine
-              style={{ width: '1.6rem', height: '24.1rem', marginTop: '3.5rem' }}
-            />
+            <S.BtnWrapper>
+              <img src={btnKakao} onClick={() => window.location.replace(kakaoURL)} />
+            </S.BtnWrapper>
           )}
-
-          <S.DetailWrapper>
-            <S.InfoContainer>
-              <S.InfoContainerTitle>선물 등록 마감</S.InfoContainerTitle>
-              <S.InfoContainerDetail>
-                {formatDate(data.data.tournamentStartDate)}
-              </S.InfoContainerDetail>
-            </S.InfoContainer>
-
-            <S.TournamentProceedWrapper>
-              <S.InfoContainerTitle>토너먼트 진행</S.InfoContainerTitle>
-              <S.InfoContainerDetail>
-                {formatDuration(data.data.tournamentDuration)}
-              </S.InfoContainerDetail>
-            </S.TournamentProceedWrapper>
-
-            {/* isDeliveryBeforeEnd가 true인 경우와 false인 경우에 따라 렌더링하는 순서가 달라짐 */}
-            {isDeliveryBeforeEnd === true ? (
-              <>
-                <S.InfoContainer>
-                  <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
-                  <S.InfoContainerDetail>
-                    {formatDate(formattedEndDate, false)}
-                  </S.InfoContainerDetail>
-                </S.InfoContainer>
-
-                <S.InfoContainerPresent>
-                  <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
-                  <S.InfoContainerDetail>
-                    {formatDate(data.data.deliveryDate, false)}
-                  </S.InfoContainerDetail>
-                </S.InfoContainerPresent>
-              </>
-            ) : (
-              <>
-                <S.InfoContainerPresent>
-                  <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
-                  <S.InfoContainerDetail>
-                    {formatDate(data.data.deliveryDate, false)}
-                  </S.InfoContainerDetail>
-                </S.InfoContainerPresent>
-
-                <S.InfoContainer>
-                  <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
-                  <S.InfoContainerDetail>
-                    {formatDate(formattedEndDate, false)}
-                  </S.InfoContainerDetail>
-                </S.InfoContainer>
-              </>
-            )}
-          </S.DetailWrapper>
-        </S.ProgressLineAndDetailContainer>
-
-        {isToken === true ? (
-          <OnboardingFinalFooter
-            invitationCode={data.data.invitationCode}
-            roomId={data.data.roomId}
-            onClick={() => handleClickRoom}
-          />
-        ) : (
-          <img src={btnKakao} onClick={() => window.location.replace(kakaoURL)} />
-        )}
-      </S.OnboardingFinalWrapper>
+        </S.OnboardingFinalWrapper>
+      </div>
     </>
   );
 };
