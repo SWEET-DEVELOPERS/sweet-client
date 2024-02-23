@@ -8,6 +8,7 @@ import Modal from '../../common/Modal/Modal';
 import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
 import { OpenGraphResponseType } from '../../../types/etc';
 import { AddGiftInfo } from '../../../types/gift';
+import { useUpdateGifteeNameContext } from '../../../context/GifteeName/GifteeNameContext';
 
 interface AddGiftWithLinkLayoutProps {
   roomId: number;
@@ -48,6 +49,8 @@ export const AddGiftWithoutLinkLayout = ({
   const [, setPreviewImage] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(modalStatus);
 
+  const { gifteeName } = useUpdateGifteeNameContext();
+
   const checkPriceNull = (price: number | null) => {
     if (price === null) {
       return 0;
@@ -79,6 +82,7 @@ export const AddGiftWithoutLinkLayout = ({
         cost={priceText}
         imageUrl={imageUrl}
         updateAddGiftInfo={updateAddGiftInfo}
+        gifteeName={gifteeName}
       />
       <GiftStatusBar registeredGiftNum={1} isMargin={true} />
       <AddGiftImg

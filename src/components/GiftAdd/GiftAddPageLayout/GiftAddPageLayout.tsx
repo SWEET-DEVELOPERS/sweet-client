@@ -6,6 +6,7 @@ import GiftAddPageLayoutHeader from './GiftAddPageLayoutHeader';
 import useGetMyGift from '../../../hooks/queries/gift/useGetMyGift';
 import EmptyGiftAddButtonsWrapper from '../GiftAddButtons/EmptyGiftAddButtonsWrapper';
 import useDeleteMyGift from '../../../hooks/queries/gift/useDeleteMyGift';
+import { useUpdateGifteeNameContext } from '../../../context/GifteeName/GifteeNameContext';
 import { useState } from 'react';
 import DeleteModal from '../../common/Modal/DeleteModal';
 
@@ -60,8 +61,8 @@ const GiftAddPageLayout = ({ targetDate, roomId, setStep, setItemNum }: GiftAddP
           정말 상품을 삭제하시겠어요?
         </DeleteModal>
       )}
-      <GiftAddPageLayoutHeader title={'내가 등록한 선물'} giftee={gifteeName} />
-      <MiniTimer targetDate={targetDate || ''} />
+      <GiftAddPageLayoutHeader title={'내가 등록한 선물'} />
+      <MiniTimer targetDate={targetDate || ''} giftee={gifteeName} />
       <S.AddButtonsWrapper>
         {myGiftData.map((item, index) => (
           <GiftAddButtonsWrapper

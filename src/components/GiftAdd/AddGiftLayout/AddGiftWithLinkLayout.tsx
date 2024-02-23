@@ -10,6 +10,7 @@ import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
 import { AddGiftInfo } from '../../../types/gift';
 import useConvertURLtoFile from '../../../hooks/useConvertURLtoFile';
 import DuplicateModal from '../../common/Modal/DuplicateModal';
+import { useUpdateGifteeNameContext } from '../../../context/GifteeName/GifteeNameContext';
 
 interface AddGiftWithLinkLayoutProps {
   link: string;
@@ -49,6 +50,8 @@ const AddGiftWithLinkLayout = ({
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   console.log('ISMODAL', isModalOpen);
+  const { gifteeName } = useUpdateGifteeNameContext();
+
   const checkPriceNull = (price: number | null) => {
     if (price === null) {
       return 0;
@@ -90,6 +93,7 @@ const AddGiftWithLinkLayout = ({
         cost={priceText}
         imageUrl={imageUrl}
         updateAddGiftInfo={updateAddGiftInfo}
+        gifteeName={gifteeName}
       />
       <GiftStatusBar registeredGiftNum={1} isMargin={true} />
       <AddGiftImg

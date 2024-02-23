@@ -7,9 +7,7 @@ export const RankingWrapper = styled.div`
   margin-bottom: 2.4rme;
 `;
 
-export const TournamentRankingWrapper = styled.div`
-  padding: 0 2rem;
-`;
+export const TournamentRankingWrapper = styled.section``;
 
 export const Wrapper = styled.div`
   display: inline-flex;
@@ -28,7 +26,7 @@ export const IcTitle = styled.p`
   font-size: 14px;
   left: 50%;
   font-weight: 700;
-  top: 9%;
+  top: 18%;
   transform: translateX(-50%);
 `;
 

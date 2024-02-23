@@ -22,6 +22,7 @@ import { OnboardingProvider } from '../context/Onboarding/OnboardingContext';
 import ParticipantsView from '../pages/Participants/ParticipantsView';
 import HomeMypageHeaderLayout from '../layouts/HomeMypageHeaderLayout';
 import LeftIconHeaderLayout from '../layouts/LeftIconHeaderLayout';
+import { UpdateGifteeNameProvider } from '../context/GifteeName/GifteeNameContext';
 
 const router = createBrowserRouter([
   {
@@ -36,8 +37,21 @@ const router = createBrowserRouter([
             element: <MyPage />,
           },
           {
+            path: '/gift-home/:roomId',
+            element: <GiftHome />,
+          },
+
+          {
             path: '/error',
             element: <LoginError />,
+          },
+          {
+            path: '/tournament-ranking/:giftee/:roomId',
+            element: <TournamentPage />,
+          },
+          {
+            path: '/tournament/:giftee/:roomId',
+            element: <TournamentIntroContainer />,
           },
         ],
       },
@@ -67,10 +81,6 @@ const router = createBrowserRouter([
         element: <DetailDoneRoom />,
       },
       {
-        path: '/gift-home/:roomId',
-        element: <GiftHome />,
-      },
-      {
         path: '/gift-detail-friends/:roomId/:targetDate',
         element: <GiftHomeDetailFriends />,
       },
@@ -91,18 +101,12 @@ const router = createBrowserRouter([
         element: <ParticipantsView />,
       },
       {
-        path: '/tournament/:giftee/:roomId',
-        element: <TournamentIntroContainer />,
-      },
-      {
-        path: '/tournament-ranking/:giftee/:roomId',
-        element: <TournamentPage />,
-      },
-      {
         path: '/add-gift/:roomId/:targetTime',
         element: (
           <AddGiftProvider>
-            <GiftAddPage />
+            <UpdateGifteeNameProvider>
+              <GiftAddPage />
+            </UpdateGifteeNameProvider>
           </AddGiftProvider>
         ),
       },

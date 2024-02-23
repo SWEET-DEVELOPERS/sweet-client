@@ -7,6 +7,8 @@ import Loading from './pages/Loading/Loading';
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import FallbackUI from './pages/FallbackUI/FallbackUI';
+import 'react-toastify/dist/ReactToastify.css';
+import { StyledToastContainer } from './style/toast.style';
 
 function App() {
   const Wrapper = styled.div`
@@ -24,6 +26,18 @@ function App() {
               <Suspense fallback={<Loading />}>
                 <RouterProvider router={router} />
                 <GlobalStyle />
+                <StyledToastContainer
+                  position='bottom-center'
+                  autoClose={3000}
+                  hideProgressBar
+                  closeButton={false}
+                  closeOnClick={false}
+                  pauseOnHover={false}
+                  draggable={false}
+                  rtl={false}
+                  pauseOnFocusLoss={false}
+                  limit={1}
+                />
               </Suspense>
             </ErrorBoundary>
           )}
