@@ -23,6 +23,8 @@ interface AddGiftWithLinkLayoutProps {
   setModalStatus: React.Dispatch<React.SetStateAction<boolean>>;
   addGiftInfo: AddGiftInfo;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  isModalOpen: boolean;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const AddGiftWithLinkLayout = ({
@@ -36,6 +38,8 @@ const AddGiftWithLinkLayout = ({
   setModalStatus,
   addGiftInfo,
   setIsLoading,
+  isModalOpen,
+  setIsModalOpen,
 }: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(
     !!addGiftInfo.name && !!addGiftInfo.cost && !!addGiftInfo.imageUrl,
@@ -48,8 +52,8 @@ const AddGiftWithLinkLayout = ({
   const [, setIsImageUploaded] = useState<boolean>(false);
   const [, setPreviewImage] = useState<string | null>(null);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log('ISMODAL', isModalOpen);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // console.log('ISMODAL', isModalOpen);
   const { gifteeName } = useUpdateGifteeNameContext();
 
   const checkPriceNull = (price: number | null) => {

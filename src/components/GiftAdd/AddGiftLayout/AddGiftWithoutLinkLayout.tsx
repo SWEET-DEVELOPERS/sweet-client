@@ -22,6 +22,8 @@ interface AddGiftWithLinkLayoutProps {
   updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
   addGiftInfo: AddGiftInfo;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  isDuplicateModalOpen: boolean;
+  setIsDuplicateModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // 직접 입력 화면
@@ -36,6 +38,8 @@ export const AddGiftWithoutLinkLayout = ({
   modalStatus,
   addGiftInfo,
   setIsLoading,
+  isDuplicateModalOpen,
+  setIsDuplicateModalOpen,
 }: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(
     !!addGiftInfo.name && !!addGiftInfo.cost && !!addGiftInfo.url && !!addGiftInfo.imageUrl,
@@ -117,7 +121,7 @@ export const AddGiftWithoutLinkLayout = ({
         file={file}
         setImageUrl={setImageUrl}
         setIsLoading={setIsLoading}
-        setIsModalOpen={setIsModalOpen}
+        setIsModalOpen={setIsDuplicateModalOpen}
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );

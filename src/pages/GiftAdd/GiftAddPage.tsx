@@ -19,6 +19,7 @@ const GiftAddPage = () => {
   // case 2, 3 선물 등록 페이지 state들
   const [openGraph, setOpenGraph] = useState<OpenGraphResponseType>({ title: '', image: '' });
   const [modalStatus, setModalStatus] = useState(false);
+  const [duplicateModalStatus, setDuplicateModalStatus] = useState(false);
 
   const params = useParams();
   const roomId = params.roomId;
@@ -70,6 +71,8 @@ const GiftAddPage = () => {
           addGiftInfo={addGiftInfo}
           updateAddGiftInfo={updateAddGiftInfo}
           setIsLoading={setIsLoading}
+          isModalOpen={duplicateModalStatus}
+          setIsModalOpen={setDuplicateModalStatus}
         />
       );
 
@@ -89,6 +92,8 @@ const GiftAddPage = () => {
           openGraph={openGraph}
           updateAddGiftInfo={updateAddGiftInfo}
           setIsLoading={setIsLoading}
+          isDuplicateModalOpen={duplicateModalStatus}
+          setIsDuplicateModalOpen={setDuplicateModalStatus}
         />
       );
   }
