@@ -10,26 +10,34 @@ import { TrophyNone } from '../../../assets/svg';
 import { useParams } from 'react-router';
 import Header from '../../common/Header';
 import TournamentNoneText from './TournamentNoneText/TournamentNoneText';
-import { TournamentResult } from '../TournamentResult/TournamentResult.sytle';
 import { GiftData } from '../../../types/tournament';
 import TournamentDeleteButton from './TournamentDeleteButton/TournamentDeleteButton';
+import { useNavigate } from 'react-router-dom';
+import Modal from '../../common/Modal/Modal';
 
 const TournamentIntroContainer = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const giftee = params.giftee;
-
   const roomIdString = params.roomId || '';
   const roomId = parseInt(roomIdString || '', 10);
+  const memberData = useGetItem({ roomId: Number(roomId) });
+  let tournamentData: GiftData[] = [];
 
   const { showTournamentContainer, handleStartClick } = useTournament();
-  const memberData = useGetItem({ roomId: Number(roomId) });
-  console.log(memberData);
-
-  let tournamentData: GiftData[] = [];
+  const handleClearRoom = () => {
+    navigate(`/mypage`);
+  };
 
   if (typeof memberData === 'string') {
     console.log('Error :', memberData);
-    return <TournamentResult />;
+    return (
+      <Modal onConfirmClick={handleClearRoom}>
+        선물 토너먼트를
+        <br />
+        이미 참여하셨습니다!
+      </Modal>
+    );
   } else if (memberData && memberData.data) {
     tournamentData = memberData.data;
     console.log(tournamentData);
@@ -49,7 +57,7 @@ const TournamentIntroContainer = () => {
                     <S.TournamentImg>
                       <TrophyNone />
                     </S.TournamentImg>
-                    <TournamentDeleteButton onClick={handleStartClick} />
+                    <TournamentDeleteButton onClick={handleClearRoom} />
                   </>
                 ) : (
                   <>
