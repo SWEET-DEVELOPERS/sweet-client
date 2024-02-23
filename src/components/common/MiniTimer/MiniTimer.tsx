@@ -11,10 +11,10 @@ interface MiniTimerProps {
 
 const MiniTimer = ({ targetDate, giftee }: MiniTimerProps) => {
   const [days, hours, minutes, seconds] = useCountDown(targetDate);
-
+  const handleCountDownZero = useHandleCountDownZero(giftee);
   useEffect(() => {
     if (hours <= 0 && minutes <= 0 && seconds <= 0) {
-      useHandleCountDownZero(giftee);
+      handleCountDownZero();
     }
   }, [hours, minutes, seconds, useHandleCountDownZero]);
 

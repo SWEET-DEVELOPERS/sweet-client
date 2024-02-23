@@ -12,10 +12,10 @@ interface CountdownTimerProps {
 
 const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate, giftee }) => {
   const [days, hours, minutes, seconds] = useCountDown(targetDate.toISOString());
-
+  const handleCountDownZero = useHandleCountDownZero(giftee);
   useEffect(() => {
     if (hours <= 0 && minutes <= 0 && seconds <= 0) {
-      useHandleCountDownZero(giftee);
+      handleCountDownZero();
     }
   }, [hours, minutes, seconds, useHandleCountDownZero]);
 
