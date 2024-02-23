@@ -30,10 +30,6 @@ const useTournamentScheduleCalendar = () => {
     setIsOpen(false);
   };
 
-  useEffect(() => {
-    setIsActivated(Boolean(onboardingInfo.deliveryDate));
-  }, [onboardingInfo.deliveryDate]);
-
   return {
     isOpen,
     selectedDate,

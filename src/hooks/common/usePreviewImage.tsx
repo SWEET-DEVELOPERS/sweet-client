@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const usePreviewImage = () => {
   const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
