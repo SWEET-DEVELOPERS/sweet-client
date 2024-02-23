@@ -17,6 +17,7 @@ interface AddGiftFooterProps {
   updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
   fileName: string;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const AddGiftFooter = ({
@@ -32,21 +33,38 @@ const AddGiftFooter = ({
   fileName,
   updateAddGiftInfo,
   setIsLoading,
+  setIsModalOpen,
 }: AddGiftFooterProps) => {
-  const { mutation } = usePostGift(roomId, targetDate, setStep, updateAddGiftInfo, setIsLoading);
+  const { mutation } = usePostGift(
+    roomId,
+    targetDate,
+    setStep,
+    updateAddGiftInfo,
+    setIsLoading,
+    setIsModalOpen,
+  );
   const { putImageUrlToS3 } = usePutImageUrlToS3(roomId);
-
   const onClick = async () => {
     setIsLoading(true);
     const { imageUrlS3 } = await putImageUrlToS3({ fileName, file, roomId, setImageUrl });
     if (isActivated) {
-      mutation.mutate({
-        roomId: roomId,
-        name: name,
-        cost: cost,
-        imageUrl: imageUrlS3,
-        url: link,
-      });
+      try {
+        await mutation.mutateAsync({
+          roomId: roomId,
+          name: name,
+          cost: cost,
+          imageUrl: imageUrlS3,
+          url: link,
+        });
+      } catch (error: any) {
+        console.error('Mutation error:', error.message);
+        if (error.message === 'Error: 중복된 선물 등록입니다.') {
+          console.log('CHECK');
+          setIsModalOpen((prev) => !prev);
+        }
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 

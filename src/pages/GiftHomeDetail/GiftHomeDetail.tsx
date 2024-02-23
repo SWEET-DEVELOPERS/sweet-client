@@ -6,10 +6,8 @@ import GiftHomePriceTag from '../../components/common/GiftHome/Price/GiftHomePri
 import GiftDetailHeader from '../../components/common/GiftDetail/GiftDetailHeader';
 
 export const GiftHomeDetail = () => {
-  // const location = useLocation();
   const params = useParams();
   console.log('params', params);
-  // const searchParams = new URLSearchParams(location.search);
   const roomId = params.roomId;
   console.log('roomId', roomId);
   const targetDate = params.targetDate;

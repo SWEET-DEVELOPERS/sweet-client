@@ -6,6 +6,12 @@ export interface GiftPostRequestType {
   imageUrl: string;
 }
 
+export interface GiftPostResponseType {
+  status: number;
+  success?: boolean;
+  message: string;
+}
+
 export interface GiftType {
   giftId: number;
   imageUrl: string;
@@ -13,8 +19,13 @@ export interface GiftType {
   cost: number;
 }
 
-export interface MyGiftsType {
+export interface myGiftsResponseDtoType {
   myGiftDtoList: GiftType[];
+}
+
+export interface MyGiftsType {
+  gifteeName: string;
+  myGiftsResponseDto: myGiftsResponseDtoType;
 }
 export interface AddGiftInfo {
   name: name;

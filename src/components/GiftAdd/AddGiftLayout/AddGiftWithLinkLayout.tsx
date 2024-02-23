@@ -9,6 +9,7 @@ import { OpenGraphResponseType } from '../../../types/etc';
 import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
 import { AddGiftInfo } from '../../../types/gift';
 import useConvertURLtoFile from '../../../hooks/useConvertURLtoFile';
+import DuplicateModal from '../../common/Modal/DuplicateModal';
 
 interface AddGiftWithLinkLayoutProps {
   link: string;
@@ -46,6 +47,8 @@ const AddGiftWithLinkLayout = ({
   const [, setIsImageUploaded] = useState<boolean>(false);
   const [, setPreviewImage] = useState<string | null>(null);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  console.log('ISMODAL', isModalOpen);
   const checkPriceNull = (price: number | null) => {
     if (price === null) {
       return 0;
@@ -76,6 +79,9 @@ const AddGiftWithLinkLayout = ({
 
   return (
     <S.AddGiftWithLinkLayoutWrapper>
+      {isModalOpen && (
+        <DuplicateModal onConfirmClick={() => setIsModalOpen(false)}>중복된 값</DuplicateModal>
+      )}
       <LinkAddHeader
         targetDate={targetDate}
         setStep={setStep}
@@ -116,6 +122,7 @@ const AddGiftWithLinkLayout = ({
         file={file}
         setImageUrl={setImageUrl}
         setIsLoading={setIsLoading}
+        setIsModalOpen={setIsModalOpen}
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );

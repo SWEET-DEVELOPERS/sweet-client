@@ -4,9 +4,19 @@ import { AddGiftInfo, GiftPostRequestType } from '../../../types/gift';
 import { useNavigate } from 'react-router-dom';
 import { MY_GIFT_QUERY_KEY } from './useGetMyGift';
 
-export async function postNewGift(body: GiftPostRequestType) {
-  await post(`/gift`, body);
-}
+export const postNewGift = async (body: GiftPostRequestType) => {
+  try {
+    const response = await post(`/gift`, body);
+    console.log('response data', response.data);
+    return response.data;
+  } catch (error: any) {
+    console.log('확인확인', error.message);
+    if (error.message === '중복된 선물 등록입니다.') {
+      console.log('들어와~', error);
+      throw new Error(`${error}`);
+    }
+  }
+};
 
 export const usePostGift = (
   roomId: number,
@@ -14,6 +24,7 @@ export const usePostGift = (
   setStep: React.Dispatch<React.SetStateAction<number>>,
   updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void,
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>,
 ) => {
   const navigate = useNavigate();
 
@@ -31,6 +42,11 @@ export const usePostGift = (
     },
     onError: (error) => {
       console.log('선물 등록 에러!!', error.message);
+      if (error.message === 'Error: 중복된 선물 등록입니다.') {
+        console.log('잘 들어오고 있닝');
+        setIsModalOpen((prev) => !prev);
+        return error;
+      }
     },
   });
 
