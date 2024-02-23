@@ -39,6 +39,10 @@ const router = createBrowserRouter([
             path: '/error',
             element: <LoginError />,
           },
+          {
+            path: '/tournament-ranking/:giftee/:roomId',
+            element: <TournamentPage />,
+          },
         ],
       },
       {
@@ -94,10 +98,7 @@ const router = createBrowserRouter([
         path: '/tournament/:giftee/:roomId',
         element: <TournamentIntroContainer />,
       },
-      {
-        path: '/tournament-ranking/:giftee/:roomId',
-        element: <TournamentPage />,
-      },
+
       {
         path: '/add-gift/:roomId/:targetTime',
         element: (
