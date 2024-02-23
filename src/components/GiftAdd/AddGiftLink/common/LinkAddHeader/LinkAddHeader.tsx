@@ -12,6 +12,7 @@ interface LinkAddHeaderProps {
   imageUrl?: string;
   url?: string;
   updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
+  gifteeName: string;
 }
 
 const LinkAddHeader = ({
@@ -23,6 +24,7 @@ const LinkAddHeader = ({
   imageUrl,
   url,
   updateAddGiftInfo,
+  gifteeName
 }: LinkAddHeaderProps) => {
   const onClickBackBtn = () => {
     if (step === 1) {
@@ -45,7 +47,7 @@ const LinkAddHeader = ({
           cursor: 'pointer',
         }}
       />
-      <MiniTimer targetDate={targetDate} />
+      <MiniTimer targetDate={targetDate} giftee={gifteeName}/>
     </S.LinkAddHeaderWrapper>
   );
 };

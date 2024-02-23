@@ -24,7 +24,6 @@ const GiftAddPage = () => {
   const roomIdNumber = parseInt(roomId || '');
 
   const { addGiftInfo, updateAddGiftInfo } = useAddGiftContext();
-
   switch (step) {
     case 0:
       return (
@@ -35,6 +34,7 @@ const GiftAddPage = () => {
           targetDate={targetDate || ''}
           setItemNum={setItemNum}
           itemNum={itemNum}
+          // updateGifteeName={updateGifteeName}
         />
       );
 
@@ -51,6 +51,7 @@ const GiftAddPage = () => {
           setModalStatus={setModalStatus}
           addGiftInfo={addGiftInfo}
           updateAddGiftInfo={updateAddGiftInfo}
+          // gifteeName={gifteeName}
         />
       );
 
@@ -65,6 +66,7 @@ const GiftAddPage = () => {
           targetDate={targetDate || ''}
           addGiftInfo={addGiftInfo}
           updateAddGiftInfo={updateAddGiftInfo}
+          // gifteeName={gifteeName}
         />
       );
 
@@ -81,6 +83,7 @@ const GiftAddPage = () => {
           addGiftInfo={addGiftInfo}
           openGraph={openGraph}
           updateAddGiftInfo={updateAddGiftInfo}
+          // gifteeName={gifteeName}
         />
       );
   }

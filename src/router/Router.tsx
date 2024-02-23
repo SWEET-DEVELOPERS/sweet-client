@@ -22,6 +22,7 @@ import { OnboardingProvider } from '../context/Onboarding/OnboardingContext';
 import ParticipantsView from '../pages/Participants/ParticipantsView';
 import HomeMypageHeaderLayout from '../layouts/HomeMypageHeaderLayout';
 import LeftIconHeaderLayout from '../layouts/LeftIconHeaderLayout';
+import { UpdateGifteeNameProvider } from '../context/GifteeName/GifteeNameContext';
 
 const router = createBrowserRouter([
   {
@@ -103,7 +104,9 @@ const router = createBrowserRouter([
         path: '/add-gift/:roomId/:targetTime',
         element: (
           <AddGiftProvider>
-            <GiftAddPage />
+            <UpdateGifteeNameProvider>
+              <GiftAddPage />
+            </UpdateGifteeNameProvider>
           </AddGiftProvider>
         ),
       },

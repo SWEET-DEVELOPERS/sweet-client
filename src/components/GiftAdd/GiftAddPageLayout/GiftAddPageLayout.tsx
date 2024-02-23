@@ -6,6 +6,7 @@ import GiftAddPageLayoutHeader from './GiftAddPageLayoutHeader';
 import useGetMyGift from '../../../hooks/queries/gift/useGetMyGift';
 import EmptyGiftAddButtonsWrapper from '../GiftAddButtons/EmptyGiftAddButtonsWrapper';
 import useDeleteMyGift from '../../../hooks/queries/gift/useDeleteMyGift';
+import { useUpdateGifteeNameContext } from '../../../context/GifteeName/GifteeNameContext';
 
 interface GiftAddPageLayoutProps {
   roomId: string;
@@ -14,11 +15,20 @@ interface GiftAddPageLayoutProps {
   targetDate: string;
   itemNum: number;
   setItemNum: React.Dispatch<React.SetStateAction<number>>;
+  // updateGifteeName: (newInfo: string) => void;
 }
 
-const GiftAddPageLayout = ({ targetDate, roomId, setStep, setItemNum }: GiftAddPageLayoutProps) => {
+const GiftAddPageLayout = ({
+  targetDate,
+  roomId,
+  setStep,
+  setItemNum,
+  // updateGifteeName,
+}: GiftAddPageLayoutProps) => {
+  const { updateGifteeName } = useUpdateGifteeNameContext();
   const roomIdNumber = parseInt(roomId);
   const { data } = useGetMyGift({ roomId: roomIdNumber });
+  // updateGifteeName(data.data.giftee);
   setItemNum(data.data.myGiftDtoList.length);
   const parsedRoomId = parseInt(roomId);
   const { mutation } = useDeleteMyGift(parsedRoomId);
@@ -37,7 +47,7 @@ const GiftAddPageLayout = ({ targetDate, roomId, setStep, setItemNum }: GiftAddP
   return (
     <S.GiftAddPageWrapper>
       <GiftAddPageLayoutHeader title={'내가 등록한 선물'} />
-      <MiniTimer targetDate={targetDate || ''} giftee='' />
+      <MiniTimer targetDate={targetDate || ''} giftee={''} />
       <S.AddButtonsWrapper>
         {myGiftData.map((item, index) => (
           <GiftAddButtonsWrapper
