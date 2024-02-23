@@ -6,7 +6,7 @@ import usePreviewImage from '../../../hooks/common/usePreviewImage';
 import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl';
 import { useOnboardingContext } from '../../../context/Onboarding/OnboardingContext';
 import useBinarizeAndPutImage from '../../../hooks/queries/onboarding/useBinarizeAndPutImage';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 /** @TODO 추후 presigned URL 진행 */
 interface ThumbnailInputProps {
@@ -44,13 +44,6 @@ const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    console.log('step02 내 isImageUpload', isImageUploaded);
-    if (previewImage) {
-      isImageUploaded === true;
-    }
-  }, [isImageUploaded]);
 
   return (
     <>
