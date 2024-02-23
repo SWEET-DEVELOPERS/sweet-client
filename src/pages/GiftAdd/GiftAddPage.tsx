@@ -26,7 +26,6 @@ const GiftAddPage = () => {
   const roomIdNumber = parseInt(roomId || '');
 
   const { addGiftInfo, updateAddGiftInfo } = useAddGiftContext();
-
   switch (step) {
     case 0:
       return (

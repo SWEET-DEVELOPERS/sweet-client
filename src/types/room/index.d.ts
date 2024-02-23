@@ -9,11 +9,12 @@ export interface RoomInfoType {
 }
 
 export interface FriendsGiftsInfoType {
-  tournamentStartDate: tournamentStartDateType;
+  roomInfoResponseDto: roomInfoResponseDtoType;
   friendGiftDto: friendGiftDtoType[];
 }
 
-export interface tournamentStartDateType {
+export interface roomInfoResponseDtoType {
+  gifteeName: string;
   tournamentStartDate: Date;
 }
 

@@ -9,6 +9,7 @@ import { OpenGraphResponseType } from '../../../types/etc';
 import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
 import { AddGiftInfo } from '../../../types/gift';
 import useConvertURLtoFile from '../../../hooks/useConvertURLtoFile';
+import { useUpdateGifteeNameContext } from '../../../context/GifteeName/GifteeNameContext';
 
 interface AddGiftWithLinkLayoutProps {
   link: string;
@@ -20,6 +21,7 @@ interface AddGiftWithLinkLayoutProps {
   updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
   setModalStatus: React.Dispatch<React.SetStateAction<boolean>>;
   addGiftInfo: AddGiftInfo;
+  // gifteeName: string;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -33,6 +35,7 @@ const AddGiftWithLinkLayout = ({
   updateAddGiftInfo,
   setModalStatus,
   addGiftInfo,
+  // gifteeName
   setIsLoading,
 }: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(
@@ -45,6 +48,8 @@ const AddGiftWithLinkLayout = ({
   const [file, setFile] = useState<File | null>(null);
   const [, setIsImageUploaded] = useState<boolean>(false);
   const [, setPreviewImage] = useState<string | null>(null);
+
+  const { gifteeName } = useUpdateGifteeNameContext();
 
   const checkPriceNull = (price: number | null) => {
     if (price === null) {
@@ -84,6 +89,7 @@ const AddGiftWithLinkLayout = ({
         cost={priceText}
         imageUrl={imageUrl}
         updateAddGiftInfo={updateAddGiftInfo}
+        gifteeName={gifteeName}
       />
       <GiftStatusBar registeredGiftNum={1} isMargin={true} />
       <AddGiftImg
