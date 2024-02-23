@@ -39,6 +39,8 @@ export const Input = styled.input`
     color: ${({ theme }) => theme.colors.black};
     ${({ theme }) => theme.fonts.body_06};
   }
+
+  caret-color: transparent;
 `;
 
 export const IconWrapper = styled.div`
