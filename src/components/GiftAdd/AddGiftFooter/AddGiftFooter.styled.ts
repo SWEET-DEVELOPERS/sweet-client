@@ -1,16 +1,15 @@
 import styled from 'styled-components';
 
 export const AddGiftFooterWrapper = styled.footer`
-  display: flex;
-  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 2rem;
+  
   position: absolute;
-  align-items: center;
-
-  width: 37.5rem;
   bottom: 0;
-  padding: 2rem;
-  left: 50%;
-  transform: translate(-50%);
+  right: 0;
+
+  display: flex;
+  justify-content: right;
 `;
 
 export const BtnPrev = styled.button`

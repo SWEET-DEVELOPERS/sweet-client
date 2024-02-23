@@ -26,7 +26,7 @@ export const GiftHomeSummary = ({ data }: GiftHomeSummaryProps) => {
         <IcLink style={{ width: '1.7rem', height: '1.7rem' }} />
         <S.Caption02Text>초대 링크 복사</S.Caption02Text>
       </S.CopyLinkBtnWrapper>
-      <S.Body09Text>선물 토너먼트</S.Body09Text>
+      <S.Body09Text>선물 토너먼트까지</S.Body09Text>
       <CountDownTimer targetDate={new Date(data.tournamentStartDate)} />
     </S.GiftHomeSummaryWrapper>
   );
