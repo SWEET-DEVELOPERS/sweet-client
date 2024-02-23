@@ -1,10 +1,10 @@
 import * as S from './TournamentRankingTitle.style';
 import RankingImg from '../../../../assets/img/3dic_podium2.png';
-import { useLocation } from 'react-router-dom';
-import useClipboard from '../../../../hooks/useCopyClip';
 import { useEffect } from 'react';
 import { IcShare } from '../../../../assets/svg';
 import { shareKakao } from '../../../../utils/shareKakaoLink';
+// import { useLocation } from 'react-router-dom';
+// import useClipboard from '../../../../hooks/useCopyClip';
 
 interface TournamentRankingGifteeProps {
   roomId: number;
