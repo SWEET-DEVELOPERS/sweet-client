@@ -6,12 +6,17 @@ export const OnboardingFinalWrapper = styled.div`
 `;
 
 export const IconWrapper = styled.div`
-  ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'center' })}
+  ${({ theme }) => theme.mixin.flexCenter({})}
 `;
 
 export const TitleWrapper = styled.div`
-  ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'center' })}
+  ${({ theme }) => theme.mixin.flexCenter({})}
   margin-top: 1.6rem;
+`;
+
+export const ParticipantsTitleWrapper = styled.div`
+  ${({ theme }) => theme.mixin.flexCenter({})}
+  margin-top: 0.4rem;
 `;
 
 export const DetailWrapper = styled.div`
@@ -22,6 +27,16 @@ export const DetailWrapper = styled.div`
 
 export const SecondTitleWrapper = styled.div`
   ${({ theme }) => theme.mixin.flexBox({ align: 'center', justify: 'center' })}
+`;
+
+export const GifterNumberWrapper = styled.div`
+  ${({ theme }) => theme.mixin.flexCenter({})}
+  margin-top: 0.9rem;
+`;
+
+export const GifterNumberText = styled.p`
+  color: ${({ theme }) => theme.colors.G_08};
+  ${({ theme }) => theme.fonts.body_09};
 `;
 
 export const ProgressLineAndDetailContainer = styled.div`
@@ -57,7 +72,6 @@ export const InfoContainerPresent = styled.div`
   height: 6.1rem;
   flex-shrink: 0;
   border-radius: 1.2rem;
-  /* border: 1px solid var(--Gray-G-02, #EBE9EA); */
   border: 1px solid ${({ theme }) => theme.colors.G_02};
   background: #fff;
   gap: 4.6rem;
@@ -74,105 +88,18 @@ export const InfoContainerTitleWrapper = styled.div`
   gap: 2.3rem
 `;
 
-export const InfoContainerDetailWrapper = styled.div`
-  ${({ theme }) => theme.mixin.flexCenter({ direction: 'row', justify: 'flex-start' })}
-  gap: 2.3rem
-`;
-
 export const InfoContainerDetail = styled.p`
   color: ${({ theme }) => theme.colors.black};
   ${({ theme }) => theme.fonts.body_09};
 `;
 
-export const GradientImg = styled.div`
-  background-size: cover;
-  background-blend-mode: overlay;
-  /* 이렇게 height를 의도적으로 주는 방법밖에 없나... 하 */
-  height: 36.5rem;
-  width: 100%;
-  position: relative;
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
-    z-index: 1;
-  }
-`;
-
-export const TitleContainer = styled.div`
-  ${({ theme }) => theme.mixin.flexBox({ direction: 'column', align: 'flex-start' })}
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  color: white;
-  z-index: 1;
-  gap: 1.6rem;
-  margin-left: 2rem;
-`;
-
-export const InfoWrapper = styled.div`
-  ${({ theme }) =>
-    theme.mixin.inlineFlexBox({ direction: 'column', align: 'center', justify: 'center' })};
-  gap: 1.2rem;
-  width: 100%;
-  height: 12.8rem;
-  margin-top: 2.8rem;
-`;
-
-export const InfoDetailWrapper = styled.div`
-  ${({ theme }) =>
-    theme.mixin.flexBox({ direction: 'row', align: 'center', justify: 'space-between' })};
-  gap: 5rem;
-  width: 31.5rem;
-`;
-
-export const InfoTitle = styled.p`
-  color: ${({ theme }) => theme.colors.G_07};
-  ${({ theme }) => theme.fonts.body_10};
-`;
-
-export const InfoDetail = styled.p`
-  color: ${({ theme }) => theme.colors.black};
-  ${({ theme }) => theme.fonts.body_07};
-`;
-
-export const KakaoLinkCopyBtn = styled.div`
-  ${({ theme }) =>
-    theme.mixin.flexCenter({ direction: 'row', align: 'center', justify: 'center' })};
-  width: 16.3rem;
-  padding: 1.5rem 2.2rem 1.6rem 2.2rem;
-  gap: 1rem;
-  border-radius: 10rem;
-  border: none;
-  background: #fee500;
-  color: ${({ theme }) => theme.colors.black};
-  ${({ theme }) => theme.fonts.body_09};
-  z-index: 1;
-`;
-
 export const BtnWrapper = styled.div`
-  ${({ theme }) =>
-    theme.mixin.flexCenter({ direction: 'row', align: 'center', justify: 'center' })};
-  color: ${({ theme }) => theme.colors.black};
-  gap: 1.2rem;
-  width: 100%;
-  margin-top: 1.7rem;
+  margin-top: 3.2rem;
 `;
 
-export const LinkCopyBtn = styled.button`
-  ${({ theme }) =>
-    theme.mixin.flexCenter({ direction: 'row', align: 'center', justify: 'center' })};
-  width: 16.3rem;
-  padding: 1.5rem 2.2rem 1.6rem 2.2rem;
-  gap: 1rem;
-  border-radius: 10rem;
-  border: none;
-  background: ${({ theme }) => theme.colors.G_02};
-  color: ${({ theme }) => theme.colors.black};
-  ${({ theme }) => theme.fonts.body_09};
+export const ImageUrlWrapper = styled.img`
+  width: 6.4rem;
+  height: 6.4rem;
+  border-radius: 5.3rem;
+  background-color: pink;
 `;
