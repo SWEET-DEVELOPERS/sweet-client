@@ -1,22 +1,22 @@
 import * as S from './ParticipantsView.style';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-// import { IcKakoLarge } from '../../assets/svg';
 import OnboardingFinalHeader from '../../components/OnBoardingSteps/Step06/OnboardingFinalHeader';
 import Title from '../../components/common/title/Title';
 import useGetGifteeInfo from '../../hooks/queries/onboarding/useGetGifteeInfo';
-// import { kakaoURL } from '../../utils/login';
+import { kakaoURL } from '../../utils/login';
 import OnBoardingBtn from '../../components/OnBoardingSteps/onboardingBtn/OnBoardingBtn';
-// import { useKakaoShare } from '../../hooks/queries/onboarding/useKakaoShare';
-// import useClipboard from '../../hooks/useCopyClip';
+import { useKakaoShare } from '../../hooks/queries/onboarding/useKakaoShare';
+import useClipboard from '../../hooks/useCopyClip';
 import usePostParticipation from '../../hooks/queries/onboarding/usePostParticipation';
 import btnKakao from '../../assets/img/btn_kakao.png';
+import { IcKakaoShare, IcLink } from '../../assets/svg';
 
 const ParticipantsView = () => {
   const { invitationCode } = useParams<{ invitationCode?: string }>();
   const { data } = useGetGifteeInfo(invitationCode || null);
   const [isToken, setIsToken] = useState<boolean>();
-  // const { handleCopyToClipboard } = useClipboard();
+  const { handleCopyToClipboard } = useClipboard();
   const { mutation } = usePostParticipation();
   const navigate = useNavigate();
 
@@ -86,20 +86,6 @@ const ParticipantsView = () => {
 
   useEffect(() => {
     setIsToken(localStorage.getItem('EXIT_LOGIN_TOKEN') !== null);
-    // if (localStorage.getItem('EXIT_LOGIN_TOKEN') === null) {
-    //   setIsToken(false);
-    //   console.log('로컬스토리지 확인', localStorage.getItem('EXIT_LOGIN_TOKEN'));
-    //   console.log('isTOken', isToken);
-    //   console.log('if');
-    // } else {
-    //   console.log(
-    //     'else 로컬스토리지 확인(로컬스토리지 있어야함)',
-    //     localStorage.getItem('EXIT_LOGIN_TOKEN'),
-    //   );
-    //   setIsToken(true);
-    //   console.log('isTOken', isToken);
-    //   console.log('else');
-    // }
 
     console.log('isTOken', isToken);
   }, [isToken]);
@@ -167,65 +153,33 @@ const ParticipantsView = () => {
       </S.InfoWrapper>
       {/* 수정된 부분 시작 */}
       <S.BtnWrapper>
-        <img src={btnKakao} />
+        <>
+          {isToken === false ? (
+            <img src={btnKakao} onClick={() => window.location.replace(kakaoURL)} />
+          ) : (
+            <>
+              <S.LinkCopyBtn
+                onClick={
+                  () =>
+                    // todo 추후 배포로 변경
+                    handleCopyToClipboard(`http://sweetgift.kr/result/${data.data.invitationCode}`)
+                  // handleCopyToClipboard(`http://localhost:5173/result/${data.data.invitationCode}`)
+                }
+              >
+                <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
+                링크 복사
+              </S.LinkCopyBtn>
+              <S.KakaoLinkCopyBtn
+                onClick={() => useKakaoShare(data.data.invitationCode, data.data.gifteeName)}
+              >
+                <IcKakaoShare style={{ width: '1.8rem', height: '1.8rem' }} />
+                카카오톡 공유
+              </S.KakaoLinkCopyBtn>
+            </>
+          )}
+        </>
       </S.BtnWrapper>
     </>
   );
 };
 export default ParticipantsView;
-
-// <>
-//   {isToken === false ? (
-//     <IcKakoLarge onClick={() => window.location.replace(kakaoURL)} />
-//   ) : (
-//     <>
-//       <S.LinkCopyBtn
-//         onClick={
-//           () =>
-//             // todo 추후 배포로 변경
-//             handleCopyToClipboard(
-//               `http://sweetgift.vercel.app/result/${data.data.invitationCode}`,
-//             )
-//           // handleCopyToClipboard(`http://localhost:5173/result/${data.data.invitationCode}`)
-//         }
-//       >
-//         <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
-//         링크 복사
-//       </S.LinkCopyBtn>
-//       <S.KakaoLinkCopyBtn
-//         onClick={() => useKakaoShare(data.data.invitationCode, data.data.gifteeName)}
-//       >
-//         <IcKakaoShare style={{ width: '1.8rem', height: '1.8rem' }} />
-//         카카오톡 공유
-//       </S.KakaoLinkCopyBtn>
-//     </>
-//   )}
-// </>
-
-// <>
-//   {isToken === false ? (
-//     <IcKakoLarge onClick={() => window.location.replace(kakaoURL)} />
-//   ) : (
-//     <>
-//       <S.LinkCopyBtn
-//         onClick={
-//           () =>
-//             // todo 추후 배포로 변경
-//             handleCopyToClipboard(
-//               `http://sweetgift.vercel.app/result/${data.data.invitationCode}`,
-//             )
-//           // handleCopyToClipboard(`http://localhost:5173/result/${data.data.invitationCode}`)
-//         }
-//       >
-//         <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />
-//         링크 복사
-//       </S.LinkCopyBtn>
-//       <S.KakaoLinkCopyBtn
-//         onClick={() => useKakaoShare(data.data.invitationCode, data.data.gifteeName)}
-//       >
-//         <IcKakaoShare style={{ width: '1.8rem', height: '1.8rem' }} />
-//         카카오톡 공유
-//       </S.KakaoLinkCopyBtn>
-//     </>
-//   )}
-// </>
