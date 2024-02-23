@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const OnboardingFinalWrapper = styled.div`
-  ${({ theme }) => theme.mixin.flexBox({ direction: 'column', align: 'center', justify: 'center' })}
+  ${({ theme }) => theme.mixin.flexCenter({})}
   width: 100%;
 `;
 

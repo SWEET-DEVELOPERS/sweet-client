@@ -47,7 +47,6 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
 
   return (
     <>
-      {/* <HeaderLayout /> */}
       <S.OnboardingFinalWrapper>
         <div>
           <S.IconWrapper>

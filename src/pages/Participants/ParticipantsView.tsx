@@ -10,6 +10,7 @@ import OnBoardingBtn from '../../components/OnBoardingSteps/onboardingBtn/OnBoar
 import { useKakaoShare } from '../../hooks/queries/onboarding/useKakaoShare';
 import useClipboard from '../../hooks/useCopyClip';
 import usePostParticipation from '../../hooks/queries/onboarding/usePostParticipation';
+import { PAGE } from '../../core/routes';
 
 const ParticipantsView = () => {
   const { invitationCode } = useParams<{ invitationCode?: string }>();
@@ -84,8 +85,6 @@ const ParticipantsView = () => {
    * token의 값이 있든 없든 항상 토큰이 있는 값을 보여주고 있음. 처리 필요 */
 
   useEffect(() => {
-
-
     setIsToken(localStorage.getItem('EXIT_LOGIN_TOKEN') !== null);
     // if (localStorage.getItem('EXIT_LOGIN_TOKEN') === null) {
     //   setIsToken(false);
@@ -102,9 +101,6 @@ const ParticipantsView = () => {
     //   console.log('else');
     // }
   }, []);
-
- 
-
 
   const handleClickRoom = async (body: string | null) => {
     console.log('입장 버튼 클릭! 그리고 초대 코드', invitationCode);
@@ -175,8 +171,11 @@ const ParticipantsView = () => {
           ) : (
             <>
               <S.LinkCopyBtn
-                onClick={() =>
-                  handleCopyToClipboard(`http://localhost:5173/result/${data.data.invitationCode}`)
+                /**@todo 추후 배포페이지로 변경 */
+                onClick={
+                  () =>
+                    handleCopyToClipboard(`${PAGE.LOCAL_RESULT_PAGE}${data.data.invitationCode}`)
+                  // handleCopyToClipboard(`${PAGE.DEPLOY_RESULT_PAGE}${data.data.invitationCode}`)
                 }
               >
                 <IcLink style={{ width: '1.8rem', height: '1.8rem' }} />

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import BtnFill from '../../common/Button/Cta/fill/BtnFill';
 import useClipboard from '../../../hooks/useCopyClip';
 import { useNavigate } from 'react-router-dom';
+import { PAGE } from '../../../core/routes';
 
 interface OnboardingFinalFooterProps {
   invitationCode: string;
@@ -26,8 +27,8 @@ const OnboardingFinalFooter = (props: OnboardingFinalFooterProps) => {
           border: '1px solid #FF2176',
         }}
         /**@TODO 확인을 위한 local 주소로 공유. 추후에 배포페이지로 변경하기 */
-        onClick={() => handleCopyToClipboard(`http://localhost:5173/result/${invitationCode}`)}
-        // handleCopyToClipboard(`http://sweetgift.vercel.app/result/${invitationCode}`
+        onClick={() => handleCopyToClipboard(`${PAGE.LOCAL_RESULT_PAGE}${invitationCode}`)}
+        // handleCopyToClipboard(`${PAGE.DEPLOY_RESULT_PAGE}${invitationCode}`
       >
         공유하기
       </BtnFill>
