@@ -19,7 +19,9 @@ const EditRoom = () => {
     <S.EditRoomWrapper>
       <DetailHeader />
       <S.TextWrapper>
-        <S.Text>{roomGifteeData?.gifterNumber || 0}명이</S.Text>
+        <S.Text>
+          <span>{roomGifteeData?.gifterNumber || 0}명</span>이
+        </S.Text>
         <S.Text>{roomGifteeData?.gifteeName || ''}님을 위한</S.Text>
         <S.Text>선물을 준비하고 있어요</S.Text>
       </S.TextWrapper>

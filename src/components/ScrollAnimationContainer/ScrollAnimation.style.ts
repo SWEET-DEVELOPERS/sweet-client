@@ -3,23 +3,13 @@ import styled, { keyframes } from 'styled-components';
 const frameInAnimation = keyframes`
   0% {
     opacity: 0;
-    transform: translateX(-100%);
-  }
-
-  100%{
-    opacity: 1;
-    transform: translateX(-5%);
+    transform: translateX(-1rem);
   }
 `;
 const frameInAnimationLeft = keyframes`
   0% {
     opacity: 0;
-    transform: translateX(100%);
-  }
-
-  100%{
-    opacity: 1;
-    transform: translate(25%);
+    transform: translateX(1.5rem);
   }
 `;
 const frameInAnimationUp = keyframes`
@@ -37,7 +27,6 @@ const frameInAnimationUp = keyframes`
 export const Container = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ direction: 'column' })};
   max-width: 37.5rem;
-  margin: 2.4rem;
 
   &.frame-in {
     animation: ${frameInAnimation} 2s forwards;
@@ -45,9 +34,8 @@ export const Container = styled.div`
 `;
 
 export const LeftContainer = styled.div`
-  ${({ theme: { mixin } }) => mixin.flexBox({ direction: 'column' })};
+  ${({ theme: { mixin } }) => mixin.flexBox({ justify: 'flex-end' })};
   max-width: 37.5rem;
-  margin-top: 4.9rem;
 
   &.frame-in {
     animation: ${frameInAnimationLeft} 2s forwards;
@@ -55,10 +43,7 @@ export const LeftContainer = styled.div`
 `;
 
 export const UpContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  ${({ theme: { mixin } }) => mixin.flexCenter({})};
 
   &.frame-in {
     animation: ${frameInAnimationUp} 2s forwards;

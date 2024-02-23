@@ -20,6 +20,7 @@ interface AddGiftWithLinkLayoutProps {
   openGraph: OpenGraphResponseType;
   updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
   addGiftInfo: AddGiftInfo;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // 직접 입력 화면
@@ -31,7 +32,9 @@ export const AddGiftWithoutLinkLayout = ({
   setLinkText,
   targetDate,
   updateAddGiftInfo,
+  modalStatus,
   addGiftInfo,
+  setIsLoading,
 }: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(
     !!addGiftInfo.name && !!addGiftInfo.cost && !!addGiftInfo.url && !!addGiftInfo.imageUrl,
@@ -43,7 +46,7 @@ export const AddGiftWithoutLinkLayout = ({
   const [file, setFile] = useState<File | null>(null);
   const [, setIsImageUploaded] = useState<boolean>(false);
   const [, setPreviewImage] = useState<string | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(modalStatus);
 
   const checkPriceNull = (price: number | null) => {
     if (price === null) {
@@ -55,7 +58,7 @@ export const AddGiftWithoutLinkLayout = ({
 
   // 모달 확인 클릭 버튼
   const handleClickConfirmClick = () => {
-    setIsModalOpen(!isModalOpen);
+    setIsModalOpen(false);
     setStep(3);
   };
 
@@ -109,6 +112,7 @@ export const AddGiftWithoutLinkLayout = ({
         updateAddGiftInfo={updateAddGiftInfo}
         file={file}
         setImageUrl={setImageUrl}
+        setIsLoading={setIsLoading}
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );

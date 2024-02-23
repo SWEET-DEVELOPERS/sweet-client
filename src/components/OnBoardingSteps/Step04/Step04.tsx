@@ -5,9 +5,9 @@ import { DayPicker } from 'react-day-picker';
 import { format } from 'date-fns';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import TimePicker from './TimePicker';
-import useCalendarOpen from '../../../hooks/onboarding/useCalendarOpen';
 import useTimerOpen from '../../../hooks/onboarding/useTimerOpen';
 import DatePicker from './DatePicker';
+import useTournamentScheduleCalendar from '../../../hooks/onboarding/useTournamentScheduleCalendar';
 
 interface SetTournamentScheduleProps {
   onNext: VoidFunction;
@@ -15,11 +15,21 @@ interface SetTournamentScheduleProps {
 
 const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
   const { onNext } = props;
-  const { isOpen, selectedDate, disabledDays, openCalendar, handleDateSelect } = useCalendarOpen();
-  const { isTimerOpen, selectedTime, handleTimerSelect } = useTimerOpen();
+  const { isOpen, disabledDays, openCalendar, handleDateSelect, onboardingInfo } =
+    useTournamentScheduleCalendar();
+  const { isTimerOpen, selectedTime, setSelectedTime, handleTimerSelect } = useTimerOpen();
+  const isActivated = !!onboardingInfo.tournamentStartDate && !!selectedTime;
 
-  const isActivated = selectedDate !== null && selectedTime !== '';
-  const selectedDateValue = selectedDate ? format(selectedDate, 'y년 M월 d일') : '';
+  /**@see 시간의 상태 값을 뒤로가기 시 저장하여 보여줄 수 있지만 현재는 유저의 클릭을 캘린더 먼저로 의도하기 위한 조치를 진행하였습니다  */
+  // const [initialTime] = useState(
+  //   onboardingInfo.tournamentStartDate
+  //     ? format(new Date(onboardingInfo.tournamentStartDate), 'HH:mm')
+  //     : '',
+  // );
+
+  // useEffect(() => {
+  //   setSelectedTime(initialTime);
+  // }, []);
 
   return (
     <>
@@ -34,7 +44,11 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
         <S.TextField>
           <S.Input
             placeholder='날짜를 선택해주세요'
-            value={selectedDateValue}
+            value={
+              onboardingInfo.tournamentStartDate
+                ? format(new Date(onboardingInfo.tournamentStartDate), 'yyyy년 M월 d일')
+                : ''
+            }
             onChange={(e) => e.preventDefault()}
           />
         </S.TextField>

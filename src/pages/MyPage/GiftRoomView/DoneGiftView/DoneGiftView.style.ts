@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const DoneGiftViewWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  ${({ theme: { mixin } }) => mixin.flexBox({ direction: 'column' })};
   width: 100%;
 `;
 

@@ -14,15 +14,8 @@ interface GiftDeliveryProps {
 const GiftDelivery = (props: GiftDeliveryProps) => {
   const { onNext } = props;
 
-  const {
-    isOpen,
-    selectedDate,
-    isActivated,
-    disabledDays,
-    openCalendar,
-    handleDateSelect,
-    onboardingInfo,
-  } = useCalendarOpen();
+  const { isOpen, isActivated, disabledDays, openCalendar, handleDateSelect, onboardingInfo } =
+    useCalendarOpen();
 
   return (
     <>
@@ -35,7 +28,9 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
       <S.Wrapper $hasContent={isOpen} onClick={openCalendar}>
         <S.Input
           placeholder='날짜를 선택해주세요'
-          value={selectedDate ? format(selectedDate, 'y년 M월 d일') : ''}
+          value={
+            onboardingInfo.deliveryDate ? format(onboardingInfo.deliveryDate, 'y년 M월 d일') : ''
+          }
           onChange={(e) => e.preventDefault()}
         />
         <S.IconWrapper>
