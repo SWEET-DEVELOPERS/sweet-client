@@ -165,6 +165,7 @@ const ParticipantsView = () => {
               invitationCode={data.data.invitationCode}
               roomId={data.data.roomId}
               onClick={() => handleClickRoom}
+              giftee={data.data.gifteeName}
             />
           ) : (
             <S.BtnWrapper>

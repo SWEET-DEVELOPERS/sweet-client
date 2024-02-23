@@ -134,6 +134,7 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
             invitationCode={invitationCode}
             roomId={roomId}
             onClick={navigateRoom}
+            giftee={onboardingInfo.gifteeName}
           />
         </S.OnboardingFinalWrapper>
       </div>

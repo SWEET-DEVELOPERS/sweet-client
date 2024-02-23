@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 import BtnFill from '../../common/Button/Cta/fill/BtnFill';
-import useClipboard from '../../../hooks/useCopyClip';
-import { PAGE } from '../../../core/routes';
+// import useClipboard from '../../../hooks/useCopyClip';
+// import { PAGE } from '../../../core/routes';
+import useHandleShare from '../../../hooks/common/useHandleShare';
 
 interface OnboardingFinalFooterProps {
   invitationCode: string;
   roomId?: number;
   onClick: () => void;
+  giftee?: string;
 }
 const OnboardingFinalFooter = (props: OnboardingFinalFooterProps) => {
-  const { invitationCode, onClick } = props;
-  const { handleCopyToClipboard } = useClipboard();
+  const { onClick, giftee } = props;
+  // const { handleCopyToClipboard } = useClipboard();
 
   return (
     <OnboardingFinalFooterWrapper>
@@ -24,7 +26,11 @@ const OnboardingFinalFooter = (props: OnboardingFinalFooterProps) => {
         /**@TODO 확인을 위한 local 주소로 공유. 추후에 배포페이지로 변경하기 */
         onClick={() =>
           // handleCopyToClipboard(`${PAGE.LOCAL_RESULT_PAGE}${invitationCode}`)
-          handleCopyToClipboard(`${PAGE.DEPLOY_RESULT_PAGE}${invitationCode}`)
+          // handleCopyToClipboard(`${PAGE.DEPLOY_RESULT_PAGE}${invitationCode}`)
+          useHandleShare(
+            `${giftee}님을 위한 선물방이 개설됐어요`,
+            `${giftee}님을 위한 선물방이 개설됐어요`,
+          )
         }
       >
         공유하기
