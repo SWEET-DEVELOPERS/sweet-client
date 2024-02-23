@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes } from 'react';
 import styled, { css } from 'styled-components';
 
 type WrapperProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  isSelected?: boolean;
+  $isSelected?: boolean;
 };
 
 export const Wrapper = styled.button<WrapperProps>`
@@ -23,8 +23,8 @@ export const Wrapper = styled.button<WrapperProps>`
     background-color: ${({ theme: { colors } }) => colors.white};
   }
 
-  ${({ isSelected, theme: { colors } }) =>
-    isSelected &&
+  ${({ $isSelected, theme: { colors } }) =>
+    $isSelected &&
     css`
       /* 선택된 상태에서의 스타일 */
       border: 1px solid ${colors.P_06};
