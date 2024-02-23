@@ -5,7 +5,6 @@ interface AddGiftInfoContext {
   addGiftInfo: AddGiftInfo;
   updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
 }
-
 const initialAddGiftInfo: AddGiftInfo = {
   name: '',
   cost: 0,

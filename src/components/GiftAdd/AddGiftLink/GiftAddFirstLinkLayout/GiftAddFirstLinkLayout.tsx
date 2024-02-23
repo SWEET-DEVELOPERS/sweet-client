@@ -8,6 +8,7 @@ import Title from '../../../common/title/Title';
 import usePostOpenGraph from '../../../../hooks/queries/etc/usePostOpengraph';
 import { OpenGraphResponseType } from '../../../../types/etc';
 import { AddGiftInfo } from '../../../../types/gift';
+import { useUpdateGifteeNameContext } from '../../../../context/GifteeName/GifteeNameContext';
 
 interface GiftAddFirstLinkLayoutProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
@@ -20,6 +21,7 @@ interface GiftAddFirstLinkLayoutProps {
   setModalStatus: React.Dispatch<React.SetStateAction<boolean>>;
   updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
   addGiftInfo: AddGiftInfo;
+  // gifteeName: string;
 }
 
 const GiftAddFirstLinkLayout = ({
@@ -32,10 +34,14 @@ const GiftAddFirstLinkLayout = ({
   setModalStatus,
   updateAddGiftInfo,
   addGiftInfo,
+  // gifteeName
 }: GiftAddFirstLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(!!addGiftInfo.url);
   const [text, setText] = useState<string>(addGiftInfo.url);
   const { mutation } = usePostOpenGraph({ body: { BaseURL: text } });
+
+  const { gifteeName } = useUpdateGifteeNameContext();
+
 
   const fetchOpenGraph = (BaseUrl: string) => {
     try {
@@ -78,6 +84,7 @@ const GiftAddFirstLinkLayout = ({
         step={step}
         url={text}
         updateAddGiftInfo={updateAddGiftInfo}
+        gifteeName={gifteeName}
       />
       <GiftStatusBar registeredGiftNum={itemNum} isMargin={true} />
       <Title>
