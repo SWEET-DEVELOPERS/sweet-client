@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useOnboardingContext } from '../../context/Onboarding/OnboardingContext';
 
 const useTournamentScheduleCalendar = () => {
