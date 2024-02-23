@@ -9,6 +9,7 @@ import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
 import { OpenGraphResponseType } from '../../../types/etc';
 import { AddGiftInfo } from '../../../types/gift';
 import { useUpdateGifteeNameContext } from '../../../context/GifteeName/GifteeNameContext';
+import DuplicateModal from '../../common/Modal/DuplicateModal';
 
 interface AddGiftWithLinkLayoutProps {
   roomId: number;
@@ -38,7 +39,7 @@ export const AddGiftWithoutLinkLayout = ({
   modalStatus,
   addGiftInfo,
   setIsLoading,
-  // isDuplicateModalOpen,
+  isDuplicateModalOpen,
   setIsDuplicateModalOpen,
 }: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(
@@ -77,6 +78,12 @@ export const AddGiftWithoutLinkLayout = ({
           <br />
           불러올 수 없어요 <br />
         </Modal>
+      )}
+      {isDuplicateModalOpen && (
+        <DuplicateModal onConfirmClick={() => setIsDuplicateModalOpen(false)}>
+          선물방에 이미
+          <br /> 등록된 상품이에요
+        </DuplicateModal>
       )}
       <LinkAddHeader
         targetDate={targetDate}

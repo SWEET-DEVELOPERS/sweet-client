@@ -52,8 +52,6 @@ const AddGiftWithLinkLayout = ({
   const [, setIsImageUploaded] = useState<boolean>(false);
   const [, setPreviewImage] = useState<string | null>(null);
 
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // console.log('ISMODAL', isModalOpen);
   const { gifteeName } = useUpdateGifteeNameContext();
 
   const checkPriceNull = (price: number | null) => {
@@ -87,7 +85,10 @@ const AddGiftWithLinkLayout = ({
   return (
     <S.AddGiftWithLinkLayoutWrapper>
       {isModalOpen && (
-        <DuplicateModal onConfirmClick={() => setIsModalOpen(false)}>중복된 값</DuplicateModal>
+        <DuplicateModal onConfirmClick={() => setIsModalOpen(false)}>
+          선물방에 이미
+          <br /> 등록된 상품이에요
+        </DuplicateModal>
       )}
       <LinkAddHeader
         targetDate={targetDate}
