@@ -23,7 +23,7 @@ export const Input = styled.input<{ hasContent?: boolean }>`
   height: 3.5rem;
   border: none;
   outline: none;
-  color: ${({ theme }) => theme.colors.G_07};
+  color: ${({ theme }) => theme.colors.black};
   ${({ theme }) => theme.fonts.body_06};
 
   input::placeholder {
