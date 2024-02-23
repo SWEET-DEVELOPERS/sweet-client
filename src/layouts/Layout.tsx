@@ -1,7 +1,7 @@
 import { useMobile } from '../hooks/useMobile';
 import { Outlet } from 'react-router-dom';
 
-export default function Layout() {
+const Layout = () => {
   useMobile();
 
   return (
@@ -9,4 +9,6 @@ export default function Layout() {
       <Outlet />
     </>
   );
-}
+};
+
+export default Layout;

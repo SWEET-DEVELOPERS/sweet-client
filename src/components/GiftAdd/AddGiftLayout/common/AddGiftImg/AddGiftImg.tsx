@@ -37,7 +37,7 @@ const AddGiftImg = ({
           <S.IcEmptyThumbnailWrapper>
             <input
               type='file'
-              accept='image/*'
+              accept='image/jpeg, image/png, image/gif, image/heic '
               style={{ display: 'none' }}
               id='imgInput'
               onChange={handleImageUpload}
@@ -45,7 +45,7 @@ const AddGiftImg = ({
             <label htmlFor='imgInput'>
               {imageUrl ? (
                 <S.ThumbnailWrapper>
-                  <img
+                  <S.ImgPreview
                     src={openGraph?.image ? openGraph.image : imageUrl}
                     alt='preview'
                     style={{

@@ -36,7 +36,6 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
     <>
       <OnboardingFinalHeader />
       <S.OnboardingFinalWrapper>
-        {/* TODO presignedUrl이 null 또는 빈 스트링일 경우 엠티 뷰 보이기 / 값이 있으면 저장되어있는 imageUrl 보이기 */}
         <div>
           <S.GradientImg>
             <img src={onboardingInfo.imageUrl} style={{ width: '100%' }} />

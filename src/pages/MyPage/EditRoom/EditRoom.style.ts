@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const EditRoomWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ direction: 'column' })};
-  padding: 2rem;
+  padding: 6.9rem 0;
 `;
 
 export const CardWrapper = styled.div`
@@ -13,11 +13,12 @@ export const CardWrapper = styled.div`
 
 export const TextWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.inlineFlexBox({ direction: 'column' })};
+  padding: 0 2rem;
 `;
 
 export const Text = styled.div`
   ${({ theme: { fonts } }) => fonts.heading_01};
-  > p {
+  > span {
     color: ${({ theme: { colors } }) => colors.P_06};
   }
 `;
