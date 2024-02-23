@@ -21,7 +21,6 @@ const usePreviewImage = () => {
       setIsImageUploaded(!!selectedFiles?.[0]);
 
       setImageName(imageName);
-      // console.log('handleImageUpload newformData', newFormData);
     }
   };
 

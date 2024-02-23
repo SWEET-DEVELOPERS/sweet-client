@@ -1,8 +1,8 @@
 import { format } from 'date-fns';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useOnboardingContext } from '../../context/Onboarding/OnboardingContext';
 
-const useCalendarOpen = () => {
+const useTournamentScheduleCalendar = () => {
   const { onboardingInfo, updateOnboardingInfo } = useOnboardingContext();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -23,15 +23,12 @@ const useCalendarOpen = () => {
       `${padTwoDigits(time.getHours())}:${padTwoDigits(time.getMinutes())}:${padTwoDigits(
         time.getSeconds(),
       )}`;
-    updateOnboardingInfo({ deliveryDate: formattedDate });
+
+    updateOnboardingInfo({ tournamentStartDate: formattedDate });
 
     setSelectedDate(date);
     setIsOpen(false);
   };
-
-  useEffect(() => {
-    setIsActivated(Boolean(onboardingInfo.deliveryDate));
-  }, [onboardingInfo.deliveryDate]);
 
   return {
     isOpen,
@@ -46,4 +43,4 @@ const useCalendarOpen = () => {
   };
 };
 
-export default useCalendarOpen;
+export default useTournamentScheduleCalendar;
