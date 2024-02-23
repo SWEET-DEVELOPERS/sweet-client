@@ -20,7 +20,6 @@ interface GiftAddPageLayoutProps {
 }
 
 const GiftAddPageLayout = ({ targetDate, roomId, setStep, setItemNum }: GiftAddPageLayoutProps) => {
-  // const { updateGifteeName } = useUpdateGifteeNameContext();
   const roomIdNumber = parseInt(roomId);
   const { data } = useGetMyGift({ roomId: roomIdNumber });
 
