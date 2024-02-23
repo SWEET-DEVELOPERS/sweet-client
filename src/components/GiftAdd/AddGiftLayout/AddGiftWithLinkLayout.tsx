@@ -9,6 +9,8 @@ import { OpenGraphResponseType } from '../../../types/etc';
 import LinkAddHeader from '../AddGiftLink/common/LinkAddHeader/LinkAddHeader';
 import { AddGiftInfo } from '../../../types/gift';
 import useConvertURLtoFile from '../../../hooks/useConvertURLtoFile';
+import DuplicateModal from '../../common/Modal/DuplicateModal';
+import { useUpdateGifteeNameContext } from '../../../context/GifteeName/GifteeNameContext';
 
 interface AddGiftWithLinkLayoutProps {
   link: string;
@@ -21,6 +23,8 @@ interface AddGiftWithLinkLayoutProps {
   setModalStatus: React.Dispatch<React.SetStateAction<boolean>>;
   addGiftInfo: AddGiftInfo;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  isModalOpen: boolean;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const AddGiftWithLinkLayout = ({
@@ -34,6 +38,8 @@ const AddGiftWithLinkLayout = ({
   setModalStatus,
   addGiftInfo,
   setIsLoading,
+  isModalOpen,
+  setIsModalOpen,
 }: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(
     !!addGiftInfo.name && !!addGiftInfo.cost && !!addGiftInfo.imageUrl,
@@ -45,6 +51,8 @@ const AddGiftWithLinkLayout = ({
   const [file, setFile] = useState<File | null>(null);
   const [, setIsImageUploaded] = useState<boolean>(false);
   const [, setPreviewImage] = useState<string | null>(null);
+
+  const { gifteeName } = useUpdateGifteeNameContext();
 
   const checkPriceNull = (price: number | null) => {
     if (price === null) {
@@ -76,6 +84,12 @@ const AddGiftWithLinkLayout = ({
 
   return (
     <S.AddGiftWithLinkLayoutWrapper>
+      {isModalOpen && (
+        <DuplicateModal onConfirmClick={() => setIsModalOpen(false)}>
+          선물방에 이미
+          <br /> 등록된 상품이에요
+        </DuplicateModal>
+      )}
       <LinkAddHeader
         targetDate={targetDate}
         setStep={setStep}
@@ -84,6 +98,7 @@ const AddGiftWithLinkLayout = ({
         cost={priceText}
         imageUrl={imageUrl}
         updateAddGiftInfo={updateAddGiftInfo}
+        gifteeName={gifteeName}
       />
       <GiftStatusBar registeredGiftNum={1} isMargin={true} />
       <AddGiftImg
@@ -116,6 +131,7 @@ const AddGiftWithLinkLayout = ({
         file={file}
         setImageUrl={setImageUrl}
         setIsLoading={setIsLoading}
+        setIsModalOpen={setIsModalOpen}
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );
