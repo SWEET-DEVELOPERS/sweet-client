@@ -5,7 +5,7 @@ interface TournamentStartButtonProps {
   onClick: () => void;
 }
 
-function TournamentDeleteButton({ onClick }: TournamentStartButtonProps) {
+const TournamentDeleteButton = ({ onClick }: TournamentStartButtonProps) => {
   return (
     <S.TournamentStartButtonWrapper>
       <BtnFill
@@ -21,6 +21,6 @@ function TournamentDeleteButton({ onClick }: TournamentStartButtonProps) {
       </BtnFill>
     </S.TournamentStartButtonWrapper>
   );
-}
+};
 
 export default TournamentDeleteButton;
