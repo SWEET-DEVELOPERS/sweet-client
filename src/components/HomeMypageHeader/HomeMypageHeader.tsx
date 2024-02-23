@@ -29,7 +29,7 @@ const HomeMypageHeader = () => {
   };
 
   return (
-    <S.HomeMypageHeaderWrapper>
+    <S.HomeMypageHeaderWrapper style={{ backgroundColor: isTop ? 'transparent' : 'white' }}>
       <IcHome style={{ width: '4.3rem' }} onClick={handleSettingHomeIcon} />
       {userImg ? (
         <S.UserProfileImg src={userImg} onClick={handleMyPageIcon} />
