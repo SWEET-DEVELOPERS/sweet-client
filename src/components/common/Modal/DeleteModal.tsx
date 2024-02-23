@@ -15,7 +15,10 @@ const DeleteModal = ({ children, onClickDelete, onClickCancel, clickedItem }: De
     <>
       <S.Overlay />
       <S.DeleteModalWrapper>
-        <IcCancel style={{ width: '2.4rem', color: 'black' }} onClick={onClickCancel} />
+        <IcCancel
+          style={{ width: '2.4rem', position: 'absolute', top: '1.6rem', right: '1.6rem' }}
+          onClick={onClickCancel}
+        />
         <S.DeleteModalContent>{children}</S.DeleteModalContent>
         <S.BtnWrapper>
           <BtnMedium

@@ -10,16 +10,15 @@ export const Overlay = styled.div`
   z-index: 999;
 `;
 
-export const DeleteModalWrapper = styled.div`
+export const DuplicateModalWrapper = styled.div`
   display: flex;
-  justify-content: center;
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
   position: fixed;
 
   width: 28.3rem;
-  height: 19.3rem;
+  height: 19.5rem;
   padding: 4.3rem 3.5rem 2rem 3.5rem;
 
   top: 50%;
@@ -32,11 +31,7 @@ export const DeleteModalWrapper = styled.div`
   z-index: 1000;
 `;
 
-export const DeleteModalContent = styled.div`
+export const DuplicateModalContent = styled.div`
   text-align: center;
   ${({ theme }) => theme.fonts.body_03};
-`;
-
-export const BtnWrapper = styled.div`
-  display: flex;
 `;
