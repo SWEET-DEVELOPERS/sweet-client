@@ -14,16 +14,16 @@ export const useKakaoShare = (invitationCode: string, gifteeName: string) => {
         description: '스윗과 함께 선물을 준비해보세요!',
         imageUrl: 'https://sweet-gift-bucket.s3.ap-northeast-2.amazonaws.com/invitation.png',
         link: {
-          mobileWebUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + `/result/${invitationCode}`,
-          webUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + `/result/${invitationCode}`,
+          mobileWebUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + `result/${invitationCode}`,
+          webUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + `result/${invitationCode}`,
         },
       },
       buttons: [
         {
           title: '선물방 참여하기',
           link: {
-            mobileWebUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + `/result/${invitationCode}`,
-            webUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + `/result/${invitationCode}`,
+            mobileWebUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + `result/${invitationCode}`,
+            webUrl: import.meta.env.VITE_APP_BASE_URL_KAKAO + `result/${invitationCode}`,
           },
         },
       ],
