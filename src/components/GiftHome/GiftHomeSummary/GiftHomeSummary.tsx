@@ -26,7 +26,10 @@ export const GiftHomeSummary = ({ data }: GiftHomeSummaryProps) => {
         <S.Caption02Text>초대 링크 복사</S.Caption02Text>
       </S.CopyLinkBtnWrapper>
       <S.Body09Text>선물 토너먼트까지</S.Body09Text>
-      <CountDownTimer targetDate={new Date(data.tournamentStartDate)}  giftee={data.gifteeName}/>
+
+      <CountDownTimer targetDate={new Date(data.tournamentStartDate)} giftee={data.gifteeName} />
+
+
     </S.GiftHomeSummaryWrapper>
   );
 };
