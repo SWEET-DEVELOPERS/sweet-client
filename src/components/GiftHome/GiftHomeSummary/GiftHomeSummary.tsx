@@ -20,13 +20,16 @@ export const GiftHomeSummary = ({ data }: GiftHomeSummaryProps) => {
       </S.GiftHomeSummaryTitle>
       <S.GiftHomeSummaryTitle>선물을 함께 준비해요</S.GiftHomeSummaryTitle>
       <S.CopyLinkBtnWrapper
-        onClick={() => handleCopyToClipboard(`${baseURL}/result/${data.invitationCode}`)}
+        onClick={() => handleCopyToClipboard(`${baseURL}result/${data.invitationCode}`)}
       >
         <IcLink style={{ width: '1.7rem', height: '1.7rem' }} />
         <S.Caption02Text>초대 링크 복사</S.Caption02Text>
       </S.CopyLinkBtnWrapper>
       <S.Body09Text>선물 토너먼트까지</S.Body09Text>
+
       <CountDownTimer targetDate={new Date(data.tournamentStartDate)} giftee={data.gifteeName} />
+
+
     </S.GiftHomeSummaryWrapper>
   );
 };
