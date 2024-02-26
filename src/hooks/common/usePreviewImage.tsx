@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import useParseFileName from '../useParseFileName';
 
 const usePreviewImage = () => {
   const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
@@ -15,6 +16,10 @@ const usePreviewImage = () => {
     if (files && files.length > 0) {
       const selectedFiles = files as FileList;
       const imageName = files[0].name.trim();
+      const parseImageName = useParseFileName({
+        setFileName: setImageName,
+        imageString: imageName,
+      });
 
       const img = new Image();
       img.onload = function () {
@@ -32,7 +37,8 @@ const usePreviewImage = () => {
           setFile(selectedFiles[0]);
           setPreviewImage(URL.createObjectURL(selectedFiles[0]));
           setIsImageUploaded(true);
-          setImageName(imageName);
+          setImageName(parseImageName);
+          console.log('parseImageName', parseImageName);
         }
       };
       img.src = URL.createObjectURL(selectedFiles[0]);
