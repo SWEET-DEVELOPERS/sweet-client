@@ -67,6 +67,7 @@ const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
                   width: '24rem',
                   height: '24rem',
                   borderRadius: '1.2rem',
+                  marginTop: '5.6rem',
                 }}
               />
               <IcImgEditBtn
@@ -74,7 +75,7 @@ const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
                   position: 'absolute',
                   width: '2.8rem',
                   height: '2.8rem',
-                  top: '0.8rem',
+                  bottom: '0rem',
                   right: '0.8rem',
                   cursor: 'pointer',
                 }}
@@ -83,9 +84,9 @@ const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
           ) : (
             <IcEmptyThumbnail
               style={{
+                position: 'relative',
                 width: '24rem',
                 height: '24rem',
-                position: 'relative',
                 marginTop: '2.8rem',
                 cursor: 'pointer',
               }}
