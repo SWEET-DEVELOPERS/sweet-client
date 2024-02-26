@@ -1,12 +1,9 @@
 import { toast } from 'react-toastify';
 import { usePreviewImageContext } from '../../context/Onboarding/PreviewImageContext';
+import { IMAGE_HEIGHT, MESSAGE } from '../../core/messages';
 
 const usePreviewImage = () => {
   const { previewImageInfo, updatePreviewImageInfo } = usePreviewImageContext();
-
-  /**@todo 이미지 최소,최대 height 상의 필요*/
-  const MIN_IMAGE_HEIGHT = 300;
-  const MAX_IMAGE_HEIGHT = 1800;
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
@@ -32,16 +29,12 @@ const usePreviewImage = () => {
 
       const img = new Image();
       img.onload = function () {
-        if (img.height <= MIN_IMAGE_HEIGHT) {
+        if (img.height <= IMAGE_HEIGHT.MIN) {
           //  이미지 너비가  어느 수준  이하일 때 업로드 x
-          toast(
-            `이미지 세로길이가 너무 작습니다. ${MIN_IMAGE_HEIGHT}px 이상 이미지를 선택해주세요.`,
-          );
+          toast(MESSAGE.HEIGHT_SMALL);
           uploadFalse();
-        } else if (img.height > MAX_IMAGE_HEIGHT) {
-          toast(
-            `이미지 세로길이가 너무 큽니다. ${MAX_IMAGE_HEIGHT}px 이하 이미지를 선택해주세요. `,
-          );
+        } else if (img.height > IMAGE_HEIGHT.MAX) {
+          toast(MESSAGE.HEIGHT_BIG);
           uploadFalse();
         } else {
           //  이미지 너비가 허용된 범위 내에 있을 때
