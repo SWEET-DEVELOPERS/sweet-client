@@ -18,6 +18,7 @@ export const UserName = styled.div`
   ${({ theme: { fonts } }) => fonts.heading_03};
   > span {
     color: ${({ theme: { colors } }) => colors.P_06};
+    margin-right: 0.4rem;
   }
 `;
 export const User = styled.div`
