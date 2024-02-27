@@ -7,9 +7,9 @@ export const DoneGiftViewWrapper = styled.div`
 
 export const RoomWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({})};
-  margin: 0 2rem;
-  width: 100%;
+  width: 37.5rem;
   gap: 1.5rem;
+  padding: 0 2rem;
 `;
 
 export const NoneRoom = styled.div`
