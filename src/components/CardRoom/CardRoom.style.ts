@@ -15,7 +15,7 @@ export const RoomImgWrapper = styled.img`
 `;
 
 export const CardRoomWrapper = styled.div`
-  ${({ theme: { mixin } }) => mixin.flexBox({ direction: 'column' })};
+  ${({ theme: { mixin } }) => mixin.flexBox({ direction: 'column', justify: 'space-between' })};
 
   width: 16rem;
   height: 27.5rem;
@@ -24,6 +24,7 @@ export const CardRoomWrapper = styled.div`
 
   border: 1px solid ${({ theme: { colors } }) => colors.G_02};
   background-color: ${({ theme: { colors } }) => colors.white};
+  padding-bottom: 1rem;
 
   img {
     width: 100%;
