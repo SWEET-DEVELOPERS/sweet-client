@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const LogoHeaderWrapper = styled.div`
-  ${({ theme: { mixin } }) => mixin.flexBox({ justify: 'center' })};
+  ${({ theme: { mixin } }) => mixin.flexBox({ justify: 'center', align: 'center' })};
   position: fixed;
   width: 100%;
   height: 5.6rem;
@@ -13,6 +13,7 @@ export const LogoHeaderWrapper = styled.div`
 export const IconWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({ align: 'center' })};
   width: 37.5rem;
+  height: 100%;
   gap: 21.2rem;
   padding: 0 2rem;
 `;
