@@ -41,6 +41,10 @@ export const ProfileWrapper = styled.div`
   border-radius: 12px;
   width: 33.5rem;
   height: 14.9rem;
+  -webkit-backdrop-filter: blur(1.5rem);
+  -moz-backdrop-filter: blur(1.5rem);
+  -o-backdrop-filter: blur(1.5rem);
+  -ms-backdrop-filter: blur(1.5rem);
   backdrop-filter: blur(1.5rem);
   border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 0 1.6rem;
