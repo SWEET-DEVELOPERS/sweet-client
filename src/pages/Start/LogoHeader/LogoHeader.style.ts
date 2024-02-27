@@ -20,7 +20,7 @@ export const IconWrapper = styled.div`
 
 export const UserProfileImg = styled.img`
   ${({ theme: { mixin } }) => mixin.flexBox({})};
-  width: 3rem;
-  height: 3rem;
-  border-radius: 9rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 99rem;
 `;
