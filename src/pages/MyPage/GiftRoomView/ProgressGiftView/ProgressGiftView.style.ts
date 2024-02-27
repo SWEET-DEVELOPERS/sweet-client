@@ -20,7 +20,7 @@ export const NoneRoom = styled.div`
 export const RoomWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexBox({})};
 
-  width: 37.5rem;
+  width: 100%;
   gap: 1.5rem;
   padding: 0 2rem;
 `;
