@@ -20,6 +20,6 @@ export const NoneRoom = styled.div`
   border-radius: 1rem;
   border: 1px solid ${({ theme: { colors } }) => colors.G_02};
 
-  color: ${({ theme: { colors } }) => colors.G_02};
+  color: ${({ theme: { colors } }) => colors.G_07};
   ${({ theme: { fonts } }) => fonts.body_10};
 `;
