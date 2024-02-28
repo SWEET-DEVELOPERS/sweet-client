@@ -34,7 +34,7 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
   return (
     <>
       <Title>
-        선물 토너먼트 <br /> 시작 일정을 설정해주세요
+        선물 토너먼트를 <br /> 언제부터 시작할까요?
       </Title>
       <S.SubTitleWrapper>
         <SubTitle subTitle='토너먼트 시작 전까지 선물을 등록할 수 있어요.' />
