@@ -1,6 +1,9 @@
 import { useRef, useState } from 'react';
 import { IcUnselectedClock } from '../../../assets/svg';
 import * as S from './Step04.style';
+import { useOnboardingContext } from '../../../context/Onboarding/OnboardingContext';
+import { toast } from 'react-toastify';
+import { MESSAGE } from '../../../core/messages';
 
 interface TimePickerProps {
   onSelect: (selectedTime: string) => void;
@@ -8,12 +11,15 @@ interface TimePickerProps {
 
 const TimePicker = ({ onSelect }: TimePickerProps) => {
   const [isPickerOpen, setIsPickerOpen] = useState<boolean>(false);
-  const [selectedTime, setSelectedTime] = useState<string>('');
-
+  const { onboardingInfo, selectedTime, setSelectedTime } = useOnboardingContext();
   const clockRef = useRef<HTMLInputElement>(null);
 
   const handleIconClick = () => {
-    clockRef.current?.showPicker();
+    if (!onboardingInfo.tournamentStartDate) {
+      toast(MESSAGE.UNSELECT_DATE);
+    } else {
+      clockRef.current?.showPicker();
+    }
   };
 
   const handleTimeSelect = (time: string) => {
