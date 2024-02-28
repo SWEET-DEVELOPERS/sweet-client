@@ -36,7 +36,7 @@ const GiftAddButtonsWrapper = ({ data, onCancelClick }: GiftAddButtonsProps) => 
       <S.GiftsItemImage src={imageUrl} />
       <S.GiftsItemTitle>{data.name}</S.GiftsItemTitle>
       <S.GiftsItemPrice>
-        <GiftHomePriceTag price={data.cost} fonts={'body_09'} />
+        <GiftHomePriceTag price={data.cost} fonts={'body_09'} gap={0} colors={'G_10'} />
       </S.GiftsItemPrice>
     </S.GiftsItemWrapper>
   );

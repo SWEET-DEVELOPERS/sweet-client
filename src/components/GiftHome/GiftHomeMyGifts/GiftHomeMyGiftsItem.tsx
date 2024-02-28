@@ -10,7 +10,7 @@ interface GiftHomeMyGiftsItemProps {
 const GiftHomeMyGiftsItem: React.FC<GiftHomeMyGiftsItemProps> = ({ name, cost, imageUrl }) => {
   return (
     <S.GiftHomeMyGifts>
-      <img src={imageUrl} />
+      <S.GiftHomeMygiftsImg src={imageUrl} />
       <S.InfoWrapper>
         <S.Title>{name}</S.Title>
         <PriceTag price={cost} />

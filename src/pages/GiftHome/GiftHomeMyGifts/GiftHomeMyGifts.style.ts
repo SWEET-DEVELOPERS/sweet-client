@@ -8,5 +8,6 @@ export const GiftHomeMyGiftsWrapper = styled.article`
 `;
 
 export const GiftsWrapper = styled.div`
+  height: 7rem;
   gap: 1.7rem;
 `;
