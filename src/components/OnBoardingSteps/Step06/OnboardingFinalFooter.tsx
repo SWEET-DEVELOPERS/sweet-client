@@ -46,8 +46,7 @@ const OnboardingFinalFooterWrapper = styled.div`
 
   gap: 0.8rem;
   height: 5.2rem;
-  bottom: 2rem;
-  margin-top: 3.2rem;
+  margin-top: 5rem;
 `;
 
 export default OnboardingFinalFooter;
