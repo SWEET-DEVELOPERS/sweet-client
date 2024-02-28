@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 
 export const ThumbnailWrapper = styled.div`
-  /* ${({ theme }) =>
-    theme.mixin.flexCenter({ direction: 'column', align: 'center', justify: 'center' })};
-  margin-top: 6.1rem; */
-
   ${({ theme }) => theme.mixin.flexCenter({})}
 
   position: relative;
@@ -20,14 +16,6 @@ export const ThumbnailWrapper = styled.div`
 `;
 
 export const PreviewImg = styled.img`
-  /* src: previewImage;
-  alt: 'preview';
-  width: 24rem;
-  height: 24rem;
-  position: absolute;
-  border-radius: 1.2rem;
-  object-fit: cover; */
-
   width: 24rem;
   height: 24rem;
 
