@@ -80,7 +80,7 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const Title = styled.p`
-  margin-bottom: 0.8;
+  margin-bottom: 0.8rem;
   color: ${({ theme }) => theme.colors.Black};
   text-align: center;
   font-family: SUIT;
