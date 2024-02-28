@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import BtnFill from '../../common/Button/Cta/fill/BtnFill';
-// import useClipboard from '../../../hooks/useCopyClip';
-// import { PAGE } from '../../../core/routes';
 import useHandleShare from '../../../hooks/common/useHandleShare';
 
 interface OnboardingFinalFooterProps {
@@ -12,7 +10,6 @@ interface OnboardingFinalFooterProps {
 }
 const OnboardingFinalFooter = (props: OnboardingFinalFooterProps) => {
   const { onClick, giftee, invitationCode } = props;
-  // const { handleCopyToClipboard } = useClipboard();
 
   return (
     <OnboardingFinalFooterWrapper>
