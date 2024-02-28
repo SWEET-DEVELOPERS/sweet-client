@@ -42,7 +42,6 @@ const GiftAddFirstLinkLayout = ({
 
   const { gifteeName } = useUpdateGifteeNameContext();
 
-
   const fetchOpenGraph = (BaseUrl: string) => {
     try {
       const response = mutation.mutate(
@@ -87,11 +86,13 @@ const GiftAddFirstLinkLayout = ({
         gifteeName={gifteeName}
       />
       <GiftStatusBar registeredGiftNum={itemNum} isMargin={true} />
-      <Title>
-        {itemNum === 0 ? '첫번째 상품의' : '두번째 상품의'}
-        <br />
-        판매 링크를 입력해주세요
-      </Title>
+      <S.TitleWrapper>
+        <Title>
+          {itemNum === 0 ? '첫번째 상품의' : '두번째 상품의'}
+          <br />
+          판매 링크를 입력해주세요
+        </Title>
+      </S.TitleWrapper>
       <InputUrl text={text} setText={setText} setIsActivated={setIsActivated} />
       <GiftAddBtnWrapper setStep={setStep} isActivated={isActivated} onClick={onClick} />
     </S.GiftAddLinkLayoutWrapper>
