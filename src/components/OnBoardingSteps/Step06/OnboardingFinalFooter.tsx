@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import BtnFill from '../../common/Button/Cta/fill/BtnFill';
-import useHandleShare from '../../../hooks/common/useHandleShare';
+import { useHandleShare } from '../../../hooks/common/useHandleShare';
+import useClipboard from '../../../hooks/useCopyClip';
 
 interface OnboardingFinalFooterProps {
   invitationCode: string;
@@ -10,6 +11,7 @@ interface OnboardingFinalFooterProps {
 }
 const OnboardingFinalFooter = (props: OnboardingFinalFooterProps) => {
   const { onClick, giftee, invitationCode } = props;
+  const { handleCopyToClipboard } = useClipboard();
 
   return (
     <OnboardingFinalFooterWrapper>
@@ -22,12 +24,11 @@ const OnboardingFinalFooter = (props: OnboardingFinalFooterProps) => {
         }}
         /**@TODO 확인을 위한 local 주소로 공유. 추후에 배포페이지로 변경하기 */
         onClick={() =>
-          // handleCopyToClipboard(`${PAGE.LOCAL_RESULT_PAGE}${invitationCode}`)
-          // handleCopyToClipboard(`${PAGE.DEPLOY_RESULT_PAGE}${invitationCode}`)
           useHandleShare(
             `${giftee}님을 위한 선물방이 개설됐어요`,
             `${giftee}님을 위한 선물방이 개설됐어요`,
             `${import.meta.env.VITE_APP_BASE_URL_KAKAO}result/${invitationCode}`,
+            handleCopyToClipboard,
           )
         }
       >

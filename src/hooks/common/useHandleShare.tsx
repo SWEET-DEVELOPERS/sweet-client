@@ -1,4 +1,9 @@
-export const useHandleShare = async (title: string, text: string, url: string) => {
+export const useHandleShare = async (
+  title: string,
+  text: string,
+  url: string,
+  handleCopyToClipboard: (text: string) => void,
+) => {
   try {
     await navigator.share({
       title: title,
@@ -6,9 +11,11 @@ export const useHandleShare = async (title: string, text: string, url: string) =
       url: url,
     });
   } catch (error) {
-    console.error('Web Share API를 지원하지 않습니다.');
+    console.error('Web Share API를 사용할 수 없습니다.', error);
   }
-  return <div></div>;
-};
 
-export default useHandleShare;
+  if (typeof navigator.share === 'undefined') {
+    handleCopyToClipboard(url);
+    console.log('클릭');
+  }
+};
