@@ -30,4 +30,8 @@ export const GiftsWrapper = styled.div`
 
   color: ${({ theme }) => theme.colors.G_07};
   ${({ theme }) => theme.fonts.body_09};
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
