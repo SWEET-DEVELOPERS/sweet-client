@@ -22,7 +22,6 @@ export const NoGiftsWrapper = styled.div`
 
 export const GiftsWrapper = styled.div`
   width: 36rem;
-  height: 22.5rem;
 
   display: flex;
   column-gap: 0.8rem;
