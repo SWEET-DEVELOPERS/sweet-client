@@ -11,7 +11,7 @@ interface OnboardingFinalFooterProps {
   giftee?: string;
 }
 const OnboardingFinalFooter = (props: OnboardingFinalFooterProps) => {
-  const { onClick, giftee } = props;
+  const { onClick, giftee, invitationCode } = props;
   // const { handleCopyToClipboard } = useClipboard();
 
   return (
@@ -30,6 +30,7 @@ const OnboardingFinalFooter = (props: OnboardingFinalFooterProps) => {
           useHandleShare(
             `${giftee}님을 위한 선물방이 개설됐어요`,
             `${giftee}님을 위한 선물방이 개설됐어요`,
+            `${import.meta.env.VITE_APP_BASE_URL_KAKAO}/result/${invitationCode}`,
           )
         }
       >
