@@ -17,19 +17,8 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
   const { onNext } = props;
   const { isOpen, disabledDays, openCalendar, handleDateSelect, onboardingInfo } =
     useTournamentScheduleCalendar();
-  const { isTimerOpen, selectedTime, handleTimerSelect } = useTimerOpen();
+  const { selectedTime, handleTimerSelect } = useTimerOpen();
   const isActivated = !!onboardingInfo.tournamentStartDate && !!selectedTime;
-
-  /**@see 시간의 상태 값을 뒤로가기 시 저장하여 보여줄 수 있지만 현재는 유저의 클릭을 캘린더 먼저로 의도하기 위한 조치를 진행하였습니다  */
-  // const [initialTime] = useState(
-  //   onboardingInfo.tournamentStartDate
-  //     ? format(new Date(onboardingInfo.tournamentStartDate), 'HH:mm')
-  //     : '',
-  // );
-
-  // useEffect(() => {
-  //   setSelectedTime(initialTime);
-  // }, []);
 
   return (
     <>
@@ -73,9 +62,7 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
       )}
 
       {/* 타이머 */}
-      <S.Container $hasContent={isTimerOpen}>
-        <TimePicker onSelect={(time) => handleTimerSelect(time)} />
-      </S.Container>
+      <TimePicker onSelect={(time) => handleTimerSelect(time)} />
       <S.OnBoardingBtnWrapper>
         <OnBoardingBtn isActivated={isActivated} setStep={onNext}>
           다음
