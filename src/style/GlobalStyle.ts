@@ -18,17 +18,15 @@ ${reset}
  }
 
  :root {
-  --vh: 100%
+  --vh: 100%;
  }
- html {
-   over-flow-x :  hidden;
-}
-body {
-   over-flow-x :  hidden;
-}
+
+ html, body{
+  overflow-x :  hidden;
+ }
+ 
 #root, body, html {
     scrollbar-width: none; /* 파이어폭스 스크롤바 숨김 */
-    
     margin: 0 auto;
     padding:0;
     font-size: 62.5%;
