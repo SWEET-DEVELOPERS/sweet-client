@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useOnboardingContext } from '../../context/Onboarding/OnboardingContext';
 
 const useTournamentScheduleCalendar = () => {
-  const { onboardingInfo, updateOnboardingInfo } = useOnboardingContext();
+  const { onboardingInfo, updateOnboardingInfo, selectedTime } = useOnboardingContext();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [isActivated, setIsActivated] = useState<boolean>(false);
@@ -16,7 +16,6 @@ const useTournamentScheduleCalendar = () => {
 
   const handleDateSelect = (date: Date) => {
     const padTwoDigits = (value: number) => String(value).padStart(2, '0');
-
     const formattedDate =
       format(date, 'y-MM-dd') +
       'T' +
@@ -24,10 +23,16 @@ const useTournamentScheduleCalendar = () => {
         time.getSeconds(),
       )}`;
 
-    updateOnboardingInfo({ tournamentStartDate: formattedDate });
-
-    setSelectedDate(date);
-    setIsOpen(false);
+    if (onboardingInfo.tournamentStartDate) {
+      const timePart = format(date, 'y-MM-dd') + 'T' + `${selectedTime}`;
+      updateOnboardingInfo({ tournamentStartDate: timePart });
+      setSelectedDate(date);
+      setIsOpen(false);
+    } else {
+      updateOnboardingInfo({ tournamentStartDate: formattedDate });
+      setSelectedDate(date);
+      setIsOpen(false);
+    }
   };
 
   return {
