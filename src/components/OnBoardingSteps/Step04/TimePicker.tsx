@@ -60,6 +60,7 @@ const TimePicker = ({ onSelect }: TimePickerProps) => {
             id='clock'
             onChange={(e) => handleTimeSelect(e.target.value)}
             style={{ display: 'flex', opacity: 0 }}
+            inputMode='none'
           />
           <label htmlFor='clock'>
             <IcUnselectedClock

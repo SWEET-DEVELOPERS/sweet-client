@@ -39,6 +39,7 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
                 : ''
             }
             onChange={(e) => e.preventDefault()}
+            inputMode='none'
           />
         </S.TextField>
         <DatePicker onClick={openCalendar} />
