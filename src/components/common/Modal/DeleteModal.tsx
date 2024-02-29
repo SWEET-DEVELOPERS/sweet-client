@@ -5,12 +5,21 @@ import { IcCancel } from '../../../assets/svg';
 
 interface DeleteModalProps {
   children: React.ReactNode;
-  onClickDelete: (giftId: number) => void;
-  onClickCancel: () => void;
-  clickedItem: number | undefined;
+  onClickDelete: (giftId?: number) => void;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  clickedItem?: number | undefined;
 }
 
-const DeleteModal = ({ children, onClickDelete, onClickCancel, clickedItem }: DeleteModalProps) => {
+const DeleteModal = ({
+  children,
+  onClickDelete,
+  setIsModalOpen,
+  clickedItem,
+}: DeleteModalProps) => {
+  const onClickCancel = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <S.Overlay />
