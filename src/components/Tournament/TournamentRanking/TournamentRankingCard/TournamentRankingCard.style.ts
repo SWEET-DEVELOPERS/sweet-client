@@ -24,6 +24,6 @@ export const Title = styled.p`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  word-break: keep-all; // 문단으로 끊어져서 줄바꿈 됨
+  word-break: keep-all;
   ${({ theme }) => theme.fonts.body_05};
 `;
