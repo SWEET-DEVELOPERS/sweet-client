@@ -23,16 +23,14 @@ const useTournamentScheduleCalendar = () => {
         time.getSeconds(),
       )}`;
 
-    if (onboardingInfo.tournamentStartDate) {
-      const timePart = format(date, 'y-MM-dd') + 'T' + `${selectedTime}`;
-      updateOnboardingInfo({ tournamentStartDate: timePart });
-      setSelectedDate(date);
-      setIsOpen(false);
-    } else {
-      updateOnboardingInfo({ tournamentStartDate: formattedDate });
-      setSelectedDate(date);
-      setIsOpen(false);
-    }
+    const timePart = format(date, 'y-MM-dd') + 'T' + `${selectedTime}`;
+    const updatedTournamentStartDateInfo = {
+      tournamentStartDate: onboardingInfo.tournamentStartDate ? timePart : formattedDate,
+    };
+
+    updateOnboardingInfo(updatedTournamentStartDateInfo);
+    setSelectedDate(date);
+    setIsOpen(false);
   };
 
   return {
