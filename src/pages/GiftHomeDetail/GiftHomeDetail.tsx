@@ -24,7 +24,7 @@ export const GiftHomeDetail = () => {
               <S.GiftsItemImage src={item.imageUrl} />
               <S.GiftsItemTitle>{item.name}</S.GiftsItemTitle>
               <S.GiftsItemPrice>
-                <GiftHomePriceTag gap={0.1} colors={'black'} price={item.cost} fonts={'body_07'} />
+                <GiftHomePriceTag price={item.cost} fonts={'body_07'} gap={0.1} colors={'black'} />
               </S.GiftsItemPrice>
             </S.GiftsItemWrapper>
           ))
