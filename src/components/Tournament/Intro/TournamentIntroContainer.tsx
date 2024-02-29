@@ -8,7 +8,6 @@ import useGetItem from '../../../hooks/queries/tournament/useGetItem';
 import trophy from '../../../assets/img/3dic_trophy3.png';
 import { TrophyNone } from '../../../assets/svg';
 import { useParams } from 'react-router';
-import Header from '../../common/Header';
 import TournamentNoneText from './TournamentNoneText/TournamentNoneText';
 import { GiftData } from '../../../types/tournament';
 import TournamentDeleteButton from './TournamentDeleteButton/TournamentDeleteButton';
@@ -81,7 +80,6 @@ const TournamentIntroContainer = () => {
         </>
       ) : (
         <>
-          <Header />
           <TournamentFlowContainer memberData={tournamentData} roomId={roomId} />
         </>
       )}
