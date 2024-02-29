@@ -42,7 +42,7 @@ export const TournamentCardWrapper = styled.div<TournamentCardWrapperProps>`
 
   width: 16rem;
   border: ${({ isClicked }) =>
-    isClicked ? '3px solid var(--Pink-P-06, #FF2176)' : '3px solid var(--Gray-G-02, #ebe9ea)'};
+    isClicked ? '2px solid var(--Pink-P-06, #FF2176)' : '2px solid var(--Gray-G-02, #ebe9ea)'};
   border-radius: 12px;
   margin-bottom: 2rem;
   background: ${({ theme }) => theme.colors.white};
