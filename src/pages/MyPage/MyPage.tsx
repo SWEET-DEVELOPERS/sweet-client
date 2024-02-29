@@ -57,7 +57,7 @@ const MyPage = () => {
             <ProfileImage image={memberData?.data?.memberInfo.profileImage} />
             {renderUserName()}
           </S.UserWrapper>
-          <BtnLogout customStyle={{ width: '8.4rem', height: '2.6rem' }}>로그아웃</BtnLogout>
+          <BtnLogout>로그아웃</BtnLogout>
         </S.UserButtonWrapper>
         <BtnFill onClick={goOnboarding} customStyle={{ width: '30.3rem', height: '5.2rem' }}>
           새로운 선물 준비하기
