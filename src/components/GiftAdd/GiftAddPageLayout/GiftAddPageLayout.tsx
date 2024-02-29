@@ -50,8 +50,10 @@ const GiftAddPageLayout = ({
     setStep(1);
   };
 
-  const handleClickConfirmDeleteBtn = (giftId: number) => {
-    mutation.mutate(giftId);
+  const handleClickConfirmDeleteBtn = (giftId?: number) => {
+    if (giftId !== undefined) {
+      mutation.mutate(giftId);
+    }
     setIsModalOpen(false);
   };
 
@@ -59,7 +61,7 @@ const GiftAddPageLayout = ({
     <S.GiftAddPageWrapper>
       {isModalOpen && (
         <DeleteModal
-          onClickCancel={() => setIsModalOpen(false)}
+          setIsModalOpen={setIsModalOpen}
           onClickDelete={handleClickConfirmDeleteBtn}
           clickedItem={clickedItem}
         >

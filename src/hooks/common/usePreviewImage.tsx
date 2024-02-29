@@ -1,38 +1,50 @@
-import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { usePreviewImageContext } from '../../context/Onboarding/PreviewImageContext';
+import { IMAGE_HEIGHT, MESSAGE } from '../../core/toast-messages';
 
 const usePreviewImage = () => {
-  const [isImageUploaded, setIsImageUploaded] = useState<boolean>(false);
-  const [previewImage, setPreviewImage] = useState<string | null>(null);
-  const [imageName, setImageName] = useState<string>('');
-  const [file, setFile] = useState<File | null>(null);
-
-  /**@todo 이미지 최소 height 상의 필요*/
-  const MIN_IMAGE_HEIGHT = 300;
+  const { previewImageInfo, updatePreviewImageInfo } = usePreviewImageContext();
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
+
+    const uploadFalse = () => {
+      updatePreviewImageInfo({
+        isImageUploaded: false,
+        file: null,
+        previewImage: null,
+        imageName: '',
+      });
+    };
 
     if (files && files.length > 0) {
       const selectedFiles = files as FileList;
       const imageName = files[0].name.trim();
 
+      /**@todo 파싱 유틸 함수 공용으로 따로 작성 */
+      // const parseImageName = useParseFileName({
+      //   setFileName: setImageName,
+      //   imageString: previewImageInfo.imageName,
+      // });
+
       const img = new Image();
       img.onload = function () {
-        if (img.height <= MIN_IMAGE_HEIGHT) {
+        if (img.height <= IMAGE_HEIGHT.MIN) {
           //  이미지 너비가  어느 수준  이하일 때 업로드 x
-          alert(
-            `이미지 세로길이가 너무 작습니다. ${MIN_IMAGE_HEIGHT}px 이상인 이미지를 선택해주세요.`,
-          );
-          setIsImageUploaded(false);
-          setFile(null);
-          setPreviewImage(null);
-          setImageName('');
+          toast(MESSAGE.HEIGHT_SMALL);
+          uploadFalse();
+        } else if (img.height > IMAGE_HEIGHT.MAX) {
+          toast(MESSAGE.HEIGHT_BIG);
+          uploadFalse();
         } else {
-          //  이미지 너비가 허용된 범위  내에 있을 때
-          setFile(selectedFiles[0]);
-          setPreviewImage(URL.createObjectURL(selectedFiles[0]));
-          setIsImageUploaded(true);
-          setImageName(imageName);
+          //  이미지 너비가 허용된 범위 내에 있을 때
+          updatePreviewImageInfo({
+            isImageUploaded: true,
+            file: selectedFiles[0],
+            previewImage: URL.createObjectURL(selectedFiles[0]),
+            imageName: imageName,
+          });
+          console.log('imageName', imageName);
         }
       };
       img.src = URL.createObjectURL(selectedFiles[0]);
@@ -40,11 +52,9 @@ const usePreviewImage = () => {
   };
 
   return {
-    isImageUploaded,
-    previewImage,
     handleImageUpload,
-    imageName,
-    file,
+
+    previewImageInfo,
   };
 };
 
