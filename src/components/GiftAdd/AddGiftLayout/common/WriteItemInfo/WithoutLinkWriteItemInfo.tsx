@@ -24,10 +24,9 @@ const WriteItemInfo = ({
   cost,
   url,
 }: WriteItemInfoProps) => {
+  const { addGiftInfo, updateAddGiftInfo } = useAddGiftContext();
+
   const handleSetIsActivated = (newNameText: string, newPriceText: string) => {
-    console.log(' newNameText', newNameText);
-    console.log(' newPriceText', newPriceText);
-    console.log('imageUrl', imageUrl);
     if (
       newNameText.length > 0 &&
       newPriceText !== undefined &&
@@ -41,10 +40,10 @@ const WriteItemInfo = ({
     }
   };
 
-  const { addGiftInfo } = useAddGiftContext();
-
   const handleNameTextChange = (newText: string) => {
     setName(newText);
+    updateAddGiftInfo({ name: newText });
+
     if (cost !== null) {
       handleSetIsActivated(newText, cost.toString());
     }

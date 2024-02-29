@@ -3,6 +3,7 @@ import GiftAddNextBtn from '../AddGiftLink/common/GiftAddNextBtn/GiftAddNextBtn'
 import * as S from './AddGiftFooter.styled';
 import { AddGiftInfo } from '../../../types/gift';
 import usePutImageUrlToS3 from '../../../hooks/usePutImageUrlToS3';
+import { useAddGiftContext } from '../../../context/AddGift/AddGiftContext';
 
 interface AddGiftFooterProps {
   targetDate: string;
@@ -54,6 +55,7 @@ const AddGiftFooter = ({
     setLinkText,
   });
   const { putImageUrlToS3 } = usePutImageUrlToS3(roomId);
+  const { addGiftInfo } = useAddGiftContext();
 
   const onClick = async () => {
     setIsLoading(true);
@@ -62,7 +64,7 @@ const AddGiftFooter = ({
       try {
         await mutation.mutateAsync({
           roomId: roomId,
-          name: name,
+          name: addGiftInfo.name,
           cost: cost,
           imageUrl: imageUrlS3,
           url: link,
