@@ -29,7 +29,7 @@ const AddGiftFooter = ({
   roomId,
   setStep,
   isActivated,
-  name,
+  // name,
   cost,
   link,
   file,
