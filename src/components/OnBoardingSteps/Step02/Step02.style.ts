@@ -11,7 +11,6 @@ export const ThumbnailWrapper = styled.div`
   margin: 0 auto;
   cursor: pointer;
 
-  background-color: ${({ theme }) => theme.colors.G_01};
   border-radius: 1.2rem;
 `;
 
@@ -33,4 +32,12 @@ export const IcEmptyThumbnailWrapper = styled.div`
     width: 100%;
     height: 100%;
   }
+`;
+
+export const PreviewImage = styled.img`
+  position: relative;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 1.2rem;
+  margin-top: 5.6rem;
 `;

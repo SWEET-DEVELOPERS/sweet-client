@@ -15,7 +15,7 @@ interface ThumbnailInputProps {
 
 const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
   const { onNext } = props;
-  const { isImageUploaded, handleImageUpload, imageName, file, previewImage } = usePreviewImage();
+  const { handleImageUpload, previewImageInfo } = usePreviewImage();
   const { updateOnboardingInfo } = useOnboardingContext();
 
   const { binarizeAndPutImage } = useBinarizeAndPutImage();
@@ -33,8 +33,8 @@ const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
           console.log('parsingpresignedUrl', presignedUrl);
           updateOnboardingInfo({ imageUrl: presignedUrl });
 
-          if (file) {
-            await binarizeAndPutImage({ presignedUrl, file });
+          if (previewImageInfo.file) {
+            await binarizeAndPutImage({ presignedUrl, file: previewImageInfo.file });
           }
 
           onNext();
@@ -57,24 +57,15 @@ const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
           onChange={handleImageUpload}
         />
         <label htmlFor='imgInput'>
-          {previewImage ? (
+          {previewImageInfo.previewImage ? (
             <S.ThumbnailWrapper>
-              <img
-                src={previewImage}
-                alt='preview'
-                style={{
-                  position: 'relative',
-                  width: '24rem',
-                  height: '24rem',
-                  borderRadius: '1.2rem',
-                }}
-              />
+              <S.PreviewImage src={previewImageInfo.previewImage} alt='preview' />
               <IcImgEditBtn
                 style={{
                   position: 'absolute',
                   width: '2.8rem',
                   height: '2.8rem',
-                  top: '0.8rem',
+                  bottom: '-2rem',
                   right: '0.8rem',
                   cursor: 'pointer',
                 }}
@@ -83,9 +74,9 @@ const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
           ) : (
             <IcEmptyThumbnailFinal
               style={{
+                position: 'relative',
                 width: '24rem',
                 height: '24rem',
-                position: 'relative',
                 marginTop: '2.8rem',
                 cursor: 'pointer',
               }}
@@ -95,9 +86,9 @@ const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
       </S.IcEmptyThumbnailWrapper>
 
       <OnBoardingBtn
-        isActivated={isImageUploaded}
+        isActivated={previewImageInfo.previewImage !== null}
         setStep={() => {
-          fetchPresignedUrl(imageName);
+          fetchPresignedUrl(previewImageInfo.imageName);
         }}
       >
         다음

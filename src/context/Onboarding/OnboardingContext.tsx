@@ -1,11 +1,19 @@
-import { PropsWithChildren, createContext, useContext, useEffect, useMemo, useState } from 'react';
+import {
+  PropsWithChildren,
+  SetStateAction,
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { OnboardingInfo } from '../../types/Onboarding';
 
 interface OnboardingInfoContext {
   onboardingInfo: OnboardingInfo;
   updateOnboardingInfo: (newInfo: Partial<OnboardingInfo>) => void;
-  previewImage: string;
-  setPreviewImage: (previewImage: string) => void;
+  selectedTime: string;
+  setSelectedTime: React.Dispatch<SetStateAction<string>>;
 }
 
 const initialOnboardingInfo: OnboardingInfo = {
@@ -19,15 +27,15 @@ const initialOnboardingInfo: OnboardingInfo = {
 const OnboardingContext = createContext<OnboardingInfoContext>({
   onboardingInfo: initialOnboardingInfo,
   updateOnboardingInfo: () => {},
-  previewImage: '',
-  setPreviewImage: () => {},
+  selectedTime: '',
+  setSelectedTime: () => {},
 });
 
 export const useOnboardingContext = () => useContext(OnboardingContext);
 
 export const OnboardingProvider = ({ children }: PropsWithChildren) => {
   const [onboardingInfo, setOnboardingInfo] = useState<OnboardingInfo>(initialOnboardingInfo);
-  const [previewImage, setPreviewImage] = useState<string>('');
+  const [selectedTime, setSelectedTime] = useState<string>('');
 
   const updateOnboardingInfo = (newInfo: Partial<OnboardingInfo>) => {
     setOnboardingInfo((prev) => ({ ...prev, ...newInfo }));
@@ -36,20 +44,17 @@ export const OnboardingProvider = ({ children }: PropsWithChildren) => {
   /**@todo 전체 값 확인용 useEffect */
   useEffect(() => {
     console.log('전체 값 확인:', onboardingInfo);
-  }, [onboardingInfo]);
-
-  useEffect(() => {
-    console.log(' 컨텍스트 내 previewImage 확인', previewImage);
-  }, [previewImage]);
+    console.log('selectedTime', selectedTime);
+  }, [onboardingInfo, selectedTime]);
 
   const OnboardingInfoContextValue = useMemo(
     () => ({
       onboardingInfo,
       updateOnboardingInfo,
-      previewImage,
-      setPreviewImage,
+      selectedTime,
+      setSelectedTime,
     }),
-    [onboardingInfo, previewImage],
+    [onboardingInfo, selectedTime],
   );
 
   return (
