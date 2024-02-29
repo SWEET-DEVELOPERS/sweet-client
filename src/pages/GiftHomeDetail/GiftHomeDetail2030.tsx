@@ -24,7 +24,7 @@ function GiftHomeDetail() {
               <S.GiftsItemImage src={item.imageUrl} />
               <S.GiftsItemTitle>{item.name}</S.GiftsItemTitle>
               <S.GiftsItemPrice>
-                <GiftHomePriceTag price={item.cost} fonts={'body_07'} />
+                <GiftHomePriceTag gap={0.1} colors={'black'} price={item.cost} fonts={'body_07'} />
               </S.GiftsItemPrice>
             </S.GiftsItemWrapper>
           ))
