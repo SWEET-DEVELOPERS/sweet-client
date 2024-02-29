@@ -25,6 +25,12 @@ interface AddGiftWithLinkLayoutProps {
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   isModalOpen: boolean;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  nameText: string;
+  setNameText: React.Dispatch<React.SetStateAction<string>>;
+  priceText: number | null;
+  setPriceText: React.Dispatch<React.SetStateAction<number | null>>;
+  imageUrl: string;
+  setImageUrl: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const AddGiftWithLinkLayout = ({
@@ -40,13 +46,17 @@ const AddGiftWithLinkLayout = ({
   setIsLoading,
   isModalOpen,
   setIsModalOpen,
+  nameText,
+  setNameText,
+  priceText,
+  setPriceText,
+  imageUrl,
+  setImageUrl,
 }: AddGiftWithLinkLayoutProps) => {
   const [isActivated, setIsActivated] = useState(
     !!addGiftInfo.name && !!addGiftInfo.cost && !!addGiftInfo.imageUrl,
   );
-  const [nameText, setNameText] = useState<string>(addGiftInfo.name);
-  const [priceText, setPriceText] = useState<number | null>(addGiftInfo.cost);
-  const [imageUrl, setImageUrl] = useState<string>(addGiftInfo.imageUrl);
+
   const [fileName, setFileName] = useState<string>('');
   const [file, setFile] = useState<File | null>(null);
   const [, setIsImageUploaded] = useState<boolean>(false);
@@ -112,6 +122,7 @@ const AddGiftWithLinkLayout = ({
       />
       <ShowLink link={link} />
       <WriteItemInfo
+        imageUrl={imageUrl}
         setIsActivated={setIsActivated}
         setName={setNameText}
         setCost={setPriceText}
