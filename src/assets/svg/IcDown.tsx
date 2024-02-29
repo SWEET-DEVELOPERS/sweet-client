@@ -2,7 +2,7 @@ import type { SVGProps } from 'react';
 const SvgIcDown = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 40 40' {...props}>
     <path
-      stroke='#FF2176'
+      stroke={props.stroke || '#FF2176'}
       strokeLinecap='round'
       strokeLinejoin='round'
       strokeWidth={1.5}

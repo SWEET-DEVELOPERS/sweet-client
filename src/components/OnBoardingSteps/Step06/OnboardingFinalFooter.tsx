@@ -1,18 +1,21 @@
 import styled from 'styled-components';
 import BtnFill from '../../common/Button/Cta/fill/BtnFill';
-// import useClipboard from '../../../hooks/useCopyClip';
-// import { PAGE } from '../../../core/routes';
 import useHandleShare from '../../../hooks/common/useHandleShare';
 
 interface OnboardingFinalFooterProps {
   invitationCode: string;
   roomId?: number;
-  onClick: () => void;
+  onClick: (invitationCode: string) => void;
   giftee?: string;
 }
 const OnboardingFinalFooter = (props: OnboardingFinalFooterProps) => {
-  const { onClick, giftee } = props;
-  // const { handleCopyToClipboard } = useClipboard();
+  const { onClick, giftee, invitationCode } = props;
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick(invitationCode);
+    }
+  };
 
   return (
     <OnboardingFinalFooterWrapper>
@@ -35,7 +38,7 @@ const OnboardingFinalFooter = (props: OnboardingFinalFooterProps) => {
       >
         공유하기
       </BtnFill>
-      <BtnFill customStyle={{ width: '16.4rem', background: '#FF2176' }} onClick={onClick}>
+      <BtnFill customStyle={{ width: '16.4rem', background: '#FF2176' }} onClick={handleClick}>
         입장하기
       </BtnFill>
     </OnboardingFinalFooterWrapper>

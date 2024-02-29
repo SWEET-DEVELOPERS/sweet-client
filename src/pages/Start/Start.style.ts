@@ -10,7 +10,7 @@ import {
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 
 export const Wrapper = styled.div`
-  width: 37.5rem;
+  width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
   ${({ theme: { mixin } }) => mixin.flexCenter({})};

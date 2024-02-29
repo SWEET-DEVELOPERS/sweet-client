@@ -23,6 +23,7 @@ import ParticipantsView from '../pages/Participants/ParticipantsView';
 import HomeMypageHeaderLayout from '../layouts/HomeMypageHeaderLayout';
 import LeftIconHeaderLayout from '../layouts/LeftIconHeaderLayout';
 import { UpdateGifteeNameProvider } from '../context/GifteeName/GifteeNameContext';
+import { PreviewImageProvider } from '../context/Onboarding/PreviewImageContext';
 
 const router = createBrowserRouter([
   {
@@ -91,9 +92,11 @@ const router = createBrowserRouter([
       {
         path: '/onboarding',
         element: (
-          <OnboardingProvider>
-            <OnBoardingPage />
-          </OnboardingProvider>
+          <PreviewImageProvider>
+            <OnboardingProvider>
+              <OnBoardingPage />
+            </OnboardingProvider>
+          </PreviewImageProvider>
         ),
       },
       {
