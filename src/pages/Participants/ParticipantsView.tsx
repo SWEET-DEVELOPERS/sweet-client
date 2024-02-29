@@ -145,7 +145,7 @@ const ParticipantsView = () => {
             <OnboardingFinalFooter
               invitationCode={data.data.invitationCode}
               roomId={data.data.roomId}
-              onClick={() => handleClickRoom}
+              onClick={handleClickRoom}
               giftee={data.data.gifteeName}
             />
           ) : (

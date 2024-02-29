@@ -41,9 +41,9 @@ const Footer = ({ customStyle }: FooterType) => {
         <LongDivider />
         <S.Text>Copyright 2024. Sweet. all rights reserved.</S.Text>
         <S.Icon>
-          <IcInstagram style={{ width: '2.8rem' }} onClick={InstaGram} />
+          <IcInstagram style={{ width: '2.8rem', marginRight: '0.4rem' }} onClick={InstaGram} />
 
-          <IcPalmspring style={{ width: '2.8rem' }} onClick={PamSpring} />
+          <IcPalmspring style={{ width: '2.8rem', marginLeft: '0.5rem' }} onClick={PamSpring} />
         </S.Icon>
       </S.TextWrapper>
     </S.FooterWrapper>
