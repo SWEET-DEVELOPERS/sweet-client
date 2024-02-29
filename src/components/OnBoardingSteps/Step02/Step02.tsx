@@ -59,17 +59,7 @@ const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
         <label htmlFor='imgInput'>
           {previewImageInfo.previewImage ? (
             <S.ThumbnailWrapper>
-              <img
-                src={previewImageInfo.previewImage}
-                alt='preview'
-                style={{
-                  position: 'relative',
-                  width: '24rem',
-                  height: '24rem',
-                  borderRadius: '1.2rem',
-                  marginTop: '5.6rem',
-                }}
-              />
+              <S.PreviewImage src={previewImageInfo.previewImage} alt='preview' />
               <IcImgEditBtn
                 style={{
                   position: 'absolute',

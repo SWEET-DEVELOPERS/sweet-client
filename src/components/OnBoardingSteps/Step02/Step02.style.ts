@@ -26,3 +26,11 @@ export const IcEmptyThumbnailWrapper = styled.div`
     height: 100%;
   }
 `;
+
+export const PreviewImage = styled.img`
+  position: relative;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 1.2rem;
+  margin-top: 5.6rem;
+`;
