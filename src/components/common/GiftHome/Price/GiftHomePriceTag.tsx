@@ -8,7 +8,12 @@ interface PriceTagProps {
   gap: number;
 }
 
-const GiftHomePriceTag: React.FC<PriceTagProps> = ({ price, fonts, colors, gap }) => {
+const GiftHomePriceTag: React.FC<PriceTagProps> = ({
+  price,
+  fonts,
+  colors,
+  gap,
+}: PriceTagProps) => {
   const formatPrice = (price: number) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
