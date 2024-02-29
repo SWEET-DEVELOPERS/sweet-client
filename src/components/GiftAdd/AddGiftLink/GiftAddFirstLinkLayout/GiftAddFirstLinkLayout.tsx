@@ -42,7 +42,6 @@ const GiftAddFirstLinkLayout = ({
 
   const { gifteeName } = useUpdateGifteeNameContext();
 
-
   const fetchOpenGraph = (BaseUrl: string) => {
     try {
       const response = mutation.mutate(
@@ -61,6 +60,8 @@ const GiftAddFirstLinkLayout = ({
             setStep(2);
           },
           onError: () => {
+            updateAddGiftInfo({ imageUrl: '' });
+            setOpenGraph({ title: '', image: '' });
             setModalStatus(true);
             setStep(3);
           },

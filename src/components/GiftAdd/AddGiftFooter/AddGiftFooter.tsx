@@ -3,6 +3,7 @@ import GiftAddNextBtn from '../AddGiftLink/common/GiftAddNextBtn/GiftAddNextBtn'
 import * as S from './AddGiftFooter.styled';
 import { AddGiftInfo } from '../../../types/gift';
 import usePutImageUrlToS3 from '../../../hooks/usePutImageUrlToS3';
+import { useAddGiftContext } from '../../../context/AddGift/AddGiftContext';
 
 interface AddGiftFooterProps {
   targetDate: string;
@@ -18,6 +19,9 @@ interface AddGiftFooterProps {
   fileName: string;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setNameText: React.Dispatch<React.SetStateAction<string>>;
+  setPriceText: React.Dispatch<React.SetStateAction<number | null>>;
+  setLinkText: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const AddGiftFooter = ({
@@ -25,7 +29,7 @@ const AddGiftFooter = ({
   roomId,
   setStep,
   isActivated,
-  name,
+  // name,
   cost,
   link,
   file,
@@ -34,16 +38,25 @@ const AddGiftFooter = ({
   updateAddGiftInfo,
   setIsLoading,
   setIsModalOpen,
+  setNameText,
+  setPriceText,
+  setLinkText,
 }: AddGiftFooterProps) => {
-  const { mutation } = usePostGift(
+  const { mutation } = usePostGift({
     roomId,
     targetDate,
     setStep,
     updateAddGiftInfo,
     setIsLoading,
     setIsModalOpen,
-  );
+    setNameText,
+    setPriceText,
+    setImageUrl,
+    setLinkText,
+  });
   const { putImageUrlToS3 } = usePutImageUrlToS3(roomId);
+  const { addGiftInfo } = useAddGiftContext();
+
   const onClick = async () => {
     setIsLoading(true);
     const { imageUrlS3 } = await putImageUrlToS3({ fileName, file, roomId, setImageUrl });
@@ -51,7 +64,7 @@ const AddGiftFooter = ({
       try {
         await mutation.mutateAsync({
           roomId: roomId,
-          name: name,
+          name: addGiftInfo.name,
           cost: cost,
           imageUrl: imageUrlS3,
           url: link,
