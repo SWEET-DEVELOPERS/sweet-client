@@ -94,11 +94,6 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
                 </S.InfoContainerDetail>
               </S.TournamentProceedWrapper>
 
-              <S.InfoContainer>
-                <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
-                <S.InfoContainerDetail>{formatDate(formattedEndDate, false)}</S.InfoContainerDetail>
-              </S.InfoContainer>
-
               <>
                 <S.InfoContainer>
                   <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
