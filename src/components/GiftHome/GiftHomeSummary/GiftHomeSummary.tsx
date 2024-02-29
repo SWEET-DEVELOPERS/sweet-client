@@ -6,11 +6,13 @@ import * as S from './GiftHomeSummary.styled';
 
 interface GiftHomeSummaryProps {
   data: RoomInfoType;
+  isBtn: boolean;
 }
 
-export const GiftHomeSummary = ({ data }: GiftHomeSummaryProps) => {
+export const GiftHomeSummary = ({ data, isBtn }: GiftHomeSummaryProps) => {
   const baseURL = import.meta.env.VITE_APP_BASE_URL_KAKAO;
-  const { handleCopyToClipboard } = useClipboard();
+  console.log('isBtn', isBtn);
+  const { handleCopyToClipboard } = useClipboard(isBtn);
 
   return (
     <S.GiftHomeSummaryWrapper>
@@ -28,8 +30,6 @@ export const GiftHomeSummary = ({ data }: GiftHomeSummaryProps) => {
       <S.Body09Text>선물 토너먼트까지</S.Body09Text>
 
       <CountDownTimer targetDate={new Date(data.tournamentStartDate)} giftee={data.gifteeName} />
-
-
     </S.GiftHomeSummaryWrapper>
   );
 };
