@@ -60,6 +60,8 @@ const GiftAddFirstLinkLayout = ({
             setStep(2);
           },
           onError: () => {
+            updateAddGiftInfo({ imageUrl: '' });
+            setOpenGraph({ title: '', image: '' });
             setModalStatus(true);
             setStep(3);
           },

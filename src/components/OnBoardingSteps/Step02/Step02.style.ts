@@ -14,6 +14,13 @@ export const ThumbnailWrapper = styled.div`
   border-radius: 1.2rem;
 `;
 
+export const PreviewImg = styled.img`
+  width: 24rem;
+  height: 24rem;
+
+  object-fit: contain;
+`;
+
 export const IcEmptyThumbnailWrapper = styled.div`
   ${({ theme }) =>
     theme.mixin.flexCenter({ direction: 'column', align: 'center', justify: 'center' })};

@@ -54,6 +54,5 @@ export const LetterLength = styled.p`
 
 export const IconWrapper = styled.div`
   ${({ theme }) => theme.mixin.flexCenter({ direction: 'row' })};
-  width: 4rem;
   height: 4rem;
 `;
