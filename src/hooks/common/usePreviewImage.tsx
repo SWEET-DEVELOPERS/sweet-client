@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 import { usePreviewImageContext } from '../../context/Onboarding/PreviewImageContext';
-import { IMAGE_HEIGHT, MESSAGE } from '../../core/messages';
+import { IMAGE_HEIGHT, MESSAGE } from '../../core/toast-messages';
 
 const usePreviewImage = () => {
   const { previewImageInfo, updatePreviewImageInfo } = usePreviewImageContext();

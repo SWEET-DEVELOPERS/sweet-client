@@ -3,7 +3,7 @@ import { IcUnselectedClock } from '../../../assets/svg';
 import * as S from './Step04.style';
 import { useOnboardingContext } from '../../../context/Onboarding/OnboardingContext';
 import { toast } from 'react-toastify';
-import { MESSAGE } from '../../../core/messages';
+import { MESSAGE } from '../../../core/toast-messages';
 
 interface TimePickerProps {
   onSelect: (selectedTime: string) => void;
