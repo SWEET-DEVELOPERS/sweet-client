@@ -39,7 +39,7 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
     new Date(onboardingInfo.tournamentStartDate),
     DURATION_MAPPING[onboardingInfo.tournamentDuration as keyof typeof DURATION_MAPPING] as number,
   );
-  const formattedEndDate = format(tournamentEndDate, 'yyyy.MM.dd(EEE)');
+  const formattedEndDate = format(tournamentEndDate, 'yyyy-MM-dd');
 
   const formatTournamentEndDate = formatDate(formattedEndDate, false);
 
@@ -104,7 +104,7 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
                   </S.InfoContainerDetail>
                 </S.InfoContainer>
 
-                {/* TODO 토너먼트 종료 TEST// 추후 삭제 */}
+                {/* TODO 토너먼트 종료 TEST// 변수로 한 번 더 할당하기//추후 삭제 */}
                 <S.InfoContainer>
                   <S.InfoContainerTitle>토너먼트 종료 TEST</S.InfoContainerTitle>
                   <S.InfoContainerDetail>{formatTournamentEndDate}</S.InfoContainerDetail>
