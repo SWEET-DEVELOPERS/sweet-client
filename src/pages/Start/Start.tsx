@@ -25,7 +25,7 @@ const Start = () => {
       <S.Main2 />
       <LottieAnimation
         animation={TournamentAnimation}
-        customStyle={{ position: 'absolute', top: '157.5rem', zIndex: '1' }}
+        customStyle={{ position: 'absolute', top: '160rem', zIndex: '1' }}
       />
       <S.Main3 />
       <StartStepAnimation />

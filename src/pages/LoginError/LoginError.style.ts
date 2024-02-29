@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IcKakoLarge } from '../../assets/svg';
+import { IcKakaoSmall } from '../../assets/svg';
 
 export const LoginErrorWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter({})};
@@ -20,7 +20,7 @@ export const SubInfoText = styled.p`
   margin-bottom: 2rem;
 `;
 
-export const KakaoLogin = styled(IcKakoLarge)`
+export const KakaoLogin = styled(IcKakaoSmall)`
   display: inline-flex;
-  padding: 1rem 3.6rem;
+  padding: 0 9.4rem;
 `;
