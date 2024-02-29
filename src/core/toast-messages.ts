@@ -1,7 +1,10 @@
 /**@todo 이미지 최소,최대 height 상의 필요*/
 export const IMAGE_HEIGHT = Object.freeze({
+
   MAX: 5000,
   MIN: 5000,
+
+
 });
 
 export const MESSAGE = Object.freeze({
