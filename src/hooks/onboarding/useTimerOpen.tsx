@@ -3,10 +3,10 @@ import { useOnboardingContext } from '../../context/Onboarding/OnboardingContext
 import { format } from 'date-fns';
 
 const useTimerOpen = () => {
-  const { onboardingInfo, updateOnboardingInfo } = useOnboardingContext();
+  const { onboardingInfo, updateOnboardingInfo, selectedTime, setSelectedTime } =
+    useOnboardingContext();
 
   const [isTimerOpen] = useState<boolean>(false);
-  const [selectedTime, setSelectedTime] = useState<string>('');
 
   const handleTimerSelect = (selectedTime: string) => {
     setSelectedTime(selectedTime);
