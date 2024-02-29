@@ -28,13 +28,12 @@ const LinkAddHeader = ({
 }: LinkAddHeaderProps) => {
   const onClickBackBtn = () => {
     if (step === 1) {
-      updateAddGiftInfo({ url: url });
+      updateAddGiftInfo({ name: '', cost: '', imageUrl: '', url: '' });
       setStep(0);
     } else if (step === 2 || step === 3) {
       updateAddGiftInfo({ name: name, cost: cost, imageUrl: imageUrl });
       setStep(1);
     }
-    updateAddGiftInfo({ name: '', cost: '', imageUrl: '', url: '' });
   };
   return (
     <S.LinkAddHeaderWrapper>
