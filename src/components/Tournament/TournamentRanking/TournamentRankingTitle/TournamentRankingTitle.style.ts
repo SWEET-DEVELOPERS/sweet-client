@@ -26,8 +26,10 @@ export const LinkButton = styled.button`
 
   p {
     display: inline-flex;
-    align-items: flex-end;
+    align-items: center;
+    padding: 1.1rem;
     gap: 8px;
+
     ${({ theme }) => theme.fonts.body_09};
   }
 `;
