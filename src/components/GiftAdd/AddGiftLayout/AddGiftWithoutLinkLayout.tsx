@@ -25,6 +25,16 @@ interface AddGiftWithLinkLayoutProps {
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   isDuplicateModalOpen: boolean;
   setIsDuplicateModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  nameText: string;
+  setNameText: React.Dispatch<React.SetStateAction<string>>;
+  priceText: number | null;
+  setPriceText: React.Dispatch<React.SetStateAction<number | null>>;
+  imageUrl: string;
+  setImageUrl: React.Dispatch<React.SetStateAction<string>>;
+  file: File | null;
+  setFile: React.Dispatch<React.SetStateAction<File | null>>;
+  fileName: string;
+  setFileName: React.Dispatch<React.SetStateAction<string>>;
 }
 
 // 직접 입력 화면
@@ -41,15 +51,24 @@ export const AddGiftWithoutLinkLayout = ({
   setIsLoading,
   isDuplicateModalOpen,
   setIsDuplicateModalOpen,
+  nameText,
+  setNameText,
+  priceText,
+  setPriceText,
+  imageUrl,
+  setImageUrl,
+  file,
+  setFile,
+  fileName,
+  setFileName,
 }: AddGiftWithLinkLayoutProps) => {
+  console.log('오잉');
   const [isActivated, setIsActivated] = useState(
-    !!addGiftInfo.name && !!addGiftInfo.cost && !!addGiftInfo.url && !!addGiftInfo.imageUrl,
+    !!addGiftInfo.name && !!addGiftInfo.cost && !!addGiftInfo.imageUrl,
   );
-  const [nameText, setNameText] = useState<string>(addGiftInfo.name);
-  const [priceText, setPriceText] = useState<number | null>(addGiftInfo.cost);
-  const [imageUrl, setImageUrl] = useState<string>(addGiftInfo.imageUrl);
-  const [fileName, setFileName] = useState<string>('');
-  const [file, setFile] = useState<File | null>(null);
+
+  // const [fileName, setFileName] = useState<string>('');
+  // const [file, setFile] = useState<File | null>(null);
   const [, setIsImageUploaded] = useState<boolean>(false);
   const [, setPreviewImage] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(modalStatus);
@@ -129,6 +148,9 @@ export const AddGiftWithoutLinkLayout = ({
         setImageUrl={setImageUrl}
         setIsLoading={setIsLoading}
         setIsModalOpen={setIsDuplicateModalOpen}
+        setNameText={setNameText}
+        setPriceText={setPriceText}
+        setLinkText={setLinkText}
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );

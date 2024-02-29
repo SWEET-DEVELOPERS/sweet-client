@@ -44,7 +44,7 @@ const TournamentRanking = ({ roomId, giftee }: TournamentRankingProps) => {
               );
             })
           ) : (
-            <p>No data available</p>
+            <p>등록된 선물이 없어요!</p>
           )}
         </S.Wrapper>
       </RankingWrapper>
