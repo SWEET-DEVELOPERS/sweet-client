@@ -5,3 +5,10 @@ export type OnboardingInfo = {
   tournamentStartDate: string;
   tournamentDuration: string;
 };
+
+export type PreviewImageInfo = {
+  isImageUploaded: boolean;
+  previewImage: string | null;
+  imageName: string;
+  file: File | null;
+};

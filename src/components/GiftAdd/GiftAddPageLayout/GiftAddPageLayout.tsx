@@ -18,7 +18,13 @@ interface GiftAddPageLayoutProps {
   setItemNum: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const GiftAddPageLayout = ({ targetDate, roomId, setStep, setItemNum }: GiftAddPageLayoutProps) => {
+const GiftAddPageLayout = ({
+  targetDate,
+  roomId,
+  setStep,
+  itemNum,
+  setItemNum,
+}: GiftAddPageLayoutProps) => {
   const roomIdNumber = parseInt(roomId);
   const { data } = useGetMyGift({ roomId: roomIdNumber });
 
@@ -44,8 +50,10 @@ const GiftAddPageLayout = ({ targetDate, roomId, setStep, setItemNum }: GiftAddP
     setStep(1);
   };
 
-  const handleClickConfirmDeleteBtn = (giftId: number) => {
-    mutation.mutate(giftId);
+  const handleClickConfirmDeleteBtn = (giftId?: number) => {
+    if (giftId !== undefined) {
+      mutation.mutate(giftId);
+    }
     setIsModalOpen(false);
   };
 
@@ -53,14 +61,14 @@ const GiftAddPageLayout = ({ targetDate, roomId, setStep, setItemNum }: GiftAddP
     <S.GiftAddPageWrapper>
       {isModalOpen && (
         <DeleteModal
-          onClickCancel={() => setIsModalOpen(false)}
+          setIsModalOpen={setIsModalOpen}
           onClickDelete={handleClickConfirmDeleteBtn}
           clickedItem={clickedItem}
         >
           정말 상품을 삭제하시겠어요?
         </DeleteModal>
       )}
-      <GiftAddPageLayoutHeader title={'내가 등록한 선물'} />
+      <GiftAddPageLayoutHeader title={'내가 등록한 선물'} itemNum={itemNum} />
       <MiniTimer targetDate={targetDate || ''} giftee={gifteeName} />
       <S.AddButtonsWrapper>
         {myGiftData.map((item, index) => (

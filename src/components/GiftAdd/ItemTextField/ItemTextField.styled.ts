@@ -41,16 +41,12 @@ export const Input = styled.input<{ $hasContent?: boolean }>`
   border: none;
   outline: none;
 
-  input::placeholder {
+  ${({ theme }) => theme.fonts.body_05};
+
+  &::placeholder {
     color: ${({ theme }) => theme.colors.G_07};
     ${({ theme }) => theme.fonts.body_06};
   }
-
-  input::placeholder {
-    color: ${({ theme }) => theme.colors.G_07};
-    ${({ theme }) => theme.fonts.body_06};
-  }
-
   /* Hide arrows for number input */
   input[type='number'] {
     -moz-appearance: textfield;

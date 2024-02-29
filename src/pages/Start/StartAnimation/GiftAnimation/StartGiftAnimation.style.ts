@@ -13,7 +13,7 @@ export const ImgWrapper = styled.div`
   }
 `;
 export const TextWrapper = styled.div`
-  ${({ theme: { mixin } }) => mixin.flexCenter};
+  ${({ theme: { mixin } }) => mixin.flexCenter({})};
   position: absolutes;
   margin-top: -11rem;
 

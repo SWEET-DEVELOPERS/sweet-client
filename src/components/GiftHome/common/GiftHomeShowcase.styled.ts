@@ -22,7 +22,6 @@ export const NoGiftsWrapper = styled.div`
 
 export const GiftsWrapper = styled.div`
   width: 36rem;
-  height: 22.5rem;
 
   display: flex;
   column-gap: 0.8rem;
@@ -31,4 +30,8 @@ export const GiftsWrapper = styled.div`
 
   color: ${({ theme }) => theme.colors.G_07};
   ${({ theme }) => theme.fonts.body_09};
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;

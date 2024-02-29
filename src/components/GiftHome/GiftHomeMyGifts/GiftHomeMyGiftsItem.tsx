@@ -1,4 +1,4 @@
-import PriceTag from '../../common/title/Price/PriceTag';
+import GiftHomePriceTag from '../../common/GiftHome/Price/GiftHomePriceTag';
 import * as S from './GiftHomeMyGiftsItem.style';
 
 interface GiftHomeMyGiftsItemProps {
@@ -10,10 +10,10 @@ interface GiftHomeMyGiftsItemProps {
 const GiftHomeMyGiftsItem: React.FC<GiftHomeMyGiftsItemProps> = ({ name, cost, imageUrl }) => {
   return (
     <S.GiftHomeMyGifts>
-      <img src={imageUrl} />
+      <S.GiftHomeMygiftsImg src={imageUrl} />
       <S.InfoWrapper>
         <S.Title>{name}</S.Title>
-        <PriceTag price={cost} />
+        <GiftHomePriceTag price={cost} fonts='body_09' colors='G_10' gap={0} />
       </S.InfoWrapper>
     </S.GiftHomeMyGifts>
   );

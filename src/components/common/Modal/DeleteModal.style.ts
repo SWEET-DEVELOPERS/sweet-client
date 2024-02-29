@@ -13,7 +13,6 @@ export const Overlay = styled.div`
 export const DeleteModalWrapper = styled.div`
   display: flex;
   justify-content: center;
-  justify-content: flex-end;
   align-items: center;
   flex-direction: column;
   position: fixed;

@@ -26,7 +26,7 @@ function GiftHomeDetailFriends() {
             <S.GiftsItemWrapper key={index} onClick={() => window.open(item.url)}>
               <S.GiftsItemImage src={item.imageUrl} />
               <S.GiftsItemTitle>{item.name}</S.GiftsItemTitle>
-              <GiftHomePriceTag price={item.cost} fonts={`body_07`} />
+              <GiftHomePriceTag gap={0.1} colors={'black'} price={item.cost} fonts={`body_07`} />
             </S.GiftsItemWrapper>
           ))
         ) : (

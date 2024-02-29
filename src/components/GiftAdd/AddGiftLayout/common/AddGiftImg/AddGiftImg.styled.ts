@@ -18,7 +18,7 @@ export const ImgPreview = styled.img`
   width: 19.2rem;
   height: 19.2rem;
 
-  object-fit: contain;
+  object-fit: cover;
 `;
 
 export const IcEmptyThumbnailWrapper = styled.div`
@@ -28,7 +28,7 @@ export const IcEmptyThumbnailWrapper = styled.div`
   margin-top: 2.8rem;
   cursor: pointer;
   img {
-    object-fit: contain;
+    object-fit: cover;
     width: 100%;
     height: 100%;
   }

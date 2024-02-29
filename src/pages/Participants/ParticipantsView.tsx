@@ -11,6 +11,8 @@ import useFormatDate from '../../hooks/onboarding/useFormatDate';
 import { addHours, format } from 'date-fns';
 import OnboardingFinalFooter from '../../components/OnBoardingSteps/Step06/OnboardingFinalFooter';
 import OnboardingFinalHeader from '../../components/OnBoardingSteps/Step06/OnboardingFinalHeader';
+import { toast } from 'react-toastify';
+import { MESSAGE } from '../../core/toast-messages';
 
 const DURATION_MAPPING = {
   SIX_HOURS: 6,
@@ -25,7 +27,6 @@ const ParticipantsView = () => {
   const { formatDuration, formatDate } = useFormatDate();
   const { mutation } = usePostParticipation();
   const navigate = useNavigate();
-
   console.log('useGetGifteeInfo로 받아온 data', data);
 
   /**@see 카카오 공유하기를 위한 useEffect */
@@ -43,7 +44,7 @@ const ParticipantsView = () => {
     DURATION_MAPPING[data.data.tournamentDuration as keyof typeof DURATION_MAPPING] as number,
   );
 
-  const formattedEndDate = format(tournamentEndDate, 'yyyy.MM.dd(EEE)');
+  const formattedEndDate = format(tournamentEndDate, 'yyyy-MM-dd');
 
   /**@see 선물 전달 일이 토너먼트 종료일보다 일찍일 때 */
   const isDeliveryBeforeEnd =
@@ -51,15 +52,13 @@ const ParticipantsView = () => {
 
   useEffect(() => {
     setIsToken(localStorage.getItem('EXIT_LOGIN_TOKEN') !== null);
-
-    console.log('isTOken', isToken);
-    console.log('isDeliveryBeforeEnd', isDeliveryBeforeEnd);
   }, [isToken, isDeliveryBeforeEnd]);
 
   const handleClickRoom = async (body: string | null) => {
     console.log('입장 버튼 클릭! 그리고 초대 코드', invitationCode);
     if (body === null) {
-      console.error('초대 코드가 유효하지 않습니다.');
+      console.error(MESSAGE.INVALID_INVITATION_CODE);
+      toast(MESSAGE.INVALID_INVITATION_CODE);
       return;
     }
     try {
@@ -94,11 +93,11 @@ const ParticipantsView = () => {
               <Title>{`${data.data.gifteeName}님을 위한`}</Title>
             </S.ParticipantsTitleWrapper>
             <S.SecondTitleWrapper>
-              <Title>선물 준비방이 개설됐어요</Title>
+              <Title>선물을 준비하고 있어요</Title>
             </S.SecondTitleWrapper>
           </div>
           <S.ProgressLineAndDetailContainer>
-            {isDeliveryBeforeEnd === true ? (
+            {isDeliveryBeforeEnd === false ? (
               <IcBeforeTournamentProgressLine
                 style={{ width: '1.6rem', height: '24.1rem', marginTop: '3.5rem' }}
               />
@@ -123,40 +122,21 @@ const ParticipantsView = () => {
                 </S.InfoContainerDetail>
               </S.TournamentProceedWrapper>
 
-              {/* isDeliveryBeforeEnd가 true인 경우와 false인 경우에 따라 렌더링하는 순서가 달라짐 */}
-              {isDeliveryBeforeEnd === true ? (
-                <>
-                  <S.InfoContainer>
-                    <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
-                    <S.InfoContainerDetail>
-                      {formatDate(formattedEndDate, false)}
-                    </S.InfoContainerDetail>
-                  </S.InfoContainer>
+              <>
+                <S.InfoContainer>
+                  <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
+                  <S.InfoContainerDetail>
+                    {formatDate(formattedEndDate, false)}
+                  </S.InfoContainerDetail>
+                </S.InfoContainer>
 
-                  <S.InfoContainerPresent>
-                    <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
-                    <S.InfoContainerDetail>
-                      {formatDate(data.data.deliveryDate, false)}
-                    </S.InfoContainerDetail>
-                  </S.InfoContainerPresent>
-                </>
-              ) : (
-                <>
-                  <S.InfoContainerPresent>
-                    <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
-                    <S.InfoContainerDetail>
-                      {formatDate(data.data.deliveryDate, false)}
-                    </S.InfoContainerDetail>
-                  </S.InfoContainerPresent>
-
-                  <S.InfoContainer>
-                    <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
-                    <S.InfoContainerDetail>
-                      {formatDate(formattedEndDate, false)}
-                    </S.InfoContainerDetail>
-                  </S.InfoContainer>
-                </>
-              )}
+                <S.InfoContainerPresent>
+                  <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
+                  <S.InfoContainerDetail>
+                    {formatDate(data.data.deliveryDate, false)}
+                  </S.InfoContainerDetail>
+                </S.InfoContainerPresent>
+              </>
             </S.DetailWrapper>
           </S.ProgressLineAndDetailContainer>
 
@@ -164,11 +144,12 @@ const ParticipantsView = () => {
             <OnboardingFinalFooter
               invitationCode={data.data.invitationCode}
               roomId={data.data.roomId}
-              onClick={() => handleClickRoom}
+              onClick={handleClickRoom}
               giftee={data.data.gifteeName}
             />
           ) : (
             <S.BtnWrapper>
+              {/* TODO 카카오 로그인 시 원래 화면으로 진입하게 수정해야함. */}
               <img src={btnKakao} onClick={() => window.location.replace(kakaoURL)} />
             </S.BtnWrapper>
           )}

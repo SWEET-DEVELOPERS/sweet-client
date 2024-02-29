@@ -2,15 +2,25 @@ import React from 'react';
 import * as S from './DeleteModal.style';
 import BtnMedium from '../Button/Cta/medium/BtnMedium';
 import { IcCancel } from '../../../assets/svg';
+import BtnDeleteMedium from '../Button/Cta/medium/BtnDeleteMedium';
 
 interface DeleteModalProps {
   children: React.ReactNode;
-  onClickDelete: (giftId: number) => void;
-  onClickCancel: () => void;
-  clickedItem: number | undefined;
+  onClickDelete: (giftId?: number) => void;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  clickedItem?: number | undefined;
 }
 
-const DeleteModal = ({ children, onClickDelete, onClickCancel, clickedItem }: DeleteModalProps) => {
+const DeleteModal = ({
+  children,
+  onClickDelete,
+  setIsModalOpen,
+  clickedItem,
+}: DeleteModalProps) => {
+  const onClickCancel = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <S.Overlay />
@@ -21,7 +31,7 @@ const DeleteModal = ({ children, onClickDelete, onClickCancel, clickedItem }: De
         />
         <S.DeleteModalContent>{children}</S.DeleteModalContent>
         <S.BtnWrapper>
-          <BtnMedium
+          <BtnDeleteMedium
             customStyle={{
               width: '12rem',
               outline: 'none',
@@ -32,7 +42,7 @@ const DeleteModal = ({ children, onClickDelete, onClickCancel, clickedItem }: De
             onClick={() => (clickedItem ? onClickDelete(clickedItem) : onClickCancel())}
           >
             네, 삭제할게요
-          </BtnMedium>
+          </BtnDeleteMedium>
           <BtnMedium customStyle={{ width: '12rem' }} onClick={onClickCancel}>
             아니오
           </BtnMedium>

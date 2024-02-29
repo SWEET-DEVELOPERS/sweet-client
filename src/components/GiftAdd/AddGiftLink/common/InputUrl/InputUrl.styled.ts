@@ -24,9 +24,9 @@ export const Input = styled.input<{ hasContent?: boolean }>`
   border: none;
   outline: none;
   color: ${({ theme }) => theme.colors.black};
-  ${({ theme }) => theme.fonts.body_06};
+  ${({ theme }) => theme.fonts.body_05};
 
-  input::placeholder {
+  &::placeholder {
     color: ${({ theme }) => theme.colors.G_07};
     ${({ theme }) => theme.fonts.body_06};
   }

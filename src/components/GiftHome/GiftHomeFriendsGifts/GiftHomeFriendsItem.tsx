@@ -15,7 +15,7 @@ const GiftHomeFriendsItem = ({ imgUrl, title, price, user, url }: GiftHomeFriend
       <S.GiftsItemImage src={imgUrl} />
       <S.GiftsItemTitle>{title}</S.GiftsItemTitle>
       <S.GiftsItemPrice>
-        <GiftHomePriceTag price={price} fonts={'body_09'} />
+        <GiftHomePriceTag gap={0.1} colors={'black'} price={price} fonts={'body_09'} />
       </S.GiftsItemPrice>
       <S.GiftsItemUser>{user}</S.GiftsItemUser>
     </S.GiftsItemWrapper>
