@@ -56,7 +56,7 @@ const GiftAddFirstLinkLayout = ({
             console.log('fetchOpenGraph 속 response', response);
 
             setLinkText(text);
-            updateAddGiftInfo({ url: text, imageUrl: giftImage });
+            updateAddGiftInfo({ name: data.title, url: text, imageUrl: giftImage });
             setStep(2);
           },
           onError: () => {

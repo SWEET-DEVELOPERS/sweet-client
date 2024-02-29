@@ -14,7 +14,7 @@ export const GiftsItemImage = styled.img`
   width: 13rem;
   height: 13rem;
 
-  object-fit: contain;
+  object-fit: cover;
 
   border-radius: 1rem;
   background-color: ${({ theme }) => theme.colors.G_03};
