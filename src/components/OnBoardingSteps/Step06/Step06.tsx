@@ -39,8 +39,8 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
     new Date(onboardingInfo.tournamentStartDate),
     DURATION_MAPPING[onboardingInfo.tournamentDuration as keyof typeof DURATION_MAPPING] as number,
   );
+  const formattedEndDate = format(tournamentEndDate, 'yyyy-MM-dd');
 
-  const formattedEndDate = format(tournamentEndDate, 'yyyy.MM.dd(EEE)');
   const isDeliveryBeforeEnd =
     new Date(onboardingInfo.deliveryDate).getTime() < tournamentEndDate.getTime();
 
@@ -93,6 +93,7 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
                   {formatDuration(onboardingInfo.tournamentDuration)}
                 </S.InfoContainerDetail>
               </S.TournamentProceedWrapper>
+
               <>
                 <S.InfoContainer>
                   <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
