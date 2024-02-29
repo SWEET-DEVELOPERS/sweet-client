@@ -40,6 +40,8 @@ export const GiftsItemImage = styled.img`
 `;
 
 export const GiftsItemTitle = styled.p`
+  margin-top: 0.8rem;
+
   display: -webkit-box;
   width: 12.8rem;
   -webkit-box-orient: vertical;

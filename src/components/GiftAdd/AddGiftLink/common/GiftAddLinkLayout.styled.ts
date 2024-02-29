@@ -7,3 +7,7 @@ export const GiftAddLinkLayoutWrapper = styled.section`
   display: flex;
   flex-direction: column;
 `;
+
+export const TitleWrapper = styled.div`
+  margin-top: 2.4rem;
+`;

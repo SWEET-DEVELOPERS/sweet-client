@@ -22,6 +22,8 @@ export const GiftsItemImage = styled.img`
 `;
 
 export const GiftsItemTitle = styled.p`
+  margin-top: 0.8rem;
+
   display: -webkit-box;
   width: 12.8rem;
   -webkit-box-orient: vertical;
@@ -35,6 +37,7 @@ export const GiftsItemTitle = styled.p`
 `;
 
 export const GiftsItemPrice = styled.span`
+  margin-top: 0.2rem;
   ${({ theme }) => theme.fonts.body_09};
   color: ${({ theme }) => theme.colors.black};
 `;
