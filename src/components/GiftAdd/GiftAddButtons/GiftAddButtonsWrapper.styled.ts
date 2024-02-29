@@ -14,6 +14,7 @@ export const GiftsItemWrapper = styled.div`
 export const GiftsItemImage = styled.img`
   width: 15.8rem;
   height: 15.8rem;
+  object-fit: cover;
 
   border-radius: 0.4rem;
   background-color: ${({ theme }) => theme.colors.G_03};
