@@ -91,3 +91,4 @@ export { default as Ranking04 } from './Ranking04';
 export { default as Ranking1 } from './Ranking1';
 export { default as Ranking2 } from './Ranking2';
 export { default as Ranking3 } from './Ranking3';
+export { default as IcEmptyThumbnailFinal } from './IcEmptyThumbnailFinal';

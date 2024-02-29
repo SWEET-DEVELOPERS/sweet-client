@@ -18,7 +18,13 @@ interface GiftAddPageLayoutProps {
   setItemNum: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const GiftAddPageLayout = ({ targetDate, roomId, setStep, setItemNum }: GiftAddPageLayoutProps) => {
+const GiftAddPageLayout = ({
+  targetDate,
+  roomId,
+  setStep,
+  itemNum,
+  setItemNum,
+}: GiftAddPageLayoutProps) => {
   const roomIdNumber = parseInt(roomId);
   const { data } = useGetMyGift({ roomId: roomIdNumber });
 
@@ -62,7 +68,7 @@ const GiftAddPageLayout = ({ targetDate, roomId, setStep, setItemNum }: GiftAddP
           정말 상품을 삭제하시겠어요?
         </DeleteModal>
       )}
-      <GiftAddPageLayoutHeader title={'내가 등록한 선물'} />
+      <GiftAddPageLayoutHeader title={'내가 등록한 선물'} itemNum={itemNum} />
       <MiniTimer targetDate={targetDate || ''} giftee={gifteeName} />
       <S.AddButtonsWrapper>
         {myGiftData.map((item, index) => (

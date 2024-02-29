@@ -5,12 +5,14 @@ interface convertURLtoFileProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
   setModalStatus: React.Dispatch<React.SetStateAction<boolean>>;
   updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
+  setImageUrl: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const useConvertURLtoFile = async ({
   url,
   setStep,
   setModalStatus,
+  setImageUrl,
   updateAddGiftInfo,
 }: convertURLtoFileProps) => {
   console.log('들어오고 있는 url', url);
@@ -29,6 +31,7 @@ const useConvertURLtoFile = async ({
     return { convertedOgFile };
   } catch (error) {
     console.error('error?', error);
+    setImageUrl('');
     updateAddGiftInfo({ imageUrl: '' });
     setModalStatus(true);
     setStep(3);

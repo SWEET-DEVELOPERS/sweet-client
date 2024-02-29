@@ -4,9 +4,10 @@ import * as S from './GiftAddPageLayoutHeader.style';
 
 interface GiftAddPageLayoutHeaderProps {
   title: string;
+  itemNum: number;
 }
 
-const GiftAddPageLayoutHeader = ({ title }: GiftAddPageLayoutHeaderProps) => {
+const GiftAddPageLayoutHeader = ({ title, itemNum }: GiftAddPageLayoutHeaderProps) => {
   const navigate = useNavigate();
   const params = useParams();
   const roomId = params.roomId;
@@ -16,16 +17,20 @@ const GiftAddPageLayoutHeader = ({ title }: GiftAddPageLayoutHeaderProps) => {
 
   return (
     <S.GiftAddPageLayoutHeader>
-      <IcLeft
-        style={{
-          width: '3.6rem',
-          height: '3.6rem',
-          position: 'absolute',
-          left: '0.7rem',
-          cursor: 'pointer',
-        }}
-        onClick={onClickBackBtn}
-      />
+      {itemNum === 0 ? (
+        <IcLeft
+          style={{
+            width: '3.6rem',
+            height: '3.6rem',
+            position: 'absolute',
+            left: '0.7rem',
+            cursor: 'pointer',
+          }}
+          onClick={onClickBackBtn}
+        />
+      ) : (
+        <></>
+      )}
       <S.HeaderText>{title}</S.HeaderText>
     </S.GiftAddPageLayoutHeader>
   );

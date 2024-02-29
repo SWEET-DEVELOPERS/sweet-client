@@ -7,7 +7,7 @@ interface AddGiftInfoContext {
 }
 const initialAddGiftInfo: AddGiftInfo = {
   name: '',
-  cost: 0,
+  cost: null,
   imageUrl: '',
   url: '',
 };

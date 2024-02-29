@@ -94,7 +94,7 @@ export const InfoContainerDetail = styled.p`
 `;
 
 export const BtnWrapper = styled.div`
-  margin-top: 3.2rem;
+  margin-top: 5rem;
 `;
 
 export const ImageUrlWrapper = styled.img`

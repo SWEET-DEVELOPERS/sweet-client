@@ -93,7 +93,7 @@ const ParticipantsView = () => {
               <Title>{`${data.data.gifteeName}님을 위한`}</Title>
             </S.ParticipantsTitleWrapper>
             <S.SecondTitleWrapper>
-              <Title>선물 준비방이 개설됐어요</Title>
+              <Title>선물을 준비하고 있어요</Title>
             </S.SecondTitleWrapper>
           </div>
           <S.ProgressLineAndDetailContainer>
@@ -149,6 +149,7 @@ const ParticipantsView = () => {
             />
           ) : (
             <S.BtnWrapper>
+              {/* TODO 카카오 로그인 시 원래 화면으로 진입하게 수정해야함. */}
               <img src={btnKakao} onClick={() => window.location.replace(kakaoURL)} />
             </S.BtnWrapper>
           )}
