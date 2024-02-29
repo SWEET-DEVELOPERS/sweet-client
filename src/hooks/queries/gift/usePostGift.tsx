@@ -4,6 +4,19 @@ import { AddGiftInfo, GiftPostRequestType } from '../../../types/gift';
 import { useNavigate } from 'react-router-dom';
 import { MY_GIFT_QUERY_KEY } from './useGetMyGift';
 
+interface PostGiftProps {
+  roomId: number;
+  targetDate: string;
+  setStep: React.Dispatch<React.SetStateAction<number>>;
+  updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setImageUrl: React.Dispatch<React.SetStateAction<string>>;
+  setNameText: React.Dispatch<React.SetStateAction<string>>;
+  setLinkText: React.Dispatch<React.SetStateAction<string>>;
+  setPriceText: React.Dispatch<React.SetStateAction<number | null>>;
+}
+
 export const postNewGift = async (body: GiftPostRequestType) => {
   try {
     const response = await post(`/gift`, body);
@@ -18,14 +31,18 @@ export const postNewGift = async (body: GiftPostRequestType) => {
   }
 };
 
-export const usePostGift = (
-  roomId: number,
-  targetDate: string,
-  setStep: React.Dispatch<React.SetStateAction<number>>,
-  updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void,
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
-  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>,
-) => {
+export const usePostGift = ({
+  roomId,
+  targetDate,
+  setStep,
+  updateAddGiftInfo,
+  setIsLoading,
+  setIsModalOpen,
+  setNameText,
+  setPriceText,
+  setImageUrl,
+  setLinkText,
+}: PostGiftProps) => {
   const navigate = useNavigate();
 
   const queryClient = useQueryClient();
@@ -39,6 +56,10 @@ export const usePostGift = (
       setStep(0);
       setIsLoading(false);
       updateAddGiftInfo({ name: '', cost: 0, imageUrl: '', url: '' });
+      setNameText('');
+      setPriceText(null);
+      setImageUrl('');
+      setLinkText('');
     },
     onError: (error) => {
       console.log('선물 등록 에러!!', error.message);

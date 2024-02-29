@@ -2,6 +2,7 @@ import * as S from './AddGiftImg.styled';
 import { IcEmptyThumbnail, IcImgEditBtn } from '../../../../../assets/svg';
 import { OpenGraphResponseType } from '../../../../../types/etc';
 import useHandleImageUpload from '../../../../../hooks/useHandleImageUpload';
+import { useAddGiftContext } from '../../../../../context/AddGift/AddGiftContext';
 
 interface AddGiftImgProps {
   imageUrl: string;
@@ -30,9 +31,12 @@ const AddGiftImg = ({
     setPreviewImage,
     setIsImageUploaded,
   });
+
+  const { addGiftInfo } = useAddGiftContext();
+  console.log('ADDGIFTINFO 이미지', addGiftInfo.imageUrl);
   return (
     <>
-      {openGraph?.image !== '' || imageUrl !== '' ? (
+      {openGraph?.image !== '' || imageUrl !== '' || addGiftInfo.imageUrl !== '' ? (
         <>
           <S.IcEmptyThumbnailWrapper>
             <input
@@ -46,7 +50,13 @@ const AddGiftImg = ({
               {imageUrl ? (
                 <S.ThumbnailWrapper>
                   <S.ImgPreview
-                    src={openGraph?.image ? openGraph.image : imageUrl}
+                    src={
+                      openGraph?.image
+                        ? openGraph.image
+                        : imageUrl
+                          ? imageUrl
+                          : addGiftInfo.imageUrl
+                    }
                     alt='preview'
                     style={{
                       position: 'relative',

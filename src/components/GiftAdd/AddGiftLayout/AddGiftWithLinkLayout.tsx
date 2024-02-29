@@ -14,6 +14,7 @@ import { useUpdateGifteeNameContext } from '../../../context/GifteeName/GifteeNa
 
 interface AddGiftWithLinkLayoutProps {
   link: string;
+  setLinkText: React.Dispatch<React.SetStateAction<string>>;
   roomId: number;
   step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
@@ -35,6 +36,7 @@ interface AddGiftWithLinkLayoutProps {
 
 const AddGiftWithLinkLayout = ({
   link,
+  setLinkText,
   roomId,
   step,
   setStep,
@@ -79,6 +81,7 @@ const AddGiftWithLinkLayout = ({
       const convertResult = await useConvertURLtoFile({
         url: openGraph.image,
         setStep,
+        setImageUrl,
         setModalStatus,
         updateAddGiftInfo,
       });
@@ -143,6 +146,9 @@ const AddGiftWithLinkLayout = ({
         setImageUrl={setImageUrl}
         setIsLoading={setIsLoading}
         setIsModalOpen={setIsModalOpen}
+        setNameText={setNameText}
+        setPriceText={setPriceText}
+        setLinkText={setLinkText}
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );

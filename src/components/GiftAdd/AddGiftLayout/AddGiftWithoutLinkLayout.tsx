@@ -31,6 +31,10 @@ interface AddGiftWithLinkLayoutProps {
   setPriceText: React.Dispatch<React.SetStateAction<number | null>>;
   imageUrl: string;
   setImageUrl: React.Dispatch<React.SetStateAction<string>>;
+  file: File | null;
+  setFile: React.Dispatch<React.SetStateAction<File | null>>;
+  fileName: string;
+  setFileName: React.Dispatch<React.SetStateAction<string>>;
 }
 
 // 직접 입력 화면
@@ -53,14 +57,18 @@ export const AddGiftWithoutLinkLayout = ({
   setPriceText,
   imageUrl,
   setImageUrl,
+  file,
+  setFile,
+  fileName,
+  setFileName,
 }: AddGiftWithLinkLayoutProps) => {
   console.log('오잉');
   const [isActivated, setIsActivated] = useState(
     !!addGiftInfo.name && !!addGiftInfo.cost && !!addGiftInfo.imageUrl,
   );
 
-  const [fileName, setFileName] = useState<string>('');
-  const [file, setFile] = useState<File | null>(null);
+  // const [fileName, setFileName] = useState<string>('');
+  // const [file, setFile] = useState<File | null>(null);
   const [, setIsImageUploaded] = useState<boolean>(false);
   const [, setPreviewImage] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(modalStatus);
@@ -140,6 +148,9 @@ export const AddGiftWithoutLinkLayout = ({
         setImageUrl={setImageUrl}
         setIsLoading={setIsLoading}
         setIsModalOpen={setIsDuplicateModalOpen}
+        setNameText={setNameText}
+        setPriceText={setPriceText}
+        setLinkText={setLinkText}
       />
     </S.AddGiftWithLinkLayoutWrapper>
   );

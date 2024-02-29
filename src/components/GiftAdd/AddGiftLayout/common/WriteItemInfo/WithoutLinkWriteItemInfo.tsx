@@ -88,7 +88,7 @@ const WriteItemInfo = ({
         type='text'
         text={name}
         handleTextChange={handleNameTextChange}
-        placeholderText='상품명을 입력해 주세요'
+        placeholderText='상품명을 입력해주세요'
         categoryTitle='상품이름'
       />
       <ItemTextField
@@ -99,7 +99,7 @@ const WriteItemInfo = ({
         placeholderText='가격을 입력해주세요'
       />
       <ItemTextField
-        text={url ? url : addGiftInfo.url}
+        text={url ? url : url === '' ? '' : addGiftInfo.url}
         handleTextChange={handleLinkTextChange}
         categoryTitle='링크'
         placeholderText='링크를 입력해주세요 (선택)'

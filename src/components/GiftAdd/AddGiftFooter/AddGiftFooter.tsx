@@ -18,6 +18,9 @@ interface AddGiftFooterProps {
   fileName: string;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setNameText: React.Dispatch<React.SetStateAction<string>>;
+  setPriceText: React.Dispatch<React.SetStateAction<number | null>>;
+  setLinkText: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const AddGiftFooter = ({
@@ -34,16 +37,24 @@ const AddGiftFooter = ({
   updateAddGiftInfo,
   setIsLoading,
   setIsModalOpen,
+  setNameText,
+  setPriceText,
+  setLinkText,
 }: AddGiftFooterProps) => {
-  const { mutation } = usePostGift(
+  const { mutation } = usePostGift({
     roomId,
     targetDate,
     setStep,
     updateAddGiftInfo,
     setIsLoading,
     setIsModalOpen,
-  );
+    setNameText,
+    setPriceText,
+    setImageUrl,
+    setLinkText,
+  });
   const { putImageUrlToS3 } = usePutImageUrlToS3(roomId);
+
   const onClick = async () => {
     setIsLoading(true);
     const { imageUrlS3 } = await putImageUrlToS3({ fileName, file, roomId, setImageUrl });

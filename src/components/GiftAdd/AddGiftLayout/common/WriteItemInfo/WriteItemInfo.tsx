@@ -20,6 +20,8 @@ const WriteItemInfo = ({
   name,
   cost,
 }: WriteItemInfoProps) => {
+  const { addGiftInfo, updateAddGiftInfo } = useAddGiftContext();
+
   const handleSetIsActivated = (newNameText: string, newPriceText: string) => {
     if (
       newNameText.length > 0 &&
@@ -34,10 +36,9 @@ const WriteItemInfo = ({
     }
   };
 
-  const { addGiftInfo } = useAddGiftContext();
-
   const handleNameTextChange = (newText: string) => {
     setName(newText);
+    updateAddGiftInfo({ name: newText });
     if (cost !== null) {
       handleSetIsActivated(newText, cost.toString());
     }
@@ -46,6 +47,7 @@ const WriteItemInfo = ({
   const handlePriceTextChange = (newText: string) => {
     if (newText === '') {
       setCost(null);
+      updateAddGiftInfo({ cost: null });
       handleSetIsActivated(name, '');
       return;
     }
@@ -75,7 +77,7 @@ const WriteItemInfo = ({
     <S.WriteItemInfoWrapper>
       <ItemTextField
         type='text'
-        text={name}
+        text={addGiftInfo.name ? addGiftInfo.name : name}
         handleTextChange={handleNameTextChange}
         placeholderText='상품명을 입력해주세요'
         categoryTitle='상품이름'

@@ -23,7 +23,11 @@ const GiftAddPage = () => {
   const [duplicateModalStatus, setDuplicateModalStatus] = useState(false);
   const [nameText, setNameText] = useState<string>(addGiftInfo.name);
   const [priceText, setPriceText] = useState<number | null>(addGiftInfo.cost);
+
+  // 이미지 관련 state들
   const [imageUrl, setImageUrl] = useState<string>(addGiftInfo.imageUrl);
+  const [fileName, setFileName] = useState<string>('');
+  const [file, setFile] = useState<File | null>(null);
 
   const params = useParams();
   const roomId = params.roomId;
@@ -81,6 +85,7 @@ const GiftAddPage = () => {
           priceText={priceText}
           setPriceText={setPriceText}
           imageUrl={imageUrl}
+          setLinkText={setLinkText}
           setImageUrl={setImageUrl}
         />
       );
@@ -109,6 +114,10 @@ const GiftAddPage = () => {
           setPriceText={setPriceText}
           imageUrl={imageUrl}
           setImageUrl={setImageUrl}
+          file={file}
+          setFile={setFile}
+          fileName={fileName}
+          setFileName={setFileName}
         />
       );
   }
