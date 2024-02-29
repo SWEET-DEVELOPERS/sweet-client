@@ -1,5 +1,5 @@
 import Title from '../../common/title/Title';
-import { IcEmptyThumbnail, IcImgEditBtn } from '../../../assets/svg';
+import { IcEmptyThumbnailFinal, IcImgEditBtn } from '../../../assets/svg';
 import * as S from './Step02.style';
 import OnBoardingBtn from '../onboardingBtn/OnBoardingBtn';
 import usePreviewImage from '../../../hooks/common/usePreviewImage';
@@ -72,7 +72,7 @@ const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
               />
             </S.ThumbnailWrapper>
           ) : (
-            <IcEmptyThumbnail
+            <IcEmptyThumbnailFinal
               style={{
                 position: 'relative',
                 width: '24rem',

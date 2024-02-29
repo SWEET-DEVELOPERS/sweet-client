@@ -69,7 +69,7 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
             </S.SecondTitleWrapper>
           </div>
           <S.ProgressLineAndDetailContainer>
-            {isDeliveryBeforeEnd === true ? (
+            {isDeliveryBeforeEnd === false ? (
               <IcBeforeTournamentProgressLine
                 style={{ width: '1.6rem', height: '24.1rem', marginTop: '3.5rem' }}
               />
@@ -93,41 +93,21 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
                   {formatDuration(onboardingInfo.tournamentDuration)}
                 </S.InfoContainerDetail>
               </S.TournamentProceedWrapper>
+              <>
+                <S.InfoContainer>
+                  <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
+                  <S.InfoContainerDetail>
+                    {formatDate(formattedEndDate, false)}
+                  </S.InfoContainerDetail>
+                </S.InfoContainer>
 
-              {/* isDeliveryBeforeEnd가 true인 경우와 false인 경우에 따라 렌더링하는 순서가 달라짐 */}
-              {isDeliveryBeforeEnd === true ? (
-                <>
-                  <S.InfoContainer>
-                    <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
-                    <S.InfoContainerDetail>
-                      {formatDate(formattedEndDate, false)}
-                    </S.InfoContainerDetail>
-                  </S.InfoContainer>
-
-                  <S.InfoContainerPresent>
-                    <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
-                    <S.InfoContainerDetail>
-                      {formatDate(onboardingInfo.deliveryDate, false)}
-                    </S.InfoContainerDetail>
-                  </S.InfoContainerPresent>
-                </>
-              ) : (
-                <>
-                  <S.InfoContainerPresent>
-                    <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
-                    <S.InfoContainerDetail>
-                      {formatDate(onboardingInfo.deliveryDate, false)}
-                    </S.InfoContainerDetail>
-                  </S.InfoContainerPresent>
-
-                  <S.InfoContainer>
-                    <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
-                    <S.InfoContainerDetail>
-                      {formatDate(formattedEndDate, false)}
-                    </S.InfoContainerDetail>
-                  </S.InfoContainer>
-                </>
-              )}
+                <S.InfoContainerPresent>
+                  <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
+                  <S.InfoContainerDetail>
+                    {formatDate(onboardingInfo.deliveryDate, false)}
+                  </S.InfoContainerDetail>
+                </S.InfoContainerPresent>
+              </>
             </S.DetailWrapper>
           </S.ProgressLineAndDetailContainer>
           <OnboardingFinalFooter

@@ -94,11 +94,11 @@ const ParticipantsView = () => {
               <Title>{`${data.data.gifteeName}님을 위한`}</Title>
             </S.ParticipantsTitleWrapper>
             <S.SecondTitleWrapper>
-              <Title>선물 준비방이 개설됐어요</Title>
+              <Title>선물을 준비하고 있어요</Title>
             </S.SecondTitleWrapper>
           </div>
           <S.ProgressLineAndDetailContainer>
-            {isDeliveryBeforeEnd === true ? (
+            {isDeliveryBeforeEnd === false ? (
               <IcBeforeTournamentProgressLine
                 style={{ width: '1.6rem', height: '24.1rem', marginTop: '3.5rem' }}
               />
@@ -123,40 +123,21 @@ const ParticipantsView = () => {
                 </S.InfoContainerDetail>
               </S.TournamentProceedWrapper>
 
-              {/* isDeliveryBeforeEnd가 true인 경우와 false인 경우에 따라 렌더링하는 순서가 달라짐 */}
-              {isDeliveryBeforeEnd === true ? (
-                <>
-                  <S.InfoContainer>
-                    <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
-                    <S.InfoContainerDetail>
-                      {formatDate(formattedEndDate, false)}
-                    </S.InfoContainerDetail>
-                  </S.InfoContainer>
+              <>
+                <S.InfoContainer>
+                  <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
+                  <S.InfoContainerDetail>
+                    {formatDate(formattedEndDate, false)}
+                  </S.InfoContainerDetail>
+                </S.InfoContainer>
 
-                  <S.InfoContainerPresent>
-                    <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
-                    <S.InfoContainerDetail>
-                      {formatDate(data.data.deliveryDate, false)}
-                    </S.InfoContainerDetail>
-                  </S.InfoContainerPresent>
-                </>
-              ) : (
-                <>
-                  <S.InfoContainerPresent>
-                    <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
-                    <S.InfoContainerDetail>
-                      {formatDate(data.data.deliveryDate, false)}
-                    </S.InfoContainerDetail>
-                  </S.InfoContainerPresent>
-
-                  <S.InfoContainer>
-                    <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
-                    <S.InfoContainerDetail>
-                      {formatDate(formattedEndDate, false)}
-                    </S.InfoContainerDetail>
-                  </S.InfoContainer>
-                </>
-              )}
+                <S.InfoContainerPresent>
+                  <S.InfoContainerTitle>선물 전달</S.InfoContainerTitle>
+                  <S.InfoContainerDetail>
+                    {formatDate(data.data.deliveryDate, false)}
+                  </S.InfoContainerDetail>
+                </S.InfoContainerPresent>
+              </>
             </S.DetailWrapper>
           </S.ProgressLineAndDetailContainer>
 
@@ -169,6 +150,7 @@ const ParticipantsView = () => {
             />
           ) : (
             <S.BtnWrapper>
+              {/* TODO 카카오 로그인 시 원래 화면으로 진입하게 수정해야함. */}
               <img src={btnKakao} onClick={() => window.location.replace(kakaoURL)} />
             </S.BtnWrapper>
           )}

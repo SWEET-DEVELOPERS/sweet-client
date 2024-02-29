@@ -47,7 +47,7 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   return (
     <>
       <Title>
-        선물 토너먼트 <br /> 진행 시간을 설정해주세요
+        선물 토너먼트를 <br /> 몇 시간 동안 진행할까요?
       </Title>
       <S.SubTitleWrapper>
         <SubTitle subTitle='토너먼트가 아래 시간 동안 진행돼요.' />
