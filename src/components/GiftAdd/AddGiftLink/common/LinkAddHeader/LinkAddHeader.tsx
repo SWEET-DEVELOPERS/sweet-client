@@ -22,7 +22,7 @@ const LinkAddHeader = ({
   name,
   cost,
   imageUrl,
-  url,
+  // url,
   updateAddGiftInfo,
   gifteeName,
 }: LinkAddHeaderProps) => {
