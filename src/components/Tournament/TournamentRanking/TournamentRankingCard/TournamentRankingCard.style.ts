@@ -8,6 +8,9 @@ export const TournamentRankingCardWrapper = styled.div`
 
   img {
     width: 7.2rem;
+    height: auto;
+    aspect-ratio: 1 / 1;
+
     border-radius: 1.2rem;
   }
 `;
