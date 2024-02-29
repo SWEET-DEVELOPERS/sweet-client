@@ -24,7 +24,7 @@ const LinkAddHeader = ({
   imageUrl,
   url,
   updateAddGiftInfo,
-  gifteeName
+  gifteeName,
 }: LinkAddHeaderProps) => {
   const onClickBackBtn = () => {
     if (step === 1) {
@@ -34,6 +34,7 @@ const LinkAddHeader = ({
       updateAddGiftInfo({ name: name, cost: cost, imageUrl: imageUrl });
       setStep(1);
     }
+    updateAddGiftInfo({ name: '', cost: '', imageUrl: '', url: '' });
   };
   return (
     <S.LinkAddHeaderWrapper>
@@ -47,7 +48,7 @@ const LinkAddHeader = ({
           cursor: 'pointer',
         }}
       />
-      <MiniTimer targetDate={targetDate} giftee={gifteeName}/>
+      <MiniTimer targetDate={targetDate} giftee={gifteeName} />
     </S.LinkAddHeaderWrapper>
   );
 };
