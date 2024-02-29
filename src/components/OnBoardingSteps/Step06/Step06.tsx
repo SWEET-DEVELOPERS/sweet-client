@@ -41,8 +41,6 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
   );
   const formattedEndDate = format(tournamentEndDate, 'yyyy-MM-dd');
 
-  const formatTournamentEndDate = formatDate(formattedEndDate, false);
-
   const isDeliveryBeforeEnd =
     new Date(onboardingInfo.deliveryDate).getTime() < tournamentEndDate.getTime();
 
@@ -102,12 +100,6 @@ const OnboardingFinal = (props: OnboardingFinalProps) => {
                   <S.InfoContainerDetail>
                     {formatDate(formattedEndDate, false)}
                   </S.InfoContainerDetail>
-                </S.InfoContainer>
-
-                {/* TODO 토너먼트 종료 TEST// 변수로 한 번 더 할당하기//추후 삭제 */}
-                <S.InfoContainer>
-                  <S.InfoContainerTitle>토너먼트 종료 TEST</S.InfoContainerTitle>
-                  <S.InfoContainerDetail>{formatTournamentEndDate}</S.InfoContainerDetail>
                 </S.InfoContainer>
 
                 <S.InfoContainerPresent>

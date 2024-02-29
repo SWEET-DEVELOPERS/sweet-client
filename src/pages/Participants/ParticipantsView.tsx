@@ -27,7 +27,6 @@ const ParticipantsView = () => {
   const { formatDuration, formatDate } = useFormatDate();
   const { mutation } = usePostParticipation();
   const navigate = useNavigate();
-
   console.log('useGetGifteeInfo로 받아온 data', data);
 
   /**@see 카카오 공유하기를 위한 useEffect */
@@ -128,7 +127,6 @@ const ParticipantsView = () => {
                   <S.InfoContainerTitle>토너먼트 종료</S.InfoContainerTitle>
                   <S.InfoContainerDetail>
                     {formatDate(formattedEndDate, false)}
-                    {/* {formattedEndDate} */}
                   </S.InfoContainerDetail>
                 </S.InfoContainer>
 
