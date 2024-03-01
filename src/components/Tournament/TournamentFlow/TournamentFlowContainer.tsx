@@ -111,28 +111,25 @@ const TournamentFlowContainer = ({ memberData, roomId }: TournamentProps) => {
           finalGiftId={selectedItem?.giftId || 0}
         />
       ) : (
-        <>
-          <S.TournamentFlowContainerWrapper></S.TournamentFlowContainerWrapper>
-          <S.TournamentItemWrapper>
-            <TournamentTitle
-              rounds={roundIndex}
-              currentIndex={currentIndex}
-              totalRounds={totalItemLength}
-              onClick={refresh}
-            />
-            <S.TournamentCardWrapper>
-              {displays.map((displayitem) => (
-                <TournamentCard
-                  key={displayitem.name}
-                  item={displayitem}
-                  onClick={clickSelect(displayitem)}
-                  selected={isSelected === displayitem}
-                />
-              ))}
-            </S.TournamentCardWrapper>
-            <TournamentFooter onNextClick={clickHandler(isClickSelect[0])} disabled={disabled} />
-          </S.TournamentItemWrapper>
-        </>
+        <S.TournamentFlowContainerWrapper>
+          <TournamentTitle
+            rounds={roundIndex}
+            currentIndex={currentIndex}
+            totalRounds={totalItemLength}
+            onClick={refresh}
+          />
+          <S.TournamentCardWrapper>
+            {displays.map((displayitem) => (
+              <TournamentCard
+                key={displayitem.name}
+                item={displayitem}
+                onClick={clickSelect(displayitem)}
+                selected={isSelected === displayitem}
+              />
+            ))}
+          </S.TournamentCardWrapper>
+          <TournamentFooter onNextClick={clickHandler(isClickSelect[0])} disabled={disabled} />
+        </S.TournamentFlowContainerWrapper>
       )}
     </>
   );
