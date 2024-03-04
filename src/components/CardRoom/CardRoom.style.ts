@@ -55,6 +55,7 @@ export const TagWrapper = styled.div`
   display: flex;
   margin: 0 1.2rem;
   margin-top: 1rem;
+  margin-bottom: 0.5rem;
   gap: 0.4rem;
 `;
 
