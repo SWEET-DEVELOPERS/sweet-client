@@ -8,6 +8,7 @@ import TimePicker from './TimePicker';
 import useTimerOpen from '../../../hooks/onboarding/useTimerOpen';
 import DatePicker from './DatePicker';
 import useTournamentScheduleCalendar from '../../../hooks/onboarding/useTournamentScheduleCalendar';
+import { useEffect } from 'react';
 
 interface SetTournamentScheduleProps {
   onNext: VoidFunction;
@@ -15,10 +16,13 @@ interface SetTournamentScheduleProps {
 
 const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
   const { onNext } = props;
-  const { isOpen, disabledDays, openCalendar, handleDateSelect, onboardingInfo } =
+  const { isOpen, disabledDays, openCalendar, handleDateSelect, onboardingInfo, selectedDate } =
     useTournamentScheduleCalendar();
   const { selectedTime, handleTimerSelect } = useTimerOpen();
   const isActivated = !!onboardingInfo.tournamentStartDate && !!selectedTime;
+  const tournamentStartDate = onboardingInfo.tournamentStartDate
+    ? format(onboardingInfo.tournamentStartDate, 'y년 M월 d일 ')
+    : '';
 
   return (
     <>
@@ -33,11 +37,7 @@ const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
         <S.TextField>
           <S.Input
             placeholder='날짜를 선택해주세요'
-            value={
-              onboardingInfo.tournamentStartDate
-                ? format(new Date(onboardingInfo.tournamentStartDate), 'yyyy년 M월 d일')
-                : ''
-            }
+            value={tournamentStartDate}
             onChange={(e) => e.preventDefault()}
             inputMode='none'
           />
