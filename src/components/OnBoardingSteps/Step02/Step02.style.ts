@@ -39,5 +39,4 @@ export const PreviewImage = styled.img`
   width: 24rem;
   height: 24rem;
   border-radius: 1.2rem;
-  /* margin-top: 5.6rem; */
 `;
