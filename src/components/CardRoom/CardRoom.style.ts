@@ -48,6 +48,7 @@ export const CountUser = styled.div`
   color: ${({ theme: { colors } }) => colors.G_07};
   margin: 0 1.2rem;
   margin-top: 0.4rem;
+  gap: 0.2rem;
 `;
 
 export const TagWrapper = styled.div`
@@ -66,4 +67,9 @@ export const SettingWrapper = styled.div`
   z-index: 999;
   margin-top: 0.8rem;
   cursor: pointer;
+`;
+
+export const IcUserWrapper = styled.div`
+  ${({ theme: { mixin } }) => mixin.flexBox({ align: 'center' })};
+  gap: 0.2rem;
 `;
