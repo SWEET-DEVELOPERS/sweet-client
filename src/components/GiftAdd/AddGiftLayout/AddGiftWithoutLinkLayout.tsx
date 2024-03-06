@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AddGiftFooter from '../AddGiftFooter/AddGiftFooter';
 import GiftStatusBar from '../AddGiftLink/common/GiftStatusBar/GiftStatusBar';
 import * as S from './common/AddGiftLayout.styled';
@@ -72,8 +72,8 @@ export const AddGiftWithoutLinkLayout = ({
   const [, setIsImageUploaded] = useState<boolean>(false);
   const [, setPreviewImage] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(modalStatus);
-
   const { gifteeName } = useUpdateGifteeNameContext();
+  // 직접 입력 처음 들어올 시 무조건 이미지는 초기화되도록
 
   const checkPriceNull = (price: number | null) => {
     if (price === null) {
@@ -88,6 +88,10 @@ export const AddGiftWithoutLinkLayout = ({
     setIsModalOpen(false);
     setStep(3);
   };
+
+  useEffect(() => {
+    setImageUrl('');
+  }, []);
 
   return (
     <S.AddGiftWithLinkLayoutWrapper>

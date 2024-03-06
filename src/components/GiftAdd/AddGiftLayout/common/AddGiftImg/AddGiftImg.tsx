@@ -34,6 +34,8 @@ const AddGiftImg = ({
 
   const { addGiftInfo } = useAddGiftContext();
   console.log('ADDGIFTINFO 이미지', addGiftInfo.imageUrl);
+  console.log('ADDGIFTINFO imageurl', imageUrl);
+  console.log('ADDGIFTINFO opengraph image', openGraph?.image);
   return (
     <>
       {openGraph?.image !== '' || imageUrl !== '' || addGiftInfo.imageUrl !== '' ? (
