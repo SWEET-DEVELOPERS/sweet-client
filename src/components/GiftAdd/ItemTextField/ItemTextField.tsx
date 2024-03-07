@@ -40,6 +40,7 @@ const ItemTextField = ({
             onFocus={() => setInputFocused(true)}
             onBlur={() => setInputFocused(false)}
             placeholder={placeholderText}
+            inputMode={type === 'number' ? 'numeric' : 'text'}
           />
         </S.TextField>
         {type === 'number' ? (
