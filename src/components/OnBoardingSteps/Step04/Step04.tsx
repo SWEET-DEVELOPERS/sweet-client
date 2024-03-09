@@ -8,7 +8,6 @@ import TimePicker from './TimePicker';
 import useTimerOpen from '../../../hooks/onboarding/useTimerOpen';
 import DatePicker from './DatePicker';
 import useTournamentScheduleCalendar from '../../../hooks/onboarding/useTournamentScheduleCalendar';
-import { useEffect } from 'react';
 
 interface SetTournamentScheduleProps {
   onNext: VoidFunction;
@@ -16,7 +15,7 @@ interface SetTournamentScheduleProps {
 
 const SetTournamentSchedule = (props: SetTournamentScheduleProps) => {
   const { onNext } = props;
-  const { isOpen, disabledDays, openCalendar, handleDateSelect, onboardingInfo, selectedDate } =
+  const { isOpen, disabledDays, openCalendar, handleDateSelect, onboardingInfo } =
     useTournamentScheduleCalendar();
   const { selectedTime, handleTimerSelect } = useTimerOpen();
   const isActivated = !!onboardingInfo.tournamentStartDate && !!selectedTime;
