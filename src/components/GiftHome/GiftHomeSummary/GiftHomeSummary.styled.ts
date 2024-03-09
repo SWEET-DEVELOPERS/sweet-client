@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import HomeBackgroundImage from '../../../assets/img/giftroom_bg_final.png';
+import HomeBackgroundImage from '../../../assets/img/gifthome_background.webp';
 
 export const GiftHomeSummaryWrapper = styled.section`
   width: 100%;
