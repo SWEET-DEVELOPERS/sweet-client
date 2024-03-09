@@ -22,11 +22,7 @@ const ClockPicker = ({ onTimeSelect }: ClockPickerProps) => {
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DemoContainer components={['DigitalClock']}>
         <DemoItem>
-          <StyledDigitalClock
-            timeStep={60}
-            onChange={handleTimeSelect}
-            className='MuiDigitalClock-list'
-          />
+          <StyledDigitalClock timeStep={60} onChange={handleTimeSelect} ampm={false} />
         </DemoItem>
       </DemoContainer>
     </LocalizationProvider>
@@ -50,6 +46,6 @@ const StyledDigitalClock = styled(DigitalClock)`
   .MuiDigitalClock-item {
     /* 리스트 아이템 커스텀 */
     ${({ theme }) => theme.fonts.body_01}
-    color: ${({ theme }) => theme.colors.black}; /* background-color: skyblue; */
+    color: ${({ theme }) => theme.colors.black};
   }
 `;
