@@ -15,11 +15,16 @@
     "*.{js,ts}": "eslint --fix"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
     "@leenguyen/react-flip-clock-countdown": "^1.5.0",
+    "@mui/material": "^5.15.12",
+    "@mui/x-date-pickers": "^6.19.6",
     "@tanstack/react-query": "^5.17.0",
     "@types/styled-components": "^5.1.34",
     "axios": "^1.6.5",
     "date-fns": "^3.2.0",
+    "dayjs": "^1.11.10",
     "file-saver": "^2.0.5",
     "html2canvas": "^1.4.1",
     "lottie-web": "^5.12.2",
