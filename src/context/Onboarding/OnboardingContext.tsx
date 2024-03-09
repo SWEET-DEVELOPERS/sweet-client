@@ -44,7 +44,8 @@ export const OnboardingProvider = ({ children }: PropsWithChildren) => {
   /**@todo 전체 값 확인용 useEffect */
   useEffect(() => {
     console.log('전체 값 확인:', onboardingInfo);
-    console.log('selectedTime', selectedTime);
+    console.log('context 속 selectedTime', selectedTime);
+    console.log('context 속 typeof selectedTime', typeof selectedTime);
   }, [onboardingInfo, selectedTime]);
 
   const OnboardingInfoContextValue = useMemo(
