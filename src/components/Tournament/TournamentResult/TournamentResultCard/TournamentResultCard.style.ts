@@ -19,7 +19,7 @@ export const TournamentCardWrapper = styled.div`
   border-radius: 12px;
   margin: 0 auto;
   margin-bottom: 1.6rem;
-  border: 1px solid ${({ theme }) => theme.colors.G_02};
+  border: 1px solid ${({ theme }) => theme.colors.P_06};
   background: ${({ theme }) => theme.colors.white};
   cursor: pointer;
 
@@ -51,4 +51,7 @@ export const Price = styled.p`
 
 export const TournamentImgWrapper = styled.div`
   margin-bottom: 2rem;
+  width: 25rem;
+  height: auto;
+  aspect-ratio: 1 / 1;
 `;
