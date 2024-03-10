@@ -96,3 +96,4 @@ export { default as Tournament02 } from './Tournament02';
 export { default as Tournament03 } from './Tournament03';
 export { default as Tournament04 } from './Tournament04';
 export { default as Vite } from './Vite';
+export { default as ImgBg } from './ImgBg';

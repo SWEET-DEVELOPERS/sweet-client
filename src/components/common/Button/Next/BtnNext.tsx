@@ -15,7 +15,7 @@ const BtnNext = ({ disabled, children, onClick }: BtnNextProps) => {
     <S.Wrapper
       style={{
         backgroundColor: disabled ? '#FF2176' : '#EBE9EA',
-        color: '#fff',
+        color: disabled ? '#fff' : '#ACA7A9',
       }}
       onClick={onClick}
       disabled={!disabled}
