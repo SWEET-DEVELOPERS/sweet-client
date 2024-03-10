@@ -2,7 +2,8 @@ import usePutPresignedUrl from './usePutPresignedUrl';
 
 interface putBinaryDataProps {
   presignedUrl: string;
-  file: File;
+  // file: File;
+  file: File | Blob;
 }
 
 const useBinarizeAndPutImage = () => {
