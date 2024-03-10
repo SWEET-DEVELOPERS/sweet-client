@@ -1,6 +1,7 @@
 import { toast } from 'react-toastify';
 import { usePreviewImageContext } from '../../context/Onboarding/PreviewImageContext';
 import { IMAGE_HEIGHT, MESSAGE } from '../../core/toast-messages';
+import Resizer from 'react-image-file-resizer';
 
 const usePreviewImage = () => {
   const { previewImageInfo, updatePreviewImageInfo } = usePreviewImageContext();
@@ -21,6 +22,26 @@ const usePreviewImage = () => {
       const selectedFiles = files as FileList;
       const imageName = files[0].name.trim();
 
+      Resizer.imageFileResizer(
+        selectedFiles[0],
+        300, //리사이즈할 가로 크기
+        300, //리사이즈할 세로 크기
+        'WebP', //리사이즈된 이미지 형식포맷
+        100, //이미지 품질
+        0, //회전 각도
+        (resizedFile) => {
+          const previewImageUrl = URL.createObjectURL(selectedFiles[0]);
+          console.log('typeof resizedFile', typeof resizedFile);
+          updatePreviewImageInfo({
+            isImageUploaded: true,
+            file: resizedFile,
+            previewImage: previewImageUrl,
+            imageName: finalImageName,
+          });
+        },
+        'file', //리사이즈 된 이미지 반환 형식
+      );
+
       /**@todo 파싱 유틸 함수 공용으로 따로 작성 */
       const uploadTime = new Date().toISOString();
 
@@ -38,17 +59,18 @@ const usePreviewImage = () => {
         } else if (img.height > IMAGE_HEIGHT.MAX) {
           toast(MESSAGE.HEIGHT_BIG);
           uploadFalse();
-        } else {
-          //  이미지 너비가 허용된 범위 내에 있을 때
-          updatePreviewImageInfo({
-            isImageUploaded: true,
-            file: selectedFiles[0],
-            previewImage: URL.createObjectURL(selectedFiles[0]),
-            imageName: finalImageName,
-          });
-          console.log('imageName', imageName);
-          console.log('finalImageName', finalImageName);
         }
+        // else {
+        //   //  이미지 너비가 허용된 범위 내에 있을 때
+        //   updatePreviewImageInfo({
+        //     isImageUploaded: true,
+        //     file: selectedFiles[0],
+        //     previewImage: URL.createObjectURL(selectedFiles[0]),
+        //     imageName: finalImageName,
+        //   });
+        //   console.log('imageName', imageName);
+        //   console.log('finalImageName', finalImageName);
+        // }
       };
       img.src = URL.createObjectURL(selectedFiles[0]);
     }
