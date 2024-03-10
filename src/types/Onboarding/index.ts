@@ -10,5 +10,7 @@ export type PreviewImageInfo = {
   isImageUploaded: boolean;
   previewImage: string | null;
   imageName: string;
-  file: File | null;
+  // file: File | null;
+
+  file: any;
 };
