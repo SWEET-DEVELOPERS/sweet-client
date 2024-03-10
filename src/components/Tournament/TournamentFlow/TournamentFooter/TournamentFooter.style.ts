@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const TournamentFooterWrapper = styled.footer`
   display: flex;
   justify-content: flex-end;
-  position: absolute;
+  position: fixed;
   align-items: center;
 
   width: 37.5rem;
