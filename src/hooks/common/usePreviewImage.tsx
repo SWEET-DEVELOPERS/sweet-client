@@ -22,10 +22,12 @@ const usePreviewImage = () => {
       const imageName = files[0].name.trim();
 
       /**@todo 파싱 유틸 함수 공용으로 따로 작성 */
-      // const parseImageName = useParseFileName({
-      //   setFileName: setImageName,
-      //   imageString: previewImageInfo.imageName,
-      // });
+      const uploadTime = new Date().toISOString();
+
+      const uniqueName = `${uploadTime}${imageName}`;
+      const finalImageName = uniqueName
+        .replace(/\//g, '') // 폴더링 방지를 위해 '/' 제거
+        .replace(/\s/g, ''); // 공백 제거
 
       const img = new Image();
       img.onload = function () {
@@ -42,9 +44,10 @@ const usePreviewImage = () => {
             isImageUploaded: true,
             file: selectedFiles[0],
             previewImage: URL.createObjectURL(selectedFiles[0]),
-            imageName: imageName,
+            imageName: finalImageName,
           });
           console.log('imageName', imageName);
+          console.log('finalImageName', finalImageName);
         }
       };
       img.src = URL.createObjectURL(selectedFiles[0]);
@@ -53,7 +56,6 @@ const usePreviewImage = () => {
 
   return {
     handleImageUpload,
-
     previewImageInfo,
   };
 };
