@@ -14,5 +14,7 @@ export const TournamentFlowContainerWrapper = styled.section`
   padding: 5.6rem 2rem;
   position: relative;
   /* height: 100vh; */
-  height: calc(var(--vh, 1vh) * 100);
+  /* height: calc(var(--vh, 1vh) * 100); */
+  /* height: -webkit-fill-available; */
+  height: 100dvh;
 `;
