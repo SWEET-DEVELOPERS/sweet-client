@@ -9,6 +9,7 @@ interface DeleteModalProps {
   onClickDelete: (giftId?: number) => void;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   clickedItem?: number | undefined;
+  okButtonText: string;
 }
 
 const DeleteModal = ({
@@ -16,6 +17,7 @@ const DeleteModal = ({
   onClickDelete,
   setIsModalOpen,
   clickedItem,
+  okButtonText,
 }: DeleteModalProps) => {
   const onClickCancel = () => {
     setIsModalOpen(false);
@@ -41,7 +43,7 @@ const DeleteModal = ({
             }}
             onClick={() => (clickedItem ? onClickDelete(clickedItem) : onClickDelete())}
           >
-            네, 삭제할게요
+            {okButtonText}
           </BtnDeleteMedium>
           <BtnMedium customStyle={{ width: '12rem' }} onClick={onClickCancel}>
             아니오

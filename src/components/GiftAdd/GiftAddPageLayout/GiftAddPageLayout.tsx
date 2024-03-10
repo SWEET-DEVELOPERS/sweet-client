@@ -64,6 +64,7 @@ const GiftAddPageLayout = ({
           setIsModalOpen={setIsModalOpen}
           onClickDelete={handleClickConfirmDeleteBtn}
           clickedItem={clickedItem}
+          okButtonText='네, 삭제할게요'
         >
           정말 상품을 삭제하시겠어요?
         </DeleteModal>
