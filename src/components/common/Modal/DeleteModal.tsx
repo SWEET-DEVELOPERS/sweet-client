@@ -39,7 +39,7 @@ const DeleteModal = ({
               backgroundColor: 'white',
               color: 'black',
             }}
-            onClick={() => (clickedItem ? onClickDelete(clickedItem) : onClickCancel())}
+            onClick={() => (clickedItem ? onClickDelete(clickedItem) : onClickDelete())}
           >
             네, 삭제할게요
           </BtnDeleteMedium>
