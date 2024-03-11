@@ -62,7 +62,6 @@ export const AddGiftWithoutLinkLayout = ({
   fileName,
   setFileName,
 }: AddGiftWithLinkLayoutProps) => {
-  console.log('오잉');
   const [isActivated, setIsActivated] = useState(
     !!addGiftInfo.name && !!addGiftInfo.cost && !!addGiftInfo.imageUrl,
   );
