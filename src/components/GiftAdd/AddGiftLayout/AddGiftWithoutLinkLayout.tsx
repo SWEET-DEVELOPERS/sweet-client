@@ -148,6 +148,7 @@ export const AddGiftWithoutLinkLayout = ({
         fileName={fileName}
         updateAddGiftInfo={updateAddGiftInfo}
         file={file}
+        setFile={setFile}
         setImageUrl={setImageUrl}
         setIsLoading={setIsLoading}
         setIsModalOpen={setIsDuplicateModalOpen}
