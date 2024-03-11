@@ -60,33 +60,31 @@ const GiftAddPageLayout = ({
 
   return (
     <S.GiftAddPageWrapper>
-      <Suspense fallback={<GiftAddPageLayoutSkeleton />}>
-        {isModalOpen && (
-          <DeleteModal
-            setIsModalOpen={setIsModalOpen}
-            onClickDelete={handleClickConfirmDeleteBtn}
-            clickedItem={clickedItem}
-            okButtonText='네, 삭제할게요'
-          >
-            정말 상품을 삭제하시겠어요?
-          </DeleteModal>
-        )}
-        <GiftAddPageLayoutHeader title={'내가 등록한 선물'} itemNum={itemNum} />
-        <MiniTimer targetDate={targetDate || ''} giftee={gifteeName} />
-        <S.AddButtonsWrapper>
-          {myGiftData.map((item, index) => (
-            <GiftAddButtonsWrapper
-              key={index}
-              data={item}
-              onCancelClick={() => handleClickDeleteClick(item.giftId)}
-            />
-          ))}
-          {Array.from({ length: 2 - myGiftData.length }).map((_, index) => (
-            <EmptyGiftAddButtonsWrapper key={index} onClick={handleClickAddBtn} />
-          ))}
-        </S.AddButtonsWrapper>
-        <GiftAddPageBottom adPrice={adPrice} myGiftData={myGiftData} />
-      </Suspense>
+      {isModalOpen && (
+        <DeleteModal
+          setIsModalOpen={setIsModalOpen}
+          onClickDelete={handleClickConfirmDeleteBtn}
+          clickedItem={clickedItem}
+          okButtonText='네, 삭제할게요'
+        >
+          정말 상품을 삭제하시겠어요?
+        </DeleteModal>
+      )}
+      <GiftAddPageLayoutHeader title={'내가 등록한 선물'} itemNum={itemNum} />
+      <MiniTimer targetDate={targetDate || ''} giftee={gifteeName} />
+      <S.AddButtonsWrapper>
+        {myGiftData.map((item, index) => (
+          <GiftAddButtonsWrapper
+            key={index}
+            data={item}
+            onCancelClick={() => handleClickDeleteClick(item.giftId)}
+          />
+        ))}
+        {Array.from({ length: 2 - myGiftData.length }).map((_, index) => (
+          <EmptyGiftAddButtonsWrapper key={index} onClick={handleClickAddBtn} />
+        ))}
+      </S.AddButtonsWrapper>
+      <GiftAddPageBottom adPrice={adPrice} myGiftData={myGiftData} />
     </S.GiftAddPageWrapper>
   );
 };
