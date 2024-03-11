@@ -72,7 +72,6 @@ export const AddGiftWithoutLinkLayout = ({
   const [, setPreviewImage] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(modalStatus);
   const { gifteeName } = useUpdateGifteeNameContext();
-  // 직접 입력 처음 들어올 시 무조건 이미지는 초기화되도록
 
   const checkPriceNull = (price: number | null) => {
     if (price === null) {
@@ -88,6 +87,7 @@ export const AddGiftWithoutLinkLayout = ({
     setStep(3);
   };
 
+  // 직접 입력 처음 들어올 시 무조건 이미지는 초기화되도록
   useEffect(() => {
     setImageUrl('');
   }, []);
