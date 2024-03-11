@@ -6,8 +6,9 @@ import GiftAddPageLayoutHeader from './GiftAddPageLayoutHeader';
 import useGetMyGift from '../../../hooks/queries/gift/useGetMyGift';
 import EmptyGiftAddButtonsWrapper from '../GiftAddButtons/EmptyGiftAddButtonsWrapper';
 import useDeleteMyGift from '../../../hooks/queries/gift/useDeleteMyGift';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import DeleteModal from '../../common/Modal/DeleteModal';
+import GiftAddPageLayoutSkeleton from './GiftAddPageLayoutSkeleton';
 
 interface GiftAddPageLayoutProps {
   roomId: string;
@@ -59,30 +60,32 @@ const GiftAddPageLayout = ({
 
   return (
     <S.GiftAddPageWrapper>
-      {isModalOpen && (
-        <DeleteModal
-          setIsModalOpen={setIsModalOpen}
-          onClickDelete={handleClickConfirmDeleteBtn}
-          clickedItem={clickedItem}
-        >
-          정말 상품을 삭제하시겠어요?
-        </DeleteModal>
-      )}
-      <GiftAddPageLayoutHeader title={'내가 등록한 선물'} itemNum={itemNum} />
-      <MiniTimer targetDate={targetDate || ''} giftee={gifteeName} />
-      <S.AddButtonsWrapper>
-        {myGiftData.map((item, index) => (
-          <GiftAddButtonsWrapper
-            key={index}
-            data={item}
-            onCancelClick={() => handleClickDeleteClick(item.giftId)}
-          />
-        ))}
-        {Array.from({ length: 2 - myGiftData.length }).map((_, index) => (
-          <EmptyGiftAddButtonsWrapper key={index} onClick={handleClickAddBtn} />
-        ))}
-      </S.AddButtonsWrapper>
-      <GiftAddPageBottom adPrice={adPrice} myGiftData={myGiftData} />
+      <Suspense fallback={<GiftAddPageLayoutSkeleton />}>
+        {isModalOpen && (
+          <DeleteModal
+            setIsModalOpen={setIsModalOpen}
+            onClickDelete={handleClickConfirmDeleteBtn}
+            clickedItem={clickedItem}
+          >
+            정말 상품을 삭제하시겠어요?
+          </DeleteModal>
+        )}
+        <GiftAddPageLayoutHeader title={'내가 등록한 선물'} itemNum={itemNum} />
+        <MiniTimer targetDate={targetDate || ''} giftee={gifteeName} />
+        <S.AddButtonsWrapper>
+          {myGiftData.map((item, index) => (
+            <GiftAddButtonsWrapper
+              key={index}
+              data={item}
+              onCancelClick={() => handleClickDeleteClick(item.giftId)}
+            />
+          ))}
+          {Array.from({ length: 2 - myGiftData.length }).map((_, index) => (
+            <EmptyGiftAddButtonsWrapper key={index} onClick={handleClickAddBtn} />
+          ))}
+        </S.AddButtonsWrapper>
+        <GiftAddPageBottom adPrice={adPrice} myGiftData={myGiftData} />
+      </Suspense>
     </S.GiftAddPageWrapper>
   );
 };
