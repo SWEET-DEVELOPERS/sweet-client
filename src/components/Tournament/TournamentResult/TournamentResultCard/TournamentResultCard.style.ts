@@ -25,6 +25,7 @@ export const TournamentCardWrapper = styled.div`
 
   img {
     width: 100%;
+    height: 25rem;
     border-radius: 9px 9px 0 0;
   }
 `;
