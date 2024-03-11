@@ -13,5 +13,5 @@ export const TournamentFlowContainerWrapper = styled.section`
   background-repeat: no-repeat;
   padding: 5.6rem 2rem;
   position: relative;
-  height: 100vh;
+  height: 100dvh;
 `;

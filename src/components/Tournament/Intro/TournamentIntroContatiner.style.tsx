@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const TournamentImg = styled.div`
   width: 22.5rem;
   height: 22.5rem;
-  margin: 0 auto;
+  margin: 5.6rem auto;
 
   animation: ani 1s infinite alternate;
 
