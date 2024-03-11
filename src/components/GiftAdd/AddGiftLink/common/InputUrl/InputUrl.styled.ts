@@ -10,11 +10,12 @@ export const InputUrlWrapper = styled.div<{ $isInputFocused: boolean }>`
 `;
 
 export const TextField = styled.div`
-  width: 90%;
+  width: calc(100% - 2.4rem);
 `;
 
 export const IconField = styled.div`
-  width: 10%;
+  align-self: center;
+  width: 2.4rem;
 `;
 
 export const Input = styled.input<{ hasContent?: boolean }>`

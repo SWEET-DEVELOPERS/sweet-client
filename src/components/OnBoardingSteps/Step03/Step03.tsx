@@ -32,7 +32,6 @@ const GiftDelivery = (props: GiftDeliveryProps) => {
             onboardingInfo.deliveryDate ? format(onboardingInfo.deliveryDate, 'y년 M월 d일') : ''
           }
           onChange={(e) => e.preventDefault()}
-          inputMode='none'
         />
         <S.IconWrapper>
           <IcUnselectedCalender style={{ width: '2.4rem', height: '2.4rem' }} />

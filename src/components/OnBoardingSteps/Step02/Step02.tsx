@@ -65,7 +65,7 @@ const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
                   position: 'absolute',
                   width: '2.8rem',
                   height: '2.8rem',
-                  bottom: '-2rem',
+                  bottom: '1.2rem',
                   right: '0.8rem',
                   cursor: 'pointer',
                 }}
@@ -77,7 +77,6 @@ const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
                 position: 'relative',
                 width: '24rem',
                 height: '24rem',
-                marginTop: '2.8rem',
                 cursor: 'pointer',
               }}
             />

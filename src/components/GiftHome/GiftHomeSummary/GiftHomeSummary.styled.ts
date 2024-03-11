@@ -1,5 +1,13 @@
 import styled from 'styled-components';
-import HomeBackgroundImage from '../../../assets/img/giftroom_bg_final.png';
+import HomeBackgroundImage from '../../../assets/img/gifthome_background.webp';
+
+export const GiftHomeSummaryBackground = styled.div`
+  width: 100%;
+  background-image: url(${HomeBackgroundImage});
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* width: calc(100% + 1.4rem); */
+`;
 
 export const GiftHomeSummaryWrapper = styled.section`
   width: 100%;
@@ -10,11 +18,6 @@ export const GiftHomeSummaryWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
-  background-image: url(${HomeBackgroundImage});
-  background-size: cover;
-  background-repeat: no-repeat;
-  /* width: calc(100% + 1.4rem); */
 `;
 
 export const FriendsNumber = styled.p`
