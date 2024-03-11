@@ -56,6 +56,7 @@ const TimePicker = ({ onSelect }: TimePickerProps) => {
             placeholder='시작 시간을 선택해주세요'
             value={selectedTime}
             onChange={(e) => setSelectedTime(e.target.value)}
+            inputMode='none'
           />
         </S.TextField>
         <S.IconField>
