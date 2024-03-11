@@ -21,8 +21,6 @@ const useTimerOpen = () => {
         "yyyy-MM-dd'T'HH:mm:ss",
       ),
     });
-
-    console.log('selectedTime', selectedTime);
   };
 
   return {
