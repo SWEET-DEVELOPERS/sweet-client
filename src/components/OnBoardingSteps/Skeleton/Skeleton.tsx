@@ -1,11 +1,11 @@
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import styled from 'styled-components';
+import * as S from './Skeleton.style';
 
 const OnboardingSkeleton = () => {
   return (
-    <OnboardingSkeletonWrapper>
-      <TitleWrapper>
+    <S.OnboardingSkeletonWrapper>
+      <S.TitleWrapper>
         <Skeleton
           count={1}
           style={{
@@ -27,26 +27,12 @@ const OnboardingSkeleton = () => {
             height: '2.4rem',
           }}
         />
-      </TitleWrapper>
-      <DetailWrapper>
+      </S.TitleWrapper>
+      <S.DetailWrapper>
         <Skeleton style={{ width: '100%', height: '0.1rem' }} />
-      </DetailWrapper>
-    </OnboardingSkeletonWrapper>
+      </S.DetailWrapper>
+    </S.OnboardingSkeletonWrapper>
   );
 };
 
 export default OnboardingSkeleton;
-
-const OnboardingSkeletonWrapper = styled.div`
-  gap: 11.6rem;
-`;
-
-const TitleWrapper = styled.div`
-  ${({ theme }) => theme.mixin.flexBox({ direction: 'column' })};
-  gap: 0.9rem;
-  border-radius: 4px;
-`;
-
-const DetailWrapper = styled.div`
-  margin-top: 11.6rem;
-`;
