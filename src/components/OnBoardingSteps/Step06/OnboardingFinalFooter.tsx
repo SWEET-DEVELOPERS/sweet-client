@@ -32,7 +32,6 @@ const OnboardingFinalFooter = (props: OnboardingFinalFooterProps) => {
         onClick={() =>
           useHandleShare(
             `${giftee}님을 위한 선물방이 개설됐어요`,
-            `${giftee}님을 위한 선물방이 개설됐어요`,
             `${import.meta.env.VITE_APP_BASE_URL_KAKAO}result/${invitationCode}`,
             handleCopyToClipboard,
           )

@@ -24,6 +24,10 @@ ${reset}
  html, body{
   overflow-x :  hidden;
  }
+
+ /* .react-loading-skeleton {
+    line-height: unset !important;
+} */
  
 #root, body, html {
     scrollbar-width: none; /* 파이어폭스 스크롤바 숨김 */

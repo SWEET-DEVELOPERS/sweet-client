@@ -43,7 +43,9 @@ export const GiftsItemTitle = styled.p`
   margin-top: 0.8rem;
 
   display: -webkit-box;
-  width: 12.8rem;
+  width: 15.2rem;
+  height: 4.2rem;
+
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 
