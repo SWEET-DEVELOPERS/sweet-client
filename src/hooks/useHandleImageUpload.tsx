@@ -29,7 +29,7 @@ const useHandleImageUpload = ({
           384,
           384,
           'WEBP',
-          100,
+          75,
           0,
           (uri) => {
             setFileName((uri as File).name);
