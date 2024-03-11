@@ -34,6 +34,8 @@ const AddGiftImg = ({
 
   const { addGiftInfo } = useAddGiftContext();
   console.log('ADDGIFTINFO 이미지', addGiftInfo.imageUrl);
+  console.log('ADDGIFTINFO imageurl', imageUrl);
+  console.log('ADDGIFTINFO opengraph image', openGraph?.image);
   return (
     <>
       {openGraph?.image !== '' || imageUrl !== '' || addGiftInfo.imageUrl !== '' ? (
@@ -41,7 +43,7 @@ const AddGiftImg = ({
           <S.IcEmptyThumbnailWrapper>
             <input
               type='file'
-              accept='image/jpeg, image/png, image/gif, image/heic '
+              accept='image/jpeg, image/png, image/gif, image/heic, image/webp,'
               style={{ display: 'none' }}
               id='imgInput'
               onChange={handleImageUpload}

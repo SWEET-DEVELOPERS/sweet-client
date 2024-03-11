@@ -21,7 +21,7 @@ export const GiftsItemImage = styled.img`
 `;
 
 export const GiftsItemTitle = styled.p`
-  width: 12.8rem;
+  width: 15rem;
   margin-top: 1.2rem;
   margin-bottom: 1rem;
 
