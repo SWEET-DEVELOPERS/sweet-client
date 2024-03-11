@@ -62,7 +62,7 @@ const AddGiftFooter = ({
 
   const onClick = async () => {
     setIsLoading(true);
-
+    // setStep(0);
     const { imageUrlS3 } = await putImageUrlToS3({ fileName, file, roomId, setImageUrl });
     if (isActivated) {
       try {
