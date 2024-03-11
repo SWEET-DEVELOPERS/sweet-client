@@ -22,10 +22,10 @@ const usePreviewImage = () => {
       new Promise((resolve) => {
         Resizer.imageFileResizer(
           file,
-          384,
-          384,
+          480,
+          480,
           'WEBP',
-          100,
+          75,
           0,
           (uri) => {
             updatePreviewImageInfo({
