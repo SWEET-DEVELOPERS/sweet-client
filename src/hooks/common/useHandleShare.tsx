@@ -1,13 +1,11 @@
 export const useHandleShare = async (
   title: string,
-  text: string,
   url: string,
   handleCopyToClipboard: (text: string) => void,
 ) => {
   try {
     await navigator.share({
       title: title,
-      text: text,
       url: url,
     });
   } catch (error) {
@@ -16,6 +14,5 @@ export const useHandleShare = async (
 
   if (typeof navigator.share === 'undefined') {
     handleCopyToClipboard(url);
-    console.log('클릭');
   }
 };

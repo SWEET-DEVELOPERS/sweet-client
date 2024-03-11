@@ -30,11 +30,11 @@ const useConvertURLtoFile = async ({
     const convertedOgFile = new File([data], filename!, metadata);
     return { convertedOgFile };
   } catch (error) {
-    console.error('error?', error);
-    setImageUrl('');
     updateAddGiftInfo({ imageUrl: '' });
+    setImageUrl('');
     setModalStatus(true);
     setStep(3);
+    console.error('error?', error);
     return { convertedOgFile: null };
   }
 };

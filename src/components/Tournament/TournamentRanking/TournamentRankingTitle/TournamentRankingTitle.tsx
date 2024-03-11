@@ -1,8 +1,8 @@
 import * as S from './TournamentRankingTitle.style';
 import RankingImg from '../../../../assets/img/3dic_podium2.png';
 import { useEffect } from 'react';
-import { IcShare } from '../../../../assets/svg';
-// import { shareKakao } from '../../../../utils/shareKakaoLink';
+import { IcShare, KakaoLo } from '../../../../assets/svg';
+import { shareKakao } from '../../../../utils/shareKakaoLink';
 // import { useLocation } from 'react-router-dom';
 // import useClipboard from '../../../../hooks/useCopyClip';
 
@@ -11,7 +11,7 @@ interface TournamentRankingGifteeProps {
   giftee?: string;
 }
 
-const TournamentRankingTitle = ({ giftee }: TournamentRankingGifteeProps) => {
+const TournamentRankingTitle = ({ giftee, roomId }: TournamentRankingGifteeProps) => {
   useEffect(() => {
     if (!window.Kakao.isInitialized()) {
       window.Kakao.init(import.meta.env.VITE_KAKAO_JAVASCRIPT_KEY);
@@ -30,8 +30,8 @@ const TournamentRankingTitle = ({ giftee }: TournamentRankingGifteeProps) => {
     }
   };
 
-  // const gifteeValue = giftee;
-  // const roomIdValue = roomId;
+  const gifteeValue = giftee;
+  const roomIdValue = roomId;
 
   // const location = useLocation();
   // const baseURL = import.meta.env.VITE_APP_BASE_URL_KAKAO;
@@ -57,10 +57,10 @@ const TournamentRankingTitle = ({ giftee }: TournamentRankingGifteeProps) => {
             </p>
           </S.LinkButton>
 
-          {/* <S.KakaoButton onClick={() => shareKakao(gifteeValue, roomIdValue)}>
+          <S.KakaoButton onClick={() => shareKakao(gifteeValue, roomIdValue)}>
             <KakaoLo style={{ width: '1.7rem', height: '1.7rem', cursor: 'pointer' }} />
             카카오 공유
-          </S.KakaoButton> */}
+          </S.KakaoButton>
         </S.ButtonWrapper>
         <S.Line></S.Line>
       </S.TournamentRenameTitleWrapper>

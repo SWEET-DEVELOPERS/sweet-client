@@ -41,7 +41,9 @@ export const SubTitle = styled.p`
   text-align: center;
 `;
 export const KakaoButton = styled.button`
-  ${({ theme }) => theme.mixin.flexCenter({})};
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 1rem;
   gap: 1rem;
   width: 13.4rem;

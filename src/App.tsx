@@ -2,23 +2,19 @@ import { QueryClient, QueryClientProvider, QueryErrorResetBoundary } from '@tans
 import { RouterProvider } from 'react-router-dom';
 import router from './router/Router';
 import GlobalStyle from './style/GlobalStyle';
-import { styled } from 'styled-components';
 import Loading from './pages/Loading/Loading';
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import FallbackUI from './pages/FallbackUI/FallbackUI';
 import 'react-toastify/dist/ReactToastify.css';
 import { StyledToastContainer } from './style/toast.style';
+import * as S from './App.style';
 
 function App() {
-  const Wrapper = styled.div`
-    background-color: white;
-    border: none;
-  `;
   const queryClient = new QueryClient();
 
   return (
-    <Wrapper>
+    <S.Wrapper>
       <QueryClientProvider client={queryClient}>
         <QueryErrorResetBoundary>
           {({ reset }) => (
@@ -43,7 +39,7 @@ function App() {
           )}
         </QueryErrorResetBoundary>
       </QueryClientProvider>
-    </Wrapper>
+    </S.Wrapper>
   );
 }
 
