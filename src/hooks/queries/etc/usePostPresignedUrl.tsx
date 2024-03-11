@@ -3,13 +3,8 @@ import { post } from '../../../apis/client';
 import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 
-// interface PostPresignedUrlArgs {
-//   // url: string;
-//   filename: string;
-// }
-
 const usePostPresignedUrl = () => {
-  const [presignedUrl, setPresignedUrl] = useState<string>(''); // 상태 추가
+  const [presignedUrl, setPresignedUrl] = useState<string>('');
 
   const postPresignedUrl = async (filename: string) => {
     try {
@@ -17,7 +12,7 @@ const usePostPresignedUrl = () => {
       if (queryString) {
         const response: AxiosResponse = await post(queryString);
         const data = response.data;
-        setPresignedUrl(data.presignedUrl); // 상태 업데이트
+        setPresignedUrl(data.presignedUrl);
         return data;
       }
     } catch (error) {
@@ -32,8 +27,6 @@ const usePostPresignedUrl = () => {
   const mutation = useMutation({
     mutationFn: postPresignedUrl,
     onSuccess: (data) => {
-      // console.log('usePostPresignedUrl onSuccess', data);
-      // console.log('data.presignedUrl', data.presignedUrl);
       setPresignedUrl(data.presignedUrl);
     },
   });

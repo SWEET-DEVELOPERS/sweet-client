@@ -5,11 +5,11 @@ import { useParams } from 'react-router-dom';
 import GiftHomePriceTag from '../../components/common/GiftHome/Price/GiftHomePriceTag';
 import GiftDetailHeader from '../../components/common/GiftDetail/GiftDetailHeader';
 
-function GiftHomeDetail() {
+export const GiftHomeDetail2030 = () => {
   const params = useParams();
   const roomId = params.roomId;
-
   const targetDate = params.targetDate;
+
   const roomIdNumber = parseInt(roomId || '');
   const { data } = useGetHotProduct({ roomId: roomIdNumber });
 
@@ -24,7 +24,7 @@ function GiftHomeDetail() {
               <S.GiftsItemImage src={item.imageUrl} />
               <S.GiftsItemTitle>{item.name}</S.GiftsItemTitle>
               <S.GiftsItemPrice>
-                <GiftHomePriceTag gap={0.1} colors={'black'} price={item.cost} fonts={'body_07'} />
+                <GiftHomePriceTag price={item.cost} fonts={'body_07'} gap={0.1} colors={'black'} />
               </S.GiftsItemPrice>
             </S.GiftsItemWrapper>
           ))
@@ -34,6 +34,5 @@ function GiftHomeDetail() {
       </S.GiftHomeDetailWrapper>
     </S.GiftHomeDetailPageWrapper>
   );
-}
-
-export default GiftHomeDetail;
+};
+export default GiftHomeDetail2030;

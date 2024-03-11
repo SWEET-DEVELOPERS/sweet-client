@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const DetailDoneRoomWrapper = styled.div`
   ${({ theme: { mixin } }) => mixin.flexCenter({})};
   width: 100%;
+  height: 100vh;
   padding: 0 2rem;
 `;
 
@@ -22,7 +23,6 @@ export const EmptyWrapper = styled.div`
   height: 100%;
   gap: 1.2rem;
   margin: 0 2rem;
-  margin-top: 15.9rem;
 `;
 
 export const EmptyText = styled.div`

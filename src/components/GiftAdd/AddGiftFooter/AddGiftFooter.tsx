@@ -14,6 +14,7 @@ interface AddGiftFooterProps {
   cost: number;
   link: string;
   file: File | null;
+  setFile: React.Dispatch<React.SetStateAction<File | null>>;
   setImageUrl: React.Dispatch<React.SetStateAction<string>>;
   updateAddGiftInfo: (newInfo: Partial<AddGiftInfo>) => void;
   fileName: string;
@@ -33,6 +34,7 @@ const AddGiftFooter = ({
   cost,
   link,
   file,
+  // setFile,
   setImageUrl,
   fileName,
   updateAddGiftInfo,
@@ -54,11 +56,13 @@ const AddGiftFooter = ({
     setImageUrl,
     setLinkText,
   });
+
   const { putImageUrlToS3 } = usePutImageUrlToS3(roomId);
   const { addGiftInfo } = useAddGiftContext();
 
   const onClick = async () => {
     setIsLoading(true);
+    // setStep(0);
     const { imageUrlS3 } = await putImageUrlToS3({ fileName, file, roomId, setImageUrl });
     if (isActivated) {
       try {
@@ -72,7 +76,6 @@ const AddGiftFooter = ({
       } catch (error: any) {
         console.error('Mutation error:', error.message);
         if (error.message === 'Error: 중복된 선물 등록입니다.') {
-          console.log('CHECK');
           setIsModalOpen(true);
         }
       } finally {
