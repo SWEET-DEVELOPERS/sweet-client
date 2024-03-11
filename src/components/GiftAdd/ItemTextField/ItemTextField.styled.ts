@@ -47,26 +47,23 @@ export const Input = styled.input<{ $hasContent?: boolean }>`
     color: ${({ theme }) => theme.colors.G_07};
     ${({ theme }) => theme.fonts.body_06};
   }
-  /* Hide arrows for number input */
-  input[type='number'] {
-    -moz-appearance: textfield;
-    -webkit-appearance: none;
+  /* 인풋 창 옆 기본 화살표 안 보이도록 설정 */
+  &[type='number'] {
+    -moz-appearance: textfield; /* Firefox */
+    -webkit-appearance: none; /* Webkit browsers */
+    appearance: textfield; /* Other browsers */
     margin: 0;
 
-    /* Chrome, Safari, Edge */
-    &[type='number']::-webkit-inner-spin-button,
-    &[type='number']::-webkit-outer-spin-button {
+    /*  Webkit browsers */
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
       -webkit-appearance: none;
+      margin: 0;
+    }
 
-      input::-webkit-outer-spin-button,
-      input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-      }
-
-      /* Firefox */
-      input[type='number'] {
-        -moz-appearance: textfield;
-      }
+    /* Firefox */
+    &[type='number'] {
+      -moz-appearance: textfield;
     }
   }
 `;
