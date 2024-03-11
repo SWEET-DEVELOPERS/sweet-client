@@ -32,6 +32,7 @@ const useHandleImageUpload = ({
           100,
           0,
           (uri) => {
+            setFileName((uri as File).name);
             setFile(uri as File);
             console.log('FILE', uri);
             resolve(uri);
