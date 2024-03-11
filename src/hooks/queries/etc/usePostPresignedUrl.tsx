@@ -4,14 +4,15 @@ import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 
 const usePostPresignedUrl = () => {
-  const [presignedUrl, setPresignedUrl] = useState<string>(''); // 상태 추가
+  const [presignedUrl, setPresignedUrl] = useState<string>('');
+
   const postPresignedUrl = async (filename: string) => {
     try {
       const queryString = filename ? `presigned-url?fileName=${filename}` : '';
       if (queryString) {
         const response: AxiosResponse = await post(queryString);
         const data = response.data;
-        setPresignedUrl(data.presignedUrl); // 상태 업데이트
+        setPresignedUrl(data.presignedUrl);
         return data;
       }
     } catch (error) {
