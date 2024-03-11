@@ -11,6 +11,7 @@ import { AddGiftInfo } from '../../../types/gift';
 import useConvertURLtoFile from '../../../hooks/useConvertURLtoFile';
 import DuplicateModal from '../../common/Modal/DuplicateModal';
 import { useUpdateGifteeNameContext } from '../../../context/GifteeName/GifteeNameContext';
+import Resizer from 'react-image-file-resizer';
 
 interface AddGiftWithLinkLayoutProps {
   link: string;
@@ -74,6 +75,24 @@ const AddGiftWithLinkLayout = ({
     }
   };
 
+  const resizeFile = (file: File) =>
+    new Promise((resolve) => {
+      Resizer.imageFileResizer(
+        file,
+        384,
+        384,
+        'WEBP',
+        100,
+        0,
+        (uri) => {
+          setFileName((uri as File).name);
+          setFile(uri as File);
+          resolve(uri);
+        },
+        'file',
+      );
+    });
+
   useEffect(() => {
     const fetchData = async () => {
       console.log('OpenGraph imageUrl', openGraph);
@@ -85,9 +104,8 @@ const AddGiftWithLinkLayout = ({
         setModalStatus,
         updateAddGiftInfo,
       });
-      if (convertResult && 'convertedOgFile' in convertResult) {
-        setFile(convertResult.convertedOgFile);
-        setFileName(openGraph.image);
+      if (convertResult && convertResult.convertedOgFile !== null) {
+        resizeFile(convertResult.convertedOgFile);
         setImageUrl(openGraph.image);
       }
     };
@@ -143,6 +161,7 @@ const AddGiftWithLinkLayout = ({
         fileName={fileName}
         updateAddGiftInfo={updateAddGiftInfo}
         file={file}
+        setFile={setFile}
         setImageUrl={setImageUrl}
         setIsLoading={setIsLoading}
         setIsModalOpen={setIsModalOpen}

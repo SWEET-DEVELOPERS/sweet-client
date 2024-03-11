@@ -1,5 +1,6 @@
 import { OpenGraphResponseType } from '../types/etc';
 import useParseFileName from './useParseFileName';
+import Resizer from 'react-image-file-resizer';
 
 interface HandleImageUploadProps {
   openGraph: OpenGraphResponseType | null;
@@ -21,10 +22,35 @@ const useHandleImageUpload = ({
   const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
 
+    const resizeFile = (file: File) =>
+      new Promise((resolve) => {
+        Resizer.imageFileResizer(
+          file,
+          384,
+          384,
+          'WEBP',
+          100,
+          0,
+          (uri) => {
+            setFile(uri as File);
+            console.log('FILE', uri);
+            resolve(uri);
+          },
+          'file',
+        );
+      });
+
     if (files && files.length > 0) {
       const selectedFiles = files as FileList;
 
-      setFile(selectedFiles[0]);
+      if (files) {
+        try {
+          resizeFile(selectedFiles[0]);
+        } catch (err) {
+          console.log('이미지 용량 압축 중 에러 발생', err);
+        }
+      }
+
       setPreviewImage(URL.createObjectURL(selectedFiles[0]));
 
       setImageUrl(URL.createObjectURL(selectedFiles[0]));
