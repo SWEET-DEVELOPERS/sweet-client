@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 import { useOnboardingContext } from '../../context/Onboarding/OnboardingContext';
+import { MESSAGE } from '../../core/toast-messages';
 
 const useNameInput = () => {
   const { onboardingInfo, updateOnboardingInfo } = useOnboardingContext();
@@ -11,9 +12,9 @@ const useNameInput = () => {
     const hasIphoneSpecialCharacter = /[\ud800-\udfff]/.test(inputValue);
 
     if (hasSpecialCharacter || hasIphoneSpecialCharacter) {
-      toast.info('특수문자는 입력하실 수 없습니다.', {
+      toast.info(MESSAGE.VALIDATE_SPACIAL_CHARACTER, {
         position: 'top-right',
-        autoClose: 2000,
+        autoClose: 500,
         hideProgressBar: true,
         closeOnClick: false,
         pauseOnHover: false,
