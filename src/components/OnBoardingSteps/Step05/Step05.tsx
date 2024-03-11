@@ -7,6 +7,8 @@ import { useOnboardingContext } from '../../../context/Onboarding/OnboardingCont
 import useSetTournamentDuration from '../../../hooks/onboarding/useSetTournamentDuration';
 import { TimeOptionHelper } from '../../../utils/TimeOptionHelper';
 import SelectTimeOptions from './SelectTimeOptions';
+import { useState } from 'react';
+import Loading from '../../../pages/Loading/Loading';
 
 interface SetTournamentDurationProps {
   onNext: VoidFunction;
@@ -26,11 +28,13 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
   const { onboardingInfo, updateOnboardingInfo } = useOnboardingContext();
   const { handleTimeSelect, selectedOption } = useSetTournamentDuration();
   const { mutation } = usePostOnboardingInfo();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const postOnboarding = async () => {
     try {
       const response = mutation.mutate(onboardingInfo, {
         onSuccess: (data) => {
+          setIsLoading(true);
           setInvitationCode(data.invitationCode);
           console.log('step05 postOnboarding response', response);
           const roomId = data.roomId;
@@ -46,44 +50,50 @@ const SetTournamentDuration = (props: SetTournamentDurationProps) => {
 
   return (
     <>
-      <Title>
-        선물 토너먼트를 <br /> 몇 시간 동안 진행할까요?
-      </Title>
-      <S.SubTitleWrapper>
-        <SubTitle subTitle='토너먼트가 아래 시간 동안 진행돼요.' />
-      </S.SubTitleWrapper>
-      <S.SetTournamentDurationWrapper>
-        {timeOptions.map((hours) => {
-          const { dateType, isAfterDelivery } = TimeOptionHelper(
-            hours.time,
-            onboardingInfo.tournamentStartDate,
-            onboardingInfo.deliveryDate,
-          );
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <Title>
+            선물 토너먼트를 <br /> 몇 시간 동안 진행할까요?
+          </Title>
+          <S.SubTitleWrapper>
+            <SubTitle subTitle='토너먼트가 아래 시간 동안 진행돼요.' />
+          </S.SubTitleWrapper>
+          <S.SetTournamentDurationWrapper>
+            {timeOptions.map((hours) => {
+              const { dateType, isAfterDelivery } = TimeOptionHelper(
+                hours.time,
+                onboardingInfo.tournamentStartDate,
+                onboardingInfo.deliveryDate,
+              );
 
-          return (
-            <SelectTimeOptions
-              key={`${hours.time}시간`}
-              optionText={`${hours.time}시간`}
-              dateType={dateType}
-              isSelected={selectedOption === `${hours.time}시간`}
-              onClick={() => updateOnboardingInfo({ tournamentDuration: hours.textEnglish })}
-              onTimeSelect={handleTimeSelect}
-              isAfterDelivery={isAfterDelivery}
-            />
-          );
-        })}
-      </S.SetTournamentDurationWrapper>
+              return (
+                <SelectTimeOptions
+                  key={`${hours.time}시간`}
+                  optionText={`${hours.time}시간`}
+                  dateType={dateType}
+                  isSelected={selectedOption === `${hours.time}시간`}
+                  onClick={() => updateOnboardingInfo({ tournamentDuration: hours.textEnglish })}
+                  onTimeSelect={handleTimeSelect}
+                  isAfterDelivery={isAfterDelivery}
+                />
+              );
+            })}
+          </S.SetTournamentDurationWrapper>
 
-      <S.OnBoardingBtnWrapper>
-        <OnBoardingBtn
-          isActivated={!!selectedOption}
-          setStep={() => {
-            postOnboarding();
-          }}
-        >
-          다음
-        </OnBoardingBtn>
-      </S.OnBoardingBtnWrapper>
+          <S.OnBoardingBtnWrapper>
+            <OnBoardingBtn
+              isActivated={!!selectedOption}
+              setStep={() => {
+                postOnboarding();
+              }}
+            >
+              다음
+            </OnBoardingBtn>
+          </S.OnBoardingBtnWrapper>
+        </>
+      )}
     </>
   );
 };

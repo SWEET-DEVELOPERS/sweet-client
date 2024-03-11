@@ -6,7 +6,8 @@ import { OpenGraphResponseType } from '../../types/etc';
 import { useParams } from 'react-router-dom';
 import AddGiftWithLinkLayout from '../../components/GiftAdd/AddGiftLayout/AddGiftWithLinkLayout';
 import { useAddGiftContext } from '../../context/AddGift/AddGiftContext';
-import Loading from '../Loading/Loading';
+// import Loading from '../Loading/Loading';
+import GiftAddPageLayoutSkeleton from '../../components/GiftAdd/GiftAddPageLayout/GiftAddPageLayoutSkeleton';
 
 const GiftAddPage = () => {
   const [step, setStep] = useState(0);
@@ -65,7 +66,7 @@ const GiftAddPage = () => {
 
     case 2:
       return isLoading ? (
-        <Loading />
+        <GiftAddPageLayoutSkeleton />
       ) : (
         <AddGiftWithLinkLayout
           step={step}
@@ -92,7 +93,7 @@ const GiftAddPage = () => {
 
     case 3:
       return isLoading ? (
-        <Loading />
+        <GiftAddPageLayoutSkeleton />
       ) : (
         <AddGiftWithoutLinkLayout
           step={step}

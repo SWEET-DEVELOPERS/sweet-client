@@ -10,6 +10,6 @@ export const GiftAddPageLayoutHeader = styled.article`
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
-export const HeaderText = styled.article`
+export const HeaderText = styled.p`
   ${({ theme }) => theme.fonts.body_01};
 `;

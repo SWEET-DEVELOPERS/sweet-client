@@ -4,6 +4,7 @@ import * as S from './Step04.style';
 import { useOnboardingContext } from '../../../context/Onboarding/OnboardingContext';
 import { toast } from 'react-toastify';
 import { MESSAGE } from '../../../core/toast-messages';
+import ClockPicker from './ClockPicker';
 
 interface TimePickerProps {
   onSelect: (selectedTime: string) => void;
@@ -34,7 +35,7 @@ const TimePicker = ({ onSelect }: TimePickerProps) => {
     if (!onboardingInfo.tournamentStartDate) {
       toast(MESSAGE.UNSELECT_DATE);
     } else {
-      clockRef.current?.showPicker();
+      setIsPickerOpen(!isPickerOpen);
     }
   };
 
@@ -44,7 +45,7 @@ const TimePicker = ({ onSelect }: TimePickerProps) => {
     setIsPickerOpen(false);
 
     /**@todo 사용하는 곳 없는 것을 방지하기 위한 콘솔 */
-    console.log(selectedTime);
+    console.log('timepicker 속 selectedTime', selectedTime);
   };
 
   return (
@@ -55,25 +56,17 @@ const TimePicker = ({ onSelect }: TimePickerProps) => {
             placeholder='시작 시간을 선택해주세요'
             value={selectedTime}
             onChange={(e) => setSelectedTime(e.target.value)}
+            inputMode='none'
           />
         </S.TextField>
         <S.IconField>
-          <input
-            ref={clockRef}
-            type='time'
-            id='clock'
-            onChange={(e) => handleTimeSelect(e.target.value)}
-            style={{ display: 'flex', opacity: 0 }}
-            inputMode='none'
+          <IcUnselectedClock
+            style={{ width: '2.4rem', height: '2.4rem' }}
+            onClick={handleIconClick}
           />
-          <label htmlFor='clock'>
-            <IcUnselectedClock
-              style={{ width: '2.4rem', height: '2.4rem' }}
-              onClick={handleIconClick}
-            />
-          </label>
         </S.IconField>
       </S.Container>
+      {isPickerOpen && <ClockPicker onTimeSelect={handleTimeSelect} />}
     </>
   );
 };

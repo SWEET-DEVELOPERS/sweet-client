@@ -24,9 +24,11 @@ const DetailDoneRoom = () => {
   return (
     <S.DetailDoneRoomWrapper>
       <LeftIconHeader title='종료된 선물방' />
-      <S.RoomWrapper>
+      <>
         {Array.isArray(data) && data.length > 0 ? (
-          data.map(renderDoneRoomCard)
+          <S.RoomWrapper>
+            {data.map((item, index) => renderDoneRoomCard(item, index))}
+          </S.RoomWrapper>
         ) : (
           <S.EmptyWrapper title='종료된 선물방'>
             <IcLogoEmpty style={{ width: '8rem', height: '6.4rem' }} />
@@ -34,7 +36,7 @@ const DetailDoneRoom = () => {
             <BtnSmallStroke customStyle={{ margin: '1.6rem' }}>새로운 선물 준비하기</BtnSmallStroke>
           </S.EmptyWrapper>
         )}
-      </S.RoomWrapper>
+      </>
     </S.DetailDoneRoomWrapper>
   );
 };
