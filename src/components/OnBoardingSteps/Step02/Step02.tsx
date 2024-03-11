@@ -7,7 +7,7 @@ import usePostPresignedUrl from '../../../hooks/queries/etc/usePostPresignedUrl'
 import { useOnboardingContext } from '../../../context/Onboarding/OnboardingContext';
 import useBinarizeAndPutImage from '../../../hooks/queries/onboarding/useBinarizeAndPutImage';
 import React, { useState } from 'react';
-import Loading from '../../../pages/Loading/Loading';
+import OnboardingSkeleton from '../Skeleton/Skeleton';
 
 /** @TODO 추후 presigned URL 진행 */
 interface ThumbnailInputProps {
@@ -50,7 +50,7 @@ const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
   return (
     <>
       {isLoading ? (
-        <Loading />
+        <OnboardingSkeleton />
       ) : (
         <>
           <Title>썸네일을 등록해주세요</Title>
