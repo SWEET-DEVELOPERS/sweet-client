@@ -2,6 +2,7 @@
 export const IMAGE_HEIGHT = Object.freeze({
   MAX: 5000,
   MIN: 300,
+
 });
 
 export const MESSAGE = Object.freeze({
