@@ -15,6 +15,7 @@ const useTournamentScheduleCalendar = () => {
   };
 
   const handleDateSelect = (date: Date) => {
+    const tournamentStartDate = onboardingInfo.tournamentStartDate;
     const padTwoDigits = (value: number) => String(value).padStart(2, '0');
     const formattedDate =
       format(date, 'y-MM-dd') +
@@ -24,13 +25,26 @@ const useTournamentScheduleCalendar = () => {
       )}`;
 
     const timePart = format(date, 'y-MM-dd') + 'T' + `${selectedTime}`;
-    const updatedTournamentStartDateInfo = {
-      tournamentStartDate: onboardingInfo.tournamentStartDate ? timePart : formattedDate,
+    const updateTournamentStartDate = (date: Date, formattedDate: string) => {
+      updateOnboardingInfo({ tournamentStartDate: formattedDate });
+      setSelectedDate(date);
+      setIsOpen(false);
     };
 
-    updateOnboardingInfo(updatedTournamentStartDateInfo);
-    setSelectedDate(date);
-    setIsOpen(false);
+    const tournamentStartDateArray = [
+      tournamentStartDate === '',
+      Boolean(tournamentStartDate && !selectedTime),
+    ];
+
+    const updateTournamentStartDateFormat = tournamentStartDateArray.some((conditon) => conditon);
+
+    // tournamentStartDateArray 중 한 조건이라도 true면 formattedDate로 업데이트,
+    // 하나라도 false면 timePart로 업데이트
+    if (updateTournamentStartDateFormat) {
+      updateTournamentStartDate(date, formattedDate);
+    } else {
+      updateTournamentStartDate(date, timePart);
+    }
   };
 
   return {
