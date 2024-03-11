@@ -6,8 +6,7 @@ interface putBinaryDataProps {
 }
 
 const useBinarizeAndPutImage = () => {
-  // Change to a custom hook
-  const putPresignedUrl = usePutMyPresignedUrl(); // Use the hook inside the custom hook
+  const putPresignedUrl = usePutMyPresignedUrl();
 
   const binarizeAndPutImage = async ({ presignedUrl, file }: putBinaryDataProps) => {
     const arrayBuffer = await file.arrayBuffer();

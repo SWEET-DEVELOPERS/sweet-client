@@ -25,7 +25,7 @@ export const IcEmptyThumbnailWrapper = styled.div`
   ${({ theme }) =>
     theme.mixin.flexCenter({ direction: 'column', align: 'center', justify: 'center' })};
 
-  margin-top: 2.8rem;
+  margin-top: 6.1rem;
   cursor: pointer;
   img {
     object-fit: cover;
@@ -39,5 +39,4 @@ export const PreviewImage = styled.img`
   width: 24rem;
   height: 24rem;
   border-radius: 1.2rem;
-  margin-top: 5.6rem;
 `;

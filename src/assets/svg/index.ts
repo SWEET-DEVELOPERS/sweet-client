@@ -97,3 +97,4 @@ export { default as Tournament03 } from './Tournament03';
 export { default as Tournament04 } from './Tournament04';
 export { default as Vite } from './Vite';
 export { default as ImgBg } from './ImgBg';
+export { default as GiftHomeBackground } from './GiftHomeBackground';
