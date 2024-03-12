@@ -59,7 +59,7 @@ export const Main3 = styled.div`
   background-size: cover;
   top: 140rem;
   width: 100%;
-  height: 81.1rem;
+  height: 100vh;
 `;
 
 export const Main4 = styled.div`
@@ -69,5 +69,5 @@ export const Main4 = styled.div`
   background-size: cover;
   top: 211rem;
   width: 100%;
-  height: 81.1rem;
+  height: 100vh;
 `;
