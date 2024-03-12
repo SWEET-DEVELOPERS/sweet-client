@@ -1,12 +1,9 @@
 import styled from 'styled-components';
-import {
-  HomeBackground,
-  HomeBgGradientFix,
-  GradientCta,
-  Main02,
-  Main03,
-  Main04,
-} from '../../assets/svg';
+import { HomeBgGradientFix, GradientCta } from '../../assets/svg';
+import HomeBackgroundWebP from '../../assets/img/home_background.webp';
+import Main02WebP from '../../assets/img/main02.webp';
+import Main03WebP from '../../assets/img/main03.webp';
+import Main04WebP from '../../assets/img/main04.webp';
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 
 export const Wrapper = styled.div`
@@ -21,7 +18,6 @@ export const Gradient = styled(HomeBgGradientFix)`
   position: absolute;
   top: 54rem;
   z-index: 2;
-  width: 100%;
 `;
 
 export const BtnGradient = styled(GradientCta)`
@@ -37,21 +33,41 @@ export const BtnFillStyle = styled(BtnFill)`
   margin: 2rem;
 `;
 
-export const Main1 = styled(HomeBackground)`
+export const Main1 = styled.div`
+  background-image: url(${HomeBackgroundWebP});
   position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 85vh;
 `;
 
-export const Main2 = styled(Main02)`
+export const Main2 = styled.div`
+  background-image: url(${Main02WebP});
   position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
   top: 61rem;
+  width: 100%;
+  height: 120vh;
 `;
 
-export const Main3 = styled(Main03)`
+export const Main3 = styled.div`
+  background-image: url(${Main03WebP});
   position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
   top: 140rem;
+  width: 100%;
+  height: 100vh;
 `;
 
-export const Main4 = styled(Main04)`
+export const Main4 = styled.div`
+  background-image: url(${Main04WebP});
   position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
   top: 211rem;
+  width: 100%;
+  height: 100vh;
 `;
