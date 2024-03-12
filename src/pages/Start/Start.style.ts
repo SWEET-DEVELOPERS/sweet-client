@@ -18,7 +18,6 @@ export const Gradient = styled(HomeBgGradientFix)`
   position: absolute;
   top: 54rem;
   z-index: 2;
-  width: 100%;
 `;
 
 export const BtnGradient = styled(GradientCta)`
@@ -39,6 +38,8 @@ export const Main1 = styled.div`
   position: absolute;
   background-repeat: no-repeat;
   background-size: cover;
+  width: 100%;
+  height: 85vh;
 `;
 
 export const Main2 = styled.div`
@@ -47,6 +48,8 @@ export const Main2 = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   top: 61rem;
+  width: 100%;
+  height: 120vh;
 `;
 
 export const Main3 = styled.div`
@@ -55,6 +58,8 @@ export const Main3 = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   top: 140rem;
+  width: 100%;
+  height: 81.1rem;
 `;
 
 export const Main4 = styled.div`
@@ -63,4 +68,6 @@ export const Main4 = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   top: 211rem;
+  width: 100%;
+  height: 81.1rem;
 `;
