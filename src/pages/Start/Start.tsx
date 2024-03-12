@@ -8,13 +8,11 @@ import StartStepAnimation from './StartAnimation/ScrollAnimation/StepAnimation/S
 import LottieAnimation from '../../hooks/lottie-animation/LottieAnimation';
 import TournamentAnimation from '../../../public/motions/start_tournament.json';
 import StartDownIconAnimation from './StartAnimation/DownIconAnimation/StartDownIconAnimation';
-import HomeBackgroundWebP from '../../assets/img/home_background.webp';
 
 const Start = () => {
   return (
     <S.Wrapper>
       <LogoHeader />
-      {/* <img src={HomeBackgroundWebP} /> */}
       <S.Main1 />
       <StartGiftAnimation />
       <StartDownIconAnimation />
