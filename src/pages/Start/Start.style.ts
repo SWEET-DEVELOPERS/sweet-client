@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { HomeBgGradientFix, GradientCta } from '../../assets/svg';
 import HomeBackgroundWebP from '../../assets/img/home_background.webp';
-import Main02WebP from '../../assets/img/main_02.webp';
-import Main03WebP from '../../assets/img/main_03.webp';
-import Main04WebP from '../../assets/img/main_04.webp';
+import Main02WebP from '../../assets/img/main02.webp';
+import Main03WebP from '../../assets/img/main03.webp';
+import Main04WebP from '../../assets/img/main04.webp';
 import BtnFill from '../../components/common/Button/Cta/fill/BtnFill';
 
 export const Wrapper = styled.div`
