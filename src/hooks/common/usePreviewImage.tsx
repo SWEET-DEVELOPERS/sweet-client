@@ -2,6 +2,7 @@ import { toast } from 'react-toastify';
 import { usePreviewImageContext } from '../../context/Onboarding/PreviewImageContext';
 import { IMAGE_HEIGHT, MESSAGE } from '../../core/toast-messages';
 import Resizer from 'react-image-file-resizer';
+import heic2any from 'heic2any';
 
 const usePreviewImage = () => {
   const { previewImageInfo, updatePreviewImageInfo } = usePreviewImageContext();
@@ -39,7 +40,7 @@ const usePreviewImage = () => {
     });
   };
 
-  const failUploadImageToast = (selectedFile: Blob | MediaSource) => {
+  const isFailUploadImageToast = (selectedFile: Blob | MediaSource) => {
     const img = new Image();
 
     img.onload = function () {
@@ -56,13 +57,33 @@ const usePreviewImage = () => {
     img.src = URL.createObjectURL(selectedFile);
   };
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
 
     try {
       if (files && files.length > 0) {
         const selectedFiles = files as FileList;
-        console.log('typeof selectedFiles', typeof selectedFiles);
+
+        let convertedFile = selectedFiles[0];
+        console.log('convertedFile', convertedFile);
+
+        if (selectedFiles[0].type === 'image/heic' || selectedFiles[0].type === 'image/HEIC') {
+          let blob = selectedFiles[0];
+          console.log('blob', blob);
+          const resultBlob = await heic2any({ blob, toType: 'image/webp' });
+          convertedFile = new File(
+            [resultBlob as Blob],
+            selectedFiles[0].name.split('.')[0] + '.webp',
+            { type: 'image/webp', lastModified: new Date().getTime() },
+          );
+          updatePreviewImageInfo({
+            isImageUploaded: true,
+            imageName: convertedFile.name,
+            file: convertedFile,
+            previewImage: URL.createObjectURL(selectedFiles[0]),
+          });
+        }
+
         /**@see 추후 유니크한 이미지 네임 필요할 수 있으니 일단 주석처리 */
         // const imageName = files[0].name.trim();
 
@@ -74,7 +95,7 @@ const usePreviewImage = () => {
         //   .replace(/\//g, '') // 폴더링 방지를 위해 '/' 제거
         //   .replace(/\s/g, ''); // 공백 제거
 
-        failUploadImageToast(selectedFiles[0]);
+        isFailUploadImageToast(selectedFiles[0]);
 
         resizedFile(selectedFiles[0], URL.createObjectURL(selectedFiles[0]));
       }
