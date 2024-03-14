@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from 'react';
 import * as S from './BtnRadio.style';
 import { IcCircle, IcCirclePink } from '../../../../assets/svg';
-// import { Period } from '../../../OnBoardingSteps/Step05/Step05.style';
+
 type BtnRadioProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   disabled?: boolean;
   time: string;
