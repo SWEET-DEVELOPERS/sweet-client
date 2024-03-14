@@ -9,7 +9,6 @@ const useFormatDate = () => {
     const month = date.getMonth() + 1;
     const day = date.getDate();
     const hours = date.getHours();
-    // const minutes = date.getMinutes();
 
     if (includeTime) {
       return `${year}.${month}.${day}(${getDayOfWeek(date)}) ${hours}시`;
