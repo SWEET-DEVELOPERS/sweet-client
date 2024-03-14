@@ -32,8 +32,6 @@ const ThumbnailInput = React.memo((props: ThumbnailInputProps) => {
           /** @todo 파일네임 파싱하는 함수 유틸로 처리 */
           setIsLoading(true);
           const presignedUrl = data.presignedUrl.split('?')[0];
-          console.log('data.presignedUrl', data.presignedUrl);
-          console.log('parsingpresignedUrl', presignedUrl);
           updateOnboardingInfo({ imageUrl: presignedUrl });
           if (previewImageInfo.file) {
             await binarizeAndPutImage({ presignedUrl, file: previewImageInfo.file });

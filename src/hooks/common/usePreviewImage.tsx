@@ -33,7 +33,6 @@ const usePreviewImage = () => {
             previewImage: previewImage,
           });
           resolve(uri);
-          console.log('됐다?');
         },
         'file',
       );
@@ -65,7 +64,6 @@ const usePreviewImage = () => {
         const selectedFiles = files as FileList;
 
         let convertedFile = selectedFiles[0];
-        console.log('convertedFile', convertedFile);
 
         if (selectedFiles[0].type === 'image/heic' || selectedFiles[0].type === 'image/HEIC') {
           let blob = selectedFiles[0];
