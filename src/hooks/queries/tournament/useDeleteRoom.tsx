@@ -17,6 +17,7 @@ export const useDeleteRoom = (roomId: number) => {
       queryClient.invalidateQueries({ queryKey: [MY_TOURNAMENT_QUERY_KEY[0], roomId] });
     },
     onError: (error) => {
+      console.log(roomId);
       console.log('선물 삭제 중 에러가 발생했습니다.', error.message);
     },
   });
