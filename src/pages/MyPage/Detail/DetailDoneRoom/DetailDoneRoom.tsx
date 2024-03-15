@@ -1,11 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-import { IcLogoEmpty } from '../../../../assets/svg';
 import DoneCardRoom from '../../../../components/CardRoom/DoneCardRoom';
-import BtnSmallStroke from '../../../../components/common/Button/Cta/SmallStroke/BtnSmallStroke';
 import useGetDoneRoom from '../../../../hooks/queries/member/useGetClosedRoom';
 import { ClosedRoomArrayType } from '../../../../types/member';
 import * as S from './DetailDoneRoom.style';
 import LeftIconHeader from '../../../../components/LeftIconHeader/LeftIconHeader';
+import EmptyView from '../EmptyView/EmptyView';
 
 const DetailDoneRoom = () => {
   const navigate = useNavigate();
@@ -30,11 +29,7 @@ const DetailDoneRoom = () => {
             {data.map((item, index) => renderDoneRoomCard(item, index))}
           </S.RoomWrapper>
         ) : (
-          <S.EmptyWrapper title='종료된 선물방'>
-            <IcLogoEmpty style={{ width: '8rem', height: '6.4rem' }} />
-            <S.EmptyText>준비했던 선물이 없어요</S.EmptyText>
-            <BtnSmallStroke customStyle={{ margin: '1.6rem' }}>새로운 선물 준비하기</BtnSmallStroke>
-          </S.EmptyWrapper>
+          <EmptyView title='종료된 선물방' />
         )}
       </>
     </S.DetailDoneRoomWrapper>

@@ -3,7 +3,6 @@ import {
   SetStateAction,
   createContext,
   useContext,
-  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -40,13 +39,6 @@ export const OnboardingProvider = ({ children }: PropsWithChildren) => {
   const updateOnboardingInfo = (newInfo: Partial<OnboardingInfo>) => {
     setOnboardingInfo((prev) => ({ ...prev, ...newInfo }));
   };
-
-  /**@todo 전체 값 확인용 useEffect */
-  useEffect(() => {
-    console.log('전체 값 확인:', onboardingInfo);
-    console.log('context 속 selectedTime', selectedTime);
-    console.log('context 속 typeof selectedTime', typeof selectedTime);
-  }, [onboardingInfo, selectedTime]);
 
   const OnboardingInfoContextValue = useMemo(
     () => ({
