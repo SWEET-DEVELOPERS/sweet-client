@@ -18,7 +18,7 @@ const ProgressCardRoom = ({ user, srcImage, userCount, date, onClick }: Progress
 
   return (
     <S.CardRoomWrapper onClick={onClick}>
-      <div>
+      <>
         <S.RoomImgWrapper src={srcImage} />
         <S.Text>
           {multiline ? (
@@ -41,7 +41,7 @@ const ProgressCardRoom = ({ user, srcImage, userCount, date, onClick }: Progress
           />
           {userCount}
         </S.CountUser>
-      </div>
+      </>
       <S.TagWrapper>
         {!isFuture ? <Type2Tag tag='토너먼트 진행 중' /> : <Type2Tag tag='선물 등록 중' />}
       </S.TagWrapper>

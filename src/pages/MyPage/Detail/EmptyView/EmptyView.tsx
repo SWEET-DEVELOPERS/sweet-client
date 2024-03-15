@@ -16,9 +16,11 @@ const EmptyView = ({ title }: EmptyViewType) => {
   return (
     <S.EmptyViewWrapper>
       <DetailHeader title={title} />
-      <IcLogoEmpty />
-      <S.Text>준비했던 선물이 없어요</S.Text>
-      <BtnSmallStroke onClick={handleClickButton}>새로운 선물 준바하기</BtnSmallStroke>
+      <IcLogoEmpty style={{ width: '8rem', height: '6.4rem' }} />
+      <S.EmptyText>준비했던 선물이 없어요</S.EmptyText>
+      <BtnSmallStroke onClick={handleClickButton} customStyle={{ margin: '1.6rem' }}>
+        새로운 선물 준바하기
+      </BtnSmallStroke>
     </S.EmptyViewWrapper>
   );
 };

@@ -8,6 +8,7 @@ import DateCheck from '../../../../components/DateCheck/DateCheck';
 import { ActiveRoomArrayType } from '../../../../types/member';
 import * as S from './DetailProgress.style';
 import LeftIconHeader from '../../../../components/LeftIconHeader/LeftIconHeader';
+import EmptyView from '../EmptyView/EmptyView';
 
 const DetailProgressRoom = () => {
   const navigate = useNavigate();
@@ -40,11 +41,7 @@ const DetailProgressRoom = () => {
         {Array.isArray(data) && data.length > 0 ? (
           <S.RoomWrapper>{data.map((item, index) => renderRoomCard(item, index))}</S.RoomWrapper>
         ) : (
-          <S.EmptyWrapper title='진행중인 선물방'>
-            <IcLogoEmpty style={{ width: '8rem', height: '6.4rem' }} />
-            <S.EmptyText>준비했던 선물이 없어요</S.EmptyText>
-            <BtnSmallStroke customStyle={{ margin: '1.6rem' }}>새로운 선물 준비하기</BtnSmallStroke>
-          </S.EmptyWrapper>
+          <EmptyView title='진행중인 선물방' />
         )}
       </>
     </S.DetailProgressRoomWrapper>
