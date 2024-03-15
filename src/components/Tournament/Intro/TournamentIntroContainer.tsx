@@ -19,12 +19,14 @@ const TournamentIntroContainer = () => {
   const navigate = useNavigate();
   const params = useParams();
   const giftee = params.giftee;
+
   const roomIdString = params.roomId || '';
   const roomId = parseInt(roomIdString || '', 10);
+
   const memberData = useGetItem({ roomId: Number(roomId) });
   let tournamentData: GiftData[] = [];
 
-  const { mutation } = useDeleteRoom(roomId);
+  const { mutation } = useDeleteRoom({ roomId: Number(roomId) });
 
   const { showTournamentContainer, handleStartClick } = useTournament();
   const handleClearRoom = () => {};
@@ -43,12 +45,10 @@ const TournamentIntroContainer = () => {
     console.log(tournamentData);
   }
 
-  console.log('룸디는 : ' + roomId);
-  const handleClickConfirmDeleteBtn = (roomId?: number) => {
-    if (roomId !== undefined) {
-      mutation.mutate(roomId);
-      navigate(`/mypage`);
-    }
+  const handleClickConfirmDeleteBtn = (roomId: number) => {
+    // console.log('룸디는 : ' + roomId);
+    mutation.mutate(roomId);
+    navigate(`/mypage`);
   };
 
   return (
@@ -64,7 +64,7 @@ const TournamentIntroContainer = () => {
                     <S.TournamentImg>
                       <TrophyNone />
                     </S.TournamentImg>
-                    <TournamentDeleteButton onClick={handleClickConfirmDeleteBtn} />
+                    <TournamentDeleteButton roomId={roomId} onClick={handleClickConfirmDeleteBtn} />
                   </>
                 ) : (
                   <>
