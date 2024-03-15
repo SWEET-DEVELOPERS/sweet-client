@@ -25,7 +25,7 @@ const EditCardRoom = ({ user, srcImage, userCount, roomId, date, onClick }: Edit
   return (
     <S.WholeWrapper>
       <S.CardRoomWrapper onClick={onClick}>
-        <div>
+        <>
           <S.RoomImgWrapper src={srcImage} />
           <S.Text>
             {multiline ? (
@@ -48,7 +48,7 @@ const EditCardRoom = ({ user, srcImage, userCount, roomId, date, onClick }: Edit
             />
             {userCount}
           </S.CountUser>
-        </div>
+        </>
         <S.TagWrapper>
           <Type1Tag tag='개설자' />
           {!isFuture ? <Type2Tag tag='토너먼트 진행 중' /> : <Type2Tag tag='선물 등록 중' />}

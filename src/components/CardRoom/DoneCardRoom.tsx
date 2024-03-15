@@ -13,7 +13,7 @@ const DoneCardRoom = ({ user, srcImage, userCount, onClick }: DoneCardRoomType) 
   const multiline = user.length > 3 || (/[a-zA-Z]/.test(user) && user.length > 5);
   return (
     <S.CardRoomWrapper onClick={onClick}>
-      <div>
+      <>
         <S.RoomImgWrapper src={srcImage} />
         <S.Text>
           {multiline ? (
@@ -28,7 +28,7 @@ const DoneCardRoom = ({ user, srcImage, userCount, onClick }: DoneCardRoomType) 
           <IcUser style={{ width: '1.6rem', height: '1.6rem', color: '#ACA7A9' }} />
           {userCount}
         </S.CountUser>
-      </div>
+      </>
       <S.TagWrapper>
         <Type3Tag tag='토너먼트 완료' />
       </S.TagWrapper>
