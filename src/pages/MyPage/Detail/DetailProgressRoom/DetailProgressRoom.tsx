@@ -1,8 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { IcLogoEmpty } from '../../../../assets/svg';
 import EditCardRoom from '../../../../components/CardRoom/EditCardRoom';
 import ProgressCardRoom from '../../../../components/CardRoom/ProgressCardRoom';
-import BtnSmallStroke from '../../../../components/common/Button/Cta/SmallStroke/BtnSmallStroke';
 import useGetActiveRoom from '../../../../hooks/queries/member/useGetActiveRoom';
 import DateCheck from '../../../../components/DateCheck/DateCheck';
 import { ActiveRoomArrayType } from '../../../../types/member';
