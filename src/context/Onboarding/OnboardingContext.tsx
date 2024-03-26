@@ -3,6 +3,7 @@ import {
   SetStateAction,
   createContext,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -39,6 +40,10 @@ export const OnboardingProvider = ({ children }: PropsWithChildren) => {
   const updateOnboardingInfo = (newInfo: Partial<OnboardingInfo>) => {
     setOnboardingInfo((prev) => ({ ...prev, ...newInfo }));
   };
+
+  useEffect(() => {
+    console.log('전체 값 확인용', onboardingInfo);
+  }, [onboardingInfo]);
 
   const OnboardingInfoContextValue = useMemo(
     () => ({
