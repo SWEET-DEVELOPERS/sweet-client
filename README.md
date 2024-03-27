@@ -1,11 +1,15 @@
 <div>
-  <img align="left" src="https://cdn.discordapp.com/attachments/1187801115425771641/1197493329630330960/sweetlogo_128x128.png?ex=65bb7792&is=65a90292&hm=6a313638edfd8c992eab5fe1945e4172f88f0ea5dc8becb4da400f07eb8ba2a1&" width="160"/>
-  <div align="right">
+  <div align="left">
     <a align="right" href="https://github.com/SWEET-DEVELOPERS/sweet-client">
     </a>
     <h1 align="left">
+      <img align="left" src="https://github.com/SWEET-DEVELOPERS/sweet-client/assets/92876819/d406abdb-ae33-494f-a59a-56df5bc7cb68" width="160"/>
       <font align="left" size="6" color="#FF2176"> 🍭SWEET </font>
     </h1>
+
+### 모두의 의견을 모아 하나의 선물로, SWEET
+      
+  </div>
     <div align="left">
       <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FSWEET-DEVELOPERS%2Fsweet-client&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
       <img src="https://img.shields.io/github/issues-raw/SWEET-DEVELOPERS/sweet-client?color=176842">
@@ -21,13 +25,7 @@
 <br/>
 <br/>
 <br/>
-
-<div align="center"> 
-<h2>모두의 의견을 모아 하나의 선물로, SWEET</h2>
-</div>
 </a>
-
-<br/>
 
 ### 🔎 많은 사람이 한 사람의 선물을 고르는 과정에서 힘들었던 경험 있으신가요?
 	셀 수 없이 늘어나는 선물 단톡방, 갯수가 너무 많아 헷갈리는 선물 링크,
