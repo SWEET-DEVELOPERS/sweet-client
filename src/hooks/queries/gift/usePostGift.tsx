@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { post } from '../../../apis/client';
-import { AddGiftInfo, GiftPostRequestType } from '../../../types/gift';
+import { AddGiftInfo } from '../../../types/gift';
 import { useNavigate } from 'react-router-dom';
 import { MY_GIFT_QUERY_KEY } from './useGetMyGift';
 
@@ -15,6 +15,14 @@ interface PostGiftProps {
   setNameText: React.Dispatch<React.SetStateAction<string>>;
   setLinkText: React.Dispatch<React.SetStateAction<string>>;
   setPriceText: React.Dispatch<React.SetStateAction<number | null>>;
+}
+
+export interface GiftPostRequestType {
+  roomId: number;
+  url: string;
+  name: string;
+  cost: number;
+  imageUrl: string;
 }
 
 export const postNewGift = async (body: GiftPostRequestType) => {

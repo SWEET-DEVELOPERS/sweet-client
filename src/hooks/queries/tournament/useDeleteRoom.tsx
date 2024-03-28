@@ -3,18 +3,14 @@ import { post } from '../../../apis/client';
 
 export const MY_TOURNAMENT_QUERY_KEY: string[] = ['myRoomData'];
 
-export async function deleteRoom(roomId: number) {
-  await post(`/gift/tournament-end/${roomId}`);
-}
-
-// export const deleteRoom = async (roomId: number): Promise<any> => {
-//   try {
-//     const response = await post(`/gift/tournament-end/${roomId}`);
-//     return response;
-//   } catch (error) {
-//     return '중복입니다';
-//   }
-// };
+export const deleteRoom = async (roomId: number): Promise<any> => {
+  try {
+    const response = await post(`/gift/tournament-end/${roomId}`);
+    return response;
+  } catch (error) {
+    return '중복입니다';
+  }
+};
 export const useDeleteRoom = ({ roomId }: { roomId: number }) => {
   const queryClient = useQueryClient();
 

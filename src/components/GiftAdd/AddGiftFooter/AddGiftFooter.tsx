@@ -30,11 +30,9 @@ const AddGiftFooter = ({
   roomId,
   setStep,
   isActivated,
-  // name,
   cost,
   link,
   file,
-  // setFile,
   setImageUrl,
   fileName,
   updateAddGiftInfo,
@@ -44,6 +42,7 @@ const AddGiftFooter = ({
   setPriceText,
   setLinkText,
 }: AddGiftFooterProps) => {
+  
   const { mutation } = usePostGift({
     roomId,
     targetDate,

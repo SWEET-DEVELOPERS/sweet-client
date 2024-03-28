@@ -18,9 +18,7 @@ const useCalendarOpen = () => {
     const padTwoDigits = (value: number) => String(value).padStart(2, '0');
 
     const formattedDate =
-      format(date, 'y-MM-dd') +
-      'T' +
-      `${padTwoDigits(time.getHours())}:${padTwoDigits(time.getMinutes())}:${padTwoDigits(
+      format(date, 'y-MM-dd') + 'T' + `${padTwoDigits(time.getHours())}:${padTwoDigits(time.getMinutes())}:${padTwoDigits(
         time.getSeconds(),
       )}`;
     updateOnboardingInfo({ deliveryDate: formattedDate });
