@@ -91,11 +91,12 @@
 
 | 화면                                                                                                                              | 기능                                                                         |
 | --------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| <img width="250px" alt="Screenshot 2024-01-02 at 10 07 48 AM" src="https://github.com/SWEET-DEVELOPERS/sweet-client/assets/92876819/1df42ed4-c174-4e55-bdbb-e36655674981"/>  | <b>로그인 기능</b> <br> 카카오톡 소셜 로그인                  |
-| <img width="250px" alt="Screenshot 2024-01-02 at 10 15 05 AM" src="https://github.com/SWEET-DEVELOPERS/sweet-client/assets/92876819/b026641e-dcf9-4419-a656-59327824f484">  | <b>새 선물 준비 정보 입력 기능</b> <br> 새로운 선물 준비하기를 원하면 토너먼트 기한, 썸네일 등을 입력                   
-| <img width="250px" alt="Screenshot 2024-01-02 at 10 08 56 AM" src="https://github.com/SWEET-DEVELOPERS/sweet-client/assets/92876819/ce053343-10e0-4722-bb51-5ffcd4861642">  | <b>선물 토너먼트 링크 공유 기능</b> <br> 정보 입력 후 생성된 링크를 카카오톡으로 공유 가능   |
-| <img width="250px" alt="Screenshot 2024-01-02 at 10 15 47 AM" src="https://github.com/SWEET-DEVELOPERS/sweet-client/assets/92876819/d867939d-9f15-4b10-bb09-7950dcf16a6f"> | <b>선물 등록 기능</b> <br> 선물 링크와 가격 등록 시 토너먼트 아이템으로 추가         |
-| <img width="250px" alt="Screenshot 2024-01-02 at 10 17 03 AM" src="https://github.com/SWEET-DEVELOPERS/sweet-client/assets/92876819/ab783a96-576b-485e-a390-36ca14266152">  | <b>토너먼트 기능</b> <br> 설정한 기한 동안 토너먼트 진행 후 순위 결과 확인 및 공유 가능 |
+| <img width="250px" alt="스윗-소셜로그인-이미지" src="https://github.com/SWEET-DEVELOPERS/sweet-client/assets/92876819/ba1e44e4-12b1-468b-b15c-042235ce8dbd"/>  | <b>로그인 기능</b> <br> 카카오톡 소셜 로그인                  |
+| <img width="250px" alt="스윗-새-선물-준비-이미지" src="https://github.com/SWEET-DEVELOPERS/sweet-client/assets/92876819/b64be8ac-718b-488d-98f4-8eb832e9ecb2">  | <b>새 선물 준비 정보 입력 기능</b> <br> 새로운 선물 준비하기를 원하면 토너먼트 기한, 썸네일 등을 입력            |       
+| <img width="250px" alt="스윗-선물방-링크-공유-이미지" src="https://github.com/SWEET-DEVELOPERS/sweet-client/assets/92876819/5283b701-9a28-4c0b-a852-1db6f2493226">  | <b>선물 준비방 링크 공유 기능</b> <br> 정보 입력 후 생성된 링크를 카카오톡으로 공유 가능   |
+| <img width="250px" alt="스윗-선물-등록-이미지" src="https://github.com/SWEET-DEVELOPERS/sweet-client/assets/92876819/252e807a-3846-4f4b-b4e6-f644b6401340">  | <b>선물 등록 기능</b> <br> 링크 입력 혹은 직접 입력을 통해 토너먼트 선물 아이템 등록         |
+| <img width="250px" alt="스윗-선물홈-이미지" src="https://github.com/SWEET-DEVELOPERS/sweet-client/assets/92876819/085b5d52-a7b2-4396-b15e-709076b2e15c">  | <b>선물홈 화면</b> <br> 선물방 관련 정보 확인 가능         |
+| <img width="250px" alt="스윗-토너먼트-결과-이미지" src="https://github.com/SWEET-DEVELOPERS/sweet-client/assets/92876819/f76f24e8-0f74-4463-9d95-536535e75d7e">  | <b>토너먼트 기능</b> <br> 설정한 기간 동안 토너먼트 진행 후 순위 결과 확인 및 공유 가능         |
 </div>
 
 <br/>
