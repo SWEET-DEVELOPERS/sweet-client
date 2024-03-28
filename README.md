@@ -177,9 +177,9 @@
 
 <div>
   
-| 배포 페이지 | 데모 페이지 | 노션 페이지 |
-| :---:  |:---: | :---: |
-| <a>배포 페이지</a> | <a>데모 페이지</a> | <a href="https://www.notion.so/Sweet-7359b4c53bc84202a0bc37431d8d5bfd?pvs=4"> 👉 Notion Project 바로가기 </a> |
+| 배포 페이지 | 노션 페이지 |
+| :---: | :---: |
+| <a href="https://sweetgift.kr"> 🍭 SWEET 바로가기 </a>  | <a href="https://www.notion.so/Sweet-7359b4c53bc84202a0bc37431d8d5bfd?pvs=4"> 👉 Notion Project 바로가기 </a> |
  </div>
 <br/>
 
