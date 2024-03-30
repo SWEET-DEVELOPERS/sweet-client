@@ -13,20 +13,23 @@ import { GiftData } from '../../../types/tournament';
 import TournamentDeleteButton from './TournamentDeleteButton/TournamentDeleteButton';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../../common/Modal/Modal';
+import useDeleteRoom from '../../../hooks/queries/tournament/useDeleteRoom';
 
 const TournamentIntroContainer = () => {
   const navigate = useNavigate();
   const params = useParams();
   const giftee = params.giftee;
+
   const roomIdString = params.roomId || '';
   const roomId = parseInt(roomIdString || '', 10);
+
   const memberData = useGetItem({ roomId: Number(roomId) });
   let tournamentData: GiftData[] = [];
 
+  const { mutation } = useDeleteRoom({ roomId: Number(roomId) });
+
   const { showTournamentContainer, handleStartClick } = useTournament();
-  const handleClearRoom = () => {
-    navigate(`/mypage`);
-  };
+  const handleClearRoom = () => {};
 
   if (typeof memberData === 'string') {
     console.log('Error :', memberData);
@@ -42,6 +45,12 @@ const TournamentIntroContainer = () => {
     console.log(tournamentData);
   }
 
+  const handleClickConfirmDeleteBtn = (roomId: number) => {
+    // console.log('룸디는 : ' + roomId);
+    mutation.mutate(roomId);
+    navigate(`/mypage`);
+  };
+
   return (
     <>
       {showTournamentContainer ? (
@@ -55,7 +64,7 @@ const TournamentIntroContainer = () => {
                     <S.TournamentImg>
                       <TrophyNone />
                     </S.TournamentImg>
-                    <TournamentDeleteButton onClick={handleClearRoom} />
+                    <TournamentDeleteButton roomId={roomId} onClick={handleClickConfirmDeleteBtn} />
                   </>
                 ) : (
                   <>
