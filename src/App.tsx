@@ -9,7 +9,7 @@ import FallbackUI from './pages/FallbackUI/FallbackUI';
 import 'react-toastify/dist/ReactToastify.css';
 import { StyledToastContainer } from './style/toast.style';
 import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import * as S from './App.style';
 
 function App() {
