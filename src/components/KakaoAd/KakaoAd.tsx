@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import KakaoAdCallback from './KakaoAdCallback';
 
 const KakaoAd = () => {
   const scriptElement = useRef<HTMLDivElement>(null);
@@ -23,6 +24,7 @@ const KakaoAd = () => {
           data-ad-unit='DAN-ZAZ2jcyFWckRtcrp'
           data-ad-width='320'
           data-ad-height='50'
+          data-ad-onfail={<KakaoAdCallback />}
         />
       </div>
     </>
