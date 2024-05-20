@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router';
 import { useState } from 'react';
 import DeleteModal from '../../components/common/Modal/DeleteModal';
 import { logOutInstance } from '../../apis/client';
+import KakaoAd from '../../components/KakaoAd/KakaoAd';
 interface MyPage {
   memberData: MyPageType;
 }
@@ -90,6 +91,7 @@ const MyPage = () => {
           </BtnFill>
         </S.ProfileWrapper>
         {renderGiftRoom()}
+        <KakaoAd />
       </S.MyPageWrapper>
     </>
   );
