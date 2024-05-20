@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider, QueryErrorResetBoundary } from '@tanstack/react-query';
 import { RouterProvider } from 'react-router-dom';
 import router from './router/Router';
-import GlobalStyle from './style/GlobalStyle';
 import Loading from './pages/Loading/Loading';
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -25,7 +24,6 @@ function App() {
                 <RouterProvider router={router} />
                 <Analytics />
                 <SpeedInsights />
-                <GlobalStyle />
                 <StyledToastContainer
                   position='bottom-center'
                   autoClose={3000}
